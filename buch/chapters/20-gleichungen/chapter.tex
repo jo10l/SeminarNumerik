@@ -1,0 +1,66 @@
+%
+% chapter.tex
+%
+% (c) 2020 Prof Dr Andreas Müller
+%
+\chapter{Gleichungen lösen\label{chapter:gleichungen}}
+\lhead{Gleichungen lösen}
+Im Januar 1535 stellten sich Niccolò Tartaglia und 
+Antonio Maria Fior öffentlich je 30 kubische Gleichungen mit
+der Form $x^3 + px = q$ oder $x^3 = px + q$ und forderten sich
+gegenseitig heraus, diese Gleichungen innert 50 Tagen zu lösen.
+Für moderne Leser scheint es zwischen diesen Gleichungen keinen 
+Unterschied zu geben, aber negative Zahlen waren damals noch nicht
+in Gebrauch.
+Fior war ein Schüler von Scipione dal Ferro, der ein Lösungsmethode
+für einige Typen dieser kubischen Gleichungen aufgestellt hatte.
+Tartaglia strengte sich darauf hin besonders an und fand 12.~Februar
+1535 eine Lösungsformel für beide Typen und am darauffolgenden Tag
+auch eine für die Gleichung $x^3 + q = px$.
+
+Der Wettbewerb ging sehr ungleich aus: mit seiner Lösungsformel konnte
+Tartaglia alle gestellten Aufgaben lösen, während Fior keine einzige
+lösen konnte.
+Solche öffentlichen Wettbewerbe unter Gelehrten waren in der
+Renaissance durchaus üblich, sie waren Teil des Marketings mit dem
+Gelehrte bekannt werden und neue Kunden gewinnen konnten.
+Tartaglia zum Beispiel verdiente seinen Lebensunterhalt vorwiegend
+als kaufmännischer Rechner und Privatlehrer.
+Tartaglia ist auch der Autor eines Buches über Ballistik, seine
+mathematischen Forschungen waren durchaus auch von konkreten 
+Anwendungen motiviert.
+
+Die Lösung der kubischen Gleichung durch Tartaglia und die spätere
+Verallgemeinerung durch Gerolamo Cardano (1501--1576) sowie die 
+Lösung der Gleichung vierten Grades durch Lodovico Ferrari (1522--1565)
+waren Lösungsformeln wie sie heute jeder Schüler für die quadratische
+Gleichung kennelernt.
+Wie sieht die Lösungsformel für allgemeine Gleichungen fünften
+Grades aus?
+Die überraschende Antwort gab 1824 Niels Henrik Abel, er zeigte,
+dass es eine allgemeine Lösungsformel nicht geben kann.
+Dies war eines der ersten Resultate in einer langen Reihe von
+Unmöglichkeitsaussagen.
+So wissen wir zum Beispiel heute, dass die Funktion $e^{-x^2}$ 
+keine analytische Darstellung mit Hilfe von Potenzfunktionen,
+Brüchen, Exponential- und Logarithmus-Funktionen hat.
+Es gibt sogar einen Algorithmus\footnote{Eigentlich handelt es
+sich um einen Pseudo-Algorithmus, denn einzelne Schritte des Algorithmus
+verlangen, dass entschieden werden muss, ob zwei Terme identisch sind.
+Auch dies ist ein Problem, welches von einem Computer nicht in voller
+Allgemeinheit gelöst werden kann, allerdings aus ganz anderem Grund.}
+von Risch, mit dem man entscheiden kan, ob eine solche Darstellung
+für einen vorgegebenen Integranden möglich ist.
+
+Diese Beispiel zeigen uns, dass die Lösung einer Gleichung mit
+einer Lösungsformel eher die Ausnahme als die Regel darstellt.
+Gefragt sind daher numerische Methoden, die Gleichungen effizient
+und zuverlässig lösen können.
+Dieses Kapitel befasst sich mit den besonderen Schwierigkeiten dieser
+Aufgabenstellung.
+
+\input{chapters/20-gleichungen/nullstellen.tex}
+\input{chapters/20-gleichungen/newton.tex}
+\input{chapters/20-gleichungen/homotopie.tex}
+
+
