@@ -1,0 +1,26 @@
+#
+# Makefile zum Skript ueber Numerik
+#
+# (c) 2020 Prof Dr Andreas Mueller, Hochschule Rapperswil
+#
+all:	buch.pdf
+
+papers/common/Makefile.inc:	papers/common/paperlist
+
+include common/Makefile.inc
+include chapters/Makefile.inc
+include papers/common/Makefile.inc
+include papers/common/includes.inc
+
+buch.pdf:	buch.tex $(TEXFILES) buch.ind $(BLXFILES)
+	pdflatex buch.tex
+	bibtex buch
+
+buch.idx:	buch.tex $(TEXFILES) images
+	touch buch.ind
+	pdflatex buch.tex
+
+buch.ind:	buch.idx
+	makeindex buch.idx
+
+
