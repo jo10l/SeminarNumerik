@@ -1,0 +1,67 @@
+%
+% chapter.tex
+%
+% (c) 2020 Prof Dr Andreas Müller
+%
+\chapter{Berechnung
+\label{chapter:berechnung}}
+\lhead{Berechnung}
+\rhead{}
+Die numerischen Datentypen eines digitalen Computers sind Approximationen
+für die abstrakten Zahlensysteme $\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$
+und $\mathbb{R}$.
+Man kann sie daher verwenden, die in der Analysis und der linaren Algebra
+definierten Konzepte wie Grenzwerte, Integrale oder inverse Matrizen zu
+berechnen.
+Da sie jedoch nur Annäherungen sind, werden die gewohnten Rechenregeln 
+nicht immer gültig sein.
+In $\mathbb{R}$ kann die Addition dreier Zahlen zum Beispiel in beliebiger
+Reihenfolge durchgeführt werden, für \texttt{double}-Zahlen auf einem
+Computer ist dies nicht der Fall.
+Zum Beispiel kann man in Octave die folgende Rechnung durchführen\footnote{%
+Das Beispiel zeigt eine Problem für Zahlen vom Typ \texttt{double}.
+Das Programm \texttt{assoziativ.cpp} im Verzeichnis
+\texttt{buch/chapters/experiments/assoziativ} findet analoge Beispiel für
+die anderen Floatingpoint Typen \texttt{float} und \texttt{long double}.}:
+\verbatiminput{chapters/10-arithmetik/assoziativ.txt}
+Das Assoziativgesetzt verlangt, dass $a+(b+b)=(a+b)+b$ ist und zunächst
+will es auch den Anschein haben, dass $x$ und $y$ tatsächlich gleich sind.
+Ungewöhnlich ist nur, dass der Wert von $x$ mit auf den ersten Blick
+unnötigen Nachkommastellen angezeigt wird.
+Diese Nullen deuten jedoch an, dass $x\ne 1$ aber $y=1$, man in Schritt
+6 und 7 sieht, wenn man die Differenz zu $1$ bestimmt.
+
+Das Beispiel verdeutlicht, dass auf einem Computer zur Verfügung
+stehende numerische Datentypen die gewohnten Rechengesetze verletzen und
+neue Unzulänglichkeiten wie Rundungsfehler in die Berechnung injizieren.
+Die Numerik muss sich daher mit der Frage befassen, welcher Art diese
+neuen Effekte sind und wie ihnen effektiv begegnet werden kann.
+Nur so kann die Zuverlässigkeit numerisch gefundener Resultate
+garantiert werden.
+
+Dieses Kapitel befasst sich mit den Eigenschaften von Computer-Zahlensystemen.
+Im ersten Abschnitt werden die Zahlensysteme beschrieben und ihre 
+Vor- und Nachteile gegeneinander abgewogen.
+Im zweiten Abschnitt wird gezeigt, wie Resultate bei unvorsichtiger
+Vorgehensweise verfälscht werden können.
+Rundungsfehler sind unvermeidlich, das Ziel muss daher sein, ihre
+Grösse unter Kontrolle zu halten.
+Numerische Instabilität liegt vor, wenn die Berechnung aufgrund von
+numerischen Effekten völlig aus dem Ruder läuft und sinnlose Resultate
+liefert, dies wird in Abschnitt~\ref{buch:section:instabilitaet}
+untersucht.
+
+
+\input{chapters/10-arithmetik/zahlensysteme.tex}
+\input{chapters/10-arithmetik/effekte.tex}
+\input{chapters/10-arithmetik/iteration.tex}
+\input{chapters/10-arithmetik/instabilitaet.tex}
+\input{chapters/10-arithmetik/kondition.tex}
+\input{chapters/10-arithmetik/beschleunigung.tex}
+
+
+
+
+
+
+

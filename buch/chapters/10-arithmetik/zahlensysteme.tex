@@ -1,0 +1,45 @@
+%
+% zahlensysteme.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Zahlensysteme
+\label{buch:section:zahlensysteme}}
+\rhead{Zahlensysteme}
+Auf modernen Allzweck-Prozessoren steht eine ganze Reihe verschiedener
+numerischer Datentypen mit unterschiedlichen Eigenschaften
+bezüglich Geschwindigkeit und Fehlerverhalten zur Verfügung.
+In diesem Abschnitt sollen sie vorgestellt und miteinander verglichen
+werden.
+Es gilt, den für eine Berechnung zweckmässigsten Typen zu wählen,
+wobei Speicherbedarf, Laufzeit und Parallelisierbarkeit wesentliche
+Aspekte sind.
+
+Microcontroller sind im Vergleich zu Allzweckprozessoren oft stark
+eingeschränkt.
+Meist sind nur Ganzahltypen mit oft sehr beschränkter Länge implementiert.
+Manchmal kann die Arithmetik-Einheit des Prozessors nicht einmal eine
+Multiplikation in Hardware ausführen, sie muss in Software nachgebildet
+werden.
+Für Floatingpoint Operationen muss oft Bibliotheken zurückgegriffen
+werden, die den Speicherbedarf erhöhen und langsam sind.
+Die Implementation von numerischen Berechnungen in eingebetteten Anwendungen
+ist daher mit besonderen Herausforderungen konfrontiert.
+
+Dieselbe Schwierigkeit haben auch Allzweck-Prozessoren wenn die
+Genauigkeitsanforderungen die Möglichkeiten der von der Prozessor-Hardware
+implementierten Typen übersteigt.
+Dieser Fall tritt beispielsweise bei Berechnungen in der Kryptographie auf,
+wo oft mit Ganzzahlen mit Tausenden von Stellen gerechnet werden muss.
+Im Abschnitt~\ref{buch:subsection:mp} mit der GNU Multiprecision-Library
+ein Beispiel einer Bibliothek vorgestlelt.
+
+
+\subsection{Festkommazahlen
+\label{buch:subsection:integers}}
+
+\subsection{Gleitkommazahlen
+\label{buch:subsection:floatinpoing}}
+
+\subsection{Hochpräzisionsbibliotheken
+\label{buch:subsection:mp}}

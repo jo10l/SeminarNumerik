@@ -1,0 +1,13 @@
+octave:1> a = 1;
+octave:2> b = 0.0000000000000001;
+octave:3> x = a+(b+b)
+x =  1.0000
+octave:4> y = (a+b)+b
+y =  1
+octave:5> x-y
+ans =    2.2204e-16
+octave:6> x-1
+ans =    2.2204e-16
+octave:7> y-1
+ans = 0
+
