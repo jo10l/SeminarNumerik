@@ -14,7 +14,7 @@ Abschnitt~\ref{buch:section:beschleunigung}
 anzuwenden und die Konvergenz des Verfahrens zu beschleunigen, ohne
 dass weitere Funktionswerte berechnet werden müssen.
 
-\subsubsection{Elminiation des Fehlers}
+\subsubsection{Elmination des Fehlers}
 Wir kehren zurück zur Berechung des Integrals
 \[
 I=\int_a^b f(x)\,dx
@@ -68,6 +68,7 @@ I = \frac{16T^*(h/2)-T*(h)}{15}.
 \]
 Dieses Verfahren der fortlaufenden Verbesserung der Konvergenz durch
 Elimination des Fehlers ist bekannt als {\em Romberg-Algorithmus}.
+\index{Romberg-Algorithmus}
 
 \subsubsection{Ein Beispiel}
 Wir berechnen das Integral
@@ -75,7 +76,7 @@ Wir berechnen das Integral
 I = \int_0^{\pi} \sin x\,dx = 2
 \]
 mit Hilfe der Trapezregel und wenden das Beschleunigungsschema von Romberg
-auf die erhaltenen Wert an.
+auf die erhaltenen Werte an.
 
 \begin{table}
 \def\u#1{\underline{#1}}
@@ -118,7 +119,7 @@ wichtiger werden.
 In beiden Fällen muss der Integrand $2049$ mal ausgewertet werden.
 
 Die zweite Romberg-Beschleunigung erreicht Maschinengenauigkeit bereits bei
-$k=9$, als mit nur $513$ Funktionsauswertungen ermöglicht.
+$k=9$, als mit nur $513$ Funktionsauswertungen.
 Die Romberg-Beschleunigung ist in diesem Beispiel also ausserordentlich
 erfolgreich.
 
