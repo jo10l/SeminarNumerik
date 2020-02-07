@@ -20,6 +20,8 @@ CHAPTERFILES =								\
 	chapters/20-gleichungen/newton.tex				\
 	chapters/20-gleichungen/homotopie.tex				\
 	chapters/30-interpolation/chapter.tex				\
+	chapters/30-interpolation/riemann.tex				\
+	chapters/30-interpolation/romberg.tex				\
 	chapters/40-integration/chapter.tex				\
 	chapters/50-ode/chapter.tex					\
 	chapters/60-linsys/chapter.tex					\

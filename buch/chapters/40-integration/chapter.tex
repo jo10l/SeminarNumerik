@@ -5,4 +5,22 @@
 %
 \chapter{Integration\label{chapter:integration}}
 \lhead{Integration}
+Die Wahrscheinlichkeitsdichte der Standardnormalverteilung führt 
+auf das Integral
+\[
+\Phi(x) 
+=
+\frac{1}{\sqrt{2\pi}}
+\int_{-\infty}^x e^{-t^2/2}\,dt
+\]
+für die Verteilungsfunktion.
+Man kann beweisen, dass es für diesen Integranden keine Stammfunktion
+in analytischer Form als algebraischer Ausdruck bekannter Funktionen
+geben kann.
+Es bleibt also nur die numerische Berechnung.
+Dieses Kapitel stellt einige Methoden zur Berechnung von Integralen
+zusammen. 
+
+\input{chapters/40-integration/riemann.tex}
+\input{chapters/40-integration/romberg.tex}
 
