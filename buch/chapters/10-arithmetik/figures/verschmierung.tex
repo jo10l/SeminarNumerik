@@ -1,0 +1,53 @@
+%
+% verschmierung.tex -- Illustration des Verschmierungseffektes
+%
+% (c) 2019 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\input{exppaths.tex}
+\begin{tikzpicture}[>=latex,thick]
+
+\def\xskala{0.1}
+\def\yskala{0.2}
+\def\r{0.04}
+
+\pluslinie{red}
+\minuslinie{red}
+
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\grenzef{darkgreen}{Minimum für \texttt{float}}
+\grenzed{darkgreen}{Minimum für \texttt{double}}
+\grenzee{darkgreen}{Minimum für \texttt{long double}}
+
+\draw[->] (-1*\xskala,0)--({125*\xskala},0) coordinate[label={$k$}];
+\draw[->] ({-0*\xskala},{-22*\yskala})--({-0*\xskala},{16*\yskala})
+	coordinate[label={left:$\log_{10}$}];
+
+\foreach \k in {0,10,20,...,120}{
+	\draw ({\k*\xskala},-0.1)--({\k*\xskala},0.1);
+}
+\foreach \k in {20,40,...,120}{
+	\node at ({\k*\xskala},-0.1) [below] {$\k$};
+}
+
+\draw (-0.1,{10*\yskala})--(0.1,{10*\yskala});
+\node at (-0.1,{10*\yskala}) [left] {$10$};
+\draw (-0.1,{-10*\yskala})--(0.1,{-10*\yskala});
+\node at (-0.1,{-10*\yskala}) [left] {$-10$};
+\node at (-0.1,0) [left] {$0$};
+\draw (-0.1,{-20*\yskala})--(0.1,{-20*\yskala});
+\node at (-0.1,{-20*\yskala}) [left] {$-20$};
+
+\pfade{blue}
+\maxlinie{blue}
+
+\end{tikzpicture}
+\end{document}
+
