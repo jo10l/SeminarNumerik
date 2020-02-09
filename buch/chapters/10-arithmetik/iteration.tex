@@ -6,4 +6,494 @@
 \section{Iteration
 \label{buch:section:iteration}}
 \rhead{Iteration}
+Die meisten numerischen Problemlösungen mit einem Computer nutzen deren
+Fähigkeit aus, dieselbe Rechnung immer wieder zu wiederholen, bis zum
+Beispiel die gewünschte Genauigkeit erziehlt ist.
+Es lohnt sich daher ganz unabhängig irgendwelchen Einschränkungen 
+der Computer-Hardware zu überlegen, was passiert, wenn man eine
+Funktion $f\colon \mathbb R\to\mathbb R$ immer wieder auf ihren eigenen
+Output anwendet, wie das zum Beispiel der Code in einer Schleife
+bei jedem Durchlauf macht.
+
+In diesem Abschnitt ist also
+\[
+f\colon \mathbb{R}\to\mathbb{R} : x\mapsto f(x)
+\]
+eine differenzierbar Funktion.
+Mit einem gegebenen Startwert $x_0\in\mathbb R$ lässt sich durch
+wiederholte Anwendung von $f$ die Folge
+\[
+x_0,\; x_1 = f(x_0),\; x_2 = f(x_1),\; x_3 = f(x_2),\; x_4 = f(x_3),\dots
+\]
+konstruieren.
+
+Ist der Punkt $x^*$ ein Fixpunkt der Funktio $f(x)$, ist also $f(x^*)=x^*$,
+dann ist die mit $x_0=x^*$ gebildete Iterationsfolge konstant.
+Es stellt sich damit automatisch die Frage, was mit einem von $x^*$
+abweichenden Startwert passiert. Entfernen sich die Werte $x_k$ von $x^*$
+oder konvergiert die Folge am Ende gegen $x^*$?
+
+\subsection{Beispiele}
+Wir illustrieren die verschiedenen Situation, die beim Iterieren der
+Funktion $f$ auftreten können an einigen Beispielen.
+
+\begin{beispiel}
+\label{section:beispiel:sqrtiteration}
+Wir betrachten die Funktion 
+\[
+f\colon \mathbb{R}\to\mathbb{R} : x\mapsto \sqrt{x+2}
+\]
+Die Iterationsfolge ausgehend vom Startwert $x_0=0$ ist in
+Tabelle~\ref{buch:table:sqrtiteration} dargestellt.
+
+\begin{table}
+\centering
+\renewcommand\arraystretch{1.15}
+\input{chapters/10-arithmetik/sqrtiteration.tex}
+\caption{Iterationsfolge für die Funktion $f(x)=\sqrt{x+2}$ ausgehend
+vom Startwert $x_0=0$.
+\label{buch:table:sqrtiteration}}
+\end{table}
+
+Die Werte konvergieren offenbar gegen den Wert $2$, 
+In der dritten Spalte steht die Abweichung $\delta_k$ des $k$-ten Folgengliedes
+vom Grenzwert $2$.
+Mit jeder Iteration wird der Fehler um den Faktor 4 kleiner, wie die
+vierte Spalte zeigt, in der Quotient aufeinanderfolgender Fehler
+berechnet ist.
+
+Dieses Verhalten des Fehlers kann man auch analytisch verstehen.
+Nehmen wir an, dass $x_n = 2 + \delta_n$ und versuchen wir 
+$x_{n+}$ zu berechnen.
+Indem wir die Funktion $f(x)$ im Punkt $x=2$ mit Hilfe der Ableitung
+linear approximieren, erhalten wir wegen
+\[
+f'(x) = \frac{1}{2\sqrt{x+2}}
+\]
+\[
+x_{n+1} = f(x_n) = f(2 + \delta_n)
+\simeq
+f(2) + f'(2)\cdot \delta_n
+2 + \underbrace{\frac14\cdot \delta_n}_{\displaystyle\simeq\delta_{n+1}},
+\]
+der Fehler von $x_{n+1}$ ist also $\delta_{n+1}\simeq\frac14\delta_n$.
+In jedem Iterationsschritt gewinnen wir daher etwa 2 bit Genauigkeit.
+Für die 52 bit Mantisse des \texttt{double} Typs brauchen wir also
+etwa 26 Iterationen.
+\end{beispiel}
+
+\begin{beispiel}
+\label{buch:beispiel:logistisch3}
+Wir betrachten die Funktion
+\[
+f(x) = 3x(1-x).
+\]
+Sie hat zwei Fixpunkte, die man durch lösen der quadratischen
+Gleichung
+\[
+f(x^*)=x^*
+\quad\Rightarrow\quad
+x^*=-3x^{*2}+3x^*
+\quad\Rightarrow\quad
+3x^{*2}-2x^*=3x^*(x^*-{\textstyle\frac23})=0
+\quad\Rightarrow\quad
+x^*=
+\begin{cases}
+0      &\\
+\frac23&
+\end{cases}
+\]
+findet.
+
+Für einen Startwert $x_0$ nahe des Fixpunktes $x^*=0$ gilt
+\[
+f(\delta)
+=
+3\delta(1-\delta)
+=
+3\delta - 3\delta^2.
+\]
+Für kleine Werte von $\delta$ kann man den quadratischen Wert vernachlässigen
+und sieht, dass der Fehler durch die Iteration verdreifacht wird.
+Konvergenz zu diesem Fixpunkt ist also nicht möglich.
+
+Für den Fixpunkt $x=^* = \frac23$ finden wir
+\begin{equation}
+f({\textstyle\frac23}+\delta)
+=
+3({\textstyle\frac23}+\delta)({\textstyle\frac13}-\delta)
+=
+\frac{(2+3\delta)(1-3\delta)}3
+=
+\frac{2-3\delta+9\delta^2}{3}
+=
+\frac23 - \delta  + 9\delta^2
+\label{buch:equation:logistic3error}
+\end{equation}
+Der Fehler $\delta$ wird zu $ -\delta(1-9\delta) $, er ändert also sein
+Vorzeichen.
+Ist $\delta>0$ wird der Fehlerbetrag wird nur um den Faktor $1-9\delta < 1$
+reduziert.
+Ist aber $\delta <0$, dann ist $1-9\delta>0$, der Fehlerbetrag wird wieder
+vergrössert.
+
+Sei jetzt $\delta>0$, wir wollen den Fehler nach zwei Iterationsschritten
+berechnen.
+Nach dem ersten ist der Fehler $\delta(1-9\delta)$, nach dem zweiten
+\[
+\delta(1-9\delta)(1-\delta(1-9\delta))
+=
+\delta(1-18\delta + 162\delta^2-729\delta^3).
+\]
+Für kleines $\delta$ können die Terme höhrer als erster Ordnung
+vernachlässigt werden und man kann schliessen, dass der Fehler nach
+zwei Iterationen tatsächlich um den Faktor $(1-18\delta)$ kleiner
+geworden ist?
+
+\begin{figure}
+\centering
+\includegraphics{chapters/10-arithmetik/figures/iteration.pdf}
+\caption{Ein Fixpunkt $x^*$ der Funktion $f(x)$ manifestiert sich als
+Schnittpunkt des Graphen $y=f(x)$ mit der $45^\circ$-Geraden.
+Die Iterationsfolge ausgehend von einem Startwert $x_0$ wird als
+Treppenkurve zwischen dem Graphen von $f$ und der $45^\circ$-Geraden
+sichtbar.
+\label{buch:figure:iterationprinzip}}
+\end{figure}
+
+Wie viele Iterationsschritte sind mindestens nötig, um den Fehler von
+$\delta_0$ auf $\delta_{2n}$ zu verbessern?
+Wie wir soeben berechnet haben, nimmt der Betrag des Fehlers zwischen
+den Schritten $k$ und $k+2$ gemäss
+\[
+\delta_{k+2} = \delta_{k} (1-18\delta_k)
+\]
+um den Faktor $(1-18\delta_k)$ ab.
+Es ist übersichtlicher, mit dem Logarithmus des Fehlers zu rechnen.
+Dieser verändert sich gemäss
+\[
+\log \delta_{k+2}
+=
+\log \delta_{k} + \log(1-18\delta_k)
+\simeq
+\log\delta_k - 18\delta_k,
+\]
+wobei wir für den zweiten Term die lineare Approximation aus der
+Taylorreihe
+\[
+\log (1+x) = x - \frac{x^2}2 + \frac{x^3}3 -\dots
+\]
+von 
+$\log x $ an der Stelle $x=1$ verwendet haben.
+Zwischen $\delta_0$ und $\delta_{2n}$ bedeutet dies
+\[
+\log\delta_{2n}
+=
+\log\delta_0
+-18
+\sum_{k=0}^{n-1} \delta_{2k}
+\qquad\Rightarrow\qquad
+\frac1{18}
+\log\frac{\delta_0}{\delta_{2n}}
+=
+\sum_{k=0}^{n-1}\delta_{2k}.
+\]
+Da der Fehler immer kleiner wir, kann man für eine erste grobe Abschätzung
+der Summe auf der rechten Seite die grössten und kleinsten Terme
+Damit lässt sich die Summe nach oben Abschätzen
+\[
+n\delta_{2n-2}
+\le
+\sum_{k=0}^{n-1}\delta_{2k}
+\le
+n\delta_0.
+\]
+Einsetzen ergibt
+\[
+n\delta_{2n-2}
+\le
+\frac{1}{18}
+\log\frac{q_{0}}{q_{2n}}
+\le
+n\delta_0
+\quad\Rightarrow\quad
+\frac{1}{18q_0}
+\log\frac{q_{0}}{q_{2n}}
+\le
+n
+\le
+\frac{1}{18q_{2n-2}}
+\log\frac{q_{0}}{q_{2n}}
+<
+\frac{1}{18q_{2n}}
+\log\frac{q_{0}}{q_{2n}}
+\]
+Eine Verbesserung um zwei Stellen von $q_0=0.01$ auf $q_{2n}=0.0001$ braucht
+also zwischen $25$ und $2558$ Iterationen.
+\end{beispiel}
+
+
+\subsection{Graphische Analyse
+\label{buch:section:graphischeanalyse}}
+Ein Fixpunkt der Funktion $f(x)$ manifestiert sich in einem 
+Schnittpunkte des Graphen von $f$ mit der $45^\circ$-Geraden
+$y=x$ wie in Abbildung~\ref{buch:figure:iterationprinzip}.
+Die Iterationsfolge $x_n$ kann graphisch wie folgt korrigiert
+werden.
+Ausgehend vom Wert $x_n$ auf der $x$-Achse folgt man der vertikalen,
+bis man auf den Graphen der Funktion $f$ trifft, dies liefert den
+Wert $y_n=f(x_n)$.
+Dieser soll jetzt als neuer $x$-Wert verwendet werden.
+Dazu folgt man der Horizontalen bis zur $45^\circ$-Geraden,
+die $x$-Koordinate des Schnittpunktes ist der $x_{n+1}$.
+So entsteht Treppenlinie in Abbildung~\ref{buch:figure:iterationprinzip}.
+
+\subsection{Konvergenzbedingung
+\label{buch:subsection:konvergenzbedingung}}
+Aus der graphischen Analyse von Abschnitt~\ref{buch:section:graphischeanalyse}
+kann man jetzt leicht Kriterien ableiten, wann die Iterationsfolge
+konvergent ist.
+Die Situation in Abbildung~\ref{buch:figure:iterationprinzip}
+tritt zum Beispiel immer ein, wenn es in einer Umgebung von $x^*$ 
+\[
+\begin{aligned}
+x^* &< f(x) < x &&& &\text{für $x>x^*$ und} \\
+x^* &> f(x) < x &&& &\text{für $x<x^*$}
+\end{aligned}
+\]
+gilt.
+
+Ist dagegen der Graph von $f$ in einer Umgebung von $x^*$ steiler als
+die $45^\circ$-Gerade, gilt also
+\begin{equation}
+f(x) \;\begin{cases}
+> x&\qquad x>x^*\\
+< x&\qquad x<x^*
+\end{cases}
+\label{buch:equation:konvergenzbedingung}
+\end{equation}
+dann folgt
+\[
+x_{n+1} = f(x_n)
+\;
+\begin{cases}
+> x_n&\qquad x_n>x^*\\
+< x_n&\qquad x_n<x^*.\\
+\end{cases}
+\]
+In beiden Fällen ist $x_{n+1}$ weiter vom Fixpunkt $x^*$ entfernt
+als $x_n$, die Folge kann also nicht konvergieren.
+
+Andererseits ist die Bedignung \ref{buch:equation:konvergenzbedingung}
+zu speziell.
+Der Funktionswert $f(x_n)$ darf durchaus auch kleiner als $x^*$ werden,
+wenn nur der Betrag der Differenz zu $x^*$ abnimmt, wenn also gilt
+\begin{equation}
+|x^* - f(x_n)| < |x^*-x_n|
+\label{buch:equation:konvergenzbereich}
+\end{equation}
+Diese Bedingung ist genügend nahe bei $x^*$ erfüllt, wenn
+$|f'(x^*)| < 1$ ist.
+Andererseits liegt Divergenz vor, wenn 
+\[
+|x^* - f(x_n)| > |x^*-x_n|,
+\]
+was nahe bei $x^*$ erfüllt ist, wenn $|f'(x^*)|>1$ gilt.
+Wir fassen diese Resultate zusammen im folgenden Satz
+
+\begin{satz}
+\label{buch:satz:konvergenzkriterium}
+Die Iterationsfolge $x_{n+1}=f(x_n)$ der Funktion $f(x)$ mit Fixpunkt
+$x^*=f(x^*)$ konvergiert für einen Startwert $x_0$ nahe genug bei $x^*$,
+wenn $|f'(x^*)|<1$, sie divergiert, wenn $|f'(x^*)|>1$.
+\end{satz}
+
+\subsection{Die logistische Gleichung
+\label{buch:subsection:logistisch}}
+Die logistische Gleichung ist 
+\index{logistische Gleichung}
+\[
+f_\lambda(x) = \lambda x(1-x)
+\]
+mit dem positiven Parameter $\lambda$.
+Im Beispiel auf Seite~\pageref{buch:beispiel:logistisch3} haben wir
+diese Funktion bereits einmal angetroffen mit dem Parameterwert
+$\lambda=3$.
+Der Graph von $f_\lambda(x)$ ist eine Parabel, die die $x$-Achse
+in den Punkten $(0,0)$ und $(1,0)$ schneidet.
+Das Maximum wird bei $x=\frac12$ angenommen und ist
+$f_\lambda(\frac12)=\lambda/4$.
+Die Funktion bildet also das Interval $[0,1]$ wieder in das selbe Interval
+ab, wenn $0\le \lambda\le 4$.
+
+Wir berechnen die Fixpunkte von $f_\lambda(x)$ im Interval $[0,1]$, also
+die Lösungen der quadratischen Gleichung
+\[
+x^*  = \lambda x^* (1-x^*)
+\quad\Rightarrow\quad
+\lambda x^{*2} +(1-\lambda)x^*
+=
+x^* (\lambda x^* + 1-\lambda) 
+=0
+\quad\Rightarrow\quad
+x^*
+=
+\begin{cases}
+0&\\
+\displaystyle \frac{\lambda-1}{\lambda}.&
+\end{cases}
+\]
+Für $\lambda<1$ gibt es keinen weitere Fixpunkt im Interval $[0,1]$, für
+$\lambda>1$ ist $(\lambda-1)/\lambda<1$ immer im Interval.
+
+Zur Beurteilung der Konvergenz der Iterationsfolge müssen wir die Ableitung
+von $f_\lambda$ im Fixpunkt berechnen.
+Die Ableitung ist $f'_\lambda(x)=\lambda (1-2x)$, also gilt in den Fixpunkten
+\begin{align*}
+f_\lambda'(0)
+&=
+\lambda
+\\
+f_\lambda\biggl(\frac{\lambda-1}{\lambda}\biggr)
+&=
+\lambda\biggl( 1-2
+\biggl(\frac{\lambda-1}{\lambda}\biggr)\biggr)
+=
+\lambda-2(\lambda-1)
+=
+2-\lambda.
+\end{align*}
+Daraus liest man mit dem Konvergenzkriterium von
+Satz~\ref{buch:satz:konvergenzkriterium} ab, dass Konvergenz zum Punkte
+$(\lambda-1)/\lambda$ vorliegt für $\lambda \in (1,3)$.
+Für $\lambda>3$ divergiert die Iterationsfolge.
+
+Im Beispiel auf Seite Seite~\pageref{buch:beispiel:logistisch3} haben wir
+wir den Grenzfall $\lambda=3$ untersucht und festgestellt, dass die
+Iterationsfolge gerade noch konvergiert, allerdings sehr langsam.
+Man beachte, dass das Kriterium \eqref{buch:equation:konvergenzbereich}
+in diesem Fall nicht erfüllt ist.
+
+Für $\lambda<1$ konvergiert die Iterationsfolge zum Nullpunkt.
+Wie verhält sich die Folge im Grenzfall $\lambda=1$.
+Auch in diesem Grenzfall ist das Kriterium nicht erfüllt, wir müssen
+das Problem als wieder gesondert analysieren.
+Es gilt
+\[
+x_{n+1} = x_n(1-x_n) = x_n-x_n^2.
+\]
+Für $x_n>0$ folgt also, dass $0<x_{n+1} < x_n$ ist, die Folge wird also
+konvergieren.
+Allerdings ist die Konvergenz wieder ähnlich langsam wie im Falle
+$\lambda=3$.
+Für einen Wert $x_n<0$ ist allerdings $x_{n+1} = x_n - x_n^2 < x_n$,
+d.~h.~die Folge divergiert.
+
+Dieses Verhalten lässt sich auch allgemein formulieren.
+
+\begin{satz}
+\label{buch:satz:kritischekonvergenz}
+Falls $f'(x^*)=1$, dann konvergiert die Iterationsfolge für einen
+Startwert $x_0$ genügend nahe und grösser als $x^*$ wenn $f''(x^*)<0$ 
+und sie divergiert für $f''(x^*)>0$.
+Für einen Startwert genügend nahe und kleiner als $x^*$ dagegen
+konvergiert die Iterationsfolge für $f''(x^*)<0$ und divergiert für
+$f''(x^*)>0$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Wir entwickeln die Funktion $f$ im Punkt $x^*$ die Potenzreihe
+\begin{align*}
+f(x^*+\delta)
+&=
+f(x^*) + f'(x^*)\cdot\delta + \frac12f''(x^*)\cdot \delta^* + O(\delta^3)
+\\
+&=
+x^* + \delta + \frac12f''(x^*)\delta^2
+\end{align*}
+Die Entfernung zu Fixpunkt ist
+\[
+|f(x^*+\delta)-x^*|
+\simeq
+|\delta  + \frac12f''(x^*)\delta^2|
+=
+|\delta|\cdot |1 + \frac12f''(x^*)\delta|.
+\]
+Ob die Entfernung wird genau dann grösser, wenn $f''(x^*)\delta$ positiv ist.
+sie wird kleiner, wenn $f''(x^*)\delta$ negativ sind.
+Der erste Fall tritt ein, wenn $\delta$ und $f''(x^*)$ gleiches
+Vorzeichen haben.
+Für Werte grösser als $x^*$ heisst das, dass $f''(x^*)>0$ sein muss.
+Analog folgen alle anderen Fälle.
+\end{proof}
+
+Für den Fall $\lambda=3$ der logistischen Gleichung können wir den
+folgenden Satz formulieren:
+
+\begin{satz}
+Falls $f'(x^*)=-1$, dann konvergiert die Iterationsfolge für einen
+Startwert genügend nahe bei $x^*$, wenn $f''(x^*) <0$, sie divergiert,
+wenn $f''(x^*)>0$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Wir verwenden wieder die Entwicklung
+\begin{align*}
+f(x_n)
+&=
+f(x^* +\delta_n)
+=
+f(x^*) + f'(x^*) \cdot \delta_n + \frac12 f''(x^*)\cdot \delta_n^2
++ \dots
+=
+x^* - \delta_n + \frac12f''(x^*)\delta_n^2 +\dots
+\\
+\delta_{n+1}
+&=
+-\delta + \frac12f''(x^*)\delta^2 \dots
+\end{align*}
+Daraus kann man zunächst erkennen, dass der Fehler bei jedem 
+Iterationsschritt das Vorzeichen wechselt.
+Wir berechnen den Fehler nach zwei solchen Schritten.
+\begin{align*}
+\delta_{n+2}
+&=
+-\delta_{n+1} + \frac12f''(x^*) \delta_{n+1}^2
+=
+\delta_n - \frac12f''(x^*) \delta_n^2
++
+\frac12 f''(x^*) \bigl(-\delta_n + f''(x^*)\delta_n^2\bigr)^2
+\\
+&=
+\delta_n 
+-\frac12 f''(x^*)
+\delta_n^2
++\frac12 f''(x^*)
+\bigl( \delta_n^2 + 2f''(x^*)\delta_n^3 + f''(x^*)^2\delta_n^4\bigr)
+\\
+&=
+\delta_n
++
+f''(x^*)^2\delta_n^3
++
+\frac12f''(x^*)^3\delta_n^4
++\dots
+\\
+&=
+\delta_n (1 + f''(x^*)\delta_n^2)
+\end{align*}
+Die Terme höherer Ordnung als $3$ können für kleines $\delta_n$ 
+vernachlässigt werden.
+Nach zwei Iterationsschritten hat also der Fehler wieder das gleiche
+Vorzeichen, aber der Betrag hat sich im den Faktor
+\[
+1+f''(x^*)\delta_n^2
+\]
+verändert.
+Dieser Faktor ist genau dann $<1$, wenn $f''(x^*)<0$ ist.
+\end{proof}
+
+Ähnlich wie im Beispiel auf 
+Seite~\pageref{buch:beispiel:logistisch3} kann man auch in diesem
+Fall zeigen, dass die Konvergenz der Folge sehr langsam ist.
 

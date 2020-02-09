@@ -1,0 +1,95 @@
+%
+% iteration.tex -- Iteration einer Funktion
+%
+% (c) 2019 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{5}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[color=blue,line width=1.4pt] (-0.1,-0.1)--(2.1,2.1);
+
+
+\def\xn{1.99}
+
+\def\XX{\xn}
+
+\foreach \x in {1,2,3,4}{
+\pgfmathparse{sqrt(\XX)}
+\xdef\YY{\pgfmathresult}
+\draw[color=gray,line width=2pt] (\XX,\XX)--(\XX,\YY)--(\YY,\YY);
+\xdef\XX{\YY}
+}
+
+\pgfmathparse{sqrt(\xn)}
+\xdef\yn{\pgfmathresult}
+
+\draw[line width=0.1pt] (\xn,0)--(\xn,\yn);
+\draw[line width=0.1pt] (0,\yn)--(\xn,\yn);
+
+\fill[color=red] (\xn,\yn) circle[radius={0.1/\skala}];
+
+\draw (\xn,{-0.1/\skala})--(\xn,{0.1/\skala});
+\node at (\xn,{-0.1/\skala}) [below] {$x_n\mathstrut$};
+
+\draw ({-0.1/\skala},\yn)--({0.1/\skala},\yn);
+\node at ({-0.1/\skala},\yn) [left] {$y_n$};
+
+\node at (0.1,\yn) [above right] {$y_n=f(x_n)$};
+
+\draw[line width=0.1pt] (\yn,\yn)--(\yn,0);
+%\draw (\yn,{-0.1/\skala})--(\yn,{0.1/\skala});
+%\node at (\yn,{-0.1/\skala}) [below] {$x_{n+1}$};
+
+\node[color=blue] at (\yn,\yn) [above left] {$x_{n+1}=y_n$};
+\fill[color=blue] (\yn,\yn) circle[radius={0.1/\skala}];
+
+\xdef\xn{\yn}
+\pgfmathparse{sqrt(\xn)}
+\xdef\yn{\pgfmathresult}
+
+\draw[line width=0.1pt] (\xn,0)--(\xn,\yn);
+\draw[line width=0.1pt] (0,\yn)--(\xn,\yn);
+
+\fill[color=red] (\xn,\yn) circle[radius={0.1/\skala}];
+
+\draw (\xn,{-0.1/\skala})--(\xn,{0.1/\skala});
+\node at (\xn,{-0.1/\skala}) [below] {$x_{n+1}\mathstrut$};
+
+\draw ({-0.1/\skala},\yn)--({0.1/\skala},\yn);
+\node at ({-0.1/\skala},\yn) [left] {$y_{n+1}$};
+
+\node at (0.1,\yn) [above right] {$y_{n+1}=f(x_{n+1})$};
+
+\node[color=blue] at (\yn,\yn) [above left] {$x_{n+2}=y_{n+1}$};
+\fill[color=blue] (\yn,\yn) circle[radius={0.1/\skala}];
+
+\xdef\xn{\yn}
+
+\draw (\xn,{-0.1/\skala})--(\xn,{0.1/\skala});
+\node at (\xn,{-0.1/\skala}) [below] {$x_{n+2}\mathstrut$};
+
+\draw[line width=0.1pt] (\xn,0)--(\xn,\yn);
+
+\draw[color=red,line width=1.4pt]
+	plot[domain=0:sqrt(2),samples=100]
+	({\x*\x},{\x});
+
+\draw[line width=0.1pt] (1,1)--(1,0);
+\draw (1,{-0.1/\skala})--(1,{0.1/\skala});
+\node[color=red] at (1,{-0.1/\skala}) [below] {$x^*$};
+\fill[color=red] (1,1) circle[radius={0.1/\skala}];
+
+\draw[->] (-0.1,0)--(2.1,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1)--(0,2.1) coordinate[label={right:$y$}];
+
+\end{tikzpicture}
+\end{document}
+
