@@ -1,0 +1,74 @@
+%
+% euler.tex -- Illustration Euler approximation
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{7}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+% Richtungsfeld
+\def\d{0.05}
+\foreach \x in {0,\d,...,1.61}{
+	\foreach \y in {0,\d,...,1.01}{
+		\draw[line width=0.1pt]
+			({\x-cos(atan(-\y))*\d/3},{\y-sin(atan(-\y))*\d/3})
+			--
+			({\x+cos(atan(-\y))*\d/3},{\y+sin(atan(-\y))*\d/3});
+	}
+}
+
+% Label für Richtungsfeld
+\xdef\x{1.3}
+\xdef\y{0.8}
+\fill[color=white,opacity=0.8]
+	({\x-0.1},{\y-0.05}) rectangle ({\x+0.1},{\y+0.05});
+\node at (\x,\y) {$y'=-\alpha y$};
+
+% Label für exakte Lösungskurve
+\xdef\x{0.8}
+\fill[color=white,opacity=0.8]
+	({\x},{exp(-\x)}) rectangle ({\x+0.4},{exp(-\x)+0.1});
+\node[color=blue] at ({\x+0.2},{exp(-\x)+0.05}) {$y(x)=y_0e^{-\alpha x}$};
+
+
+\def\euler#1#2#3{
+\xdef\y{1}
+\xdef\x{0}
+\foreach \k in {0,...,#2}{
+	\draw[color=red,line width=1.2pt] ({\x},{\y})--({\x+#1},{\y*(1-#1)});
+	\fill[color=red] ({\x+#1},{\y*(1-#1)}) circle[radius={0.06/\skala}];
+	\pgfmathparse{\x+#1}
+	\xdef\x{\pgfmathresult}
+	\pgfmathparse{\y*(1-#1)}
+	\xdef\y{\pgfmathresult}
+}
+\draw[color=red,line width=0.1pt] ({\x},{\y})--(1.67,{\l});
+\node[color=red] at (1.67,{\l}) [right] {#3};
+\pgfmathparse{\l+0.06}
+\xdef\l{\pgfmathresult}
+}
+
+\xdef\l{0.06}
+
+\euler{0.8}{1}{$n=\phantom{0}2$}
+\euler{0.4}{3}{$n=\phantom{0}4$}
+\euler{0.2}{7}{$n=\phantom{0}8$}
+\euler{0.1}{15}{$n=16$}
+
+\draw[color=blue,line width=1.5pt]
+	plot[domain=0:1.60,samples=100] ({\x},{exp(-\x)});
+
+\draw[->] ({-0.1/\skala},0)--(1.85,0) coordinate[label={$x$}];
+\draw[->] (0,{-0.1/\skala})--(0,1.1) coordinate[label={right:$y$}];
+
+\end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,246 @@
+%
+% software.tex -- 
+%
+% (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
+%
+\section{Software}
+\rhead{Software}
+Die im letzten Abschnitt entwickelten numerischen Verfahren zur Lösung
+einer Differentialgleichung kommen ausschliesslich mit Auswertungen der
+Funktion $f$ aus, die Ableitungen der Funktion $f$ müssen nicht bekannt
+sein.
+Es sollte also ein Leichtes sein, eine Softwarebibliothek zur
+Verfügung zu stellen, mit der eine beliebige gewöhnliche
+Differentialgleichung gelöst werden kann.
+Als Input braucht es nur die Funktion $f$ und die Anfangsbedingungen.
+
+Als Beispiel wollen wir in diesem Abschnitt die Differentialgleichung
+\[
+y''+y=\sin \frac{x}{10},\qquad y(0)=y'(0)=0
+\]
+in verschiedenen Programmierumgebungen lösen.
+Als erstes bringen wir die Differentialgleichung wieder in die Standardform
+einer Vektordifferentialgleichung erste Ordnung:
+\begin{equation}
+\frac{d}{dt}Y
+=
+\frac{d}{dx}\begin{pmatrix}y_1\\y_2\end{pmatrix}
+=
+\begin{pmatrix}
+y_2\\
+\displaystyle -y_1+\sin\frac{x}{10}
+\end{pmatrix}
+=
+f(x,Y).
+\label{buch:ode:beispieldgl}
+\end{equation}
+Ein numerisches Verfahren braucht also als Input eine Anfangsbedingung
+sowie die Funktion $f$.
+Ausserdem muss es Möglichkeiten bereitstellen, wie man den Gang der
+Rechnung beeinflussen kann, z.~B.~um die $x$-Werte anzugeben, für die
+die $Y(x)$ bestimmt werden sollen, oder um Genauigkeitsziele zu erreichen.
+
+\subsection{Octave}
+\index{Octave}%
+In Octave steht eine einzige Funktion \texttt{lsode} zur Verfügung, welche
+\index{lsode@{\texttt{lsode}}}
+auf zuverlässige Art Differentialgleichungen löst.
+Der Anwender muss eine Implementation der Funktion $f$ zur Verfügung
+stellen, allerdings werden die Argument in der umgekehrten Reihenfolge
+zu der erwarte, die wir in diesem Skript bisher verwendet haben.
+Für die Beispieldifferentialgleichung \eqref{buch:ode:beispieldgl}
+kann man sie zum Beispiel so definieren:
+\lstinputlisting[style=Octave]{chapters/50-ode/examples/octave-dgl-f.m}
+
+Beim Aufruf der Funktion \texttt{lsode} muss man den {\em Namen}
+der Funktion, die Anfangsbedingung, sowie einen Vektoren mit $x$-Werten,
+für die man die Lösung ausgegeben haben möchte, als Argumente
+übergeben.
+Der erste Wert im $x$-Vektor muss der $x$-Wert für die Anfangsbedingung
+sein, in unserem Fall also $0$.
+Um die Werte von $y(x)$ für ganzzahlige Werte von $x$ zu erhalten,
+muss man also die Befehle
+\lstinputlisting[style=Octave]{chapters/50-ode/examples/octave-dgl-sol.m}
+ausführen.
+Als Rückgabewert erhält man eine Matrix, die in jeder Zeile die
+Werte von $y(x)$ und $y'(x)$ zum entsprechenden Wert von $x$
+aus dem \texttt{x}-Argument enthält.
+Die Resultate sind zusammen mit den Werten der exakten
+Lösung~\eqref{buch:ode:beispiel-loesung} in der dritten Spalte 
+in der Tabelle~\ref{buch:ode:octave-resultate} zusammengestellt.
+Es ist gut erkennbar, wie der Fehler anfänglich langsam ansteigt,
+dann aber unter Kontrolle bleibt.
+Die Dokumentation der Funktion \texttt{lsode} beschreibt, wie man mit
+Hilfe von Optionen ihr Verhalten und insbesondere die Grösse der
+Fehler weiter beeinflussen kann.
+\begin{table}
+\centering
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|}
+\hline
+    x&  y_{\text{numerisch}}(x)&y_{\text{exakt}}(x) & \text{Fehler}\\
+\hline
+    0&  0.00000000&  0.00000000&  0.00000000\\
+    1&  0.00158525&  0.00158528&  0.00000003\\
+    2&  0.01090682&  0.01090678&  0.00000003\\
+    3&  0.02858723&  0.02858716&  0.00000007\\
+    4&  0.04756207&  0.04756212&  0.00000004\\
+    5&  0.05957416&  0.05957437&  0.00000020\\
+    6&  0.06276426&  0.06276444&  0.00000018\\
+    7&  0.06337942&  0.06337932&  0.00000010\\
+    8&  0.07002849&  0.07002811&  0.00000037\\
+    9&  0.08576626&  0.08576594&  0.00000032\\
+   10&  0.10528405&  0.10528416&  0.00000010\\
+  100&  0.84661503&  0.84661930&  0.00000427\\
+ 1000& -0.55228836& -0.55234514&  0.00005678\\
+ 2000&  0.90392063&  0.90373523&  0.00018540\\
+ 3000& -0.99018339& -0.99032256&  0.00013917\\
+ 4000&  0.75185982&  0.75202340&  0.00016358\\
+ 5000& -0.25298074& -0.25252044&  0.00046030\\
+ 6000& -0.30093757& -0.30056348&  0.00037408\\
+ 7000&  0.76905079&  0.76889872&  0.00015207\\
+ 8000& -1.00327790& -1.00396748&  0.00068958\\
+ 9000&  0.88860437&  0.88793099&  0.00067338\\
+10000& -0.50337856& -0.50335983&  0.00001873\\
+\hline
+\end{tabular}
+\caption{Exakte und numerische Lösung der Beispieldifferentialgleichung
+berechnet mit der Funktion \texttt{lsode} von Octave.
+\label{buch:ode:octave-resultate}}
+\end{table}
+
+\subsection{GNU Scientific Library}
+\index{GNU scientific library}%
+\index{GSL}%
+Während Octave dem Benutzer die Wahl eines geeigneten Verfahrens abnimmt
+und ihm überhaupt wenig Kontrolle über den Gang der Rechnung gibt,
+kann ein C-Programmierer durch den Einsatz der GNU Scientific Library (GSL) die
+\index{C}%
+volle Kontrolle über alle Aspekte der Iteration erhalten.
+Der Preis ist eine wesentlich höhere Komplexität.
+Ziel dieses Abschnitts ist, ein einfaches Beispielprogramm zu
+zeigen, welches als Basis eigener Programme dienen kann.
+Es verwendet eine Runge-Kutta-Verfahren achter Ordnung.
+
+Die Funktionen zum Lösen von gewöhnlichen Differentialgleichungen
+der GSL haben alle das Präfix \texttt{gsl\_odeiv2\_}. 
+Zunächst braucht es natürlich wieder eine Implementation der
+Funktion $f$. 
+Die GSL übergibt zwei Arrays, im einen findet die Funktion die aktuellen
+$Y$-Werte, im anderen soll sie die Werte der Ableitung zurückgeben.
+Für die Beispiel-Differentialgleichung \eqref{buch:ode:beispieldgl}
+sieht der Code wie folgt aus:
+\lstinputlisting[style=C]{chapters/50-ode/examples/dgl-f.c}
+Der Parameter \texttt{params} dient dazu, der Funktion zusätzliche
+Parameter zu übergeben.
+In unserem Fall ist das nur die Zahl $\omega$.
+Da \texttt{params} ein \texttt{void}-Pointer ist, kann eine beliebige
+Struktur zur Parameterübergabe verwendet werden.
+
+Die Differentialgleichung wird beschrieben durch eine Struktur vom Typ
+\texttt{gsl\_odeiv2\_system}, welche ausser Zeigern auf die Funktion
+und die Parameter-Struktur auch noch die Dimension der Vektoren enthält.
+Es kann auch noch ein Funktionszeiger für eine Funktion übergeben
+werden, die die Jacobi-Matrix berechnet, in unserem Beispiel wird dies
+jedoch nicht benötigt.
+
+Die eigentliche Berechnung wird von einer ``driver''-Funktion durchgeführt.
+Diese sorgt im wesentlichen für die Wahl der Schrittweite, verwaltet
+Datenstrukturen, und ruft die Funktionen auf, die die einzelnen Schritte
+durchführen.
+Die Treiber-Funktion führt die einzelnen Schritte (im Sinne der
+in Abschnitt~\ref{section:buch:ode:einschritt} besprochenen
+Einschritt-Verfahren) mit
+Hilfe der Schritt-Funktionen durch, von denen die Bibliothek eine
+ganze Reihe bereitstellt.
+Die Funktion \texttt{gsl\_odeiv2\_step\_rk4} ist das klassische
+Runge-Kutta-Verfahren vierter Ordnung, welches in
+Abschnitt~\ref{subsection:buch:ode:runge-kutta}
+beschrieben wurde.
+Im Beispielverfahren verwenden wir \texttt{gsl\_odeiv2\_step\_rk8pd},
+das Runge-Kutta Prince-Dormand Verfahren achter Ordnung.
+Für Aufgaben allgemeiner Art ebenfalls sehr gut geeignet ist das
+Runge-Kutta-Fehlberg-Verfahren fünfter Ordnung mit dem Namen
+\texttt{gsl\_odeiv2\_step\_rkf45}.
+Diese Datenstrukturen werden mit dem Code
+\lstinputlisting[style=C]{chapters/50-ode/examples/dgl-init.c}
+initialisiert.
+Durch Austausch des zweiten Arguments der Driver-Allozierungs-Funktion
+kann man leicht das Verfahren wechseln und so Zeitaufwand und Genauigkeit
+für verschiedene Lösungsverfahren vergleichen.
+
+Um die Rechnung durchzuführen, muss jetzt die Driver-Funktion so oft
+angewendet werden, wie man Punkt der Lösungskurve ausgeben will.
+Dazu dient die Funktion \texttt{gsl\_odeiv2\_driver\_apply}. 
+An Argumenten braucht sie den eben initialisierten Driver, den aktuellen
+$x$-Wert, den $x_{\text{next}}$-Wert, für den der nächste Punkt
+ausgegeben werden soll, sowie einen Vektor, in dem der aktuelle Anfangswert
+für $Y(x)$ übergeben und $Y(x_{\text{next}})$ zurückgegeben wird.
+$x$ wird als Referenz übergeben, wenn die Funktion zurückkehrt,
+findet man dort den neuen aktuellen Wert von $x$, also im Erfolgsfall
+$x_{\text{next}}$.
+In unserem Fall brauchen wir $X(x)$ für ganzzahlige $x$, die folgende
+Schleife bewerkstelligt dies:
+\lstinputlisting[style=C]{chapters/50-ode/examples/dgl-loop.c}
+
+\begin{table}
+\centering
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|}
+\hline
+    x&  y_{\text{numerisch}}(x)&y_{\text{exakt}}(x) & \text{Fehler}\\
+\hline
+    1&   0.01584477&   0.01584477&  -0.00000000\\
+    2&   0.10882786&   0.10882787&  -0.00000000\\
+    3&   0.28425071&   0.28425071&  -0.00000001\\
+    4&   0.46979656&   0.46979656&  -0.00000000\\
+    5&   0.58112927&   0.58112926&   0.00000001\\
+    6&   0.59856974&   0.59856972&   0.00000002\\
+    7&   0.58436266&   0.58436265&   0.00000001\\
+    8&   0.62466692&   0.62466694&  -0.00000001\\
+    9&   0.74961115&   0.74961117&  -0.00000003\\
+   10&   0.90492231&   0.90492232&  -0.00000001\\
+   20&   0.82626555&   0.82626556&  -0.00000000\\
+   30&   0.24234669&   0.24234664&   0.00000005\\
+   40&  -0.83971103&  -0.83971092&  -0.00000011\\
+   50&  -0.94210772&  -0.94210787&   0.00000015\\
+   60&  -0.25144906&  -0.25144893&  -0.00000013\\
+   70&   0.58545210&   0.58545205&   0.00000005\\
+   80&   1.09974465&   1.09974456&   0.00000009\\
+   90&   0.32597838&   0.32597860&  -0.00000023\\
+  100&  -0.49836792&  -0.49836823&   0.00000031\\
+  200&   1.01037929&   1.01037877&   0.00000052\\
+  300&  -0.89702589&  -0.89702630&   0.00000041\\
+  400&   0.83859090&   0.83859101&  -0.00000010\\
+  500&  -0.21777633&  -0.21777543&  -0.00000090\\
+  600&  -0.31235410&  -0.31235239&  -0.00000171\\
+  700&   0.72675906&   0.72676124&  -0.00000219\\
+  800&  -1.09422992&  -1.09422790&  -0.00000202\\
+  900&   0.80223761&   0.80223872&  -0.00000111\\
+ 1000&  -0.59500324&  -0.59500363&   0.00000040\\
+ 2000&  -0.97606658&  -0.97606187&  -0.00000471\\
+ 3000&  -1.03200392&  -1.03199479&  -0.00000914\\
+ 4000&  -0.79047800&  -0.79047372&  -0.00000428\\
+ 5000&  -0.37269297&  -0.37270218&   0.00000921\\
+ 6000&   0.08785158&   0.08783273&   0.00001886\\
+ 7000&   0.49827647&   0.49826463&   0.00001184\\
+ 8000&   0.80219750&   0.80220742&  -0.00000992\\
+ 9000&   0.94568799&   0.94571577&  -0.00002778\\
+10000&   0.86607968&   0.86610200&  -0.00002232\\
+\hline
+\end{tabular}
+\caption{Lösungen der Beispieldifferentialgleichung \eqref{buch:ode:beispieldgl}
+mit Hilfe der GNU Scientific Library (GSL).
+\label{buch:ode:gsl-resultate}}
+\end{table}
+
+Man kann die Funktion $f$ im Programm natürlich auch mit einem Zähler
+ausstatten und damit herausfinden, wie viele Aufrufe der Funktion
+für die numerische Lösung benötigt werden.
+Es stellt sich heraus, dass für das erste Intervall von $0$ bis $1$
+die Funktion $f$ 131 mal aufgerufen wird, hier versucht die Bibliothek
+die optimale Schrittweite $h$ zu bestimmen.
+In allen folgenden Intervallen der Länge $1$ von $n$ bis $n+1$ werden nur
+noch jeweils 13 Aufrufe der Funktion benötigt.
+Verwendet man stattdessen das Runge-Kutta-Fehlberg-Verfahren,
+werden pro Intervall 18 Auswertungen der Funktion $f$ benötigt,
+und die Genauigkeit sinkt auf zwei Stellen nach dem Komma.
+

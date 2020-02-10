@@ -1,0 +1,176 @@
+%
+% rungekutta.tex -- Runge-Kutta-Verfahren
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{13}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\clip (-0.1,0.5) rectangle (0.95,1.1);
+
+\def\d{0.02}
+\foreach \x in {-0.2,-0.1875,...,1.3}{
+	\foreach \y in {0.5,0.5125,...,1.1}{
+		\draw[line width=0.1pt,color=gray]
+			({\x-0.3*\d*cos(atan(-\x/\y))},({\y-0.3*\d*sin(atan(-\x/\y))})
+			--
+			({\x+0.3*\d*cos(atan(-\x/\y))},({\y+0.3*\d*sin(atan(-\x/\y))});
+	}
+}
+
+\draw[color=red,line width=1.4pt] (0,0) circle[radius=1];
+
+\def\punkt#1#2{
+	\fill[color=#2] #1 circle[radius={0.08/\skala}];
+	\fill[color=white] #1 circle[radius={0.05/\skala}];
+}
+
+\def\xstart{-0.0523359}
+\def\ystart{ 0.99863}
+
+\def\h{0.4}
+\def\hh{0.2}
+
+\punkt{(\xstart,\ystart)}{black}
+
+\node at (\xstart,\ystart) [above left] {$y_k$};
+
+\def\pfeil#1#2#3{
+	\draw[->,color=#3,line width=1.4pt] #1 -- #2;
+	\punkt{#1}{#3}
+}
+
+% k1
+\pgfmathparse{-\xstart/\ystart}
+\xdef\kone{\pgfmathresult}
+\pgfmathparse{\xstart+\hh/sqrt(1+\kone*\kone)}
+\xdef\konex{\pgfmathresult}
+\pgfmathparse{\ystart+\hh*\kone/sqrt(1+\kone*\kone)}
+\xdef\koney{\pgfmathresult}
+
+%\pfeil{(\xstart,\ystart)}{(\konex,\koney)}{blue}
+%\node[color=blue] at (\konex,\koney) [above right] {$k_1$};
+
+\pgfmathparse{\xstart+\h}
+\xdef\xone{\pgfmathresult}
+\pgfmathparse{\ystart+\h*\kone}
+\xdef\yone{\pgfmathresult}
+
+\draw[color=gray] (\xstart,\ystart) -- (\xone,\yone);
+
+\node at (\xone,\yone) [above right] {$y_k+\frac{h}2k_1$};
+
+% k2
+\pgfmathparse{-\xone/\yone}
+\xdef\ktwo{\pgfmathresult}
+
+\pgfmathparse{\xone+\hh/sqrt(1+\ktwo*\ktwo)}
+\xdef\ktwox{\pgfmathresult}
+\pgfmathparse{\yone+\hh*\ktwo/sqrt(1+\ktwo*\ktwo)}
+\xdef\ktwoy{\pgfmathresult}
+
+\pfeil{(\xone,\yone)}{(\ktwox,\ktwoy)}{blue}
+\node[color=blue] at (\ktwox,\ktwoy) [right] {$k_2$};
+
+\pgfmathparse{\xstart+\hh/sqrt(1+\ktwo*\ktwo)}
+\xdef\ktwox{\pgfmathresult}
+\pgfmathparse{\ystart+\hh*\ktwo/sqrt(1+\ktwo*\ktwo)}
+\xdef\ktwoy{\pgfmathresult}
+
+% verschoben
+%\draw[->] (\xstart,\ystart) -- (\ktwox,\ktwoy);
+%\node at (\ktwox,\ktwoy) [above right] {$k_2$};
+
+\pgfmathparse{\xstart+\h}
+\xdef\xtwo{\pgfmathresult}
+\pgfmathparse{\ystart+\h*\ktwo}
+\xdef\ytwo{\pgfmathresult}
+
+\draw[color=gray] (\xstart,\ystart) -- (\xtwo,\ytwo);
+
+% verschoben
+\draw[->] (\xstart,\ystart) -- (\ktwox,\ktwoy);
+\node at (\ktwox,\ktwoy) [above right] {$k_2$};
+
+\node at (\xtwo,\ytwo) [above right] {$y_k+\frac{h}2k_2$};
+
+% k3
+\pgfmathparse{-\xtwo/\ytwo}
+\xdef\kthree{\pgfmathresult}
+
+\pgfmathparse{\xtwo+\hh/sqrt(1+\kthree*\kthree)}
+\xdef\kthreex{\pgfmathresult}
+\pgfmathparse{\ytwo+\hh*\kthree/sqrt(1+\kthree*\kthree)}
+\xdef\kthreey{\pgfmathresult}
+
+\pfeil{(\xtwo,\ytwo)}{(\kthreex,\kthreey)}{blue}
+\node[color=blue] at (\kthreex,\kthreey) [right] {$k_3$};
+
+\pgfmathparse{\xstart+\hh/sqrt(1+\kthree*\kthree)}
+\xdef\kthreex{\pgfmathresult}
+\pgfmathparse{\ystart+\hh*\kthree/sqrt(1+\kthree*\kthree)}
+\xdef\kthreey{\pgfmathresult}
+
+% verschoben
+%\draw[->] (\xstart,\ystart) -- (\kthreex,\kthreey);
+%\node at (\kthreex,\kthreey) [below] {$k_3$};
+
+\pgfmathparse{\xstart+2*\h}
+\xdef\xthree{\pgfmathresult}
+\pgfmathparse{\ystart+2*\h*\kthree}
+\xdef\ythree{\pgfmathresult}
+
+\draw[color=gray] (\xstart,\ystart) -- (\xthree,\ythree);
+\node at (\xthree,\ythree) [above right] {$y_k+hk_3$};
+
+% verschoben
+\draw[->] (\xstart,\ystart) -- (\kthreex,\kthreey);
+\node at (\kthreex,\kthreey) [below] {$k_3$};
+
+% k4
+\pgfmathparse{-\xthree/\ythree}
+\xdef\kfour{\pgfmathresult}
+
+\pgfmathparse{\xthree+\hh/sqrt(1+\kfour*\kfour)}
+\xdef\kfourx{\pgfmathresult}
+\pgfmathparse{\ythree+\hh*\kfour/sqrt(1+\kfour*\kfour)}
+\xdef\kfoury{\pgfmathresult}
+
+\pfeil{(\xthree,\ythree)}{(\kfourx,\kfoury)}{blue}
+\node[color=blue] at (\kfourx,\kfoury) [above right] {$k_4$};
+
+\pgfmathparse{\xstart+\hh/sqrt(1+\kfour*\kfour)}
+\xdef\kfourx{\pgfmathresult}
+\pgfmathparse{\ystart+\hh*\kfour/sqrt(1+\kfour*\kfour)}
+\xdef\kfoury{\pgfmathresult}
+\draw[->] (\xstart,\ystart) -- (\kfourx,\kfoury);
+\node at (\kfourx,\kfoury) [below right] {$k_4$};
+
+% final
+\pgfmathparse{(\kone+2*\ktwo+2*\kthree+\kfour)/6}
+\xdef\kfinal{\pgfmathresult}
+
+\pgfmathparse{\xstart+2*\h}
+\xdef\xfour{\pgfmathresult}
+\pgfmathparse{\ystart+2*\h*\kfinal}
+\xdef\yfour{\pgfmathresult}
+
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\draw[color=darkgreen] (\xstart,\ystart) -- (\xfour,\yfour);
+\punkt{(\xfour,\yfour)}{darkgreen}
+\node[color=darkgreen] at (\xfour,\yfour) [below left] {$y_{k+1}=y_k + \frac{h}6(k_1+2k_2+2k_3+k_4)$};
+
+\pfeil{(\xstart,\ystart)}{(\konex,\koney)}{blue}
+\node[color=blue] at (\konex,\koney) [above right] {$k_1$};
+
+\end{tikzpicture}
+\end{document}
+

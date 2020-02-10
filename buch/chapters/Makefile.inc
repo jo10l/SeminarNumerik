@@ -24,6 +24,12 @@ CHAPTERFILES =								\
 	chapters/30-interpolation/romberg.tex				\
 	chapters/40-integration/chapter.tex				\
 	chapters/50-ode/chapter.tex					\
+	chapters/50-odd/prinzip.tex					\
+	chapters/50-odd/fehler.tex					\
+	chapters/50-odd/einschritt.tex					\
+	chapters/50-odd/mehrschritt.tex					\
+	chapters/50-odd/software.tex					\
+	chapters/50-odd/randwert.tex					\
 	chapters/60-linsys/chapter.tex					\
 	chapters/70-pde/chapter.tex					\
 	chapters/80-fourier/chapter.tex

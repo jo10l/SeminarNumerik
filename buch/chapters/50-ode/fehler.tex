@@ -1,0 +1,61 @@
+%
+% fehler.tex -- 
+%
+% (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
+%
+\section{Fehler-Entwicklung numerischer Lösungen}
+\rhead{Fehler-Entwicklung}
+Wir betrachten wieder die Differentialgleichung~\eqref{buch:ode:eulerdgl}
+und versuchen, den Fehler eines Näherungsverfahrens zu bestimmen,
+welches Schritte der Grösse $h$ durchführt, um den Wert $y(x)$
+zu approximieren.
+
+Das Euler-Verfahren verwendet Schritte der Form
+\[
+y_{k+1}=y_{k\mathstrut} + hf(x_{k\mathstrut},y_{k\mathstrut}).
+\]
+In jedem einzelnen Schritt entsteht ein Fehler, dessen Grösse wir
+aus der Taylor-Entwicklung
+\index{Taylor-Reihe}
+\[
+y(x+\Delta x)=
+y(x) + y'(x)\cdot \Delta x + R(x) \Delta x^2
+\]
+abschätzen können.
+Die Funktion $R(x)$ ist beschränkt und beschreibt den verbleibenden
+Fehler.
+Um $y(x)$ zu approximieren, müssen $n=x/h$ Schritte der Schrittweite
+$h$ durchgeführt werden, von denen jeder einen Fehler
+von der Grössenordnung $R(x)h^2$ hat.
+Der Gesamtfehler ist daher von der Grössenordnung
+\[
+y(x)-y_n=O\biggl(R(x)h^2\frac{x}h\biggr)=O(h),
+\]
+er ist also von erster Ordnung in $h$.
+Um eine zusätzliche Stelle Genauigkeit zu erhalten, muss man also zehnmal
+so viele Schritte von zehnmal kleinerer Grösse durchführen,
+wodurch auch wieder Rundungsfehler eingeführt werden.
+
+Könnte man den Fehler des Einzelschrittes wesentlich verkleinern, würde
+auch die Abhängigkeit des Fehlers des Verfahrens vorteilhafter.
+Wäre der Fehler des Einzelschrittes $O(h^k)$ statt $O(h^2)$, dann
+wäre der Gesamtfehler des Verfahrens nur noch $O(h^{k-1})$.
+Für $k=3$ bedeutet dies, dass eine Halbierung der Schrittweite
+zwar doppelt so viele Schritte braucht, aber auch, dass in jedem
+Schritt nur ein Achtel des Fehlers auftritt.
+Der Gesamtfehler ist also nur ein Viertel.
+Mit zehnmal mehr Arbeit kann man also nicht nur eine Stelle an
+Genauigkeit gewinnen, sondern gleich deren zwei.
+
+Man nennt ein Verfahren, bei dem der Gesamt-Fehler von der Grössenordnung
+$O(h^k)$ ist, von einem Verfahren $k$-ter Ordnung.
+\index{Verfahren kter Ordnung@Verfahren $k$-ter Ordnung}%
+Das Euler-Verfahren ist also ein Verfahren erster Ordnung oder ein
+lineares Verfahren.
+In der Praxis werden Verfahren bis zu vierter und fünfter Ordnung
+verwendet, so dass eine zehnmal kleinere Schrittweite zu gleich
+vier Stellen Genauigkeitsgewinn führen.
+Das Ziel der kommenden Abschnitte muss daher sein, einfach
+berechnebare Approximationen der Funktion $y(x)$ mit möglichst geringen
+Einzelschrittfehlern zu finden.
+

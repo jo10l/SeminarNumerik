@@ -1,0 +1,34 @@
+%
+% relativ.tex -- relativer Fehler des Euler-Verfahrens
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{4}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\q{0.99}
+
+\xdef\yvalue{1}
+\foreach \k in {0,...,199}{
+	\draw[color=red,line width=1.4pt]
+		({0.01*\k},{1-\yvalue})
+		--
+		({0.01*(\k+1)},{1-\yvalue*\q});
+	\pgfmathparse{\q*\yvalue}
+	\xdef\yvalue{\pgfmathresult}
+}
+
+\draw[->] ({-0.1/\skala},0)--(2.1,0) coordinate[label={$k$}];
+\draw[->] (0,{-0.1/\skala})--(0,1.1) coordinate[label={right:relativer Fehler}];
+
+\end{tikzpicture}
+\end{document}
+

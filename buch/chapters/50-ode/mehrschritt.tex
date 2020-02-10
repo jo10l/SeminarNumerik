@@ -1,0 +1,275 @@
+%
+% mehrschritt.tex -- 
+%
+% (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
+%
+\section{Mehrschritt-Verfahren}
+\rhead{Mehrschritt-Verfahren}
+In den Einschritt-Verfahren wurde wiederholt die Funktion $f$ ausgewertet,
+um die Inkrement-Funk\-tion für einen einzigen Schritt zu bestimmen.
+Das Ziel dabei war, $y(x+h)$ in Übereinstimmung mit der Taylorreihe
+bis zu möglichst hoher Ordnung zu bestimmen.
+Im Runge-Kutta-Verfahren wurden dabei halbe Eulerschritte durchgeführt,
+man hat also eigentlich die Auflösung nochmals halbiert, um die
+Inkrement-Funktion zu ermitteln.
+Diese Zwischenwerte geben dem Verfahren die Information über die
+höheren Ableitungen der Funktionen.
+
+Sobald einige Werte der Lösung berechnet sind, lässt sich die Krümmung
+der Lösungskurve auch aus diesen Werten ablesen.
+Es sollte daher auch möglich sein, aus mehreren bereits
+ermittelten Werten $y_{n\mathstrut},y_{n+1},\dots,y_{n+s-1}$
+den nächsten Wert $y_{n+s\mathstrut}$ mit der verlangten Genauigkeit
+zu berechnen.
+Der Vorteil eines solchen Vorgehens ist, dass für jeden Schritt nur 
+eine einzige Auswertung der Funktion $f$ nötig ist,
+nicht mehrere wie bei den besprochenen Einschritt-Verfahren.
+
+Als Beispiel versuchen wir daher ein Verfahren aufzubauen, welches
+$y_{n+2}$ aus den bereits berechneten Werten $y_{n\mathstrut}$ und
+$y_{n+1}$ berechnet.
+Wir nehmen dabei an, dass $y_{n\mathstrut}$ und $y_{n+1}$ exakt
+sind.
+Der neue Datenpunkt soll mit Hilfe eines Ausdrucks der Form
+\begin{equation}
+y_{n+2}=y_{n+1} + h(af(x_{n+1},y_{n+1}) + b f(x_{n\mathstrut},y_{n\mathstrut}))
+\label{buch:ode:zweischrittansatz}
+\end{equation}
+gefunden werden.
+Die Näherung kann wieder mit Hilfe der Ableitungen alleine
+durch Werte bei $x_{n+1}$ ausgedrückt werden:
+\begin{align*}
+y_{n+2}
+&=
+y_{n+1}+h(af(x_{n+1}, y_{n+1}) + bf(x_{n+1}-h, y_{n\mathstrut}))
+\\
+&=
+y_{n+1}+haf(x_{n+1}, y_{n+1}) + hbf(x_{n+1}-h, y_{n+1} - h f(x_{n+1},y_{n+1}) + O(h^2))
+\\
+&=
+y_{n+1}+haf(x_{n+1}, y_{n+1}) + hb
+\biggl(
+f(x_{n+1},y_{n+1})
+-h \frac{\partial f(x_{n+1},y_{n+1})}{\partial x}
+\\
+&\qquad
+-h
+\frac{\partial f(x_{n+1},y_{n+1})}{\partial y}
+f(x_{n+1},y_{n+1})
++ 
+\frac{\partial f(x_{n+1},y_{n+1})}{\partial y}
+O(h^2)
+\biggr)
+\\
+&=
+y_{n+1}
++ (a+b)hf(x_{n+1},y_{n+1})
+- bh^2\biggl(
+\frac{\partial f(x_{n+1},y_{n+1})}{\partial x}
++
+\frac{\partial f(x_{n+1},y_{n+1})}{\partial y}
+f(x_{n+1},y_{n+1})
++O(h^3)
+\biggr).
+\end{align*}
+Sie muss bis zur zweiten Ordnung mit der Taylorreihe übereinstimmen:
+\begin{align*}
+y(x_{n+2})
+&=
+y_{n+1} + hy'(x_{n+1}) + \frac12h^2 y''(x_{n+1})+O(h^3)
+\\
+&=
+y_{n+1}+hf(x_{n+1},y_{n+1})+\frac12h^2\biggl(
+\frac{\partial f(x_{n+1},y_{n+1})}{\partial x}
++
+\frac{\partial f(x_{n+1},y_{n+1})}{\partial y}
+f(x_{n+1},y_{n+1})
+\biggr).
+\end{align*}
+Vergleicht man Koeffizienten, findet man
+\[
+\begin{aligned}
+a+b&=1&-b&=\frac12&&\Rightarrow&a=\frac32.
+\end{aligned}
+\]
+Aus der Formel \eqref{buch:ode:zweischrittansatz} wird somit die
+Iterationsformel
+\begin{equation}
+y_{n+2}=y_{n+1}+h\biggl(\frac32f(x_{n+1},y_{n+1})
+- \frac12 f(x_{n\mathstrut},y_{n\mathstrut})\biggr).
+\end{equation}
+Diese Rekursionsformel definiert ein quadratisches Verfahren, das
+{\em Adams-Bashforth-Verfahren} mit $s=2$.
+\index{Adams-Bashforth-Verfahren}
+
+Das Verfahren kann ähnlich wie das Runge-Kutta-Verfahren auf höhere
+Ordnung erweitert werden.
+Man findet nach einiger Rechnung
+\begin{align*}
+s&=1\colon&
+y_{n+1}
+&=
+y_n+hf(x_n,y_n)
+\\
+s&=2\colon&
+y_{n+2}
+&=
+y_{n+1}+h\biggl(\frac32f(x_{n+1},y_{n+1})-\frac12f(x_n,y_n)\biggr)
+\\
+s&=3\colon&
+y_{n+3}
+&=
+y_{n+2}+h\biggl(\frac{23}{12}f(x_{n+2},y_{n+2})-\frac43f(x_{n+1},y_{n+1})+\frac{5}{12}f(x_n,y_n)\biggr)
+\\
+s&=4\colon&
+y_{n+4}
+&=
+y_{n+3}+h\biggl(\frac{55}{24}f(x_{n+3},y_{n+3})
+	-\frac{59}{24}f(x_{n+2},y_{n+2})
+	+\frac{37}{24}f(x_{n+1},y_{n+1})
+	-\frac{3}{8}f(x_n,y_n)
+\biggr)
+\end{align*}
+Es ist also möglich, ausgehend von dieser Idee Verfahren beliebig hoher
+Ordnung zu produzieren.
+
+\begin{table}
+\centering
+\begin{tabular}{|r|c|r|r|r|r|}
+\hline
+$i$& $x$ & $y(x)=e^{-\alpha x}$&Euler&Adams-Bashforth&Runge-Kutta\\
+\hline
+ 0 & 0.0 & 1.00000000 & 1.00000000 & 1.00000000 & 1.0000000000 \\
+ 1 & 0.1 & 0.95122942 & 0.\underline{95}000000 & 0.\underline{9512}8178 & 0.\underline{95122942}71 \\
+ 2 & 0.2 & 0.90483742 & 0.\underline{90}250000 & 0.\underline{904}93564 & 0.\underline{90483742}29 \\
+ 3 & 0.3 & 0.86070798 & 0.\underline{85}737500 & 0.\underline{860}84752 & 0.\underline{86070798}34 \\
+ 4 & 0.4 & 0.81873075 & 0.\underline{81}450625 & 0.\underline{818}90734 & 0.\underline{81873076}20 \\
+ 5 & 0.5 & 0.77880078 & 0.\underline{77}378094 & 0.\underline{779}01048 & 0.\underline{77880079}36 \\
+ 6 & 0.6 & 0.74081822 & 0.\underline{73}509189 & 0.\underline{741}05738 & 0.\underline{74081823}27 \\
+ 7 & 0.7 & 0.70468809 & 0.\underline{69}833730 & 0.\underline{704}95334 & 0.\underline{7046881}031 \\
+ 8 & 0.8 & 0.67032005 & 0.\underline{6}6342043 & 0.\underline{670}60827 & 0.\underline{6703200}606 \\
+ 9 & 0.9 & 0.63762815 & 0.\underline{63}024941 & 0.\underline{637}93648 & 0.\underline{6376281}672 \\
+10 & 1.0 & 0.60653066 & 0.\underline{59}873694 & 0.\underline{606}85645 & 0.\underline{6065306}762 \\
+\hline
+\end{tabular}
+\caption{Vergleich der Genauigkeit der Verfahren von Euler,
+Adams-Bashforth und Runge-Kutta.
+Als Startwerte für das Adams-Bashforth-Verfahren wurden die
+Werte $y(-h)=e^{-\alpha h}$ und $y(0)=1$ verwendet, um keine zusätzlichen
+Fehler aus der Durchführung des ersten Schrittes hinzuzufügen.
+\label{buch:ode:genauigkeit-adams-bashforth}}
+\end{table}
+
+In der Tabelle~\ref{buch:ode:genauigkeit-adams-bashforth} wird
+das Adams-Bashforth-Verfahren verglichen mit dem lineare Euler-Verfah\-ren 
+und dem Verfahren vierter Ordnung von Runge-Kutta.
+Die Verbesserung der Genauigkeit des Adams-Bash\-forth-Verfahrens
+gegenüber dem Euler-Ver\-fah\-ren ist konsistent damit, dass
+das Adams-Bashforth-Verfahren ein quadratisches Verfahren ist.
+
+Nachteilig an den Mehrschritt-Verfahren ist die Notwendigkeit,
+genügend viele Werte $y_{n},\dots,y_{n+s-1}$ mit ausreichend
+hoher Genauigkeit zu bestimmen, bevor das Mehrschritt-Verfahren
+seine Schritte der Ordnung $s$ beginnen kann.
+Solange diese Werte nicht zur Verfügung stehen, kann ein Mehrschritt-Verfahren
+nur Schritte niedrigerer Ordnung als $s$ durchführen.
+
+Bei einem Einschritt-Verfahren kann in jedem Schritt die Schrittweite $h$
+verändert werden, zum Beispiel für Bereiche von $x$-Werten, in denen
+die Steigung von $y(x)$ sehr rasch ändert.
+
+Für die Beispiel-Differentialgleichung \eqref{buch:ode:expdgl} können
+wir das Adams-Bashforth-Verfahren zweiter Ordnung ($s=2$) vollständig
+analysieren.
+Die Rekursionsformel wird zu
+\[
+y_{n+2}=y_{n+1}+h\biggl(\frac32 (-\alpha y_{n+1})-\frac12(-\alpha y_n)\biggr)
+=
+\biggl(1-\frac32\alpha h\biggr)
+y_{n+1}
++\frac{\alpha h}{2}
+y_{n\mathstrut}.
+\]
+Dies ist eine Differenzengleichung mit konstanten Koeffizienten, man kann
+sie mit Hilfe eines Potenzansatzes lösen. 
+Wir nehmen also an, dass $y_n=\lambda^n$, und setzen dies in die
+Rekursionsformel ein.
+Ausserdem kürzen wir $\alpha h/2=\delta$  ab.
+Wir erhalten
+\[
+\lambda^{n+2}-(1-3\delta)\lambda^{n+1}-\delta\lambda^n=0.
+\]
+Nach Division durch $\lambda^n$ erhalten wir die quadratische Gleichung
+\[
+\lambda^2-(1-3\delta )\lambda-\delta=0
+\]
+für $\lambda$ mit den Lösungen
+\[
+\lambda_\pm
+=
+\frac12(1-3\delta) \pm \frac12\sqrt{(1-3\delta)^2+4\delta}.
+\]
+Da $\delta$ klein ist, wird $\lambda_-$ ebenfalls klein sein,
+während $\lambda_+$ näher bei $1$ sein wird.
+Der dominante Einfluss auf die Lösung rührt also von $\lambda_+$ her.
+Um diesen Unterschied genauer zu verstehen, verwenden wir eine
+lineare Approximation der Wurzel auf der rechten Seite von $\lambda_\pm$:
+\begin{align*}
+\sqrt{1+x}
+&=
+1+\frac{x}{2}-\frac{x^2}{4}+\frac{3x^3}{8}-\dots
+\\
+\sqrt{x}
+&=
+\sqrt{x_0+x-x_0}
+=
+\sqrt{x_0}\sqrt{1+\frac{x-x_0}{x_0}}
+=
+\sqrt{x_0}\biggl(1+\frac12\frac{x-x_0}{x_0}-\frac14\frac{(x-x_0)^2}{x_0^2}+\dots\biggr)
+\\
+&=
+\sqrt{x_0}+\frac12\frac{x-x_0}{\sqrt{x_0}}-\frac14\frac{(x-x_0)^2}{\sqrt{x_0}^3}+\dots
+\end{align*}
+Wir verwenden diese Approximation mit $x_0=(1-3\delta)^2$ und $x-x_0=-4\delta$
+\begin{align*}
+\sqrt{(1-3\delta)^2+4\delta}
+&=
+(1-3\delta)\biggl(1+\frac12\frac{4\delta}{(1-3\delta)^2}
+-\frac14\frac{16\delta^2}{(1-3\delta)^4}+\dots\biggr)
+\\
+&=(1-3\delta)+\frac12\frac{4\delta}{1-3\delta}
+-\frac14\frac{16\delta^2}{(1-3\delta)^3}+\dots
+\\
+&=1-3\delta+2\delta(1+3\delta)-4\delta^2+O(\delta^3)
+\\
+&=1-3\delta+2\delta + 2\delta^2+O(\delta^3)
+\\
+&=1-3\delta+2\delta + \frac12(2\delta)^2+O(\delta^3).
+\end{align*}
+Damit können wir jetzt $\lambda_+$ bis zur zweiten Ordnung berechnen:
+\begin{align*}
+\lambda_+
+&=
+\frac12\biggl((1-3\delta)+ (1-3\delta)+2\delta+\frac12(2\delta)^2\biggr)
++O(\delta^3)
+\\
+&=
+1-2\delta+\frac12(2\delta)^2+O(\delta^3)
+\\
+&=e^{-2\delta}+O(\delta^3).
+\end{align*}
+Die exakte Lösung erfüllt $y_{n+1}=e^{-2\delta}y_n$, der Faktor
+$\lambda_+$ stimmt bis auf Terme mindestens dritter Ordnung mit 
+$e^{-2\delta}$ überein.
+Damit ist erneut bestätigt, dass wir es mit einem quadratischen Verfahren zu
+tun haben.
+
+Wir können auch $\lambda_-$ berechnen, und erhalten
+\[
+\lambda_-=-\delta-2\delta^2+O(\delta^3).
+\]
+Da $\delta$ klein ist, ist eine Komponente der Lösung bereits nach
+drei Schritten kleiner als $O(\delta^3)$, und spielt daher im Vergleich
+zu den von $\lambda_+$ herrührenden Lösungen in dritter Ordnung keine
+Rolle.
+
