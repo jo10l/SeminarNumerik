@@ -1,0 +1,86 @@
+%
+% kettenlinie.tex -- Differentialgleichung der Kettenlinie
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{3}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[->] (-1.5,0)--(1.5,0) coordinate[label={$x$}];
+
+\def\xl{-0.6}
+\def\xr{0.2}
+
+\pgfmathparse{0.5*(\xl+\xr)}
+\xdef\xm{\pgfmathresult}
+
+\draw[line width=1.4pt]
+	plot[domain=-1.45:1.45,samples=100]
+		({\x},{0.5*(exp(\x)+exp(-\x)});
+
+\draw[color=red,line width=2pt]
+	plot[domain=\xl:\xr,samples=20]
+		({\x},{0.5*(exp(\x)+exp(-\x)});
+
+\node[color=red] at ({\xm},{0.5*(exp(\xm)+exp(-\xm))}) [above] {$m\Delta x$};
+
+\draw[line width=0.3pt] (\xl,0)--(\xl,{0.5*(exp(\xl)+exp(-\xl))});
+\draw[line width=0.3pt] (\xr,0)--(\xr,{0.5*(exp(\xr)+exp(-\xr))});
+
+\draw (\xl,{-0.1/\skala})--(\xl,{0.1/\skala});
+\draw (\xr,{-0.1/\skala})--(\xr,{0.1/\skala});
+
+\node at (\xl,{-0.1/\skala}) [below] {$x\mathstrut$};
+\node at (\xr,{-0.1/\skala}) [below] {$x+\Delta x\mathstrut$};
+
+\def\d{0.5}
+
+% Pfeil links
+\draw[line width=0.3pt]
+	(\xl,{0.5*(exp(\xl)+exp(-\xl))})
+	--
+	({\xl-\d},{0.5*(exp(\xl)+exp(-\xl))})
+	--
+	({\xl-\d},{0.5*(exp(\xl)+exp(-\xl))-\d*0.5*(exp(\xl)-exp(-\xl))});
+\draw[->,line width=1.5pt]
+	(\xl,{0.5*(exp(\xl)+exp(-\xl))})
+	--
+	({\xl-\d},{0.5*(exp(\xl)+exp(-\xl))-\d*0.5*(exp(\xl)-exp(-\xl))});
+\fill (\xl,{0.5*(exp(\xl)+exp(-\xl))}) circle[radius={0.08/\skala}];
+\fill[color=white]
+	(\xl,{0.5*(exp(\xl)+exp(-\xl))}) circle[radius={0.05/\skala}];
+
+\node at ({\xl-0.5*\d},{0.5*(exp(\xl)+exp(-\xl))}) [below] {$F$};
+\node at ({\xl-\d},{0.5*(exp(\xl)+exp(-\xl))-\d*0.25*(exp(\xl)-exp(-\xl))})
+	[left] {$-Fy'(x)$};
+
+% Pfeil rechts
+\draw[line width=0.3pt]
+	(\xr,{0.5*(exp(\xr)+exp(-\xr))})
+	--
+	({\xr+\d},{0.5*(exp(\xr)+exp(-\xr))})
+	--
+	({\xr+\d},{0.5*(exp(\xr)+exp(-\xr))+\d*0.5*(exp(\xr)-exp(-\xr))});
+\draw[->,line width=1.5pt]
+	(\xr,{0.5*(exp(\xr)+exp(-\xr))})
+	--
+	({\xr+\d},{0.5*(exp(\xr)+exp(-\xr))+\d*0.5*(exp(\xr)-exp(-\xr))});
+\fill (\xr,{0.5*(exp(\xr)+exp(-\xr))}) circle[radius={0.08/\skala}];
+\fill[color=white]
+	(\xr,{0.5*(exp(\xr)+exp(-\xr))}) circle[radius={0.05/\skala}];
+
+\node at ({\xr+0.5*\d},{0.5*(exp(\xr)+exp(-\xr))}) [below] {$F$};
+\node at ({\xr+\d},{0.5*(exp(\xr)+exp(-\xr))+\d*0.25*(exp(\xr)-exp(-\xr))})
+	[right] {$Fy'(x+\Delta x)$};
+
+\end{tikzpicture}
+\end{document}
+
