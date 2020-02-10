@@ -24,6 +24,7 @@ CHAPTERFILES =								\
 	chapters/30-interpolation/romberg.tex				\
 	chapters/40-integration/chapter.tex				\
 	chapters/50-ode/chapter.tex					\
+	chapters/50-ode/problemstellung.tex				\
 	chapters/50-odd/prinzip.tex					\
 	chapters/50-odd/fehler.tex					\
 	chapters/50-odd/einschritt.tex					\

@@ -1,0 +1,47 @@
+%
+% grundlagen.tex -- Richtungsfeld und Lösungen
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{2.7}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\kurve#1{
+	\draw[color=red,line width=1.4pt]
+		plot[domain=-1.125:3.625,samples=100]
+			({\x},{1+\x+#1*exp(\x)});
+}
+
+\begin{scope}
+\clip (-1.125,-0.625) rectangle (3.625,3.125);
+
+\foreach \c in {-2,-1.8,...,2}{
+	\kurve{\c}
+}
+
+\end{scope}
+
+\def\d{0.1}
+\foreach \x in {-1,-0.75,...,3.5}{
+	\foreach \y in {-0.5,-0.25,...,3}{
+		\draw[color=blue]
+			({\x-\d*cos(atan(\y-\x))},{\y-\d*sin(atan(\y-\x))})
+			--
+			({\x+\d*cos(atan(\y-\x))},{\y+\d*sin(atan(\y-\x))});
+	}
+}
+
+\draw[->] (-1.125,0)--(3.7,0) coordinate[label={$x$}];
+\draw[->] (0,-0.625)--(0,3.3) coordinate[label={left:$y$}];
+
+\end{tikzpicture}
+\end{document}
+

@@ -4,7 +4,7 @@
 # (c) 2020 Prof Dr Andreas Müller, Hochschule Rapeprswil
 #
 all:	prinzip.pdf euler.pdf relativ.pdf rungekutta.pdf \
-	kettenlinie.pdf kettenloesung.pdf
+	kettenlinie.pdf kettenloesung.pdf grundlagen.pdf
 
 %.pdf:	%.tex
 	pdflatex $<
