@@ -1,0 +1,89 @@
+%
+% nullstellen.tex -- Nullstellen der Ableitung zwischen den Nullstellen der fkt
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{2}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\def\zero#1{
+	\fill[color=red] (#1,0) circle[radius={0.08/\skala}];
+}
+
+\def\one#1{
+	\xdef\x{#1}
+	\pgfmathparse{0.3*((\x*\x-5)*\x*\x+4)*\x});
+	\xdef\y{\pgfmathresult}
+	\pgfmathparse{0.3*((5*\x*\x-15)*\x*\x+4)};
+	\xdef\m{\pgfmathresult}
+%	\draw[line width=0.1pt] ({\x-0.2},{\y})--({\x+0.2},{\y});
+%	\draw[line width=0.1pt] ({\x-0.2},{\y-0.2*\m})--({\x+0.2},{\y+0.2*\m});
+	\draw[color=blue,line width=0.5pt] ({\x},{\y})--({\x},-3);
+	\fill[color=blue] ({\x},{\y}) circle[radius={0.08/\skala}];
+	\fill[color=blue] ({\x},{-3}) circle[radius={0.08/\skala}];
+}
+
+\def\two#1{
+	\xdef\x{#1}
+	\pgfmathparse{0.04*((5*\x*\x-15)*\x*\x+4)};
+	\xdef\y{\pgfmathresult}
+	\pgfmathparse{0.04*((20*\x*\x-30)*\x)};
+	\xdef\m{\pgfmathresult}
+%	\draw[line width=0.1pt] ({\x-0.2},{\y})--({\x+0.2},{\y});
+%	\draw[line width=0.1pt] ({\x-0.2},{\y-0.2*\m})--({\x+0.2},{\y+0.2*\m});
+	\draw[color=darkgreen,line width=0.5pt] ({\x},{\y})--({\x},-2);
+	\fill[color=darkgreen] ({\x},{\y}) circle[radius={0.08/\skala}];
+	\fill[color=darkgreen] ({\x},{-2}) circle[radius={0.08/\skala}];
+}
+
+\zero{-2}
+\zero{-1}
+\zero{0}
+\zero{1}
+\zero{2}
+
+\draw[color=red,line width=1.5pt]
+	plot[domain=-2.1:2.1,samples=100]
+		({\x},{0.3*((\x*\x-5)*\x*\x+4)*\x});
+
+\draw[->] (-2.15,0)--(2.25,0) coordinate[label={$x$}];
+\draw[->] (-2.1,-1.2)--(-2.1,1.2) coordinate[label={left:$y$}];
+
+\one{-1.643}
+\one{-0.549}
+\one{0.549}
+\one{1.643}
+
+\begin{scope}[yshift=-3cm]
+
+\draw[color=blue,line width=1.5pt]
+	plot[domain=-2.1:2.1,samples=100] ({\x},{0.04*((5*\x*\x-15)*\x*\x+4)});
+\draw[->] (-2.15,0)--(2.25,0) coordinate[label={$x$}];
+\draw[->] (-2.1,-0.5)--(-2.1,1.7) coordinate[label={left:$y'$}];
+
+\two{-1.23}
+\two{0}
+\two{1.23}
+
+\end{scope}
+
+\begin{scope}[yshift=-5cm]
+\draw[color=darkgreen,line width=1.5pt]
+	plot[domain=-2.1:2.1,samples=100] ({\x},{0.01*((20*\x*\x-30)*\x)});
+\draw[->] (-2.15,0)--(2.25,0) coordinate[label={$x$}];
+\draw[->] (-2.1,-1.4)--(-2.1,1.4) coordinate[label={left:$y''$}];
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,57 @@
+%
+% rolle.tex -- Illustration zum Satz von Rolle
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{4}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[color=red,line width=1.4pt]
+	plot[domain=-1:1,samples=200]
+		({\x},{((((64*\x*\x-112)*\x*\x+56)*\x*\x-7)*\x)*(1-\x)*(1+\x)+0.1});
+
+\draw[line width=0.5pt] (-1.1,0.1)--(1.1,0.1);
+
+\draw (-1,{-0.1/\skala})--(-1,{0.1/\skala});
+\draw[line width=0.1pt] (-1,0)--(-1,0.1);
+\node at (-1,{-0.1/\skala}) [below] {$\mathstrut a$};
+\node at (-1,0.1) [above left] {$f(a)$};
+
+\draw (1,{-0.1/\skala})--(1,{0.1/\skala});
+\draw[line width=0.1pt] (1,0)--(1,0.1);
+\node at (1,{-0.1/\skala}) [below] {$\mathstrut b$};
+\node at (1,0.1) [above right] {$f(b)$};
+
+\fill[color=red] (-1,0.1) circle[radius={0.08/\skala}];
+\fill[color=red] (1,0.1) circle[radius={0.08/\skala}];
+
+\def\x{-0.2137}
+\pgfmathparse{(((-576*\x*\x+1232)*\x*\x-840)*\x*\x+189)*\x*\x-7}
+\xdef\m{\pgfmathresult}
+\pgfmathparse{((((64*\x*\x-112)*\x*\x+56)*\x*\x-7)*\x)*(1-\x)*(1+\x)+0.1}
+\xdef\y{\pgfmathresult}
+
+\node[color=blue] at ({\x},{\y}) [above] {$f'(\xi)=0$};
+%\draw[line width=0.1pt] ({\x-0.2},{\y-\m*0.2})--({\x+0.2},{\y+\m*0.2});
+\draw[color=blue,line width=0.5pt] ({\x-0.2},{\y})--({\x+0.2},{\y});
+\fill[color=blue] ({\x},{\y}) circle[radius={0.08/\skala}];
+
+\draw[line width=0.1pt] ({\x},0)--({\x},{\y});
+\draw ({\x},{-0.1/\skala})--({\x},{0.1/\skala});
+\node at ({\x},{-0.1/\skala}) [below] {$\xi$};
+
+
+\draw[->] (-0.8,-1.0)--(-0.8,1.2) coordinate[label={$y$}];
+\draw[->] (-1.1,0)--(1.1,0) coordinate[label={$x$}];
+
+\end{tikzpicture}
+\end{document}
+
