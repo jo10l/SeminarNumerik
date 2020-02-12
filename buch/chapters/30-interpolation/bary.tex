@@ -1,0 +1,35 @@
+%
+% bary.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Baryzentrische Formeln für Interpolationspolynome
+\label{buch:section:baryzentrisch}}
+Die Interpolationspolynome von Lagrange und Hermite haben 
+in der bis jetzt gezeigten Form das folgende grundlegende Problem.
+Sie sind definiert über das Produkt
+\[
+(x-x_0)(x-x_1)\dots (x-x_{n-1})(x-x_n).
+\]
+Ist die Zahl der Stützstellen gross und liegen erstrecken sich die 
+Stützstellen über einen grossen Bereich, dann sind einzelne Faktoren
+$(x-x_i)$ immer gross.
+Zudem tritt bei der Berechnung eines Wertes in inmittelbarer 
+Nähe der Stützstelle $x_j$ in dem Faktor $(x-x_j)$ Auslöschung auf.
+Der grosse relative Fehler dieses Faktors wird durch die anderen Faktoren
+zu einem grossen absoluten Fehler aufgeblasen.
+
+Andererseits ist klar, dass sich das Interpolationspolynom vor allem
+in der Nähe einer Stützstelle ändern sollte, wenn man den an der
+Stützstelle ändert.
+Die anderen Stützstellen sollten also nur einen geringen Einfluss auf
+den Wert des Interpolationspolynoms haben.
+Dies geht aus der bisherigen Form des Interpolationspolynoms ebenfalls
+nicht hervor.
+
+Gesucht ist also eine Form des Interpolationspolynoms, welche einsichtig
+macht, dass Änderungen von Stützwerten sich vor allem in der nähe der
+betroffenen Stützstelle auswirken und die auch bei einer grossen Zahl
+von Stützstellen stabil sind.
+
+

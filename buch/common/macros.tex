@@ -45,9 +45,10 @@
 \newcommand{\uebungsaufgabe}[1]{%
 \refstepcounter{problemcounter}%
 \label{#1}%
-\bigskip{\parindent0pt\strut}\hbox{\bf\arabic{problemcounter}. }%
+\item
+\bigskip{\parindent0pt\strut}%\hbox{\bf\arabic{problemcounter}. }%
 \expandafter\def\csname aufgabenpath\endcsname{\inputpath/}%
-\expandafter\input{chapters/uebungsaufgaben/#1.tex}
+\expandafter\input{\aufgabenpath/#1.tex}
 }
 \renewcommand\theproblemcounter{\thechapter.\arabic{problemcounter}}
 % linsys

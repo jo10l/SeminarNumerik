@@ -1,0 +1,116 @@
+Finden Sie eine Lösung der Gleichung
+\begin{equation}
+x^5 - \frac54x^4 +\frac14 = 0
+\label{2001:polynom}
+\end{equation}
+mit Hilfe des Newton-Verfahrens.
+Welche Konvergenzgeschwindigkeit stellen Sie fest?
+
+\begin{loesung}
+\begin{figure}
+\centering
+\def\skala{4}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+\begin{scope}
+\clip (-1,-1) rectangle (1.4,1);
+\draw[color=red,line width=1.4pt]
+	plot[domain=-1.0:1.5,samples=100] ({\x},{(\x-5/4)*\x*\x*\x*\x+1/4});
+\end{scope}
+
+% Achsen
+\draw[->] (0,-1.05)--(0,1.1) coordinate[label={$y$}];
+\draw[->] (-1.05,0)--(1.5,0) coordinate[label={$x$}];
+
+% Ticks y-Achse
+\draw ({-0.1/\skala},-1)--({0.1/\skala},-1);
+\draw ({-0.1/\skala},1)--({0.1/\skala},1);
+\node at ({-0.1/\skala},1) [left] {$1$};
+\node at ({-0.1/\skala},-1) [left] {$-1$};
+
+% Ticks x-Achse
+\draw (-1,{-0.1/\skala})--(-1,{0.1/\skala});
+\draw (1,{-0.1/\skala})--(1,{0.1/\skala});
+\node at (-1,{-0.1/\skala}) [below] {$-1$};
+\node at (1,{-0.1/\skala}) [below] {$1$};
+
+\end{tikzpicture}
+\caption{Graph zur Aufgabe~\ref{2001}, Nullstelle des
+Polynoms~\eqref{2001:polynom}.
+\label{2001:figure}}
+\end{figure}
+Die Iterationsformel für das Newton-Verfahren braucht die Ableitung von
+$f(x)=x^5-\frac54x^4+\frac14$, also
+\[
+f'(x)= 5x^4-5x^3 = 5(x-1)x^3,
+\]
+insbesondere hat $f'(x)$ eine Nullstelle bei $x=1$, was in der Newton-Iteration
+zu Schwierigkeiten führen könnte.
+Ebenso ist $0$ eine Nullstelle der Ableitung, so dass $0$ und $1$ ganz
+bestimmt keine guten Startwerte für die Newton-Iteration sind.
+
+Die Iteration lautet jetzt
+\[
+x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+=
+x_n -\frac{x_n^5-\frac54x_n^4+\frac14}{5(x_n-1)x_n^3}.
+\]
+
+Um eine Lösung zu finden, braucht man jetzt noch einen guten Startwert.
+Der Graph in Abbilddung~\ref{2001:figure} zeigt, dass $1$ eine doppelte
+Nullstelle ist, und dass es noch eine weitere Nullstelle in der Nähe von
+$x_0=-0.5$ gibt.
+
+Die Iteration liefert die folgenden Werte:
+\begin{center}
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|}
+\hline
+n& x_n\\
+\hline
+0& -0.500000000000000\\
+1& -0.\underline{6}50000000000000\\
+2& -0.\underline{6}10646335912608\\
+3& -0.\underline{6058}93367985182\\
+4& -0.\underline{6058295}97525286\\
+5& -0.\underline{605829586188268}\\
+6& -0.\underline{605829586188268}\\
+\hline
+\end{tabular}
+\end{center}
+Man hat also in 5 Iterationsschritten ein Resultate mit 15 Stellen
+Genaugikeit erhalten, quadratische Konvergenz ist klar sichtbar.
+
+Die Nullstelle bei $x=1$ macht dem Newton-Algorithmus dagegen etwas Mühe.
+Die Iteration mit Startwert $x_0=0.5$ liefert
+\begin{center}
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|}
+\hline
+ n& x_n\\
+\hline
+ 0 &  0.50000000000000\\
+ 1 &  \underline{1}.15000000000000\\
+ 2 &  \underline{1.0}8416125585600\\
+ 3 &  \underline{1.0}4522243974522\\
+ 4 &  \underline{1.0}2356853334768\\
+ 5 &  \underline{1.0}1205249984377\\
+ 6 &  \underline{1.00}609759001936\\
+ 7 &  \underline{1.00}306721671745\\
+ 8 &  \underline{1.00}153829071860\\
+ 9 &  \underline{1.000}77032580427\\
+10 &  \underline{1.000}38545926066\\
+11 &  \underline{1.000}19280387677\\
+12 &  \underline{1.0000}9642051980\\
+13 &  \underline{1.0000}4821490799\\
+14 &  \underline{1.0000}2410861546\\
+15 &  \underline{1.0000}1205459851\\
+16 &  \underline{1.00000}602736919\\
+17 &  \underline{1.00000}301369634\\
+18 &  \underline{1.00000}150685215\\
+19 &  \underline{1.000000}75342128\\
+20 &  \underline{1.000000}37677627\\
+\hline
+\end{tabular}
+\end{center}
+Die Konvergenz ist wie erwartet nur linear.
+\end{loesung}
+
+

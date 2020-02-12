@@ -1,0 +1,164 @@
+%
+% polynom.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapeprswil
+%
+\section{Interpolationspolynom
+\label{buch:section:interpolationspolynom}}
+\rhead{Lagrange-Interpolationspolynome}
+In diesem Abschnitt wird das folgende Problem gelöst.
+\begin{aufgabe}[Interplations-Polynom]
+Gegeben Stützstellen
+\[
+a=x_0<x_1<x_2<\dots < x_{n-1}<x_n=b
+\]
+und Funktionswerte $f_i, 0\le i\le n$, finde ein Polynome $l(x)$
+mit der Eigenschaft $l(x_i)=f_i$ für alle $i=0,1,\dots n$.
+\end{aufgabe}
+Gegeben sind also $n+1$ Bedingungen, die das Polynom erfüllen muss.
+Abgesehen von trivialen Fällen wie dem Null-Polynom, muss ein Polynom
+im Allgemeinen mindestens den Grad $n$ haben, damit alle 
+Bedingungen durch geeignete Wahl der $n+1$ Koeffizienten erfüllt werden können.
+Man könnte das Polynom nämlich in der Form
+\[
+l(x)
+=
+a_nx^n + a_{n-1}x^{n-1}+\dots+a_1x+a_0
+\]
+ansetzen und die Stützstellen einsetzen.
+Lösung des Gleichungssystem
+\begin{equation}
+\begin{linsys}{5}
+a_Nx_0^N &+& a_{N-1}x_0^{N-1} &+& \dots &+& a_1x_0 &+& a_0x_0 &=& f_0 \\[5pt]
+a_Nx_1^N &+& a_{N-1}x_1^{N-1} &+& \dots &+& a_1x_1 &+& a_0x_1 &=& f_1 \\[5pt]
+\vdots   & &    \vdots        & & \ddots& & \vdots & & \vdots & & \vdots\\[5pt]
+a_Nx_n^N &+& a_{N-1}x_n^{N-1} &+& \dots &+& a_1x_n &+& a_0x_n &=& f_n 
+\end{linsys}
+\end{equation}
+liefert dann die gesuchten Koeffizienten.
+Dieser Weg ist allerdings sehr aufwendig, die Lösung eines linearen
+Gleichungssystems mit dem Gauss-Algorithmus benötigt $O(n^3)$ Operationen.
+Die sehr spezielle Struktur des Gleichungssystems sollte ermöglichen,
+das Polynom $l(x)$ auf direkterem Weg zu ermitteln.
+
+%
+% Interpolationspolynom bestimmen
+%
+\subsection{Bestimmung des Interpolationspolynoms
+\label{buch:section:interpolation:bestimmung}}
+Das allgemeine Interpolationsproblem kann leicht gelöst werden, wenn
+das folgende spezielle Interpolationsproblem gelöst ist.
+
+\begin{aufgabe}[Spezielle Interpolationspolynome]
+Gegeben die Stützstellen
+\[
+a=x_0<x_1<x_2<\dots <x_{n-1}<x_n=b,
+\]
+finde Polynome $l_j$ vom Grad $n$ derart, dass
+\[
+l_j(x_i) = \delta_{ij}=\begin{cases}
+1&\qquad i=j\\
+0&\qquad\text{sonst.}
+\end{cases}
+\]
+\end{aufgabe}
+
+Jedes der Interpolationspolynome $l_j$ hat Grad $n$, also hat auch eine
+beliebige Linearkombination den Grad höchstens $n$.
+Die Linearkombination
+\[
+l(x) = \sum_{j=0}^n f_j l_j(x)
+\]
+ist das gesuchte Interpolationspolynom, wie Einsetzen von $x_i$ in
+\[
+l(x_i)
+=
+\sum_{j=0}^n f_jl_j(x_i)
+=
+\sum_{j=0}^n f_j\delta_{ij}
+=
+f_i
+\]
+bestätigt.
+
+\begin{beispiel}
+Ein besonders einfacher Fall ist $n=1$.
+Gesucht ist eine lineare Funktion $l(x)=a_1x+a_0$ derart, dass
+$l(x_0)=f_0$ und $l(x_1)=f_1$.
+Polynome $l_0$ und $l_1$ können leicht angegeben werden:
+\[
+l_0(x) = \frac{x_1-x}{x_1-x_0}
+\qquad\text{und}\qquad
+l_1(x) = \frac{x-x_0}{x_1-x_0}
+\]
+haben die die geforderten Eigenschaften.
+Die gesuchte Interplationsfunktion ist daher
+\[
+l(x)
+=
+\frac{x_1-x}{x_1-x_0}f_0 + \frac{x-x_0}{x_1-x_0} f_1
+=
+x \frac{f_1-f_0}{x_1-x_0}   + \frac{x_1f_0-x_0f_1}{x_1-x_0}.
+\]
+Der Koeffizient von $x$ ist wie erwartet die Steigung der Geraden durch
+die Punkte $(x_0,f_0)$ und $(x_1,f_1)$.
+\end{beispiel}
+
+Ein Polynom vom Grad $n+1$, welches in {\em allen} Stützstellen verschwindet,
+ist leicht zu finden, es ist 
+\[
+(x-x_0)(x-x_1)(x-x_2)\dots (x-x_{n-1})(x-x_n).
+\]
+Ein Polynom, welches nur an der Stützstelle $x_j$ {\em nicht} verschwindet,
+ensteht, indem man den Faktor $(x-x_j)$ weglässt, es hat den Grad $n$.
+Wir führen dafür die Notation
+\[
+(x-x_0)(x-x_1)(x-x_2)\dots \widehat{(x-x_j)}\dots (x-x_{n-1}(x-x_n),
+\]
+der Hut bedeutet, dass dieser Faktor weggelassen werden soll.
+Allerdings hat dieses Polynom nicht den geforderten Wert $1$, man muss es
+also noch mit einer geeigneten Konstante multiplizieren.
+Das gesuchte Polynom $l_j(x)$ hat daher die Form
+\[
+l_j(x)
+=
+c_j(x-x_0)(x-x_1)(x-x_2)\dots \widehat{(x-x_j)}\dots (x-x_{n-1}(x-x_n).
+\]
+Einesetzen von $x_j$ ergibt
+\[
+l_j(x_j) = 1 = 
+c_j(x_j-x_0)(x_j-x_1)(x_j-x_2)\dots \widehat{(x_j-x_j)}\dots(x_j-x_{n-1}(x_j-x_n),
+\]
+die Konstante $c_j$ ist daher
+\[
+c_j = \prod_{i=0\atop i\ne j}^n \frac{1}{x_j-x_i}.
+\]
+
+\begin{beispiel}
+Man finde ein Polynome, welches $l(0)=l(1)=0$ und $l(\frac12)=1$
+erfüllt.
+Wegen $f_0=f_2=0$ ist nur das Polynome $l_1$ zu ermitteln, es ist
+\[
+l(x) = l_1(x)
+=
+\frac{(x-x_0)(x-x_2)}{(x_1-x_0)(x_1-x_2)}
+=
+\frac{x(x-1)}{\frac12(\frac12-1)}
+=
+\frac14x(1-x).
+\qedhere
+\]
+\end{beispiel}
+
+%
+% Fehler des Interpolationspolynoms
+%
+\subsection{Fehler des Interpolationspolynoms
+\label{buch:section:interpolation:fehler}}
+
+%
+% Tschebyscheff Interpolation
+%
+\subsection{Wahl der Stützstellen und Tschebyscheff-Interpolationspolynom
+\label{buch:section:interpolation:tschebyscheff}}
+

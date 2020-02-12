@@ -20,9 +20,13 @@ CHAPTERFILES =								\
 	chapters/20-gleichungen/newton.tex				\
 	chapters/20-gleichungen/homotopie.tex				\
 	chapters/30-interpolation/chapter.tex				\
-	chapters/30-interpolation/riemann.tex				\
-	chapters/30-interpolation/romberg.tex				\
+	chapters/30-interpolation/polynom.tex				\
+	chapters/30-interpolation/hermite.tex				\
+	chapters/30-interpolation/bary.tex				\
+	chapters/30-interpolation/spline.tex				\
 	chapters/40-integration/chapter.tex				\
+	chapters/40-integration/riemann.tex				\
+	chapters/40-integration/romberg.tex				\
 	chapters/50-ode/chapter.tex					\
 	chapters/50-ode/problemstellung.tex				\
 	chapters/50-odd/prinzip.tex					\
