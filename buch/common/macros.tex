@@ -18,15 +18,9 @@
 }}{\end{list}}
 \newcounter{uebungsaufgabezaehler}
 % environment fuer uebungsaufgaben
-\newenvironment{uebungsaufgaben}{
-\begin{list}{\arabic{uebungsaufgabezaehler}.}
-  {\usecounter{uebungsaufgabezaehler}
-  \setlength{\labelwidth}{2cm}
-  \setlength{\leftmargin}{0pt}
-  \setlength{\labelsep}{5mm}
-  \setlength{\rightmargin}{0pt}
-  \setlength{\itemindent}{0pt}
-}}{\end{list}\vfill\pagebreak}
+\newenvironment{uebungsaufgaben}{%
+}{%
+\vfill\pagebreak}
 \newenvironment{teilaufgaben}{
 \begin{enumerate}
 \renewcommand{\labelenumi}{\alph{enumi})}
@@ -42,15 +36,14 @@
 }
 \def\includeagraphics[#1]#2{\expandafter\includegraphics[#1]{\aufgabepath#2}}
 % \aufgabe
+\renewcommand\theproblemcounter{\thechapter.\arabic{problemcounter}}
 \newcommand{\uebungsaufgabe}[1]{%
 \refstepcounter{problemcounter}%
 \label{#1}%
-\item
-\bigskip{\parindent0pt\strut}%\hbox{\bf\arabic{problemcounter}. }%
+\bigskip{\parindent0pt\strut}\hbox{\bf\theproblemcounter. }%
 \expandafter\def\csname aufgabenpath\endcsname{\inputpath/}%
 \expandafter\input{\aufgabenpath/#1.tex}
 }
-\renewcommand\theproblemcounter{\thechapter.\arabic{problemcounter}}
 % linsys
 \newcolumntype{\linsysR}{>{$}r<{$}}
 \newcolumntype{\linsysL}{>{$}l<{$}}
@@ -121,23 +114,3 @@
 \definecolor{darkgreen}{rgb}{0,0.6,0}
 \definecolor{orange}{rgb}{1,0.6,0}
 
-% from https://tex.stackexchange.com/questions/156862/displaying-author-for-each-chapter-in-book
-
-%\newcommand\chapterauthor[1]{\authortoc{#1}\printchapterauthor{#1}}
-%\WithSuffix\newcommand\chapterauthor*[1]{\printchapterauthor{#1}}
-%
-%\makeatletter
-%\newcommand{\printchapterauthor}[1]{%
-%  {\parindent0pt\vspace*{-25pt}%
-%  \linespread{1.1}\large\scshape#1%
-%  \par\nobreak\vspace*{35pt}}
-%  \@afterheading%
-%}
-%\newcommand{\authortoc}[1]{%
-%  \addtocontents{toc}{\vskip-10pt}%
-%  \addtocontents{toc}{%
-%    \protect\contentsline{chapter}%
-%    {\hskip1.3em\mdseries\scshape\protect\scriptsize#1}{}{}}
-%  \addtocontents{toc}{\vskip5pt}%
-%}
-%\makeatother
