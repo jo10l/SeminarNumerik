@@ -1,0 +1,41 @@
+%
+% l.tex -- template for standalon tikz images
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{10}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[color=red,line width=1.4pt]
+	plot[domain=0:2,samples=100]
+		({\x/2},{\x*(\x-1)*(\x-2)/8});
+
+\draw[color=red,line width=1.4pt]
+	plot[domain=0:3,samples=100]
+		({\x/3},{\x*(\x-1)*(\x-2)*(\x-3)/81});
+
+\draw[color=red,line width=1.4pt]
+	plot[domain=0:4,samples=100]
+		({\x/4},{\x*(\x-1)*(\x-2)*(\x-3)*(\x-4)/1024});
+
+\draw[color=red,line width=1.4pt]
+	plot[domain=0:5,samples=100]
+		({\x/5},{\x*(\x-1)*(\x-2)*(\x-3)*(\x-4)*(\x-5)/15625});
+
+\draw[color=blue,line width=1.4pt]
+	plot[domain=0:10,samples=100]
+		({\x/10},{(\x/10)*((\x-1)/10)*((\x-2)/10)*((\x-3)/10)*((\x-4)/10)*((\x-5)/10)*((\x-6)/10)*((\x-7)/10)*((\x-8)/10)*((\x-9)/10)*((\x-10)/10)});
+
+
+
+\end{tikzpicture}
+\end{document}
+

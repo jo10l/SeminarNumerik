@@ -1,0 +1,55 @@
+%
+% norm.tex -- absoluter und relativer Fehler des Interpolationspolynoms
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{2}
+\input{tpaths.tex}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\sx{1}
+\def\sy{0.9}
+
+\def\plot#1{
+	\csname fehler#1\endcsname
+	\csname xwerte#1\endcsname
+	\draw ({-0.1/\skala},\sy)--({0.1/\skala},\sy);
+	\node at ({-0.1/\skala},\sy) [left] {$\csname maxfehler#1\endcsname$};
+	\draw ({-0.1/\skala},-\sy)--({0.1/\skala},-\sy);
+	\node at ({-0.1/\skala},-\sy) [left] {$-\csname maxfehler#1\endcsname$};
+	\draw[->] ({-0.1/\skala},0)--(5.2,0) coordinate[label={$x$}];
+	\draw[->] (0,{-1.1*\sy})--(0,{1.2*\sy}) coordinate[label={right:$y$}];
+	\node at ({-0.2/\skala},0) [left] {$n=\csname punkte#1\endcsname$};
+	\foreach \x in {1,...,5}{
+		\draw (\x,{-0.1/\skala})--(\x,{0.1/\skala});
+		\node at (\x,{-0.1*\skala}) [below] {$\x$};
+	}
+}
+
+\begin{scope}
+\plot{a}
+\end{scope}
+
+\begin{scope}[yshift={-2.5cm*\sy}]
+\plot{h}
+\end{scope}
+
+\begin{scope}[yshift={-5cm*\sy}]
+\plot{o}
+\end{scope}
+
+\begin{scope}[yshift={-7.5cm*\sy}]
+\plot{q}
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+
