@@ -23,18 +23,18 @@ CHAPTERFILES =								\
 	chapters/30-interpolation/polynom.tex				\
 	chapters/30-interpolation/hermite.tex				\
 	chapters/30-interpolation/bary.tex				\
-	chapters/30-interpolation/spline.tex				\
+	chapters/30-interpolation/splines.tex				\
 	chapters/40-integration/chapter.tex				\
 	chapters/40-integration/riemann.tex				\
 	chapters/40-integration/romberg.tex				\
 	chapters/50-ode/chapter.tex					\
 	chapters/50-ode/problemstellung.tex				\
-	chapters/50-odd/prinzip.tex					\
-	chapters/50-odd/fehler.tex					\
-	chapters/50-odd/einschritt.tex					\
-	chapters/50-odd/mehrschritt.tex					\
-	chapters/50-odd/software.tex					\
-	chapters/50-odd/randwert.tex					\
+	chapters/50-ode/prinzip.tex					\
+	chapters/50-ode/fehler.tex					\
+	chapters/50-ode/einschritt.tex					\
+	chapters/50-ode/mehrschritt.tex					\
+	chapters/50-ode/software.tex					\
+	chapters/50-ode/randwert.tex					\
 	chapters/60-linsys/chapter.tex					\
 	chapters/70-pde/chapter.tex					\
 	chapters/80-fourier/chapter.tex

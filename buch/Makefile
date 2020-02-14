@@ -12,6 +12,8 @@ include chapters/Makefile.inc
 include papers/common/Makefile.inc
 include papers/common/includes.inc
 
+TEXFILES = $(CHAPTERFILES)
+
 buch.pdf:	buch.tex $(TEXFILES) buch.ind $(BLXFILES)
 	pdflatex buch.tex
 	bibtex buch

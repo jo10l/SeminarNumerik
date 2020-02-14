@@ -13,6 +13,9 @@ PAPERFILES = \
 buch1-blx.bbl:	buch1-blx.aux
 	bibtex buch1-blx
 
+buch2-blx.bbl:	buch2-blx.aux
+	bibtex buch2-blx
+
 BLXFILES = buch.bbl \
 	buch1-blx.bbl \
 	buch2-blx.bbl \
