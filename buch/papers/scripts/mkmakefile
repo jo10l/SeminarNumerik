@@ -85,8 +85,11 @@ END {
 #
 awk '{
 	printf("include papers/%s/Makefile.inc\n", $1)
+	texfiles = sprintf("%s\t$(dependencies-%s) \\\n", texfiles, $1);
 }
 END {
 	printf("\n")
-}' common/paperlist >> common/includes.inc
+	printf("TEXFILES = \\\n")
+	printf("%s\n", texfiles)
+}' common/paperlist > common/includes.inc
 
