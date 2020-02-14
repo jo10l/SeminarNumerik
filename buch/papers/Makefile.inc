@@ -6,5 +6,4 @@
 # (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
 include papers/000template/Makefile.inc
-include papers/test/Makefile.inc
 
