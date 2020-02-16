@@ -1,0 +1,96 @@
+%
+% ausloeschung.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+
+\begin{frame}
+\frametitle{Auslöschung}
+\begin{definition}
+{\em Auslöschung} ist Genauigkeitsverlust, der bei der Subtraktion
+fast gleich grosser Zahlen entsteht.
+\end{definition}
+
+\begin{block}{Beispiel}
+\begin{center}
+\ifthenelse{\boolean{presentation}}{\small}{}
+\renewcommand\arraystretch{1.2}
+\begin{tabular}{|>{$}c<{$}|>{\tt}r|>{\tt}r|}
+\hline 
+              & \textnormal{Gleikommawert}        &\textnormal{Festkommawert}\\
+\hline
+\sqrt{10}     & 0 10000000 10010100110001011000010&11.0010100110001011000010\\
+\pi           & 0 10000000 10010010000111111011011&11.0010010000111111011011\\
+\hline
+\sqrt{10}-\pi & 0 01111001 01010010111001110000000& 0.0000010101001011100111\\
+\hline
+\end{tabular}
+\end{center}
+\uncover<2->{
+$\Rightarrow$ Genauigkeit nur noch 17 statt 24 bit, 7 bit Verlust
+}
+\end{block}
+\end{frame}
+
+%
+% normalverteilung
+%
+\begin{frame}
+\frametitle{Auslöschung bei Normalverteilung}
+\begin{block}{Beispiel}
+$X$ standardnormalverteilte Zufallsvariable, berechnet 
+\[
+p
+=
+P(a\le X < b)
+=
+\Phi(b)- \Phi(a)
+=
+\frac{1}{\sqrt{2\pi}}
+\int_a^b  e^{-x^2/2}\,dx
+\]
+\end{block}
+\vspace{-20pt}
+\uncover<2->{
+\begin{block}{Lösung}
+Mit Fehlerfunktion $\operatorname{erf}(x)$ oder komplementärer Fehlerfunktion
+$\operatorname{erfc}(x)=1-\operatorname{erf}(x)$
+\[
+\operatorname{erf}(x)
+=
+\frac{2}{\sqrt{\pi}}\int_0^xe^{-t^2}\,dt\uncover<3->{,
+\quad
+\Phi(x) = \frac12 + \operatorname{erf}(x)}
+\uncover<4->{
+\quad\Rightarrow\quad
+p=\begin{cases}
+\operatorname{erf}(b)-\operatorname{erf}(a)&\\
+\operatorname{erfc}(a)-\operatorname{erfc}(b)&
+\end{cases}}
+\]
+\end{block}}
+\vspace{-15pt}
+\uncover<5->{
+\[
+\left.
+\begin{aligned}
+a&=4.18\\
+b&=5.18
+\end{aligned}\right\}
+\Rightarrow
+\begin{tabular}{|l|>{$}r<{$}|>{$}r<{$}|}
+\hline
+Datentyp       & \textnormal{Rechnung mit $\operatorname{erf}(x)$}&
+\textnormal{Rechnung mit $\operatorname{erfc}(x)$}\\
+\hline
+\texttt{float} & 0.000000\phantom{\mathstrut\cdot10^{-00}}&
+6.271826\cdot10^{-17}\\
+\texttt{double}& 1.110223\mathstrut\cdot10^{-16}&
+6.271826\cdot10^{-17}\\
+\texttt{long}  & 6.272110\mathstrut\cdot10^{-17}&
+6.271826\cdot10^{-17}\\
+\hline
+\end{tabular}
+\]
+}
+\end{frame}
