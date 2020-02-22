@@ -1,0 +1,49 @@
+%
+% m1kp.tex -- Iteration normalfall
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\xdef\x{3.7}
+\xdef\y{0}
+
+\def\fx{3}
+
+\def\A{1}
+\def\B{0}
+\def\C{0.1}
+\def\D{0}
+\def\anzahl{13}
+\def\pfeile{0}
+
+\input{zeichnung.tex}
+
+\xdef\x{2.3}
+\xdef\xzero{\x}
+\xdef\y{0}
+\def\pfeile{0}
+\pfad
+\draw (\xzero,-0.1)--(\xzero,0.1);
+\node at (\xzero,-0.1) [below] {$x_0\mathstrut$};
+
+\node at (4,3) [right] {$\displaystyle
+\begin{aligned}
+  f'(x^*)&=1\\
+ f''(x^*)&=0\\
+f'''(x^*)&>0
+\end{aligned}
+$};
+
+\end{tikzpicture}
+\end{document}
+
