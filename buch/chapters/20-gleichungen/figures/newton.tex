@@ -1,0 +1,75 @@
+%
+% newton.tex -- Newton-Verfahren
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\f{4}
+
+\begin{scope}
+\clip (-6,-1.1) rectangle (3.1,5.1);
+\draw[color=red,line width=1.4pt]
+	plot[domain=-1.5:0.5,samples=100] ({\f*\x},{\f*(exp(\x)-0.5});
+\end{scope}
+
+\def\x{0.45}
+\xdef\xzero{\x}
+\def\schritt#1{
+	\pgfmathparse{exp(\x)-0.5}
+	\xdef\y{\pgfmathresult}
+	\pgfmathparse{exp(\x)}
+	\xdef\m{\pgfmathresult}
+	\pgfmathparse{\x-\y/\m}
+	\xdef\xneu{\pgfmathresult}
+	
+	\ifthenelse{#1=0}{
+		\fill[color=gray!20]
+			({\f*\x},{\f*\y})
+			--
+			({\f*\x},0)
+			--
+			({\f*\xneu},0)
+			--cycle;
+		\node at ({\f*\x},0) [below right] {$A$};
+		\node at ({\f*\x},{\f*\y}) [right] {$B$};
+		\node at ({\f*\xneu},0) [below right] {$C$};
+	}{}
+	\draw[color=gray] ({\f*\x},0)--({\f*\x},{\f*\y});
+	\draw[color=gray] ({\f*(\x+0.1)},{\f*(\y+0.1*\m)})
+				--({\f*(\xneu-0.1)},{\f*(0-0.1*\m)});
+	\fill[color=blue] ({\f*\x},{\f*\y}) circle[radius=0.08];
+	\draw[line width=0.2pt] ({\f*\x},0)--({\f*\x},{-0.8});
+	\node at ({\f*\x},{-0.8}) [below] {$x_{#1}$};
+	\xdef\x{\xneu}
+}
+\schritt{0}
+
+\node at ({\f*0.5*(\x+\xzero)},{\f*0.5*\y}) [below right] {$f'(x_0)$};
+\node at ({\f*\xzero},{0.5*\f*\y}) [right] {$f(x_0)$};
+
+\schritt{1}
+\schritt{2}
+\schritt{3}
+
+\draw[->] (-6.1,0) -- (3.3,0) coordinate[label={$x$}];
+\draw[->] (0,-1.2) --(0,5.2) coordinate[label={$y$}];
+
+\draw (-4,-0.1)--(-4,0.1);
+\node at (-4,-0.1) [above] {$-1\mathstrut$};
+
+\fill[color=red] ({\f*ln(0.5)},0) circle[radius=0.1];
+\node[color=red] at ({\f*ln(0.5)},0) [above] {$x^*$};
+
+\end{tikzpicture}
+\end{document}
+
