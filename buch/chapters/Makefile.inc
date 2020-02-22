@@ -12,6 +12,8 @@ CHAPTERFILES =								\
 	chapters/10-arithmetik/zahlensysteme.tex			\
 	chapters/10-arithmetik/effekte.tex				\
 	chapters/10-arithmetik/iteration.tex				\
+	chapters/10-arithmetik/graphisch.tex				\
+	chapters/10-arithmetik/kubisch.tex				\
 	chapters/10-arithmetik/instabilitaet.tex			\
 	chapters/10-arithmetik/kondition.tex				\
 	chapters/10-arithmetik/beschleunigung.tex			\
