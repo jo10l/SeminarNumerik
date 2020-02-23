@@ -361,4 +361,395 @@ Tabelle~\ref{buch:figure:newtonpolar} gegeben.
 Die quadratische Konvergenz ist wieder deutlich erkennbar.
 \end{beispiel}
 
+\subsection{Der Fall $f'(x^*)=0$
+\label{buch:subsection:newton0}}
+Im Fall $f'(x^*)=0$ versagt die Iterationsformel des Newtonverfahrens.
+Es ist damit zu rechnen, dass das Verfahren sehr langsam oder gar nicht
+konvergiert.
+Wir untersuchen dies mit Hilfe einer Entwicklung der Funktion $f$
+um den Punkt $x^*$:
+\[
+f(x^*+\delta)
+=
+\frac12f''(x^*)\delta^2 + \frac16f'''(x^*)\delta^3+ O(\delta^4).
+\]
+Für den Fehler $\delta_n$ der Approximation $x_n=x^*+\delta_n$ folgt die
+Iteration
+\begin{align*}
+x^*+\delta_{n+1}
+=
+x_{n+1}
+&=
+x_n - \frac{f(x_n)}{f'(x_n)}
+=
+x^*+\delta_n
+-
+\frac{
+\frac12f''(x^*)\delta_n^2+O(\delta_n^4)
+}{
+f''(x^*)\delta_n + \frac12f'''(x^*)\delta_n^2) + O(\delta^3)
+}
+\\
+&=
+x^* + \delta_n
+-
+\frac12
+\delta_n
+\frac{1+O(\delta_n)}{1+O(\delta_n)}
+=
+x^* + \delta_n
+-
+\frac12
+\delta_n
+(1+O(\delta_n))
+\\
+&=
+x^* +\frac12\delta_n + O(\delta_n^2)
+\\
+\Rightarrow\qquad
+\delta_{n+1} &= \frac12\delta_n + O(\delta_n^2)
+\end{align*}
+Der Fehler halbiert sich in jeder Interation.
+Die Folge $(x_n)_{n\in\mathbb N}$ konvergiert also immer noch,
+aber die Konvergenz ist nur noch linear.
+
+\subsection{Vergleich mit dem Sekanten-Verfahren
+\label{buch:subsection:newtonsekanten}}
+Die Ähnlichkeit des Newton-Verfahrens mit dem Sekantenverfahren ist 
+unübersehbar.
+Um dies deutlich zu machen, berechnen wir den Grenzfall $x_{n-1}\to x_n$:
+\begin{align*}
+x_{n+1}
+&=
+\frac{x_{n-1}f(x_n)-x_nf(x_{n-1})}{f(x_{n})-f(x_{n-1})}
+=
+\frac{x_{n-1}f(x_n){\color{darkred}\mathstrut-x_{n-1}f(x_{n-1})+x_{n-1}f(x_{n-1})}-x_nf(x_{n-1})}{f(x_{n})-f(x_{n-1})}
+\\
+&=
+x_{n-1} - f(x_{n-1})\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}.
+\intertext{
+Beim Grenzübergang $x_{n-1}\to x_n$ geht der Quotient auf der rechten
+Seite in den Kehrwert der Ableitung $f'(x_n)$ über.
+Der Grenzfall des Sekantenverfahrens ist daher}
+x_{n+1}
+&=
+x_n -\frac{f(x_n)}{f'(x_n)},
+\end{align*}
+also das Newtonverfahren.
+
+Der Vorteil des Newton-Verfahrens gegenüber dem Sekanten-Verfahren ist
+jedoch, dass die Ableitung nicht nur mit Hilfe eines Differenzenquotienten
+approximiert wird, sondern exakt zur Verfügung steht.
+Damit ist das Newton-Verfahren nicht anfällig auf die Auslöschung, die
+die Zuverlässigkeit des Sekantenverfahrens beeinträchtigt.
+
+\subsection{Nullstellen von Polynomen
+\label{buch:subsection:polynomnullstellen}}
+Das Newton-Verfahren verlang, dass die Ableitung $f'(x_n)$ genau
+berechnet werden kann.
+In einigen Fällen kann dies ein Hindernis für die Anwendung des
+Verfahrens sein.
+Polynome sind jedoch einfach genug, dass die Ableitung immer berechnet
+werden kann.
+Somit ist das Newton-Verfahren besonders gut geeignet, Nullstellen von
+Polynomen zu finden.
+In diesem Abschnitt sei daher
+\begin{equation}
+f(X) = a_nX^n + a_{n-1}X^{n-1} + \dots + a_2X^2 + a_1X + a_0
+\label{buch:equation:nullstellenpolynom}
+\end{equation}
+ein Polynom mit reellen Koeffizienten, $a_k\in\mathbb R$.
+Wir gehen davon aus, dass $f$ eine reelle Nullstelle $x^*$ hat
+und dass $x_0$ eine ausreichend genaue Schätzung für die Nullstelle ist.
+
+\subsubsection{Berechnung von Funktionswerten}
+Die übliche Darstellung~\eqref{buch:equation:nullstellenpolynom}
+ist nicht die effizientest Form zur Berechnung des Polynomwertes.
+Die Berechnung der Potenzen $x^k$ für $1\le k\le n$ benötigt bereits
+$n-1$ Multiplikationen, dazu kommen $n-1$ Multiplikationen mit
+Koeffizienten und $n$ Additionen.
+Zudem besteht die Gefahr von Verschmierung.
+
+Durch Ausklammern möglichst vieler Faktoren $x$ findet man die
+Formel,
+\begin{align}
+f(x)
+&=
+((\dots((a_nx+a_{n-1})x+a_{n-2})x+\dots)x+a_1)x+a_0
+\label{buch:equation:polynomwert}
+\end{align}
+welche den Funktionswert in genau $n$ Multiplikationen und $n$ Additionen
+zu berechnen gestattet.
+
+Wir bezeichnen die Teilprodukte in \eqref{buch:equation:polynomwert}
+mit
+\[
+(\dots((a_nx+a_{n-1})x+a_{n-2})x+\dots)x+a_k
+=
+p_{n-k},
+\]
+d.~h.
+\begin{equation}
+\begin{aligned}
+p_0 &= a_n
+\\
+p_1 &= a_nx+a_{n-1} = p_0x + a_{n-1}
+\\
+p_2 &= (a_nx+a_{n-1})x+a_{n-2} = p_1x+a_{n-2}
+\\
+\vdots\;&\qquad\vdots
+\\
+f(x)
+=
+p_n
+&=
+p_{n-1}x+a_0.
+\end{aligned}
+\label{buch:equation:reste}
+\end{equation}
+Diese Berechnung lässt sich in der folgenden, {\em Horner-Schema}
+genannten Tabelle
+\index{Horner-Schema}
+zusammenfassen.
+\begin{center}
+\includegraphics{chapters/20-gleichungen/figures/horner1.pdf}
+\end{center}
+
+\begin{beispiel}
+Wir berechnen den Wert des Polyoms
+\[
+f(X) = X^6 - X^5 + X^4 - X^3 + X^2 - X + 1
+\]
+an der Stelle $X=2$ mit Hilfe des Horner-Schemas
+\begin{center}
+\begin{tabular}{>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}}
+ 1& -1& 1& -1&  1& -1&  1\\
+  &  2& 2&  6& 10& 22& 42\\
+\hline
+ 1&  1& 3&  5& 11& 21& 43
+\end{tabular}
+\end{center}
+Der Wert in der rechten unteren Ecke stimmt überein mit
+\begin{align*}
+f(2)
+&=
+2^6-2^5+2^4-2^3+2^2-2+1
+\\
+&=
+64-32+16-8+4-2+1
+\\
+&=
+32+8+2+1
+=
+43.
+\qedhere
+\end{align*}
+\end{beispiel}
+
+\subsubsection{Deflation}
+Die Bedeutung der Werte $p_0,\dots,p_{n-1}$ lässt sich verstehen, wenn
+man den Polynom-Divisions-Algorithmus für $f(X) / (X-x)$ ausschreibt.
+Die Rekursionsformeln~\eqref{buch:equation:reste} zeigen, dass die
+Teilreste der Division die Koeffizienten $p_k$ haben:
+\begin{equation}
+\setcounter{MaxMatrixCols}{20}
+\setlength\arraycolsep{1pt}
+\renewcommand\arraystretch{1.15}
+\begin{matrix}
+(a_nX^n&+&a_{n-1}X^{n-1}&+&a_{n-2}X^{n-2}&+&a_{n-3}X^{n-3}&+&\dots)&:&(X&-&x)&=&a_nX^{n-1}+p_1X^{n-2}+p_2X^{n-3}+\dots\\
+ a_nX^n&-&a_{n}xX^{n-1} & &              & &              & &      & &  & &  & &                \\
+\cline{1-3}
+       & &p_1X^{n-1}    &+&a_{n-2}X^{n-2}& &              & &      & &  & &  & &                \\
+       & &p_1X^{n-1}    &-&p_1xX^{n-2}   & &              & &      & &  & &  & &                \\
+\cline{3-5}
+       & &              & &p_2X^{n-2}    &+&a_{n-3}X^{n-3}& &      & &  & &  & &\\
+       & &              & &p_2X^{n-2}    &-&a_{n-4}xX^{n-3}&&      & &  & &  &\\
+\cline{5-7}
+       & &              & &              & &p_3X^{n-3}     &&\dots & &  & &  &\\
+       & &              & &              & &\dots          &&\dots & &  & &  &\\
+\end{matrix}
+\end{equation}
+Die Koeffizienten $p_k$ sind daher auch die Koeffizienten des Quotienten
+\[
+q(X)
+=
+p_0X^{n-1}+p_1X^{n-2}+p_2X^{n-3}+\dots p_{n-2}X+p_{n-1}.
+\]
+Es gilt daher
+\[
+f(X)
+=
+(X-x) \cdot (p_0X^{n-1}+p_1X^{n-2}+p_2X^{n-3}+\dots p_{n-2}X+p_{n-1})
++
+f(x).
+\]
+Ist $x$ ein Nullstelle, dann ist das Polynom ist $f(X)$ durch $X-x$ teilbar
+und $q(X)$ ist der andere Faktor, also $f(X)=(X-x)\cdot q(X)$.
+
+\begin{beispiel}
+Das Polynom
+\[
+f(x)=x^4-25x^2+144
+\]
+hat eine Nullstelle $x=3$ und $x=4$ als Nulllstellen.
+Man finde zwei weitere Nullstellen.
+
+Die Polynomdivision mit dem Horner-Schema für $x=3$
+\begin{center}
+\begin{tabular}{>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}}
+   1&   0& -25&   0& 144\\
+    &   3&   9& -48&-144\\
+\hline
+   1&   3& -16& -48&   0
+\end{tabular}
+\end{center}
+ergibt 
+\[
+q_1(x) = f(x)/(x-3)
+=
+x^3+3x^2-16x-48
+.
+\]
+Weiter bekommt man
+\[
+a_2(x) = f(x)/((x-3)(x-4)) = (x^2+7x+12) = (x+3)(x+4)
+\]
+aus
+\begin{center}
+\begin{tabular}{>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}}
+   1&   3& -16& -48\\
+    &   4&  28&  48\\
+\hline
+   1&   7&  12&   0
+\end{tabular}
+\end{center}
+Insbesondere schliesst man, dass $x=-3$ und $x=-4$ die verbleibenden
+Nullstellen von $f(x)=(x-3)(x-4)(x+4)(x+3)$ sind.
+\end{beispiel}
+
+
+\subsubsection{Berechnung der Ableitung}
+Für das Newton-Vefahren wird ausser dem Funktionswert auch die Ableitung
+benötigt.
+Der Funktionswert $r=f(x)$ wird mit dem Horner-Schema sofort gefunden, ebenso
+der Quotient $q(x)$,
+Es gilt also
+\[
+f(X) = q(X)(X-x) + r,
+\]
+was wir dazu verwenden können, die Ableitung von $f$ mit Hilfe der
+Produktregel zu berechnen:
+\[
+f'(X) = q'(X) (X-x) + q(X).
+\]
+An der Stelle $X=x$ ist daher
+$ f'(x) = q(x) $.
+Da die Koeffizienten von $q(X)$ bereits mit dem Horner-Schema
+berechnet worden sind, kann $f'(x)$ durch Iteration des Horner-Schemas
+berechnet werden.
+
+\begin{beispiel}
+Man berechne den Funktionswert und die Ableitung des Polynoms
+\[
+f(x) = 2x^3 + x + 9
+\]
+an der Stelle $x=4$.
+\begin{center}
+\begin{tabular}{>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}}
+   2&   0&   1&   9\\
+    &   8&  32& 132\\
+\hline
+   2&   8&  33& 141\\
+    &   8&  64&    \\
+\hline
+   2&  16&  97&
+\end{tabular}
+\end{center}
+Man liest $f(4)=141$ und $f'(4)=97$ ab.
+\end{beispiel}
+
+Ist $x$ eine doppelte Nullstelle des Polynoms $f(x)$, dann ist $f'(x)=0$.
+Das Horner-Schema kann daher auch dazu verwendet werden, doppelte
+Nullstellen zu erkennen und damit die Faktorisierung zu vereinfachen,
+wie das folgende Beispiel zeigt.
+
+\begin{beispiel}
+Wir betrachten das Polynom
+\[
+f(x) = x^4-13x^3 +41x^2 - 47x+18.
+\]
+Es hat die Nullstelle $x=1$, das Hornerschema liefert für den Quotienten
+\begin{center}
+\begin{tabular}{>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}}
+ 1&-13& 41&-47& 18\\
+  &  1&-12& 29&-18\\
+\hline
+ 1&-12& 29&-18&  0\\
+  &  1&-11& 18&   \\
+\hline
+ 1&-11& 18&  0&   \\
+  &  1&-10&   &   \\
+\hline
+ 1&-10&  8&   &   
+\end{tabular}
+\end{center}
+Daraus kann man ablesen, dass $x=1$ eine doppelte aber nicht
+eine dreifache Nullstelle ist und dass sich das Polynom schreiben lässt als
+\[
+f(x)=(x-1)^2\cdot (x-11x+18) = (x-1)^2 (x-2)(x-9).
+\]
+Damit ist das Polynom $f(x)$ vollständig faktorisiert.
+\end{beispiel}
+
+\subsubsection{Newton-Verfahren für Nullstellen von Polynomen}
+Da mit dem Hornerschema sowohl Funktionswerte wie auch Ableitungen
+effizient berechnet werden können, kann es dazu verwendet werden,
+das Newton-Verfahren für Polynomnullstellen zu implementieren.
+
+Das Horner-Schemas liefert zu jeder Nullstelle $x$ auch immer
+gleich den Quotienten $q(X)=f(X)/(X-x)$, welches für die Suche nach
+weiteren Nullstellen verwendet werden kann.
+Man nennt diesen Prozess {\em Deflation}.
+\index{Deflation}
+
+\begin{beispiel}
+\begin{table}
+\centering
+\renewcommand\arraystretch{1.15}
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}l<{$}|}
+\hline
+n& x_n & f(x_n) & f'(x_n) & q_n(X) \\
+\hline
+0&-10.000000& -182.00000&129.00000& X^2-X+19\\
+1&- 8.589148&  -38.99232& 75.71571& X^2+0.4108524323 X+5.47112751\\
+2& -8.074164&   -4.31028& 59.24143& X^2+0.9258356094 X+1.524651051\\
+3& -8.001407&   -0.08021& 57.04221& X^2+0.9985933304 X+1.009848595\\
+4& -8.000000&   -0.00005& 57.00003& X^2+0.9999990463 X+1.000006676\\
+5& -8.000000&    0.00000& 57.00000& X^2+X+1\\
+\hline
+\end{tabular}
+\caption{Newton-Verfahren für das Polynom $f(X)=X^3+9X^2+9X+8$
+mit Hilfe des Horner-Schemas.
+Als Nebeneffekt bestimmt das Hornerschema in jeder Iteration auch
+den Quotieten $q_n(x)=f(x)/(x-x_n)$.
+\label{buch:table:hornernewton}}
+\end{table}
+Die reellen Nullstellen
+von $f(X)=X^3+9X^2+9X +8$ sollen mit Hilfe des
+Newton-Verfahrens gefunden werden.
+Die Tabelle~\ref{buch:table:hornernewton} zeigt die vom Horner-Schema
+berechneten Funktions- und Ableitungswerte sowie das Quotientenpolynom.
+Die Konvergenz ist quadratisch und liefert die Nullstelle $x=-8$
+sowie den Quotienten $q(X)=X^2+X+1$,
+tatsächlich ist
+\[
+(X+8)q(X) = (X+8)(X^2+X+1) = X^3+9X^2+9X+8 = f(X).
+\]
+Die Diskriminante von $q(X)$ ist
+$b^2-4ac= 1^2 -4\cdot1\cdot 1= - 3<0$, $q(X)$ hat also keine weiteren
+reellen Nullstellen.
+\end{beispiel}
+
+
+
 

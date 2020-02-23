@@ -1,0 +1,84 @@
+%
+% horner1.tex -- template for standalon tikz images
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1.2}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[color=gray] (-0.5,-1.6)--(8.5,-1.6);
+
+\fill[color=red!20] (7.7,-2.15) rectangle (8.3,-1.85);
+
+\def\koef{-0.2}
+
+\node at (0,\koef) {$a_n\mathstrut$};
+\node at (1,\koef) {$a_{n-1}\mathstrut$};
+\node at (2,\koef) {$a_{n-2}\mathstrut$};
+\node at (3,\koef) {$a_{n-3}\mathstrut$};
+\node at (4.5,\koef) {$\cdots\mathstrut$};
+\node at (6,\koef) {$a_2\mathstrut$};
+\node at (7,\koef) {$a_1\mathstrut$};
+\node at (8,\koef) {$a_0\mathstrut$};
+
+\node at (0,-2) {$a_n\mathstrut$};
+\node at (1,-2) {$p_1\mathstrut$};
+\node at (2,-2) {$p_2\mathstrut$};
+\node at (3,-2) {$p_3\mathstrut$};
+\node at (4,-2) {$\cdots\mathstrut$};
+\node at (5,-2) {$p_{n-3}\mathstrut$};
+\node at (6,-2) {$p_{n-2}\mathstrut$};
+\node at (7,-2) {$p_{n-1}\mathstrut$};
+\node at (8,-2) {$f(x)\mathstrut$};
+
+\node at (1,-1) {$a_nx\mathstrut$};
+\node at (2,-1) {$p_1x\mathstrut$};
+\node at (3,-1) {$p_2x\mathstrut$};
+\node at (4.5,-1) {$\cdots\mathstrut$};
+\node at (6,-1) {$p_{n-3}x\mathstrut$};
+\node at (7,-1) {$p_{n-2}x\mathstrut$};
+\node at (8,-1) {$p_{n-1}x\mathstrut$};
+
+\def\pfeil#1{
+	\draw[->,shorten >= 0.3cm,shorten <=0.3cm] (#1,-2)--({#1+1},-1)
+		node[midway,above left=-0.1cm] {$\cdot x$};
+}
+\pfeil{0}
+\pfeil{1}
+\pfeil{2}
+\pfeil{5}
+\pfeil{6}
+\pfeil{7}
+
+\def\pluszeichen#1{
+	\node at (#1,-0.6) {$+$};
+}
+\pluszeichen{1}
+\pluszeichen{2}
+\pluszeichen{3}
+\pluszeichen{6}
+\pluszeichen{7}
+\pluszeichen{8}
+
+\def\gleich#1{
+\draw[double equal sign distance,shorten >= 0.2cm,shorten <=0.2cm]
+	(#1,-1)--(#1,-2);
+}
+\gleich{1}
+\gleich{2}
+\gleich{3}
+\gleich{6}
+\gleich{7}
+\gleich{8}
+
+\end{tikzpicture}
+\end{document}
+
