@@ -19,6 +19,8 @@ chapter1 =								\
 	../slides/1/iteration.tex					\
 	../slides/1/fixpunktiteration.tex				\
 	../slides/1/analyse.tex						\
+	../slides/1/linear.tex						\
+	../slides/1/quadratisch.tex					\
 	../slides/1/chapter.tex
 
 slides = 								\

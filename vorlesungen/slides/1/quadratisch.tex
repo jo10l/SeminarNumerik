@@ -1,0 +1,59 @@
+%
+% quadratisch.tex
+%
+% (c) 2020 Prof Dr Andreas Müller
+%
+\begin{frame}
+\frametitle{Quadratische Konvergenz}
+\begin{block}{Der Fall $f'(x^*)=0$}
+Fehlerentwicklung:
+\[
+\delta_{n+1} = \frac12f''(x^*)\delta_n^2 + O(\delta_n^3)
+\]
+\end{block}
+\vspace{-10pt}
+\begin{enumerate}
+\item<2-> Fehler wird in jeder Iteration quadriert
+\item<3-> Anzahl korrekter Stellen verdoppelt sich in jedem Schritt
+\end{enumerate}
+\uncover<4->{
+\begin{block}{Beispiel}
+Iteration für Quadratwurzelbestimmung ist quadratisch:
+\[
+x_{n+1} = \frac12\biggl( x_n + \frac{a}{x_n}\biggr)
+\]
+\vspace{-20pt}%
+\uncover<5->{%
+\begin{proof}[Beweis]
+\vspace{-15pt}
+\[
+\uncover<6->{f(x)=\frac12\biggl(x+\frac{a}{x}\biggr)}
+\uncover<7->{\quad\Rightarrow\quad
+f'(x) = \frac12\biggl(1-\frac{a}{x^2}\biggr)}
+\uncover<8->{\quad\Rightarrow\quad
+f'(x^*)=f'(\sqrt{a})=0\qedhere}
+\]
+\end{proof}
+}
+\end{block}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Quadratische Konvergenz}
+Quadratwurzel $\sqrt{2}$:
+\begin{center}
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|}
+\hline
+n&x_n\\
+\hline
+ 0 &   2.0000000000000000 \\
+ 1 &   \underline{1.}5000000000000000 \\
+ 2 &   \underline{1.41}66666666666665 \\
+ 3 &   \underline{1.41421}56862745097 \\
+ 4 &   \underline{1.41421356237}46899 \\
+ 5 &   \underline{1.4142135623730949} \\
+ 6 &   \underline{1.4142135623730949} \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
