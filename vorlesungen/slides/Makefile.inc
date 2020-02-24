@@ -16,6 +16,7 @@ chapter1 =								\
 	../slides/1/ausloeschung.tex					\
 	../slides/1/verschmierung.tex					\
 	../slides/1/assoziativ.tex					\
+	../slides/1/iteration.tex					\
 	../slides/1/chapter.tex
 
 slides = 								\

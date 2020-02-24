@@ -1,0 +1,4 @@
+zustand	x;
+while (x.incomplete()) {
+    x = f(x);
+}
