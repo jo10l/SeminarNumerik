@@ -33,20 +33,54 @@ f(x)=\frac12+\operatorname{erf}(\sqrt{2}x)-p=0
 \]
 gelöst werden.
 
+\subsubsection{Sekantenverfahren}
+TODO
+
 \subsubsection{Newton-Verfahren}
 Das Newton-Verfahren benötigt ausser dem Funktionswert auch noch die 
 Ableitung
 \[
 f'(x)
 =
-\frac{d}{dx}\frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}\,dt
+\frac{d}{dx}\frac{2}{\sqrt{\pi}}\int_0^{\sqrt{2}x} e^{-t^2}\,dt
 =
-e^{-x^2}.
+\frac{2\sqrt{2}}{\sqrt{\pi}}e^{-2x^2}.
 \]
 Damit wird die Iterationsformel für das Newton-Verfahren:
 \begin{equation}
-x_{n+1} = x_n - e^{x_n^2} \biggl(\frac12+\operatorname{erf}(x_n) -p \biggr).
+x_{n+1} = x_n - \frac{\sqrt{\pi}}{2\sqrt{2}}e^{2x_n^2}
+\biggl(\frac12+\operatorname{erf}(x_n) -p \biggr).
 \end{equation}
+Wie erwartet konvergiert die Iterationsfolge quadratisch für geeignete
+Startwerte (siehe Tabelle~\ref{buch:table:normalnewton}).
+Der Startwert $x_0=0$ funktioniert für jedes beliebige $p$.
+Bei weiter von $0$ entfernten Starwerte läuft man Gefahr, dass die Iteration
+zu betragsmässig grossen Werten $x$ springt, was dann zu einem Überlauf führt.
+
+\begin{table}
+\centering
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|}
+\hline
+ k &   x_n                    \\
+\hline
+ 0 &   0.00000000000000000000 \\
+ 1 &   \underline{0.2}5066282746310003808 \\
+ 2 &   \underline{0.262}13276541328668328 \\
+ 3 &   \underline{0.26220025}396582809170 \\
+ 4 &   \underline{0.2622002563540203}8710 \\
+ 5 &   \underline{0.262200256354020390}13 \\
+ 6 &   \underline{0.262200256354020390}05 \\
+ 7 &   \underline{0.262200256354020390}13 \\
+ 8 &   \underline{0.262200256354020390}05 \\
+ 9 &   \underline{0.262200256354020390}13 \\
+\hline
+\end{tabular}
+\caption{Newton-Iteration zur Bestimmung der Inversen der Verteilungsfunktion
+der Normalverteilung, berechnet mit dem Typ \texttt{long double}.
+Die letzten zwei Stellen können wegen numerischer Unsicherheit nicht
+berechnet werden.
+\label{buch:table:normalnewton}}
+\end{table}
 
 
 
