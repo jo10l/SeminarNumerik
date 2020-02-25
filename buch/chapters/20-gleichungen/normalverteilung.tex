@@ -1,0 +1,54 @@
+%
+% normalverteilung.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapeprswil
+%
+\subsection{Inverse der Normalverteilungsfunktion
+\label{buch:subsection:inversenormal}}
+Das Integral der Standardnormalverteilungsdichte
+\[
+\Phi(x) = \int_{-\infty}^x e^{-t^2/2}\,dt
+\]
+kann nicht in geschlossener Form berechnet werden und erst recht
+nicht invertiert werden.
+Für die Anwendung wird jedoch die Umkehrfunktion benötigt, zu einem Wert
+$p\in[0,1]$ ist dasjenige $x$ zu finden, für welches $F(x)=p$ gilt.
+Im Beispiel auf Seite~\pageref{buch:beispiel:erfc} wurde gezeigt,
+wie die Fehlerfunktion
+\[
+\operatorname{erf}(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}\,dt
+\]
+dazu verwendet werden kann
+\[
+\Phi(x) = \frac12+\operatorname{erf}(\sqrt{2}x)
+\]
+zu berechnen.
+In diesem Abschnitt soll untersucht werden, wie zu gegebenen Funktionswert
+das $x$ bestimmt werden kann.
+Es soll also die Gleichung
+\[
+\Phi(x)=p
+\qquad\Rightarrow\qquad
+f(x)=\frac12+\operatorname{erf}(\sqrt{2}x)-p=0
+\]
+gelöst werden.
+
+\subsubsection{Newton-Verfahren}
+Das Newton-Verfahren benötigt ausser dem Funktionswert auch noch die 
+Ableitung
+\[
+f'(x)
+=
+\frac{d}{dx}\frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}\,dt
+=
+e^{-x^2}.
+\]
+Damit wird die Iterationsformel für das Newton-Verfahren:
+\begin{equation}
+x_{n+1} = x_n - e^{x_n^2} \biggl(\frac12+\operatorname{erf}(x_n) -p \biggr).
+\end{equation}
+
+
+
+
+
