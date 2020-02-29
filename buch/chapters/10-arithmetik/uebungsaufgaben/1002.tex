@@ -1,0 +1,111 @@
+Man kann zeigen, dass die durch
+\begin{equation}
+x_{n+1} = 2^{n+1} (\sqrt{1+2^{-n}x_n}-1)
+\label{1002:eqn}
+\end{equation}
+definierte Folge für Startwerte $x_0>-1$ gegen $\log(x_0+1)$ konvergiert.
+\begin{teilaufgaben}
+\item
+Warum tritt in der Rekursionsformel~\eqref{1002:eqn} Auslöschung auf?
+\item
+Formulieren Sie \eqref{1002:eqn} derart, dass keine Auslöschung auftritt.
+\end{teilaufgaben}
+
+\begin{hinweis}
+Verwenden Sie die Halbwinkelformel
+\begin{equation}
+\tan\frac{\alpha}2 = \frac{\sqrt{1+\tan^2 \alpha } - 1}{\tan \alpha}.
+\label{buch:1002:halbwinkel}
+\end{equation}
+\end{hinweis}
+
+\begin{loesung}
+\begin{teilaufgaben}
+\item
+Da die Folge $x_n$ konvergiert, geht $2^{-n}x_n$ gegen $0$ und damit
+geht $\sqrt{1+2^{-n}x_n}$ gegen $1$.
+Die Differenz mit $1$ führt dann zu Auslöschung.
+\item
+Im Zähler der rechten Seite der Halbwinkelformel
+\eqref{buch:1002:halbwinkel} für den Tangens
+kommt genau der Ausdruck vor, der für die
+Auslöschung verantwortlich ist.
+Um die Formel verwenden zu können muss
+\[
+\tan \alpha
+=
+\sqrt{\frac{x_n}{2^n}}
+\qquad\Rightarrow\qquad
+\alpha_n
+=
+\arctan
+\sqrt{\frac{x_n}{2^n}}.
+\]
+Die Rekursionsformel besagt dann
+\[
+\frac{x_{n+1}}{2^{n+1}}
+=
+\tan\alpha
+\cdot
+\tan\frac{\alpha}2
+=
+\sqrt{\frac{x_n}{2^n}}
+\tan\biggl(\frac12\arctan\sqrt{\frac{x_n}{2^n}}\biggr)
+\]
+oder
+\begin{equation}
+x_{n+1}
+=
+2^{n+1}
+\sqrt{\frac{x_n}{2^n}}
+\tan\biggl(\frac12\arctan\sqrt{\frac{x_n}{2^n}}\biggr).
+\label{1002:stab}
+\end{equation}
+In dieser Form ist die Iteration ohne Auslöschung durchführbar, wie man in
+Tabelle~\ref{1002:table} sehen kann.
+Allerdings benötigt die Iteration jetzt zusätzlich die Auswertung
+eines Arkustangens und eines Tangens, was den Rechenaufwand 
+beträchtlich erhöht, selbst auf modernen Floatingpoint-Hardware, die
+diese Operationen sehr schnell ausführen kann.
+\qedhere
+\end{teilaufgaben}
+\begin{table}
+\centering
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|}
+\hline
+n&\text{$x_n$ nach \eqref{1002:eqn}}&\text{$x_n$ nach \eqref{1002:stab}}\\
+\hline
+ 0 &   0.5000000000             &   0.5000000000 \\
+ 1 &   0.\underline{4}494898319 &   0.\underline{4}494897127 \\
+ 2 &   0.\underline{4}267277718 &   0.\underline{4}267276525 \\
+ 3 &   0.\underline{4}159164429 &   0.\underline{4}159160256 \\
+ 4 &   0.\underline{4}106464386 &   0.\underline{4}106463492 \\
+ 5 &   0.\underline{40}80467224 &   0.\underline{40}80447853 \\
+ 6 &   0.\underline{40}67535400 &   0.\underline{40}67522287 \\
+ 7 &   0.\underline{40}61126709 &   0.\underline{40}61080217 \\
+ 8 &   0.\underline{405}7922363 &   0.\underline{405}7863951 \\
+ 9 &   0.\underline{405}6396484 &   0.\underline{405}6257606 \\
+10 &   0.\underline{405}5175781 &   0.\underline{405}5454433 \\
+11 &   0.\underline{405}5175781 &   0.\underline{405}5052698 \\
+12 &   0.\underline{405}2734375 &   0.\underline{4054}851830 \\
+13 &   0.\underline{405}2734375 &   0.\underline{4054}751098 \\
+14 &   0.\underline{40}42968750 &   0.\underline{4054}700732 \\
+15 &   0.\underline{40}23437500 &   0.\underline{40546}75400 \\
+16 &   0.3984375000             &   0.\underline{40546}62883 \\
+17 &   0.3906250000             &   0.\underline{405465}6327 \\
+18 &   0.3750000000             &   0.\underline{405465}3049 \\
+19 &   0.3750000000             &   0.\underline{405465}1558 \\
+20 &   0.3750000000             &   0.\underline{4054650}664 \\
+21 &   0.2500000000             &   0.\underline{4054650}068 \\
+\hline
+\infty&0.4054650962             &   0.4054650962 \\
+\hline
+\end{tabular}
+\caption{Auslöschung in der Folge $x_{n}$ berechnet mit den zwei verschiedenen
+Rekursionsformeln \eqref{1002:eqn} und \eqref{1002:stab} mit Hilfe von
+\texttt{float}-Zahlen.
+\label{1002:table}}
+\end{table}
+\end{loesung}
+
+
