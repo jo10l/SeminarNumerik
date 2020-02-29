@@ -15,6 +15,9 @@ stellt.
 Es ist daher zu untersuchen, wie sich die Konvergenz eines Lösungsverfahrens
 ändert, wenn es durch Rundungsfehler im Laufe der Rechnung gestört wird.
 
+%
+% Eine instabile Quadratwurzel
+%
 \subsection{Eine instabile Quadratwurzel
 \label{buch:subsection:quadratwurzel}}
 Die Quadratwurzel von $a$ ist ein Fixpunkt der Funktion
@@ -111,7 +114,9 @@ entfernen, nach 16 Iterationen sind die Abweichungen von der
 Grössenordnung $1$ wie in der Überschlagsrechnung weiter oben
 vorhergesagt.
 
-
+%
+% Numerische Instabilität
+%
 \subsection{Numerische Instabilität
 \label{buch:subsection:numerischeinstabilitaet}}
 Von {\em numerischer Instabilität} spricht man, wenn ein Berechnungsverfahren
@@ -147,10 +152,10 @@ x^{n-1} -ax^{n-2}+a^2x^{n-3}-\dots +(-1)^n xa^{n-2} +(-1)^{n-1}a^{n-1}
 -\dots
 +(-1)^n\frac{a^{n-2}}{2}
 +(-1)^{n-1}a^{n-1}
-+\log(1+a)-\log a 
++\log(1+a)-\log a.
+\qedhere
 \end{align*}
 \end{beispiel}
-Wenn $n$ gross ist, ist dies eine ziemlich aufwendig Rechnung.
 
 \begin{table}
 \centering
@@ -189,6 +194,7 @@ In der dritten Spalte die Resultate der stabilen Rückwärtsiteration.
 \label{buch:table:Iiteration}}
 \end{table}
 
+Wenn $n$ gross ist, ist dies eine ziemlich aufwendig Rechnung.
 Da man das Integral für alle $n$ haben will, bietet sich eine
 Rekursionsformel an.
 Es ist nämlich
