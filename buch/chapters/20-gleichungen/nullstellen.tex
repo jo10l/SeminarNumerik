@@ -231,12 +231,12 @@ Dazu wird Information darüber benötigt, wie schnell sich Funktionswerte
 Insbesondere muss davon ausgegangen werden können, dass die Steigung
 der Funktion über das betrachtete Interval nicht zu stark schwankt.
 Die Ableitung einer differenzierbaren Funktion kann diese Information
-liefern, es ist aber ausreichend, eine Lipshitz-Bedingung zu verlangen,
+liefern, es ist aber ausreichend, eine Lipschitz-Bedingung zu verlangen,
 die wie folgt definiert ist.
 
 \begin{definition}
 \label{buch:definition:lipshitz}
-Die Funktion $f\colon[a,b]\to\mathbb R$ erfüllt eine Lipshitz-Bedingung
+Die Funktion $f\colon[a,b]\to\mathbb R$ erfüllt eine Lipschitz-Bedingung
 zum Exponenten $\alpha$, wenn es eine Konstante $L$ gibt derart, dass
 \[
 |f(x)-f(y)|
@@ -249,12 +249,12 @@ ist.
 Eine Lipschitz-Bedingung limitiert, wie schnell sich der Wert
 einer Funktion ändern kann.
 Eine stetig differenzierbare Funktion erfüllt automatisch eine
-Lipshitz-Bedingung für $\alpha=1$, die Umkehrung gilt allerdings
+Lipschitz-Bedingung für $\alpha=1$, die Umkehrung gilt allerdings
 nicht.
 
 Sei jetzt $f\colon[a,b]\to\mathbb R$ wieder eine Funktion mit
 $f(a)<0$ und $f(b) > 0$.
-Wenn $f$ eine Lipshitz-Bedingung erfüllt, dann geben die
+Wenn $f$ eine Lipschitz-Bedingung erfüllt, dann geben die
 Werte $f(a)$ und $f(b)$ zusätzlich Information über die Lage
 der Nullstelle, die im Interval liegen muss.
 Da sich Funktionswerte nicht beliebig schnell ändern können,
@@ -354,7 +354,7 @@ beim Intervallhalbierungsverfahren.
 
 \begin{satz}[Sekanten-Verfahren]
 Sei $f\colon[a,b]\to\mathbb R$ eine stetig Funktion mit $f(a)<0$ und $f(b)>0$,
-die eine Lipshitz-Bedingung mit $\alpha=1$ erfüllt.
+die eine Lipschitz-Bedingung mit $\alpha=1$ erfüllt.
 Setzt man $x_{-1}=a$ und $x_0=b$ und konstruiert die Folge
 \begin{equation}
 x_{n+1} = \frac{x_{n-1}f(x_n) - x_nf(x_{n-1})}{f(x_{n})-f(x_{n-1})}.
