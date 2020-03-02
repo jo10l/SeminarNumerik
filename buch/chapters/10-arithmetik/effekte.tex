@@ -10,6 +10,9 @@ Die Unzulänglichkeiten der in Computern verwendeten Zahlensysteme haben
 zwei Effekte zur Folge, denen bei der Konzeption eines numerischen
 Lösungsverfahrens Rechnung getragen werden muss.
 
+%
+% Ausläschung
+%
 \subsection{Auslöschnung}
 {\em Auslöschung} tritt auf, wenn die Differenz zweier ähnlich grosser
 Zahlen gebildet wird.
@@ -74,6 +77,7 @@ Wert mit einer Genauigkeit von nur 17 Binärstellen geworden.
 Es sind 7 Binärstellen Genauigkeit ausgelöscht worden.
 
 \begin{beispiel}
+\label{buch:beispiel:erfc}
 Sei $X$ ein standardnormalverteilte Zufallsvariable, es soll die 
 Wahrscheinlichkeit dafür berechnet werden, dass $a\le X\le b$ ist.
 In der Wahrscheinlichkeitsrechnung lernt man, dass man dazu die
@@ -85,8 +89,7 @@ Verteilungsfunktion
 =
 \frac12 + \frac{1}{\sqrt{2\pi}} \int_0^x e^{-s^2/2} \,ds
 \]
-der Standardnormalverteilung verwenden
-kann:
+der Standardnormalverteilung verwenden kann:
 \[
 P(a\le X \le b)
 = 
@@ -113,7 +116,7 @@ $\Phi(x)$ den Ausdruck
 =
 \frac12 + \frac{2}{\pi} \int_0^{\sqrt{2}x} e^{-t^2}\,dt
 \\
-&= \frac12 + \operatorname{erf}(\sqrt{2}x),
+&= \frac12\biggl(1 + \operatorname{erf}\biggl(\frac{x}{\sqrt{2}}\biggr)\biggr),
 \end{align*}
 die Fehlerfunktion kann also zur Berechnung der gesuchten Wahrscheinlichkeit
 verwendet werden.
@@ -194,7 +197,11 @@ Der mit $\operatorname{erf}(x)$ berechnete Wert hat selbst bei Verwendung
 dieses längsten verfügbaren Typs nur drei korrekte Dezimalstellen.
 \end{beispiel}
 
-\subsection{Verschmierung}
+%
+% Verschmierung
+%
+\subsection{Verschmierung
+\label{buch:subsection:verschiebung}}
 Auslöschung kann nicht nur auftreten, wenn zwei fast gleich grosse
 Zahlen subtrahiert werden.
 Sie kann in etwas weniger offensichtlicher Form stattfinden, wenn
@@ -204,6 +211,7 @@ Diesen Verlust an Genauigkeit infolge grosser Zwischenresultate
 wird {\em Verschmierung} genannt.
 \index{Verschmierung}
 
+\subsubsection{Beispiel: Exponentialreihe $e^x$}
 Die Taylorreihe
 \[
 e^x = 1 + x + \frac{x^2}{2!}
@@ -251,13 +259,12 @@ exakt               &  9.3576229688\cdot 10^{-14}\\
 \end{table}
 
 Für negative Exponenten alternieren die Terme, werden zwischenzeitlich
-sehr gross, das Resultate ist aber ein sehr kleiner Wert.
+sehr gross, das Resultat ist aber ein sehr kleiner Wert.
 Im Laufe der Rechnung müssen sich also grosse Terme wieder wegheben.
 Dies ist in Abbildung~\ref{buch:figure:expversch} illustriert.
 Dort sind die Werte $e^{30}$ und $e^{-30}$ auf einer logarithmischen
 Skala vertikal als {\color{red}rote} Linien eingezeichnet.
 Die einzelnen Summanden der Reihe sind in {\color{blue}blau} dargestellt.
-Man kann sehen, dass 
 
 \bgroup
 \definecolor{darkgreen}{rgb}{0,0.6,0}
@@ -265,7 +272,7 @@ Die {\color{darkgreen}grünen} Linien zeigen, welche Genauigkeit mit verschieden
 überhaupt noch möglich ist.
 Der \texttt{float}-Typ hat eine Mantisse von 24 bit, eine Zahl $m$ ist
 daher nur unterscheidbar von $m(1+\epsilon)$, wenn $\epsilon > 2^{-24}$.
-Dies entspricht $24*\log_10(2) = 7.22$ Dezimalstellen.
+Dies entspricht $24*\log_{10}(2) = 7.22$ Dezimalstellen.
 Die {\color{darkgreen}grüne} Linie für den \texttt{float}-Typ ist daher
 $7.22$ unter dem Maximum der Terme Exponentialreihe eingetragen.
 
@@ -278,4 +285,124 @@ Die {\color{darkgreen}grünen} Linien in Abbildung~\ref{buch:figure:expversch}
 befinden sich ungefähr dort, wo die gefundenen Werte
 eingetragen werden müssten.
 \egroup
+
+\subsubsection{Summationsreihenfolge}
+Das Beispiel zur Exponentialfunktion hat gezeigt, wie Verschmierung
+die Präzision des Resultates vollständig ausgelöscht hat.
+Ein weniger dramatischer Genauigkeitsverlust kann schon bei wenigen
+Summanden stark unterschiedlicher Grössenordnung auftreten, wie das
+folgende Beispiel aus \cite{buch:kahan-summation} zeigt.
+\begin{center}
+\begin{tabular}{>{$}r<{$}r>{$}r<{$}}
+ \textrm{exakte Rechnung}      &\hspace*{2cm}&\textrm{nacheinander} \\[5pt]
+10000.0\phantom{0000}&& 10000.0\phantom{0000}\\
++\phantom{0000}3.14159          &&+\phantom{0000}3.14159          \\ \cline{3-3}
+                     && 10003.14159          \\
+                     && 10003.1\phantom{0000}\\
++\phantom{0000}
+    2.71828          &&+\phantom{0000}2.71828          \\\cline{1-1} \cline{3-3}
+10005.85987          && 10005.81828          \\
+10005.9\phantom{0000}&& 10005.8\phantom{0000}\\
+\end{tabular}
+\end{center}
+Links ist die exakte Addition mit Rundung auf sechs signifikante
+Stellen am Schluss durchgeführt, rechts steht die Addition mit Rundung 
+nach jedem Term.
+Bereits nach drei Termen zeigt sich ein Unterschied in der letzten Stelle,
+der Verschmierung zuzuschreiben ist.
+
+Die unvermeidliche Rundung nach jeder Addition beinträchtigt die Berechnung
+jeder unendlichen Summe
+\[
+s_n
+=
+\sum_{k=0}^n a_k.
+\]
+Die naive Berechnung in der Reihenfolge aufsteigender $k$ wird in den
+meisten Fällen die Reihenfolge kleiner werdender Terme sein.
+Für genügend grosses $k$ werden die zusätzlichen Terme von ähnlicher 
+Grössenordnung sein wie die Rundungsfehler, die sich bei den ersten
+Termen bereits gebildet haben.
+
+Die Reihenfolge abnehmender $k$ bietet die Chance, dass Rundungsfehler,
+die bei der Addition kleiner Terme entstanden sind, bei der Addition
+grösserer Terme mit kleinerem $k$ verschwinden im neuen Rundungsfehler
+verschwinden.
+Dies geschieht allerdings nur, wenn die Beträge der Terme schneller 
+wachsen als die Rundungsfehler in den kleinen Termen.
+
+\subsubsection{Kahan-Summationsalgorithmus}
+Der Kahan-Summationsalgorithmus versucht, über die sich ansammelnden
+\index{Kahan-Summation}
+Rundungsfehler in den niederwertigen Stellen in einer separaten 
+Variable Buch zu führen.
+Um das Prinzip zu verstehen, sei also $s_{n-1}$ eine Teilsumme und $a_n$ der
+nächste Term der zur Summe hinzugefügt werden soll. 
+Die Summe $s_n=s_{n-1} + t_n$ wird natürlich gerundet.
+Die Differenz $c_n = (s_n - s_{n-1}) - a_n$, genau in der Reihenfolge
+der Klammern ausgewertet, enthält die durch Rundung verlorenen Stellen.
+
+Der nächste Summand $a_{n+1}$ dürfte kleiner als die Summe $s_{n}$, 
+man kann ihn daher um den Betrag $c_n$ korrigieren und damit verlorene
+Genauigkeit wiederherstellen.
+Wir addieren daher $\bar a_{n+1} = a_{n+1}-c_n$ anstelle von $a_{n+1}$
+und erhalten die Summe $s_{n+1} = s_n + \bar{a}_{n+1}$.
+Natürlich können wir auch hier wieder den Fehler als
+$c_{n+1} = (s_{n+1} - s_{n}) - \bar{a}_{n+1}$ berechnen.
+Damit erhalten wir den folgenden Algorithmus.
+\lstinputlisting[style=C]{chapters/10-arithmetik/kahan.c}
+Er verwendet die Funktion \texttt{a(i)}, welche den Term mit Index $i$
+der Summe berechnet.
+Die Kahan-Summation vervierfacht die Anzahl der Additionen hat aber das
+Potential die Akkumulation von Rundungsfehlern fast vollständig zu 
+eliminieren.
+
+\begin{beispiel}
+Die harmonische Reihe 
+\[
+h_n
+=
+\sum_{k=1}^n \frac{1}{k}
+> \int_1^{n+1} \frac1x\,dx = \log(n+1)
+\]
+divergiert, aber sehr langsam.
+Beim numerischen Aufsummieren gibt es ausgiebig Gelegenheit für 
+Genauigkeitsverlust.
+Am akutesten ist der Verlust, wenn man die Summe mit dem grössten
+Term $k=1$ beginnt, eine kleine Verbesserung ist von der umgekehrten
+Reihenfolge zu erwarten.
+
+\begin{table}
+\centering
+\begin{tabular}{|l|>{$}r<{$}|>{$}r<{$}|}
+\hline
+Methode         &\texttt{float}&\texttt{long double}\\
+\hline
+vorwärts        &\underline{1}5.403682{\color{gray}70}& 18.99789641385390515 \\
+rückwärts       &\underline{18}.807918{\color{gray}55}& 18.99789641385389798 \\
+Kahan-Summation &\underline{18.997896}{\color{gray}19}& 18.99789641385389827 \\
+\hline
+\end{tabular}
+\caption{Berechnung der Summe $h_n$ der harmonischen Reihe für $h=10^8$
+mit verschiedenen Methoden.
+\label{buch:table:kahan}}
+\end{table}
+
+Die Resultate der Berechnung von $h_{10^8}$ mit dem \texttt{float}
+Datentyp sind in Tabelle~\ref{buch:table:kahan} zusammengestellt.
+Die naheliegende Summe beginnend beim ersten Term führt auf ein
+unbrauchbares Resultat.
+Beginnt man mit dem kleinsten Term, könnten die Rundungsfehler durch
+die späteren grösseren Terme übertönt werden, leider divergiert die
+Summe so langsam, dass damit nicht alle Fehler zum Verschwinden 
+gebracht werden können.
+Es sind nur gerade die Stellen vor dem Komma korrekt.
+Die Kahan-Summation vermeidet dieses Problem vollständig.
+
+Zum Vergleich ist in der Spalte rechts in Tabelle~\ref{buch:table:kahan}
+die Summe berechnet mit dem Typ \texttt{long double} dargestellt.
+Dies zeigt, dass alle signifikanten Stellen der Kahan-Summation korrekt
+sind.
+\end{beispiel}
+
 

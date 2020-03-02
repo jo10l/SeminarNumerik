@@ -1,0 +1,259 @@
+%
+% gausseidel.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Iterative Gleichungslösung nach Gauss-Seidel
+\label{buch:section:gaussseidel}}
+\rhead{Gauss-Seidel-Iteration}
+Gegeben ist eine lineares Gleichungssystem von $n$ Gleichungen mit
+$n$ Unbekannten, welches wir als
+\begin{equation}
+\begin{linsys}{5}
+a_{11}x_1 &+& a_{12}x_2 &+& \dots  \hspace*{7pt}&+& a_{1n}x_n &=& b_1 \\
+a_{21}x_1 &+& a_{22}x_2 &+& \dots  \hspace*{7pt}&+& a_{2n}x_n &=& b_2 \\
+\vdots\hspace*{5pt}  & & \vdots\hspace*{5pt}  & & \ddots \hspace*{7pt}& & \vdots\hspace*{5pt}  & & \vdots\hspace*{5pt} \\
+a_{21}x_1 &+& a_{n2}x_2 &+& \dots  \hspace*{7pt}&+& a_{nn}x_n &=& b_n
+\end{linsys}
+\label{buch:eqn:linalg:system}
+\end{equation}
+Abgekürzt wird das Gleichungssystem auch $Ax=b$ geschrieben, wobei $A=(a_{ij})$
+die Koeffizientenmatrix ist, $x=(x_k)$ der Vektor der Unbekannten
+und $b=(b_k)$ der Vektor der rechten Seiten.
+
+%
+% Iterative Lösung
+%
+\subsection{Iterative Lösung nach Gauss-Seidel
+\label{buch:subsection:gauss-seidel}}
+Jede der Gleichungen \eqref{buch:eqn:linalg:system} kann nach Variablen
+aufgelöst werden, sofern der zugehörige Koeffizient von $0$ verschieden ist.
+Gleichung $k$ in \eqref{buch:eqn:linalg:system} ist
+\[
+a_{k1}x_1 + a_{k2}x_2 + \dots + a_{kk}x_k + \dots a_{kn}x_n = b_k
+\]
+Aufgelöst nach $x_k$ ist dies
+\[
+x_k = \frac1{a_{kk}} (b_k - a_{k1}x_1 - a_{k2}x_2 - \dots - a_{kn}x_n),
+\]
+sofern $a_{kk}\ne 0$.
+Diese Gleichung kann dazu verwendet werden, die Werte für die Unbekannten
+zu verbessern.
+
+Wir verwenden daher die Notation $x^{(m)}$ für die $m$-te Approximation
+der Lösung.
+Mit dieser Notation können wir die Iterations 
+
+\begin{satz}[Gauss-Seidel-Iteration]
+Unter geeigneten Voraussetzungen konvergiert die Folge $x^{(m)}$
+definiert durch
+\begin{equation}
+x_k^{(m)}
+=
+b_k  - a_{k1}x_1^{(m)} - \dots - a_{k,k-1}x_{k-1}^{(m)}
+- a_{k,k+1}x_{k+1}^{(m-1)} - \dots - a_{kn}x_n^{(m-1)}
+\label{buch:eqn:gs:iteration}
+\end{equation}
+mit Startwert $x^{(0)}=0$
+konvergiert gegen die Lösung $x$ des Gleichungssystems $Ax=b$.
+\end{satz}
+
+In Abschnitt~\ref{buch:subsection:konvergenzbedingung} werden die
+Bedingungen genauer untersucht, die Konvergenz des Verfahrens gegen die
+Lösung garantieren können.
+
+
+\begin{beispiel}
+Sei das Gleichungssystem gegeben durch
+\begin{equation}
+A=\begin{pmatrix}
+2&1&1\\
+1&3&1\\
+1&1&4
+\end{pmatrix}
+\qquad\text{und}\qquad
+b=\begin{pmatrix}
+7\\6\\5
+\end{pmatrix}.
+\label{buch:eqn:gsbeispiel}
+\end{equation}
+Die Berechnung der Folge $x^{(m)}$ nach
+\eqref{buch:eqn:gs:iteration}
+liefert die Werte in Tabelle~\ref{buch:table:gaussseidelbeispiel}.
+Die Konvergenz scheint linear zu sein.
+\begin{table}
+\centering
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}>{$}r<{$}>{$}r<{$}|}
+\hline
+ m & x_1^{(m)} & x_2^{(m)} & x_3^{(m)} \\
+\hline
+ 0 & 0.0000000             & 0.0000000             & 0.0000000             \\
+ 1 & 3.5000000             & 0.8333333             & 0.1666667             \\
+ 2 & 3.0000000             & 0.9444444             & 0.2638889             \\
+ 3 & \underline{2.8}958333 & \underline{0.94}67593 & \underline{0.2}893519 \\
+ 4 & \underline{2.88}19444 & \underline{0.94}29012 & \underline{0.29}37886 \\
+ 5 & \underline{2.88}16552 & \underline{0.941}5187 & \underline{0.294}2065 \\
+ 6 & \underline{2.882}1373 & \underline{0.941}2187 & \underline{0.2941}610 \\
+ 7 & \underline{2.8823}102 & \underline{0.94117}62 & \underline{0.2941}284 \\
+ 8 & \underline{2.8823}476 & \underline{0.94117}47 & \underline{0.29411}94 \\
+ 9 & \underline{2.882353}1 & \underline{0.94117}59 & \underline{0.294117}7 \\
+10 & \underline{2.882353}1 & \underline{0.9411764} & \underline{0.2941176} \\
+\hline
+\infty&   2.8823529 & 0.9411764 & 0.2941176 \\
+\hline
+\end{tabular}
+\caption{Lösung des Gleichungssystems mit Koeffizientenmatrix $A$ und
+rechter Seite $b$ aus \eqref{buch:eqn:gsbeispiel} mit Hilfe des
+Gauss-Seidel-Algorithmus.
+In der letzten Zeile die exakten Resultate, erhalten mit dem
+Gauss-Algorithmus.
+\label{buch:table:gaussseidelbeispiel}}
+\end{table}
+\end{beispiel}
+
+
+%
+% Matrixformulierung
+%
+\subsection{Matrixformulierung
+\label{buch:subsection:matrixformulierung}}
+Die Iterationsformel~\eqref{buch:eqn:gs:iteration} verknüpft bei der
+Berechnung von $x^{(m)}$ Komponenten von $x^{(m-1)}$ und $x^{(m)}$,
+was es etwas schwieriger macht, die Iteration als Fixpunktiteration
+der Form $x^{(m)} = Fx^{(m-1)}$ zu schreiben mit einer $n\times n$-Matrix $F$.
+Um dies zu erreichen zerlegen wir die Matrix $A$ in drei Summanden
+$A=L+D+U$, wobei $L$ eine untere Dreiecksmatrix mit Nullen auf der 
+Diagonalen sein soll, $D$ eine Diagonalmatrix und $U$ eine obere
+Dreiecksmatrix mit  Nullen auf der Diagonalen, also
+\begin{align*}
+L
+&=
+\begin{pmatrix}
+0        &0        &0        &\dots   & 0         & 0      \\
+a_{21}   &0        &0        &\dots   & 0         & 0      \\
+a_{31}   &a_{3,2}  &0        &\dots   & 0         & 0      \\
+\vdots   &\vdots   &\ddots   &\ddots  & \vdots    & \vdots \\
+a_{n-1,1}&a_{n-1,2}&a_{n-1,3}&\dots   & 0         & 0      \\
+a_{n1}   &a_{n2}   &a_{n3}   &\dots   & a_{n,n-1} & 0
+\end{pmatrix},
+\qquad
+U
+=
+\begin{pmatrix}
+0      & a_{12} & \dots  & a_{1,n-2} & a_{1,n-1}   & a_{1n} \\
+0      & 0      & \dots  & a_{1,n-2} & a_{2,n-1}   & a_{2n} \\
+\vdots & \vdots & \ddots & \ddots    &\vdots       & \vdots \\
+0      & 0      & \dots  & 0         & a_{n-2,n-1} & a_{n-2,n} \\
+0      & 0      & \dots  & 0         & 0           & a_{n-1,n} \\
+0      & 0      & \dots  & 0         & 0           & 0
+\end{pmatrix}
+\\
+D
+&=
+\operatorname{diag} (a_{11}, a_{22},\dots , a_{n-1,n-1}, a_{nn})
+\end{align*}
+Die Iterationsformel~\eqref{buch:eqn:gs:iteration} lässt sich
+mit diesen Matrizen schreiben als
+\[
+Dx^{(m)} = b - Lx^{(m)} - Ux^{(m-1)}.
+\]
+Auflösen nach $x^{(m)}$ führt auf
+\begin{equation}
+x^{(m)} = (D+L)^{-1} ( b - Ux^{(m-1)} ).
+\label{buch:eqn:gs:fixpunkt}
+\end{equation}
+Die Form \eqref{buch:eqn:gs:fixpunkt} für das Gauss-Seidel-Iterationsverfahren
+ist jetzt die einer Fixpunkt-Iteration.
+
+%
+% Konvergenzbedingung
+%
+\subsection{Konvergenzbedingung
+\label{buch:subsection:konvergenzbedingung}}
+In Kapitel~\ref{chapter:berechnung} haben wir gelernt, dass eine
+Fixpunktiteration konvergiert, wenn der Betrag der Ableitung $<1$ ist.
+Hier liegt jedoch eine Matrix-Iteration mit der Abbildung
+\[
+F(x)
+=
+\underbrace{(D+L)^{-1} b}_{\displaystyle=c} - (D+L)^{-1}U x
+=
+c - (D+L)^{-1}Ux
+\]
+vor.
+Die Ableitung ist daher ebenfalls eine Matrix, nämlich
+\[
+D_xF = (D+L)^{-1}U,
+\]
+und der Fehler der Iteration $m$ ist
+\begin{equation}
+\delta_m = (D+L)^{-1}U \delta_{m-1}.
+\label{buch:gs:fehler}
+\end{equation}
+Konvergenz kann also nur vorliegen, wenn dieser Vektor im Laufe der
+Iteration immer kleiner wird.
+Dies ist zum Beispiel dann der Fall, wenn die {\em Norm} der Matrix
+kleiner als $1$ ist:
+
+\begin{definition}
+Die {\em Norm} einer Matrix $M$ ist
+\[
+\|M\|
+=
+\max\{|Mx|\,|\, x\in\mathbb R^n\wedge |x|=1\}.
+\]
+Für einen Vektor $x\in\mathbb R^n$ gilt $|Mx| \le \|M\|\cdot |x|$.
+\end{definition}
+
+Die Bedingung \eqref{buch:gs:fehler} bedeutet jedoch nicht,
+dass die Norm der Ableitung $<1$ sein muss, es genügt, wenn
+genügend hohe Potenzen der Ableitung eine Norm $<1$ haben.
+
+\begin{beispiel}
+Die Matrix
+\[
+M=\begin{pmatrix}
+0&2\\
+\frac13&0
+\end{pmatrix}
+\]
+hat Norm
+\[
+\|M\|
+=
+\max_{|x|=1} |Mx| 
+=
+\max_{t\in\mathbb R} \sqrt{2^2\cos^2 t +\frac1{3^2}\sin^2t} \ge 2.
+\]
+Da aber
+\[
+M^2 = \begin{pmatrix}
+\frac{2}{3}&0\\
+0&\frac{2}{3}
+\end{pmatrix}
+\qquad\Rightarrow\qquad \|M^2\|=\frac23
+\]
+ist, wird eine Iteration mit Ableitungsmatrix $M$ trotzdem
+konvergieren, weil der Fehler nach jedem zweiten Schritt um den
+Faktor $\frac23$ kleiner geworden ist.
+\end{beispiel}
+
+Dies führt uns auf das Konzept des Spektralradius
+
+\begin{definition}
+Der {\em Spektralradius} der Matrix $M$ ist
+\[
+\varrho(M)
+=
+\limsup_{n\to\infty} \|A^n\|^\frac1n.
+\]
+\end{definition}
+
+Das Gauss-Seidel-Iterationsverfahren ist also genau dann für alle
+Startwerte $x_0$ linear konvergent, wenn der Spektralradius
+\[
+\varrho\bigl( (L+D)^{-1}U \bigr) < 1
+\]
+ist.
+
+

@@ -14,6 +14,9 @@ In diesem Abschnitt wollen wir das Prinzip veranschaulichen, es
 soll später bei der Berechnung von Integralen systematisch
 angewendet werden.
 
+%
+% Lineare und quadratische Konvergenz
+%
 \subsection{Lineare und quadratische Konvergenz
 \label{buch:subsection:linearekonvergenz}}
 Wir betrachten zwei Beispiele von Iterationsfolgen genauer, die
@@ -140,6 +143,9 @@ finden wir für $f'(x^*)=f'(\sqrt{a}) = 0$.
 Die Iterationsfolge muss also quadratisch konvergieren, wie wir
 im vorangegangenen Abschnitt auch direkt nachgerechnet haben.
 
+%
+% Konvergenzbeschleunigung
+%
 \subsection{Konvergenzbeschleunigung
 \label{buch:subsection:konvergenzbeschleunigung}}
 Die genaue Kenntnis des Fehlers kann auch ermöglichen, einen Teil
@@ -154,7 +160,8 @@ sich durch quadrieren und lösen der quadratische
 Gleichung
 \begin{align*}
 x^{*2} &= x^*+a\\
-x^{*2} - x^*-a&=\\
+x^{*2} - x^*-a&=0\\
+\Rightarrow\qquad
 x^* &= \frac12 +\sqrt{\frac14+a}
 \end{align*}
 finden lässt.
@@ -177,9 +184,9 @@ Der Fehler wird also in jeder Iteration um den Faktor
 f'(x^*) = \frac1{2\sqrt{x^*+a}}=\frac1{2x^*}
 \]
 kleiner.
-Wir wissen also dass der Fehler in jeder Iteration um den gleichen Faktor
-kleiner wird, aber da wir $x^*$ noch nicht kennen, kennen wir den Faktor
-noch nicht.
+Wir wissen somit, dass der Fehler in jeder Iteration um den gleichen Faktor
+kleiner wird, aber da wir $x^*$ noch nicht kennen, kennen wir den Wert
+des Faktors noch nicht.
 
 Drei aufeinanderfolgende Folgenglieder sind
 \begin{align}

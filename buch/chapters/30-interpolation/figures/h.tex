@@ -14,7 +14,7 @@
 \def\skala{5}
 \begin{tikzpicture}[>=latex,thick,scale=\skala]
 
-\begin{scope}[yshift=0.6cm]
+\begin{scope}[yshift=0.5cm]
 \draw[line width=1.5pt,color=red]
 	plot[domain=0:1,samples=100] ({\x},{(1+2*\x)*(1-\x)*(1-\x)});
 \draw[->] ({-0.1/\skala},0)--(1.1,0) coordinate[label={$x$}];
@@ -27,7 +27,7 @@
 \node at ({-0.1/\skala},1) [left] {$1$};
 \end{scope}
 
-\begin{scope}[yshift=0.6cm,xshift=1.2cm]
+\begin{scope}[yshift=0.5cm,xshift=1.2cm]
 \draw[line width=1.5pt,color=red]
 	plot[domain=0:1,samples=100] ({\x},{(3-2*\x)*\x*\x});
 \draw[->] ({-0.1/\skala},0)--(1.1,0) coordinate[label={$x$}];
@@ -44,22 +44,22 @@
 \draw[line width=1.5pt,color=red]
 	plot[domain=0:1,samples=100] ({\x},{\x*(1-\x)*(1-\x)});
 \draw[->] ({-0.1/\skala},0)--(1.1,0) coordinate[label={$x$}];
-\draw[->] (0,{-0.1/\skala})--(0,0.4) coordinate[label={right:$y$}];
+\draw[->] (0,{-0.2})--(0,0.35) coordinate[label={right:$y$}];
 \draw (1,{0.1/\skala})--(1,{-0.1/\skala});
 \node at (1,{-0.1/\skala}) [below] {$1$};
-\node at (0,{-0.1/\skala}) [below] {$0$};
-\node at (0.5,0.3) {$H_0^1(x)$};
+%\node at (0,{-0.1/\skala}) [below] {$0$};
+\node at (0.5,0.25) {$H_0^1(x)$};
 \end{scope}
 
 \begin{scope}[xshift=1.2cm]
 \draw[line width=1.5pt,color=red]
-	plot[domain=0:1,samples=100] ({\x},{\x*\x*(1-\x)});
+	plot[domain=0:1,samples=100] ({\x},{-\x*\x*(1-\x)});
 \draw[->] ({-0.1/\skala},0)--(1.1,0) coordinate[label={$x$}];
-\draw[->] (0,{-0.1/\skala})--(0,0.4) coordinate[label={right:$y$}];
+\draw[->] (0,{-0.2})--(0,0.35) coordinate[label={right:$y$}];
 \draw (1,{0.1/\skala})--(1,{-0.1/\skala});
 \node at (1,{-0.1/\skala}) [below] {$1$};
-\node at (0,{-0.1/\skala}) [below] {$0$};
-\node at (0.5,0.3) {$H_1^1(x)$};
+%\node at (0,{-0.1/\skala}) [below] {$0$};
+\node at (0.5,0.25) {$H_1^1(x)$};
 \end{scope}
 
 \end{tikzpicture}

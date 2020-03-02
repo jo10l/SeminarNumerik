@@ -1,0 +1,87 @@
+Betrachten Sie die Funktion
+\[
+f(x) = \frac{1-\cos x}{x}.
+\]
+\begin{teilaufgaben}
+\item Berechnen Sie $f(10^{-10})$.
+\item Berechnen Sie $\displaystyle \lim_{x\to 0} f(x)$.
+\item Was für ein Problem tritt bei der numerischen Berechnung von
+$f(x)$ für kleine Werte von $x$ auf?
+\item Schätzen Sie ab, wie klein  $x$ maximal werden darf, damit
+die naive Berechnung von $f(x)$ gemäss obiger Formel mit
+\texttt{float}- oder \texttt{double}-Zahlen einen vom in a) berechneten
+Grenzwert verschiedenen Wert liefert.
+\item Finden Sie eine Berechnungsformel für $f(x)$, die auch für kleine
+Werte von $x$ funktioniert.
+\end{teilaufgaben}
+
+\begin{loesung}
+\begin{teilaufgaben}
+\item
+Mit jedem Datentyp findet man $f(10^{-10})=0$.
+\item
+Der Grenzwert kann mit Hilfe der Regel von de l'Hospital berechnet werden:
+\[
+\lim_{x\to 0}f(x)
+=
+\lim_{x\to 0}\frac{1-\cos x}{x}
+=
+\lim_{x\to 0}\frac{\frac{d}{dx}(1-\cos x)}{\frac{d}{dx} x}
+=
+\lim_{x\to 0} \frac{\sin x}{1} = 0.
+\]
+\item
+Der Wert von $\cos x$ ist sehr nahe bei $1$, daher tritt Auslöschung auf.
+\item
+Die Taylor-Reihe für $\cos x$ ist
+\[
+\cos x = 1 -\frac1{2!}x^2 + \frac{1}{4!}x^4 - \frac{1}{6!}x^6 +\dots
+\]
+Der Funktionswert von $f(x)$ lässt sich nicht mehr von $0$ unterscheiden,
+wenn der zweite Term der Reihe sich nicht mehr von $1$ unterscheiden lässt.
+Dies ist genau der Wert für $\varepsilon$ für den verwendeten Datentyp,
+den man der Tabelle~\ref{buch:table:limits} entnehmen kann.
+Daraus leitet man ab:
+\[
+\frac12x^2 = \varepsilon
+\qquad\Rightarrow\qquad
+x=\sqrt{2\varepsilon}.
+\]
+Für \texttt{float} findet man $x\simeq 0.000488281$,
+für \texttt{double} dagegen $x\simeq 2.10734\cdot 10^{-8}$.
+\item
+Die Halbwinkelformel für die $\sin$-Funktion liefert
+\[
+\sin^2 \frac{x}2
+=
+\frac{1-\cos x}{2}
+\qquad\Rightarrow\qquad
+f(x)
+=
+\frac{1-\cos x}{x}
+=
+\frac{2\sin^2(x/2)}{x}
+=
+\frac{2}{x}\sin^2\frac{x}{2}
+=:
+g(x).
+\]
+Der Ausdruck $g(x)$ leidet nicht unter Auslöschung.
+\qedhere
+\end{teilaufgaben}
+\begin{figure}
+\centering
+\includeagraphics[]{1001/numerisch.pdf}
+\caption{Numerische Berechnung der Funktion $f(x)$ von Aufgabe 1.1 für
+kleine Werte von $x$.
+Die rote Kurve zeigt die Unzuverlässigkeit der Resultate infolge
+Auslöschung.
+Die blaue Kurve zeigt die Berechnung mit der verbesserten Funktion
+$g(x)$, in der Auslöschung vermieden wird.
+\label{buch:figure:1001}}
+\end{figure}
+Abbildung~\ref{buch:figure:1001} vergleicht die beiden Ausdrücke
+$f(x)$ und $g(x)$ zur Berechnung der gegebenen Funktion.
+\end{loesung}
+
+
