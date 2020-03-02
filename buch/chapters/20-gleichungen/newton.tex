@@ -7,10 +7,13 @@
 \label{buch:section:newtion}}
 \rhead{Newton-Verfahren}
 Die bisher vorgestellten Verfahren zur Bestimmung einer Nullstelle
-$x^*$ der Funktion $f$, $f(x^*)=0$ sind eher langsam.
+$x^*$ der Funktion $f$, $f(x^*)=0$, sind eher langsam.
 Dafür war nicht mehr als Stetigkeit nötig, um Konvergenz des Verfahrens
 sicherzustellen.
 
+%
+% Analytischer Ansatz
+%
 \subsection{Analytischer Ansatz für ein quadratisch konvergentes Verfahren
 \label{buch:subsection:newton:analytisch}}
 In Abschnitt~\ref{buch:subsection:linearekonvergenz} wurde dargestellt,
@@ -61,6 +64,22 @@ für Startwerte $x_0$ genügend nahe bei $x^*$ quadratisch gegen die
 Nullstelle.
 \end{satz}
 
+Das Sekantenverfahren hat darunter gelitten, dass die Berechnung
+der der nächsten Approximation mit Hilfe der Formel 
+\eqref{buch:eqn:sekanten-iteration} von umso stärker Auslöschung
+geplagt ist, je näher man bereits an der Lösung ist.
+Die Iterationsformel
+\eqref{buch:equation:newtoniteration}
+für die Newton-Iteration hat dieses Problem nicht.
+In \eqref{buch:equation:newtoniteration} wird der aktuelle Wert $x_n$
+um einen Korrekturbetrag korrigiert, der proportional zu $f(x_n)$
+verkleinert wird.
+Je genauer der Wert $x_n$ schon ist, desto kleiner wird auch die
+Korrektur.
+
+%
+% Geometrische Interpretation
+%
 \subsection{Geometrische Interpretation des Newton-Verfahrens}
 \begin{figure}
 \centering
@@ -98,6 +117,9 @@ Die vom Newton-Verfahren berechnete Korrektur ist also die optimale
 Korrektur, die sich berechnen lässt aus Funktionswert und erster Ableitung
 an der Stelle $x_n$.
 
+%
+% Wurzeln
+%
 \subsection{Wurzeln}
 Als Beispiel berechnen wir die $k$-te Wurzel einer positiven reellen
 Zahl $a$, wir lösen also die Gleichung
@@ -152,6 +174,9 @@ einige Iterationen braucht, bis die Konvergenz quadratisch wird.
 \label{buch:table:wurzel5newton}}
 \end{table}
 
+%
+% Newton-Verfahren in R^n
+%
 \subsection{Newton-Verfahren in $\mathbb R^n$}
 In der bisher beschriebenen Form erlaubt das Newton-Verfahren, 
 Nullstellen von rellwertigen Funktion zu finden.
@@ -361,6 +386,9 @@ Tabelle~\ref{buch:figure:newtonpolar} gegeben.
 Die quadratische Konvergenz ist wieder deutlich erkennbar.
 \end{beispiel}
 
+%
+% Der Fahll f'(x)=0
+%
 \subsection{Der Fall $f'(x^*)=0$
 \label{buch:subsection:newton0}}
 Im Fall $f'(x^*)=0$ versagt die Iterationsformel des Newtonverfahrens.
@@ -413,24 +441,30 @@ Der Fehler halbiert sich in jeder Interation.
 Die Folge $(x_n)_{n\in\mathbb N}$ konvergiert also immer noch,
 aber die Konvergenz ist nur noch linear.
 
+%
+% Vergleich mit dem Sekanten-Verfahren
+%
 \subsection{Vergleich mit dem Sekanten-Verfahren
 \label{buch:subsection:newtonsekanten}}
 Die Ähnlichkeit des Newton-Verfahrens mit dem Sekantenverfahren ist 
 unübersehbar.
-Um dies deutlich zu machen, berechnen wir den Grenzfall $x_{n-1}\to x_n$:
-\begin{align*}
-x_{n+1}
-&=
-\frac{x_{n-1}f(x_n)-x_nf(x_{n-1})}{f(x_{n})-f(x_{n-1})}
-=
-\frac{x_{n-1}f(x_n){\color{darkred}\mathstrut-x_{n-1}f(x_{n-1})+x_{n-1}f(x_{n-1})}-x_nf(x_{n-1})}{f(x_{n})-f(x_{n-1})}
-\\
-&=
-x_{n-1} - f(x_{n-1})\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}.
-\intertext{
+Um dies deutlich zu machen, berechnen wir den Grenzfall $x_{n-1}\to x_n$
+mit Hilfe der Form~\eqref{buch:sekante:stabil}.
+%\begin{align*}
+%x_{n+1}
+%&=
+%\frac{x_{n-1}f(x_n)-x_nf(x_{n-1})}{f(x_{n})-f(x_{n-1})}
+%=
+%\frac{x_{n-1}f(x_n){\color{darkred}\mathstrut-x_{n-1}f(x_{n-1})+x_{n-1}f(x_{n-1})}-x_nf(x_{n-1})}{f(x_{n})-f(x_{n-1})}
+%\\
+%&=
+%x_{n-1} - f(x_{n-1})\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}.
+%\intertext{
 Beim Grenzübergang $x_{n-1}\to x_n$ geht der Quotient auf der rechten
 Seite in den Kehrwert der Ableitung $f'(x_n)$ über.
-Der Grenzfall des Sekantenverfahrens ist daher}
+Der Grenzfall des Sekantenverfahrens ist daher
+%}
+\begin{align*}
 x_{n+1}
 &=
 x_n -\frac{f(x_n)}{f'(x_n)},
@@ -443,6 +477,9 @@ approximiert wird, sondern exakt zur Verfügung steht.
 Damit ist das Newton-Verfahren nicht anfällig auf die Auslöschung, die
 die Zuverlässigkeit des Sekantenverfahrens beeinträchtigt.
 
+%
+% Nullstellen on Polynomen
+%
 \subsection{Nullstellen von Polynomen
 \label{buch:subsection:polynomnullstellen}}
 Das Newton-Verfahren verlang, dass die Ableitung $f'(x_n)$ genau
@@ -471,11 +508,11 @@ Koeffizienten und $n$ Additionen.
 Zudem besteht die Gefahr von Verschmierung.
 
 Durch Ausklammern möglichst vieler Faktoren $x$ findet man die
-Formel,
+Formel
 \begin{align}
 f(x)
 &=
-((\dots((a_nx+a_{n-1})x+a_{n-2})x+\dots)x+a_1)x+a_0
+((\dots((a_nx+a_{n-1})x+a_{n-2})x+\dots)x+a_1)x+a_0,
 \label{buch:equation:polynomwert}
 \end{align}
 welche den Funktionswert in genau $n$ Multiplikationen und $n$ Additionen
@@ -721,17 +758,17 @@ Man nennt diesen Prozess {\em Deflation}.
 n& x_n & f(x_n) & f'(x_n) & q_n(X) \\
 \hline
 0&-10.000000& -182.00000&129.00000& X^2-X+19\\
-1&- 8.589148&  -38.99232& 75.71571& X^2+0.4108524323 X+5.47112751\\
-2& -8.074164&   -4.31028& 59.24143& X^2+0.9258356094 X+1.524651051\\
-3& -8.001407&   -0.08021& 57.04221& X^2+0.9985933304 X+1.009848595\\
-4& -8.000000&   -0.00005& 57.00003& X^2+0.9999990463 X+1.000006676\\
-5& -8.000000&    0.00000& 57.00000& X^2+X+1\\
+1&- \underline{8}.589148&  -38.99232& 75.71571& X^2+0.4108524323 X+5.47112751\\
+2& -\underline{8.0}74164&   -4.31028& 59.24143& X^2+0.9258356094 X+1.524651051\\
+3& -\underline{8.00}1407&   -0.08021& 57.04221& X^2+0.9985933304 X+1.009848595\\
+4& -\underline{8.000000}&   -0.00005& 57.00003& X^2+0.9999990463 X+1.000006676\\
+5& -\underline{8.000000}&    0.00000& 57.00000& X^2+X+1\\
 \hline
 \end{tabular}
 \caption{Newton-Verfahren für das Polynom $f(X)=X^3+9X^2+9X+8$
 mit Hilfe des Horner-Schemas.
 Als Nebeneffekt bestimmt das Hornerschema in jeder Iteration auch
-den Quotieten $q_n(x)=f(x)/(x-x_n)$.
+den Quotienten $q_n(x)=f(x)/(x-x_n)$.
 \label{buch:table:hornernewton}}
 \end{table}
 Die reellen Nullstellen
@@ -750,6 +787,6 @@ $b^2-4ac= 1^2 -4\cdot1\cdot 1= - 3<0$, $q(X)$ hat also keine weiteren
 reellen Nullstellen.
 \end{beispiel}
 
-
+\input{chapters/20-gleichungen/normalverteilung.tex}
 
 

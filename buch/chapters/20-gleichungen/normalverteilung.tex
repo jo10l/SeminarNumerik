@@ -1,0 +1,103 @@
+%
+% normalverteilung.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapeprswil
+%
+\subsection{Inverse der Normalverteilungsfunktion
+\label{buch:subsection:inversenormal}}
+Das Integral der Standardnormalverteilungsdichte
+\[
+\Phi(x) = \int_{-\infty}^x e^{-t^2/2}\,dt
+\]
+kann nicht in geschlossener Form berechnet werden und erst recht
+nicht invertiert werden.
+Für die Anwendung wird jedoch die Umkehrfunktion benötigt, zu einem Wert
+$p\in[0,1]$ ist dasjenige $x$ zu finden, für welches $F(x)=p$ gilt.
+Im Beispiel auf Seite~\pageref{buch:beispiel:erfc} wurde gezeigt,
+wie die Fehlerfunktion
+\[
+\operatorname{erf}(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}\,dt
+\]
+dazu verwendet werden kann, die Normalverteilungsfunktion
+\[
+\Phi(x)
+=
+\frac12\biggl(1+\operatorname{erf}\biggl(\frac{x}{\sqrt{2}}\biggr)\biggr)
+\]
+zu berechnen.
+In diesem Abschnitt soll untersucht werden, wie zu gegebenen Funktionswert
+$p$ das zugehörige $x$ bestimmt werden kann.
+Es soll also die Gleichung
+\[
+\Phi(x)=p
+\qquad\Rightarrow\qquad
+f(x)=\frac12+\frac12\operatorname{erf}\biggl(\frac{x}{\sqrt{2}}\biggr)-p=0
+\]
+gelöst werden.
+
+\subsubsection{Sekantenverfahren}
+Die mit dem Sekantenverfahren gewonnen Iterationsfolge ist in der rechten
+Spalte in Tabelle~\ref{buch:table:normalnewton} dargestellt.
+Da die erste Ableitung von $f$ relativ langsam ändert, ist die Konvergenz
+zwar zunächst offenbar nur linear, beschleunigt sich dann aber auf fast
+quadratische Konvergenz, weil die Sekante die Tangente sehr gut approximiert,
+sich das Sekantenverfahren in ihrem Konvergenzverhalten also dem
+Newtonverfahren anzunähern beginnt.
+Wegen der unvermeidbaren Auslöschung bei der Berechnung der Sekantensteigung
+wird das Verfahren dann aber instabil, die Iteration bricht ab.
+Es können für den Typ \texttt{long double} nur etwa 18 signifikante
+Stellen gefunden werden, während das Newton-Verfahren noch drei weitere
+Stellen ermitteln kann.
+
+\subsubsection{Newton-Verfahren}
+Das Newton-Verfahren benötigt ausser dem Funktionswert auch noch die 
+Ableitung
+\[
+f'(x)
+=
+\frac{d}{dx}\frac{1}{\sqrt{\pi}}\int_0^{x/\sqrt{2}} e^{-t^2}\,dt
+=
+\frac{1}{\sqrt{2\pi}}e^{-x^2/2}.
+\]
+Damit wird die Iterationsformel für das Newton-Verfahren:
+\begin{equation}
+x_{n+1} = x_n - \frac{\sqrt{\pi}}{2\sqrt{2}}e^{2x_n^2}
+\biggl(\frac12+\operatorname{erf}(x_n) -p \biggr).
+\end{equation}
+Wie erwartet konvergiert die Iterationsfolge quadratisch für geeignete
+Startwerte (siehe Tabelle~\ref{buch:table:normalnewton}).
+Der Startwert $x_0=0$ funktioniert für jedes beliebige $p$.
+Bei weiter von $0$ entfernten Starwerte läuft man Gefahr, dass die Iteration
+zu betragsmässig grossen Werten $x$ springt, was dann zu einem Überlauf führt.
+
+\begin{table}
+\centering
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|}
+\hline
+ k &\textrm{$x_n$ nach Newtonverfahren}&\textrm{$x_n$ nach Sekantenverfahren}\\
+\hline
+ 0 &             0.00000000000000000000 &             0.00000000000000000000 \\
+ 1 & \underline{1}.12798272358394999736 & \underline{1}.00000000000000000000 \\
+ 2 & \underline{1.}50523868934241237280 & \underline{1}.31831529614238960517 \\
+ 3 & \underline{1.6}3077255164383121513 & \underline{1.}53246084663801306026 \\
+ 4 & \underline{1.644}69272791792957300 & \underline{1.6}2023672225157423321 \\
+ 5 & \underline{1.6448536}0566334308020 & \underline{1.64}272141855681471658 \\
+ 6 & \underline{1.644853626951472}02343 & \underline{1.6448}1100638619422225 \\
+ 7 & \underline{1.64485362695147239662} & \underline{1.644853}55229014184382 \\
+ 8 & \underline{1.64485362695147239662} & \underline{1.6448536269}4885539842 \\
+ 9 &                                    & \underline{1.64485362695147239}597 \\
+\hline
+\end{tabular}
+\caption{Newton-Iteration und Sekantenverfahren zur Bestimmung der Inversen
+der Verteilungsfunktion $\Phi(x)$ der Normalverteilung, berechnet mit dem Typ
+\texttt{long double}.
+Das Sekantenverfahren ist auch sehr schnell, da die Sekante bereits sehr gut
+mit der vom Newton-Verfahren verwendeten Tangente übereinstimmt.
+Wegen Auslöschung kann es allerdings nicht die volle Genauigkeit erreichen.
+\label{buch:table:normalnewton}}
+\end{table}
+
+
+
+
+

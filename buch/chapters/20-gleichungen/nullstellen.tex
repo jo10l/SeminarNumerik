@@ -29,6 +29,9 @@ In diesem Abschnitt untersuchen wir, wie verschiedene ergänzende Annahmen
 effizient zu finden.
 In keinem Fall werden wir allerdings Differenzierbarkeit von $f$ voraussetzen.
 
+%
+% Intervallhalbierung
+%
 \subsection{Intervallhalbierung
 \label{buch:subsection:intervallhalbierung}}
 Ist die Funktion stetig, sagt die grösse eines Funktionswertes immer
@@ -213,6 +216,9 @@ Damit kann man sehen, dass die berechnete Laufzeit auch für die
 grösseren Gleitkommatypen durch die Bitlänge der Mantisse gegeben ist.
 \end{beispiel}
 
+%
+% Sekanten-Verfahren
+%
 \subsection{Sekanten-Verfahren
 \label{buch:subsection:sekanten}}
 Das Intervallhalbierungsverfahren verwendet nicht mehr als die
@@ -225,12 +231,12 @@ Dazu wird Information darüber benötigt, wie schnell sich Funktionswerte
 Insbesondere muss davon ausgegangen werden können, dass die Steigung
 der Funktion über das betrachtete Interval nicht zu stark schwankt.
 Die Ableitung einer differenzierbaren Funktion kann diese Information
-liefern, es ist aber ausreichend, eine Lipshitz-Bedingung zu verlangen,
+liefern, es ist aber ausreichend, eine Lipschitz-Bedingung zu verlangen,
 die wie folgt definiert ist.
 
 \begin{definition}
 \label{buch:definition:lipshitz}
-Die Funktion $f\colon[a,b]\to\mathbb R$ erfüllt eine Lipshitz-Bedingung
+Die Funktion $f\colon[a,b]\to\mathbb R$ erfüllt eine Lipschitz-Bedingung
 zum Exponenten $\alpha$, wenn es eine Konstante $L$ gibt derart, dass
 \[
 |f(x)-f(y)|
@@ -243,12 +249,12 @@ ist.
 Eine Lipschitz-Bedingung limitiert, wie schnell sich der Wert
 einer Funktion ändern kann.
 Eine stetig differenzierbare Funktion erfüllt automatisch eine
-Lipshitz-Bedingung für $\alpha=1$, die Umkehrung gilt allerdings
+Lipschitz-Bedingung für $\alpha=1$, die Umkehrung gilt allerdings
 nicht.
 
 Sei jetzt $f\colon[a,b]\to\mathbb R$ wieder eine Funktion mit
 $f(a)<0$ und $f(b) > 0$.
-Wenn $f$ eine Lipshitz-Bedingung erfüllt, dann geben die
+Wenn $f$ eine Lipschitz-Bedingung erfüllt, dann geben die
 Werte $f(a)$ und $f(b)$ zusätzlich Information über die Lage
 der Nullstelle, die im Interval liegen muss.
 Da sich Funktionswerte nicht beliebig schnell ändern können,
@@ -348,11 +354,12 @@ beim Intervallhalbierungsverfahren.
 
 \begin{satz}[Sekanten-Verfahren]
 Sei $f\colon[a,b]\to\mathbb R$ eine stetig Funktion mit $f(a)<0$ und $f(b)>0$,
-die eine Lipshitz-Bedingung mit $\alpha=1$ erfüllt.
+die eine Lipschitz-Bedingung mit $\alpha=1$ erfüllt.
 Setzt man $x_{-1}=a$ und $x_0=b$ und konstruiert die Folge
-\[
+\begin{equation}
 x_{n+1} = \frac{x_{n-1}f(x_n) - x_nf(x_{n-1})}{f(x_{n})-f(x_{n-1})}.
-\]
+\label{buch:eqn:sekanten-iteration}
+\end{equation}
 Falls $a$ und $b$ nahe genug bei einer Nullstelle der Funktion $f$ ist,
 dann konvergiert die Folge $x_{n+1}$ gegen die Nullstelle.
 \end{satz}
@@ -360,6 +367,31 @@ dann konvergiert die Folge $x_{n+1}$ gegen die Nullstelle.
 \begin{proof}[Beweis]
 TODO
 \end{proof}
+
+Die Iterationsformel \eqref{buch:eqn:sekanten-iteration} hat den
+gravierenden Nachteil, dass in der Nähe der Lösung die beiden
+Grössen im Zähler und im Nenner fast gleich gross sind und damit
+starke Auslöschung auftreten wird.
+Die Umformung
+\begin{align}
+x_{n+1}
+&=
+\frac{x_{n-1}f(x_{n})-x_{n}f(x_{n-1})}{f(x_n)-f(x_{n-1})}
+=
+\frac{x_{n-1}f(x_{n})
+{\color{red}\mathstrut -x_{n-1}f(x_{n-1})+x_{n-1}f(x_{n-1})}
+-x_{n}f(x_{n-1})}{f(x_n)-f(x_{n-1})}
+\\
+&=x_{n-1} - f(x_{n-1})\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}
+\label{buch:sekante:stabil}
+\end{align}
+ist algebraisch identisch, jedoch wird in der letzten Form die Approximation
+$x_{n-1}$ um einen Getrag korrigiert, der umso kleiner wird, je besser
+$x_{n-1}$ die Nullstelle bereits approximiert und damit je kleiner
+$f(x_{n-1})$ ist.
+Der Bruch in \eqref{buch:sekante:stabil} kann jedoch immer noch
+erratische Werte annehmen und damit die Konvergenz des Verfahrens
+gefährden.
 
 Man beachte, dass die Bedingung an die Vorzeichen von $f(a)$ und $f(b)$
 nur dazu dient, die Existenz einer Nullstelle im Intervall zu garantieren.
