@@ -1,0 +1,38 @@
+%
+% instabil.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Instabilität und Kondition}
+\begin{columns}[t]
+\begin{column}{0.48\hsize}
+\begin{block}{Kondition}
+``Gute'' Kondition: Rundungsfehler werden nicht
+vergrössert
+\end{block}
+\uncover<2->{%
+Vermeiden:
+\begin{itemize}
+\item<3-> Empfindliche Abhängigkeit der Resultate von Parametern,
+\[
+\frac{\partial f}{\partial x} = \text{gross}
+\]
+\item<4-> Division durch kleine Nenner
+\end{itemize}}
+\end{column}
+\begin{column}{0.48\hsize}
+\uncover<5->{%
+\begin{block}{Instabilität}
+Unbrauchbare Resultate, weil Rundungsfehler im Laufe der Rechnung
+über alle sinnvollen Grenzen aufgebläht werden.
+\end{block}}
+\uncover<6->{%
+Vermeiden:
+\begin{itemize}
+\item<7-> Mit stark von Auslöschung betroffenen Zahlen rechnen
+\item<8-> Wiederholt mit grossen Zahlen multiplizieren
+\end{itemize}}
+\end{column}
+\end{columns}
+\end{frame}
