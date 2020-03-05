@@ -21,7 +21,7 @@ im Allgemeinen mindestens den Grad $n$ haben, damit alle
 Bedingungen durch geeignete Wahl der $n+1$ Koeffizienten erfüllt werden können.
 Man könnte das Polynom nämlich in der Form
 \[
-l(x)
+p(x)
 =
 a_nx^n + a_{n-1}x^{n-1}+\dots+a_1x+a_0
 \]
@@ -67,11 +67,11 @@ Jedes der Interpolationspolynome $l_j$ hat Grad $n$, also hat auch eine
 beliebige Linearkombination den Grad höchstens $n$.
 Die Linearkombination
 \[
-l(x) = \sum_{j=0}^n f_j l_j(x)
+p(x) = \sum_{j=0}^n f_j l_j(x)
 \]
 ist das gesuchte Interpolationspolynom, wie Einsetzen von $x_i$ in
 \[
-l(x_i)
+p(x_i)
 =
 \sum_{j=0}^n f_jl_j(x_i)
 =
@@ -94,7 +94,7 @@ l_1(x) = \frac{x-x_0}{x_1-x_0}
 haben die die geforderten Eigenschaften.
 Die gesuchte Interplationsfunktion ist daher
 \[
-l(x)
+p(x)
 =
 \frac{x_1-x}{x_1-x_0}f_0 + \frac{x-x_0}{x_1-x_0} f_1
 =
@@ -107,13 +107,13 @@ die Punkte $(x_0,f_0)$ und $(x_1,f_1)$.
 Ein Polynom vom Grad $n+1$, welches in {\em allen} Stützstellen verschwindet,
 ist leicht zu finden, es ist 
 \[
-(x-x_0)(x-x_1)(x-x_2)\dots (x-x_{n-1})(x-x_n).
+(x-x_0)(x-x_1)(x-x_2)\cdots (x-x_{n-1})(x-x_n).
 \]
 Ein Polynom, welches nur an der Stützstelle $x_j$ {\em nicht} verschwindet,
 ensteht, indem man den Faktor $(x-x_j)$ weglässt, es hat den Grad $n$.
 Wir führen dafür die Notation
 \[
-(x-x_0)(x-x_1)(x-x_2)\dots \widehat{(x-x_j)}\dots (x-x_{n-1}(x-x_n),
+(x-x_0)(x-x_1)(x-x_2)\cdots \widehat{(x-x_j)}\cdots (x-x_{n-1}(x-x_n),
 \]
 der Hut bedeutet, dass dieser Faktor weggelassen werden soll.
 Allerdings hat dieses Polynom nicht den geforderten Wert $1$, man muss es
@@ -122,12 +122,12 @@ Das gesuchte Polynom $l_j(x)$ hat daher die Form
 \[
 l_j(x)
 =
-c_j(x-x_0)(x-x_1)(x-x_2)\dots \widehat{(x-x_j)}\dots (x-x_{n-1}(x-x_n).
+c_j(x-x_0)(x-x_1)(x-x_2)\cdots \widehat{(x-x_j)}\cdots (x-x_{n-1}(x-x_n).
 \]
 Einesetzen von $x_j$ ergibt
 \[
 l_j(x_j) = 1 = 
-c_j(x_j-x_0)(x_j-x_1)(x_j-x_2)\dots \widehat{(x_j-x_j)}\dots(x_j-x_{n-1}(x_j-x_n),
+c_j(x_j-x_0)(x_j-x_1)(x_j-x_2)\cdots \widehat{(x_j-x_j)}\cdots(x_j-x_{n-1})(x_j-x_n),
 \]
 die Konstante $c_j$ ist daher
 \[
