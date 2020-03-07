@@ -1,0 +1,49 @@
+%
+% basis.tex -- Basis-Bilder für Lagrange Interpolationspolynom
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1.95}
+\def\yskala{0.5}
+\input{basispaths.tex}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\bild#1#2#3{
+\begin{scope}[yshift=#1]
+\begin{scope}
+\clip (-0.4,-0.4) rectangle (6.5,0.75);
+\expandafter\expandafter\csname#2\endcsname
+\end{scope}
+\fill[color=red] (#3,\yskala) circle[radius={0.08/\skala}];
+\draw[->] (-0.4,0)--(6.5,0) coordinate[label={$x$}];
+\draw[->] (0,-0.35)--(0,0.85) coordinate[label={right:$y$}];
+\draw ({-0.1/\skala},\yskala)--({0.1/\skala},\yskala);
+\node at ({-0.1/\skala},\yskala) [left] {$1$};
+\node at (3,\yskala) [above] {$j=#3$};
+\foreach \x in {1,...,6}{
+	\draw (\x,{-0.1/\skala})--(\x,{0.1/\skala});
+	\node at (\x,{-0.1/\skala}) [below] {$\x$};
+}
+\node at ({-0.1/\skala},{-0.1/\skala}) [below left] {$0$};
+\end{scope}
+}
+
+\bild{0cm}{basiszero}{0}
+\bild{-1.4cm}{basisone}{1}
+\bild{-2.8cm}{basistwo}{2}
+\bild{-4.2cm}{basisthree}{3}
+\bild{-5.6cm}{basisfour}{4}
+\bild{-7.0cm}{basisfive}{5}
+\bild{-8.4cm}{basissix}{6}
+
+\end{tikzpicture}
+\end{document}
+
