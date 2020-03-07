@@ -42,6 +42,12 @@ fn = fopen("tschebasispaths.tex", "w");
 fprintf(fn, "\\def\\stuetz{\n");
 for i = (0:n)
 	fprintf(fn, "\\draw ({%.4f*\\xskala},{-0.1/\\skala})--({%.4f*\\xskala},{0.1/\\skala});\n", xi(i+1), xi(i+1));
+	if (i == 3)
+		position = "below right";
+	else
+		position = "below";
+	endif
+	fprintf(fn, "\\node at ({%.4f*\\xskala},{-0.1/\\skala}) [%s] {$x_%d$};\n", xi(i+1), position, i);
 endfor
 fprintf(fn, "}\n");
 

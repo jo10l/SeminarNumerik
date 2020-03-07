@@ -12,22 +12,25 @@
 \usetikzlibrary{arrows,intersections,math}
 \begin{document}
 \def\skala{1.95}
-\def\yskala{0.5}
+\def\yskala{0.6}
 
 \begin{tikzpicture}[>=latex,thick,scale=\skala]
 
 \def\bild#1#2{
 \begin{scope}[yshift=#1]
+
+\draw[->] (-0.4,0)--(6.5,0) coordinate[label={$x$}];
+\draw[->] (0,-0.35)--(0,0.85) coordinate[label={right:$y$}];
+
 \begin{scope}
 \clip (-0.0,-0.4) rectangle (6.0,0.75);
 \draw[color=red,line width=1.4pt] (-2,0)--({#2-1},0)--({#2},\yskala)--({#2+1},0)--(8,0);
 \end{scope}
+
 \fill[color=red] (#2,\yskala) circle[radius={0.08/\skala}];
-\draw[->] (-0.4,0)--(6.5,0) coordinate[label={$x$}];
-\draw[->] (0,-0.35)--(0,0.85) coordinate[label={right:$y$}];
 \draw ({-0.1/\skala},\yskala)--({0.1/\skala},\yskala);
 \node at ({-0.1/\skala},\yskala) [left] {$1$};
-\node at (3,\yskala) [above] {$j=#2$};
+\node at (2.5,\yskala) [above] {$j=#2$};
 \foreach \x in {1,...,6}{
 	\draw (\x,{-0.1/\skala})--(\x,{0.1/\skala});
 	\node at (\x,{-0.1/\skala}) [below] {$\x$};
