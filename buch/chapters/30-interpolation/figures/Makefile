@@ -4,7 +4,7 @@
 # (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
 all:	h.pdf rolle.pdf nullstellen.pdf sin.pdf l.pdf norm.pdf tscheb.pdf \
-	basis.pdf polygon.pdf
+	basis.pdf tschebasis.pdf polygon.pdf
 
 %.pdf:	%.tex
 	pdflatex $<
@@ -23,9 +23,13 @@ tscheb.pdf:	tscheb.tex tpaths.tex
 
 basis.pdf:	basis.tex basispaths.tex
 	pdflatex basis.tex
-
 basispaths.tex:	basis.m
 	octave basis.m
+
+tschebasis.pdf:	tschebasis.tex tschebasispaths.tex
+	pdflatex tschebasis.tex
+tschebasispaths.tex:	tschebasis.m
+	octave tschebasis.m
 
 polygon.pdf:	polygon.tex
 	pdflatex polygon.tex
