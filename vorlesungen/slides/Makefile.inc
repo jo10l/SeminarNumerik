@@ -44,6 +44,7 @@ chapter3 =								\
 	../slides/3/polygon.tex						\
 	../slides/3/problem.tex						\
 	../slides/3/tschebyscheff.tex					\
+	../slides/3/lissajous.tex					\
 	../slides/3/chapter.tex	
 
 slides = 								\
