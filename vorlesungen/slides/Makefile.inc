@@ -39,6 +39,7 @@ chapter3 =								\
 	../slides/3/fehlerformel.tex					\
 	../slides/3/lagrange.tex					\
 	../slides/3/linear.tex						\
+	../slides/3/gleichungen.tex					\
 	../slides/3/nullstellenschachtelung.tex				\
 	../slides/3/polygon.tex						\
 	../slides/3/problem.tex						\
