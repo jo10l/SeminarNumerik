@@ -9,6 +9,8 @@ Die Interpolationspolynome von Lagrange und Hermite haben
 in der bis jetzt gezeigten Form das folgende grundlegende Problem.
 Sie sind definiert über das Produkt
 \[
+l(x)
+=
 (x-x_0)(x-x_1)\dots (x-x_{n-1})(x-x_n).
 \]
 Ist die Zahl der Stützstellen gross und liegen erstrecken sich die 
@@ -31,5 +33,91 @@ Gesucht ist also eine Form des Interpolationspolynoms, welche einsichtig
 macht, dass Änderungen von Stützwerten sich vor allem in der nähe der
 betroffenen Stützstelle auswirken und die auch bei einer grossen Zahl
 von Stützstellen stabil sind.
+
+Früher wurde gezeigt, dass das Interpolationspolynom für Funktionswerte
+$f_j$ an den Stützstellen $x_j$ durch die Linearkombination
+\[
+p(x) = \sum_{j=0}^n f_j l_j(x)
+\]
+gegeben ist.
+Für die Polynome $l_j(x)$ wurde
+\[
+l_j(x)
+=
+\frac{
+(x-x_0)(x-x_1)\cdots(\widehat{x-x_j}) \cdots (x-x_n)
+}{
+(x_j-x_0)(x_j-x_1)\cdots (\widehat{x_j-x_j})\cdots (x_j-x_n)
+}.
+\]
+Schreibt man
+\[
+w_j
+=
+\frac{1}{
+\displaystyle\prod_{\scriptstyle k=1\atop \scriptstyle k\ne j}^n (x_j-x_k)
+},
+\]
+dann kann man die Faktoren $l_j(x)$ auch als
+\[
+l_j(x)
+=
+\frac{l(x)}{(x-x_j)}\cdot w_j
+\]
+ausdrücken.
+Damit wird das Interpolationspolynom jetzt
+\begin{equation}
+p(x)
+=
+l(x) \sum_{j=0}^n \frac{w_jf_j}{x-x_j}.
+\label{buch:bary:px}
+\end{equation}
+Die Zahlen $w_j$ hängen nur von den Stützstellen ab, nicht von den
+Funktionswerten $f_j$. 
+Sie können also nach Festlegung der Stützstelle einmalig berechnet
+werden und verursachen danach keinen weiteren Berechnungsaufwand.
+
+Das Interpolationspolynom wird besonders einfach, wenn alle Funktionswerte
+$f_j=1$ sind.
+Da das konstante Polynom $p(x)=1$ genau diese Werte annimmt, muss
+\[
+1 = l(x) \sum_{j=0}^n \frac{w_j}{x-x_j}
+\]
+gelten.
+Damit erhalten wir eine neue Darstellung für 
+\begin{equation}
+l(x)
+=
+\frac{1}{\displaystyle\sum_{j=0}^n \frac{w_j}{x-x_j}}.
+\label{buch:bary:lx}
+\end{equation}
+In dieser Form wird vermieden, dass zur Berechnung von $l(x)$ eine
+grosse Anzahl Produkte mit potentiell grossen Faktoren gebildet werden
+muss.
+Sorgen bereiten vor allem die Faktoren $x-x_j$ für $x$ weit entfernt von $x_j$.
+Stattdessen wird ein Summe von Summanden gebildet, die klein sind,
+wenn $x$ weit von $x_j$ entfernt ist.
+
+Die vorteilhafte Formulierung~\eqref{buch:bary:lx} kann nun dazu
+verwendet werden, auch eine verbesserte Formulierung für das
+Interpolationspolynom aufzustellen.
+Dazu ersetzen wir den Faktor $l(x)$ in \eqref{buch:bary:px}
+durch \eqref{buch:bary:lx} und erhalten
+\[
+p(x)
+=
+\frac{\displaystyle \sum_{j=0}^n \frac{w_jf_j}{x-x_j}
+}{
+\displaystyle\sum_{j=0}^n \frac{w_j}{x-x_j}}.
+\]
+Diese Form des Interpolationspolynoms ist ein gewichtetes Mittel 
+der Werte $f_j$, gewichtet mit den Gewichten $w_j/(x-x_j)$.
+Diese Gewichte sind klein für $x$ weit weg von $x_j$, die grössten
+Gewichte haben die Funktionswerte $f_j$ nahe bei $x$.
+
+
+
+
+
 
 

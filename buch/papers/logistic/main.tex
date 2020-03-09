@@ -1,0 +1,36 @@
+%
+% main.tex -- Paper zum Thema <logistic>
+%
+% (c) 2020 Hochschule Rapperswil
+%
+\chapter{Iteration der logistischen Gleichung\label{chapter:logistic}}
+\lhead{Logistische Gleichung}
+\begin{refsection}
+\chapterauthor{Michael Schneeberger}
+
+Ein paar Hinweise für die korrekte Formatierung des Textes
+\begin{itemize}
+\item
+Absätze werden gebildet, indem man eine Leerzeile einfügt.
+Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
+\item
+Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
+Optionen werden gelöscht. 
+Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
+\item
+Beginnen Sie jeden Satz auf einer neuen Zeile. 
+Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
+in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
+anzuwenden.
+\item 
+Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
+Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
+\end{itemize}
+
+\input{papers/logistic/einleitung.tex}
+\input{papers/logistic/problemstellung.tex}
+\input{papers/logistic/loesung.tex}
+\input{papers/logistic/folgerungen.tex}
+
+\printbibliography[heading=subbibliography]
+\end{refsection}

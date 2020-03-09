@@ -1,0 +1,52 @@
+%
+% polygon.tex -- Basis aus Polygonzügen
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1.95}
+\def\yskala{0.6}
+
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\bild#1#2{
+\begin{scope}[yshift=#1]
+
+\draw[->] (-0.4,0)--(6.5,0) coordinate[label={$x$}];
+\draw[->] (0,-0.35)--(0,0.85) coordinate[label={right:$y$}];
+
+\begin{scope}
+\clip (-0.0,-0.4) rectangle (6.0,0.75);
+\draw[color=red,line width=1.4pt] (-2,0)--({#2-1},0)--({#2},\yskala)--({#2+1},0)--(8,0);
+\end{scope}
+
+\fill[color=red] (#2,\yskala) circle[radius={0.08/\skala}];
+\draw ({-0.1/\skala},\yskala)--({0.1/\skala},\yskala);
+\node at ({-0.1/\skala},\yskala) [left] {$1$};
+\node at (2.5,\yskala) [above] {$j=#2$};
+\foreach \x in {1,...,6}{
+	\draw (\x,{-0.1/\skala})--(\x,{0.1/\skala});
+	\node at (\x,{-0.1/\skala}) [below] {$\x$};
+}
+\node at ({-0.1/\skala},{-0.1/\skala}) [below left] {$0$};
+\end{scope}
+}
+
+\bild{0cm}{0}
+\bild{-1.4cm}{1}
+\bild{-2.8cm}{2}
+\bild{-4.2cm}{3}
+\bild{-5.6cm}{4}
+\bild{-7.0cm}{5}
+\bild{-8.4cm}{6}
+
+\end{tikzpicture}
+\end{document}
+

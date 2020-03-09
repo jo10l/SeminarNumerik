@@ -35,5 +35,21 @@ chapter2 =								\
 	../slides/2/erfolgsfaktoren.tex					\
 	../slides/2/chapter.tex
 
+chapter3 =								\
+	../slides/3/problem.tex						\
+	../slides/3/linear.tex						\
+	../slides/3/polygon.tex						\
+	../slides/3/lagrange.tex					\
+	../slides/3/gleichungen.tex					\
+	../slides/3/nullstellenschachtelung.tex				\
+	../slides/3/fehlerformel.tex					\
+	../slides/3/runge.tex						\
+	../slides/3/lissajous.tex					\
+	../slides/3/tschebyscheff.tex					\
+	../slides/3/tschebyscheffpoly.tex				\
+	../slides/3/hermite.tex						\
+	../slides/3/baryzentrisch.tex					\
+	../slides/3/chapter.tex	
+
 slides = 								\
-	$(chapter0) $(chapter1) $(chapter2)
+	$(chapter0) $(chapter1) $(chapter2) $(chapter3)

@@ -1,0 +1,45 @@
+%
+% lagrange.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Interpolationspolynom}
+\begin{block}{Stützstellen $x_0,x_1,\dots,x_n$ $\rightarrow$ Nullstellen}
+\[
+l(x)
+=
+(x-x_0)(x-x_1)(x-x_2)\cdots (x-x_{n-1})(x-x_n)
+\]
+\end{block}
+\uncover<2->{%
+\begin{block}{Basisfunktionen $l_i(x)$
+\uncover<4->{mit $l_i(x_k)=\delta_{ik}$}}
+\vspace{-15pt}
+\begin{align*}
+l_i(x)
+&
+\ifthenelse{\boolean{presentation}}{
+\only<3-4>{=
+(x-x_0)(x-x_1)(x-x_2)\cdots\only<4->{(\widehat{x-x_i}) \cdots}(x-x_{n-1})(x-x_n)
+}
+}{}
+\only<5->{
+=
+\frac{
+(x-x_0)(x-x_1)(x-x_2)\cdots(\widehat{x-x_i}) \cdots (x-x_{n-1})(x-x_n)
+}{
+(x_i-x_0)(x_i-x_1)(x_i-x_2)\cdots(\widehat{x-x_i}) \cdots (x_i-x_{n-1})(x_i-x_n)
+}}
+\\
+&\uncover<6->{=
+\frac{
+\displaystyle\prod_{k=0, k\ne i}^n (x-x_k)
+}{
+\displaystyle\prod_{k=0,k\ne i}^n (x_i-x_k)
+}}
+\uncover<7->{=
+c_i (x-x_0)(x-x_1)\cdots(\widehat{x-x_i}) \cdots(x-x_n)}
+\end{align*}
+\end{block}}
+\end{frame}

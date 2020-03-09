@@ -22,6 +22,7 @@ CHAPTERFILES =								\
 	chapters/20-gleichungen/newton.tex				\
 	chapters/20-gleichungen/homotopie.tex				\
 	chapters/30-interpolation/chapter.tex				\
+	chapters/30-interpolation/polygon.tex				\
 	chapters/30-interpolation/polynom.tex				\
 	chapters/30-interpolation/hermite.tex				\
 	chapters/30-interpolation/bary.tex				\

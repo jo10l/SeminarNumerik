@@ -6,4 +6,77 @@
 \section{Homotopie-Verfahren
 \label{buch:section:homotopie}}
 \rhead{Homotopie-Verfahren}
+Der Erfolg des Newton-Verfahrens hängt entscheidend von der Qualität der
+Anfangsschätzung $x_0$ ab.
+Allerdings ist es oft nicht einfach, eine solche Schätzung zu produzieren.
+Die folgende Idee kann dabei helfen.
+
+Oft ist ein schwieriges Problem ein ``deformierte'' Variante eines
+weniger schwierigen Problems.
+Der Begriff der Homotopie 
+
+\begin{definition}
+Zwei Funktionen $f_0(x)$ und $f_1(x)$ heissen homotop, wenn es
+eine stetige Funktion
+\[
+F\colon \mathbb R\times I : (x,t)\mapsto F(x,t)
+\]
+mit $I=[0.1]$
+gibt derart, dass $f_0(x)=F(x,0)$ und $f_1(x)=F(x,1)$.
+Die partielle Funktion $x\mapsto F(x,t)$ für $t\in I$ wird auch mit
+$f_t$ bezeichnet: $f_t(x)=F(x,t)$.
+\end{definition}
+
+\begin{beispiel}
+Die Kepler-Gleichung ist 
+\[
+M=E-e\sin E,
+\]
+wobei $M$ gegeben und $E$ gesucht ist.
+Dazu gehört die Funktion
+\[
+f(E)=M-E+e\sin E.
+\]
+Der Fall $e=0$ ist ein trivial einfaches Problem, $E=M$ ist Nullstelle
+der Funktion
+\[
+f_0(E)=M-E.
+\]
+Eine Homotopie zwischen $f_0$ und $f_1=f$ ist
+\[
+F(x,t) = M-E+et\sin E.
+\qedhere
+\]
+\end{beispiel}
+
+Eine Homotopie kann dazu verwendet werden, Startwerte für das Newtonverfahren
+zu liefern.
+Ist $x_0(t)$ eine Nullstelle der partiellen Funktion $x\mapsto F(x,t)$,
+dann kann $x_0(t)$ als Startwert zur Bestimmung einer Nullstelle von
+der partiellen Funktion $F(x,t')$ für $|t-t'|<\varepsilon$ dienen.
+Ist $F$ differenzierbar bezüglich $x$, dann können einige Iterationen
+des Newton-Verfahrens aus dem Startwert $x_0(t)$ eine gute Lösung für
+$x_0(t')$ sein.
+Damit lässt sich der folgende Algorithmus konstruieren:
+
+\begin{enumerate}
+\item 
+Starte mit der exakten Lösung $x_0=x_0(0)$ und $t=0$
+\item
+Inkrementiere $t$ um $\Delta t$
+\item
+verbessere $x_0$ durch einige Iterationen des Newton-Verfahrens
+zu einer Nullstelle von $f_t(x)$.
+\item 
+Wiederhole Schritte 2 und 3 bis $t=1$.
+\end{enumerate}
+Auf diese Weise kann sichergestellt werden, dass jede Iteration
+des Newton-Verfahrens mit einem guten Schätzwert startet, wenn auch
+nur für eine immer bessere Approximation des eigentlichen Problems.
+
+
+
+
+
+
 

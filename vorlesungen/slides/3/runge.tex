@@ -1,0 +1,25 @@
+%
+% runge.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Runge-Phänomen}
+\begin{block}{Beobachtung}
+Äquidistante Stützstellen führen zu starken Oszillationen von $l(x)$
+an den Intervallenden
+\end{block}
+\begin{center}
+\begin{tikzpicture}[>=latex]
+\begin{scope}
+\clip (-6.1,-3) rectangle (6.1,3);
+\input{../slides/3/rungepath.tex}
+\end{scope}
+\draw[->] (-6.1,0)--(6.3,0) coordinate[label={$x$}];
+\draw[->] (0,-3.1)--(0,3.2) coordinate[label={right:$y$}];
+\foreach \x in {-6,...,6}{
+	\fill[color=red] (\x,0) circle[radius=0.08];
+}
+\end{tikzpicture}
+\end{center}
+\end{frame}

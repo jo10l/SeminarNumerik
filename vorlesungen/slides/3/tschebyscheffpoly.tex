@@ -1,0 +1,62 @@
+%
+% tschebyscheffpoly.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Tschebyscheff-Polynome}
+\vspace{-10pt}
+\begin{columns}[t]
+\begin{column}{0.38\hsize}
+\begin{block}{Lissajous-Figur}
+$t\in[0,\pi]$, $n\ge 0$
+\begin{align*}
+x&=\cos t,&
+y&=\cos nt
+\end{align*}
+\end{block}
+\vspace{-15pt}
+\uncover<2->{%
+\begin{block}{Aufgabe}
+$y$ als Polynom $x$ ausdrücken: 
+$y=T_n(x)$
+\end{block}}
+\vspace{-5pt}
+\uncover<3->{%
+\begin{block}{Beispiele}
+\vspace{-20pt}
+\begin{align*}
+T_0(x)&=1\\
+T_1(x)&=x\\
+T_2(x)&=\cos 2t = 2\cos^2t-1\\
+      &= 2x^2-1
+\end{align*}
+\end{block}}
+\end{column}
+\begin{column}{0.58\hsize}
+\uncover<4->{%
+\begin{block}{Rekursion}
+Additionstheorem:
+\begin{align*}
+\cos (n+1)t+\cos(n-1)t&=2\cos nt\,\cos t
+\\
+\uncover<5->{%
+\Rightarrow\quad
+T_{n+1}(x) + T_{n-1}(x)}&\uncover<5->{= 2T_n(x) \, x}
+\end{align*}
+\uncover<6->{Rekursionsformel:
+\[
+T_{n+1}(x) = 2xT_n(x) - T_{n-1}(x)
+\]}
+\uncover<7->{$\Rightarrow$ alle $T_n(x)$ sind Polynome}
+\end{block}}
+\uncover<8->{%
+\begin{block}{Nullstellen}
+\[
+x_k = \cos \frac{2k-1}{2n}\pi,\quad k=1,\dots,n
+\]
+\end{block}}
+\end{column}
+\end{columns}
+\end{frame}
+
