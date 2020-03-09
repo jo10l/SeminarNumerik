@@ -111,6 +111,16 @@ Die Iteration mit Startwert $x_0=0.5$ liefert
 \end{tabular}
 \end{center}
 Die Konvergenz ist wie erwartet nur linear.
+
+Die Ableitung $f'(x)=4x^3(x-1)$ der Funktion $f(x)$ hat an der Stelle 
+$x=0$ eine dreifache Nullstelle, was auch daran erkennbar ist, dass 
+$f(x)$ abgesehen von der Konstante von vierter Ordnung ist.
+Der Graph von $f(x)$ ist daher in einer Umgebung von $0$ sehr flach.
+Startwerte $x_0$ in der Umgebung von $0$ führen daher automatisch
+zu einem Wert $x_1$ sehr weit weg vom Nullpunkt.
+Zum Beispiel führt $x_0=-10^{-4}$ auf $x_1=-49995000499.9501$.
+Es braucht dann 114 Iterationen, bis $x_n$ nahe genug bei der negativen
+Nullstelle liegt, dass man quadratische Konvergenz beobachten kann.
 \end{loesung}
 
 
