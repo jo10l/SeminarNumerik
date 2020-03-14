@@ -51,5 +51,20 @@ chapter3 =								\
 	../slides/3/baryzentrisch.tex					\
 	../slides/3/chapter.tex	
 
+chapter4 =								\
+	../slides/4/plan.tex						\
+	../slides/4/integral.tex					\
+	../slides/4/riemann.tex						\
+	../slides/4/korn.tex						\
+	../slides/4/approximation.tex					\
+	../slides/4/numerik.tex						\
+	../slides/4/mittelpunkt.tex					\
+	../slides/4/trapez.tex						\
+	../slides/4/rekursion.tex					\
+	../slides/4/fehler.tex						\
+	../slides/4/romberg.tex						\
+	../slides/4/rombergbeispiel.tex					\
+	../slides/4/chapter.tex
+
 slides = 								\
-	$(chapter0) $(chapter1) $(chapter2) $(chapter3)
+	$(chapter0) $(chapter1) $(chapter2) $(chapter3) $(chapter4)

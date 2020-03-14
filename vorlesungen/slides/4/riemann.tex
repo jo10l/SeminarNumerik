@@ -1,17 +1,58 @@
 %
-% riemann.tex -- Definition des Integrals mit Hilfe der Riemann-Summe
+% riemann.tex
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\documentclass[tikz]{standalone}
-\usepackage{amsmath}
-\usepackage{times}
-\usepackage{txfonts}
-\usepackage{pgfplots}
-\usepackage{csvsimple}
-\usetikzlibrary{arrows,intersections,math}
-\begin{document}
-\begin{tikzpicture}[>=latex,thick]
+\begin{frame}[fragile]
+\frametitle{Riemann-Integral}
+\vspace{-20pt}
+\begin{columns}[t]
+\begin{column}{0.40\hsize}
+\uncover<2->{%
+\begin{block}{Unterteilung}
+\vspace{-20pt}
+\[
+a=x_0 < x_1 < \dots < x_{n-1} < x_n = b
+\]
+\end{block}}
+\vspace{-10pt}
+\uncover<3->{%
+\begin{block}{Maximal- und Minimalwerte}
+\vspace{-20pt}
+\begin{align*}
+\overline{f}_k
+&=\max\{
+f(x)\;|\;
+x\in[x_{k-1},x_k]
+\}
+\\
+\underline{f}_k
+&=
+\min\{
+f(x)\;|\;
+x\in[x_{k-1},x_k]
+\}
+\end{align*}
+\end{block}}
+\vspace{-10pt}
+\uncover<4->{%
+\begin{block}{Ober- und Untersummen}
+\vspace{-15pt}
+\begin{align*}
+\underline{I}
+&=
+\sum_{k=1}^n \underline{f}_k (x_k-x_{k-1})
+\\
+\overline{I}
+&=
+\sum_{k=1}^n \overline{f}_k (x_k-x_{k-1})
+\end{align*}
+\end{block}}
+\end{column}
+\begin{column}{0.56\hsize}
+\vspace{-10pt}
+\begin{center}
+\begin{tikzpicture}[>=latex,thick,scale=0.6]
 
 \def\A{2}
 \def\B{0.5}
@@ -27,15 +68,29 @@
 \def\b{11}
 
 \def\oberesrechteck#1#2#3#4{
+	\uncover<3>{
+	\draw[color=blue!50] (#2,#3)--(#1,#3);
+	}
+	\uncover<4->{
 	\fill[color=blue!10] (#1,0)--(#2,0)--(#2,#3)--(#1,#3)--cycle;
 	\draw[color=blue!50] (#1,0)--(#2,0)--(#2,#3)--(#1,#3)--cycle;
+	}
+	\uncover<3->{
 	\node[color=blue] at ({0.5*(#1+#2)},{#3}) [above] {#4};
+	}
 }
 
 \def\unteresrechteck#1#2#3#4{
+	\uncover<3>{
+	\draw[color=red!50] (#2,#3)--(#1,#3);
+	}
+	\uncover<4->{
 	\fill[color=red!20] (#1,0)--(#2,0)--(#2,#3)--(#1,#3)--cycle;
 	\draw[color=red!50] (#1,0)--(#2,0)--(#2,#3)--(#1,#3)--cycle;
+	}
+	\uncover<3->{
 	\node[color=red] at ({0.5*(#1+#2)},{#3}) [below] {#4};
+	}
 }
 
 \oberesrechteck{\a}{\xone}{{\A+\B*\xone-\C*(\xone-6)*(\xone-6)+\D*sin(90*\xone/3.14)}}{$\overline{f}_1$};
@@ -65,7 +120,8 @@
 \draw[->] (-0.1,0)--(12.3,0) coordinate[label={$x$}];
 \draw[->] (0,-0.1)--(0,7.3) coordinate[label={right:$y$}];
 
-\draw (\a,-0.1)--(\a,0.1); \node at (\a,-0.1) [below] {$\mathstrut a=x_0$};
+\uncover<2->{%
+\draw (\a,-0.1)--(\a,0.1); \node at ({\a-0.2},-0.1) [below] {$\mathstrut a=x_0$};
 \draw (\b,-0.1)--(\b,0.1); \node at (\b,-0.1) [below] {$\mathstrut b=x_n$};
 
 \draw (\xone,-0.1)--(\xone,0.1);
@@ -85,7 +141,23 @@
 
 \draw (\xminus,-0.1)--(\xminus,0.1);
 \node at (\xminus,-0.1) [below] {$\mathstrut x_{n-1}$};
+}
 
 \end{tikzpicture}
-\end{document}
+\end{center}
+\[
+\uncover<5->{
+\underline{I}
+\le}
+\int_a^b f(x)\,dx
+\uncover<5->{
+\le 
+\overline{I}}
+\]
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
 
