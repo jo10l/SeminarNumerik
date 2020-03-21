@@ -66,5 +66,24 @@ chapter4 =								\
 	../slides/4/rombergbeispiel.tex					\
 	../slides/4/chapter.tex
 
+chapter5 =								\
+	../slides/5/richtungsfeld.tex					\
+	../slides/5/reduktion.tex					\
+	../slides/5/reduktionbeispiel.tex				\
+	../slides/5/picard.tex						\
+	../slides/5/anfangrand.tex					\
+	../slides/5/euler.tex						\
+	../slides/5/fehler.tex						\
+	../slides/5/verbesserung.tex					\
+	../slides/5/rungekutta.tex					\
+	../slides/5/rkfehler.tex					\
+	../slides/5/mehrschritt.tex					\
+	../slides/5/sir.tex						\
+	../slides/5/faktoren.tex					\
+	../slides/5/sirsim.tex						\
+	../slides/5/sirpath.tex						\
+	../slides/5/chapter.tex
+
 slides = 								\
-	$(chapter0) $(chapter1) $(chapter2) $(chapter3) $(chapter4)
+	$(chapter0) $(chapter1) $(chapter2) $(chapter3) $(chapter4) \
+	$(chapter5)

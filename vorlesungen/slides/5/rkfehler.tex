@@ -1,0 +1,38 @@
+%
+% rkfehler.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapeprswil
+%
+\begin{frame}
+\frametitle{Fehler des Runge-Kutta-Verfahrens}
+\begin{block}{Runge-Kutta-Inkrementfunktion}
+\vspace{-20pt}
+\begin{align*}
+k_1 &= f(x,y)
+\\
+k_2 &= f\biggl(x+\frac{h}2, y+\frac{h}2 k_1\biggr)
+\\
+k_3 &= f\biggl(x+\frac{h}2, y+\frac{h}2 k_2\biggr)
+\\
+k_4 &= f(x+h, y+hk_3)
+\\
+F(x,y,h)
+&=
+\frac{1}{6} ( k_1 +2k_2 + 2k_3 +k_4)
+&&\uncover<2->{\Rightarrow}
+&\uncover<2->{y(x+h)-y(x) - hF(x,y,h)}&\uncover<2->{=O(h^5)}
+\end{align*}
+\vspace{-18pt}
+\end{block}
+\uncover<3->{%
+\begin{block}{Verfahrensfehler}
+$k=t/h$ Schritte mit Schrittweite $h=t/k$
+\vspace{-5pt}
+\[
+\uncover<4->{\text{Verfahrensfehler}}
+\uncover<5->{ = k\cdot O(h^5) }
+\uncover<6->{ = \frac{t}{h}\cdot O(h^5) }
+\uncover<7->{ = O(h^4) }
+\]
+\end{block}}
+\end{frame}
