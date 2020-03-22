@@ -56,7 +56,7 @@
 }{\end{enumerate}}
 % Loesung
 \NewEnviron{loesung}{%
-\begin{proof}[L"osung]%
+\begin{proof}[Lösung]%
 \renewcommand{\qedsymbol}{$\bigcirc$}
 \BODY
 \end{proof}}
@@ -71,19 +71,24 @@
 \begin{proof}[Hinweis]}{\end{proof}}
 
 \begin{document}
+\lhead{MathSem: Kurztest 1}
 {\parindent0pt\hbox to\hsize{%
 Name: \hbox to7cm{\dotfill} Vorname: \dotfill}}
 \vspace{0.5cm}
+\pagestyle{fancy}
 
 \section*{Kurztest 1}
 
 \begin{uebungsaufgaben}
 
 \item
+\rhead{Aufgabe 1}
 \input chapters/10-arithmetik/uebungsaufgaben/1001.tex
+\vfill\pagebreak
 %\item
 %\input chapters/10-arithmetik/uebungsaufgaben/1002.tex
 \item
+\rhead{Aufgabe 2}
 \input chapters/20-gleichungen/uebungsaufgaben/2001.tex
 
 \end{uebungsaufgaben}
