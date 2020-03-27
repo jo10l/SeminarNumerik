@@ -49,6 +49,15 @@ chapter3 =								\
 	../slides/3/tschebyscheffpoly.tex				\
 	../slides/3/hermite.tex						\
 	../slides/3/baryzentrisch.tex					\
+	../slides/3/spline/fe.tex					\
+	../slides/3/spline/forderungen.tex				\
+	../slides/3/spline/variationsproblem.tex			\
+	../slides/3/spline/eulerlagrange.tex				\
+	../slides/3/spline/mechanik.tex					\
+	../slides/3/spline/minimal.tex					\
+	../slides/3/spline/hermite.tex					\
+	../slides/3/spline/zweiteabl.tex				\
+	../slides/3/spline/bedingungen.tex				\
 	../slides/3/chapter.tex	
 
 chapter4 =								\

@@ -1,0 +1,73 @@
+%
+% zweiteabl.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Zweite Ableitungen}
+\begin{block}{Teilinterval $(x_{i},x_{i+1})$}
+\vspace{-5pt}
+\[
+[g''(x)h'(x)]_{x_i}^{x_{i+1}}
+=
+g''(x_{i+1}\uncover<2->{-})h'(x_{i+1})
+-
+g''(x_{i}\uncover<2->{+})h'(x_{i})
+\]
+\end{block}
+\vspace{-15pt}
+\uncover<3->{%
+\begin{block}{Summe über alle Teilintervalle}
+\vspace{-10pt}
+\begin{center}
+\begin{tikzpicture}[>=latex,thick]
+\uncover<5->{
+	\fill[color=red!20] (-1.30,-1.2) rectangle (1.55,0.0);
+}
+\node at (0,0) {$\displaystyle
+\begin{aligned}
+0
+&=
+\sum_{i=0}^{n-1}
+[g''(x)h'(x)]_{x_i}^{x_{i+1}}
+\\
+&\uncover<4->{=
+\dots
+-
+g''(x_{i-1}\uncover<2->{+})h'(x_{i-1})
++
+g''(x_{i}\uncover<2->{-})h'(x_{i})}
+\\
+&\uncover<4->{%
+\phantom{\mathstrut=
+\dots
+-
+g''(x_{i-1}\uncover<2->{+})h'(x_{i-1})
+}
+-
+g''(x_i\uncover<2->{+})h'(x_i)
++
+g''(x_{i+1}\uncover<2->{-})h'(x_{i+1})
++ \dots}
+\end{aligned}$};
+\end{tikzpicture}
+\end{center}
+\end{block}}%
+\vspace{-20pt}
+\uncover<6->{%
+\begin{block}{Spezielle Wahl von $h(x)$}
+\vspace{-15pt}
+\[
+h'(x_i)=\delta_{ij}
+\uncover<7->{
+\quad\Rightarrow\quad
+{\color{red}
+\bigl(g''(x_j-)-g''(x_j+)\bigr) h'(x_j)} = 0}
+\uncover<8->{\quad\Rightarrow\quad
+g''(x_j-)=g''(x_j+) }
+\]
+\uncover<9->{$g''$ ist stetig!}
+\uncover<10->{Ausserdem: $g''(x_0+)=0$, $g''(x_n-)=0$}
+\end{block}}%
+
+\end{frame}

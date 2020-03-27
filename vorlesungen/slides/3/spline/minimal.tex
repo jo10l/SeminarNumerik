@@ -1,0 +1,54 @@
+%
+% minimal.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Minimalproblem für Splines}
+\begin{block}{Variation}
+Bilde Variation von $\int_a^b g''(x)^2\,dx$ mit
+$g(x)\to g(x)+\varepsilon h(x)$, $h(x_i)=0$
+\end{block}
+\uncover<2->{%
+\begin{block}{In Teilintervallen $[x_i,x_{i+1}]$}
+\vspace{-12pt}
+\begin{align*}
+0
+&=
+\left.
+\frac{d}{d\varepsilon}
+\int_{x_i}^{x_{i+1}} (g''(x) + \varepsilon h''(x))^2\,dx
+\right|_{\varepsilon=0}
+\uncover<3->{=
+2\int_{x_i}^{x_{i+1}} g''(x)h''(x) \,dx}
+\\
+\uncover<4->{0}
+&\uncover<4->{=
+\left[ g''(x) h'(x) \right]_{x_i}^{x_{i+1}}
+-
+\int_{x_i}^{x_{i+1}} g'''(x) h'(x)\,dx}
+\\
+&\uncover<5->{=
+\left[ g''(x) h'(x) \right]_{x_i}^{x_{i+1}}
+-
+\left[ g'''(x) h(x) \right]_{x_i}^{x_{i+1}}
++
+\int_{x_i}^{x_{i+1}} g''''(x) h(x)\,dx}
+\end{align*}
+\end{block}}
+\vspace{-14pt}
+\uncover<6->{%
+\begin{block}{Wähle $h$ geeignet:}
+\vspace{-10pt}
+\[
+h(x_i)=h(x_{i+1})=0,\;
+h'(x_i)=h'(x_{i+1})=0
+\uncover<7->{%
+\qquad\Rightarrow\qquad
+g''''(x) = 0}
+\]
+\uncover<8->{%
+$g$ ist ein kubisches Polynom in jedem Teilinterval $[x_i,x_{i+1}]$}
+\end{block}}
+
+\end{frame}

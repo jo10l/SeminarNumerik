@@ -1,0 +1,60 @@
+%
+% bedingungen.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Bedingungen}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.34\hsize}
+\begin{block}{Aufgabe}
+Für jedes Interval $[x_i,x_{i+1}]$, $i=1,\dots,n-1$, findet ein kubisches
+Polynome $g_i(x)$
+\end{block}
+\end{column}
+\begin{column}{0.62\hsize}
+\begin{block}{Ansatz}
+Mit Hermite-Polynomen $h_{ki}(x)$ und $h_{ki}^1(x)$ für das Intervall
+$[x_i,x_{i+1}]$:
+\[
+g_i(x)
+=
+f_ih_{0,i}(x)
++
+f_{i+1}h_{1,i}(x)
++
+{\color{red}p_i}h_{0,i}^1(x)
++
+{\color{red}q_i}h_{1,i}^1(x)
+\]
+\end{block}
+\end{column}
+\end{columns}
+\vspace{-10pt}
+\begin{columns}[t]
+\begin{column}{0.44\hsize}
+\begin{block}{Steigungen}
+Für $i=1,\dots,n-1$:
+\begin{align*}
+g_{i-1}'(x_i)&=g_{i}'(x_i)
+\\
+{\color{red}q_{i-1}}&={\color{red}p_i}=s_i
+\end{align*}
+$n+1$ Steigungen $s_i$, $i=0,\dots,n$,
+$g'(x_i)=s_i$.
+\end{block}
+\end{column}
+\begin{column}{0.52\hsize}
+\begin{block}{2. Ableitungen}
+Stetigkeit der zweiten Ableitung
+\begin{align*}
+g_{i-1}''(x_i)&=g_{i}''(x_i) &i&=1,\dots,n-1\\
+g_{0}''(x_0)&=g_{n}''(x_n)=0
+\end{align*}
+{\color{blue}$n+1$ Gleichungen} für $n+1$ Steigungen $s_i$
+\end{block}
+\end{column}
+\end{columns}
+
+\end{frame}
