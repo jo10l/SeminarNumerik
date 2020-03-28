@@ -58,6 +58,7 @@ chapter3 =								\
 	../slides/3/spline/hermite.tex					\
 	../slides/3/spline/zweiteabl.tex				\
 	../slides/3/spline/bedingungen.tex				\
+	../slides/3/spline/gleichungssystem.tex				\
 	../slides/3/chapter.tex	
 
 chapter4 =								\
@@ -93,6 +94,11 @@ chapter5 =								\
 	../slides/5/sirpath.tex						\
 	../slides/5/chapter.tex
 
+chapter6 =								\
+	../slides/6/fem/introbeispiel.tex				\
+	../slides/6/fem/integralprinzip.tex				\
+	../slides/6/chapter.tex
+
 slides = 								\
 	$(chapter0) $(chapter1) $(chapter2) $(chapter3) $(chapter4) \
-	$(chapter5)
+	$(chapter5) $(chapter6)
