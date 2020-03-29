@@ -19,13 +19,13 @@ dann ist $f(x)=0$
 \begin{proof}[Beweis]
 \begin{enumerate}
 \item<3->
-Annahme: $f(\bar{x}) \only<-6>{>}\only<7->{<} 0$
+Annahme: $f(\bar{x}) \only<-6>{>}\ifthenelse{\boolean{presentation}}{\only<7->{<}}{} 0$
 \item<4->
-$f(x) \only<-6>{>}\only<7->{<} 0$ für $|x-\bar{x}|\le \varepsilon$
+$f(x) \only<-6>{>}\ifthenelse{\boolean{presentation}}{\only<7->{<}}{} 0$ für $|x-\bar{x}|\le \varepsilon$
 \item<5->
 Wähle $h(x)$ mit $h(x) > 0$ für $|x-\bar{x}|<\varepsilon$, $f(x)=0$ sonst.
 \item<6->
-$\int_a^b f(x)h(x) \,dx \only<-6>{>}\only<7->{<} 0\; \Rightarrow $ Widerspruch!
+$\int_a^b f(x)h(x) \,dx \only<-6>{>}\ifthenelse{\boolean{presentation}}{\only<7->{<}}{} 0\; \Rightarrow $ Widerspruch!
 \qedhere
 \end{enumerate}
 \end{proof}}
@@ -56,9 +56,11 @@ $\int_a^b f(x)h(x) \,dx \only<-6>{>}\only<7->{<} 0\; \Rightarrow $ Widerspruch!
 	\hintergrund{\xzero}
 }
 
+\ifthenelse{\boolean{presentation}}{
 \uncover<8->{
 	\hintergrund{\xone}
 }
+}{}
 
 \draw[color=red!20,line width=1.4pt,line join=round]
 	plot[domain=-0.1:6.1,samples=100]
@@ -89,6 +91,7 @@ $\int_a^b f(x)h(x) \,dx \only<-6>{>}\only<7->{<} 0\; \Rightarrow $ Widerspruch!
 		-- (6,0);
 }
 
+\ifthenelse{\boolean{presentation}}{
 \uncover<8->{
 	\draw[color=red,line width=1.4pt,line join=round]
 	plot[domain={\xone-0.3}:{\xone+0.3},samples=100]
@@ -113,6 +116,7 @@ $\int_a^b f(x)h(x) \,dx \only<-6>{>}\only<7->{<} 0\; \Rightarrow $ Widerspruch!
 		to[out=-90,in=180] ({\xone+0.3},0)
 		-- (6,0);
 }
+}{}
 
 
 \draw[->] (-0.1,0)--(6.3,0) coordinate[label={$x$}];

@@ -47,8 +47,10 @@ x(t) + \varepsilon h(t)
 \\
 &\uncover<5->{=
 \int_a^b \frac{\partial L}{\partial x}(t,x(t), \dot{x}(t))\, h(t)}
+\ifthenelse{\boolean{presentation}}{
 \only<5>{+
 \frac{\partial L}{\partial v}(t,x(t),\dot{x}(t))\, \dot{h}(t)\,dt}
+}{}
 \only<6->{
 +
 \biggl[ \frac{\partial L}{\partial v}(t,x(t),\dot{x}(t)) h(t)\biggr]_a^b}

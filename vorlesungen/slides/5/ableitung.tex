@@ -1,0 +1,82 @@
+%
+% ableitung.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapeprswil
+%
+\begin{frame}
+\frametitle{Ableitung nach Anfangsbedingungen}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.48\hsize}
+\begin{block}{Voraussetzungen}
+Differentialgleichung
+\begin{align*}
+\frac{dy}{dx} &= f(x,y),&
+y(0) &= y_0
+\end{align*}
+hat Lösung $y = y(x,y_0)$.
+\end{block}
+\uncover<2->{%
+\begin{block}{Jacobi-Matrix $J=\partial y(x,y_0)/\partial y_0$}
+Differentialgleichung ableiten nach $y_0$:
+\begin{align*}
+\frac{dy(x,y_0)}{dx}
+&=
+f(x, y(x,y_0))
+\\
+\uncover<3->{
+\frac{d}{dx}
+\underbrace{\frac{\partial y(x,y_0)}{\partial y_0}}_{
+\uncover<4->{\displaystyle=J(x,y_0)}}}
+&\uncover<3->{=
+\frac{\partial f(x,y)}{\partial y}
+\cdot
+\underbrace{\frac{\partial y(x,y_0)}{\partial y_0}}_{
+\uncover<4->{\displaystyle=J(x,y_0)}}}
+\end{align*}
+\end{block}}
+\end{column}
+\begin{column}{0.48\hsize}
+\uncover<5->{%
+\begin{block}{Beispiel}
+\vspace{-20pt}
+\begin{align*}
+y''&=-y
+&&\Rightarrow&
+\frac{d}{dx}\begin{pmatrix}y_1\\y_2\end{pmatrix}
+&=
+\begin{pmatrix}
+y_2\\
+-y_1
+\end{pmatrix}
+\end{align*}
+\uncover<6->{%
+Ableitung nach $y$:
+\[
+\frac{\partial f}{\partial y}
+=
+\begin{pmatrix}
+0&1\\
+-1&0
+\end{pmatrix}
+\uncover<7->{%
+\Rightarrow
+\frac{dJ}{dy}
+=
+\begin{pmatrix}0&1\\-1&0\end{pmatrix} J}
+\]}%
+\uncover<8->{%
+Lösung:
+\vspace{-5pt}
+\begin{align*}
+J(x)
+&=
+\exp \begin{pmatrix}0&x\\-x&0\end{pmatrix}
+\\
+&\uncover<9->{=
+E\cos x + \begin{pmatrix} 0&1\\-1&0\end{pmatrix}\sin x}
+\end{align*}}
+\end{block}}
+\end{column}
+\end{columns}
+\end{frame}

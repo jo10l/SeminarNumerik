@@ -92,6 +92,11 @@ chapter5 =								\
 	../slides/5/faktoren.tex					\
 	../slides/5/sirsim.tex						\
 	../slides/5/sirpath.tex						\
+	../slides/5/ableitung.tex					\
+	../slides/5/parameter.tex					\
+	../slides/5/randwertproblem.tex					\
+	../slides/5/schiessmethode.tex					\
+	../slides/5/ballwurf.tex					\
 	../slides/5/chapter.tex
 
 chapter6 =								\

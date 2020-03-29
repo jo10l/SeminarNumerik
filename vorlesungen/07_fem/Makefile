@@ -15,3 +15,12 @@ Seminar-07-fem.pdf:	Seminar-07-fem.tex $(SOURCES)
 fem-handout.pdf:	fem-handout.tex $(SOURCES)
 	pdflatex fem-handout.tex
 
+thumbnail:	thumbnail.jpg
+
+thumbnail.pdf:	Seminar-07-fem.pdf
+	pdfjam --outfile thumbnail.pdf --papersize '{16cm,9cm}' \
+		Seminar-07-fem.pdf 1
+thumbnail.jpg:	thumbnail.pdf
+	convert -density 300 thumbnail.pdf \
+                -resize 1920x1080 -units PixelsPerInch thumbnail.jpg
+

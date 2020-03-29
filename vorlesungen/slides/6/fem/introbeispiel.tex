@@ -25,7 +25,7 @@ I(u)
 =
 \int_0^1 u'(x)^2 + \lambda u(x)^2 \,dx
 \]
-\only<-11>{minimal}\only<12->{stationär} ist.
+\ifthenelse{\boolean{presentation}}{\only<-11>{minimal}}{}\only<12->{stationär} ist.
 \end{block}}
 \end{column}
 \end{columns}
@@ -42,6 +42,7 @@ $\displaystyle
 I(\varepsilon) 
 \uncover<6->{\bigg|_{\varepsilon=0}}
 =
+\ifthenelse{\boolean{presentation}}{
 \only<4>{%
 \int_0^1 (u(x)+\varepsilon h(x))^{\prime 2} +\lambda (u(x)+\varepsilon h(x))^2\,dx
 }%
@@ -54,14 +55,14 @@ I(\varepsilon)
 \only<7>{\biggl[ 2u'(x)h(x)\biggr]_0^1
 -
 \int_0^1 2u''(x) h(x)\,dx
-+\lambda\int_0^1 2u(x)h(x)\,dx}
++\lambda\int_0^1 2u(x)h(x)\,dx}}{}
 \only<8->{
 -
 \int_0^1 \uncover<-8>{2}(u''(x)-\lambda u(x) )h(x)\,dx}
 \only<10->{\qquad\Leftrightarrow\qquad u''(x)=\lambda u(x)}
 $};
 \uncover<6->{
-\node[color=blue] at (0.4,-1) [right] {$I(u)$ \only<-11>{minimal}\only<12->{stationär}\strut};
+\node[color=blue] at (0.4,-1) [right] {$I(u)$ \ifthenelse{\boolean{presentation}}{\only<-11>{minimal}}{}\only<12->{stationär}\strut};
 }
 \uncover<11->{
 \node[color=blue] at (13.2,-1) [left] {Differentialgleichung\strut};

@@ -1,0 +1,84 @@
+%
+% parameter.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Ableitung nach Parametern}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.48\hsize}
+\begin{block}{Voraussetzungen}
+Differentialgleichung
+\vspace{-5pt}
+\begin{align*}
+\frac{dy}{dx} &= f(x,y,p),& y(0) &= y_0
+\end{align*}
+\vspace{-5pt}
+hat Lösung $y=y(x,p)$
+\end{block}
+\uncover<2->{%
+\begin{block}{Ableitungsmatrix $\partial y(x,p)/\partial p$}
+DGL nach $p$ ableiten
+\begin{align*}
+\frac{dy(x,p)}{dx}
+&=
+f(x,y(x,p),p)
+\\
+\uncover<3->{
+\Rightarrow\;
+\frac{d}{dx}
+\frac{\partial y}{\partial p}}
+&\uncover<3->{=
+\frac{\partial f}{\partial y} \cdot \frac{\partial y}{\partial p}
++
+\frac{\partial f}{\partial p}}
+\end{align*}
+\uncover<4->{%
+Anfangsbedingung: $\partial y(0,p)/\partial p=0$}%
+\end{block}}%
+\end{column}
+\begin{column}{0.48\hsize}
+\uncover<5->{%
+\begin{block}{Beispiel}
+Für das Eigenwertproblem, $p=\lambda$
+\vspace{-5pt}
+\[
+u''(x)=\lambda u(x)
+\uncover<6->{%
+\Rightarrow
+\frac{d}{dx}
+\begin{pmatrix}u_1\\u_2\end{pmatrix}
+=
+\begin{pmatrix} u_2\\\lambda u_1
+\end{pmatrix}}
+\]
+\vspace{-12pt}
+
+\uncover<7->{%
+Ableitungen:
+\vspace{-5pt}
+\begin{align*}
+\frac{\partial f(x,y,\lambda)}{\partial y}
+&=
+\begin{pmatrix} 0&1\\ \lambda&0\end{pmatrix}
+\\
+\frac{\partial f(x,y,p)}{\partial \lambda}
+&=
+\begin{pmatrix} 0\\ 1 \end{pmatrix}
+\end{align*}}%
+\vspace{-10pt}
+
+\uncover<8->{%
+Differentialgleichung:
+\begin{align*}
+\frac{dP}{dx} 
+&= 
+\begin{pmatrix} 0&1\\ \lambda&0\end{pmatrix} P
++ 
+\begin{pmatrix} 0\\ 1 \end{pmatrix}
+\end{align*}}%
+\end{block}}
+\end{column}
+\end{columns}
+\end{frame}
