@@ -1,0 +1,49 @@
+%
+% gleichungssystem.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Zweite Ableitungen}
+Bedingungen für zweite Ableitung
+\[
+g_i''(x)
+=
+{\color{red}f_i}h_{0,i}''(x) + {\color{red}f_{i+1}}h_{1,i}''(x)
++
+{\color{red}s_i}h^{1\prime\prime}_{0,i}(x) + {\color{red}s_{i+1}}h_{1,i}^{1\prime\prime}(x)
+\]
+\uncover<2->{
+Spezialfall: Stützstellen ganzzahlig
+\begin{align*}
+h_0''(0)               &=          - 6 &
+h_1''(0)               &= \phantom{-}6 &
+h_0^{1\prime\prime}(0) &=          - 4 &
+h_1^{1\prime\prime}(0) &= \phantom{-}2
+\\
+h_0''(1)               &= \phantom{-}6 &
+h_1''(1)               &=          - 6 &
+h_1^{1\prime\prime}(1) &=          - 2 &
+h_1^{1\prime\prime}(1) &= \phantom{-}4
+\end{align*}
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{Gleichungsssytem}
+Für ganzzahlige Stützstellen:
+\[
+\setcounter{MaxMatrixCols}{20}
+\begin{matrix}
+4s_0 &+& 2s_1 & &      & &      & &        & &        & &      &=& 6f_1-6f_0 \\
+2s_0 &+& 4s_1 &+& 2s_2 & &      & &        & &        & &      &=& 6f_2-6f_1 \\
+     & & 2s_1 &+& 4s_2 &+& 2s_3 & &        & &        & &      &=& 6f_3-6f_2 \\
+     & &      & & 2s_2 &\ddots& &\ddots &  & &        & &      &=& 6f_4-6f_3 \\
+     & &      & &      &\ddots& & &        &\ddots&   & &      & & \vdots\hspace*{15pt}    \\
+     & &      & &      & &      & &        & &        & &      & & \\
+     & &      & &      & &      &\ddots&   &\ddots&2s_{n-1}& &      & & \vdots\hspace*{15pt}          \\
+     & &      & &      & &      & &2s_{n-2}&+&4s_{n-1}&+& 2s_n &=& 6f_{n-1}-6f_{n-2} \\
+     & &      & &      & &      & &        & &2s_{n-1}&+& 4s_n &=& 6f_n-6f_{n-1} 
+\end{matrix}
+\]
+\end{frame}

@@ -1,0 +1,65 @@
+%
+% verbesserung.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Verbesserung der numerischen Lösung $\tilde{y}(x)$}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.40\hsize}
+\begin{block}{Einschritt-Verfahren}
+Berechung von $\tilde{y}(x+h)$ aus $\tilde{y}(x)$:
+\uncover<2->{%
+\[
+\tilde{y}(x+h) = \tilde{y}(x) + h\cdot F(x,\tilde{y},h)
+\]
+$F$ heisst Inkrementfunktion
+\[
+F(x,\tilde{y},h) \simeq y'(x) + \frac{y''(x)}{2!}h+\dots
+\]}
+\end{block}
+\uncover<6->{%
+\vspace{-10pt}
+\begin{block}{Fehler}
+Der Fehler hängt davon ab, wie gut $hF(x,\tilde{y},h)$ die 
+das Inkrement $\tilde{y}(x+h)-\tilde{y}(x)$ approximiert.
+\end{block}}
+\end{column}
+\begin{column}{0.56\hsize}
+\uncover<3->{%
+\begin{block}{Euler-Verfahren}
+\vspace{-15pt}
+\begin{align*}
+\tilde{y}(x+h)
+&=
+\tilde{y}(x) + h\cdot f(x,\tilde{y})
+\\
+F(x,\tilde{y},h)
+&=
+f(x,\tilde{y})
+\end{align*}
+\end{block}}
+\uncover<4->{%
+\begin{block}{Verbessertes Euler-Verfahren}
+\vspace{-15pt}
+\begin{align*}
+F(x,\tilde{y},h)
+&=
+f\biggl(x+\frac{h}2, \tilde{y} + \frac{h}2 f(x,\tilde{y}) \biggr)
+\end{align*}
+\end{block}}
+\uncover<5->{%
+\begin{block}{Vereinfachtes Runge-Kutta-Verfahren}
+\vspace{-15pt}
+\begin{align*}
+F(x,\tilde{y},h)
+&=
+\frac{1}2\bigl(
+f(x,\tilde{y}) + f(x+h, \tilde{y}+hf(x,\tilde{y}))
+\bigr)
+\end{align*}
+\end{block}}
+\end{column}
+\end{columns}
+\end{frame}

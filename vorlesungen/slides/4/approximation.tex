@@ -1,0 +1,44 @@
+%
+% approximation.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Approximation des Integrals}
+\uncover<2->{%
+\begin{block}{Abschätzungen für Funktionswerte}
+In jedem Teilintervall $[x_{k-1},x_k]$ gilt
+\[
+x\in[x_{k-1},x_k]
+\qquad\Rightarrow\qquad
+\underline{f}_k \le f(x) \le \overline{f}_k
+\]
+\end{block}}
+\uncover<3->{%
+\begin{block}{Abschätzungen für Ober- und Untersummen}
+Für beliebige $\tilde{x}_k\in[x_{k-1},x_k]$ folgt
+\[
+\underline{I}
+=
+\sum_{k=1}^n \underline{f}_k\cdot(x_{k}-x_{k-1})
+\le
+\sum_{k=1}^n f(\tilde{x}_k)\cdot(x_{k}-x_{k-1})
+\le
+\sum_{k=1}^n \overline{f}_k\cdot(x_{k}-x_{k-1})
+=
+\overline{I}
+\]
+\end{block}}
+\vspace{-5pt}
+\uncover<4->{%
+\begin{block}{Grenzwert}
+\vspace{-10pt}
+\[
+I
+=
+\lim_{n\to\infty,\delta\to 0}
+\sum_{k=1}^n f(\tilde{x}_k)\cdot(x_{k}-x_{k-1})
+\]
+\end{block}}
+\end{frame}
+

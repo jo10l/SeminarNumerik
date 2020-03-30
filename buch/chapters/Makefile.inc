@@ -17,16 +17,20 @@ CHAPTERFILES =								\
 	chapters/10-arithmetik/instabilitaet.tex			\
 	chapters/10-arithmetik/kondition.tex				\
 	chapters/10-arithmetik/beschleunigung.tex			\
+	chapters/10-arithmetik/uebungsaufgaben/1001.tex			\
+	chapters/10-arithmetik/uebungsaufgaben/1002.tex			\
 	chapters/20-gleichungen/chapter.tex				\
 	chapters/20-gleichungen/nullstellen.tex				\
 	chapters/20-gleichungen/newton.tex				\
 	chapters/20-gleichungen/homotopie.tex				\
+	chapters/20-gleichungen/uebungsaufgaben/2001.tex		\
 	chapters/30-interpolation/chapter.tex				\
 	chapters/30-interpolation/polygon.tex				\
 	chapters/30-interpolation/polynom.tex				\
 	chapters/30-interpolation/hermite.tex				\
 	chapters/30-interpolation/bary.tex				\
 	chapters/30-interpolation/splines.tex				\
+	chapters/30-interpolation/uebungsaufgaben/3001.tex		\
 	chapters/40-integration/chapter.tex				\
 	chapters/40-integration/riemann.tex				\
 	chapters/40-integration/romberg.tex				\

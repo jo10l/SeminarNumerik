@@ -48,11 +48,11 @@
 \foreach \x in {1,...,5}{
 	\node[color=blue]
 		at ({\x+0.5},{\A*(\x+0.5-1)*(\x+0.5-7)*(\x+0.5-11)+\B})
-		[above] {$f(x_\x)$};
+		[above] {$f(\tilde{x}_\x)$};
 }
 \node at ({10.5},-0.1) [below] {$x_n$};
 \node[color=blue] at ({10.5},{\A*(10.5-1)*(10.5-7)*(10.5-11)+\B})
-	[above] {$f(x_n)$};
+	[above] {$f(\tilde{x}_n)$};
 
 \tickszeichnen
 \funktion

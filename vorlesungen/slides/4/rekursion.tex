@@ -1,0 +1,47 @@
+%
+% rekursion.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Rekursion}
+\begin{block}{Satz: Verfeinerung $h\to\frac{h}2$ der Trapezregel}
+\vspace{-5pt}
+\uncover<2->{%
+\[
+T\biggl(\frac{h}2\biggr)
+=
+{\textstyle\frac12}\bigl(
+T(h) + M(h)
+\bigr)
+\]}
+\end{block}
+\vspace{-20pt}
+\uncover<3->{%
+\begin{proof}[Beweis]
+Mit $h = (b-a)/n$, $x_k = a + \frac{h}2k$, $k=0,1,\dots,2n$:
+\begin{align*}
+\uncover<4->{
+T({\textstyle\frac{h}2})}
+&\uncover<4->{=
+\frac{h}2\biggl(
+\frac12f(x_0) + f(x_1) + f(x_2) + \dots +\frac12f(x_{2n})
+\biggr)}
+\\
+&\uncover<5->{=
+\frac12\biggl(
+\frac12 f(x_0) + f(x_2) + \dots + \frac12f(x_{2n})
+\biggr)h}
+\\
+&\qquad\qquad\qquad
+\uncover<5->{+
+\frac12\biggl(
+f(x_1)+f(x_3)+\dots + f(x_{2n-1})
+\biggr)h}
+\\
+&\uncover<6->{=\frac12 T(h) + \frac12 M(h)}
+\qedhere
+\end{align*}
+\end{proof}}
+
+\end{frame}

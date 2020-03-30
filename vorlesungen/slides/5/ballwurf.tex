@@ -1,0 +1,71 @@
+%
+% ballwurf.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Ballwurf}
+\begin{block}{Differentialgleichung}
+Luftwiderstand: $F=\frac12 C_w\varrho(y) v^2$
+\[
+\frac{d^2}{dt^2}
+\begin{pmatrix}x\\y\end{pmatrix}
+=
+\begin{pmatrix}
+-\frac1{2m}C_w\varrho(y) v v_x\phantom{\mathstrut-g}\\
+-\frac1{2m}C_w\varrho(y) v v_y - g
+\end{pmatrix},
+\qquad
+v = \sqrt{v_x^2 + v_y^2}
+\]
+\end{block}
+\vspace{-10pt}
+\uncover<2->{%
+\begin{block}{Differentialgleichung für $X$}
+\vspace{-15pt}
+\begin{align*}
+\ddot{X}
+&=
+-\frac{C_w}{2m} v
+\begin{pmatrix}
+0&\varrho'(y) v_x\\
+0&\varrho'(y) v_y
+\end{pmatrix}
+\cdot X
++
+\frac{C_w\varrho(y)}{2m}
+\begin{pmatrix}
+\frac{v_x}{v}+v&\frac{v_y}{v}v_x
+\\
+\frac{v_x}{v}v_y&\frac{v_y}{v}+v
+\end{pmatrix}
+\cdot
+\dot{X}
+\end{align*}
+\end{block}}
+\vspace{-10pt}
+\uncover<3->{%
+\begin{block}{Tradeoff}
+\vspace{-15pt}
+\[
+\left.
+\begin{minipage}{0.4\hsize}
+Berechnung der Ableitungen
+\[
+\frac{\partial f}{\partial x}
+\quad\text{und}\quad
+\frac{\partial f}{\partial v}
+\]
+\end{minipage}
+\right\}
+\quad\leftrightarrow\quad
+\left\{
+\begin{minipage}{0.4\hsize}
+Quadratische Konvergenz der
+\\
+Iterationsfolge für $v_0$
+\end{minipage}
+\right.
+\]
+\end{block}}
+\end{frame}
