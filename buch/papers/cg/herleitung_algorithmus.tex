@@ -1,0 +1,124 @@
+\section{Herleitung des Algorithmus}
+\label{cg:section:herleitung}
+\rhead{Herleitung des Algorithmus}
+
+
+Erste, grobe Herleitung des Algorithmus, ohne viel Text...
+
+Der Algorithmus versucht ein (grosses) lineares Gleichungssystem der Form
+\begin{equation}
+	Ax = b \quad x \in \mathbb{R}^N,
+\end{equation}
+zu lösen.
+Wir definieren folgende Voraussetzungen für die Matrix $A$:
+\begin{itemize}
+	\item $A$ ist positiv definit, d.h. $x^T A x > 0$
+	\item $A$ ist Symmetrisch
+\end{itemize}
+
+Die Stärke des CG-Verfahren ist es, in $N$ schritten zur exakten Lösung zu finden.
+Das kann man sich gut vorstellen als steepest descent eines Problems, welches schön auf die Koordinatenachsen ausgerichtet ist. %TODO intuition -> Grafik
+
+\subsection{Minimierungsproblem \label{cg:subsection:Minimierungsproblem}}
+
+Eine Lösung für $x$ kann durch das Minimierungsproblem
+\begin{equation}
+	\min_{x} \Phi(x) = \frac{1}{2} x^T A x - x^T b
+\end{equation}
+gefunden werden.
+Der folgende Beweis zeigt, wieso dies ein sinnvoller Ansatz ist.
+
+Wir definieren eine zweite Variable $z = x + \lambda y$, was uns erlaubt die folgende Differenz auszurechnen
+\begin{align}
+	\Phi(z) - \Phi(x) 
+	&= 
+	\frac{1}{2} \left(x + \lambda y\right) ^T A \left(x + \lambda y\right)  - \left(x + \lambda y\right) ^T b
+	- 
+	\frac{1}{2} x^T A x + x^T b 
+	\\
+	&= 
+	\frac{1}{2} \left(x^T A x + x^T A \lambda y + \lambda y^T A x + \lambda y^T A \lambda y\right) 
+	-
+	x^T b - \lambda y^T b
+	- 
+	\frac{1}{2} x^T A x + x^T b .	
+\end{align}
+Da $A$ symmetrisch ist, können die Terme $x^T A \lambda y$ und $\lambda y^T A x$ zusammengefasst werden (analog zur binomischen Formel)
+\begin{align}
+	\Phi(z) - \Phi(x) 
+	&= 
+	\frac{1}{2}\cancel{ x^T A x} + x^T A \lambda y + \frac{1}{2} \lambda y^T A \lambda y
+	-
+	\bcancel{x^T b} - \lambda y^T b
+	- 
+	\frac{1}{2}\cancel{ x^T A x} + \bcancel{x^T b} \\
+	&=
+	\lambda x^T A y	+ \frac{1}{2} {\lambda}^2 y^T A y - \lambda y^T b \\
+	&=
+	\frac{{\lambda}^2}{2} y^T A y + \lambda y^T \left(Ax -b \right) .
+\end{align}
+Nun können wir den Beweis führen, indem wir $\Phi(z) \ge \Phi(x)$ setzen (da $\Phi(x)$ ja minimiert wird)
+\begin{align}
+	\Phi(z) &\ge \Phi(x) 
+	\\
+	\Phi(z) &= \frac{{\lambda}^2}{2} y^T A y + \lambda y^T \left(Ax -b \right) + \Phi(x) 
+	\\
+	0 &\le \frac{{\lambda}^2}{2} y^T A y + \lambda y^T \left(Ax - b \right) \quad \forall \quad y \in \mathbb{R}^N  .
+\end{align}
+Der erste Term ist dabei quadratisch in $\lambda$, $A$ ist positiv definit und somit ist immer $\frac{{\lambda}^2}{2} y^T A y \ge 0$.
+Beim zweiten Term ist diese Bedingung nur erfüllt für alle $y$, wenn $Ax - b = 0$.
+Damit Bewiesen, dass eine Lösung für die Gleichung $Ax = b$ durch Minimierung von $\Phi(x)$ gefunden wird. \qed
+
+
+\subsection{Optimale Schrittweite \label{cg:subsection:schrittweite}}
+
+Gegeben: 
+\begin{itemize}
+	\item Aktueller Index $k$
+	\item Suchrichtung $d_k$
+	\item Startpunkt $x_k$
+\end{itemize}
+Wir suchen nun die optimale Schrittweite $\alpha$, um möglichst nahe an die Lösung zu kommen in der gegebenen Suchrichtung.
+Dazu stellen wir wieder das Minimierungsproblem auf
+\begin{equation}
+	\min_{\alpha} \Phi(x_k + \alpha d_k) 
+	= 
+	\frac{1}{2} x_k^T A x_k + \alpha x_k^T A d_k + \frac{1}{2} {\alpha}^2 d_k^T A d_k
+	-
+	x_k^T b - \alpha d_k^T b .
+\end{equation}
+In $\alpha$ haben wir hier eine quadratische Gleichung, welche einer nach oben geöffneten Parabel entspricht (da $d_k^T A d_k \ge 0$).
+Somit ist es möglich ein klares Minimum zu finden, indem wir die Gleichung nach $\alpha$ ableiten und null setzen
+\begin{equation}
+\frac{\partial \Phi(x_k + \alpha d_k) }{\partial \alpha}
+= 
+x_k^T A d_k + \alpha  d_k^T A d_k - d_k^T b
+=
+0 .
+\end{equation}
+Dies ergibt für $\alpha$ 
+\begin{equation}
+\alpha
+= 
+\frac{d_k^T b - x_k^T A d_k}{d_k^T A d_k}
+=
+\frac{d_k^T \left(b - A x_k\right)}{d_k^T A d_k}.
+\end{equation}
+Wenn wir nun den Fehler der momentanen Approximation als Residuum $r_k = b - A x_k$ bezeichnen erhalten wir
+\begin{equation}
+\alpha
+= 
+\frac{\langle d_k , r_k \rangle}{\langle d_k , d_k \rangle_A},
+\end{equation}
+wobei $\langle d_k , d_k \rangle_A = d_k^T A d_k$ das verallgemeinerte Skalarprodukt zu $A$ darstellt.
+Somit haben wir nun die optimale Schrittlänge gefunden.
+
+\subsection{Optimale Suchrichtung \label{cg:subsection:suchrichtung}}
+
+Nun muss nur noch die optimale nächste Suchrichtung $d_{k+1}$ gefunden werden.
+Diese ist Orthogonal im Sinne von $A$ auf $d_k$ in Richtung des Residuums $r_k$ und kann mithilfe des Gram-Schmidt-Orthogonalisierungsverfahren gefunden werden.
+\begin{equation}
+d_{k+1}
+= 
+r_{k+1} - \frac{\langle d_k , r_{k+1} \rangle_A}{\langle d_k , d_k \rangle_A} d_k
+\end{equation}
