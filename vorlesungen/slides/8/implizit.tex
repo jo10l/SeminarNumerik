@@ -1,0 +1,58 @@
+%
+% implizit.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Implizite Verfahren}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.48\hsize}
+\begin{block}{Zweite Ableitungen}
+\[
+\frac{\partial^2 u}{\partial x^2}(x_i,t_j) = Au_j
+\]
+\end{block}
+\begin{block}{Gleichungen}
+Crank-Nicolson:
+\[
+{\textstyle\frac12}(Au_j + Au_{j+1}) = u_{j+1}-u_j
+\]
+d.~h.~$u_j$ implizit definiert
+\end{block}
+\begin{block}{Auflösen nach $u_j$}
+\vspace{-15pt}
+\[
+u_{j+1}
+=
+(E-{\textstyle\frac12}A)^{-1}
+(E+{\textstyle\frac12}A)u_j
+\]
+\end{block}
+\end{column}
+\begin{column}{0.48\hsize}
+\begin{block}{Konvergenz}
+Explizite Darstellung für Zeitschritt:
+\[
+u_{j+1} = Bu_j
+%\]
+%Lösung durch Iteration
+%\[
+\quad\Rightarrow\quad
+u_j = B^j u_0
+\]
+Spektralradius: Betrag des betragsgrössten Eigenwert
+\[
+\varrho(B) = \max\{ |\lambda|\;| \text{$\lambda$ EW von $B$}\}
+\]
+Stabilität:
+\begin{align*}
+\varrho(B) &\le 1 &&\text{stabil}\\
+\varrho(B) &> 1 &&\text{instabil}
+\end{align*}
+
+\end{block}
+\end{column}
+\end{columns}
+
+\end{frame}
