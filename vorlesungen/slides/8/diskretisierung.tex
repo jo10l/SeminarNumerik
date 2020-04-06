@@ -4,7 +4,7 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \begin{frame}
-\frametitle{Diskretisierung}
+\frametitle{Diskretisation}
 \vspace{-15pt}
 %
 \begin{columns}[t]
@@ -15,10 +15,11 @@ $u_{ij}=u(x_i,y_j)$ in Gitterpunkten
 \end{block}
 \end{column}
 \begin{column}{0.48\hsize}
+\uncover<2->{%
 \begin{block}{Volumina}
 Funktion $u(x,y)$ ersetzen durch repräsentative Werte $u_{ij}$ über Volumina,
 z.~B.~Integrale von $u(x,y)$
-\end{block}
+\end{block}}
 \end{column}
 \end{columns}
 %
@@ -74,6 +75,7 @@ z.~B.~Integrale von $u(x,y)$
 \end{column}
 \begin{column}{0.48\hsize}
 \begin{center}
+\uncover<2->{%
 \begin{tikzpicture}[>=latex,thick]
 \fill[color=red!20]
         (1.0,0.5)
@@ -120,7 +122,7 @@ z.~B.~Integrale von $u(x,y)$
 \draw[->] (-0.1,0)--(5.8,0) coordinate[label={$x$}];
 \draw[->] (0,-0.1)--(0,4.8) coordinate[label={right:$y$}];
 
-\end{tikzpicture}
+\end{tikzpicture}}
 \end{center}
 \end{column}
 \end{columns}

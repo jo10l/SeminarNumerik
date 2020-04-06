@@ -20,6 +20,7 @@ u(x,0)&=g(x)&&\text{auf $\mathbb R\times \{0\}$}
 \end{align*}
 \end{block}
 \vspace{-10pt}
+\uncover<3->{%
 \begin{block}{Euler-Verfahren}
 \vspace{-15pt}
 \begin{align*}
@@ -34,16 +35,18 @@ u_{i,j+1}
 u_{i,j} + \Delta t
 \frac{u_{i+1,j}-2u_{i,j}+u_{i,j}}{\Delta x^2}
 \end{align*}
-\end{block}
+\end{block}}
 \vspace{-15pt}
+\uncover<4->{%
 \begin{block}{Vektorschreibweise}
 $u_j=\mathstrut$ Zeile $j$ von $u_{ij}$, $A = \frac{\Delta t}{\Delta x^2}L$
 \begin{align*}
 u_j &=  u_j + Au_j = (A+E)u_j
 \end{align*}
-\end{block}
+\end{block}}
 \end{column}
 \begin{column}{0.48\hsize}
+\uncover<2->{%
 \begin{block}{Diskretisation}
 \vspace{-15pt}
 \begin{align*}
@@ -81,9 +84,12 @@ u_j &=  u_j + Au_j = (A+E)u_j
 \node[color=red] at (-1,0) [above] {$u_{i-1,j}\mathstrut$};
 \node[color=red] at (0,1) [above] {$u_{i,j+1}\mathstrut$};
 
+\draw[->] (-2.5,-1.5) -- (2.5,-1.5) coordinate[label={$x$}];
+\draw[->] (-2.5,-1.5) -- (-2.5,2.5) coordinate[label={right:$t$}];
+
 \end{tikzpicture}
 \end{center}
-\end{block}
+\end{block}}
 \end{column}
 \end{columns}
 
