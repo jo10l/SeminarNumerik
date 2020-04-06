@@ -26,14 +26,14 @@ u(x,0)&=g(x)&&\text{auf $\mathbb R\times \{0\}$}
 \begin{align*}
 \frac{u_{i,j+1}-u_{i,j}}{\Delta t}
 &= 
-\frac{u_{i+1,j}-2u_{i,j}+u_{i,j}}{\Delta x^2}
+\frac{u_{i+1,j}-2u_{i,j}+u_{i-1,j}}{\Delta x^2}
 =
 \frac{1}{\Delta x^2}(Lu)_{ij}
 \\
 u_{i,j+1}
 &=
 u_{i,j} + \Delta t
-\frac{u_{i+1,j}-2u_{i,j}+u_{i,j}}{\Delta x^2}
+\frac{u_{i+1,j}-2u_{i,j}+u_{i-1,j}}{\Delta x^2}
 \end{align*}
 \end{block}}
 \vspace{-15pt}
