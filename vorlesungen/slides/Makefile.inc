@@ -104,6 +104,23 @@ chapter6 =								\
 	../slides/6/fem/integralprinzip.tex				\
 	../slides/6/chapter.tex
 
+chapter7 =								\
+	../slides/7/chapter.tex
+
+chapter8 =								\
+	../slides/8/pde.tex						\
+	../slides/8/beispiele.tex					\
+	../slides/8/diskretisierung.tex					\
+	../slides/8/poisson.tex						\
+	../slides/8/explizit.tex					\
+	../slides/8/fdm.tex						\
+	../slides/8/implizit.tex					\
+	../slides/8/vergleich.tex					\
+	../slides/8/waerme.tex						\
+	../slides/8/courant.tex						\
+	../slides/8/fvm.tex						\
+	../slides/8/chapter.tex
+
 slides = 								\
 	$(chapter0) $(chapter1) $(chapter2) $(chapter3) $(chapter4) \
-	$(chapter5) $(chapter6)
+	$(chapter5) $(chapter6) $(chapter7) $(chapter8)
