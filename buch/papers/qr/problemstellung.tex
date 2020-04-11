@@ -6,50 +6,135 @@
 \section{Problemstellung
 \label{qr:section:problemstellung}}
 \rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+In Abschnitt \ref{buch:subsection:gram-schmidt} wird das Gram-Schmidt-Orthonormalisierungsverfahren vorgestellt.
+Es liefert zwar eine sehr anschauliche Methode zur $QR$-Zerlegung, ist aber numerisch nicht stabil wenn die die Spaltenvektoren von $A$ nahezu parallel sind.
+
+Wie in \cite{qr:tam} schon als Beispiel benutzt, soll dies nun Anhand der Matrix
+\begin{equation*}
+A=\begin{pmatrix}
+1+\epsilon&1&\\
+1&1+\epsilon&1\\
+1&1&1+\epsilon
+\end{pmatrix}
+\end{equation*}
+genauer untersucht werden.
+$\epsilon$ ist dabei eine so \glqq kleine\grqq{} Zahl, sodass $\epsilon^2$ im Rechner nicht mehr darstellbar ist bzw. $\epsilon^2\approx0$.
+Nach Gram-Schmidt wird die erste Komponente von $Q$ berechnet als
+\begin{equation*}
+q_1=\frac{a_1}{|a_1|}=\frac{1}{\sqrt{3+2\epsilon+\epsilon^2}}
+\begin{pmatrix}
+1+\epsilon\\
+1\\
+1
+\end{pmatrix}\approx\frac{1}{\sqrt{3+2\epsilon}}
+\begin{pmatrix}
+1+\epsilon\\
+1\\
+1
+\end{pmatrix}.
+\end{equation*}
+Schon hier kommt es zu einem kleinen Rundungsfehler..
+Die zweite Spalte von $Q$ berechnet man als
+\begin{equation*}
+q_2=\frac{a_2-(q_1^Ta_2)q_1}{|a_2-(q_1^Ta_2)q_1|}=\frac{z_1}{|z_1|}.
+\end{equation*} 
+Dies wird im Rechner in zwei Schritten ausgeführt: Zuerst wird $z$ ausgerechnet und dann nach dessen Betrag normiert um auf $q_2$ zu kommen.
+Im ersten Schritt also:
+\begin{equation*}
+z_1=
+\begin{pmatrix}
+1\\
+1+\epsilon\\
+1
+\end{pmatrix}-\underbrace{\frac{1}{\sqrt{3+2\epsilon}}(3+2\epsilon)\frac{1}{\sqrt{3+2\epsilon}}}_{=1}
+\begin{pmatrix}
+1+\epsilon\\
+1\\
+1
+\end{pmatrix}=
+\begin{pmatrix}
+-\epsilon\\
+\epsilon\\
+0
+\end{pmatrix}
+\end{equation*}
+und
+\begin{equation*}
+|z_1|=\sqrt{(-\epsilon)^2+\epsilon^2+0^2}=\sqrt{2\epsilon^2}=\sqrt{2}\epsilon.
+\end{equation*}
+Im zweiten Schritt ergibt sich somit
+\begin{equation*}
+q_2=\frac{z_1}{|z_1|}=\frac{1}{\sqrt{2}\epsilon}
+\begin{pmatrix}
+-\epsilon\\
+\epsilon\\
+1
+\end{pmatrix}=
+\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+-1\\
+1\\
+0
+\end{pmatrix}
+\end{equation*}
+Die dritte Spalte von $Q$ wird berechnet als
+\begin{equation*}
+q_3=\frac{a_3-(q_1^Ta_3)q_1-(q_2^Ta_3)q_2}{|a_3-(q_1^Ta_3)q_1-(q_2^Ta_3)q_2|}=\frac{z_2}{|z_2|}
+\end{equation*}
+Dies ergibt
+\begin{equation*}
+z_2=
+\begin{pmatrix}
+1\\
+1\\
+1+\epsilon
+\end{pmatrix}--\underbrace{\frac{1}{\sqrt{3+2\epsilon}}(3+2\epsilon)\frac{1}{\sqrt{3+2\epsilon}}}_{=1}
+\begin{pmatrix}
+1+\epsilon\\
+1\\
+1
+\end{pmatrix}-\frac{1}{\sqrt{2}}\underbrace{(-1+1+0)}_{=0}\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+-1\\
+1\\
+0
+\end{pmatrix}=
+\begin{pmatrix}
+\epsilon\\
+0\\
+-\epsilon
+\end{pmatrix}
+\end{equation*}
+und
+\begin{equation*}
+|z_2|=\sqrt{\epsilon^2+0^2+(-\epsilon)^2}=\sqrt{2}\epsilon.
+\end{equation*}
+Wiederum im zweiten Schritt ergibt sich
+\begin{equation*}
+q_3=\frac{z_2}{|z_2|}=\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+1\\
+0\\
+-1
+\end{pmatrix}.
+\end{equation*}
+Nach diesem Vorgehen kommt man also auf
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{qr:equation1}
+Q=
+\begin{pmatrix}
+q_1&q_2&q_3
+\end{pmatrix}=
+\begin{pmatrix}
+\frac{1+\epsilon}{\sqrt{3+2\epsilon}}&-\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\
+\frac{1}{\sqrt{3+2\epsilon}}&\frac{1}{\sqrt{2}}&0\\
+\frac{1}{\sqrt{3+2\epsilon}}&0&-\frac{1}{\sqrt{2}}
+\end{pmatrix}\label{qr:qsol}
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
-
-\subsection{De finibus bonorum et malorum
-\label{qr:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{000tempmlate:equation1}.
-
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{qr:section:loesung}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{qr:section:folgerung}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
-
+$Q$ ist nach Definition orthonormiert. Die Spalten müssen also ein Betrag von jeweils 1 haben. Dies stimmt, wenn man $\epsilon$ in \ref{qr:qsol} vernachlässigt.
+Betrachtet man wieder unter Vernachlässigung von $\epsilon$ die Winkel zwischen den Spalten (angegeben im jeweiligen Index), kommt man auf
+\begin{equation*}
+\theta_{12}=\frac{\pi}{2},\quad \theta_{13}=\frac{\pi}{2}, \quad \theta_{23}=\frac{2\pi}{3}.
+\end{equation*}
+$Q$ ist also nicht orthogonal und somit ist auch $Q^{-1}\ne Q^T$.
 
