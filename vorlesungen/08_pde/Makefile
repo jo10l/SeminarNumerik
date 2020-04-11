@@ -24,3 +24,21 @@ thumbnail.jpg:	thumbnail.pdf
 	convert -density 300 thumbnail.pdf \
                 -resize 1920x1080 -units PixelsPerInch thumbnail.jpg
 
+courant:	courant.jpg
+
+courant.pdf:	Seminar-08-pde.pdf
+	pdfjam --outfile courant.pdf --papersize '{16cm,9cm}' \
+		Seminar-08-pde.pdf 41
+courant.jpg:	courant.pdf
+	convert -density 300 courant.pdf \
+                -resize 1920x1080 -units PixelsPerInch courant.jpg
+
+explizit:	explizit.jpg
+
+explizit.pdf:	Seminar-08-pde.pdf
+	pdfjam --outfile explizit.pdf --papersize '{16cm,9cm}' \
+		Seminar-08-pde.pdf 28
+explizit.jpg:	explizit.pdf
+	convert -density 300 explizit.pdf \
+                -resize 1920x1080 -units PixelsPerInch explizit.jpg
+
