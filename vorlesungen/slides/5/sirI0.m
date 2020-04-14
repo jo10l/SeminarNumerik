@@ -92,6 +92,9 @@ function retval = kurve(I0, name)
 
 	fprintf(fn, "\\def\\lockdown%s{\n", name);
 	fprintf(fn, "\\fill[color=gray!50] (%.4f,0) rectangle (%.4f,%.4f);\n", xscale * starttime, xscale * endtime, yscale * 1);
+        fprintf(fn, "\\draw (%.4f,0)--(%.4f,0);\n", xscale * starttime, xscale * endtime);
+        fprintf(fn, "\\draw[line width=0.5pt] (%.4f,%.4f)--(%.4f,%.4f);\n", xscale * starttime, yscale, xscale * endtime, yscale);
+
 	fprintf(fn, "}\n");
 
 	fprintf(fn, "\\def\\S%s{\n", name);
