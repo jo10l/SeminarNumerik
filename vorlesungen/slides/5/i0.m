@@ -5,12 +5,14 @@
 #
 global beta;
 global betamax;
+global forcebeta;
 global gamma;
 global Ithreshold;
 
 gamma = 0.2;
 beta = 0.29;
 betamax = 0.8;
+forcebeta = 0;
 Ithreshold = 0.10;
 
 function yprime = f(y, t)
@@ -47,15 +49,19 @@ function retval = duration(b)
 	end
 	S0 = x(2,1);
 	I0 = Ithreshold;
-	retval = (S0 - gamma / betamax) / (gamma * I0);
+	if (forcebeta > 0)
+		retval = (S0 - gamma / betamax) / (gamma * I0);
+	else
+		retval = (S0 - gamma / beta) / (gamma * I0);
+	end
 end
 
 betascale = 10;
 tscale = 0.2;
 betamin = 0.1
-betamax = 0.99
+betatop = 0.99
 N = 200;
-deltab = (betamax - betamin) / N;
+deltab = (betatop - betamin) / N;
 
 fn = fopen("i0.tex", "w");
 

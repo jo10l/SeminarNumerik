@@ -5,6 +5,7 @@
 #
 global beta;
 global betamax;
+global forcebeta;
 global gamma;
 global N;
 global Ithreshold;
@@ -12,6 +13,7 @@ global starttime;
 global endtime;
 global duration;
 
+forcebeta = 0;
 beta = 0.6;
 betamax = 0.8;
 gamma = 0.2;
@@ -28,6 +30,7 @@ lsode_options("maximum step size", 0.05)
 function yprime = f(y, t)
 	global beta;
 	global betamax;
+	global forcebeta;
 	global gamma;
 	global regime;
 	global Ithreshold;
@@ -45,6 +48,15 @@ function yprime = f(y, t)
 	end
 	if (regime > 0)
 		beta0 = gamma / abs(S);
+		if (forcebeta > 0)
+			if beta0 > betamax
+				beta0 = betamax;
+			end
+		else
+			if (beta0 > beta)
+				beta0 = beta;
+			end
+		end
 		if (beta0 > betamax)
 			beta0 = betamax;
 		end

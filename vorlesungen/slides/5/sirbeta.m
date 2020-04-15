@@ -5,6 +5,7 @@
 #
 global beta;
 global betamax;
+global forcebeta;
 global gamma;
 global N;
 global Ithreshold;
@@ -14,6 +15,7 @@ global duration;
 
 beta = 0.29;
 betamax = 0.8;
+forcebeta = 0;
 gamma = 0.2;
 N = 300;
 Ithreshold = 0.10;
@@ -34,6 +36,7 @@ function yprime = f(y, t)
 	global starttime;
 	global endtime;
 	global duration;
+	global forcebeta
 	S = y(1,1);
 	I = y(2,1);
 	R = y(3,1);
@@ -45,8 +48,14 @@ function yprime = f(y, t)
 	end
 	if (regime > 0)
 		beta0 = gamma / abs(S);
-		if (beta0 > betamax)
-			beta0 = betamax;
+		if (forcebeta > 0)
+			if (beta0 > betamax)
+				beta0 = betamax;
+			end
+		else
+			if (beta0 > beta)
+				beta0 = beta;
+			end
 		end
 		if (endtime == 0)
 			if (I < 0.95 * Ithreshold)
