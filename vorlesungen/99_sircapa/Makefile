@@ -24,3 +24,29 @@ thumbnail.jpg:	thumbnail.pdf
 	convert -density 300 thumbnail.pdf \
                 -resize 1920x1080 -units PixelsPerInch thumbnail.jpg
 
+videos:	i0video simvideo simbetavideo
+
+i0video:	Seminar-99-sircapa.pdf
+	pdfjam --outfile i0video.pdf --papersize '{16cm,9cm}' \
+		Seminar-99-sircapa.pdf 187-205
+	rm -rf i0video; mkdir i0video
+	convert -density 300 i0video.pdf \
+		-resize 1920x1080 -units PixelsPerInch i0video/i%03d.png
+
+simvideo:	Seminar-99-sircapa.pdf
+	pdfjam --outfile simvideo.pdf --papersize '{16cm,9cm}' \
+		Seminar-99-sircapa.pdf 5-84
+	rm -rf simvideo; mkdir simvideo
+	convert -density 300 simvideo.pdf \
+		-resize 1920x1080 -units PixelsPerInch simvideo/i%03d.png
+
+simbetavideo:	Seminar-99-sircapa.pdf
+	pdfjam --outfile simbetavideo.pdf --papersize '{16cm,9cm}' \
+		Seminar-99-sircapa.pdf 93-181
+	rm -rf simbetavideo; mkdir simbetavideo
+	convert -density 300 simbetavideo.pdf \
+		-resize 1920x1080 -units PixelsPerInch simbetavideo/i%03d.png
+
+
+
+

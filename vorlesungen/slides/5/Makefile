@@ -14,3 +14,5 @@ sirbetapath.tex:	sirbeta.m
 sirI0path.tex:	sirI0.m
 	octave --quiet sirI0.m
 
+i0.tex:	i0.m
+	octave --quiet i0.m

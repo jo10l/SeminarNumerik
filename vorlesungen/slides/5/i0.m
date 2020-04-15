@@ -33,6 +33,7 @@ function retval = duration(b)
 	global betamax;
 	global gamma;
 	global Ithreshold;
+	global forcebeta;
 	beta = b;
 	x0 = [ 0.999999, 0.000001 ];
 	# find the minimum time when I gives 
