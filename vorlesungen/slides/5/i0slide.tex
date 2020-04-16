@@ -35,6 +35,8 @@ $\Rightarrow$ eine Medikament würde helfen\dots
 \begin{center}
 \begin{tikzpicture}[>=latex,thick]
 
+\begin{scope}
+\clip (3,0) rectangle (10,7);
 \uncover<2->{
 \jJ
 \jK
@@ -71,11 +73,11 @@ $\Rightarrow$ eine Medikament würde helfen\dots
 %\iS
 %\iT
 }
-
+\end{scope}
 
 \uncover<2->{
-\node[color=blue] at ({10-0.2},6.8) [right] {$I_0=0.2$};
-\node[color=blue] at ({10-0.2},2.7) [right] {$I_0=0.1$};
+\node[color=blue] at ({10-0.2},6.8) [right] {$I_0=0.1$};
+\node[color=blue] at ({10-0.2},2.7) [right] {$I_0=0.2$};
 }
 
 \uncover<3->{
