@@ -107,6 +107,7 @@ chapter5 =								\
 	../slides/5/chapter.tex
 
 chapter6 =								\
+	../slides/6/linalg.tex						\
 	../slides/6/fem/introbeispiel.tex				\
 	../slides/6/fem/integralprinzip.tex				\
 	../slides/6/chapter.tex
