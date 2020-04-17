@@ -108,6 +108,13 @@ chapter5 =								\
 
 chapter6 =								\
 	../slides/6/linalg.tex						\
+	../slides/6/gaussseidel/iteration.tex				\
+	../slides/6/gaussseidel/matrix.tex				\
+	../slides/6/gaussseidel/spektralradius.tex			\
+	../slides/6/jacobi/eigenwerte.tex				\
+	../slides/6/jacobi/drehung.tex					\
+	../slides/6/jacobi/iteration.tex				\
+	../slides/6/jacobi/konvergenz.tex				\
 	../slides/6/fem/introbeispiel.tex				\
 	../slides/6/fem/integralprinzip.tex				\
 	../slides/6/chapter.tex
