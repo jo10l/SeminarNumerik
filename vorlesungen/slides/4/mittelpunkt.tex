@@ -1,0 +1,112 @@
+%
+% mittelpunkt.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Mittelpunktregel}
+\vspace{-10pt}
+\begin{columns}[t]
+\begin{column}{0.36\hsize}
+\uncover<2->{%
+\begin{block}{Unterteilung}
+Gleichlange Teilintervalle:
+\[
+x_k = a + k\frac{b-a}n = a + kh
+\]
+\end{block}}
+\vspace{-10pt}
+\uncover<3->{%
+\begin{block}{Stützstellen}
+Abtastung im Mittelpunkt:
+\[
+\tilde{x}_k
+=
+a + \biggl(k-\frac12\biggr)\frac{b-a}n
+\]
+\end{block}}
+
+\end{column}
+\begin{column}{0.6\hsize}
+
+\input{../../buch/chapters/40-integration/figures/common.inc}
+\begin{tikzpicture}[>=latex,thick,scale=0.6]
+
+\fill[color=red!20]
+        plot[domain=1:11,samples=100]
+                ({\x},{\A*(\x-1)*(\x-7)*(\x-11)+\B})
+                --
+                (11,0)--(1,0)--cycle;
+
+
+\uncover<4->{
+\foreach \x in {1.5,2.5,...,10.5}{
+	\fill[color=blue!10] ({\x-0.5},0)--({\x+0.5},0)
+		--
+		({\x+0.5},{\A*(\x-1)*(\x-7)*(\x-11)+\B})
+		--
+		({\x-0.5},{\A*(\x-1)*(\x-7)*(\x-11)+\B})
+		--cycle;
+	\draw[color=blue!50] ({\x-0.5},0)--({\x+0.5},0)
+		--
+		({\x+0.5},{\A*(\x-1)*(\x-7)*(\x-11)+\B})
+		--
+		({\x-0.5},{\A*(\x-1)*(\x-7)*(\x-11)+\B})
+		--cycle;
+}
+}
+%({\x},{\A*(\x-1)*(\x-7)*(\x-11)+\B});
+
+\kurve
+
+\draw[->] (-0.1,0)--(12.3,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1)--(0,6.3) coordinate[label={right:$y$}];
+
+\foreach \x in {1,...,10}{
+	\uncover<3->{
+	\draw[color=blue]
+		({\x+0.5},0)--
+		({\x+0.5},{\A*(\x+0.5-1)*(\x+0.5-7)*(\x+0.5-11)+\B});
+	\draw ({\x+0.5},-0.1)--({\x+0.5},0.1);
+	}
+}
+
+\uncover<3->{%
+\foreach \x in {1,...,8}{
+	\node at ({\x+0.5},-0.1) [below] {$\tilde{x}_{\x}$};
+}
+\foreach \x in {1,3,...,5}{
+	\node[color=blue]
+		at ({\x+0.5},{\A*(\x+0.5-1)*(\x+0.5-7)*(\x+0.5-11)+\B})
+		[above] {$f(\tilde{x}_\x)$};
+}
+\node at ({10.5},-0.1) [below] {$x_n$};
+\node[color=blue] at ({10.5},{\A*(10.5-1)*(10.5-7)*(10.5-11)+\B})
+	[above] {$f(\tilde{x}_n)$};
+}
+
+\tickszeichnen
+\funktion
+
+\end{tikzpicture}
+
+\end{column}
+\end{columns}
+\uncover<4->{
+\[
+\int_a^b f(x)\,dx
+\simeq
+M(h)
+=
+\sum_{k=1}^n
+f\biggl(a + \biggl(k-\frac12\biggr)\biggr) h
+\]
+}
+\end{frame}
+
+
+
+
+
+
+

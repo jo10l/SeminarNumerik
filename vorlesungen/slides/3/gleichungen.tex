@@ -1,0 +1,35 @@
+%
+% gleichungen.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Gleichung für Interpolationspolynom}
+\begin{block}{Ansatz}
+\vspace{-5pt}
+\[
+p(x) = a_nx^n + a_{n-1}x^{n-1}+\dots + a_2x^2 + a_1x + a_0\uncover<2->{,\qquad
+p(x_i)=f_i}
+\]
+\end{block}
+\vspace{-15pt}
+\uncover<3->{
+\begin{block}{Lösung mit Gleichungssytem}
+\uncover<4->{
+\[
+\begin{linsys}{5}
+{\color<5->{red}a_n}x_1^n &+& {\color<5->{red}a_{n-1}}x_1^{n-1} &+& \dots &+& {\color<5->{red}a_1}x_1 &+& {\color<5->{red}a_0}   &=& f_1 \\
+{\color<5->{red}a_n}x_2^n &+& {\color<5->{red}a_{n-1}}x_2^{n-1} &+& \dots &+& {\color<5->{red}a_1}x_2 &+& {\color<5->{red}a_0}   &=& f_2 \\
+{\color<5->{red}a_n}x_3^n &+& {\color<5->{red}a_{n-1}}x_3^{n-1} &+& \dots &+& {\color<5->{red}a_1}x_3 &+& {\color<5->{red}a_0}   &=& f_3 \\
+\vdots\; & & \vdots\;         & & \ddots& &\vdots\;& &\vdots\;& & \vdots\;\\
+{\color<5->{red}a_n}x_n^n &+& {\color<5->{red}a_{n-1}}x_n^{n-1} &+& \dots &+& {\color<5->{red}a_1}x_n &+& {\color<5->{red}a_0}   &=& f_n 
+\end{linsys}
+\]}
+\end{block}}
+\uncover<5->{%
+\begin{itemize}
+\item<6-> zu teuer: Berechnungsaufwand $O(n^3)$ prohitiv
+\item<7-> ungelöst: Stabilität der Berechnung von $f(x)$
+\end{itemize}
+}
+\end{frame}

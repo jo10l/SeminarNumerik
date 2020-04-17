@@ -1,0 +1,102 @@
+%
+% reduktion.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Reduktion der Ordnung}
+\begin{block}{Differentialgleichung der Ordnung $n$}
+\vspace{-15pt}
+\begin{gather*}
+y^{(n)} = f(x,y,y',\dots,y^{(n-2)},y^{(n-1)})
+\\
+\uncover<2->{
+y^{(n-1)}(0) = g_{n-1},\quad
+y^{(n-2)}(0) = g_{n-1},
+\dots,\quad
+y'(0) = g_1, \quad
+y(0) = g_0}
+\end{gather*}
+\end{block}
+\uncover<3->{%
+\begin{block}{Reduktion}
+Neue Funktionen $y_0(x)=y(x)$, $y_1(x)=y'(x)$,\dots $y_{n-1}(x)=y^{(n-1)}(x)$
+mit
+\begin{center}
+\begin{tikzpicture}[>=latex,thick]
+
+\fill[color=gray!20] (-6.7,-1.5) rectangle (0.6,1.5);
+\fill[color=gray!20] (0.7,-1.5) rectangle (6.3,1.5);
+
+\node at (-3,1.7) {Gleichungen};
+\node at (3.3,1.7) {Anfangsbedingungen};
+
+\only<5-6>{
+\node at (-3,0) {$\displaystyle
+	\begin{aligned}
+		{\textstyle\frac{d}{dx}}y_0(x) & = y_0'(x)=y_1(x) \\
+		{\textstyle\frac{d}{dx}}y_1(x) & = y_1'(x)=y''(x)=y_2(x) \\
+		\vdots \quad &\phantom{=}\quad\vdots\\
+		{\textstyle\frac{d}{dx}}y_{n-1}(x)
+			&= y^{(n)}(x) =f(x,y_0,y_1,\dots,y_{n-1})\\
+	\end{aligned}
+	$};
+}
+
+\only<7-8>{
+\node at (-3,0) {$\displaystyle
+	\frac{d}{dx}\begin{pmatrix}y_0\\y_1\\\vdots\\y_{n-1}\end{pmatrix}
+	=
+	\begin{pmatrix}
+	y_1\\y_2\\\vdots\\f(x,y_0,y_1,\dots,y_{n-1})
+	\end{pmatrix}
+	$};
+}
+
+\only<9->{
+\node at (-3,0) {$\displaystyle
+	\frac{d}{dx} \vec{y} = F(x,\vec{y})
+	$};
+}
+
+\only<6-7>{
+\node at (3.3,0) {$\displaystyle
+	\begin{aligned}
+	y_0(0) &= g_0\\
+	y_1(0) &= g_1\\
+	\vdots\quad &\qquad\vdots\\
+	y_{n-1}(0) &= g_{n-1}
+	\end{aligned}
+	$};
+}
+
+\only<8-9>{
+\node at (3.3,0) {$\displaystyle
+	\begin{pmatrix}
+	y_0(0)\\
+	y_1(0)\\
+	\vdots\\
+	y_{n-1}(0)
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+	g_0\\g_1\\\vdots\\g_{n-1}
+	\end{pmatrix}
+	$};
+}
+
+\uncover<10->{
+\node at (3.3,0) {$\displaystyle
+	\vec{y}(0) = \vec{g}
+	$};
+}
+
+\uncover<11->{
+\node at (-3,-1.1) {\usebeamercolor[fg]{title}Ordnung $1$};
+\node at (3.3,-1.1) {\usebeamercolor[fg]{title}Dimension $n$};
+}
+
+\end{tikzpicture}
+\end{center}
+\end{block}}
+\end{frame}

@@ -1,0 +1,61 @@
+%
+% mechanik.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochsclue Rapperswil
+%
+\begin{frame}
+\frametitle{Mechanik als Variationsproblem}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.48\hsize}
+
+\begin{block}{Lagrange-Funktion}
+Differenz von kinetischer und potentieller Energie:
+\begin{align*}
+L(t,x,v)
+&=
+E_{\text{kin}} - E_{\text{pot}}
+\\
+&\uncover<2->{=
+\frac{1}{2}mv^2 - V(x)}
+\end{align*}
+\end{block}
+\vspace{-5pt}
+
+\uncover<3->{%
+\begin{block}{Prinzip der kleinsten Wirkung}
+Das System wählt den Weg $x(t)$ mit
+\[
+\int_a^b L(t,x(t),\dot x(t))\,dt
+\;
+\text{minimal}
+\]
+(Maupertuis)
+\end{block}}
+
+\end{column}
+\begin{column}{0.48\hsize}
+\uncover<4->{%
+\begin{block}{Euler-Lagrange-Gleichung}
+Einsetzen:
+\begin{align*}
+\uncover<5->{\frac{\partial L}{\partial x}}&\uncover<5->{= -V'(x) = F(x)}
+\\
+\uncover<6->{\frac{\partial L}{\partial v}}&\uncover<6->{= mv = \text{Impuls}}
+\\
+\uncover<7->{\frac{d}{dt}\frac{\partial L}{\partial v} = ma}
+&\uncover<7->{=
+\frac{\partial L}{\partial x}
+=
+F}
+\end{align*}
+\uncover<8->{%
+$\Rightarrow$ Newtonsches Gesetz}
+\end{block}}
+\uncover<9->{%
+\begin{block}{Allgemein}
+Naturgesetze lassen sich als Minimalprinzipien formulieren
+\end{block}}
+\end{column}
+\end{columns}
+\end{frame}

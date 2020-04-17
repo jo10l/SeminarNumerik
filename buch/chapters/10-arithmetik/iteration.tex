@@ -33,6 +33,9 @@ Es stellt sich damit automatisch die Frage, was mit einem von $x^*$
 abweichenden Startwert passiert. Entfernen sich die Werte $x_k$ von $x^*$
 oder konvergiert die Folge am Ende gegen $x^*$?
 
+%
+% Beispiele
+%
 \subsection{Beispiele}
 Wir illustrieren die verschiedenen Situation, die beim Iterieren der
 Funktion $f$ auftreten können an einigen Beispielen.
@@ -232,9 +235,12 @@ Eine Verbesserung um zwei Stellen von $q_0=0.01$ auf $q_{2n}=0.0001$ braucht
 also zwischen $25$ und $2558$ Iterationen.
 \end{beispiel}
 
-
+%
+% Graphische Analyse
+%
 \subsection{Graphische Analyse
 \label{buch:section:graphischeanalyse}}
+\input{chapters/10-arithmetik/graphisch.tex}
 Ein Fixpunkt der Funktion $f(x)$ manifestiert sich in einem 
 Schnittpunkte des Graphen von $f$ mit der $45^\circ$-Geraden
 $y=x$ wie in Abbildung~\ref{buch:figure:iterationprinzip}.
@@ -248,6 +254,9 @@ Dazu folgt man der Horizontalen bis zur $45^\circ$-Geraden,
 die $x$-Koordinate des Schnittpunktes ist der $x_{n+1}$.
 So entsteht Treppenlinie in Abbildung~\ref{buch:figure:iterationprinzip}.
 
+%
+% Konvergenzbedingung
+%
 \subsection{Konvergenzbedingung
 \label{buch:subsection:konvergenzbedingung}}
 Aus der graphischen Analyse von Abschnitt~\ref{buch:section:graphischeanalyse}
@@ -308,6 +317,9 @@ $x^*=f(x^*)$ konvergiert für einen Startwert $x_0$ nahe genug bei $x^*$,
 wenn $|f'(x^*)|<1$, sie divergiert, wenn $|f'(x^*)|>1$.
 \end{satz}
 
+%
+% Die Logistische Gleichung
+%
 \subsection{Die logistische Gleichung
 \label{buch:subsection:logistisch}}
 Die logistische Gleichung ist 
@@ -496,4 +508,90 @@ Dieser Faktor ist genau dann $<1$, wenn $f''(x^*)<0$ ist.
 Ähnlich wie im Beispiel auf 
 Seite~\pageref{buch:beispiel:logistisch3} kann man auch in diesem
 Fall zeigen, dass die Konvergenz der Folge sehr langsam ist.
+
+%
+% Dritte Ableitung im Fixpunkt
+%
+\subsection{Dritte Ableitung im Fixpunkt
+\label{buch:subsection:dritteableitungfixpunkt}}
+Die bisher zusammengetragenen Sätze decken die Fälle $|f'(x^*)|=1$ mit
+nicht verschwindender zweiter Ableitung $f''(x^*)\ne 0$ ab.
+In einigen Fällen ist Konvergenz nicht gesichert, doch wenn Konvergenz
+vorliegt, dann ist sie sehr langsam.
+Speziell an dieser Situation ist, dass
+$f(x)-(x^* + f'(x^*)(x-x^*))$
+das Vorzeichen in einer Umgebung von $x^*$ nicht wechselt.
+
+Noch nicht untersucht wurde der Fall $f''(x^*)=0$.
+Es ist klar, dass die Konvergenzgeschwindigkeit nicht schneller
+werden kann.
+Für $f'''(x^*)\ne $ folgt zudem, dass in diesem Fall
+$f(x)-(x^* + f'(x^*)(x-x^*))$
+das Vorzeichen in einer Umgebung von $x^*$ wechselt.
+Da aber das Iterationsverfahren sehr empfindlich darauf regiert, ob
+der Graph von $f$ oberhalb oder unterhalb der Geraden $y=\pm x$ 
+liegt, erwarten wir ein anderes Verhalten als im Fall $f''(x^*)\ne 0$.
+\input{chapters/10-arithmetik/kubisch.tex}%
+Alle möglichen Situationen sind in den
+Abbildungen~\ref{buch:figure:fixpunkt:abl1kub} und
+\ref{buch:figure:fixpunkt:ablm1kub} dargestellt.
+
+Wir gehen also davon aus, dass sich $f$ in einer Umgebung von $x^*$
+in der Form
+\[
+f(x^*+\delta)
+\simeq
+\tilde{f}(x^*+\delta)
+=
+x^* + f'(x^*)\delta + \frac1{6}f'''(x^*) \delta^3
+=
+x^* + s\delta + a\delta^3
+\]
+entwickeln lässt, wobei $s=\pm 1$ und $a\ne 0$ ist.
+
+Der Iterationsfehler $\delta_{n+1}$ verhält sich wie
+\begin{align*}
+x^* + \delta_{n+1}
+&=
+f(x_n)
+=
+f(x^* + \delta_n)
+=
+x^* + s\delta_n + a\delta_n^3 + O(\delta_n^4).
+\\
+\delta_{n+1}
+&=
+s\delta_n + a\delta_n^3 + O(\delta_n^4)
+=
+\delta_n(s+a\delta_n^2) + O(\delta_n^4)
+=
+s\delta_n\biggl(1+\frac{a}{s}\delta_n^2\biggr) + O(\delta_n^4)
+\end{align*}
+Da $\delta_n^2>0$ ist, ist der Klammerausdruck genügend nahe bei $x^*$
+immer positiv.
+Der Betrag des Fehlers verhält sich dann wie
+\[
+|\delta_{n+1}|
+=
+|\delta_n| \cdot \biggl(1 + \frac{a}{s}\delta_n^2\biggr) + O(\delta_n^4).
+\]
+Ob der Fehler bei der Iteration grösser oder kleiner wird, hängt also
+einzig vom Vorzeichen von $a/s$ ab.
+Ist $a/s > 0$, wird der Fehler grösser, die Iterationsfolge ist divergent,
+ist $a/s < 0$, wird der Fehler kleiner, die Iterationsfolge konvergiert.
+Wir fassen diese Resultate zusammen im folgenden Satz.
+
+\begin{satz}
+Falls $f\colon\mathbb R\to\mathbb R$ den Fixpunkt $x^*\in\mathbb R$ hat,
+und $f'(x^*)=\pm1$, $f''(x^*)=0$ und $f'''(x^*)\ne 0$ ist, dann ist die
+Iterationsfolge $x_{n+1}=f(x_n)$ konvergent, falls $f'(x^*)\cdot f'''(x^*)<0$
+ist, gleichbedeutend damit, wenn $f'(x^*)$ und $f'''(x^*)$ verschiedene
+Vorzeichen haben.
+Wenn $f'(x^*)$ und $f'''(x^*)$ das gleiche Vorzeichen haben, dann ist
+die Fixpunktiterationsfolge divergent.
+\end{satz}
+
+Abbildung~\ref{buch:figure:fixpunkt:abl1kub} zeigt die Situation $f'(x^*)=1$
+während Abbildung~\ref{buch:figure:fixpunkt:ablm1kub} die Situation
+$f'(x^*)=-1$ abdeckt.
 

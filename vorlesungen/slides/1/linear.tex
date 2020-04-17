@@ -1,0 +1,43 @@
+%
+% linear.texx
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Lineare Konvergenz}
+\begin{block}{Grundfrage}
+Wie entwickelt sich der Fehler $\delta_n = x_n - x^*$?
+\end{block}
+
+\uncover<2->{
+\begin{block}{Approximation}
+\vspace{-15pt}
+\[
+x_{n+1} = f(x_n) = f(x^* + \delta_n) = f(x^*) + f'(x^*)\delta_n + \frac12 f''(x^*)\delta_n^2+\dots
+\]
+\end{block}}
+
+\vspace{-10pt}
+
+\uncover<3->{
+\begin{block}{Fehlerentwicklung}
+\vspace{-20pt}
+\begin{align*}
+x_{n+1} = x^* + \delta_{n+1}
+&= f(x_n) = x^* + f'(x^*) \delta_n + \frac12f''(x^*)\delta_n^2 + O(\delta_n^3)
+\\
+\delta_{n+1}
+&=
+f'(x^*)\delta_n + \frac12f''(x^*)\delta_n^2 + O(\delta_n^3);
+\end{align*}
+\uncover<4->{
+$\Rightarrow$ Fehler ändert sich in jeder Iteration um den Faktor $f'(x^*)$:
+\begin{enumerate}
+\item<5-> Konvergenz für $|f'(x^*)|<1$
+\item<6-> Anzahl korrekter Stellen nimmt in jeder Iteration um gleich viel zu
+\end{enumerate}
+}
+\end{block}
+
+}
+\end{frame}

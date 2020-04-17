@@ -1,0 +1,131 @@
+%
+% jacobi.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Diagonalisierung mit dem Jacobi-Verfahren
+\label{buch:section:jacobi}}
+\rhead{Diagonalisierung mit dem Jacobi-Verfahren}
+Die Diskretisierung linearer partieller Differentialgleichungen wie
+der Wellengleichung führen immer auf symmetrische Eigenwertprobleme,
+also auf Gleichungen der From $Av=\lambda v$ mit $A=A^t$. Aus der
+linearen Algebra ist bekannt, dass es in diesem Fall eine orthogonale
+Matrix $O$ gibt mit
+\[
+\begin{pmatrix}
+\lambda_1&\dots&0\\
+\vdots&\ddots&\vdots\\
+0&\dots&\lambda_n
+\end{pmatrix}=O^tAO
+\]
+Die Matrix $O^tAO$ hat also die Basisvektoren $e_i=(0,\dots,1,\dots,0)$
+als Eigenvektoren. $O$ bildet $e_i$ auf den $i$-ten Eigenvektor von $A$
+ab, in der $i$-ten Spalten von $O$ steht der $i$-te Eigenvektor von $A$.
+Findet man $O$, kann man daraus die Eigenvektoren ablesen.
+
+Das Jacobi-Verfahren versucht, $O$ als Zusammensetzung von Drehungen
+in jeweils zwei Dimensionen aufzubauen. Gleichzeitig wird die
+Matrix $A$ ``in place'' auf Diagonalform reduziert, so dass man dort
+die Eigenwerte ablesen kann.
+
+\subsection{Jacobi-Verfahren in zwei Dimensionen\label{jacobi2d}}
+In zwei Dimensionen hat eine orthogonale Matrix $O$ immer die
+Form
+\[
+O=\begin{pmatrix}\cos\alpha&\sin\alpha\\-\sin\alpha&\cos\alpha\end{pmatrix}.
+\]
+Die symmetrische Matrix
+\[
+A=\begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}
+\]
+soll damit auf Diagonalform gebracht werden.
+In
+\[
+\begin{pmatrix}
+\cos\alpha&-\sin\alpha\\
+\sin\alpha& \cos\alpha
+\end{pmatrix}
+\begin{pmatrix}
+a_{11}&a_{12}\\
+a_{21}&a_{22}
+\end{pmatrix}
+\begin{pmatrix}
+ \cos\alpha&\sin\alpha\\
+-\sin\alpha&\cos\alpha
+\end{pmatrix}
+\]
+müssen die Elemente ausserhalb der Diagonalen zu $0$ werden, dann
+stehen auf der Diagonalen die gesuchten Eigenwerte.
+Durch Nachrechnen findet man für $\alpha$ die Bedingung
+\begin{align*}
+0&=
+a_{11}\sin\alpha\cos\alpha +a_{12}(\cos^2\alpha-\sin^2\alpha)
+-a_{22}\sin\alpha\cos\alpha
+\\
+&=
+(a_{11}-a_{22})
+\frac12\sin2\alpha+a_{12}\cos2\alpha\\
+\cot2\alpha&=\frac{a_{22}-a_{11}}{2a_{12}}.
+\end{align*}
+Mit Hilfe der goniometrischen Beziehung
+\[
+\vartheta=\cot2\alpha = \frac{1-\tan^2\alpha}{2\tan\alpha}
+\]
+kann man sie als quadratische Gleichung für $\tan\alpha$ betrachten, nämlich
+\[
+\tan^2\alpha+2\vartheta\tan\alpha-1=0,
+\]
+welche die Lösungen
+\[
+\tan\alpha=\vartheta\pm\sqrt{\vartheta^2+1}
+\]
+hat. In der Matrix $O$ werden nur Sinus und Cosinus benötigt, diese
+kann man durch algebraische Ausdrücke berechnen:
+\begin{align}
+\cos\alpha&=\frac1{\sqrt{1+\tan^2\alpha}}\label{cosalpha}\\
+\sin\alpha&=\frac{\tan\alpha}{\sqrt{1+\tan^2\alpha}}\label{sinalpha}
+\end{align}
+Insbesondere sind keine numerische aufwendigen trigonometrischen Operationen
+notwendig, ausser der Wurzel in (\ref{cosalpha}) und (\ref{sinalpha})
+sind alle Schritte mit den Grundoperationen durchführbar.
+
+\subsection{Beliebige Dimension}
+Für $n>2$ lässt sich die Reduktion auf Diagonalform nicht mehr in einem
+Schritt durchführen. Der folgende Algorithmus führt jedoch zum Erfolg.
+\begin{enumerate}
+\item Initialisiere die Matrix $O$ als Einheitsmatrix: $O=I$
+\item \label{loop} Für jedes Paar von Indizes $(p,q)$ mit $q>p$ führe
+die folgenden zwei Schritte aus.
+\item Finde eine Matrix
+\[
+O_{pq}\begin{pmatrix}
+ \cos\alpha&\sin\alpha\\
+-\sin\alpha&\cos\alpha
+\end{pmatrix}
+\]
+wie in Abschnitt \ref{jacobi2d}, welche die Teilmatrix
+\[
+A_{pq}=\begin{pmatrix}a_{pp}&a_{pq}\\a_{qp}&a_{qq}\end{pmatrix}
+\]
+auf Diagonalform bringt: $O_{pq}^tA_{pq}O_{pq}$.
+\item Bilde die Matrix
+\[
+O'=\begin{pmatrix}
+1 &\dots &0         &\dots &0          &      &0\\
+  &\ddots&\vdots    &      &\vdots     &      &\vdots\\
+0 &      &\cos\alpha&\dots &\sin\alpha&\dots &0\\
+  &      &\vdots    &\ddots&\vdots     &      &\vdots\\
+0 &      &-\sin\alpha&\dots & \cos\alpha&\dots &0\\
+  &      &\vdots    &      & \vdots    &\ddots& \\
+0 &\dots &0         &      & 0         &      &1
+\end{pmatrix}.
+\]
+\item Setzte $A:=O'^tAO'$ und $O:=OO'$.
+\item Wiederhole das Verfahren ab Schritt \ref{loop}, falls noch Indexpaare
+$(p,q)$ mit $|a_{pq}|>\varepsilon$ vorkommen.
+\end{enumerate}
+Am Ende dieses Verfahrens steht in $A$ die Diagonalmatrix mit den
+Eigenwerten, in $O$ steht die orthogonale Matrix, die $A$ auf
+Diagonalform gebracht, sie enthält die Eigenvektoren in den
+Spalten.
+

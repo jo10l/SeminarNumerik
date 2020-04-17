@@ -1,0 +1,50 @@
+%
+% mehrschritt.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Mehrschrittverfahren}
+\begin{block}{Einschritt-Verfahren}
+\vspace{-5pt}
+\[
+\hspace{-8pt}
+y_{k+1}
+=
+y_k + hF(x_k,y_k,h)
+\hspace*{7.7cm}
+\]
+\end{block}
+\uncover<2->{%
+\begin{block}{Mehrschritt-Verfahren}
+\vspace{-15pt}
+\begin{align*}
+y_{k+1}
+&\uncover<3->{=
+y_k + h f(x_k,y_k)}
+&&\uncover<7->{O(h)}
+\\
+&\uncover<4->{=
+y_k + h
+\biggl(
+\frac{3}{2} f(x_k,y_k) + \frac12 f(x_{k-1},y_{k-1})
+\biggr)}
+&&\uncover<7->{O(h^2)}
+\\
+&\uncover<5->{=
+y_k + h
+\biggl(
+\frac{23}{12} f(x_k,y_k) -\frac{4}{3}f(x_{k-1},y_{k-1}) + \frac{5}{12}f(x_{k-2},y_{k-2})
+\biggr)}
+&&\uncover<7->{O(h^3)}
+\\
+&\uncover<6->{=
+y_k + h
+\biggl(
+\frac{55}{24} f(x_k,y_k) -\frac{59}{24}f(x_{k-1},y_{k-1})\\
+&\qquad  + \frac{37}{24}f(x_{k-2},y_{k-2}) -\frac{3}{8}f(x_{k-3},y_{k-3})
+\biggr)}
+&&\uncover<7->{O(h^4)}
+\end{align*}
+\end{block}}
+\end{frame}

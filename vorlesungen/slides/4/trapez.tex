@@ -1,0 +1,134 @@
+%
+% trapez.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}[fragile]
+\frametitle{Trapezregel}
+\vspace{-10pt}
+\begin{columns}[t]
+\begin{column}{0.36\hsize}
+\uncover<2->{%
+\begin{block}{Unterteilung}
+Gleichlange Teilintervalle:
+\[
+x_k=a+k\frac{b-a}{n}=a+kh
+\]
+\end{block}}
+\vspace{-10pt}
+\uncover<4->{%
+\begin{block}{Trapeze statt Rechtecke}
+\vspace{-10pt}
+\[
+f(\tilde{x}_k) h \rightarrow \frac{f(x_{k-1})+f(x_k)}{2}h
+\]
+\end{block}}
+\end{column}
+\begin{column}{0.6\hsize}
+\vspace{-10pt}
+\begin{center}
+\input{../../buch/chapters/40-integration/figures/common.inc}
+\begin{tikzpicture}[>=latex,thick,scale=0.65]
+
+\fill[color=red!20]
+	plot[domain=1:11,samples=100]
+		({\x},{\A*(\x-1)*(\x-7)*(\x-11)+\B})
+		--
+		(11,0)--(1,0)--cycle;
+		
+\def\trapez#1{
+	\pgfmathparse{#1-0.5}
+	\xdef\xlinks{\pgfmathresult}
+
+	\pgfmathparse{#1+0.5}
+	\xdef\xrechts{\pgfmathresult}
+
+	\pgfmathparse{\A*(\xrechts-1)*(\xrechts-7)*(\xrechts-11)+\B})
+	\xdef\yrechts{\pgfmathresult}
+
+	\pgfmathparse{\A*(\xlinks-1)*(\xlinks-7)*(\xlinks-11)+\B})
+	\xdef\ylinks{\pgfmathresult}
+
+	\fill[color=blue!10] (\xlinks,0)--(\xrechts,0)
+		--
+		(\xrechts,\yrechts)
+		--
+		(\xlinks,\ylinks)
+		--cycle;
+	\draw[color=blue!50] (\xlinks,0)--(\xrechts,0)
+		--
+		(\xrechts,\yrechts)
+		--
+		(\xlinks,\ylinks)
+		--cycle;
+}
+
+\uncover<4->{
+	\trapez{1.5}
+}
+
+\uncover<5->{
+	\foreach \x in {1.5,2.5,...,10.5}{
+		\trapez{\x}
+	}
+}
+
+\kurve
+%({\x},{\A*(\x-1)*(\x-7)*(\x-11)+\B});
+
+\uncover<3->{
+	\foreach \x in {\a,...,\b}{
+		\uncover<5->{
+		\draw[color=blue]
+			({\x},0)--({\x},{\A*(\x-1)*(\x-7)*(\x-11)+\B});
+		}
+		\draw ({\x},-0.1)--({\x},0.1);
+	}
+
+	\foreach \x in {1,...,7}{
+		\node at ({\x+1},-0.1) [below] {$x_{\x}$};
+	}
+}
+
+\uncover<5->{
+	\foreach \x in {0,1,2,4,5,6}{
+		\node[color=blue]
+			at ({\x+1},{\A*(\x+1-1)*(\x+1-7)*(\x+1-11)+\B})
+			[above] {$f(x_\x)$};
+	}
+
+	\node[color=blue] at ({10},{\A*(10-1)*(10-7)*(10-11)+\B})
+		[above] {$f(x_{n-1})$};
+	\node[color=blue] at ({11},{\A*(11-1)*(11-7)*(11-11)+\B})
+		[above] {$f(x_{n})$};
+}
+
+\achsen
+
+\uncover<3->{
+\node at (9.5,-0.1) [below] {$\mathstrut\cdots$};
+}
+
+\tickszeichnen
+\funktion
+
+\end{tikzpicture}
+\end{center}
+
+\end{column}
+\end{columns}
+\uncover<5->{
+\[
+\int_a^b f(x)\,dx
+\simeq
+T(h)
+=
+\sum_{k=1}^n \frac{f(x_{k-1})+f(x_k)}2\cdot h
+\uncover<6->{%
+=
+\biggl(
+\frac{f(x_0)}2 + f(x_1)+\dots + \frac{f(x_n)}2
+\biggr)\cdot h}
+\]}
+\end{frame}
+

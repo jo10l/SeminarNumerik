@@ -1,0 +1,54 @@
+%
+% sekante.tex -- template for standalon tikz images
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\a{1}
+\def\b{8}
+\def\fa{-2}
+\def\fb{3}
+
+\fill[color=gray!20] (\a,0)--(\a,\fa)--(\b,\fb)--(\b,0)--cycle;
+
+\draw[color=red,line width=1.4pt] plot[domain=0:9,samples=100]
+	({\x},{((-0.0087464*\x+0.0466472)*\x+0.9329446)*\x-2.9708455});
+
+\draw[->] (-0.1,0)--(9.3,0) coordinate[label={$x$}];
+\draw[->] (0,-3.1)--(0,3.3) coordinate[label={right:$y$}];
+
+\draw[color=blue] (1,0)--(1,-2);
+\draw[color=blue] (8,0)--(8,3);
+\fill[color=blue] (1,-2) circle[radius=0.08];
+\fill[color=blue] (8,3) circle[radius=0.08];
+\draw[color=blue] (1,-2)--(8,3);
+
+\pgfmathparse{(\a*\fb-\b*\fa)/(\fb-\fa)}
+\xdef\xneu{\pgfmathresult}
+
+\node at (\xneu,-0.1) [below] {$x_0\mathstrut$};
+\fill[color=blue] (\xneu,0) circle[radius=0.08];
+\node[color=blue] at (\a,{0.5*\fa}) [left] {$f(a)$};
+\node[color=blue] at (\b,{0.5*\fb}) [right] {$f(b)$};
+
+\draw (\a,-0.1)--(\a,0.1);
+\node at (\a,0.1) [above] {$a$};
+\draw (\b,-0.1)--(\b,0.1);
+\node at (\b,-0.1) [below] {$b$};
+
+\node at ({0.5*(\a+\xneu)},0.1) [above] {$x_0-a\mathstrut$};
+\node at ({0.5*(\b+\xneu)},-0.1) [below] {$b-x_0\mathstrut$};
+
+\end{tikzpicture}
+\end{document}
+

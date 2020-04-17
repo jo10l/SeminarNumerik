@@ -1,0 +1,61 @@
+%
+% romberg.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Konvergenz-Beschleunigung}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.42\hsize}
+\begin{block}{Idee}
+Fehlergesetz $\Rightarrow$ Fehler wegrechnen
+\end{block}
+\uncover<2->{%
+\begin{block}{Fehler}
+\vspace{-15pt}
+\begin{align*}
+I&=T(h) + Ch^2&&\uncover<3->{|\;\cdot (-1)}
+\\
+I&=T({\textstyle\frac{h}2}) + C\frac{h^2}4 &&\uncover<3->{|\;\cdot 4}
+\\
+\uncover<4->{3I}&\uncover<4->{=4T({\textstyle\frac{h}2}) - T(h)}
+\end{align*}
+\end{block}}
+\vspace{-10pt}
+\uncover<5->{%
+\begin{block}{Konvergenzverbesserung}
+\[
+T^*({\textstyle\frac{h}2})
+=
+\frac{4T({\textstyle\frac{h}2})-T(h)}3
+\]
+\end{block}}
+\end{column}
+\begin{column}{0.54\hsize}
+\uncover<6->{%
+\begin{block}{Allgemein}
+\vspace{-15pt}
+\begin{align*}
+T^{*0}(h) &= T(h)
+\\
+T^{*k}(h) &= \frac{4^kT^{*(k-1)}({\textstyle\frac{h}2}) - T^{*(k-1)}(h)}{4^k-1}
+\end{align*}
+\end{block}}
+\vspace{-10pt}
+\uncover<7->{%
+\begin{block}{Romberg-Schema}
+%\vspace{-10pt}
+\begin{center}
+\begin{tabular}{>{$}c<{$}|>{$}c<{$}>{$}c<{$}>{$}c<{$}}
+T(2^{\phantom{-}0})&               &                            &               \\
+T(2^{-1})&\uncover<8->{T^*(2^{-1})}&                            &               \\
+T(2^{-2})&\uncover<8->{T^*(2^{-2})}&\uncover<9->{T^{**}(2^{-2})}&               \\
+T(2^{-3})&\uncover<8->{T^*(2^{-3})}&\uncover<9->{T^{**}(2^{-3})}&\uncover<10->{T^{***}(2^{-3})}\\[8pt]
+O(h^2)   &\uncover<8->{O(h^4)     }&\uncover<9->{O(h^6)        }&\uncover<10->{O(h^8)}
+\end{tabular}
+\end{center}
+\end{block}}
+\end{column}
+\end{columns}
+\end{frame}

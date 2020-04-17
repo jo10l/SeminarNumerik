@@ -1,0 +1,28 @@
+%
+% sekantenfehler.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Fehler des Sekantenverfahrens}
+\begin{block}{Verbesserung des Auslöschungsproblems}
+\begin{align*}
+x_{n+1}
+&=
+\frac{x_nf(x_{n-1}) {\color{red}\mathstrut\only<2->{-x_nf(x_n)+x_nf(x_n)}}- x_{n-1} f(x_n)}{f(x_{n-1})-f(x_n)}
+\\
+&\uncover<3->{=
+x_n \only<3>{+}\only<4->{-} f(x_n) \frac{x_n-x_{n-1}}{
+\only<3>{f(x_{n-1})-f(x_n)}
+\only<4->{f(x_{n})-f(x_{n-1})}
+}}
+\\
+&\uncover<5->{=
+\underbrace{x_n}_{\displaystyle\text{beste Approximation}}
+-\underbrace{
+f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}
+}_{\displaystyle\text{Korrektur}}}
+\end{align*}
+\uncover<6->{Korrektor ist klein wenn $f(x_n)$ klein ist!}
+\end{block}
+\end{frame}

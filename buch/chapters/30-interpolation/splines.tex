@@ -77,16 +77,17 @@ eine Lösung hat.
 In jedem Teilinterval $[x_i,x_{i+1}]$ geht es um ein Problem der
 folgenden Art.
 Gesucht ist eine Funktion, die an den Intervallenden die vorgegebene
-Werte $g(x_i)=f_i$ und $g(x_{i+1}=f_{i+1}$ annimmt, im Inneren des
+Werte $g(x_i)=f_i$ und $g(x_{i+1})=f_{i+1}$ annimmt, im Inneren des
 Intervals beliebig oft stetig differenzierbar ist und zudem einen
 Integralausdruck
 \[
-\int_0^f (g''(x))^2\,dx
+\int_{x_i}^{x_{i+1}} (g''(x))^2\,dx
 \]
 minimiert.
 
 Diese Art von Problemen hat bereits Leonhard Euler in recht allgemeiner
-Form untersucht.
+Form untersucht und zu diesem Zweck das Gebiet der Variationsrechnung
+geschaffen.
 Sie tauchen in der Physik zum Beispiel in der folgenden Form auf.
 
 \begin{beispiel}
@@ -289,16 +290,17 @@ Die Minimalitätsbedingung ist dann
 0
 &=
 \frac{d}{d\varepsilon}
-\int_{x_i}^{x_{i+}} (g''(x) + \varepsilon h''(x))^2 \,dx\bigg|_{\varepsilon=0}
+\int_{x_i}^{x_{i+1}} (g''(x) + \varepsilon h''(x))^2 \,dx\bigg|_{\varepsilon=0}
 \notag
 \\
 &=\int_{x_i}^{x_{i+1}} 2g''(x)h''(x) + 2\varepsilon h''(x)^2\,dx\bigg|_{\varepsilon=0}
 \\
 \notag
 &=
-\int_{x_i}^{x_{i+1}} 2g''(x) h''(x)\,dx
+\int_{x_i}^{x_{i+1}} 2g''(x) h''(x)\,dx.
 \intertext{Wie bei der Euler-Lagrange-Gleichung können wir durch partielles
-Integrieren die zweite Ableitung von $h$ los werden:}
+Integrieren die zweite Ableitung der Funktion $h$ los werden:}
+0
 &=
 \biggl[ g''(x) h'(x) \biggr]_{x_i}^{x_{i+1}}
 -
@@ -320,7 +322,7 @@ Jetzt nutzen wir wieder die freie Wahlmöglichkeit der Funktion $h$
 aus.
 Wir können die Funktion so wählen, dass
 $h(x_i)=h(x_{i+1})=h'(x_i)=h'(x_{i+1})=0$ ist, dann 
-verschwinden die ersten beiden Termen.
+verschwinden die ersten beiden Terme.
 Das Integral verschwindet nur dann immer, wenn der Integrand verschwindet,
 wenn also $g^{(4)}(x)=0$ im Inneren jedes Teilintervals $[x_i,x_{i+1}]$.
 Es folgt, dass in jedem Teilinterval die Funktion $g$ ein kubisches Polynom 

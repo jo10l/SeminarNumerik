@@ -6,4 +6,56 @@
 \chapter{Lineare Gleichungssysteme\label{chapter:linsys}}
 \lhead{Lineare Gleichungssysteme}
 \rhead{}
+Die lineare Algebra ist fundamental in vielen Bereichen der angewandeten
+Mathematik.
+Eine grosse Zahl von Methoden zur Lösung linearer
+Gleichungssysteme, zur Zerlegung von Matrizen und zur Lösung des
+Eigenwertproblems sind über die Jahrhunderte entwickelt worden und
+werden zum Teil bereits in Anfängervorlesungen unterrichtet.
+Insbesondere der Gausssche Elminitationsalgorithmus gehört zu den
+grundlegenden Techniken der numerischen linearen Algebra, wird hier
+aber als bekannt vorausgesetzt.
+
+Die meisten Techniken gehen von relativ kleinen Gleichungssystemen aus.
+Sie sind aber schlicht nicht leistungsfähig genug oder stabil genug für 
+grosse Systeme, wie sie zum Beispiel bei der Lösung von partiellen
+Differentialgleichungen oder Simulationen komplexer Systeme auftreten.
+Auch ist die Laufzeit für die exakte Lösung oft zu lang.
+Zum Beispiel hat der Gauss-Algorithmus für $n$ Unbekannte Laufzeitkomplexität
+$O(n^3)$, was für Gleichungsyssteme mit $n>10^5$ zu prohitiv grossem
+Aufwand führt.
+Kompromisse zwischen exakter Lösung und Durchführbarkeit in vernünftiger
+Zeit sind daher unumgänglich.
+Bereits Gauss hat daher iterative numerische Methoden entwickelt.
+
+Dieses Kapitel präsentiert einige wenige Algorithmen des überaus weiten
+Feldes der numerischen linearen Algebra, welche die Vielfalt dieses
+Gebietes illustrieren sollen.
+Eine vertiefte Darstellung kann gefunden werden in \cite{buch:watkins}.
+In Abschnitt~\ref{buch:section:gaussseidel} wird gezeigt, wie sich
+Gleichungssysteme unter gewissen Voraussetzungen auch iterativ lösen
+lassen.
+Die QR-Zerlegung ist eine andere Formulierung des Problems, eine Basis
+zu orthonormalisieren, welches schon vom Gram-Schmidt-Algorithmus gelöst
+wurde, welcher allerdings gewisse Stabilitätsprobleme hat.
+Der in Abschnitt~\ref{buch:section:qr} vorgestellte, auf Spiegelungen
+basierende Algorithmus ist effizienter und stabiler.
+Das Eigenwertproblem für symmetrische Matrizen ist von grundlegender
+Bedeutung für die Anwendungen, die Lösung über das charakteristische 
+Polynom, welches man oft in den Grundlagenvorlesungen lernt, ist jedoch
+nur für sehr kleine Matrizen praktikabel.
+Abschnitt~\ref{buch:section:jacobi} stellt das Jacobi-Verfahren zur
+Diagonalisierung symmetrischer Matrizen vor, welches ebenfalls iterativ
+arbeitet.
+
+Weitere Verfahren der numerischen linearen Algebra werden in einzelnen
+Artikeln des zweiten Teiles vorgetellt.
+
+\input{chapters/60-linsys/gaussseidel.tex}
+\input{chapters/60-linsys/qr.tex}
+\input{chapters/60-linsys/jacobi.tex}
+
+
+
+
 

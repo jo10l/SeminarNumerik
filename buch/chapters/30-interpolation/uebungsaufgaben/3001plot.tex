@@ -1,0 +1,55 @@
+%
+% 3001plot.tex -- Plot des Interpolationspolynoms
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\pgfmathparse{13/(21*(3.14159/2))}
+\xdef\xskala{\pgfmathresult}
+%\def\xskala{0.5}
+\def\yskala{1}
+
+\draw[color=blue,line width=1.6pt]
+	plot[domain={-10*3.14159/2}:{10*3.14159/2},samples=200]
+		({\xskala*\x},{\yskala*sin(180*\x/3.14159)});
+\foreach \k in {-10,...,10}{
+	\pgfmathparse{\k*(3.14159/2)}
+	\xdef\x{\pgfmathresult}
+	\fill[color=blue] ({\xskala*\x},{\yskala*sin(180*\x/3.14159)})
+		circle[radius=0.08];
+}
+
+\begin{scope}
+\clip ({-0.2+-10*(3.14159/2)*\xskala},-2) rectangle ({0.2+10*(3.14159/2)*\xskala},2);
+\input{3001graph.tex}
+\end{scope}
+
+\draw[->] ({-0.1-\xskala*10*(3.14159/2)},0)--({0.3+\xskala*10*(3.14159/2)},0)
+	coordinate[label={$x$}];
+\draw[->] (0,-2.1)--(0,2.3) coordinate[label={right:$y$}];
+
+\node at ({\xskala*3.14159},0) [below left] {$\pi\mathstrut$};
+\node at ({\xskala*2*3.14159},0) [above left] {$2\pi\mathstrut$};
+\node at ({\xskala*3*3.14159},0) [below left] {$3\pi\mathstrut$};
+\node at ({\xskala*4*3.14159},0) [above left] {$4\pi\mathstrut$};
+\node at ({\xskala*5*3.14159},0) [below left] {$5\pi\mathstrut$};
+
+\node at ({-\xskala*3.14159},0) [above right] {$-\pi\mathstrut$};
+\node at ({-\xskala*2*3.14159},0) [below right] {$-2\pi\mathstrut$};
+\node at ({-\xskala*3*3.14159},0) [above right] {$-3\pi\mathstrut$};
+\node at ({-\xskala*4*3.14159},0) [below right] {$-4\pi\mathstrut$};
+\node at ({-\xskala*5*3.14159},0) [above right] {$-5\pi\mathstrut$};
+
+\end{tikzpicture}
+\end{document}
+

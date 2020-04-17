@@ -1,0 +1,59 @@
+%
+% fehlerformel.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Fehler des Interpolationspolynoms}
+\vspace{-10pt}
+\begin{columns}[t]
+\begin{column}{0.34\hsize}
+\begin{block}{Fehlerformel}
+$p(x)$ ein Polynom vom Grad $n$ mit $f(x_i) = p(x_i)$, $x\in [a,b]$,
+dann gibt es $\xi_x\in[a,b]$ derart, dass
+\[
+f(x)-p(x)
+=
+\frac{l(x)}{(n+1)!}f^{(n+1)}(\xi_x)
+\]
+\end{block}
+\uncover<11->{
+\begin{block}{Fehler limitiert durch}
+\begin{itemize}
+\item<12-> $\max_{x} |l(x)|$
+\item<13-> $\max_{x} |f^{(n+1)}(x)|$
+\item<14-> $1/(n+1)!$
+\end{itemize}
+\end{block}}
+\end{column}
+\begin{column}{0.62\hsize}
+\uncover<2->{%
+\begin{proof}[Beweis]
+\begin{enumerate}
+\item<3->
+$f(x)-p(x)$ hat $n+1$ Nullstellen.
+\item<4->
+$\exists c$ mit $g(x)=f(x)-p(x)-cl(x)$ hat $n+2$ Nullstellen.
+\item<5->
+$n+1$ Ableitungen: $g^{(n+1)}(x)$ hat Nullstelle $\xi_x$:
+\uncover<6->{%
+\begin{align*}
+p^{(n+1)}(x)&=0\\
+\uncover<7->{l^{(n+1)}(x)}    &\uncover<7->{=(n+1)!}
+\\
+\uncover<8->{g^{(n+1)}(\xi_x)}&\uncover<8->{=f^{(n+1)}(\xi_x)-c(n+1)!=0}
+\\
+\uncover<9->{c}&\uncover<9->{=f^{(n+1)}(\xi_x)/(n+1)!}
+\end{align*}}
+\vspace{-15pt}
+\item<10->
+$
+\displaystyle
+f(x)-p(x)=\frac{f^{(n+1)}(\xi_x)}{(n+1)!}l(x)
+$
+\qedhere
+\end{enumerate}
+\end{proof}}
+\end{column}
+\end{columns}
+\end{frame}

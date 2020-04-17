@@ -1,5 +1,39 @@
 include papers/000template/Makefile.inc
+include papers/vanderpol/Makefile.inc
+include papers/logistic/Makefile.inc
+include papers/kettenbruch/Makefile.inc
+include papers/taylor/Makefile.inc
+include papers/fem/Makefile.inc
+include papers/burgers/Makefile.inc
+include papers/pade/Makefile.inc
+include papers/qr/Makefile.inc
+include papers/laplace/Makefile.inc
+include papers/perturbation/Makefile.inc
+include papers/quadratur/Makefile.inc
+include papers/steps/Makefile.inc
+include papers/francis/Makefile.inc
+include papers/legendre/Makefile.inc
+include papers/cg/Makefile.inc
+include papers/ew/Makefile.inc
+include papers/ableitung/Makefile.inc
 
 TEXFILES = \
 	$(dependencies-000template) \
+	$(dependencies-vanderpol) \
+	$(dependencies-logistic) \
+	$(dependencies-kettenbruch) \
+	$(dependencies-taylor) \
+	$(dependencies-fem) \
+	$(dependencies-burgers) \
+	$(dependencies-pade) \
+	$(dependencies-qr) \
+	$(dependencies-laplace) \
+	$(dependencies-perturbation) \
+	$(dependencies-quadratur) \
+	$(dependencies-steps) \
+	$(dependencies-francis) \
+	$(dependencies-legendre) \
+	$(dependencies-cg) \
+	$(dependencies-ew) \
+	$(dependencies-ableitung) \
 

@@ -21,7 +21,7 @@ im Allgemeinen mindestens den Grad $n$ haben, damit alle
 Bedingungen durch geeignete Wahl der $n+1$ Koeffizienten erfüllt werden können.
 Man könnte das Polynom nämlich in der Form
 \[
-l(x)
+p(x)
 =
 a_nx^n + a_{n-1}x^{n-1}+\dots+a_1x+a_0
 \]
@@ -50,6 +50,7 @@ Das allgemeine Interpolationsproblem kann leicht gelöst werden, wenn
 das folgende spezielle Interpolationsproblem gelöst ist.
 
 \begin{aufgabe}[Spezielle Interpolationspolynome]
+\label{buch:aufgabe:speziellesinterpolationsproblem}
 Gegeben die Stützstellen
 \[
 a=x_0<x_1<x_2<\dots <x_{n-1}<x_n=b,
@@ -63,15 +64,24 @@ l_j(x_i) = \delta_{ij}=\begin{cases}
 \]
 \end{aufgabe}
 
+\begin{figure}
+\centering
+\includegraphics{chapters/30-interpolation/figures/basis.pdf}
+\caption{Polynome $l_j(x)$, welche des spezielle Interpolationsproblem
+\ref{buch:aufgabe:speziellesinterpolationsproblem}
+lösen.
+\label{buch:figure:spezielleinterpolation}}
+\end{figure}
+
 Jedes der Interpolationspolynome $l_j$ hat Grad $n$, also hat auch eine
 beliebige Linearkombination den Grad höchstens $n$.
 Die Linearkombination
 \[
-l(x) = \sum_{j=0}^n f_j l_j(x)
+p(x) = \sum_{j=0}^n f_j l_j(x)
 \]
 ist das gesuchte Interpolationspolynom, wie Einsetzen von $x_i$ in
 \[
-l(x_i)
+p(x_i)
 =
 \sum_{j=0}^n f_jl_j(x_i)
 =
@@ -94,7 +104,7 @@ l_1(x) = \frac{x-x_0}{x_1-x_0}
 haben die die geforderten Eigenschaften.
 Die gesuchte Interplationsfunktion ist daher
 \[
-l(x)
+p(x)
 =
 \frac{x_1-x}{x_1-x_0}f_0 + \frac{x-x_0}{x_1-x_0} f_1
 =
@@ -107,13 +117,13 @@ die Punkte $(x_0,f_0)$ und $(x_1,f_1)$.
 Ein Polynom vom Grad $n+1$, welches in {\em allen} Stützstellen verschwindet,
 ist leicht zu finden, es ist 
 \[
-(x-x_0)(x-x_1)(x-x_2)\dots (x-x_{n-1})(x-x_n).
+(x-x_0)(x-x_1)(x-x_2)\cdots (x-x_{n-1})(x-x_n).
 \]
 Ein Polynom, welches nur an der Stützstelle $x_j$ {\em nicht} verschwindet,
 ensteht, indem man den Faktor $(x-x_j)$ weglässt, es hat den Grad $n$.
 Wir führen dafür die Notation
 \[
-(x-x_0)(x-x_1)(x-x_2)\dots \widehat{(x-x_j)}\dots (x-x_{n-1}(x-x_n),
+(x-x_0)(x-x_1)(x-x_2)\cdots \widehat{(x-x_j)}\cdots (x-x_{n-1}(x-x_n),
 \]
 der Hut bedeutet, dass dieser Faktor weggelassen werden soll.
 Allerdings hat dieses Polynom nicht den geforderten Wert $1$, man muss es
@@ -122,12 +132,12 @@ Das gesuchte Polynom $l_j(x)$ hat daher die Form
 \[
 l_j(x)
 =
-c_j(x-x_0)(x-x_1)(x-x_2)\dots \widehat{(x-x_j)}\dots (x-x_{n-1}(x-x_n).
+c_j(x-x_0)(x-x_1)(x-x_2)\cdots \widehat{(x-x_j)}\cdots (x-x_{n-1}(x-x_n).
 \]
 Einesetzen von $x_j$ ergibt
 \[
 l_j(x_j) = 1 = 
-c_j(x_j-x_0)(x_j-x_1)(x_j-x_2)\dots \widehat{(x_j-x_j)}\dots(x_j-x_{n-1}(x_j-x_n),
+c_j(x_j-x_0)(x_j-x_1)(x_j-x_2)\cdots \widehat{(x_j-x_j)}\cdots(x_j-x_{n-1})(x_j-x_n),
 \]
 die Konstante $c_j$ ist daher
 \[
@@ -415,11 +425,156 @@ vom Funktionswert abweichen kann.
 %
 \subsection{Wahl der Stützstellen und Tschebyscheff-Interpolationspolynom
 \label{buch:section:interpolation:tschebyscheff}}
-Das Korllar~\ref{buch:korollar:interpolationsfehler} besagt, dass der
+Das Korollar~\ref{buch:korollar:interpolationsfehler} besagt, dass der
 Fehler des Interplationspolynom durch den Betrag von $l(x)$ begrenzt
 ist.
+Für äquidistante Stützstellen mit Abstand $h$ kann man beobachten,
+dass die Oszillationen des Polynoms $l(x)$ gegen den Rand des Intervalls
+immer grösser werden.
+Für einen Punkte in der Mitte jedes Teilintervalls ist $h/2$ der kleinste
+mögliche Faktor in $l(x)$. 
+Den grössten Faktor findet man für $x$ im ersten oder letzten Teilinterval,
+er ist $b-a-h$.
+Ausserdem treten mehrere ähnlich grosse Faktoren auf.
+Für $x$ in einem Intervall nahe $(a+b)/2$ sind die Faktoren
+dagegen nur halb so gross.
 
+Die Oszillationen können verkleinert werden, wenn man dafür sorgt, dass
+mit grösserem Abstand von der Mitte des Intervalls der Abstand der
+Stützstellen ebenfalls verkleinert.
+Dies garantiert, dass neben den grossen Faktoren in der Nähe von $b-a$ 
+auch wesentlich kleinere Faktoren auftreten, so dass die extremen Werte
+nahe den Intervallenden vergleichbar mit den Werten im Inneren des
+Intervalls werden.
 
+\begin{figure}
+\centering
+\includegraphics[width=\hsize]{chapters/30-interpolation/figures/lissajous.png}
+\caption{Lissajous-Figuren aus dem Artikel \cite{buch:lissajous}, die
+eine mögliche Lösung für ein Interpolationspolynom mit besonders
+kleinem Fehler suggerieren.
+\label{buch:figure:lissajous}}
+\end{figure}
+
+Die beste Approximation durch ein Interpolationspolynom kann man also
+erwarten, wenn $l(x)$ im Interval $[a,b]$ keine besonders grossen Werte
+annimmt.
+Eine Funktion ähnlich wie $\sin x$ oder $\cos x$, die unendlich viele
+Extremewerte $\pm 1$ haben, würde dieses Kriterium erfüllen, aber
+$\sin x$ und $\cos x$ sind keine Polynome.
+Sie sind auch auf auf einem viel grösseren Interval als nötig definiert,
+nämlich ganz $\mathbb R$.
+Ein verwandtes Beispiel sind Lissajous-Figuren,
+Abbildung~\ref{buch:figure:lissajous} suggeriert, dass eine geeignete
+Lissajous-Figure als Graph für ein Interpolationspolynom mit sehr
+geringem Fehler dienen könnte, wenn man sie als Polynom darstellen kann.
+Eine solche Lissajous-Figur entsteht als Kurve
+$t\mapsto (\cos t, \cos nt)$ oder eine anderes trigonometrisches
+Polynom als zweite Komponente.
+Es stellt sich also die Frage, ob $\cos nt$ als Polynom in $z=\cos t$
+ausgedrückt werden kann.
+
+Sei also
+\[
+T_n(z)
+=
+T_n(\cos t)
+= 
+\cos nt.
+\]
+Für kleine $n$ kann man unmittelbar verifizieren, dass $T_n(z)$ ein
+Polynom ist:
+\begin{equation}
+\begin{aligned}
+T_0(z) &= 1,\\
+T_1(z) &= z,\\
+T_2(z) &= \cos 2t = 2\cos^2 t-1 = 2z^2 -1
+\quad\text{und}
+\\
+T_3(z) &= \cos 3t = 4\cos^3 t - 3\cos t = 4z^3-3z.
+\end{aligned}
+\label{buch:tschebyscheff:erste}
+\end{equation}
+Aus den Additionstheoremen für den Kosinus folgt die Formel für die
+Summe von zwei Konsinus-Funktionen
+\begin{align}
+\cos (n+1)t + \cos(n-1)t
+&=
+2 \cos \frac{(n+1)t + (n-1)t}2 \cos \frac{(n+1)t -(n-1)t}2
+=
+2\cos nt \cos t
+\notag
+\\
+T_{n+1}(z)+T_{n-1}(z)&=2zT_n(z)
+\notag
+\\
+T_{n+1}(z) &= 2zT_n(z) - T_{n-1}(z).
+\label{buch:tschebyscheff:rekursion}
+\end{align}
+Wenn $T_n(z)$ und $T_{n-1}(z)$ Polynome sind, dann ist auch $T_{n+1}(z)$
+ein Polynom.
+Aus den bereits gekannten Polynomen~\eqref{buch:tschebyscheff:erste} und
+der Rekursionsformel~\eqref{buch:tschebyscheff:rekursion} folgt jetzt mit
+vollständiger Induktion, dass alle $T_n(z)$ Polynome sind.
+Sie heissen {\em Tschebyscheff-Polynome}.
+\index{Tschebyscheff-Polynome}
+Die Rekursionsformel kann dazu verwendet werden, die Polynome explizit
+zu berechnen.
+Zum Beispiel folgt für die nächsten paar Polynome
+\begin{align*}
+T_4(z) &= 8z^4-8z^2 + 1,
+\\
+T_5(z) &= 16z^5-20z^3+5z \quad\text{und}
+\\
+T_6(z) &= 32z^6-48z^4+18z^2-1.
+\end{align*}
+Da das Interpolationspolynom den führenden Koeffizienten $1$ hat,
+muss $l(z) = 2^{1-n}T_n(z)$ gewählt werden.
+
+Die Polynome $T_n(z)$ sind eigentlich nicht nötig, da für die Konstruktion
+des Interpolationspolynoms nur die Nullstellen nötig sind.
+Wegen $T_n(z)=\cos nt$ liegt eine Nullstelle genau dann vor, wenn
+$nt = \frac{\pi}2 + k\pi$, $k\in\mathbb Z$.
+Die zugehörigen Werte von $z$ sind
+\[
+z_k
+=
+\cos t = \cos\frac{\pi(2k+1)}{2n}.
+\]
+In Abbildung~\ref{buch:figure:tschebyscheff-vergleich} sind 
+die Polynome $2^{n-1}l(x)$ vom Grad $n$ oben für äquidistante Stützstellen
+und unten für Tschebyscheff-Stützstellen im Vergleich dargestellt.
+Wie in der Einleitung zu diesem Abschnitt angekündigt, oszillieren die
+Polynome für äquidistante Stütztstellen nahe den Intervallenden.
+Für Tschebyscheff-Stützstellen wird $2^{n-1}l(x)$ betragsmässig nie
+grösser als $1$.
+\begin{figure}
+\centering
+\includegraphics{chapters/30-interpolation/figures/vergleich.pdf}
+\caption{Vergleich der Oszillationen bei äquidistanten Stützstellen (oben)
+und bei Tschebyscheffstützstellen.
+Damit die Abweichungen sichtbar werden, sind die Polynome $l(x)$ vom Grad
+$n$ mit dem Faktor $2^{n-1}$ skaliert.
+Bei Verwendung von Tschebyscheff-Stützstellen wächst $2^{n-1}l(x)$
+nie über $1$ an, während bei äquidistanten Stützstellen die in der
+Einleitung zu diesem Abschnitt diskutierten Oszillationen nahe den
+Intervallenden auftreten.
+\label{buch:figure:tschebyscheff-vergleich}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{chapters/30-interpolation/figures/tschebasis.pdf}
+\caption{Basisinterpolationspolynome vom Grad 7 für
+Tschebyscheff-Stützstellen
+\label{buch:figure:tschebyscheffbasis}}
+\end{figure}
+Abbildung~\ref{buch:figure:tschebyscheffbasis} zeigt die Basispolynome
+vom Grad 7 $l_j(x)$ für Tschebscheff-Stütztstellen.
+Da bei Verwendung von Tschebyscheff-Stützstellen die Polynome $l(x)$
+keine ausgeprägten Oszillationen an den Intervallenden aufweisen, 
+sind auch die Basispolynome $l_j(x)$ vor allem in der Nähe der
+jeweiligen Stützstelle $x_j$ wesentlich von $0$ verschieden.
 
 \begin{figure}
 \centering
@@ -431,3 +586,8 @@ Für eine grosse Zahl von Stützstellen erreicht die Interpolation die
 Maschienengenauigkeit.
 \label{buch:figure:tschebyschefffehler}}
 \end{figure}
+
+
+
+
+

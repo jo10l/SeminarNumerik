@@ -1,0 +1,37 @@
+%
+% forderungen.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Anforderungen an die Interpolation}
+
+\begin{block}{Voraussetzungen}
+Stützstellen
+\[
+a = x_0 < x_1 < x_2 < \dots < x_{n-1} < x_n = b
+\]
+und Funktionswerte $f_0,\; f_1, \dots f_n$.
+\end{block}
+\uncover<2->{%
+\begin{block}{Aufgabe}
+Finde eine Funktion $g(x)$ mit
+\begin{enumerate}
+\item<3->
+$g(x_i) = f_i$ für $i=0,1,\dots,n$
+\item<4->
+$g(x)$ ist stetig differenzierbar, d.~h.~$g(x)$ und $g'(x)$ ist stetig im
+Interval $[a,b]$
+\item<5->
+Die Funktion $g''(x)$ ist stetig zwischen den Stützstellen,
+also für $x\in (x_i,x_{i+1})$ mit $i=0,\dots,n-1$
+\item<6->
+Mit minimaler Krümmung, d.~h.
+\vspace{-5pt}
+\[
+\int_a^b g''(x)^2\,dx \quad\text{minimal}
+\]
+\end{enumerate}
+\end{block}}
+
+\end{frame}

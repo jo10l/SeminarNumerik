@@ -1,0 +1,66 @@
+%
+% baryzentrisch.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Baryzentrische Formeln}
+\vspace{-10pt}
+\begin{columns}[t]
+\begin{column}{0.48\hsize}
+\begin{block}{$l_i(x)$ instabil}
+\begin{enumerate}
+\item
+$x$ nahe bei $x_i$ $\Rightarrow$ Auslöschung in $x-x_i$
+\item
+anderen Faktoren $x-x_j$ ``gross''
+\end{enumerate}
+\end{block}
+\vspace{-10pt}
+\begin{block}{Gewichte $w_i$}
+\vspace{-20pt}
+\begin{align*}
+w_i
+&=
+\frac{1}{\prod_{k=0,k\ne i}^n (x_i-x_k)}
+\\
+l_i(x)
+&=
+\frac{l(x)}{x-x_i}\cdot w_i
+\end{align*}
+\end{block}
+\vspace{-10pt}
+\begin{block}{Interpolationspolynom}
+\vspace{-10pt}
+\[
+p(x)
+=
+l(x) \sum_{i=0}^n \frac{w_if_i}{x-x_i}
+\]
+\end{block}
+\end{column}
+\begin{column}{0.48\hsize}
+\begin{block}{Gewichtetes Mittel}
+$f_i=1\;\forall i\quad\Rightarrow \quad p(x) = 1$
+\vspace{-5pt}
+\begin{align*}
+l(x)
+&=
+\biggl(
+\sum_{i=0}^n \frac{w_i}{x-x_i}
+\biggr)^{-1}\\[-10pt]
+\intertext{\vspace{-5pt}%
+Interpolationspolynom
+\vspace{-5pt}}
+p(x)
+&=
+\frac{\displaystyle\sum_{i=0}^n \frac{w_if_i}{x-x_i}}{\displaystyle\sum_{i=0}^n \frac{w_i}{x-x_i}}
+\end{align*}
+$p(x)$ ist gewichtetes Mittel der $f_i$ mit Gewichten
+\[
+\frac{w_i}{x-x_i}
+\]
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}

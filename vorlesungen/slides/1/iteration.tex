@@ -1,0 +1,47 @@
+%
+% iteration.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Iteration}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.47\hsize}
+\uncover<1->{
+\begin{block}{Analysis}
+Formeln:
+\begin{align*}
+\Gamma(x)
+&=
+\int_0^\infty t^{x-1}e^{-t}\,dt
+\\
+n!
+&=
+\Gamma(n+1)
+\\
+y&=f(x)
+\end{align*}
+$\Rightarrow$
+Problemlösung {\em in geschlossener Form}
+\end{block}}
+\end{column}
+\begin{column}{0.47\hsize}
+\uncover<2->{
+\begin{block}{Numerik}
+Problemlösung mit einem Programm
+\begin{center}
+\verbatiminput{../slides/1/numerikprogramm.txt}
+\end{center}
+\end{block}}
+\end{column}
+\end{columns}
+
+\bigskip
+
+\uncover<3->{
+\begin{block}{Iteration}
+$\Rightarrow$ Verhalten von Iterationen der Form $x=f(x)$ studieren
+\end{block}
+}
+\end{frame}

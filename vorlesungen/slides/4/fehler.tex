@@ -1,0 +1,44 @@
+%
+% fehler.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Fehler der Trapezformel}
+\begin{block}{Fehlerformel}
+\[
+\int_a^b f(x)\,dx
+=
+T(h) + h^2\cdot\frac{f'(b)-f'(a)}2 + O(h^4)
+\]
+\uncover<2->{%
+Beweis: Euler-Maclaurin-Summenformel}
+\end{block}
+
+\uncover<3->{
+\begin{block}{Rechenaufwand für Genauigkeit $\varepsilon$}
+\[
+h^2 \le \varepsilon
+\uncover<4->{
+\qquad\Rightarrow\qquad}
+\uncover<5->{
+h=\frac{b-a}n = \sqrt{\varepsilon}}
+\uncover<6->{
+\qquad\Rightarrow\qquad}
+\uncover<7->{
+n=\frac{b-a}{\sqrt{\varepsilon}}}
+\]
+\uncover<8->{
+$\Rightarrow$ Verdoppelung der Stützstellenzahl ergibt
+2 Bit Genauigkeitsgewinn}
+\end{block}}
+
+\uncover<9->{
+\begin{block}{Beispiel}
+{\tt float}-Genauigkeit: $\varepsilon=2^{-23}$
+\uncover<10->{$\Rightarrow$
+$n\simeq 2^{12} = 4096$}
+\end{block}
+}
+
+\end{frame}

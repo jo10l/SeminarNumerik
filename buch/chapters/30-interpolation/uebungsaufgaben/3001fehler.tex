@@ -1,0 +1,42 @@
+%
+% 3001fehler.tex -- 
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\xskala{4}
+\def\yskala{1}
+
+\input{3001path.tex}
+
+\draw[->] ({-0.1-\xskala*(3.14159/2)},0)--({0.3+\xskala*(3.14159/2)},0)
+	coordinate[label={$x$}];
+\draw[->] (0,-1.7)--(0,2.0) coordinate[label={right:$y$}];
+
+\draw (-0.1,-1)--(0.1,-1);
+\draw (-0.1,1)--(0.1,1);
+\node at (-0.1,-1) [left] {$-10^{-4}$};
+\node at (-0.1,1) [left] {$10^{-4}$};
+
+\draw ({\xskala*(3.14159/2)},-0.1)--({\xskala*(3.14159/2)},0.1);
+\draw ({\xskala*(3.14159/4)},-0.1)--({\xskala*(3.14159/4)},0.1);
+\draw ({-\xskala*(3.14159/2)},-0.1)--({-\xskala*(3.14159/2)},0.1);
+\draw ({-\xskala*(3.14159/4)},-0.1)--({-\xskala*(3.14159/4)},0.1);
+\node at ({-\xskala*(3.14159/2)},-0.1) [below] {$-\frac{\pi}2$};
+\node at ({\xskala*(3.14159/2)},-0.1) [below] {$\frac{\pi}2$};
+\node at ({-\xskala*(3.14159/4)},-0.1) [below] {$-\frac{\pi}4$};
+\node at ({\xskala*(3.14159/4)},-0.1) [below] {$\frac{\pi}4$};
+
+\end{tikzpicture}
+\end{document}
+

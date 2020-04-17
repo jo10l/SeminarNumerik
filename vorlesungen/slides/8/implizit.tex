@@ -1,0 +1,69 @@
+%
+% implizit.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Implizite Verfahren}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.48\hsize}
+\begin{block}{Euler rückwärts}
+\vspace{-15pt}
+\begin{align*}
+\frac{\partial^2 u}{\partial x^2}(x_i,t_{j+1})
+=
+Au_{j+1} &= u_{j+1}-u_j
+\\
+(E-A)u_{j+1} &= u_j
+\\
+u_{j+1}&=(E-A)^{-1} u_j
+\end{align*}
+\end{block}
+\vspace{-10pt}
+\uncover<2->{%
+\begin{block}{Crank-Nicholson}
+\[
+{\textstyle\frac12}(Au_j + Au_{j+1}) = u_{j+1}-u_j
+\]
+d.~h.~$u_j$ implizit definiert
+\end{block}}
+\uncover<3->{%
+\begin{block}{Auflösen nach $u_j$}
+\vspace{-15pt}
+\[
+u_{j+1}
+=
+(E-{\textstyle\frac12}A)^{-1}
+(E+{\textstyle\frac12}A)u_j
+\]
+\end{block}}
+\end{column}
+\begin{column}{0.48\hsize}
+\uncover<4->{%
+\begin{block}{Konvergenz}
+Explizite Darstellung für Zeitschritt:
+\[
+u_{j+1} = Bu_j
+%\]
+%Lösung durch Iteration
+%\[
+\quad\Rightarrow\quad
+u_j = B^j u_0
+\]
+\uncover<5->{%
+Spektralradius: Betrag des betragsgrössten Eigenwert
+\[
+\varrho(B) = \max\{ |\lambda|\;| \text{$\lambda$ EW von $B$}\}
+\]}%
+\uncover<6->{%
+Stabilität:
+\begin{align*}
+\varrho(B) &\le 1 &&\text{stabil}\\
+\varrho(B) &> 1 &&\text{instabil}
+\end{align*}}%
+\end{block}}
+\end{column}
+\end{columns}
+
+\end{frame}

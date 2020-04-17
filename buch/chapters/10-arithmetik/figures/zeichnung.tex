@@ -1,0 +1,55 @@
+%
+% zeichnung.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\xdef\xzero{\x}
+
+\def\f{
+	\pgfmathparse{\A*(\x-\fx)+\fx+(\B+(\x-\fx)*(\C + \D*(\x-\fx)))*(\x-\fx)*(\x-\fx)}
+	\xdef\y{\pgfmathresult}
+}
+\begin{scope}
+\clip (0,0) rectangle (6,6);
+\draw[color=red,line width=1.4pt]
+	plot[domain=0:6,samples=100]
+		({\x},{\A*(\x-\fx)+\fx+(\B+(\x-\fx)*(\C + \D*(\x-\fx)))*(\x-\fx)*(\x-\fx))});
+\draw[color=blue,line width=0.2pt] (0,{2*\fx})--({2*\fx},0);
+\end{scope}
+
+\def\schritt{
+	\xdef\yold{\y}
+	\f
+	\ifthenelse{\k<\pfeile}{
+		\draw[->,color=gray] (\x,\yold)--(\x,\y);
+		\draw[->,color=gray] (\x,\y)--(\y,\y);
+	}{
+		\draw[color=gray] (\x,\yold)--(\x,\y);
+		\draw[color=gray] (\x,\y)--(\y,\y);
+	}
+	\xdef\x{\y}
+}
+
+\def\pfad{
+	\begin{scope}
+	\clip (0,0) rectangle (6,6);
+	\foreach \k in {1,...,\anzahl}{
+		\schritt
+	}
+	\end{scope}
+}
+\pfad
+
+\draw[color=blue,line width=1.4pt] (-0.1,-0.1) -- (6.1,6.1);
+\fill[color=red] (\fx,\fx) circle[radius=0.06];
+\draw[->] (-0.1,0)--(6.3,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1)--(0,6.3) coordinate[label={right:$y$}];
+\draw (\xzero,-0.1)--(\xzero,0.1);
+\node at (\xzero,-0.1) [below] {$x_0\mathstrut$};
+\draw[color=red,line width=0.5pt] (\fx,0)--(\fx,\fx)--(0,\fx);
+\draw[color=red] (\fx,-0.1)--(\fx,0.1);
+\node[color=red] at (\fx,-0.1) [below] {$x^*\mathstrut$};
+\draw[color=red] (-0.1,\fx)--(0.1,\fx);
+%\node at (-0.1,\fx) [left] {$x^*=f(x^*)$};
+
+\node[color=blue] at (5.8,5.8) [above,rotate=45] {$x=y$};

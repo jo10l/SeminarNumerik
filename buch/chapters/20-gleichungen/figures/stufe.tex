@@ -1,0 +1,45 @@
+%
+% stufe.tex -- template for standalon tikz images
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\pgfmathparse{3.5/0.3}
+\xdef\m{\pgfmathresult}
+
+\draw[color=red] (-0.1,-3)--(0.2,-3)--(0.5,0.5)--(6.5,0.5)--(7.5,3)--(9.1,3);
+\fill[color=red] ({0.2+3/\m},0) circle[radius=0.08];
+\node[color=red] at ({0.2+3/\m},0) [above left] {$x_0$};
+
+\draw[color=blue] (-0.1,-3)--(1.5,-3)--(2.5,-0.5)--(8.5,-0.5)--(8.8,3)--(9.1,3);
+\fill[color=blue] ({8.8-3/\m},0) circle[radius=0.08];
+\node[color=blue] at ({8.8-3/\m},0) [above left] {$x_0$};
+
+\draw[->] (-0.1,0)--(9.3,0) coordinate[label={$x$}];
+\draw[->] (0,-3.1)--(0,3.3) coordinate[label={right:$y$}];
+
+\foreach \x in {1,...,9}{
+	\draw (\x,-0.1)--(\x,0.1);
+	\node at (\x,-0.0) [below] {$\x$};
+}
+\foreach \y in {1,...,3}{
+	\draw (-0.1,\y)--(0.1,\y);
+	\node at (-0.1,\y) [left] {$\y$};
+	\draw (-0.1,-\y)--(0.1,-\y);
+	\node at (-0.1,-\y) [left] {$-\y$};
+}
+\node at (-0.1,0) [left] {$0$};
+
+\end{tikzpicture}
+\end{document}
+

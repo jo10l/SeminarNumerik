@@ -1,0 +1,78 @@
+%
+% eulerlagrange.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswi
+%
+\begin{frame}
+\frametitle{Euler-Lagrange-Gleichung}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.4\hsize}
+\begin{block}{``Nachbarfunktion''}
+\vspace{-15pt}
+\begin{align*}
+x(t)
+&\to
+x(t) + \varepsilon h(t)
+\\
+0&=h(a)=h(b)
+\end{align*}
+\end{block}
+\end{column}
+\begin{column}{0.56\hsize}
+\uncover<2->{%
+\begin{block}{Wahlmöglichkeit für $h(t)$}
+\vspace{-15pt}
+\[
+\int_a^b f(t)h(t)\,dt = 0\;\forall h \quad\Rightarrow\quad f(t)=0
+\]
+\end{block}}
+\end{column}
+\end{columns}
+\vspace{-10pt}
+\uncover<3->{%
+\begin{block}{Stationär}
+\vspace{-15pt}
+\begin{align*}
+0
+&=
+\left.
+\frac{d}{d\varepsilon} W(x+\varepsilon h)
+\right|_{\varepsilon=0}
+\uncover<4->{=
+\left.
+\frac{d}{d\varepsilon}
+\int_a^b L(t,x(t)+\varepsilon h(t), \dot{x}(t) + \varepsilon \dot{h}(t))\,dt
+\right|_{\varepsilon=0}}
+\\
+&\uncover<5->{=
+\int_a^b \frac{\partial L}{\partial x}(t,x(t), \dot{x}(t))\, h(t)}
+\ifthenelse{\boolean{presentation}}{
+\only<5>{+
+\frac{\partial L}{\partial v}(t,x(t),\dot{x}(t))\, \dot{h}(t)\,dt}
+}{}
+\only<6->{
++
+\biggl[ \frac{\partial L}{\partial v}(t,x(t),\dot{x}(t)) h(t)\biggr]_a^b}
+\\
+&\qquad\qquad
+\uncover<6->{-
+\int_a^b
+\frac{d}{dt}
+\frac{\partial L}{\partial v}(t,x(t),\dot{x}(t))\, h(t)\,dt}
+\\
+&\uncover<7->{=
+\int_a^b
+\biggl(\frac{\partial L}{\partial x}(t,x(t),\dot{x}(t))
+-\frac{d}{dt}\frac{\partial L}{\partial v}(t,x(t),\dot{x}(t))\biggr)h(t)\,dt}
+\uncover<8->{
+\quad\Rightarrow\quad
+\boxed{
+\frac{d}{dt}
+\frac{\partial L}{\partial v}
+-\frac{\partial L}{\partial x}
+=
+0}}
+\end{align*}
+\end{block}}
+\end{frame}

@@ -1,0 +1,40 @@
+%
+% korn.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Korn und Grenzwert}
+\begin{block}{Korn}
+Länge des längsten Teilintervalls der Unterteilung $x_0,x_1,\dots,x_{n-1},x_n$
+\[
+\delta = \max_{1\le k\le n} |x_{k}-x_{k-1}|
+\]
+\vspace{-15pt}
+\end{block}
+\uncover<2->{
+\begin{block}{Riemann-integrierbar}
+Die Funktion $f\colon [a,b]\to\mathbb R$
+ist Riemann-integrierbar, wenn
+\[
+\lim_{n\to\infty,\delta\to 0} \underline{I}
+=
+\lim_{n\to\infty,\delta\to 0} \overline{I}
+=
+I
+\]
+\uncover<3->{%
+Der gemeinsame Grenzwert ist das {\em Riemann-Integral von $f(x)$}}
+\end{block}}
+\uncover<4->{
+\begin{block}{Beispiele}
+\begin{itemize}
+\item
+$f\colon [a,b]\to\mathbb R$ stetig $\Rightarrow$ $f$ Riemann-integrierbar
+\item
+$f\colon [a,b]\to\mathbb R$ stetig ausser in endlich vielen Punkten
+in $[a,b]$
+\end{itemize}
+\end{block}}
+
+\end{frame}

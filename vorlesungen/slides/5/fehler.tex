@@ -1,0 +1,51 @@
+%
+% fehler.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Fehler des Euler-Verfahrens}
+\begin{block}{Beiträge}
+Lösung zwischen $x=0$ und $x=t$ in $k$ Schritten: $h=\frac{t}{k}$
+\begin{enumerate}
+\item<2->
+Fehler in jedem Schritt 
+\vspace{-10pt}
+\begin{align*}
+&\uncover<3->{\text{Taylorreihe:}}&
+\uncover<3->{y(x+h)}
+&\uncover<3->{= 
+y(x) + y'(x)\cdot h {\color<5->{red}\mathstrut + \frac{y''(x)}{2!}\cdot h^2 +\frac{y'''(x)}{3!}\cdot h^3+\dots}}
+\\
+&\uncover<4->{\text{Eulerschritt:}}&
+\uncover<4->{\tilde{y}(x+h)}
+&\uncover<4->{=
+y(x) + y'(x)\cdot h}
+\\
+&\uncover<5->{\text{Fehler:}}&
+\uncover<5->{\Delta y}
+&\uncover<5->{=
+\phantom{ y(x) + y'(x)\cdot h+\mathstrut}
+O(h^2)}
+\end{align*}
+\vspace{-15pt}
+\item<6->
+Anzahl Schritte: $k=t/h$
+\vspace{-5pt}
+\[
+\uncover<7->{
+\text{Gesamter Fehler:}\qquad \frac{t}{h}\cdot O(h^2) = O(h)
+}
+\]
+\end{enumerate}
+\end{block}
+\vspace{-25pt}
+\uncover<8->{%
+\begin{block}{Konvergenz}
+Halbierung von $h$
+$\Rightarrow$
+doppelte Arbeit aber nur 1 bit Genauigkeitsgewinn
+\uncover<9->{{\color{red}$\Rightarrow$ bad}}
+\end{block}}
+
+\end{frame}

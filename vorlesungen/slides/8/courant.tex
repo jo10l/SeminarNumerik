@@ -1,0 +1,38 @@
+%
+% courant.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Courant-Friedrichs-Lewy-Zahl}
+
+\begin{block}{Beobachtung}
+Das Vorwärts-Eulerverfahren für die Wärmeleitungsgleichung ist stabil wenn
+\vspace{-5pt}
+
+\[
+\frac{\Delta t}{2\Delta x^2} < 1
+\]
+\vspace{-10pt}
+
+Grund: Wärme breitet sich unendlich schnell aus, $\Delta t$ muss klein
+sein, um dies abzubilden
+\end{block}
+
+\uncover<2->{%
+\begin{block}{Courant-Friedrichs-Lewy-Zahl}
+Stabilitätskriterium für Strömungssimulation mit Geschwindigkeit $u$.
+\\
+Die Simulation ist stabil, wenn die CFL-Zahl
+\vspace{-5pt}
+
+\[
+c = \frac{u\cdot \Delta t}{\Delta x} < 1 \quad\text{ist.}
+\]
+\vspace{-10pt}
+
+Grund: Die Zeitauflösung der Simulation muss klein genug sein, um die 
+Bewegung des Mediums erfassen zu können
+\end{block}}
+
+\end{frame}

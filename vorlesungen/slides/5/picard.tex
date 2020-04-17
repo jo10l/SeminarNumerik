@@ -1,0 +1,30 @@
+%
+% picard.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Der Satz von Picard-Lindelöf}
+\begin{block}{Satz}
+Die Lösung $\vec{y}\colon \mathbb R\to\mathbb R^n: x\mapsto\vec{y}$ der
+Differentialgleichung 
+\[
+\frac{d}{dx} \vec{y} = F(x,\vec{y}),
+\qquad
+\vec{y}(0)=\vec{g}
+\]
+existiert in einer Umgebung von $x=0$ und
+ist eindeutig bestimmt, wenn $F$ eine Lipshitz-Bedingung erfüllt:
+\[
+\exists L>0, \alpha>0\qquad
+|F(x, \vec{a}) - F(x,\vec{b})|
+\le L \,|\vec{a} - \vec{b}|
+\quad
+\forall \vec{a},\vec{b}\in \mathbb R^n
+\]
+\end{block}
+\uncover<2->{%
+{\usebeamercolor[fg]{title}
+$\Rightarrow$}
+Existenz einer Lösung ist praktisch immer garantiert.}
+\end{frame}

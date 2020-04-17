@@ -1,0 +1,310 @@
+%
+% qr.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{QR-Zerlegung mit Spiegelungen
+\label{buch:section:qr}}
+\rhead{QR-Zerlegung mit Spiegelungen}
+Das Orthonormalisierungsproblem verlangt, dass zu gegebenen Vektoren
+$a_1,\dots,a_n\in \mathbb R^l$ orthonormierte Vektoren $q_1,\dots ,q_n$
+gefunden werden derart, dass
+\begin{equation}
+a_k
+=
+\langle q_1,\dots,q_k \rangle
+\qquad
+\forall 1\le k\le n.
+\label{buch:eqn:qr:span}
+\end{equation}
+Die Bedingung \eqref{buch:eqn:qr:span} bedeutet, dass es Zahlen $r_{ik}$
+mit $i\le k$ derart, dass
+\begin{equation}
+a_k = q_1 r_{11} +  q_2 r_{12} + \dots + q_k r_{1k}
+\label{buch:eqn:qr:span2}
+\end{equation}
+Schreiben wir die Komponenten des Vektors $a_k$ als $l\times n$-Matrix
+$A$ mit Einträgen $a_{ik}$ und analog für die Vektoren $q_k$, dann kann
+\eqref{buch:eqn:qr:span2} in Matrixform geschrieben werden als
+\[
+A=QR, \qquad\text{mit}\quad
+R
+=
+\begin{pmatrix}
+r_{11}&r_{12}&\dots &r_{1n}\\
+0     &r_{22}&\dots &r_{2n}\\
+0     &0     &\dots &r_{3n}\\
+\vdots&\vdots&\ddots&\vdots\\
+\end{pmatrix}
+\]
+Darin ist $Q$ eine $l\times n$-Matrix und $R$ ist eine $n\times n$-Matrix.
+Die Aufgabe, eine Menge von Vektoren $\{a_1,\dots,a_n\}$ zu orthonormieren,
+ist also gleichbedeutend damit, für die Matrix $A$ eine Zerlegung $A=QR$
+zu finden, wobei $Q$ orthogonal und $R$ eine obere Dreiecksmatrix sein soll.
+
+%
+% Gram-Schmidt-Orthonormalisierung
+%
+\subsection{Gram-Schmidt-Orthonormalisierung
+\label{buch:subsection:gram-schmidt}}
+Das einfachste und anschaulichste Orthonormalisierungsverfahren, der
+Gram-Schmidt-Prozess verwendet die Formeln
+\begin{align*}
+q_1 & = \frac{a_1}{|a_1|}
+\\
+q_2 &= \frac{
+a_2 - (q_1\cdot a_2) q_1
+}{
+|a_2 - (q_1\cdot a_2) q_1|
+}
+\\
+q_3 &= \frac{
+a_3 - (q_1\cdot a_3) q_1 - (q_2\cdot a_3) q_2
+}{
+|a_3 - (q_1\cdot a_3) q_1 - (q_2\cdot a_3) q_2|
+}
+\\
+&\;\vdots\\
+q_k
+&=\frac{
+a_k - (q_1\cdot a_k) q_1 -\dots- (q_{k-1}\cdot a_k) q_{k-1}
+}{|
+a_k - (q_1\cdot a_k) q_1 -\dots- (q_{k-1}\cdot a_k) q_{k-1}
+|},
+\end{align*}
+um die orthonormierten Vektoren $q_k$ zu finden.
+Wegen der Differenzen im Zähler und Nenner besteht die Gefahr von
+Auslöschung, falls der Winkel zwischen $a_k$ und
+$\langle a_1,\dots,a_{k-1}\rangle$ sehr klein ist.
+Der Gram-Schmidt-Prozess ist daher in seiner Grundform nicht immer stabil.
+
+\subsection{Spiegelungen
+\label{buch:subsection:spiegelungn}}
+Mit dem Skalarprodukt kann zu jedem Paar $a$, $b$ von Vektoren 
+gleicher Länge eine Matrix gefunden werden, welche eine Spiegelung
+beschreibt, die $a$ auf $b$ abbildet, alle Vektoren orthogonal zu
+$a$ und $b$ aber unverändert lässt.
+
+Sei $n=(b-a)/|b-a|$ der Einheitsvektor in Richtung $b-a$.
+Es ist $(a-b)\cdot (a+b) = |a|^2 - |b|^2$, also auch $n\cdot (a+b)=0$.
+
+Die Abbildung
+\[
+s:
+x\mapsto  x - 2 n(n\cdot x) 
+\]
+hält auf $n$ orthogonale Vektoren $x$ wegen $n\cdot x=0$ fest.
+Für die Vektoren $a$ und $b$ ist $(b-a)\cdot a= -(b-a)\cdot b$, so
+dass
+\begin{align*}
+a
+&=
+\underbrace{\frac12(a+b)}_{\displaystyle =u}
++
+\underbrace{\frac12(a-b)}_{\displaystyle=v}
+=
+u+v
+\\
+b&= \frac12(a+b) - \frac12(a-b) = u - v
+\end{align*}
+gilt mit orthogonalen Vektoren $u=\frac12(a+b)$ und $v=\frac12(a-b)$.
+Für die beiden Summanden gilt
+\begin{align*}
+s(u) &= u,\\
+s(v) &= -v
+\end{align*}
+und daher
+\begin{align*}
+s(a)
+&=
+s(u+v)=s(u)+s(v)=u-v = b,
+\\
+s(b)
+&=
+s(u-v)=s(u)-s(v)=u+v = a.
+\end{align*}
+Die Abbildung $s$ vertauscht also die beiden Vektoren, sie ist eine
+Spiegelung in der von $a$ und $b$ aufgespannten Ebene, an einer
+Geraden mit der Normalen $n$.
+
+Der Vektor $n$ ermöglicht auch, die lineare Abbildung $s$ mit Hilfe
+einer Matrix $s$ zu schreiben.
+Das Skalarprodukt $n\cdot x$ ist das Matrixprodukt $n^t x$, der Vektor
+$n(n\cdot x)$ als Matrixprodukt $nn^tx$ berechnet werden. 
+Damit wird 
+\[
+s(x)
+=
+x - 2n(n\cdot x)
+=
+Ex - 2(nn^t) x
+=
+(E-2nn^t) x
+\qquad\Rightarrow\qquad
+S=E-2nn^t
+\]
+die Matrix der Abbildung $s$.
+Wir haben damit den folgenden Satz bewiesen.
+
+\begin{satz}
+\label{buch:satz:sab}
+Zu gegebenen Vektoren $a$ und $b$ gleicher, nicht verschwindender
+Länge gibt es eine orthogonale Matrix
+\[
+S_{a,b} = E-2nn^t\qquad \text{mit}\quad n = (b-a)/|b-a|,
+\]
+die zu einer Spiegelung gehört, die $a$ auf $b$ abbildet und
+umgekehrt  und alle Vektoren senkrecht auf $a$ und $b$ fest lässt.
+\end{satz}
+
+%
+% QR-Zerlegung mit Spiegelungen
+%
+\subsection{QR-Zerlegung mit Spiegelungen
+\label{buch:subsection:qrspiegelungen}}
+Aus der QR-Zerlegung $A=QR$ erhält man durch Multiplikation mit $Q^t$
+die Gleichung $Q^tA=R$.
+Die Aufgabe, die QR-Zerlegung zu finden, ist also gleichbedeutend damit,
+eine Matrix durch Multiplizieren mit orthogonalen Matrizen auf Dreiecksform
+zu bringen.
+Das Produkt der orthogonalen Matrizen ist $Q^t$.
+In diesem Abschnitt wird ein Algorithmus basierend auf den Matrizen
+$S_{a,b}$ vorgestellt, der genau dies leistet.
+
+Sei $a\in\mathbb R^l$ ein nicht verschwindender Vektor.
+Dann ist der Vektor $b=(|a|,0,\dots,0)^t$ ein Vektor gleicher Länge.
+Nach Satz~\ref{buch:satz:sab} ist die Matrix $S_{a,b}$ eine Spiegelung,
+die $a$ auf $b$ abbildet.
+
+Sei jetzt ein Vektor $a\in\mathbb R^l$ gegeben und eine Zahl $k< l$.
+Wir zerlegen den Vektor $a$ in zwei Teile
+\[
+a = \begin{pmatrix}\tilde{a}\\\bar{a}\end{pmatrix}
+\quad\text{mit}\quad
+\tilde{a}=\begin{pmatrix}a_1\\\vdots\\a_{k-1}\end{pmatrix}
+\bar{a}=\begin{pmatrix}a_k\\\vdots \\a_l\end{pmatrix}.
+\]
+Die Matrix $Q_{\bar{a}}$ bildet $\bar{a}$ auf einen Vektor ab, von dem
+nur die erste Komponente von $0$ verschieden ist.
+Daraus wird die Matrix
+\begin{equation}
+Q_a
+=
+\begin{pmatrix} E&0\\0&Q_{\bar{a}}\end{pmatrix},
+\label{buch:eqn:Qa}
+\end{equation}
+die den Vektor
+\[
+a=\begin{pmatrix}
+a_1\\\vdots\\ a_{k-1}\\a_{k}\\\vdots\\a_n
+\end{pmatrix}
+\qquad\text{auf}\qquad
+Q_aa
+=
+\begin{pmatrix}a_1\\\vdots\\a_{k-1}\\ |\bar{a}|\\\vdots\\0\end{pmatrix}
+\]
+abbildet.
+$Q_a$ lässt Vektoren $x$, für die $\bar{x}=0$ ist, unverändert.
+
+Daraus lässt sich jetzt ein QR-Algorithmus konstruieren.
+
+\begin{satz}[QR-Zerlegung mit Spiegelungen]
+Gegeben ist die $l\times n$-Matrix $A$ mit $n\le l$.
+Dann gibt es orthogonale Matrizen $Q_1,\dots,Q_n$ derart, dass in
+jeder Matrix der Folge
+\[
+A_0 = A, \quad A_{i} = Q_{i}A_{i-1}\quad\text{für $0<i\le n$}
+\]
+die ersten $i$ Spalten die Form einer oberen Dreicksmatrix haben.
+Mit $Q=Q_1^t\dots Q_n^t$ und $R=A_n=Q_n\dots Q_1A$ gilt $A=QR$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Wir müssen die Matrix $Q_i$ aus $A_{i-1}$ konstruieren.
+Sei $a$ die $i$-te Matrix von $A_{i-1}$, dann setzen wir
+$Q_i=Q_{a}$ mit der Matrix $Q_a$ nach \eqref{buch:eqn:Qa}.
+Die Multiplikation mit $Q_i$ bringt die Spalte $i$ der Matrix 
+$A_{i-1}$ in die für $A_{i}$ verlangte Form, ohne die 
+Spalten mit Spaltenindex $<i$ zu verändern, da deren Komponenten dort,
+wo $Q_a$ etwas bewirkt, alle verschwinden.
+\end{proof}
+
+\begin{beispiel}
+Die Vektoren
+\[
+a_1 = \begin{pmatrix}1\\1\\1\end{pmatrix},
+\qquad
+a_2 = \begin{pmatrix}0\\1\\1\end{pmatrix},
+\qquad
+a_3 = \begin{pmatrix}0\\0\\1\end{pmatrix}
+\]
+sollen orthonormalisiert werden.
+Die Matrix $Q_1$ spiegelt den Vektor 
+\[
+\begin{pmatrix}
+1\\1\\1
+\end{pmatrix}
+\quad\text{auf}\quad
+\begin{pmatrix}\sqrt{3}\\0\\0\end{pmatrix}
+\]
+ab.
+Die zugehörige Matrix ist
+\[
+Q_1
+=
+\begin{pmatrix}
+\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}}          & \frac{1}{\sqrt{3}} \\
+\frac{1}{\sqrt{3}} & \frac12-\frac{1}{2\sqrt{3}} & -\frac12-\frac{1}{2\sqrt{3}}\\
+\frac{1}{\sqrt{3}} & -\frac12-\frac{1}{2\sqrt{3}}&\frac12-\frac1{2\sqrt{3}}
+\end{pmatrix}
+\qquad
+A_1
+=
+Q_1A
+=
+\begin{pmatrix}
+\sqrt{3} &  \frac{2}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
+  0      & -\frac{1}{\sqrt{3}} & -\frac12-\frac{1}{2\sqrt{3}} \\
+  0      & -\frac{1}{\sqrt{3}} & \frac12-\frac{1}{2\sqrt{3}}
+\end{pmatrix}.
+\]
+Die zweite Matrix $Q_2$ ist
+\[
+Q_2
+=
+\begin{pmatrix}
+1&0&0\\
+0&-\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
+0&-\frac{1}{\sqrt{2}} &  \frac{1}{\sqrt{2}}
+\end{pmatrix},
+\qquad
+R
+=
+A_2 = Q_2A_1
+=
+\begin{pmatrix}
+\sqrt{3} & \frac{2}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
+    0    & \sqrt{\frac{2}{3}} & \frac{1}{\sqrt{6}} \\
+    0    &         0          & \frac{1}{\sqrt{2}}
+\end{pmatrix}
+\]
+Wegen $R=(Q_2Q_1)A$ folgt $A=(Q_2Q_1)^t R$ und damit
+\[
+Q=(Q_2Q_1)^t
+=
+\begin{pmatrix}
+\frac{1}{\sqrt{3}} & - \sqrt{\frac{2}{3}} & 0\\
+\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{6}}   & - \frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{6}}   & \frac{1}{\sqrt{2}}
+\end{pmatrix}.
+\]
+Damit ist die QR-Zerlegung der Matrix $A$ gefinden.
+Tatsächlich bilden die Spalten von $Q$ eine orthonormierte Basis
+von $\mathbb R^3$, sie stimmt mit der Basis überein, die der
+Gram-Schmidt-Prozess aus den Spalten der Matrix $A$ ableitet.
+\end{beispiel}
+
+Der Nachteil dieser Methode ist, dass die Matrizen $S_{a,b}$ typischerweise
+sehr viele Einträge haben und dass damit die Matrixprodukte mit $S_{a,b}$
+aufwendig zu berechnen sind.
+
