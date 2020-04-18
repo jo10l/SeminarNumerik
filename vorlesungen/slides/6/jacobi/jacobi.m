@@ -35,11 +35,11 @@ end
 function showmatrix(fn, A, i, j, counter)
 	n = size(A);
 	fprintf(fn, "\\only<%d>{\n", counter);
-	fprintf(fn, "\\gitter\n");
 	if (i > 0)
 		fprintf(fn, "\\fill[color=gray!20] (%.2f,%.2f) rectangle (%.2f,%.2f);\n", i-0.5, -j-0.5, i+0.5, -j+0.5);
 		fprintf(fn, "\\fill[color=gray!20] (%.2f,%.2f) rectangle (%.2f,%.2f);\n", j-0.5, -i-0.5, j+0.5, -i+0.5);
 	end
+	fprintf(fn, "\\gitter\n");
 	for i = (1:n)
 		for j = (1:n)
 			try 
