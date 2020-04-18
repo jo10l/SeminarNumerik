@@ -92,6 +92,13 @@ chapter5 =								\
 	../slides/5/faktoren.tex					\
 	../slides/5/sirsim.tex						\
 	../slides/5/sirpath.tex						\
+	../slides/5/sirbetasim.tex					\
+	../slides/5/sirbetapath.tex					\
+	../slides/5/i0slide.tex						\
+	../slides/5/i0.tex						\
+	../slides/5/sirI0path.tex					\
+	../slides/5/sirI0sim.tex					\
+	../slides/5/kapazitaet.tex					\
 	../slides/5/ableitung.tex					\
 	../slides/5/parameter.tex					\
 	../slides/5/randwertproblem.tex					\
@@ -100,6 +107,18 @@ chapter5 =								\
 	../slides/5/chapter.tex
 
 chapter6 =								\
+	../slides/6/linalg.tex						\
+	../slides/6/gaussseidel/iteration.tex				\
+	../slides/6/gaussseidel/matrix.tex				\
+	../slides/6/gaussseidel/spektralradius.tex			\
+	../slides/6/gaussseidel/beispiel.tex				\
+	../slides/6/gaussseidel/gs.tex					\
+	../slides/6/gaussseidel/beispiel2.tex				\
+	../slides/6/gaussseidel/gs2.tex					\
+	../slides/6/jacobi/eigenwerte.tex				\
+	../slides/6/jacobi/drehung.tex					\
+	../slides/6/jacobi/iteration.tex				\
+	../slides/6/jacobi/konvergenz.tex				\
 	../slides/6/fem/introbeispiel.tex				\
 	../slides/6/fem/integralprinzip.tex				\
 	../slides/6/chapter.tex

@@ -1,0 +1,110 @@
+%
+% iteration.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}[fragile]
+\frametitle{Iteration}
+
+\def\r#1{\bgroup\color<7->{red}#1\egroup}
+
+\begin{block}{Idee}
+ Gleichungssystem nach einzelnen Variablen auflösen: %
+\uncover<2-6,8->{$\r{x_1}$, }%
+\uncover<3-6,9->{$\r{x_2}$, }%
+\uncover<4-6,10->{$\r{x_3}$, }%
+\uncover<5-6,11->{$\r{x_4}$}%
+%
+\def\s{\hspace*{-3mm}}
+\renewcommand{\arraystretch}{2.3}
+%
+\def\schrittnull{%
+\begin{linsys}{9}
+\s a_{11}x_1&+&\s a_{12}x_2&+&\s a_{13}x_3&+&\s a_{14}x_4&=&\s\phantom{\displaystyle\frac1{a_{33}}(}b_1&\phantom{-}&\s\phantom{a_{33}x_3}&\phantom{-}&\s\phantom{a_{33}x_3}&\phantom{-}&\s\phantom{a_{33}x_3}&\phantom{-}&\s\phantom{a_{33}x_3)}\\
+\s a_{21}x_1&+&\s a_{22}x_2&+&\s a_{23}x_3&+&\s a_{24}x_4&=&\s                         b_2&           &\s                   &           &\s                   &           &\s                   &           &\s                    \\
+\s a_{31}x_1&+&\s a_{32}x_2&+&\s a_{33}x_3&+&\s a_{34}x_4&=&\s                         b_3&           &\s                   &           &\s                   &           &\s                   &           &\s                    \\
+\s a_{41}x_1&+&\s a_{42}x_2&+&\s a_{43}x_3&+&\s a_{44}x_4&=&\s                         b_4&           &\s                   &           &\s                   &           &\s                   &           &\s                    \\
+\end{linsys}%
+}
+%
+\def\schritteins{%
+\begin{linsys}{9}
+\s       \r{x_1}& &\s          & &\s          & &\s          &=&\s\displaystyle\frac1{a_{11}}(b_1&\phantom{-}&\s\phantom{a_{33}x_3}&-&\s a_{12}x_2&-&\s a_{13}x_3&-&\s a_{14}x_4)\\
+\s a_{21}\r{x_1}&+&\s a_{22}x_2&+&\s a_{23}x_3&+&\s a_{24}x_4&=&\s               b_2&           &\s                   & &\s          & &\s          & &\s           \\
+\s a_{31}\r{x_1}&+&\s a_{32}x_2&+&\s a_{33}x_3&+&\s a_{34}x_4&=&\s               b_3&           &\s                   & &\s          & &\s          & &\s           \\
+\s a_{41}\r{x_1}&+&\s a_{42}x_2&+&\s a_{43}x_3&+&\s a_{44}x_4&=&\s               b_4&           &\s                   & &\s          & &\s          & &\s           \\
+\end{linsys}%
+}
+%
+\def\schrittzwei{%
+\begin{linsys}{9}
+\s       \r{x_1}& &\s              & &\s          & &\s          &=&\s\displaystyle\frac1{a_{11}}(b_1& &\s              &-&\s a_{12}x_2&-&\s a_{13}x_3&-&\s a_{14}x_4)\\
+\s              & &\s       \r{x_2}& &\s          & &\s          &=&\s\displaystyle\frac1{a_{22}}(b_2&-&\s a_{21}\r{x_1}& &\s          &-&\s a_{23}x_3&-&\s a_{24}x_4)\\
+\s a_{31}\r{x_1}&+&\s a_{32}\r{x_2}&+&\s a_{33}x_3&+&\s a_{34}x_4&=&b_3                 & &\s              & &\s          & &\s          & &\s           \\
+\s a_{41}\r{x_1}&+&\s a_{42}\r{x_2}&+&\s a_{43}x_3&+&\s a_{44}x_4&=&b_4                 & &\s              & &\s          & &\s          & &\s           \\
+\end{linsys}%
+}
+%
+\def\schrittdrei{%
+\begin{linsys}{9}
+\s       \r{x_1}& &\s              & &\s              & &\s          &=&\s         \displaystyle\frac1{a_{11}}( b_1& &\s              &-&\s     a_{12}x_2&-&\s a_{13}x_3&-&\s a_{14}x_4)\\
+\s              & &\s       \r{x_2}& &\s              & &\s          &=&\s         \displaystyle\frac1{a_{22}}( b_2&-&\s a_{21}\r{x_1}& &\s              &-&\s a_{23}x_3&-&\s a_{24}x_4)\\
+\s              & &\s              & &\s       \r{x_3}& &\s          &=&\s         \displaystyle\frac1{a_{33}}( b_3&-&\s a_{31}\r{x_1}&-&\s a_{32}\r{x_2}& &\s          &-&\s a_{34}x_4)\\
+\s a_{41}\r{x_1}&+&\s a_{42}\r{x_2}&+&\s a_{43}\r{x_3}&+&\s a_{44}x_4&=&\s\phantom{\displaystyle\frac1{a_{33}}(}b_4& &\s              & &\s              & &\s          & &\s           \\
+\end{linsys}%
+}
+%
+\def\schrittvier{%
+\begin{linsys}{9}
+\s            \r{x_1}&\phantom{+}&\s\phantom{a_{11}x_1}&\phantom{+}&\s\phantom{a_{11}x_1}&\phantom{+}&\s\phantom{a_{11}x_1}&=&\s\displaystyle\frac1{a_{11}}(b_1& &\s              &-&\s     a_{12}x_2&-&\s     a_{13}x_3&-&\s a_{14}x_4)\\
+\s                   &           &\s            \r{x_2}&           &\s                   &           &\s                   &=&\s\displaystyle\frac1{a_{22}}(b_2&-&\s a_{21}\r{x_1}& &\s              &-&\s     a_{23}x_3&-&\s a_{24}x_4)\\
+\s                   &           &\s                   &           &\s            \r{x_3}&           &\s                   &=&\s\displaystyle\frac1{a_{33}}(b_3&-&\s a_{31}\r{x_1}&-&\s a_{32}\r{x_2}& &\s              &-&\s a_{34}x_4)\\
+\s\phantom{a_{33}x_3}&           &\s                   &           &\s                   &           &\s            \r{x_4}&=&\s\displaystyle\frac1{a_{44}}(b_4&-&\s a_{41}\r{x_1}&-&\s a_{42}\r{x_2}&-&\s a_{43}\r{x_3}& &\s          )\\
+\end{linsys}%
+}
+%
+\ifthenelse{\boolean{presentation}}{
+\only<1>{\[
+\schrittnull
+\]}%
+%
+\only<2>{\[
+\schritteins
+\]}%
+%
+\only<3>{\[
+\schrittzwei
+\]}%
+%
+\only<4>{\[
+\schrittdrei
+\]}%
+%
+\only<5-6>{\[
+\schrittvier
+\]}%
+%
+\only<7>{\[
+\schrittnull
+\]}%
+%
+\only<8>{\[
+\schritteins
+\]}%
+%
+\only<9>{\[
+\schrittzwei
+\]}%
+%
+\only<10>{\[
+\schrittdrei
+\]}%
+%
+}{}%
+%
+\only<11>{\[
+\schrittvier
+\]}%
+\uncover<6->{Aber: Variablen verändern sich im Laufe des Prozesses}%
+\end{block}
+\end{frame}

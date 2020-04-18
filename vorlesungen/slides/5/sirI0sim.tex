@@ -1,0 +1,59 @@
+%
+% sirI0sim.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\bgroup
+\input{../slides/5/sirI0path.tex}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{frame}
+\frametitle{Kapazität und Lockdowndauer}
+\vspace{-15pt}
+\begin{center}
+\begin{tikzpicture}[>=latex,thick]
+\draw[->] (-0.1,0)--(12.4,0) coordinate[label={$t$}];
+\draw[->] (0,-0.1)--(0,6);
+\draw[line width=0.5pt] (0,5)--(12.2,5);
+\node[color=blue] at (-0.1,5) [left] {$S$};
+\node[color=red] at (-0.1,2.5) [left] {$I$};
+\node[color=darkgreen] at (-0.1,0) [left] {$R$};
+
+\begin{scope}
+\clip (-0.1,-1) rectangle (12.4,7);
+
+\only<02>{ \allab }
+\only<03>{ \allac }
+\only<04>{ \allad }
+\only<05>{ \allae }
+\only<06>{ \allaf }
+\only<07>{ \allag }
+\only<08>{ \allah }
+\only<09>{ \allai }
+\only<10>{ \allaj }
+
+\only<11>{ \allba }
+\only<12>{ \allbb }
+\only<13>{ \allbc }
+\only<14>{ \allbd }
+\only<15>{ \allbe }
+\only<16>{ \allbf }
+\only<17>{ \allbg }
+\only<18>{ \allbh }
+\only<19>{ \allbi }
+\only<20>{ \allbj }
+
+\only<21>{ \allca }
+
+\end{scope}
+
+%\draw[line width=0.5pt] (0,{5*0.2/0.6})--(12,{5*0.2/0.6});
+%\node at (10,{5*0.2/0.6}) [above] {$\beta/\gamma=\frac13$};
+
+\node[color=blue]      at (2,-0.2) [below] {$S(0) = 0.999999$};
+\node[color=red]       at (6,-0.2) [below] {$I(0) = 0.000001$};
+\node[color=darkgreen] at (10,-0.2) [below] {$R(0) = 0.000000$};
+
+\end{tikzpicture}
+\end{center}
+\end{frame}
+\egroup
