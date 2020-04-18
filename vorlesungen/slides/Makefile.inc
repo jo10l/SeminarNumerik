@@ -124,6 +124,7 @@ chapter6 =								\
 	../slides/6/jacobi/drehung.tex					\
 	../slides/6/jacobi/iteration.tex				\
 	../slides/6/jacobi/konvergenz.tex				\
+	../slides/6/jacobi/jm.tex					\
 	../slides/6/fem/introbeispiel.tex				\
 	../slides/6/fem/integralprinzip.tex				\
 	../slides/6/chapter.tex
