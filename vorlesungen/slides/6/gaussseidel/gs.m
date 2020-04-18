@@ -18,6 +18,9 @@ L = [
 D = diag([8, 6, 5, 7])
 
 A = R + D + L
+B = inverse(D+L)*R
+[V, lambda] = eig(B)
+spectralradius = max(abs(diag(lambda)))
 
 b = [4;2;1;3]
 
@@ -31,7 +34,7 @@ fn = fopen("gs.tex", "w")
 
 for l = (1:10)
 	fprintf(fn, "\\only<%d>{\n", l+1);
-	fprintf(fn, "Iteration $n=%d$\n", l);
+	fprintf(fn, "Iteration $n=%d$:\n", l);
 	fprintf(fn, "\\[\n");
 	fprintf(fn, "\\begin{linsys}{6}\n");
 

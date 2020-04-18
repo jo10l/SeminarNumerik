@@ -1,0 +1,78 @@
+%
+% splitting.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Matrix-Splitting}
+\vspace{-10pt}
+\begin{columns}[t]
+\begin{column}{0.3\hsize}
+\begin{block}{Splitting}
+$Ax=b$ mit $A=B+C$
+\end{block}
+\end{column}
+\begin{column}{0.24\hsize}
+\uncover<3->{%
+\begin{block}{Iteration}
+\vspace{-22pt}
+\begin{align*}
+\color{red}x&=B^{-1}b - B^{-1}Cx
+\\
+\uncover<4->{{\color{red}\tilde{x}}}&\uncover<4->{=B^{-1}C\tilde{x}}
+\end{align*}
+\end{block}}
+\end{column}
+\begin{column}{0.36\hsize}
+\uncover<5->{%
+\begin{block}{Konvergenz}
+\vspace{-22pt}
+\[
+\varrho(B^{-1}C)
+\begin{cases}
+< 1&\text{konvergent}\\
+>1&\text{instabil}
+\end{cases}
+\]
+\end{block}}
+\end{column}
+\end{columns}
+\hrule
+
+\begin{columns}[t]
+\begin{column}{0.36\hsize}
+\uncover<6->{%
+\begin{block}{Jacobi}
+$B=D$ und $C=L+R$
+\end{block}}
+\uncover<2->{%
+\begin{block}{Gauss-Seidel}
+$B = D+L$ und $C=R$
+\end{block}}
+\uncover<7->{%
+\begin{block}{Richardson}
+$B=\tau E$ und $C=A-\tau E$
+\uncover<8->{$\Rightarrow$ $B^{-1}C=\tau^{-1}A-E$}
+\end{block}}
+\end{column}
+\begin{column}{0.6\hsize}
+\uncover<9->{%
+\begin{block}{Successive-Over-Relaxation (SOR)}
+$B = (1/\omega)D + L$ und $C=R + (1-1/\omega)D$
+
+\uncover<10->{Konvergiert für $A=A^t$ immer!}
+\end{block}}
+\uncover<11->{%
+\begin{block}{Gauss-Nachiteration}
+\begin{enumerate}
+\item<11-> Gauss mit \texttt{float}, $x_{\texttt{float}}$, $B=L_{\texttt{float}}R_{\texttt{float}}$
+\item<12-> $C = A-B$ sehr klein
+\item<13-> $x_{\texttt{double}} = b_{0,\texttt{float}} - B^{-1}Cx_{\texttt{float}}$
+\end{enumerate}
+\end{block}}
+\end{column}
+\end{columns}
+
+
+
+\end{frame}
