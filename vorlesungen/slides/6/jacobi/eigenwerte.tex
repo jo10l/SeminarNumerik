@@ -11,17 +11,20 @@
 $A$ eine symmetrische $n\times n$-Matrix, finde
 EW und EV
 \end{block}
+\uncover<2->{%
 \begin{block}{Fakten}
 \begin{itemize}
-\item Eigenwerte sind reell
-\item Eigenvektoren sind orthogonal
-\item Es gibt eine orthogonale Matrix $T$ mit $TAT^{-1}=TAT^t=
+\item<3-> Eigenwerte sind reell
+\item<4-> Eigenvektoren sind orthogonal
+\item<5-> Es gibt eine orthogonale Matrix $T$ mit $TAT^{-1}=TAT^t=
 \operatorname{diag}(\lambda_1,\dots,\lambda_n)=D$
 \end{itemize}
-\end{block}
+\end{block}}
 \end{column}
 \begin{column}{0.48\hsize}
+\uncover<6->{%
 \begin{block}{Eigenvektoren}
+\vspace{-10pt}
 \[
 A = T^t\begin{pmatrix}
 \lambda_1&    0    &\dots &   0   \\
@@ -32,18 +35,19 @@ A = T^t\begin{pmatrix}
 =
 T^tDT
 \]
+\uncover<7->{%
 Eigenvektoren sind Spalten von $T^t$.
-Spalte $i$: $v_i$
+Spalte $i$: $v_i$}
 \begin{align*}
-T^tDTv_i
-&=
-T^tDe_i
-=
-T^t\lambda_ie_i
-=
-\lambda_iv_i
+\uncover<8->{T^tDTv_i}
+&\uncover<9->{=
+T^tDe_i}
+\uncover<10->{=
+T^t\lambda_ie_i}
+\uncover<11->{=
+\lambda_iv_i}
 \end{align*}
-\end{block}
+\end{block}}
 \end{column}
 \end{columns}
 \end{frame}
