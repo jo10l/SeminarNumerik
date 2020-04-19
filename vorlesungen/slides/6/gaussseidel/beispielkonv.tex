@@ -1,0 +1,80 @@
+%
+% beispielkonv.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapeprswil
+%
+\begin{frame}
+\frametitle{Konvergenzradius der Beispiele}
+\vspace{-10pt}
+
+\begin{columns}[t]
+\begin{column}{0.48\hsize}
+\begin{block}{Beispiel 1: konvergent}
+\vspace{-10pt}
+\[
+A = \begin{pmatrix}
+8& 1& 1& 1\\
+1& 6& 1& 1\\
+1& 1& 5& 1\\
+1& 1& 1& 7
+\end{pmatrix}
+\]
+\[
+\uncover<2->{
+\setlength\arraycolsep{2pt}
+B =\begin{pmatrix}
+   0.000& \phantom{-}0.125& \phantom{-}0.125& \phantom{-}0.125\\
+   0.000&           -0.021& \phantom{-}0.146& \phantom{-}0.146\\
+   0.000&           -0.021&           -0.054& \phantom{-}0.146\\
+   0.000&           -0.012&           -0.031&           -0.060\\
+\end{pmatrix}}
+\]
+\end{block}
+\vspace{-10pt}
+\uncover<3->{%
+\begin{block}{Spektralradius}
+\vspace{-15pt}
+\[
+\varrho(B)
+=
+0.10230
+\quad\Rightarrow\quad
+\text{konvergent}
+\]
+\end{block}}
+\end{column}
+\begin{column}{0.48\hsize}
+\begin{block}{Beispiel 2: instabil}
+\vspace{-10pt}
+\[
+A = \begin{pmatrix}
+1&  1&  0&  1\\
+1&  2&  1&  0\\
+0&  1&  2&  1\\
+1&  0&  1&  1
+\end{pmatrix}
+\]
+\[
+\uncover<4->{
+B = \begin{pmatrix}
+0.00& \phantom{-}1.00& \phantom{-}0.00& \phantom{-}1.00\\
+0.00&           -0.50& \phantom{-}0.50&           -0.50\\
+0.00& \phantom{-}0.25&           -0.25& \phantom{-}0.70\\
+0.00&           -1.25& \phantom{-}0.25&           -1.70
+\end{pmatrix}}
+\]
+\end{block}
+\vspace{-10pt}
+\uncover<5->{%
+\begin{block}{Spektralradius}
+\vspace{-5pt}
+\[
+\varrho(B)
+=
+2.3315
+\quad\Rightarrow\quad\text{instabil}
+\]
+\end{block}}
+\end{column}
+\end{columns}
+\end{frame}

@@ -1,0 +1,80 @@
+%
+% spektralradius.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}[fragile]
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\definecolor{orange}{rgb}{1,0.4,0}
+\def\polargrid{
+\pgfmathparse{60*3.1/3.14159}
+\xdef\winkel{\pgfmathresult}
+\foreach \r in {-3,-2.7,...,3.1}{
+	\draw[color=orange,line width=0.5pt] 
+		({-3+3*exp(\r/3)*exp(-1)*cos(-\winkel)},{3*exp(\r/3)*exp(-1)*sin(-\winkel)})
+		arc (-\winkel:\winkel:{3*exp(\r/3)*exp(-1)});
+	\draw[color=darkgreen,line width=0.5pt]
+		({-3+2.9*exp(-2)*cos(60*\r/3.14159)},{2.9*exp(-2)*sin(60*\r/3.14159)})
+		--
+		({-3+3.1*cos(60*\r/3.14159)},{3.1*sin(60*\r/3.14159)});
+}
+
+}
+\def\rectangulargrid{
+\foreach \y in {-3,-2.7,...,3.1}{
+	\draw[color=darkgreen,line width=0.5pt] (-3.1,\y)--(3.1,\y);
+	\draw[color=orange,line width=0.5pt] (\y,-3.1)--(\y,3.1);
+}
+}
+\def\punkt#1#2{
+	\fill[color=white] ({3*#1},{3*#2}) circle[radius=0.04];
+	\draw[color=red] ({3*#1},{3*#2}) circle[radius=0.04];
+}
+\def\spektralradius#1{
+	\fill[color=blue!20] (0,0) circle[radius={3*#1}];
+	\draw[color=blue,line width=0.5pt] (0,0) circle[radius={3*#1}];
+}
+\def\achsen{
+	\draw[->] (-3.1,0)--(3.3,0) coordinate[label={$\text{Re}$}];
+	\draw[->] (0,-3.1)--(0,3.3) coordinate[label={right:$\text{Im}$}];
+	\draw (-3,-0.1)--(-3,0.1); \node at (-3,-0.1) [below right] {$-1$};
+	\draw (3,-0.1)--(3,0.1);   \node at (3,-0.1) [below right] {$1$};
+	\draw (-0.1,3)--(0.1,3);   \node at (0,3) [below right] {$1$};
+	\draw (-0.1,-3)--(0.1,-3);
+	
+}
+\input{../slides/6/gaussseidel/lambda.tex}
+\frametitle{Spektralradius}
+\vspace{-25pt}
+\begin{columns}[t]
+\begin{column}{6.5cm}
+\begin{center}
+\begin{tikzpicture}[>=latex,thick]
+\begin{scope}
+\clip (-3.1,-3.1) rectangle (3.1,3.1);
+\draw[line width=0.2pt] (0,0) circle[radius=3];
+\matrixA
+\fill[color=white,opacity=0.5] (2.3,2.3) rectangle (2.8,2.8);
+\node at (2.5,2.5) {$A$};
+\end{scope}
+\achsen
+\end{tikzpicture}
+\end{center}
+\end{column}
+\begin{column}{6.5cm}
+\begin{center}
+\begin{tikzpicture}[>=latex,thick]
+\begin{scope}
+\clip (-3.1,-3.1) rectangle (3.1,3.1);
+\draw[line width=0.2pt] (0,0) circle[radius=3];
+\uncover<2->{
+\richardson
+\node at (2.3,2.8) {$e^{A-1}-E$};
+}
+\end{scope}
+\achsen
+\end{tikzpicture}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}

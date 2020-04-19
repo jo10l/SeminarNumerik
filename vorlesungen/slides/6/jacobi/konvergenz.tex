@@ -1,0 +1,48 @@
+%
+% konvergenz.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}[fragile]
+\def\gitter{
+\foreach \x in {1,...,6}{
+	\draw (0.5,-\x)--(6.5,-\x);
+	\draw (\x,-0.5)--(\x,-6.5);
+}
+}
+\frametitle{Konvergenz}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.46\hsize}
+\begin{block}{Einzelschritt $i,j$}
+$A\to A_{\text{neu}} = D_{ij,\alpha}AD_{ij,\alpha}$ mit
+$\alpha$ derart, dass
+$a_{\text{neu},ij}=0$
+\end{block}
+\begin{block}{Durchgang}
+Für $i=2,\dots n$ und für $j=1,\dots i-1$
+führe einen Einzelschritt $i,j$ durch
+\end{block}
+\begin{block}{Iteration}
+Durchgänge wiederholen bis Ausserdiagonalelemente kleine
+genug.
+\end{block}
+\begin{block}{Eigenvektoren}
+Produkt der $D_{ij,\alpha}$
+\end{block}
+\end{column}
+\begin{column}{0.52\hsize}
+\begin{center}
+\begin{tikzpicture}[>=latex,thick]
+\ifthenelse{\boolean{presentation}}{
+\input{../slides/6/jacobi/jm.tex}
+}{}
+\node at (3.5,-3.5) {$\displaystyle
+\left(
+\raisebox{0pt}[3cm][3cm]{\hspace*{6cm}}
+\right)$};
+\end{tikzpicture}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}

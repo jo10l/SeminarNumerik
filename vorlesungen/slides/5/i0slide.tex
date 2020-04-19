@@ -1,0 +1,119 @@
+%
+% i0slide.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\bgroup
+
+\input{../slides/5/i0.tex}
+
+\begin{frame}[fragile]
+\frametitle{Lockdown-Zeit}
+\vspace{-35pt}
+\begin{columns}[t]
+\begin{column}{4.4cm}
+\vspace*{20pt}
+\uncover<2->{
+\begin{block}{$I_0$-Abhängigkeit}
+Je mehr Kapazität $\color{blue}I_0$, desto schneller kann man
+den Lockdown hinter sich bringen
+\medskip
+
+$\Rightarrow$ Kapazitäten ausbauen
+
+\end{block}}
+\uncover<3->{
+\begin{block}{$\gamma$-Abhängigkeit}
+Je schneller die Genesung $\color{red}\gamma$, desto schneller wird die
+Kapazität wieder frei
+\medskip
+
+$\Rightarrow$ eine Medikament würde helfen\dots
+\end{block}}
+\end{column}
+\begin{column}{9cm}
+\begin{center}
+\begin{tikzpicture}[>=latex,thick]
+
+\begin{scope}
+\clip (3,0) rectangle (10,7);
+\uncover<2->{
+\jJ
+\jK
+\jL
+\jM
+\jN
+\jO
+\jP
+\jQ
+\jR
+\jS
+\jT
+}
+
+\uncover<3->{
+%\iA
+%\iB
+%\iC
+%\iD
+%\iE
+%\iF
+%\iG
+%\iH
+%\iI
+\iJ
+\iK
+\iL
+\iM
+\iN
+\iO
+\iP
+\iQ
+\iR
+%\iS
+%\iT
+}
+\end{scope}
+
+\uncover<2->{
+\node[color=blue] at ({10-0.2},6.8) [right] {$I_0=0.1$};
+\node[color=blue] at ({10-0.2},2.7) [right] {$I_0=0.2$};
+}
+
+\uncover<3->{
+\node[color=red] at ({10-0.2},4.9) [right] {$\gamma=0.25$};
+\node[color=red] at ({10-0.2},1.5) [right] {$\gamma=0.45$};
+}
+
+\draw[->] (2.9,0) -- (10.5,0) coordinate[label={$\beta$}];
+\draw[->] (3,-0.1) -- (3,6.9) coordinate[label={right:$t$}];
+
+\foreach \b in {4,...,10}{
+	\draw ({\b},-0.1)--(\b,0.1);
+}
+\foreach \t in {5,10,...,30}{
+	\draw (2.9,{\t*0.2})--(3.1,{\t*0.2});
+}
+\node at (2.9,1) [left] {$ 5$};
+\node at (2.9,2) [left] {$10$};
+\node at (2.9,3) [left] {$15$};
+\node at (2.9,4) [left] {$20$};
+\node at (2.9,5) [left] {$25$};
+\node at (2.9,6) [left] {$30$};
+
+%\node at (3,-0.1) [below] {$0.3$};
+\node at (4,-0.1) [below] {$0.4$};
+\node at (5,-0.1) [below] {$0.5$};
+\node at (6,-0.1) [below] {$0.6$};
+\node at (7,-0.1) [below] {$0.7$};
+\node at (8,-0.1) [below] {$0.8$};
+\node at (9,-0.1) [below] {$0.9$};
+\node at (10,-0.1) [below] {$1$};
+
+\end{tikzpicture}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\egroup

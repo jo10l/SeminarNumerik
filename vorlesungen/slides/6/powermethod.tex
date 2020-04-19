@@ -1,0 +1,55 @@
+%
+% powermethod.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Potenzmethode}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.44\hsize}
+\begin{block}{Aufgabe}
+$n\times n$-Matrix $A$, finde grössten Eigenwert $\lambda\in\mathbb R$ und Eigenvektor $v$
+\end{block}
+\uncover<2->{%
+\begin{block}{Methode}
+\begin{enumerate}
+\item<3-> $v_0\in \mathbb R^n$ zufällig
+\item<4-> $v_{n+1} = Av_{n} / |Av_{n}|$
+\item<5-> Wiederhole 2 bis Konvergenz
+\item<7-> $v=v_{\infty}$
+\item<8-> $\lambda = |Av_\infty|$
+\end{enumerate}
+\end{block}}
+\uncover<8->{%
+\begin{block}{Anwendung}
+Google-Pagerank ist EV der Google-Matrix zum
+(grössten) EW 1
+\end{block}}
+\end{column}
+\begin{column}{0.54\hsize}
+\uncover<9->{%
+\begin{proof}[Beweis]
+\begin{itemize}
+\item<10->
+$v_1,\dots,v_n$ Eigenbasis mit EW $\lambda_1>\dots \ge\lambda_n$
+\item<11->
+$v_0 = a_1v_1+\dots+a_nv_n$ mit $a_1\ne 0$
+\item<12->
+$A^kv_0 = \lambda_1^k a_1 v_1 + \dots + \lambda_n^k a_n v_n$
+\item<13->
+Division durch $\lambda_1^k$:
+\[
+\frac{1}{\lambda_1^k}A^kv_0
+=
+a_1v_1 \underbrace{+ \dots + \biggl(\underbrace{\frac{\lambda_i}{\lambda_n}}_{\displaystyle < 1}\biggr)^k a_kv_k+\dots}_{\displaystyle\to 0}
+\]
+\vspace{-10pt}
+\item<14-> Konvergenz: $\displaystyle
+\frac{A^kv_0}{|A^kv_0|} \to v_1
+$
+\end{itemize}
+\end{proof}}
+\end{column}
+\end{columns}
+\end{frame}

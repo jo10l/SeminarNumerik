@@ -1,0 +1,49 @@
+%
+% eigenwerte.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{EW/EV symmetrischer Matrizen}
+\begin{columns}[t]
+\begin{column}{0.48\hsize}
+\begin{block}{Aufgabe}
+$A$ eine symmetrische $n\times n$-Matrix, finde
+EW und EV
+\end{block}
+\begin{block}{Fakten}
+\begin{itemize}
+\item Eigenwerte sind reell
+\item Eigenvektoren sind orthogonal
+\item Es gibt eine orthogonale Matrix $T$ mit $TAT^{-1}=TAT^t=
+\operatorname{diag}(\lambda_1,\dots,\lambda_n)=D$
+\end{itemize}
+\end{block}
+\end{column}
+\begin{column}{0.48\hsize}
+\begin{block}{Eigenvektoren}
+\[
+A = T^t\begin{pmatrix}
+\lambda_1&    0    &\dots &   0   \\
+    0    &\lambda_2&\dots &   0   \\
+ \vdots  & \vdots  &\ddots&\vdots \\
+    0    &    0    &\dots &\lambda_n
+\end{pmatrix}T
+=
+T^tDT
+\]
+Eigenvektoren sind Spalten von $T^t$.
+Spalte $i$: $v_i$
+\begin{align*}
+T^tDTv_i
+&=
+T^tDe_i
+=
+T^t\lambda_ie_i
+=
+\lambda_iv_i
+\end{align*}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}

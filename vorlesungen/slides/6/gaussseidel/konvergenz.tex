@@ -1,0 +1,76 @@
+%
+% konvergenz.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Konvergenz}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.48\hsize}
+\begin{block}{Lösung}
+Die Lösung von $Ax=b$ erfüllt
+\begin{align*}
+Dx&=b-Lx-Rx
+\\
+\uncover<2->{x}&\uncover<2->{=b_0-(D+L)^{-1}Rx}
+\end{align*}
+\end{block}
+\vspace{-15pt}
+\uncover<3->{%
+\begin{block}{Iterationsfolge mit Startwert $x_0$}
+\vspace{-10pt}
+\[
+x_{n+1}
+=
+b_0 - \underbrace{(D + L)^{-1}R}_{\displaystyle=B} x_{n}
+\]
+\end{block}}
+\vspace{-15pt}
+\uncover<4->{%
+\begin{block}{Fehler}
+$\tilde{x}_n = x_n-x$
+\begin{align*}
+B\tilde{x}_n
+&=
+x_{n+1}\underbrace{-b_0+Bx}_{\displaystyle=-x}
+\uncover<5->{=
+\tilde{x}_{n+1}}
+\end{align*}
+\end{block}}
+\end{column}
+\begin{column}{0.48\hsize}
+\uncover<6->{%
+\begin{block}{Wachstum des Fehlers}
+$\lambda_1\ge \dots \ge\lambda_n$ die Eigenwerte von $B$, dann ist
+\begin{align*}
+\uncover<7->{|x_{n+1}|}&\uncover<8->{= |Bx_n|}\uncover<9->{\le |\lambda_1| \cdot |x_n|}
+\\
+	&\uncover<10->{ \le |\lambda_1|^2\cdot |x_{n-1}|}\uncover<11->{\le\dots}
+\\
+	&\uncover<12->{\le |\lambda_1|^{n+1}\cdot |x_0|}
+\end{align*}
+\end{block}}
+\vspace{-15pt}
+\uncover<13->{%
+\begin{block}{Konvergenzradius}
+\vspace{-20pt}
+\begin{align*}
+\varrho(B) = |\lambda_1|
+&\uncover<14->{=
+\max\{|\lambda|\;|\;\text{$\lambda$ EW von $B$}\}}
+\end{align*}
+\end{block}}
+\vspace{-10pt}
+\uncover<15->{%
+\begin{block}{Stabilität}
+\begin{center}
+\begin{tabular}{lcl}
+\uncover<16->{\usebeamercolor[fg]{title}$\varrho(B)<1$}&\uncover<17->{$\Rightarrow$}&\uncover<17->{lineare Konvergenz}\\
+\uncover<18->{\usebeamercolor[fg]{title}$\varrho(B)>1$}&\uncover<19->{$\Rightarrow$}&\uncover<19->{instabil}
+\end{tabular}
+\end{center}
+\end{block}}
+\end{column}
+\end{columns}
+\end{frame}

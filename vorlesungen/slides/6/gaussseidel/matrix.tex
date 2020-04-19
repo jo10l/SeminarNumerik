@@ -1,0 +1,85 @@
+%
+% matrix.tex -- Matrixformulierung des Gauss-Seidel Algorithmus
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}[fragile]
+\frametitle{Matrix-Formulierung}
+
+\definecolor{farbed}{rgb}{0.2,0.2,0.8}
+\definecolor{farbel}{rgb}{0,0.6,0}
+\definecolor{farber}{rgb}{0,0.6,0.8}
+\definecolor{farbeb}{rgb}{1.0,0.4,0}
+
+\def\r#1{\bgroup\color{red}#1\egroup}
+\def\D#1{\bgroup\color{farbed}#1\egroup}
+\def\R#1{\bgroup\color{farber}#1\egroup}
+\def\L#1{\bgroup\color{farbel}#1\egroup}
+\def\B#1{\bgroup\color{farbeb}#1\egroup}
+
+\def\s{\hspace*{-3mm}}
+%\renewcommand{\arraystretch}{2.3}
+
+
+\def\schrittvier{%
+\begin{linsys}{9}
+\s\D{a_{11}}\r{x_1}&=&\s\B{b_1}& &\s                 &-&\s    \R{a_{12}}x_2&-&\s    \R{a_{13}}x_3&-&\s\R{a_{14}}x_4\\
+\s\D{a_{22}}\r{x_2}&=&\s\B{b_2}&-&\s\L{a_{21}}\r{x_1}& &\s                 &-&\s    \R{a_{23}}x_3&-&\s\R{a_{24}}x_4\\
+\s\D{a_{33}}\r{x_3}&=&\s\B{b_3}&-&\s\L{a_{31}}\r{x_1}&-&\s\L{a_{32}}\r{x_2}& &\s                 &-&\s\R{a_{34}}x_4\\
+\s\D{a_{44}}\r{x_4}&=&\s\B{b_4}&-&\s\L{a_{41}}\r{x_1}&-&\s\L{a_{42}}\r{x_2}&-&\s\L{a_{43}}\r{x_3}& &\s             \\
+\end{linsys}%
+}
+%
+
+\[
+\left.
+\schrittvier
+\uncover<6->{
+\right\}
+\quad
+\Rightarrow
+\quad
+\D{D}\r{x} = \B{b} - \L{L}\r{x} - \R{R}x}
+\]
+\vspace{-10pt}
+\uncover<2->{%
+\begin{block}{Aufteilung der Matrix $A$}
+\vspace{-15pt}
+\begin{align*}
+\uncover<3->{%
+D=\begin{pmatrix}
+\D{a_{11}}&         0&         0&     0\\
+         0&\D{a_{22}}&         0&     0\\
+         0&         0&\D{a_{33}}&     0\\
+         0&         0&         0&\D{a_{44}}
+\end{pmatrix}}\uncover<4->{\!,
+\;
+L=\begin{pmatrix}
+         0&         0&         0&     0\\
+\L{a_{11}}&         0&         0&     0\\
+\L{a_{11}}&\L{a_{12}}&         0&     0\\
+\L{a_{11}}&\L{a_{12}}&\L{a_{13}}&     0
+\end{pmatrix}}\uncover<5->{\!,
+\;
+R=\begin{pmatrix}
+     0&\R{a_{12}}&\R{a_{13}}&\R{a_{14}}\\
+     0&         0&\R{a_{13}}&\R{a_{14}}\\
+     0&         0&         0&\R{a_{14}}\\
+     0&         0&         0&         0
+\end{pmatrix}}
+\end{align*}
+\end{block}}
+\vspace{-15pt}
+\uncover<7->{%
+\begin{block}{Auflösen nach $\r{x}$}
+\vspace{-10pt}
+\[
+\D{D}\r{x} = \B{b} - \L{L}\r{x} - \R{R}x
+\uncover<8->{\quad\Rightarrow\quad
+(\D{D}+\L{L})\r{x}=\B{b}-\R{R}x}
+\uncover<9->{\quad\Rightarrow\quad
+\r{x}=\underbrace{(\D{D}+\L{L})^{-1}\B{b}}_{\B{b_0}} - (\D{D}+\L{L})^{-1}\R{R}\, x}
+\]
+\end{block}}
+
+\end{frame}
