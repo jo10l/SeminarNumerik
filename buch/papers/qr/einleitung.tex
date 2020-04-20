@@ -13,7 +13,7 @@ $R$ ist eine ober Dreiecksmatrix der Grösse $n\times n$.
 
 \subsection{Anwedungsbeispiel Least-Squares}
 Die $QR$-Zerlegung kann unter anderem beim lösen von Gleichungssystemen angewendet werden.
-Ein in den Parametern lineares Gleichungssystem
+Ein lineares Gleichungssystem
 \begin{equation}
 Ax=b\label{qr:sle}
 \end{equation}
@@ -35,12 +35,25 @@ A^TA\hat{x}=A^Tb-\underbrace{A^Tb_{\perp}}_{=0}
 \end{equation}
 Wobei der letzte Term verschwindet, da alle Spalten von $A$ und $b_{\perp}$ orthogonal zueinander stehen und somit alle Skalarprodukte verschwinden.
 Das Matrixprodukt $A^TA$ ist unter Umständen aufwändig zu berechnen.
-Geht man nun aber den Umweg über die $QR$-Zerlegung kann die Gleichung \ref{qr:ls1} umgeschrieben werden:
+Geht man nun aber den Umweg über die $QR$-Zerlegung, bzw. $A=QR$ kann die Gleichung \ref{qr:ls1} umgeschrieben werden:
 \begin{equation*}
-(QR)^TQR\hat{x}=(QR)^Tb
+(QR)^TQR\hat{x}=(QR)^Tb \quad \Leftrightarrow \quad R^T\underbrace{Q^TQ}_{=E}R\hat{x}= R^TQ^Tb \quad \Leftrightarrow \quad
+R^TR\hat{x}=R^TQ^Tb,
 \end{equation*}
-was sich zu 
+wobei $Q^TQ=E$, da Q nach Definition orthogonal ist.
+De Determinante von $R^T$ ist
+\begin{equation*}
+\det(R^T)=\det(R)=\det
+\begin{pmatrix}
+r_{11}&r_{12}&\cdots &r_{1n}\\
+0     &r_{22}&\cdots &r_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
+0&0&\cdots&r_{nn}
+\end{pmatrix}=\prod_{k=1}^{n}r_{kk}.
+\end{equation*}
+Die Determinante von $R^T$ verschwindet nur, wenn eines der Diagonalelemente verschwindet.
+Dies würde aber bedeuten, dass die Spalten von $Q$ und somit auch $A$ linear abhängig voneinander sind, womit wiederum die Vorhaussetzungen für die $QR$-Zerlegung nicht gegeben wären.
+$R^T$ ist somit immer regulär und kann invertiert werden, was eine weitere Vereinfachung ermöglicht:
 \begin{equation}
-R\hat{x}=Q^Tb\label{qr:ls2}
+(R^T)^{-1}R^TR\hat{x}=(R^T)^{-1}R^TQb\quad\Leftrightarrow\quad R\hat{x}=Q^Tb\label{qr:ls2}.
 \end{equation}
-vereinfacht.
