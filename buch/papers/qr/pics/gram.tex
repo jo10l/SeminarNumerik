@@ -1,0 +1,18 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{amsmath}
+
+\begin{document}
+	\tdplotsetmaincoords{70}{30}	
+	\def\sc{2}
+	\def\eps{0.3*\sc}
+	\def\a{0.16619}
+	\begin{tikzpicture}[tdplot_main_coords]
+		\draw[->, blue] (0,0,0)--(0,0,\sc+\a) node[above left] {$a_1$};
+		\filldraw[blue, opacity=0.2] (-1,1,0)--(-1,-1,0)--(1,-1,0)--(1,1,0);		
+		\draw[->] (0,0,0)--(0,\eps,\sc) node[above] {$a_2$};
+		\draw[->] (0,0,0)--(\eps,0,\sc) node[right] {$a_3$};
+			
+	\end{tikzpicture}
+\end{document}
