@@ -108,6 +108,8 @@ chapter5 =								\
 
 chapter6 =								\
 	../slides/6/linalg.tex						\
+	../slides/6/kondition.tex					\
+	../slides/6/konditionbeispiel.tex					\
 	../slides/6/splitting.tex					\
 	../slides/6/gaussseidel/iteration.tex				\
 	../slides/6/gaussseidel/matrix.tex				\

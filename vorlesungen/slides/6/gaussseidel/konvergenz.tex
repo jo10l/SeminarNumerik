@@ -44,16 +44,16 @@ x_{n+1}\underbrace{-b_0+Bx}_{\displaystyle=-x}
 \begin{block}{Wachstum des Fehlers}
 $\lambda_1\ge \dots \ge\lambda_n$ die Eigenwerte von $B$, dann ist
 \begin{align*}
-\uncover<7->{|x_{n+1}|}&\uncover<8->{= |Bx_n|}\uncover<9->{\le |\lambda_1| \cdot |x_n|}
+\uncover<7->{|\tilde{x}_{n+1}|}&\uncover<8->{= |B\tilde{x}_n|}\uncover<9->{\le |\lambda_1| \cdot |\tilde{x}_n|}
 \\
-	&\uncover<10->{ \le |\lambda_1|^2\cdot |x_{n-1}|}\uncover<11->{\le\dots}
+	&\uncover<10->{ \le |\lambda_1|^2\cdot |\tilde{x}_{n-1}|}\uncover<11->{\le\dots}
 \\
-	&\uncover<12->{\le |\lambda_1|^{n+1}\cdot |x_0|}
+	&\uncover<12->{\le |\lambda_1|^{n+1}\cdot |\tilde{x}_0|}
 \end{align*}
 \end{block}}
 \vspace{-15pt}
 \uncover<13->{%
-\begin{block}{Konvergenzradius}
+\begin{block}{Spektralradius}
 \vspace{-20pt}
 \begin{align*}
 \varrho(B) = |\lambda_1|

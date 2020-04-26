@@ -8,11 +8,33 @@
 \begin{columns}[t]
 \begin{column}{0.48\hsize}
 \begin{block}{Gleichungen Lösen}
+\uncover<3->{%
+Aufwand für ``Gauss'': $O(n^3)$}
+\begin{itemize}
+\item<4->
+Strömungssimulation: $n=N^d$, für $N=10^k$,
+Laufzeit $O(10^{3dk})$, 214000 Jahre auf {\em Summit}
+\item<5->
+Viele Operationen, in denen Differenzen gebildet werden: Potential für Auslöschung
+\item<6->
+Division durch kleine Pivot-Elemente $\Rightarrow$ 
+\end{itemize}
 \end{block}
 \end{column}
 \begin{column}{0.48\hsize}
+\uncover<2->{%
 \begin{block}{Eigenwerte und Eigenvektoren}
-\end{block}
+\uncover<7->{%
+``Standardmethode'': charakteristisches Polynom $\det(A-\lambda E)=\chi_A(\lambda)=0$
+}
+\begin{itemize}
+\item<8->
+Determinante viel zu aufwändig: $n > 5$ unpraktikabel
+\item<9->
+Für jeden Eigenwert ist ein Durchführung des Gauss-Algorithmus nötig mit
+singulärer Matrix \uncover<10->{$\rightarrow$ numerisch ungünstig}
+\end{itemize}
+\end{block}}
 \end{column}
 \end{columns}
 \end{frame}
