@@ -1,0 +1,40 @@
+%
+% iteration.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hohschule Rapperswil
+%
+\begin{frame}
+\frametitle{Drehung der $i$-$j$-Ebene um $\alpha$}
+\begin{center}
+\begin{tikzpicture}[>=latex]
+\fill[color=gray!20] (-3.7,1.05) rectangle (5.9,1.45);
+\fill[color=gray!20] (-3.7,-1.45) rectangle (5.9,-1.05);
+\fill[color=gray!20] (-0.9,-3.0) rectangle (0.2,3.6);
+\fill[color=gray!20] (2.8,-3.0) rectangle (4.05,3.6);
+%\draw[line width=0.1pt] (-4,3.05) -- (5,3.05);
+\node at (-3.5,1.25) {$\mathstrut i$};
+\node at (-3.5,-1.25) {$\mathstrut j$};
+\node at (-0.35,3.35) {$\mathstrut i$};
+\node at (3.425,3.35) {$\mathstrut j$};
+\node at (0,0) {$\displaystyle
+\setcounter{MaxMatrixCols}{20}
+D_{ij,\alpha}=
+\hspace{2cm}
+\begin{pmatrix}
+1     &       & &          &      &      &      &           & &      &      \\
+      &\ddots & &          &      &      &      &           & &      &      \\
+      &       &1&          &      &      &      &           & &      &      \\
+      &       & &\cos\alpha&\cdots&\cdots&\cdots&-\sin\alpha& &      &      \\
+      &       & &\vdots    &1     &      &      &\vdots     & &      &      \\
+      &       & &\vdots    &      &\ddots&      &\vdots     & &      &      \\
+      &       & &\vdots    &      &      &1     &\vdots     & &      &      \\
+      &       & &\sin\alpha&\cdots&\cdots&\cdots&\cos\alpha & &      &      \\
+      &       & &          &      &      &      &           &1&      &      \\
+      &       & &          &      &      &      &           & &\ddots&      \\
+      &       & &          &      &      &      &           & &      &1     \\
+\end{pmatrix}$};
+
+\end{tikzpicture}
+\end{center}
+
+\end{frame}

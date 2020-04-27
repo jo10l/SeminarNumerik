@@ -92,6 +92,13 @@ chapter5 =								\
 	../slides/5/faktoren.tex					\
 	../slides/5/sirsim.tex						\
 	../slides/5/sirpath.tex						\
+	../slides/5/sirbetasim.tex					\
+	../slides/5/sirbetapath.tex					\
+	../slides/5/i0slide.tex						\
+	../slides/5/i0.tex						\
+	../slides/5/sirI0path.tex					\
+	../slides/5/sirI0sim.tex					\
+	../slides/5/kapazitaet.tex					\
 	../slides/5/ableitung.tex					\
 	../slides/5/parameter.tex					\
 	../slides/5/randwertproblem.tex					\
@@ -100,10 +107,47 @@ chapter5 =								\
 	../slides/5/chapter.tex
 
 chapter6 =								\
+	../slides/6/linalg.tex						\
+	../slides/6/kondition.tex					\
+	../slides/6/konditionbeispiel.tex					\
+	../slides/6/splitting.tex					\
+	../slides/6/gaussseidel/iteration.tex				\
+	../slides/6/gaussseidel/matrix.tex				\
+	../slides/6/gaussseidel/spektralradius.tex			\
+	../slides/6/gaussseidel/lambda.tex				\
+	../slides/6/gaussseidel/beispiel.tex				\
+	../slides/6/gaussseidel/gs.tex					\
+	../slides/6/gaussseidel/beispiel2.tex				\
+	../slides/6/gaussseidel/gs2.tex					\
+	../slides/6/gaussseidel/konvergenz.tex				\
+	../slides/6/gaussseidel/beispielkonv.tex			\
+	../slides/6/powermethod.tex					\
+	../slides/6/jacobi/eigenwerte.tex				\
+	../slides/6/jacobi/drehung.tex					\
+	../slides/6/jacobi/iteration.tex				\
+	../slides/6/jacobi/konvergenz.tex				\
+	../slides/6/jacobi/jm.tex					\
 	../slides/6/fem/introbeispiel.tex				\
 	../slides/6/fem/integralprinzip.tex				\
 	../slides/6/chapter.tex
 
+chapter7 =								\
+	../slides/7/chapter.tex
+
+chapter8 =								\
+	../slides/8/pde.tex						\
+	../slides/8/beispiele.tex					\
+	../slides/8/diskretisierung.tex					\
+	../slides/8/poisson.tex						\
+	../slides/8/explizit.tex					\
+	../slides/8/fdm.tex						\
+	../slides/8/implizit.tex					\
+	../slides/8/vergleich.tex					\
+	../slides/8/waerme.tex						\
+	../slides/8/courant.tex						\
+	../slides/8/fvm.tex						\
+	../slides/8/chapter.tex
+
 slides = 								\
 	$(chapter0) $(chapter1) $(chapter2) $(chapter3) $(chapter4) \
-	$(chapter5) $(chapter6)
+	$(chapter5) $(chapter6) $(chapter7) $(chapter8)

@@ -1,0 +1,135 @@
+%
+% sirsim.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\bgroup
+\input{../slides/5/sirbetapath.tex}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\begin{frame}
+\frametitle{Simulationsresultate ``Kapazitätsstrategie''}
+\vspace{-15pt}
+\begin{center}
+\begin{tikzpicture}[>=latex,thick]
+\draw[->] (-0.1,0)--(12.4,0) coordinate[label={$t$}];
+\draw[->] (0,-0.1)--(0,6);
+\draw[line width=0.5pt] (0,5)--(12.2,5);
+\node[color=blue] at (-0.1,5) [left] {$S$};
+\node[color=red] at (-0.1,2.5) [left] {$I$};
+\node[color=darkgreen] at (-0.1,0) [left] {$R$};
+
+\begin{scope}
+\clip (-0.1,-1) rectangle (12.4,7);
+
+\only<01>{ \allaa }
+\only<02>{ \allab }
+\only<03>{ \allac }
+\only<04>{ \allad }
+\only<05>{ \allae }
+\only<06>{ \allaf }
+\only<07>{ \allag }
+\only<08>{ \allah }
+\only<09>{ \allai }
+\only<10>{ \allaj }
+
+\only<11>{ \allba }
+\only<12>{ \allbb }
+\only<13>{ \allbc }
+\only<14>{ \allbd }
+\only<15>{ \allbe }
+\only<16>{ \allbf }
+\only<17>{ \allbg }
+\only<18>{ \allbh }
+\only<19>{ \allbi }
+\only<20>{ \allbj }
+
+\only<21>{ \allca }
+\only<22>{ \allcb }
+\only<23>{ \allcc }
+\only<24>{ \allcd }
+\only<25>{ \allce }
+\only<26>{ \allcf }
+\only<27>{ \allcg }
+\only<28>{ \allch }
+\only<29>{ \allci }
+\only<30>{ \allcj }
+
+\only<31>{ \allda }
+\only<32>{ \alldb }
+\only<33>{ \alldc }
+\only<34>{ \alldd }
+\only<35>{ \allde }
+\only<36>{ \alldf }
+\only<37>{ \alldg }
+\only<38>{ \alldh }
+\only<39>{ \alldi }
+\only<40>{ \alldj }
+
+\only<41>{ \allea }
+\only<42>{ \alleb }
+\only<43>{ \allec }
+\only<44>{ \alled }
+\only<45>{ \allee }
+\only<46>{ \allef }
+\only<47>{ \alleg }
+\only<48>{ \alleh }
+\only<49>{ \allei }
+\only<50>{ \allej }
+
+\only<51>{ \allfa }
+\only<52>{ \allfb }
+\only<53>{ \allfc }
+\only<54>{ \allfd }
+\only<55>{ \allfe }
+\only<56>{ \allff }
+\only<57>{ \allfg }
+\only<58>{ \allfh }
+\only<59>{ \allfi }
+\only<60>{ \allfj }
+
+\only<61>{ \allga }
+\only<62>{ \allgb }
+\only<63>{ \allgc }
+\only<64>{ \allgd }
+\only<65>{ \allge }
+
+\only<66>{ \allAA }
+\only<67>{ \allAB }
+\only<68>{ \allAC }
+\only<69>{ \allAD }
+\only<70>{ \allAE }
+\only<71>{ \allAF }
+\only<72>{ \allAG }
+\only<73>{ \allAH }
+\only<74>{ \allAI }
+
+\only<75>{ \allgf }
+\only<76>{ \allgg }
+\only<77>{ \allgh }
+\only<78>{ \allgi }
+\only<79>{ \allgj }
+
+\only<80>{ \allha }
+\only<81>{ \allhb }
+\only<82>{ \allhc }
+\only<83>{ \allhd }
+\only<84>{ \allhe }
+\only<85>{ \allhf }
+\only<86>{ \allhg }
+\only<87>{ \allhh }
+\only<88>{ \allhi }
+\only<89>{ \allhj }
+
+\end{scope}
+
+\node[color=blue]      at (2,-0.2) [below] {$S(0) = 0.999999$};
+\node[color=red]       at (6,-0.2) [below] {$I(0) = 0.000001$};
+\node[color=darkgreen] at (10,-0.2) [below] {$R(0) = 0.000000$};
+
+\draw[color=red,line width=0.5pt] (0,0.5)--(12,0.5);
+\node[color=red] at (0,0.5) [above right] {$I_0$};
+
+\end{tikzpicture}
+\end{center}
+\end{frame}
+\egroup

@@ -1,0 +1,59 @@
+%
+% drehung.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Drehung (Fall $n=2$)}
+\begin{block}{Diagonalisierung mit {\em einer} Drehung}
+\vspace{-5pt}
+\[
+\begin{pmatrix}
+\cos\alpha& \sin\alpha\\
+-\sin\alpha&\cos\alpha
+\end{pmatrix}
+\begin{pmatrix}
+a_{11}&a_{12}\\
+a_{21}&a_{22}
+\end{pmatrix}
+\begin{pmatrix}
+\cos\alpha&-\sin\alpha\\
+\sin\alpha&\cos\alpha
+\end{pmatrix}
+=
+\begin{pmatrix}
+\lambda_1&\color{red}0\\
+\color{red}0&\lambda_2
+\end{pmatrix}
+\]
+\end{block}
+\vspace{-10pt}
+\uncover<2->{%
+\begin{block}{Bestimmung von $\alpha$}
+\vspace{-20pt}
+\begin{align*}
+\Rightarrow
+a_{11}\sin\alpha\cos\alpha + a_{12}(\cos^2\alpha-\sin^2\alpha) -a_{22}\sin\alpha\cos\alpha&={\color{red}0}
+\\
+\uncover<3->{
+(a_{11}-a_{22}) \frac12 \sin2\alpha + a_{12} \cos2\alpha}&\uncover<3->{={\color{red}0}}
+\\
+\uncover<4->{
+\Rightarrow\qquad
+\cot 2\alpha}&\uncover<4->{= \frac{a_{22}-a_{11}}{2a_{12}} = \vartheta}
+\end{align*}
+\end{block}}
+\vspace{-15pt}
+\uncover<5->{%
+\begin{block}{Bestimmung von $\cos\alpha$ und $\sin\alpha$}
+\vspace{-20pt}
+\[
+\tan\alpha = \vartheta \pm\sqrt{\vartheta^2+1}
+\uncover<6->{
+\qquad\Rightarrow\qquad
+\cos\alpha = \frac{1}{\sqrt{1+\tan^2\alpha}},
+\quad
+\sin\alpha = \frac{\tan\alpha}{\sqrt{1+\tan^2\alpha}}}
+\]
+\end{block}}
+\end{frame}
