@@ -1,0 +1,51 @@
+%
+% kondition.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Konditionszahl}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.48\hsize}
+\begin{block}{Norm einer Matrix}
+\[
+\|A\| = \max_{|x|\le 1} |Ax|
+\]
+``maximaler Streckungsfaktor''
+\end{block}
+\uncover<2->{%
+\begin{block}{Konditionszahl}
+\[
+\kappa(A) = \|A\|\cdot\|A^{-1}\|
+\]
+\begin{itemize}
+\item<3-> $\kappa(A)\simeq 1$: gut
+\item<4-> $\kappa(A)$ gross: schlecht
+\end{itemize}
+\end{block}}
+\end{column}
+\begin{column}{0.48\hsize}
+\uncover<5->{%
+\begin{block}{Singulärwertzerlegung}
+Für die Singulärwertzerlegung
+\[
+A=U\,\operatorname{diag}(s_1,\dots,s_n)\,V^t
+\]
+\uncover<7->{gilt}%
+\begin{align*}
+\uncover<8->{\|A\|}
+&\uncover<8->{= \max_{1\le i\le n} |s_i|}
+\\
+\uncover<9->{\kappa(A)}
+&\uncover<9->{=
+\max_{1\le i\le n} |s_i| / \min_{1\le i\le n} |s_i|}
+\\
+&\uncover<10->{=
+\max_{i,k} \frac{|s_i|}{|s_k|}}
+\end{align*}
+\uncover<6->{Schlechte Kondition: ``fast singulär''}
+\end{block}}
+\end{column}
+\end{columns}
+\end{frame}
