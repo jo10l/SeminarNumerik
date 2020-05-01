@@ -1,0 +1,461 @@
+%
+% cg.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{txfonts}
+\usepackage{graphicx}
+\usepackage[german]{babel}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows,automata}
+%\usepackage[backend=bibtex]{biblatex}
+\makeatletter
+\def\blx@maxline{77}
+\makeatother
+%\addbibresource{references.bib}
+\input{macros.tex}
+\title{CG-Algorithmus und Orthogonalität}
+\author{
+Andreas Müller\footnote{\texttt{andreas.mueller@hsr.ch},
+Hochschule Rapperswil}
+}
+\begin{document}
+\maketitle
+\renewcommand{\floatpagefraction}{0.7}
+
+Der CG-Algorithmus löst ein lineares Gleichungssystem $Ax=b$ mit
+einer symmetrischen positiv definition Koeffizientenmatrix $A$, indem
+er es auf ein Minimalproblem reduziert, welches dann mit Gradientabstieg
+gelöst wird.
+
+\begin{satz}
+Die Lösung des Gleichungssystems $Ax=b$ mit einer positiv definiten
+symmetrischen Matrix $A$ ist das Minimum der Form
+\[
+J(x) = \frac12 x^t Ax - b^tx,
+\]
+deren Gradient
+\[
+\operatorname{grad}J(x) = Ax-b
+\]
+ist.
+\end{satz}
+
+\begin{definition}
+Das {\em Residuum} $r$ eines Vektors $x$ ist der Vektor, um den das
+Gleichungssystem nicht erfüllt ist, also
+\[
+r = Ax-b = \operatorname{grad}J(x).
+\]
+Der {\em Fehler} $f$ des Vektors $x$ ist der Vektor so, dass
+$x-f$ Lösung des Gleichungssystems ist, also
+\[
+A(x-f)=b
+\Rightarrow
+Ax-b=Af=r.
+\]
+Für das Skalarprodukt von Vektoren schreiben wir
+\[
+x\cdot y
+=
+x^ty
+=
+\langle x,y\rangle.
+\]
+Die Matrix $A$ definiert ein weiteres Skalarprodukt
+\[
+\langle x,y\rangle_A
+=
+\langle x,Ay\rangle
+=
+\langle Ax,y\rangle
+=
+x^tAy.
+\]
+\end{definition}
+
+\begin{proof}[Beweis]
+Die partielle Ableitung von $J(x)$ nach $x_k$ ist
+\begin{align*}
+\frac{\partial J}{\partial x_k}
+&=
+\frac{\partial}{\partial x_k}
+\biggl(
+\frac12
+\sum_{i,j} x_i a_{ij} x_j - \sum_i b_i x_i
+\biggr)
+\\
+&=
+\frac12
+\sum_{i,j}
+\delta_{ik} a_{ij}x_j
++
+\frac12
+\sum_{i,j}
+x_i a_{ij} \delta_{jk}
+-
+\sum_i b_i \delta_{ik}
+\\
+&=
+\frac12
+\sum_{j} a_{kj} x_j
++
+\frac12
+\sum_{i} x_i a_{ik}
+-
+b_k
+\\
+&=
+\frac12
+\sum_{j} a_{kj} x_j
++
+\frac12
+\sum_{i} a_{ki} x_i
+-b_k
+\\
+&=
+\sum_{i} a_{ki} x_i - b_k
+=
+(Ax-b)_k.
+\end{align*}
+Daraus folgt $\operatorname{grad}J(x) = Ax-b$ und die Behauptung über
+das Minimum.
+\end{proof}
+
+Der CG-Algorithmus löst das Gleichungssystem $Ax=b$ iterativ, indem er
+durch Gradient-Abstieg das Minimum von $J(x)$ sucht.
+Der Schritt $k$ beginnt mit einer approximativen Lösung $x_k$, die mit
+Hilfe von Abstieg in Richtung $v_k$ verbessert werden soll.
+Die Abstiegsrichtung ist der Grad
+aus die
+Dabei verwendet er im Schritt $k$ die Abstiegsrichtung $v_k$ und sucht
+das Minimum von J.
+
+Die Abstiegsrichtungen sind dabei so gewählt, dass sie wie man sagt
+{\em konjugiert} sind.
+Die geometrische Intuition dafür ist die folgende.
+Die Gleichung $J(x)=c$ definiert ein Ellipsoid.
+Verwendet man als Basis des Raumes konjugierte Richtungen $v_i$, dann lässt
+sich das Ellipsoid durch eine Diagonalmatrix darstellen.
+Damit dies möglich ist, muss für jedes Paar von Vektoren gelten
+\[
+\langle v_i , v_j\rangle_A
+=
+\langle v_i,Av_j\rangle
+=
+\langle Av_i,v_j\rangle
+=
+v_i^t Av_j = 0,
+\]
+die Vektoren $v_j$ müssen also orthogonal bezüglich des Skalarproduktes
+$\langle\;\;,\;\rangle_A$ sein.
+Dies lässt sich zum Beispiel durch Diagonalisierung erreichen, was
+aber natürlich viel zu aufwändig wäre.
+
+Man kann aber immer eine Basis aus konjugierten Richtungen finden,
+indem man das Gram-Schmidt-Orthogonalisierungsverfahren bezüglich
+des Skalar-Produktes $\langle\;\;,\;\rangle_A$ auf eine beliebige
+Basis anwendet.
+
+Der CG-Algorithmus verwendet nicht eine von Anfang an gegebene Basis,
+sondern baut diese im Laufe des Algorithmus auf.
+Jede neue Richtung soll dabei ermöglichen, die Lösung möglichst effizient
+zu verbessern.
+Dazu liegt nahe, als nächsten Basisvektor den Gradienten im Punkt
+$x_k$ zu verwenden, also 
+\[
+\operatorname{grad}J(x_k) = Ax_k-b = r_k
+\]
+Dieser ist aber nicht zu den bisherigen Vektoren $A$-orthogonal,
+muss also erst orthogonalisiert werden:
+\begin{equation}
+v_{k} = r_k - \sum_{i=1}^{k-1} \langle r_k,v_i\rangle_A v_i
+\label{ortho}
+\end{equation}
+Mit diesen Abstiegsrichtungen als Basis ist das Ellipsoid achsenparallel,
+der Abstieg erfolgt immer in Richtung einer Achse und bestimmt in
+dieser Basis in jedem Schritt genau eine Koordinate exakt.
+Der Algorithmus konvergiert also immer in maximal $n$ Schritten.
+Weniger als $n$ Schritte sind allerdings auch möglich, dies ist
+aber sofort zu erkennen, weil dann $r=0$ wird.
+
+Die Orthogonalisierung \eqref{ortho} ist relativ aufwändig, aber die
+spezielle Wahl der Abstiegsrichtungen erlaubt den Schluss, dass der
+tatsächliche Aufwand viel geringer ist.
+
+%
+% r_i und v_i spannen den gleichen Raum auf
+%
+\begin{beobachtung}
+Es gilt
+\begin{equation}
+\langle v_1,\dots,v_k\rangle
+=
+\langle r_1,\dots,r_k\rangle.
+\label{reqv}
+\end{equation}
+\end{beobachtung}
+
+\begin{proof}[Beweis]
+Da die Vektoren $v_k$ jeweils aus $r_k$ und $v_1,\dots,v_{k-1}$
+durch Orthogonalisieren entstehen, gilt
+\begin{align*}
+v_1 &= r_1
+\\
+v_2 &= r_2 + \alpha_{21}v_1
+\\
+v_3 &= r_3 + \alpha_{31}v_1 + \alpha_{32}v_2
+\\
+v_4 &= r_4 + \alpha_{41}v_1 + \alpha_{42}v_2 + \alpha_{43}v_3
+\\
+&\qquad\vdots
+\\
+v_k &= r_k + \sum_{i=1}^{k-1} \alpha_{ki} v_i
+\end{align*}
+Daraus kann man durch Umstellen der Gleichungen ableiten: $r_k$ lässt
+sich immer aus $v_1,\dots,v_k$ linear kombinieren, es gilt also
+\begin{equation}
+r_k
+\in
+\langle v_1,\dots,v_k \rangle.
+\label{rinv}
+\end{equation}
+Aus der ersten Gleichung liest man aber auch ab: $v_1 \in \langle r_1\rangle$.
+Die zweite Gleichung sagt dann, dass
+\[
+v_2\in \langle r_2\rangle + \langle v_1\rangle =
+\langle r_2\rangle + \langle r_1\rangle
+=
+\langle r_1,r_2\rangle.
+\]
+Indem man so weiter verfährt kann man schliessen, dass
+\begin{equation}
+v_k \in \langle r_1,\dots, r_k\rangle.
+\label{vinr}
+\end{equation}
+Aus \eqref{rinv} kann man schliessen
+$\langle r_1,\dots,r_k\rangle\subset\langle v_1,\dots,v_k\rangle$,
+aus \eqref{vinr} folgt entsprechend
+$ \langle v_1,\dots,v_k\rangle \subset \langle r_1,\dots,r_k\rangle $.
+Beide zusammen ergeben \eqref{reqv}.
+\end{proof}
+
+%
+% b=0
+%
+\begin{beobachtung}
+Ist $x$ eine Lösung von $Ax=b$, dann konvergiert der CG-Algorithmus 
+ausgehend von $x_1$ mit den Abstiegsrichtungen $v_i$ und Residuen $r_i$
+gegen die Lösung $x$.
+Der CG-Algorithmus für $b=0$ ausgehend von $f_1=x-x_1$ konvergiert dann
+mit den gleichen Abstiegsrichtungen und Residuen gegen $0$.
+\end{beobachtung}
+
+\begin{proof}[Beweis]
+\end{proof}
+
+Diese Beobachtung besagt, dass man sich nicht um den Vektor $b$ kümmern
+kann und stattdessen Aussagen zur Konvergenz aus dem Fall $b=0$
+ablesen kann.
+Wir können daher in den nachfolgenden Überlegungen davon ausgehen,
+dass $b=0$ ist.
+Es gilt jetzt also
+\begin{align*}
+r_k &= Ax_k
+&
+v_k &= r_k - \sum_{i=1}^{n-1}\langle v_i,r_k\rangle_A v_i
+\end{align*}
+Insbesondere ist also $r_k$ nicht einfach irgend etwas, sondern
+etwas von der Form $Ax_k$.
+
+%
+% Krylov-Räume
+%
+\begin{beobachtung}
+Der Vektor $r_1$ und die Bilder $Ar_1$, $A^2r_1$ usw.~spannen den gleichen
+Raum auf wie die Vektoren $r_1,\dots,r_k$.
+\end{beobachtung}
+
+\begin{proof}[Beweis]
+Zunächst verwenden wir wieder $r_1=Ax_1$.
+Die erste Abstiegsrichtung ist $v_1=r_1$, also ist $x_2=x_1+tr_1$.
+Wendet man darauf $A$ an, erhält man
+\[
+r_2=Ax_2 = Ax_1 + tAr_1 = r_1 + tAr_1 \in \langle r_1,Ar_1\rangle.
+\]
+
+Die nächste Abstiegsrichtung ist $v_2$, eine Linearkombination der Vektoren
+$r_1$ und $r_2$.
+Man kann also schreiben
+\[
+x_3 = x_2 + t_1v_1 + t_2v_2 \in x_2 + \langle r_1,r_2\rangle
+\]
+Wendet man wieder $A$ an, erhält man
+\[
+r_3 = Ax_3
+=
+Ax_2 + A\langle r_1,r_2\rangle
+=
+r_2 + A\langle r_1,Ar_1\rangle
+=
+\langle r_1,Ar_1\rangle + \langle Ar_1,A^2r_1\rangle
+\]
+Wenn also $r_k\in \langle r_1,Ar_1,\dots A^{k-1}r_1\rangle$ ist, dann
+kann man
+\[
+x_{k+1} = x_{k} + t_{k1}r_1 + t_{k2}r_2 + t_{kk}r_k
+\in
+x_{k} + \langle r_1,\dots,r_{k}\rangle
+\]
+schreiben.
+Wendet man darauf $A$ an, erhält man
+\begin{align*}
+r_{k+1}
+&=
+Ax_{k+1}
+\in
+Ax_{k} + A\langle r_1,\dots,r_k\rangle
+\\
+&=
+r_k
++
+A\langle r_1,Ar_1,\dots,A^{k-1}r_1\rangle
+=
+\langle r_1,Ar_1,\dots,A^{r-1}r_1\rangle
++
+A\langle r_1,Ar_1,\dots,A^{k-1}r_1\rangle
+\\
+&=
+\langle r_1,Ar_1,\dots,A^kr_1\rangle
+\end{align*}
+Damit ist gezeigt, dass $r_{k+1} \in \langle r_1,Ar_1,\dots,A^kr_1\rangle$.Nach vollständiger Induktion folgt daraus, 
+\[
+\langle r_1,\dots,r_k\rangle = \langle r_1,Ar_1,\dots,A^{k-1}r_1\rangle.
+\]
+\end{proof}
+
+\begin{definition}
+Die Räume $\langle r_1,Ar_1,\dots,A^{k-1}r_1\rangle$ werden auch
+mit $\mathcal{K}_k(A,r_1)$ bezeichnet und heissen Krylov-Räume des
+Vektors $r_1$ mit der Matrix $A$.
+\end{definition}
+
+%
+% A-Orthogonalität der x_i auf den v_i
+%
+\begin{beobachtung}
+Der Vektor $x_k$ sind $A$-orthogonal auf allen Vektoren $v_i$ mit
+$i < k$.
+\end{beobachtung}
+
+\begin{proof}[Beweis]
+Die Konstruktion des Vektors $x_k$ als Lösung eines Minimalproblems
+erfolgt so, dass von $x_{k-1}$
+ein Teilstück $tv_k$ subtrahiert derart, dass $x_{k}$ und $tv_k$ 
+$A$-orthogonal sind.
+Der Vektor $x_k$ entsteht daher aus $x_1$ durch Subtraktion
+der $A$-orthogonalen Komponenten bezüglich der Vektoren
+$v_1,\dots,v_{k-1}$, also ist $x_k$ auf allen Vektoren $v_1,\dots,v_{k-1}$
+orthogonal.
+\end{proof}
+
+%
+% Die Vektoren 
+%
+\begin{beobachtung}
+\label{rortho}
+Die Vektoren $r_k$ sind auf allen Vektoren $r_1,\dots,r_{k-1}$ 
+orthogonal.
+\end{beobachtung}
+
+\begin{proof}[Beweis]
+Aus der vorangegangenen Beobachtung weiss man
+$x_k\perp_A \langle v_1,\dots,v_{k-1}\rangle =
+\langle r_1,\dots, r_{k-1}\rangle$.
+$A$-orthogonal heisst
+\[
+0
+=
+\langle x_k,r_i\rangle_A 
+=
+\langle Ax_k,r_i\rangle
+=
+\langle r_k,r_i\rangle
+\qquad
+\forall i < k.
+\]
+Damit ist gezeigt, dass $r_k$ auf allen $r_i$ mit $i<k$ orthogonal ist.
+\end{proof}
+
+\begin{beobachtung}
+Das Residuum $r_{k+1}$ ist orthogonal auf der vorangegangene 
+Abstiegsrichtung $v_{k}$: $\langle v_k,r_{k+1}\rangle=0$.
+\end{beobachtung}
+
+\begin{proof}[Beweis]
+Der Abstieg führt immer zum Minimum, die Gerade $x_k+tv_k$ ist
+also Tangential an das Ellipsoid durch $x_{k+1}$.
+Daher ist der Gradient im Punkt $x_{k+1}$ orthogonal auf $v_k$.
+Aber $\operatorname{grad}J(x_{k+1})=r_{k+1}$.
+\end{proof}
+
+\begin{beobachtung}
+Das Residuum $r_{k+1}$ ist $A$-orthogonal zu allen Vektoren
+$v_1,\dots,v_{k-1}$.
+\end{beobachtung}
+
+\begin{proof}[Beweis]
+Wir müssen das $A$-Skalarprodukt von $r_{k+1}$ mit den Vektoren
+$r_1,\dots,r_{k-1}$ berechnen.
+\begin{equation}
+\langle r_{k+1},r_i\rangle_A
+=
+\langle r_{k+1},Ar_i\rangle
+\qquad\text{für $i<k$}
+\label{zweitletzt}
+\end{equation}
+Die Vektoren $Ar_i$ mit $i<k$  sind alle in
+\begin{align}
+\langle Ar_1,\dots,Ar_{k-1}\rangle
+&=
+A\langle r_1,\dots,r_{k-1}\rangle
+\notag
+\\
+&=
+A\langle r_1,Ar_1,\dots,A^{k-2}r_1\rangle
+\notag
+\\
+&=
+\langle Ar_1,A^2r_1,\dots,A^{k-1}r_1\rangle
+\notag
+\\
+&\subset
+\langle r_1,Ar_1,\dots,A^{k-1}r_1\rangle
+=
+\langle r_1,\dots,r_{k}\rangle
+\label{letzt}
+\end{align}
+Nach Beobachtung~\ref{rortho} ist $r_{k+1}$ orthogonal auf allen
+Vektoren $r_1,\dots,r_{k}$. 
+Nach \eqref{letzt} folgt jetzt, dass $r_{k+1}$ orthogonal ist auf allen
+Vektoren $Ar_1,\dots Ar_{k-1}$, also ist nach \eqref{zweitletzt}
+$r_{k+1}$ $A$-orthogonal auf den Vektoren $r_1,\dots,r_{k-1}$.
+
+Da $\langle r_1,\dots,r_{k-1}\rangle = \langle v_1,\dots,v_{k-1}\rangle$ 
+gilt, ist $r_{k+1}$ auch $A$-orthogonal auf allen Vektoren
+$v_1,\dots,v_{k-1}$.
+\end{proof}
+
+
+
+%\printbibliography
+\end{document}
+
