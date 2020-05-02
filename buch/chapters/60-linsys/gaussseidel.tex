@@ -256,4 +256,33 @@ Startwerte $x_0$ linear konvergent, wenn der Spektralradius
 \]
 ist.
 
+\subsection{Zerlegungsverfahren
+\label{buch:subsection:zerlegung}}
+Das Gauss-Seidel-Verfahren ist nur ein Beispiel einer ganzen Familie
+von iterativen Lösungsverfahren für lineare Gleichungssysteme.
+Sie basieren alle auf einer Zerlegung $A=B+C$ der Matrix $A$.
+Das Gauss-Seidel-Verfahren ist der Fall
+\[
+A = \underbrace{D+L}_{\displaystyle = B} + \underbrace{R}_{\displaystyle = C}.
+\]
+Das ursprüngliche Gleichungssystem $Ax=b$ wird jetzt ebenfalls
+aufgeteilt in $Bx+Cx=b$.
+Ein iteratives Verfahren ergibt sich jetzt dadurch, dass für die beiden $x$
+in der Aufteilung verschiedene Iterationen der Lösung verwendet werden,
+also $Bx^{(m+1)} + Cx^{(m)} = b$.
+Dies ist natürlich nur sinnvoll, wenn sich die Matrix $B$ wesentlich
+leichter invertieren lässt als $A$, da andernfalls die Bestimmung von
+$x^{(m+1)}$ nicht einfacher ist als die Lösung des ursprünglichen
+Gleichungssystems.
+Wir erhalten somit das Iterationsverfahren
+\begin{equation}
+x^{(m+1)}
+=
+B^{-1}(b-Cx^{(m)})
+=
+b_0 - B^{-1}Cx^{(m)}
+\end{equation}
+
+
+
 
