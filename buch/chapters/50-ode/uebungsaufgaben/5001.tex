@@ -1,0 +1,143 @@
+In dieser Aufgabe soll ein implizites Verfahren für die Lösung der
+Differentialgleichung
+\begin{equation}
+y'=f(x,y)
+\label{5001:ode}
+\end{equation}
+gefunden werden.
+Gesucht werden also die Funktionswerte $y_0,y_1,\dots,y_n$ zu den
+$x$-Werten $x_0,x_1,\dots,x_n$, wobei wir typischerweise $x_k = x_0+kh$ 
+wählen.
+\begin{teilaufgaben}
+\item
+Leiten Sie aus der Differentialgleichung \eqref{5001:ode}
+eine Näherungsgleichung für benachbarte Punkte $(x_k,y_k)$ und
+$(x_{k+1},y_{k+1})$ ab, die beide Steigungen in den Punkten aber keine
+weiteren Punkte verwendt.
+\item
+Wenden Sie dieses Verfahren auf die Gleichung $y'=f(x,y)=y$ an, und
+drücken Sie $y_{k+1}$ durch $x_k$, $x_{k+1}=x_k+h$ und $y_{k}$ aus.
+\item
+Was erhält man, wenn man für die Differentialgleichung $y'=y$
+als Schrittweite $1/n$ wählt und $n$ Schritte ausführt.
+Wie hängt $y_n$ von $y_0$ ab?
+Berechnen Sie den Grenzwert $n\to\infty$.
+\item
+Versuchen sie experimentell die Ordnung des Verfahrens zu bestimmen,
+indem Sie die die Gleichung $y'=y'$ damit lösen und das Verhalten bei
+Halbierung der Schrittweise untersuchen.
+\end{teilaufgaben}
+
+\begin{loesung}
+\begin{teilaufgaben}
+\item
+Die Steigung zwischen den zwei Punkten $(x_k,y_k)$ und $(x_{k+1},y_{k+1})$
+kann mit den beiden Steigungen $y_k' = f(x_k,y_k)$ und
+$y_{k+1}'=f(x_{k+1},y_{k+1})$ verglichen werden.
+Da keine dieser Steigungen wirklich für das ganze
+Intervall $[x_k,x_{k+1}]$
+repräsentativ sein kann, nehmen wir den Mittelwert, also
+\begin{equation}
+\frac{y_{k+1}-y_{k}}{x_{k+1}-x_{k}}
+=
+\frac12\bigl(f(x_k,y_k) + f(x_{k+1},y_{k+1})\bigr)
+\end{equation}
+Im Allgemeinen kann man diese Gleichung nicht nach $y_{k+1}$ auflösen.
+\item
+Setzt man die Differentialgleichung $f(x,y)=y$ ein, erhält man
+\[
+\frac{y_{k+1}-y_{k}}{x_{k+1}-x_{k}}
+=
+\frac{1}{h}(y_{k+1}-y_{k})
+=
+\frac12\bigl(y_k + y_{k+1}\bigr)
+\]
+was man nach $y_{k+1}$ auflösen kann:
+\begin{equation}
+2y_{k+1}-2y_{k} = hy_{k} + hy_{k+1}
+\quad\Rightarrow\quad
+(2-h)y_{k+1} = (2+h)y_k
+\quad\Rightarrow\quad
+y_{k+1} = \frac{2+h}{2-h}y_k.
+\label{5001:verfahren}
+\end{equation}
+\item
+Mit $h=\frac1h$ und $n$ Schritten erhält man
+\[
+y_n
+=
+y_0
+\biggl(
+\frac{2+\frac1n}{2-\frac1n}
+\biggr)^n
+=
+y_0
+\biggl(
+\frac{1+\frac1{2n}}{1-\frac1{2n}}
+\biggr)^n
+=
+y_0\biggl(1+\frac1{2n}\biggr)^n \biggl(1+\frac1{2n}+\frac1{(2n)^2}+\dots\biggr)^n
+\simeq
+y_0\biggl(1+\frac1n+o\biggl(\frac1{2n}\biggr)\biggr)^n
+\to
+y_0 e
+\]
+für $n\to \infty$.
+Analog kann man für $n$ Schritte zwischen $0$ und $t$ die Formel
+$y_n=y_0e^t$ ableiten.
+\item
+Die Formeln \eqref{5001:verfahren} erlauben jetzt auch, die
+Konvergenzgeschwindigkeit zu berechnen.
+Wir vergleichen dazu die Werte 
+\[
+\biggl(\frac{2+2^{-n}}{2-2^{-n}}\biggr)^{2^n}
+\qquad
+\text{mit}
+\qquad
+e.
+\]
+Wir erhalten die Werte in Tabelle~\ref{5001:tabelle}, die andeuten,
+dass ein Verfahren erster Ordnung vorliegt.
+\qedhere
+\begin{table}
+\centering
+\begin{tabular}{|>{$}r<{$}|>{$}l<{$}|}
+\hline
+k&\text{Wert}\\
+\hline
+ 1 & \underline{   2.7}777777777777781\\
+ 2 & \underline{   2.7}326114119117042\\
+ 3 & \underline{   2.7}218318928456022\\
+ 4 & \underline{   2.71}91673488624724\\
+ 5 & \underline{   2.718}5030842147762\\
+ 6 & \underline{   2.718}3371346324057\\
+ 7 & \underline{   2.7182}956545171231\\
+ 8 & \underline{   2.71828}52849433168\\
+ 9 & \underline{   2.71828}26925781960\\
+10 & \underline{   2.71828}20444885607\\
+11 & \underline{   2.7182818}824664454\\
+12 & \underline{   2.7182818}419608967\\
+13 & \underline{   2.7182818}318338904\\
+14 & \underline{   2.71828182}93028337\\
+15 & \underline{   2.718281828}6700021\\
+16 & \underline{   2.718281828}5117856\\
+17 & \underline{   2.718281828}5117865\\
+18 & \underline{   2.71828182845}24526\\
+19 & \underline{   2.71828182845}73971\\
+20 & \underline{   2.71828182845}86330\\
+\hline
+\infty& 2.71828182845905\\
+\hline
+\end{tabular}
+\caption{Näherungswerte für $y(1)$ für die Lösung $y(x)$ der
+Differentialgleichung $y'=y$ mit Anfangswert $y(0)=1$.
+Die korrekten Stellen sind unterstrichen.
+Etwa jede dritte Iteration liefert eine zusätzliche Dezimalstelle
+Genauigkeit, woraus man ablesen kann, dass ein Verfahren erster
+Ordnung vorliegt.
+\label{5001:tabelle}}
+\end{table}
+\end{teilaufgaben}
+\end{loesung}
+
+
