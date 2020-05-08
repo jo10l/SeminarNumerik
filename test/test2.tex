@@ -33,7 +33,6 @@
 \newcounter{beispiel}
 \newenvironment{beispiele}{
 \bgroup\smallskip\parindent0pt\bf Beispiele\egroup
-
 \begin{list}{\arabic{beispiel}.}
   {\usecounter{beispiel}
   \setlength{\labelsep}{5mm}
@@ -77,16 +76,16 @@ Name: \hbox to7cm{\dotfill} Vorname: \dotfill}}
 \vspace{0.5cm}
 \pagestyle{fancy}
 
+\definecolor{darkgreen}{rgb}{0,0.6,0}
 \section*{Kurztest 2}
-
-\begin{uebungsaufgaben}
-
-\item
 \rhead{Aufgabe 1}
-\input chapters/50-ode/uebungsaufgaben/5002.tex
+\begin{uebungsaufgaben}
+\item
+\input chapters/30-interpolation/uebungsaufgaben/3002.tex
 \vfill\pagebreak
-%\item
-%\input chapters/10-arithmetik/uebungsaufgaben/1002.tex
+\rhead{Aufgabe 2}
+\item
+\input chapters/60-linsys/uebungsaufgaben/6003.tex
 %\item
 %\rhead{Aufgabe 2}
 %\input chapters/20-gleichungen/uebungsaufgaben/2001.tex
