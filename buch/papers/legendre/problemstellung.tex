@@ -6,21 +6,34 @@
 \section{Problemstellung
 \label{legendre:section:problemstellung}}
 \rhead{Problemstellung}
-\cmt{Problemstellung schreiben}
-
-\cmt{(Zugeordnete) Legendre Polynome sind durch folgendes Integral definiert...}
-
-\cmt{l ist Grad und m ist Ordnung.}
-
-\cmt{Um diese Polynome via Computer zu evaluieren wird oft (wegen teuer) auf eine Rekursionsformel zurückgegriffen.}
-
-\cmt{Englischer Wikipedia Artikel listet eine ganze Reihe davon.}
-\cmt{Referenz Wikipedia Artikel}
-
-\cmt{Leider sind davon nicht alle numerisch stabil.}
-
-\cmt{Im Folgenden werden die ersten beiden Rekursionsformel der Wikipedia Seite unter die Lupe genommen und auf ihre numerische Stabilität untersucht.}
-
-\cmt{Die beiden Rekursionsformeln einbinden.}
-
-
+Die zugeordneten Legendrepolynome (\textit{engl.} associated Legendre polynomials \cmt{korrekt so?}) sind die Lösungen der allgemeinen Legendregleichung (siehe Gleichung \eqref{legendre:legendregleichung}) \cite{legendre:assoc-legendre-poly-wolfram} \cite{legendre:assoc-legendre-diff-wolfram}.
+% Legendregleichung
+\begin{equation}
+(1-x^2) \frac{d^2y}{dx^2}
+-2x \frac{dy}{dx}
++ \left[ l(l+1)- \frac{m^2}{1-x^2} \right] y
+=0
+\label{legendre:legendregleichung}
+\end{equation}
+Dabei gilt für die beiden Parameter $l$ und $m$, dass $l>=0$ und $m=0, \ldots , l$.
+Der Parameter $l$ ist für den Grad des zugeordneten Legendrepolynom verantwortlich, $m$ hingegen für die Ordnung des Polynoms.
+Die zugeordneten Legendrepolynome sind zudem nur auf dem Intervall $[-1, 1]$ definiert.
+Verwendung finden diese Polynome vor allem als Teil der Kugelflächenfunktionen (\textit{engl.} spherical harmonics \cmt{korrekt so?}) \cite{legendre:spherical-harmonic-wolfram}.
+Um ein zugeordnetes Legendrepolynom mit einem bestimmten $l$ und einem bestimmten $m$ zu evaluieren, wird aus Aufwandsgründen oft auf eine Rekursionsbeziehung (\textit{engl.} recurrence relations \cmt{korrekt so?}) zurückgegriffen.
+Für die zugeordneten Legendrepolynome gibt es mehrere solche Rekursionsbeziehungen.
+Die englische Wikipedia-Seite zu den zugeordneten Legendrepolynome führt beispielsweise eine ganze Liste mit solchen Rekursionsbeziehungen \cite{legendre:wikipedia}.
+Im folgenden werden die ersten beiden Rekursionsgleichungen, die der englische Wikipedia-Artikel auflistet, auf numerische Instabilität untersucht (siehe Gleichungen \eqref{legendre:recurrence-l} und \eqref{legendre:recurrence-m}).
+% Rekursionsformel in l-Richtung
+\begin{equation}
+(l-m+1)P^{m}_{l+1}(x)
+=(2l+1)xP^{m}_{l}(x)
+-(l+m)P^{m}_{l-1}(x)
+\label{legendre:recurrence-l}
+\end{equation}
+% Rekursionsformel in m-Richtung
+\begin{equation}
+2mxP^{m}_{l}(x)
+=-\sqrt{1-x^2}
+\left[ P^{m+1}_{l}(x) + (l+m)(l-m+1)P^{m-1}_{l}(x) \right]
+\label{legendre:recurrence-m}
+\end{equation}
