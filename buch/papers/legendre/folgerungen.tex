@@ -1,17 +1,17 @@
 %
-% problemstellung.tex -- Beispiel-File für die Beschreibung des Problems
+% folgerung.tex -- Beispiel-File für die Beschreibung des Problems
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Folgerungen
 \label{legendre:section:folgerungen}}
 \rhead{Folgerungen}
-\cmt{Folgerungen schreiben}
-
-\cmt{Nicht jede mathematische Formel lässt sich automatisch in Code umwandeln ohne Probleme zu verursachen. Allgeine Lehre aus diesem Kapitel, sollte immer gelten.}
-
-\cmt{Merkmale für instabile Rekursionsformel für zugeordnete Legendre Polynome (Rand-Faktor).}
-
-\cmt{Erkennen aus Library-Dokumentation ob Implementation vielversprechen (d.h. richtig) ist.}
+In diesem Kapitel wurde aufgezeigt, dass nicht jede Rekursionsgleichung für die zugeordneten Legendrepolynome numerisch stabil ist.
+Dies gilt vor allem für Gleichungen die einen Term wie $1-x^2$ oder $x^2-1$ beinhalten.
+Diese Terme verursachen numerische Instabilitäten nahe den Intervallsgrenzen von $-1$ respektive $1$.
+Diese Art von Termen treten bei der Rekursion in $l$-Richtung nicht auf.
+\cmt{Nur Library-Funktion verwenden, die in $l$-Richtung arbeiten. In der Dokumentation lassen sich Hinweise finden. Wenn alle Werte für jedes $l$ zurückgegeben wird ist ein deutlicher Hinweis.}
 
 
+Diese Schlussfolgerung gilt jedoch nicht nur für die zugeordneten Legendrepolynome, sondern gilt auch ganz im Allgemeinen.
+Demnach sollte immer im Hinterkopf behalten werden, dass jede mathematische Formel Probleme verursachen kann, wenn sie in Code umgewandelt wird.
