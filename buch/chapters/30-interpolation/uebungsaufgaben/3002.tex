@@ -1,0 +1,164 @@
+Wir möchten das Lagrange- und das Hermite-Interpolationspolynom
+für die Funktion $f(x)=\sin \frac{\pi}2x$ im Interval $[0,1]$ 
+vergleichen.
+Die Abbildung zeigt, dass die Polynome sehr nahe beieinander liegen.
+\begin{center}
+\begin{tikzpicture}[>=latex,thick,scale=4]
+\draw[color=red,line width=1.4pt]
+	plot[domain=0:1,samples=100] ({\x},{sin(90*\x)});
+\draw[->] (-0.025,0) -- (1.2,0) coordinate[label={$x$}];
+\draw[->] (0,-0.025) -- (0,1.2) coordinate[label={right:$y$}];
+\draw[line width=0.7pt] (1,-0.025)--(1,0.025);
+\draw[line width=0.7pt] (-0.025,1)--(0.025,1);
+\draw[color=blue,line width=1pt]
+	plot[domain=0:1,samples=100]
+		({\x},{-0.42920357*\x*\x*\x+(-0.14159)*\x*\x+1.57079*\x});
+%(%i15) q:combine(expand(q))
+%            7/2  3        3    7/2  2    5/2  2       2    5/2
+%        (- 3    x ) + 45 x  + 3    x  + 3    x  - 63 x  - 3    x + 22 x
+%(%o15)  ---------------------------------------------------------------
+%                                       4
+
+\draw[color=darkgreen,line width=1pt]
+	plot[domain=0:1,samples=100]
+		({\x},{(((45-27*sqrt(3))*\x+(36*sqrt(3)-63))*\x+(22-9*sqrt(3)))*\x/4});
+
+
+
+\begin{scope}[xshift=1.4cm]
+\draw[->] (-0.025,0) -- (1.2,0) coordinate[label={$x$}];
+\draw[->] (0,-0.25) -- (0,1.2) coordinate[label={right:$\text{Fehler}\times 100$}];
+\draw[color=blue,line width=0.7pt]
+	plot[domain=0:1,samples=300]
+		({\x},{100*(sin(90*\x)+0.42920357*\x*\x*\x-(-0.14159)*\x*\x-1.57079*\x)});
+\draw[color=darkgreen,line width=1pt]
+	plot[domain=0:1,samples=300]
+		({\x},{100*(sin(90*\x)-(((45-27*sqrt(3))*\x+(36*sqrt(3)-63))*\x+(22-9*sqrt(3)))*\x/4)});
+\draw[line width=0.7pt] (1,-0.025)--(1,0.025);
+\draw[line width=0.7pt] (-0.025,1)--(0.025,1);
+\node[color=blue] at (0.7,0.9) [right] {$f(x)-h(x)$};
+\node[color=darkgreen] at (0.5,-0.05) [below] {$f(x)-p(x)$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+
+\begin{teilaufgaben}
+\item
+Finden Sie das Hermite-Interpolationspolynom $h(x)$ von $f(x)$
+für die Stützstellen $0$ und $1$.
+\item
+Finden Sie das Lagrange-Interpolationspolynom $p(x)$ von $f(x)$
+für die Stützstellen $0$, $\frac13$, $\frac23$ und $1$.
+\item 
+Berechnen Sie die Funktionswerte $f(\frac12)$, $p(\frac12)$ und $h(\frac12)$.
+\end{teilaufgaben}
+
+\begin{loesung}
+\begin{teilaufgaben}
+\item
+Das Hermite-Interpolationspolynom kann aus den Funktions- und
+Ableitungswerten an den Intervallenden berechnet werden:
+\begin{equation}
+\begin{aligned}
+ f(0) &=  0           &&\qquad &  f(1) &= 1 \\
+f'(0) &= \frac{\pi}2  &&\qquad & f'(1) &= 0
+\end{aligned}
+\end{equation}
+Daraus kann man das Interpolationspolynom ablesen:
+\begin{align*}
+h(x)
+=
+\frac{\pi}{2}H_0^1(x) + H_1(x)
+&=
+\frac{\pi}2 (x^3-2x^2+x) -2x^3+3x^2.
+\\
+&=
+\biggl(\frac{\pi}2-2\biggr) x^3
++(3-\pi)x^2
++
+\frac{\pi}2x
+\end{align*}
+\item
+Für das Lagrange-Interplationspolynom geht man aus vom 
+Polynom
+\[
+l(x) = x(x-{\textstyle\frac13})(x-{\textstyle\frac23})(x-1)
+\]
+und konstruiert daraus die Polynome
+%(%i12) expand(subst(1/3,h,l0))
+%                                3
+%                             9 x        2   11 x
+%(%o12)                    (- ----) + 9 x  - ---- + 1
+%                              2              2
+%(%i13) expand(subst(1/3,h,l1))
+%                                  3       2
+%                              27 x    45 x
+%(%o13)                        ----- - ----- + 9 x
+%                                2       2
+%(%i14) expand(subst(1/3,h,l2))
+%                                   3
+%                               27 x         2   9 x
+%(%o14)                      (- -----) + 18 x  - ---
+%                                 2               2
+%(%i15) expand(subst(1/3,h,l3))
+%                                   3      2
+%                                9 x    9 x
+%(%o15)                          ---- - ---- + x
+%                                 2      2
+\begin{align*}
+l_0(x) &= \frac{ (x-\frac13)(x-\frac23)(x-1)}{-\frac13(-\frac23)(-1)}
+&&=-\frac92x^3+9x^2-\frac{11}2x+1
+\\
+l_1(x) &= \frac{x           (x-\frac23)(x-1)}{\frac13(-\frac13)(-\frac23)}
+&&=\frac{27}2x^3-\frac{45}{2}x^2+9x
+\\
+l_2(x) &=-\frac{x(x-\frac13)           (x-1)}{\frac23\frac13(-\frac13)}
+&&=-\frac{27}2x^3+18x^2-\frac92x
+\\
+l_3(x) &= \frac{x(x-\frac13)(x-\frac23)     }{\frac23\frac13}
+&&=\frac92x^3-\frac92x^2+x
+\end{align*}
+Das Lagrange-Interpolationspolynom ist dann
+\[
+p(x)
+=
+\sum_{k=0}^3f_k l_k(x)
+=
+\sin\frac{\pi}6 l_1(x)
++
+\sin\frac{\pi}3 l_2(x)
++
+l_3(x)
+=
+\frac12l_1(x)
++
+\frac{\sqrt{3}}2 l_2(x)
++
+l_3(x)
+\]
+\item
+Die Funktionswerte in $x=\frac12$ sind
+\begin{align*}
+f({\textstyle\frac12}) &= \frac{\sqrt{2}}2 = 0.70710678
+\\
+p({\textstyle\frac12}) &= 0.69843726
+&
+f({\textstyle\frac12}) - p({\textstyle\frac12}) 
+&=
+0.00866952
+\\
+h({\textstyle\frac12}) &= 0.69634954
+&
+f({\textstyle\frac12}) - h({\textstyle\frac12}) 
+&=
+0.01075724
+\end{align*}
+Diese Werte und die Abbildung oben zeigen, dass das
+Lagrange-Interpolationspolynome etwas genauer ist.
+Interessant am Hermite-Interpolationspolynome ist hingegen, dass
+der Fehler im ganzen Interval $>0$ ist, was man mit Hilfe der
+Fehlerformel auch direkt nachweisen kann.
+\qedhere
+\end{teilaufgaben}
+\end{loesung}
+

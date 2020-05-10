@@ -5,18 +5,36 @@
 %
 \section{Einleitung\label{quadratur:section:einleitung}}
 \rhead{Einleitung}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{quadratur:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
+Die numerische Integration, auch Quadratur genannt, approximiert
+ ein bestimmtes Integral der Form
+\begin{equation}
+    \int_{a}^{b} f(x) \,dx
+\end{equation}
+mit der approximierten summenformel 
+\begin{equation}
+    I = \sum_{i=0}^{n} A_i f(x_i)
+\end{equation}
+wobei die abscissen $x_i$ und die gewichtung $A_i$ von der gewählten 
+Methode abhängen. 
+Methoden für die Quadratur lassen sich in zwei Gruppen unterteilen: 
+Newton-Cotes Formeln und Gauss Quadratur.
+Die im Kapitel \ref{chapter:integration} beschriebene Trapezregel 
+gehört zu der ersten Kategorie.
+Newton-Cotes Formeln lassen sich dadurch erkennen, dass die Abscissenwerte 
+gleichmässig verteilt sind und eignen besonders für die Integration, wenn sich $f(x)$ 
+effizient in kleinen Intervallen berechnen lässt.
+Das Gauss-Quadratur-Verfahren, oder auch Gauss-Integrations-Verfahren, 
+ist ein numerisches Integrationsverfahren, welches beliebige Integrale der Form
+\begin{equation}
+\int_{a}^{b} w(x) f(x)\,dx
+\end{equation}
+mit nur wenigen Funktionsauswertungen sehr genau annähern kann, 
+solange sich die Funktion $f(x)$ überhaupt integrieren lässt. 
+Die Position der abscissen ist dabei so gewählt, 
+dass die bestmögliche Genauigkeit bei der berechnung des Integrals erreicht wird.
+Dadurch wird für die berechnung eines beliebigen Genauigkeitsgrades weniger Berechnungschritte benötigt.
+
+
 
 

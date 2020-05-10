@@ -1,0 +1,106 @@
+Berechnen Sie eine Approximation des Integrals der Funktion
+$f(x)$ über das Interval $[a,b]$ mit folgender Idee.
+Bestimmen Sie erst ein Interpolationspolynom zweiten Grades, welches
+mit $f$ in den Punkte $a$, $b$ und dem Mittelpunkt $m$ des Intervalls
+$[a,b]$ übereinstimmt.
+Dann ist
+\[
+I=\int_a^b p(x)\,dx
+\simeq
+\int_a^b f(x)\,dx
+\]
+eine Approximation.
+Schreiben Sie $I$ als Ausdruck in $f(a)$, $f(b)$ und $f(m)$.
+Diese Formel ist bekannt als die {\em Simpsonsche Regel} 
+\index{Simpsonsche Regel}
+oder auch die
+{\em Keplersche Fassregel}.
+\index{Keplersche Fassregel}
+\index{Fassregel, Kepler}
+
+
+\begin{loesung}
+Zur Bestimmung des Interpolationspolynoms braucht man das
+$l(x) = (x-a)(x-m)(x-b)$ und die Polynome vom Grad 2
+\begin{equation}
+\begin{aligned}
+l_0(x) &= \frac1{(a-m)(a-b)} (x-m)(x-b),
+\\
+l_1(x) &= \frac1{(m-a)(m-b)} (x-a)(x-b),
+\\
+l_2(x) &= \frac1{(b-a)(b-m)} (x-a)(x-m).
+\end{aligned}
+\label{4001:lpolys}
+\end{equation}
+Das Interpolationspolynom ist dann
+\[
+p(x) = f(a) l_0(x) + f(m) l_1(x) + f(b) l_2(x).
+\]
+Für das Integral muss man jetzt die Integrale der einzelnen Polynome 
+$l_k(x)$ bestimmen.
+Dies ist etwas mühsam, aber durch Variablentransformation auf
+die Werte $a=-1$, $b=1$ und $m=0$ wird es einfacher:
+\begin{align*}
+\int_{-1}^1 \frac{x(x-1)}{(-1)(-1-1)}\,dx
+&=
+\frac12
+\biggl[\frac13x^3 -\frac12x^2\biggr]_{-1}^1
+=
+\frac13,
+\\
+\int_{-1}^1 \frac{(x+1)(x-1)}{(0-(-1))(0-1)}\,dx
+&=
+-\int_{-1}^1 x^2 -1 \,dx
+=
+-\biggl[\frac13x^3-x\biggr]_{-1}^1
+=
+-\frac23 + 2
+=
+\frac43,
+\\
+\int_{-1}^1 \frac{(x+1)x}{1-(-1))(1-0)}\,dx
+&=
+\frac13.
+\end{align*}
+Zusammen mit den Normierungsnennern in \eqref{4001:lpolys} erhalten wir
+somit
+\begin{align*}
+\int_a^b l_0(x)\,dx
+&=
+\frac{b-a}{2}
+\cdot
+\frac13
+=
+\frac{b-a}6
+\\
+\int_a^b l_1(x)\,dx
+&=
+\frac{b-a}{2}
+\cdot
+\frac{4}{3}
+=
+\frac{4(b-a)}{6}
+\\
+\int_a^b l_2(x)\,dx
+&=
+\frac{b-a}{2}
+\cdot
+\frac13
+=
+\frac{b-a}{6}
+\end{align*}
+Die verschiedenen Faktoren im Nenner können wir alle durch die
+Intervalllänge $b-a$ ausdrücken. 
+Es ist zum Beispiel $m-a=\frac12(b-a)$ und $m-b=-\frac12(m-a)$.
+Damit erhalten wir jetzt für das Integral von $p(x)$
+\begin{align*}
+\int_a^b p(x)\,dx
+&=
+\frac{b-a}{6}\bigl(f(a) + 4f(m) + f(b)\bigr).
+\qedhere
+\end{align*}
+\end{loesung}
+
+
+
+

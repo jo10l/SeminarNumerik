@@ -1,0 +1,95 @@
+Berechnen Sie das Integral
+\[
+I = \int_0^1 \sin x\,dx
+\]
+der Funktion $f(x)=\sin x$ auf vier verschiedene Weisen:
+\begin{teilaufgaben}
+\item Exakt.
+\item Mit Hilfe der Mittelpunktsformel mit genau zwei Teilintervallen.
+\item Mit Hilfe der Trapezformel mit genau zwei Teilintervallen.
+\item Mit Hilfe der Simpsonschen Formel
+\[
+\int_a^b f(x)\,dx
+\simeq
+I_S
+=
+\frac{b-a}{6} \bigl( f(a) + 4f(m) + f(b)\bigr)
+\qquad
+\text{mit $m=(a+b)/2$}
+\]
+(Aufgabe 4.1).
+\end{teilaufgaben}
+
+\begin{loesung}
+\begin{teilaufgaben}
+\item
+Die exakte Berechnung des Integrals liefert
+\[
+I
+=
+\int_0^1 \sin x\,dx
+=
+\biggl[-\cos x\biggr]_0^1 
+=
+1-\cos 1
+\simeq
+0.45969769413186028260.
+\]
+\item
+Mit der Mittelpunktsformel ist die Näherung
+\[
+I_{M}
+=
+\frac12 f({\textstyle\frac14}) + f({\textstyle\frac34})
+=
+0.46452135963892854816.
+\]
+\item
+Mit der Trapezformel ist die Näherung
+\[
+I_T
+=
+\frac14\bigl(f(0)+2f({\textstyle\frac12}) + f(1)\bigr)
+=
+\frac14(0 + 2\sin{\textstyle\frac12} + \sin 1)
+=
+0.45008051550407562679.
+\]
+\item
+Mit der Simpsonschen Regel findet man 
+\[
+I_S
+=
+\frac16\bigl(f(0) + 4f({\textstyle\frac12}) + f(1)\bigr)
+=
+\frac23\sin{\textstyle\frac12} + \frac16\sin 1
+=
+0.45986218987078475127.
+\]
+\end{teilaufgaben}
+Die Mittelpunktsformel und die Trapezregel verwenden Interpolation
+höchstens vom Grad 1 zur Approximation des Integrals.
+Die Simpsonsche Formel verwendet ein quadratisches Approximationspolynom,
+von dem man eine etwas höhere Genauigkeit erwarten kann.
+Wir vergleichen die Resultate in der folgenden Tabelle
+\begin{center}
+\begin{tabular}{|l|>{$}c<{$}|>{$}l<{$}|}
+\hline
+Methode& &Wert\\
+\hline
+Exakt              & I   &             0.45969769413186028260 \\
+Mittelpunktsformel & I_M & 0.\underline{46}452135963892854816 \\
+Trapezformel       & I_T & 0.\underline{45}008051550407562679 \\
+Simpsonsche Regel  & I_S & 0.\underline{459}86218987078475127 \\
+\hline
+\end{tabular}
+\end{center}
+Die Simpsonsche Regel scheint also tatsächlich etwas besser zu sein.
+
+Man kann mit Hilfe der Simpsonschen Regel ebenfalls eine Integrationsmethode
+ähnliche wie die Trapezregel finden.
+Dieser zusätzliche Aufwand lohnt sich aber meistens nicht, da sich mit
+der Trapezregel und anschliessender Romberg-Beschleunigung die gleiche
+Genauigkeit leichter erreichen lässt.
+\end{loesung}
+

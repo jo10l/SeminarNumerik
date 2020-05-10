@@ -1,0 +1,51 @@
+%
+% beispiele.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Beispiele}
+\begin{columns}[t]
+\begin{column}{0.40\hsize}
+\begin{block}{Poisson-Problem}
+$u$ Potential, $\varrho$ Ladungsdichte
+\[
+\Delta u = 4\pi \varrho
+\]
+elliptisches Problem
+\end{block}
+\end{column}
+\begin{column}{0.56\hsize}
+\uncover<2->{%
+\begin{block}{Wellen}
+$u$ ``Auslenkung'', $a$ Wellengeschwindigkeit
+\[
+\frac{\partial^2 u}{\partial t^2} = a^2\Delta u
+\]
+hyperbolisches Problem
+\end{block}}
+\end{column}
+\end{columns}
+\begin{columns}[t]
+\begin{column}{0.40\hsize}
+\uncover<3->{%
+\begin{block}{Wärmeleitung}
+$u$ Temperatur
+\[
+\frac{\partial u}{\partial t}  = \Delta u
+\]
+parabolisches Problem
+\end{block}}
+\end{column}
+\begin{column}{0.56\hsize}
+\uncover<4->{%
+\begin{block}{Gleichung von Burgers}
+Nichtlineare Wellengleichung
+\[
+\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial t} = 0
+\]
+quasilineares Problem 1. Ordnung
+\end{block}}
+\end{column}
+\end{columns}
+\end{frame}

@@ -4,19 +4,43 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Einleitung\label{qr:section:einleitung}}
-\rhead{Einleitung}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{qr:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
+Wie in Abschnitt \ref{buch:section:qr} schon genauer betrachtet, kann eine Matrix $A$ mit $l$ Zeilen und $n$ linear unabhängigen spalten ($l\ge n$) in zwei Matrizen zerlegt werden:
+\begin{equation*}
+A=QR.
+\end{equation*}
+$Q$ ist dabei wieder ein $l\times n$-Matrix mit, diesmal aber orthonormierten Spalten.
+$R$ ist eine ober Dreiecksmatrix der Grösse $n\times n$.
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
-
-
+\subsection{Anwedungsbeispiel Least-Squares}
+Die $QR$-Zerlegung kann unter anderem beim lösen von Gleichungssystemen angewendet werden.
+Ein in den Parametern lineares Gleichungssystem
+\begin{equation}
+Ax=b\label{qr:sle}
+\end{equation}
+hat in praktischen Fällen keine Lösung, wenn die $l\times n$ Matrix mehr Zeilen als Spalten hat, bzw. überdefiniert ist.
+Mit der Methode der kleinsten Quadrate kann aber ein Vektor $\hat{x}$ gefunden werden welcher die $L^2$-Norm
+\begin{equation*}
+||A\hat{x}-b||_2
+\end{equation*}
+minimiert.
+Dieses Problem kann geometrisch gelöst werden, indem man es wie folgt betrachtet:
+\begin{equation*}
+A\hat{x}=b-b_{\perp},
+\end{equation*}
+wobei $b_{\perp}$ die zu den Spalten in $A$ orthogonale Komponente von $b$ ist.
+Multipliziert am beide Seiten mit $A^T$ erhält man
+\begin{equation}
+A^TA\hat{x}=A^Tb-\underbrace{A^Tb_{\perp}}_{=0}
+\quad\Leftrightarrow\quad A^TA\hat{x}=A^Tb \label{qr:ls1}
+\end{equation}
+Wobei der letzte Term verschwindet, da alle Spalten von $A$ und $b_{\perp}$ orthogonal zueinander stehen und somit alle Skalarprodukte verschwinden.
+Das Matrixprodukt $A^TA$ ist unter Umständen aufwändig zu berechnen.
+Geht man nun aber den Umweg über die $QR$-Zerlegung kann die Gleichung \ref{qr:ls1} umgeschrieben werden:
+\begin{equation*}
+(QR)^TQR\hat{x}=(QR)^Tb
+\end{equation*}
+was sich zu 
+\begin{equation}
+R\hat{x}=Q^Tb\label{qr:ls2}
+\end{equation}
+vereinfacht.

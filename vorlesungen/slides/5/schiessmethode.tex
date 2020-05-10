@@ -1,0 +1,73 @@
+%
+% schiessmethode.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Schiessmethode}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.48\hsize}
+\begin{block}{Randwertproblem}
+$f\colon \mathbb R\times\mathbb R^n\times\mathbb R^n\to\mathbb R^n$:
+\begin{align*}
+\frac{d^2}{dt^2} x &= f(t,x,\dot{x})
+\\
+x(0)&=x_0
+\\
+{\color{red}
+x(1)}&{\color{red}=x_1}
+\end{align*}
+\end{block}
+\uncover<2->{%
+\begin{block}{Umwandlung: Anfangswertproblem}
+Finde $\color{red}v_0$ derart, dass
+\[
+x(1,x_0,{\color{red}v_0}) = x_1
+\]
+$n$ Gleichungen für ${\color{red}v_0}\in\mathbb R^n$ 
+\end{block}}
+\end{column}
+\begin{column}{0.48\hsize}
+\uncover<3->{%
+\begin{block}{Lösung mit Newton}
+Lösung $x(t,v_0)$ erfüllt
+\vspace{-5pt}
+\begin{align*}
+\frac{d^2}{dt^2} x(t,v_0)
+&= 
+f(t,x(t,v_0),\dot{x}(t,v_0))
+\\[-7pt]
+\intertext{\uncover<4->{Ableiten nach $v_0$}}
+\\[-27pt]
+\uncover<5->{
+\frac{d^2}{dt^2}\frac{\partial x}{\partial v_0}}
+&\uncover<5->{=
+\frac{\partial f}{\partial x}\cdot \frac{\partial x}{\partial v_0}
++
+\frac{\partial f}{\partial v}\cdot \frac{\partial \dot{x}}{\partial v_0}}
+\\
+\uncover<6->{
+\frac{d^2}{dt^2} X}
+&\uncover<6->{=
+\frac{\partial f}{\partial x}\cdot X
++
+\frac{\partial f}{\partial v} \cdot \dot{X}}
+\\
+\uncover<7->{
+\text{mit}\quad
+X(0)}&\uncover<7->{= 0,\quad \dot{X}(0)=E}
+\end{align*}
+\uncover<8->{%
+Newton-Verfahren mit $X = X(1)$:
+\[
+v_{0,n+1}
+=
+v_{0,n}
+-
+X^{-1}\cdot (x(1,v_{0,n}) - x_1)
+\]}
+\end{block}}
+\end{column}
+\end{columns}
+\end{frame}

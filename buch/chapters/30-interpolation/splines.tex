@@ -22,6 +22,9 @@ Die Steigungen in den Stützstellen sind also Lösungen eines
 Optimierungsproblems, welches nicht die am besten passende, sonder
 die ``schönste'' Kurve durch die Stützstellen sucht.
 
+%
+% Anforderungen an die Interplierende Funktion
+%
 \subsection{Anforderungen and die interpolierende Funktion
 \label{buch:subsection:anforderungen}}
 Gegeben seien wie früher Punkte
@@ -70,6 +73,9 @@ minimiert.
 Man beachte, dass nirgends verlangt wird, dass die Ableitungen von $g$
 an den Stützstellen irgendwie mit der Funktion $f$ in Verbingung steht.
 
+%
+% Das Optimierungsproblem
+%
 \subsection{Das Optimierungsproblem
 \label{buch:subsection:variation}}
 Zunächst ist nicht klar, ob das eben gestellt Optimierungsproblem überhaupt
@@ -277,6 +283,9 @@ m\ddot{y} = -V'(y).
 Dies ist das 2.~Newtonsche Gesetz.
 \end{beispiel}
 
+%
+% Lösung des Optimierungsproblems
+%
 \subsection{Lösung des Optimierungsproblems
 \label{buch:subsection:splineinterpolant}}
 Leider lässt sich der Satz~\ref{buch:variation:eulerlagrange}
@@ -317,6 +326,9 @@ Integrieren die zweite Ableitung der Funktion $h$ los werden:}
 \end{align}
 Auf Grund der Definition von $h$ verschwindet der mittlere Term.
 
+%
+% Bedingungen im Inneren der Teilintervalle
+%
 \subsubsection{Bedingungen im Inneren der Teilintervalle}
 Jetzt nutzen wir wieder die freie Wahlmöglichkeit der Funktion $h$
 aus.
@@ -328,6 +340,9 @@ wenn also $g^{(4)}(x)=0$ im Inneren jedes Teilintervals $[x_i,x_{i+1}]$.
 Es folgt, dass in jedem Teilinterval die Funktion $g$ ein kubisches Polynom 
 sein muss.
 
+%
+% Bedingungen an den Stützstellen
+%
 \subsubsection{Bedingungen an den Stützstellen}
 Aus dem verbleibenden ersten Term von
 Gleichung~\eqref{buch:equation:splines:integiert}
@@ -369,6 +384,9 @@ g''(x_0+) = g''(x_n-) = 0
 \end{equation}
 sein muss.
 
+%
+% Ein Gleichungssystem für die Steigungen
+%
 \subsubsection{Ein Gleichungssystem für die Steigungen}
 Zur Lösung des eingangs gestellten Interpolationsproblems ist jetzt
 also für jedes Teilinterval $[x_i,x_{i+1}]$ ein kubisches Polynom $g_i(x)$
@@ -594,6 +612,9 @@ f_n-f_{n-1}
 \end{pmatrix}
 \]
 
+%
+% Bézier-Kurven und Splines in der Ebene
+%
 \subsection{Bézier-Kurven und Splines in der Ebene
 \label{buch:subsection:bezier}}
 
