@@ -2,11 +2,17 @@ Die Differentialgleichung $y'=e^y$ soll für die Anfangsbedingung $y(0)=0$
 gelöst werden.
 \begin{teilaufgaben}
 \item
-Berechnen Sie $y(0)$, indem Sie $2^k$ Eulerschritte der Länge $h=2^{-k}$ 
+Berechnen Sie $y(1)$, indem Sie $2^k$ Eulerschritte der Länge $h=2^{-k}$ 
 durchführen mit $k=0,1,2$.
 \item
-Berechnen Sie $y(0)$, indem Sie $2^k$ verbesserte Eulerschritte der Länge
+Berechnen Sie $y(1)$, indem Sie $2^k$ verbesserte Eulerschritte der Länge
 $h=2^{-k}$ machen mit $k=0,1$.
+\item
+Berechnen Sie $y(1)$, indem Sie $2^k$ vereinfachte Runge-Kutta-Schritte 
+der Länge $h=2^{-k}$ machen mit $k=0,1$.
+\item
+Berechnen Sie $y(1)$ mit Hilfe eines einzigen Runge-Kutta-Schrittes
+der Länge $h=1$.
 \item
 Finden Sie die exakte Lösung der Differentialgleichung.
 Was passiert für $x\to 1$?
@@ -56,28 +62,29 @@ In der Tat kann man diese Analyse numerisch auch noch etwas weiter treiben,
 man findet die Zahlen in Tabelle~\ref{5002:tabelle}
 \begin{table}
 \centering
-\begin{tabular}{|>{$}r<{$}|>{$}l<{$}|>{$}l<{$}|>{$}l<{$}|}
+\def\ph{\phantom{0}}
+\begin{tabular}{|>{$}r<{$}|>{$}l<{$}|>{$}l<{$}|>{$}l<{$}|>{$}l<{$}|}
 \hline
-k&\text{Euler-Verfahren}&\text{Euler verbessert}&\text{Runge-Kutta vereinfacht}\\
+k&\text{Euler}&\text{Euler verbessert}&\text{Runge-Kutta vereinfacht}&\text{Runge-Kutta}\\
 \hline
- 0 &   1.0000000000000000 &  \phantom{0}1.6487212707001282 &   \phantom{0}1.8591409142295225 \\
- 1 &   1.3243606353500641 &  \phantom{0}2.1699841098945125 &   \phantom{0}2.4250585225257479 \\
- 2 &   1.7023376283348517 &  \phantom{0}2.7597420811188282 &   \phantom{0}3.0490819078103311 \\
- 3 &   2.1276552548727867 &  \phantom{0}3.3956034434828641 &   \phantom{0}3.7069361001565753 \\
- 4 &   2.5925341403208058 &  \phantom{0}4.0585581421638404 &   \phantom{0}4.3824437828360674 \\
- 5 &   3.0894270605253125 &  \phantom{0}4.7362072763649881 &   \phantom{0}5.0668066827320546 \\
- 6 &   3.6119224240178083 &  \phantom{0}5.4215037321073574 &   \phantom{0}5.7555754708745690 \\
- 7 &   4.1549277159000182 &  \phantom{0}6.1107000131742213 &   \phantom{0}6.4465375423811189 \\
- 8 &   4.7145114453291557 &  \phantom{0}6.8018653488708489 &   \phantom{0}7.1385932738704421 \\
- 9 &   5.2876588211210143 &  \phantom{0}7.4940200070686585 &   \phantom{0}7.8311950168627185 \\
-10 &   5.8720473151803398 &  \phantom{0}8.1866705263331685 &   \phantom{0}8.5240695517155327 \\
-11 &   6.4658695535809256 &  \phantom{0}8.8795692762034442 &   \phantom{0}9.2170804278539613 \\
-12 &   7.0677015640022800 &  \phantom{0}9.5725922163960995 &   \phantom{0}9.9101594608469572 \\
-13 &   7.6764068630174913 &  10.2656772705460515 &  10.6032725687239502 \\
+ 0 &     1.00000000 &  \ph1.64872127 &  \ph1.85914091 &  \ph3.10651614\\
+ 1 &     1.32436064 &  \ph2.16998411 &  \ph2.42505852 &  \ph3.79915029\\
+ 2 &     1.70233763 &  \ph2.75974208 &  \ph3.04908191 &  \ph4.49270245\\
+ 3 &     2.12765525 &  \ph3.39560344 &  \ph3.70693610 &  \ph5.18595885\\
+ 4 &     2.59253414 &  \ph4.05855814 &  \ph4.38244378 &  \ph5.87912458\\
+ 5 &     3.08942706 &  \ph4.73620728 &  \ph5.06680668 &  \ph6.57227443\\
+ 6 &     3.61192242 &  \ph5.42150373 &  \ph5.75557547 &  \ph7.26542196\\
+ 7 &     4.15492772 &  \ph6.11070001 &  \ph6.44653754 &  \ph7.95856919\\
+ 8 &     4.71451145 &  \ph6.80186535 &  \ph7.13859327 &  \ph8.65171638\\
+ 9 &     5.28765882 &  \ph7.49402001 &  \ph7.83119502 &  \ph9.34486356\\
+10 &     5.87204732 &  \ph8.18667053 &  \ph8.52406955 &    10.03801074\\
+11 &     6.46586955 &  \ph8.87956928 &  \ph9.21708043 &    10.73115792\\
+12 &     7.06770156 &  \ph9.57259222 &  \ph9.91015946 &    11.42430510\\
+13 &     7.67640686 &    10.26567727 &    10.60327257 &    12.11745228\\
 \hline
 \end{tabular}
 \caption{Näherungswerte für $y(1)$ für die Differentialgleichung 
-$y'=e^y$ mit Euler-Schritten der Länge $2^{-k}$.
+$y'=e^y$ mit Schritten nach verschiedenen Verfahren der Länge $2^{-k}$.
 Es sind keine Anzeichen von Konvergenz sichtbar.
 \label{5002:tabelle}}
 \end{table}
@@ -96,6 +103,82 @@ Die analoge Rechnung zu a) liefert die Zahlenwerte in Spalte 3 von
 Tabelle~\ref{5002:tabelle}.
 Auch in diesem Verfahren ist keine Konvergenz erkennbar.
 \item
+Ein vereinfachter Runge-Kutta-Schritt verwendet Steigungen am Anfang
+und nach einem ganzen Eulerschritt:
+\[
+y_{i+1}
+=
+y_{i} + \frac{h}2\biggl(
+f(x_i, y_i) + f(x_i+h,y_i+hf(x_i,y_i))
+\biggr)
+=
+y_i + \frac{h}2(e^{y_i} + e^{y_i+he^{y_i}})
+=
+y_i + \frac{h}2e^{y_i}(1 + e^{he^{y_i}}).
+\]
+Die numerische Rechnung ergibt die Werte in Spalte 4 von 
+Tabelle~\ref{5002:tabelle}.
+\item
+Für einen Runge-Kutta-Schritt müssen die Steigungen $k_i$ bestimmt
+werden
+\begin{align*}
+k_1
+&=
+f(0,0) = 1
+&&=1
+\\
+k_2
+&=
+f\biggl(\frac12,\frac12k_1\biggr)
+=
+e^{\frac12}
+&&=1.64872127070013
+\\
+k_3
+&=
+f\biggl(\frac12,\frac12e^{\frac12}\biggr)
+=
+e^{\frac12e^{\frac12}}
+&&=
+2.28042227773497
+\\
+k_4
+&=
+f(1, k_3) 
+=
+e^{e^{\frac12e^{\frac12}}}
+&&= 9.78080975579193
+\end{align*}
+Der Wert von $y(1)$ ist dann
+\[
+y(1)
+= 
+y_0 + \frac{h}{6}(k_1+2k_2+2k_3+k_4)
+=
+\frac16(1+2e^{\frac12}+2e^{\frac12e^{\frac12}}+e^{e^{\frac12e^{frac12}}})
+=
+3.10651614211036
+\]
+Die bisher gefundenen Werte für $y(1)$ sind
+\begin{center}
+\begin{tabular}{|l|l|>{$}l<{$}|}
+\hline
+Verfahren&Schrittweite&y(1)\\
+\hline
+Euler                   & 1    & 1.0000000 \\
+Euler                   & 0.5  & 1.3243606 \\
+Euler                   & 0.25 & 1.7023376 \\
+Euler verbessert        & 1    & 1.6487213 \\
+Euler verbessert        & 0.25 & 2.1699841 \\
+Runge-Kutta vereinfacht & 1    & 1.8591409 \\
+Runge-Kutta vereinfacht & 0.25 & 2.4250585 \\
+Runge-Kutta             & 1    & 3.1065161 \\
+\hline
+\end{tabular}
+\end{center}
+Die grosse Streueung der Werte ist ein Hinweis darauf, dass die Lösung
+der Differentialgleichung ein besonderes Problem beinhaltet.
+\item
 Die Differentialgleichung kann separiert werden:
 \[
 \int e^{-y}\, dy = \int 1\,dx
@@ -110,11 +193,11 @@ e^{-y} &= -C - x
 \\
 y &= -\log (-C-x)
 \end{align*}
-Die Konstante $C$ muss etzt so gewählt werden, dass $-\log(-C) = 0$
-ergibt, oder $-C = e^0=1$.
+Die Konstante $C$ muss etzt so gewählt werden, dass $-\log(-C) = y_0=0$
+ergibt, oder $-C = e^{y_0}=1$.
 Damit ist die Lösung
 $
-y(x) = -\log(1-x).
+y(x) = -\log(e^{y_0}-x) = -\log(1-x).
 $
 Für $x\to 1$ divergiert $y(x)$ gegen $\infty$, so dass die fehlende 
 Konvergenz der numerischen Verfahren nicht mehr überrascht.
@@ -147,9 +230,40 @@ Je näher $x$ bei $1$ liegt, desto schlechter wird die Genauigkeit
 der numerischen Lösung.
 \end{teilaufgaben}
 \medskip
+\begin{figure}
+\centering
+\begin{tikzpicture}[>=latex,thick]
+\foreach \k in {0,...,12}{
+	\node at ({\k},0) [below right] {$\k$};
+}
+\begin{scope}
+\clip (0,{-ln(12)}) rectangle (13,6);
+	\foreach \k in {1,...,12}{
+		\draw[line width=0.4pt] ({\k},{-ln(12)}) -- ({\k},6);
+		\draw[line width=0.7pt] ({\k},-0.1) -- ({\k},0.1);
+	}
+\end{scope}
+\draw[->] (-0.1,0)--(13.3,0) coordinate[label={$x$}];
+\draw[->] (0,{-ln(13)-0.1})--(0,6.5) coordinate[label={right:$y$}];
+\begin{scope}
+\clip (0,{-ln(12)}) rectangle (13,6);
+	\foreach \k in {1,...,12}{
+		\draw[color=red,line width=1.4pt]
+			plot[domain=0:{\k-0.001},samples={20*(\k+1)}]
+				({\x},{-ln(\k-\x)});
+	}
+\end{scope}
+\end{tikzpicture}
+\caption{Die Lösung der Differentialgleichung $y'=e^y$ für verschiedene
+Anfangswerte $y_0 = -\log(k)$ mit $k=0,1,\dots$ haben Singularitäten
+bei $x=k$.
+\label{5002:loesung}}
+\end{figure}
 
-Die Differentialgleichung hat Lösungen, die nichts mit Singularitäten
-der Differentialgleichungen zu tun haben.
+Die Lösungen der Differentialgleichung dargestellt in
+Abbildung~\ref{5002:loesung} haben Singularitäten,
+die nichts mit möglichen Singularitäten der Differentialgleichungen
+zu tun haben, die Funktione $e^y$ ist für alle $y$ definiert.
 Die Position der Singularität der Lösung hängt von den Anfangswerten
 ab, sie kann also nur durch exakte Lösung vorhergesagt werden.
 Die Aufgabe illustriert daher die Schwierigkeiten, die sich stellen,
