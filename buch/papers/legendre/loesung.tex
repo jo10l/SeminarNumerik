@@ -6,35 +6,72 @@
 \section{Lösung
 \label{legendre:section:loesung}}
 \rhead{Lösung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+\subsection{Bedeutung $l$- und $m$-Richtung
+\label{legendre:subsection:lmrichtung}}
+Wie schon im vorherigen Abschnitt (\ref{legendre:section:problemstellung}) angesprochen, gibt es zwei Parameter, $l$ für den Grad und $m$ für die Ordnung.
+Mit den Bedingungen für die beiden Parameter ($l>=0$ und $m=0, \ldots , l$) ergibt sich eine bestimmte Struktur von möglichen zugeordneten Legendrepolynomen.
+Diese Struktur ist in Abbildung \cmt{Referenz zur Abbildung} dargestellt.
 
-\subsection{De finibus bonorum et malorum
-\label{legendre:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+\cmt{Abbildung Struktur einfügen, Anfangswerte kennzeichnen}
+
+Die beiden Gleichungen \eqref{legendre:recurrence-l} und \eqref{legendre:recurrence-m} aus dem vorherigen Abschnitt (\ref{legendre:section:problemstellung}) unterscheiden sich in der Rekursionsrichtung.
+Während die Rekursion mittels Gleichung \eqref{legendre:recurrence-l} in $l$-Richtung verläuft, sprich in Richtung des Grades, verläuft die Rekursion mittels Gleichung \eqref{legendre:recurrence-m} in $m$-Richtung, sprich in Richtung der Ordnung.
+
+\subsection{Rekursionsformel in $m$-Richtung
+\label{legendre:subsection:mrichtung}}
+Die Rekursion in $m$-Richtung verläuft in negativer $m$-Richtung, sprich nach abnehmenden $m$s.
+Aus diesem Grund muss die Gleichung \eqref{legendre:recurrence-m} etwas umgeformt werden.
+Daraus ergibt sich die neue Rekursionsgleichung \eqref{legendre:recurrence-m-1}.
+% umgeformte Rekursionsformel in m-Richtung
+\begin{equation}
+P^{m-1}_{l}(x)
+= \left[ \frac{2mxP^{m}_{l}(x)}{- \sqrt{1-x^2}}-P^{m+1}_{l} \right]
+\frac{1}{(l+m)(l-m+1)}
+\label{legendre:recurrence-m-1}
+\end{equation}
+Die benötigten Anfangswerte für ein $P^{m}_{l}$ für die Rekursion in $m$-Richtung sind demnach $P^{l}_{l}$ und $P^{l-1}_{l}$.
+Wird die umgeformte Rekursionsgleichung \eqref{legendre:recurrence-m-1} auf numerische Instabilität untersucht, fällt sofort der Term $\sqrt{1-x^2}$ auf.
+Dieser Term deutet darauf hin, dass nahe an den Intervallsgrenzen ($x \rightarrow \pm 1$) Auslöschung auftreten kann welche zu falschen Resultaten führt.
+\cmt{Referenz zum Auslöschungskapitel}
+\cmt{Untersuchen ob Division durch sehr sehr kleine Zahl auch zu Fehlern führen kann.}
+Tatsächlich ist es so, dass die Implementation dieser Rekursionsformel zu Instabilitäten führt wie in Abbildung \cmt{Referenz zu Plot} zu sehen ist.
+
+\cmt{Plot Instabilität einfügen}
+
+Erstaunlicherweise scheint sogar Wolfram Alpha \cite{legendre:wolfram-alpha} diese Rekursionsformel zu verwenden.
+Wird auf Wolfram Alpha der beispielsweise der Befehl \verb+plot[LegendreP[45, x], {x, -1, 1}]+ verwendet, um das Legendrepolynom $P^{0}_{45}$ darzustellen, treten ebenfalls in der Nähe der Intervallgrenzen Instabilitäten auf (siehe Abbildung \cmt{Referenz zu Wolfram Alpha Plot}).
+\cmt{Wolfram Alpha Plot}
+Dies ist umso erstaunlicher, als dass auf der Wolfram-Seite zu den zugeordneten Legendrepolynome \cite{legendre:assoc-legendre-poly-wolfram} die Rekursionsbeziehung in $l$-Richtung angegeben wird, welche keine Instabilitäten nahe den Intervallsgrenzen aufweist (siehe dazu den nächsten Abschnitt (\ref{legendre:subsection:lrichtung}).
+
+\subsection{Rekursionsformel in $l$-Richtung
+\label{legendre:subsection:lrichtung}}
+Die Rekursion in $l$-Richtung verläuft in positiver $l$-Richtung, sprich nach zunehmenden $l$s.
+Bei der Gleichung \eqref{legendre:recurrence-l} muss daher nur noch der Faktor $(l-m+1)$ auf die rechte Seite gebracht werden.
+Daraus folgt die neue Rekursionsgleichung in $l$-Richtung \eqref{legendre:recurrence-l-neu}.
+% umgeformte Rekursionsformel in l-Richtung
+\begin{equation}
+P^{m}_{l+1}(x)
+= \frac{(2l+1)xP^{m}_{l}(x)-(l+m)P^{m}_{l-1}(x)}{(l-m+1)} 
+\label{legendre:recurrence-l-neu}
+\end{equation}
+Die benötigten Anfangswerte für ein $P^{m}_{l}$ für die Rekursion in $l$-Richtung sind demnach $P^{m}_{m}$ und $P^{m}_{l+1}$.
+Bei einem Vergleich mit der Rekursionsformel in $m$-Richtung (siehe Gleichung \eqref{legendre:recurrence-m-1} fällt auf, dass der Term $\sqrt{1-x^2}$ hier nicht mehr vorhanden ist.
+Auch sonst ist kein Term ausfindig zu machen, der nahe den Intervallsgrenzen Instabilitäten verursachen könnte.
+Das heisst, dass die Gleichung \eqref{legendre:recurrence-l-neu} an den Intervallsgrenzen deutlich stabiler sein sollte.
+Dies bestätigt auch Implementation dieser Rekursionsformel, wie in Abbildung \cmt{Referenz zu Plot} zu sehen ist.
+
+\cmt{Eigener Plot Stabilität}
+
+\cmt{Können andere Probleme auftreten? Over-/Underflow bei grossen $l$s wurde schon erwähnt.}
+
+\cmt{GNU Scientific Library verwendet diese Formel. Eventuell erwähnen, dass es eine gute Implementation gibt auch wenn die Lizenz nicht alles erlaubt.}
+
+\subsection{Wieso trotzdem in $m$-Richtung?
+\label{legendre:subsection:wiesom}}
+\cmt{Vielleicht noch ein solches Unterkapitel, falls ja Titel überarbeiten}
+
+\cmt{Eventuell interessante Kenntnisse wieso trotzdem die Rekursionsformel in m-Richtung verwendet wird.}
+
+\cmt{Geschwindigkeit ist vielleicht besser? Anfangswerte?}
 
 
