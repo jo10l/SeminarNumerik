@@ -5,10 +5,16 @@
 %
 \section{Einleitung\label{legendre:section:einleitung}}
 \rhead{Einleitung}
-Zur Berechnung respektive zur Evaluation von zugeordneten Legendrepolynome (\textit{engl.} associated Legendre polynomials \cmt{korrekt so?}) gibt es eine ganze Liste von Rekursionsbeziehungen (\textit{engl.} recurrence relations \cmt{korrekt so?}), mit denen aus vorgängig berechneten Legendrepolynome neue berechnet werden können.
+Zur Berechnung respektive zur Auswertung von zugeordneten Legendrepolynome (\textit{engl.} associated Legendre polynomials) gibt es eine ganze Liste von Rekursionsbeziehungen (\textit{engl.} recurrence relations), mit denen aus vorgängig berechneten Legendrepolynomen neue berechnet werden können.
 Leider sind nicht alle dieser Rekursionsbeziehungen numerisch stabil.
-Dieses Kapitel befasst sich mit der Stabilität oder eben Instabilität der Rekursionsbeziehungen für zugeordnete Legendrepolynome.
-Es wird untersucht, wie numerisch instabile Rekursionsbeziehungen erkannt werden könne und wieso diese instabil sind.
+Es ist daher möglich, dass bei einer falschen Wahl einer solchen Rekursionsbeziehung, numerische Probleme auftreten könne, die zu völlig falschen Resultaten führen.
+Dass ein solches numerisches Problem auftreten kann, wird leider oft vergessen.
+Zusätzlich ist es eine anspruchsvolle Aufgabe, solche numerischen Instabilitäten vorzeitig zu erkennen.
+Aus diesen Gründen ist es nicht verwunderlich, dass sogar namhafte Bibliotheken numerisch instabile Implementationen enthalten.
+So ist beispielsweise die Implementation der Legendrepolynome auf Wolfram Alpha \cite{legendre:wolfram-alpha} numerisch nicht stabil, wie gut auf der Abbildung \cmt{Referenz Abbildung Wolfram Alpha} zu sehen ist.
+Aus diesen Gründen befasst sich dieses Kapitel mit der Stabilität oder eben Instabilität der Rekursionsbeziehungen für zugeordnete Legendrepolynome.
+Es wird dabei untersucht, wie numerisch instabile Rekursionsbeziehungen erkannt werden können und wieso diese instabil sind.
+\cmt{Abbildung Wolfram Alpha}
 
 % Unterkapitel Beispiel
 %\subsection{Titel Unterkapitel
