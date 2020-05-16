@@ -6,7 +6,7 @@
 \section{Problemstellung
 \label{legendre:section:problemstellung}}
 \rhead{Problemstellung}
-Die zugeordneten Legendrepolynome (\textit{engl.} associated Legendre polynomials \cmt{korrekt so?}) sind die Lösungen der allgemeinen Legendregleichung (siehe Gleichung \eqref{legendre:legendregleichung}) \cite{legendre:assoc-legendre-poly-wolfram} \cite{legendre:assoc-legendre-diff-wolfram}.
+Die zugeordneten Legendrepolynome sind die Lösungen der allgemeinen Legendregleichung (siehe Gleichung \eqref{legendre:legendregleichung}) \cite{legendre:assoc-legendre-poly-wolfram} \cite{legendre:assoc-legendre-diff-wolfram}.
 % Legendregleichung
 \begin{equation}
 (1-x^2) \frac{d^2y}{dx^2}
@@ -18,11 +18,15 @@ Die zugeordneten Legendrepolynome (\textit{engl.} associated Legendre polynomial
 Dabei gilt für die beiden Parameter $l$ und $m$, dass $l>=0$ und $m=0, \ldots , l$.
 Der Parameter $l$ ist für den Grad des zugeordneten Legendrepolynom verantwortlich, $m$ hingegen für die Ordnung des Polynoms.
 Die zugeordneten Legendrepolynome sind zudem nur auf dem Intervall $[-1, 1]$ definiert.
-Verwendung finden diese Polynome vor allem als Teil der Kugelflächenfunktionen (\textit{engl.} spherical harmonics \cmt{korrekt so?}) \cite{legendre:spherical-harmonic-wolfram}.
-Um ein zugeordnetes Legendrepolynom mit einem bestimmten $l$ und einem bestimmten $m$ zu evaluieren, wird aus Aufwandsgründen oft auf eine Rekursionsbeziehung (\textit{engl.} recurrence relations \cmt{korrekt so?}) zurückgegriffen.
-Für die zugeordneten Legendrepolynome gibt es mehrere solche Rekursionsbeziehungen.
-Die englische Wikipedia-Seite zu den zugeordneten Legendrepolynome führt beispielsweise eine ganze Liste mit solchen Rekursionsbeziehungen \cite{legendre:wikipedia}.
-Im folgenden werden die ersten beiden Rekursionsgleichungen, die der englische Wikipedia-Artikel auflistet, auf numerische Instabilität untersucht (siehe Gleichungen \eqref{legendre:recurrence-l} und \eqref{legendre:recurrence-m}).
+Verwendung finden diese Polynome vor allem als Teil der Kugelflächenfunktionen (\textit{engl.} spherical harmonics) \cite{legendre:spherical-harmonic-wolfram}.
+
+Wie im Abschnitt \ref{legendre:section:einleitung} bereits erwähnt, gibt es Rekursionsbeziehungen, deren Formeln nicht alle numerisch stabil sind.
+Der englische Wikipedia-Artikel \cite{legendre:wikipedia} zu den zugeordneten Legendrepolynome führt eine Liste solcher Rekursionsformeln, wobei $P^{m}_{l}$ das Legendrepolynom $l$-ten Grades und $m$-ter Ordnung ist.
+Bereits beim Erstellen der Graphen für die ersten beiden Rekursionsformeln des Wikipedia-Artikels ist zu sehen, dass die beiden Formeln nicht die gleichen Resultate liefern.
+Vergleiche dazu die Abbildung \cmt{Plot l} mit der Abbildung \cmt{Plot m}.
+Die erste Rekursionsformel \eqref{legendre:recurrence-l} verläuft in der Richtung des Parameters $l$ und produziert einen schönen Graphen, wie in Abbildung \cmt{Plot l} gut zu sehen ist.
+Das Gegenteil ist bei der Verwendung der zweiten Formel \eqref{legendre:recurrence-m}, welche in der Richtung des Parameters $m$ verläuft, auszumachen.
+In Abbildung \cmt{Plot m} ist anhand des gezackten Graphen gut auszumachen, dass hier numerische Instabilitäten auftreten.
 % Rekursionsformel in l-Richtung
 \begin{equation}
 (l-m+1)P^{m}_{l+1}(x)
@@ -37,3 +41,9 @@ Im folgenden werden die ersten beiden Rekursionsgleichungen, die der englische W
 \left[ P^{m+1}_{l}(x) + (l+m)(l-m+1)P^{m-1}_{l}(x) \right]
 \label{legendre:recurrence-m}
 \end{equation}
+
+\cmt{Plot l einfügen}
+\cmt{Plot m einfügen}
+
+Es stellt sich nun die Frage, wieso die erste Formel \eqref{legendre:recurrence-l} numerisch stabil ist und die zweite Formel \eqref{legendre:recurrence-m} es nicht ist?
+Im folgenden Abschnitt \ref{legendre:section:loesung} wird auf diese Frage eingegangen und untersucht, was die Instabilität in der zweiten Formel hervorruft.
