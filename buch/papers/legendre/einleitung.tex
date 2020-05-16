@@ -5,13 +5,22 @@
 %
 \section{Einleitung\label{legendre:section:einleitung}}
 \rhead{Einleitung}
-Zur Berechnung respektive zur Auswertung von zugeordneten Legendrepolynome (\textit{engl.} associated Legendre polynomials) gibt es eine ganze Liste von Rekursionsbeziehungen (\textit{engl.} recurrence relations), mit denen aus vorgängig berechneten Legendrepolynomen neue berechnet werden können.
-Leider sind nicht alle dieser Rekursionsbeziehungen numerisch stabil.
+Zur Berechnung respektive zur Auswertung von zugeordneten Legendrepolynome (\textit{engl.} associated Legendre polynomials) wird normalerweise auf eine Rekursionsbeziehung (\textit{engl.} recurrence relation) zurückgegriffen.
+Die Rekursionsbeziehungen werden bevorzugt, da die Alternativen entweder rechnerisch zu aufwändig wären wie beispielsweise die Verwendung der geschlossenen Form (siehe Gleichung \eqref{legendre:geschlosseneform}) oder schlicht nicht valide sind für höherrangige Legendrepolynome wie zum Beispiel das Auflisten der verschiedenen Polynomfunktionen.
+\begin{equation}
+P^{m}_{l}(x)
+=
+(-1)^m*2^l*(1-x^2)^{m/2}
+* \sum_{k=m}^{l} \frac{k!}{(k-m)!}*x^{k-m}
+* \binom{l}{m} \binom{\frac{l+k-1}{2}}{l}
+\label{legendre:geschlosseneform}
+\end{equation}
+Von den Rekursionsbeziehungen gibt es eine ganze Liste voll, doch leider sind nicht alle davon numerisch stabile Formeln.
 Es ist daher möglich, dass bei einer falschen Wahl einer solchen Rekursionsbeziehung numerische Probleme auftreten können, die zu völlig falschen Resultaten führen.
 Dass ein solches numerisches Problem auftreten kann, wird leider oft vergessen.
 Zusätzlich ist es eine anspruchsvolle Aufgabe, solche numerischen Instabilitäten vorzeitig zu erkennen.
 Aus diesen Gründen ist es nicht verwunderlich, dass sogar namhafte Bibliotheken numerisch instabile Implementationen enthalten.
-So ist beispielsweise die Implementation der Legendrepolynome auf Wolfram Alpha \cite{legendre:wolfram-alpha} numerisch nicht stabil, wie gut auf der Abbildung \cmt{Referenz Abbildung Wolfram Alpha} zu sehen ist.
+So ist beispielsweise die Implementation der Legendrepolynome auf Wolfram Alpha \cite{legendre:wolfram-alpha} numerisch nicht stabil, wie gut in der Abbildung \cmt{Referenz Abbildung Wolfram Alpha} zu sehen ist.
 Aus diesen Gründen befasst sich dieses Kapitel mit der Stabilität oder eben Instabilität der Rekursionsbeziehungen für zugeordnete Legendrepolynome.
 Es wird dabei untersucht, wie numerisch instabile Rekursionsbeziehungen erkannt werden können und wieso diese instabil sind.
 \cmt{Abbildung Wolfram Alpha}
