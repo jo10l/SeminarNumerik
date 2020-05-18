@@ -1,0 +1,143 @@
+Berechnen Sie die Eigenwerte der Matrix
+\[
+A=
+\begin{pmatrix}
+a&\frac12\\
+\frac12&0
+\end{pmatrix}.
+\]
+\begin{teilaufgaben}
+\item
+Wie gross darf $a$ sein, damit $\varrho(A) < 1$ ist?
+\item
+Berechnen Sie die Konditionszahl $\kappa(A)$ in Abhängigkeit von $a$.
+\end{teilaufgaben}
+
+\begin{loesung}
+\begin{figure}
+\centering
+\begin{tikzpicture}[>=latex,thick]
+
+\fill[color=darkgreen!10]  ({-3/4},-1) rectangle ({3/4},1);
+\draw[line width=0.7pt,color=darkgreen] (-3,1) -- (3,1);
+\draw[line width=0.7pt,color=darkgreen] (-3,-1) -- (3,-1);
+
+\begin{scope}
+\clip (-3,0) rectangle (3,3.8);
+\draw[color=orange,line width=1.4pt]
+	plot[domain=-3:3,samples=100] (\x,{2*(\x*\x+abs(\x)*sqrt(\x*\x+1))+1});
+\node[color=orange] at (-0.5,2.5) [left] {$\kappa(A)$};
+\end{scope}
+
+\draw[->] (-3.1,0) -- (3.3,0) coordinate[label=$a$];
+\draw[->] (0,-4) -- (0,4) coordinate[label={right:$\lambda$}];
+
+\draw[line width=0.7pt] (-0.05,1)--(0.05,1);
+\node at (0,1) [below left] {$1$};
+\draw[line width=0.7pt] (-0.05,-1)--(0.05,-1);
+\node at (0,-1) [below right] {$-1$};
+
+\node at (0,0) [below right] {$0$};
+
+\foreach \x in {1,2,3}{
+	\draw[line width=0.7pt] (\x,-0.05)--(\x,0.05);
+	\node at (\x,0.05) [above] {$\x$};
+	\draw[line width=0.7pt] (-\x,-0.05)--(-\x,0.05);
+	\node at (-\x,-0.05) [below] {$-\x$};
+}
+
+\draw[line width=0.4pt] (-3,-3) -- (3,3);
+\draw[color=red,line width=1.4pt]
+	plot[domain=-3:3,samples=100] ({\x},{(\x+sqrt(\x*\x+1))/2});
+\draw[color=blue,line width=1.4pt]
+	plot[domain=-3:3,samples=100] ({\x},{(\x-sqrt(\x*\x+1))/2});
+\node[color=red] at (2,{(2+sqrt(2*2+1))/2}) [above left] {$\lambda_+(a)$};
+\node[color=blue] at (-2,{(-2-sqrt(2*2+1))/2}) [below right] {$\lambda_-(a)$};
+\end{tikzpicture}
+\caption{Eigenwerte $\lambda_{\pm}$ von $A$ in Abhängigkeit vom Parameter $a$
+sowie die Konditionszahl $\kappa(A)$.
+\label{6002:graphen}}
+\end{figure}
+Das charakteristische Polynom ist
+\[
+\chi_A(\lambda)
+=
+\det (A-\lambda E)
+=
+\left|\begin{matrix}
+a-\lambda  & \frac12  \\
+  \frac12  & -\lambda
+\end{matrix}\right|
+=
+(a-\lambda)(-\lambda)-\frac14
+=
+\lambda^2-a\lambda-\frac14
+\]
+und hat die Nullstellen
+\[
+\lambda_{\pm}(a)
+=
+\frac{a}2 \pm \sqrt{\frac{a^2}4+\frac14}
+=
+\frac{a\pm \sqrt{a^2+1}}{2}.
+\]
+Abbildung~\eqref{6002:graphen} zeigt die Graphen von $\lambda_{\pm}$
+in Abhängigkeit von $a$.
+\begin{teilaufgaben}
+\item
+Es ist leicht zu sehen, dass es ein um den Nullpunkt symmetrisches
+Interval von $a$-Werten gibt, in dem $|\lambda_{\pm}|<1$ ist.
+Man kann Interval finden, indem man die Schranken $\pm1$ für $\lambda$
+in das chrakteristische Polynom einsetzt:
+\[
+0=\chi_A(\pm1)
+=
+1\mp a-\frac14
+=
+\frac34
+\mp a
+\qquad\Rightarrow\qquad a=\pm\frac34.
+\]
+Für $a\in(-\frac34,\frac34)$ ist der Spektralradius also $\varrho(A)<1$.
+Man kann natürlich auch eine Formel für den Spektralradius angeben, es
+ist
+\[
+\varrho(A)
+=
+\frac{|a|+\sqrt{a^2 + 1}}2.
+\]
+Daraus kann man auch ablesen, dass der kleinstmögliche Spektralradius $\frac12$
+ist.
+\item
+Die Konditionszahl ist das Verhältnis des grössten zum kleinsten Eigenwert.
+Für $a>0$ ist dies $-\lambda_+/\lambda_-$, also
+\begin{align}
+\kappa(A)
+&=
+-\frac{a+\sqrt{a^2+1}}{a-\sqrt{a^2+1}}
+=
+\frac{\sqrt{a^2+1}+a}{\sqrt{a^2+1}-a}
+=
+\frac{(\sqrt{a^2+1}+a)^2}{(a^2+1)-a^2}
+\notag
+\\
+&=
+a^2 + 2a\sqrt{a^2+1}+a^2+1
+=
+2a(a +\sqrt{a^2+1}) + 1.
+\label{6002:kappa}
+\end{align}
+Für negative $a$ ist $\lambda_-$ der betragsgrössere Eigenwert.
+Indem man $a$ wo nötig durch $|a|$ ersetzt, kann man die Formel
+\eqref{6002:kappa} zu einer geraden Funktion machen.
+Damit wird die Konditionszahl von $A$ zu
+\[
+\kappa(A)
+=
+2(a^2 +|a|\sqrt{a^2+1}) + 1
+\]
+für beliebige $a$.
+\qedhere
+\end{teilaufgaben}
+\end{loesung}
+

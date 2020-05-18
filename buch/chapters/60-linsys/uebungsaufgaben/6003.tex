@@ -1,0 +1,143 @@
+Betrachten Sie die Matrix $A$ und den Vektor $b$
+\[
+A=\begin{pmatrix}
+   3&  0&  2 \\
+   5&  1& -1 \\
+   9&  1&  2
+\end{pmatrix},
+\qquad\text{und}\qquad
+b
+=
+\begin{pmatrix}
+11\\16\\31
+\end{pmatrix}
+\]
+\begin{teilaufgaben}
+\item
+Finden Sie die Lösung der Gleichung $Ax=b$.
+\item
+Ist das Jacobi-Verfahren für diese Matrix konvergent?
+\item
+Ist das Gauss-Seidel-Verfahren für diese Matrix konvergent?
+\item
+Verifizieren Sie Ihre Resultate von b) und c) numerisch.
+\end{teilaufgaben}
+
+
+\begin{loesung}
+\input{chapters/60-linsys/uebungsaufgaben/6003iteration.tex}
+\begin{teilaufgaben}
+\item
+Die Inverse von $A$ und die Lösung $x$ des Gleichungssystems $Ax=b$ sind
+\[
+A^{-1}
+=
+\begin{pmatrix}
+   3&   2&  -2\\
+ -19& -12&  13\\
+  -4&  -3&   3
+\end{pmatrix}
+\qquad\Rightarrow\qquad
+x=A^{-1}b=
+\begin{pmatrix}
+3\\2\\1
+\end{pmatrix}.
+\]
+\item
+Das Jacobi-Verfahren verwendet die Matrix
+\[
+B_{\text{Jacobi}}
+=
+D^{-1}(L+R)
+=
+\begin{pmatrix}
+ 3&  0&  0 \\
+ 0&  1&  0 \\
+ 0&  0&  2
+\end{pmatrix}^{-1}
+\begin{pmatrix}
+ 0&  0&  2 \\
+ 5&  0& -1 \\
+ 9&  1&  0
+\end{pmatrix}
+=
+\begin{pmatrix}
+   0    &   0    &\frac23\\
+   5    &   0    & -1    \\
+\frac92 &\frac12 &  0 
+\end{pmatrix}
+\]
+Numerisch findet man die Eigenwerte
+\[
+\lambda_1 =    1.84484,
+\quad
+\lambda_2,3 =
+  -0.92242 \pm 0.22927i.
+\]
+Der Spektralradius von $B_{\text{Jacobi}}$ ist daher
+$\varrho(B_{\text{Jacobi}}) = 1.8448$, das Verfahren kann daher nicht
+konvergieren.
+\item
+Das Gauss-Seidel-Verfahren verwendet Iteration der Matrix
+\[
+B_{\text{Gauss-Seidel}}
+=
+(L+D)^{-1}
+=
+\begin{pmatrix}
+   3&  0&  0 \\
+   5&  1&  0 \\
+   9&  1&  2
+\end{pmatrix}^{-1}
+\begin{pmatrix}
+   0&  0&  2 \\
+   0&  0& -1 \\
+   0&  0&  0
+\end{pmatrix}
+=
+\begin{pmatrix}
+0&0&\frac23\\
+0&0&-\frac{13}3\\
+0&0&-\frac56
+\end{pmatrix}
+\]
+Diese Matrix hat den doppelten Eigenwert $0$ und den einfachen Eigenwert
+$-\frac56$.
+Der Spektralradius ist also 
+$\varrho(B_{\text{Gauss-Seidel}}=\frac56<1$.
+Das Gauss-Seidel-Verfahren konvergiert also.
+\item
+Die Resultate der numerischen Iteration
+\begin{equation}
+\begin{aligned}
+x_{k+1} &= (L+D)^{-1}b - (L + D)^{-1}Rx_k&&\text{Gauss-Seidel}\\
+y_{k+1} &= D^{-1}b - D^{-1}(L+R)y_k&&\text{Jacobi}
+\end{aligned}
+\label{6003:iteration}
+\end{equation}
+sind in Tabelle~\ref{6003:tabelle} zusammengestellt.
+\qedhere
+\end{teilaufgaben}
+\begin{table}
+\centering
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}>{$}r<{$}>{$}r<{$}|>{$}r<{$}>{$}r<{$}>{$}r<{$}|}
+\hline
+ &\multicolumn{3}{c|}{Gauss-Seidel}&\multicolumn{3}{c|}{Jacobi}\\
+k&x_{1k}&x_{2k}&x_{3k}&y_{1k}&y_{2k}&y_{3k}\\
+\hline
+\tabelleninhalt
+\hline
+\infty&3.0000 & 2.0000 & 1.0000 & \infty & \infty & \infty \\
+\hline
+\end{tabular}
+\caption{Resultate der Iteration nach Gauss-Seidel und Jacobi mit Hilfe der
+Iterationsformeln \eqref{6003:iteration}.
+Im Falle des stabilen Gauss-Seidel-Verfahrens werden zufällige Startwerte
+verwendet, im Jacobi-Verfahren liegen die Startwerte in unmittelbarer Nähe der
+Lösung.
+Trotzdem divergiert der Vektor im Jacobi-Verfahren ganz offensichtlich,
+während das Gauss-Seidel-Verfahren konvergiert.
+\label{6003:tabelle}}
+\end{table}
+\end{loesung}
+

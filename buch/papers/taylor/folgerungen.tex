@@ -6,35 +6,26 @@
 \section{Folgerungen
 \label{taylor:section:folgerungen}}
 \rhead{Folgerungen}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+Wie in Abbildung \ref{taylor:section:fig:FehlerRungeTaylor} ersichtlich ist, ist die Runge-Kutta Approximationen im Vergleich zur Taylor Approximation gleicher Ordnung bezüglich der logistischen Funktion genauer.
+Dies gilt allerdings nur für den ausgewerteten Bereich der Gleichtung als Ganzes.
+Da die Entwicklungen des Fehlers unterschiedlich verlaufen, sind beide Verfahren in gewissen Abschnitten besser.
+Da man aber normalerweise die originale Funktion nicht kennt und somit auch der Fehler unbekannt ist, ziehen wir hier den defensiven Schluss und sagen, dass im Fall der logistischen Funktion die Runge-Kutte Approximation besser geeignet ist als die Taylor Approximation.
 
-\subsection{De finibus bonorum et malorum
+\subsection{Erklärung der Folgerung
 \label{taylor:subsection:malorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
+Wird eine Funktion nur in einem Punkt und seiner unmittelbaren Umgebung betrachtet, so kann er durch eine Funktion 1. Grades approximiert werden, bzw. einer Geraden mit der selben Steigung.
+Die höheren Ordnungen spielen erst ab einem gewissen Abstand zum Auswertungspunkt eine Rolle.
+Wenn wir also genug nahe bleiben, können wir eine Funktion nur durch die erste Ableitung ziemlich gut approximieren.
+In diesem Fall sind die Taylor Approximation und die Runge-Kutta Approximation gleich gut, beziehungsweise die gleiche Formel.
+Bei den höheren Ordnungen optimiert das Runge-Kutta Verfahren die Stelle von der es die Ableitung berechnet, indem versucht wird, einen repräsentativen Auswertungspunkt zu finden, welcher die Steigung zwischen zwei Auswertungspunkten bestmöglich trifft.
+Das Taylorverfahren hingegen nimmt höhere Ableitungen dazu, welche (bei kleinen Schritten!) kaum eine Rolle spielen. 
+Der Vorteil von der Taylor-Approximation ist, dass die Approximationsfunktionen wesentlich länger mit der originalen Funktion übereinstimmen \ref{taylor:section:fig:TaylorFunktion} und somit bei einer grossen Schrittweite deutlich besser sein müssen.
 
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=12cm]{papers/taylor/taylorPictures/TaylorFunktion.pdf}
+		\caption{Taylor Funktionen unterschiedlichen Grades im Punkt $-2.5$ als Approximation für die logistische Gleichung mit $k=1$ von $-5$ bis $-0.02$}
+		\label{taylor:section:fig:TaylorFunktion}
+	\end{center}
+\end{figure}
 
