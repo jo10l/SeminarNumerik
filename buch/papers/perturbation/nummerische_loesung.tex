@@ -1,0 +1,58 @@
+\section{Nummerische Lösung
+\label{perturbation:section:nummerischeloesung}}
+\rhead{Nummerische Lösung}
+Die Gleichungen \ref{eq:x_diff} und \ref{eq:y_diff} lassen sich durch nummerische Verfahren lösen. 
+Wenn man sich nun jedoch einen Satelliten oder eine Rakete vorstellt, haben diese nur begrenzte Ressourcen an Rechenleistung. 
+Aus diesem Grund wird die komplexere Berechnung durch eine Bodenstation durchgeführt. 
+Die Resultate der Berechnung werden jeweils dem Flugobjekt mitgeteilt, sodass dieses mit simpleren Formeln seine Bahn annähernd berechnen kann. 
+Dieses Kapitel beschäftigt sich mit der exakten Lösung des Problems, welche durch die Bodenstation übernommen wird.
+
+Da das Runge-Kutta Verfahren nur mit Differentialgleichungen erster Ordnung umgehen kann, muss das System \ref{eq:x_diff} und \ref{eq:y_diff} zuerst um eine Ordnung reduziert werden. 
+Dies kann erreicht werden, indem zwei Hilfsvariablen $v_x = \dot{x}$ und $v_y = \dot{y}$ eingeführt werden. 
+Das System wird somit um eine Ordnung reduziert, erhält aber im Austausch zusätzliche Dimensionen.
+\[
+\dot{r_x} = v_x
+\]
+\[
+\dot{r_y} = v_y
+\]
+\[
+\dot{v_x} = \frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_x
+\]
+\[
+\dot{v_y} = \frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_y + g   
+\]
+
+Als Vektor formuliert:
+\[
+\frac{d}{dt}\begin{pmatrix}r_x\\r_y\\v_x\\v_y\end{pmatrix} = \begin{pmatrix}v_x\\v_y\\\frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_x\\\frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_y + g\end{pmatrix}
+\]
+
+Damit haben wir ein für Runge-Kutta lösbare Variante der Differentialgleichung gefunden. 
+Folgender Python Code löst die Differentialgleichung mit Hilfe der Library \textit{SciPy}.
+
+\begin{lstlisting}[language=Python]
+    def dgl(t, y):
+        '''The differential equation to solve.'''
+        r_x = y[0]
+        r_y = y[1]
+        v_x = y[2]
+        v_y = y[3]
+        p0 = v_x
+        p1 = v_y
+        p2 = -k/m * np.sqrt(v_x**2 + v_y**2) * v_x
+        p3 = -k/m * np.sqrt(v_x**2 + v_y**2) * v_y - g
+        return [p0, p1, p2, p3]
+    
+    def runge_kutta(t):
+        '''Runs Runge Kutta to find position and speed at time t.'''
+        rk = sp.solve_ivp(fun=dgl, t_span = (0,t), 
+        y0 = [r0x, r0y, v0x, v0y], method='RK45', vectorized = True)
+        assert rk.status == 0
+        time_at_end     = rk.t[-1]
+        position_at_end = rk.y[0:2, -1]
+        speed_at_end    = rk.y[2:4, -1]
+        return time_at_end, position_at_end, speed_at_end
+    \end{lstlisting}
+
+    Die Bodenstation, die zu komplexen Kalkulationen in der Lage ist, führt also in einem regelmässigen Zeitintervall die Funktion \lstinline[language=Python]{runge_kutta(t)} auf dem Differentialgleichungssystem aus und erhält so die Position und die Geschwindigkeit zu einem bestimmten Zeitpunkt.
