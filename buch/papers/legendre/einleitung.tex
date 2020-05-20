@@ -15,15 +15,21 @@ P^{m}_{l}(x)
 * \binom{l}{m} \binom{\frac{l+k-1}{2}}{l}
 \label{legendre:geschlosseneform}
 \end{equation}
-Von den Rekursionsbeziehungen gibt es eine ganze Liste voll, doch leider sind nicht alle davon numerisch stabile Formeln.
+Von den Rekursionsbeziehungen gibt es eine ganze Liste voll und es ist gut möglich, dass nicht alle davon numerisch stabile Formeln sind.
 Es ist daher möglich, dass bei einer falschen Wahl einer solchen Rekursionsbeziehung numerische Probleme auftreten können, die zu völlig falschen Resultaten führen.
 Dass ein solches numerisches Problem auftreten kann, wird leider oft vergessen.
 Zusätzlich ist es eine anspruchsvolle Aufgabe, solche numerischen Instabilitäten vorzeitig zu erkennen.
 Aus diesen Gründen ist es nicht verwunderlich, dass sogar namhafte Bibliotheken numerisch instabile Implementationen enthalten.
-So ist beispielsweise die Implementation der Legendrepolynome auf Wolfram Alpha \cite{legendre:wolfram-alpha} numerisch nicht stabil, wie gut in der Abbildung \cmt{Referenz Abbildung Wolfram Alpha} zu sehen ist.
+So ist beispielsweise die Implementation der Legendrepolynome auf Wolfram Alpha \cite{legendre:wolfram-alpha} numerisch nicht stabil, wie gut in der Abbildung \ref{legendre:fig:wolframalpha} zu sehen ist.
 Aus diesen Gründen befasst sich dieses Kapitel mit der Stabilität oder eben Instabilität der Rekursionsbeziehungen für zugeordnete Legendrepolynome.
 Es wird dabei untersucht, wie numerisch instabile Rekursionsbeziehungen erkannt werden können und wieso diese instabil sind.
-\cmt{Abbildung Wolfram Alpha}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.9\linewidth]{papers/legendre/plots/wolframalpha}
+\caption{Von Wolram Alpha \cite{legendre:wolfram-alpha} generierter Plot des Legendrepolynoms mit Grad 50 und Ordnung 3. Deutliche numerische Instabilitäten nahe den Randbereichen.}
+\label{legendre:fig:wolframalpha}
+\end{figure}
 
 % Unterkapitel Beispiel
 %\subsection{Titel Unterkapitel
