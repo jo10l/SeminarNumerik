@@ -9,7 +9,7 @@
 \subsection{Bedeutung $l$- und $m$-Richtung
 \label{legendre:subsection:lmrichtung}}
 Wie schon im vorherigen Abschnitt (\ref{legendre:section:problemstellung}) angesprochen, gibt es zwei Parameter, $l$ für den Grad und $m$ für die Ordnung.
-Mit den Bedingungen für die beiden Parameter ($l>=0$ und $m=0, \ldots , l$) ergibt sich eine bestimmte Struktur von möglichen zugeordneten Legendrepolynomen.
+Mit den Bedingungen für die beiden Parameter ($l\geq 0$ und $m=0, \ldots , l$) ergibt sich eine bestimmte Struktur von möglichen zugeordneten Legendrepolynomen.
 Diese Struktur ist in Abbildung \ref{legendre:fig:struktur} dargestellt.
 % Plot Legendrepolynome Struktur
 \begin{figure}[!h]
@@ -25,8 +25,8 @@ Während die Rekursion mittels Gleichung \eqref{legendre:recurrence-l} in $l$-Ri
 \label{legendre:subsection:anfangswerte}}
 Jede Rekursionsbeziehung braucht seine Anfangswerte.
 So werden auch für die beiden Rekursionsformeln \eqref{legendre:recurrence-l} und \eqref{legendre:recurrence-m} je zwei Anfangswerte benötigt.
-Für die Rekursionsformel in $l$-Richtung \eqref{legendre:recurrence-l} werden die Anfangswerte \eqref{legendre:pll} und \eqref{legendre:pllp1} benötigt.
-Für die Rekursionsformel in $m$-Richtung \eqref{legendre:recurrence-m} wird mittels $P^{l}_{l}$ aus der Gleichung \eqref{legendre:pll} die beiden Anfangswerte \eqref{legendre:pllp1} und \eqref{legendre:plp1lp1} berechnet.
+Für die Rekursionsformel in $l$-Richtung \eqref{legendre:recurrence-l} werden die Anfangswerte $P^{l}_{l}$ \eqref{legendre:pll} und $P^{l}_{l+1}$ \eqref{legendre:pllp1} benötigt.
+Für die Rekursionsformel in $m$-Richtung \eqref{legendre:recurrence-m} wird mittels $P^{l}_{l}$ aus der Gleichung \eqref{legendre:pll} die beiden Anfangswerte $P^{l}_{l+1}$ \eqref{legendre:pllp1} und $P^{l+1}_{l+1}$ \eqref{legendre:plp1lp1} berechnet.
 Bei der Gleichung \eqref{legendre:pll} für den Anfangswert $P^{l}_{l}$ gilt es zu beachten, dass $!!$ für die Doppelfakultät steht und nicht für die Fakultät der Fakultät.
 % Anfangswert P^{l}_{l}
 \begin{equation}
@@ -69,21 +69,21 @@ Jedoch ist es so, dass die zugeordneten Legendrepolynome für $m>0$ an den Inter
 Das heisst, dass die Differenz in der eckigen Klammer nahe den Intervallsgrenzen in etwa Null ergibt.
 Der Term $\sqrt{1-x^2}$, welcher von Auslöschung betroffen ist, wird nahen den Intervallsgrenzen sehr klein und bläst somit den Term $2mxP^{m}_{l}(x)$ auf, welcher dadurch selbst fehlerhaft wird.
 Die Differenz in der eckigen Klammer unterliegt somit einer quasi-Auslöschung.
-In der eckigen Klammer werden somit zwei fast gleich grosse Terme voneinander Subtrahiert, wobei der erste Term durch die Auslöschung und das Aufblasen durch $\sqrt{1-x^2}$ selbst stark fehleranfällig ist.
+In der eckigen Klammer werden zwei fast gleich grosse Terme voneinander Subtrahiert, wobei der erste Term durch die Auslöschung und das Aufblasen durch $\sqrt{1-x^2}$ selbst stark fehleranfällig ist.
 
-Es stellt sich nun die Frage, warum diese numerische Instabilität nicht im Graphen \ref{legendre:fig:plot-m} ersichtlich ist wie beispielsweise in dem Graphen \ref{legendre:fig:wolframalpha} den Wolfram Alpha erstellt.
-Die Rekursionsgleichung enthält noch den Term $\frac{1}{(l+m)(l-m+1)}$, welcher einen positiven Einfluss bezüglich numerischer Fehler hat.
+Es stellt sich nun die Frage, warum diese numerische Instabilität nicht im Graphen \ref{legendre:fig:plot-m} ersichtlich ist, wie beispielsweise in dem Graphen \ref{legendre:fig:wolframalpha} den Wolfram Alpha erstellt.
+Eine Antwort darauf liefert der Term $\frac{1}{(l+m)(l-m+1)}$, welcher einen positiven Einfluss bezüglich numerischer Fehler hat.
 Dadurch, dass die Rekursionsgleichung zwei Anfangswerte hat, ist $l\geq m+2$ gegeben.
 Damit lässt sich der Nenner dieses Terms auf $\geq 6$ abschätzen, was wiederum bedeutet, dass $\frac{1}{(l+m)(l-m+1)} \leq \frac{1}{6}$ ist.
-Dadurch verkleinert sich der Wert der Differenz in der eckigen Klammer und ein Teil des Fehlers wird somit eliminiert.
-Sprich, einige fehlerhafte stellen hinter dem Komma verschwinden somit.
+Dadurch verkleinert sich der Wert der Differenz in der eckigen Klammer der Rekursionsgleichung und ein Teil des Fehlers wird somit eliminiert.
+Sprich, einige fehlerhafte stellen hinter dem Komma verschwinden.
 Diese Rekursionsgleichung bleibt jedoch fehleranfällig nahe den Intervallsgrenzen, falls numerische Fehler aus einer anderen Quelle einfliessen, wie beispielsweise fehlhafte oder ungenaue Anfangswerte.
 
 \subsection{Rekursionsformel in $l$-Richtung
 \label{legendre:subsection:lrichtung}}
 Für die Abbildung \ref{legendre:fig:plot-l} wurde ebenfalls das zugeordnete Legendrepolynom mit Grad 50 und Ordnung 3 berechnet, jedoch mit der Rekursionbeziehung \eqref{legendre:recurrence-l} in $l$-Richtung.
 Die Anfangswerte $P^{l}_{l}$ \eqref{legendre:pll} und $P^{l}_{l+1}$ \eqref{legendre:pllp1} zeigen, dass die Rekursion in positiver $l$-Richtung verläuft.
-Daher muss bei der Gleichung \eqref{legendre:recurrence-l} nur noch der Faktor $2mx$ auf die rechte Seite genommen werden.
+Daher muss bei der Gleichung \eqref{legendre:recurrence-l} nur noch der Faktor $(l-m+1)$ auf die rechte Seite gebracht werden.
 Dies führt zur neuen Rekursionsformel in $l$-Richtung \eqref{legendre:recurrence-l-neu}.
 % umgeformte Rekursionsformel in l-Richtung
 \begin{equation}
@@ -97,7 +97,7 @@ Jedoch gilt es noch die Faktoren vor den Legendrepolynomen zu untersuchen.
 Diese beiden Faktoren sind $\frac{(2l+1)}{(l-m+1)}$ und $\frac{(l+1)}{(l-m+1)}$.
 Gegeben durch die Anfangswerte ist mit dem gleichen Argument wie im vorherigen Abschnitt \ref{legendre:subsection:mrichtung} wieder gegeben, dass $l\geq m+2$ ist.
 Daraus lässt sich ableiten, dass $\frac{(2l+1)}{(l-m+1)}\geq 1$ für $m>0$ ist und dass $\frac{5}{3}\leq \frac{(l+1)}{(l-m+1)}<2$.
-Da die beiden Faktoren $>1$ sind bedeutet dies, dass die Fehler in den Polynomen $P^{m}_{l}$ und $P^{m}_{l-1}$ vergrössert werden.
+Da die beiden Faktoren jeweils $\geq 1$ sind, bedeutet dies, dass die Fehler in den Polynomen $P^{m}_{l}$ und $P^{m}_{l-1}$ vergrössert werden.
 Daraus lässt sich schliessen, dass diese Rekursionsbeziehung fehleranfällig ist, falls numerische Fehler aus einer anderen Quelle einfliessen, wie beispielsweise fehlerhafte oder ungenaue Anfangswerte.
 
 \subsection{Welche Rekursionsformel soll nun verwendet werden?
@@ -115,6 +115,6 @@ Die Implementation der GNU Scientific Library wird allgemein als numerisch stabi
 \begin{figure}[!h]
 \centering
 \includegraphics[width=1.0\linewidth]{papers/legendre/plots/plot_diff_l_m}
-\caption{Differenz zweier Legendrepolynome mit Grad 50 und Ordnung 3, einmal berechnet mit der Rekursionsformel in \texorpdfstring{$l$}{l}-Richtung und einmal berechnet mit der Rekursionsformel in \texorpdfstring{$m$}{m}-Richtung.}
+\caption{Differenz zweier zugeordneten Legendrepolynome mit Grad 50 und Ordnung 3, einmal berechnet mit der Rekursionsformel in \texorpdfstring{$l$}{l}-Richtung und einmal berechnet mit der Rekursionsformel in \texorpdfstring{$m$}{m}-Richtung.}
 \label{legendre:fig:plot-diff}
 \end{figure}
