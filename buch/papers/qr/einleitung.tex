@@ -11,7 +11,7 @@ A=QR.
 $Q$ ist dabei wieder ein $l\times n$-Matrix mit, diesmal aber orthonormierten Spalten.
 $R$ ist eine ober Dreiecksmatrix der Grösse $n\times n$.
 
-\subsection{Anwedungsbeispiel Least-Squares}
+\subsection{Anwedungsbeispiel Least-Squares\label{qr:section:ls}}
 Die $QR$-Zerlegung kann unter anderem beim lösen von Gleichungssystemen angewendet werden.
 Ein lineares Gleichungssystem
 \begin{equation}
@@ -41,7 +41,7 @@ Geht man nun aber den Umweg über die $QR$-Zerlegung, bzw. $A=QR$ kann die Gleic
 R^TR\hat{x}=R^TQ^Tb,
 \end{equation*}
 wobei $Q^TQ=E$, da Q nach Definition orthogonal ist.
-De Determinante von $R^T$ ist
+Die Determinante von $R^T$ ist
 \begin{equation*}
 \det(R^T)=\det(R)=\det
 \begin{pmatrix}
@@ -51,7 +51,7 @@ r_{11}&r_{12}&\cdots &r_{1n}\\
 0&0&\cdots&r_{nn}
 \end{pmatrix}=\prod_{k=1}^{n}r_{kk}.
 \end{equation*}
-Die Determinante von $R^T$ verschwindet nur, wenn eines der Diagonalelemente verschwindet.
+Diese verschwindet nur, wenn eines der Diagonalelemente verschwindet.
 Dies würde aber bedeuten, dass die Spalten von $Q$ und somit auch $A$ linear abhängig voneinander sind, womit wiederum die Vorhaussetzungen für die $QR$-Zerlegung nicht gegeben wären.
 $R^T$ ist somit immer regulär und kann invertiert werden, was eine weitere Vereinfachung ermöglicht:
 \begin{equation}

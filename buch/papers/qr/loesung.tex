@@ -28,13 +28,13 @@ Das Produkt aller inversen Drehmatrizen ist dann eine orthonormierte Matrix $Q$,
 Das wird nun an dieser Stelle im Detail betrachtet.
 Zuerst wird mit Givens-Rotationen ($D_{\alpha_k, i, j}$ der Grösse $l\times l$) die Matrix $R$ berechnet: 
 \begin{equation*}
-R = D_{\alpha_k,l-1,n-1}...D_{\alpha_2,1,3}D_{\alpha_1,1,2}A.		
+R = D_{\alpha_k,n-1,l}...D_{\alpha_2,1,3}D_{\alpha_1,1,2}A.		
 \end{equation*}
 Auf die Matrix $Q$ kommt man dann mit
 \begin{multline*}
-Q=AR^{-1}=A(D_{\alpha_k,l-1,n-1}...D_{\alpha_2,1,3}D_{\alpha_1,1,2}A)^{-1}\\=
-\underbrace{AA^{-1}}_{E}D_{\alpha_1,1,2}^{-1}D_{\alpha_2,1,3}^{-1}... D_{\alpha_k, l-1,n-1}^{-1}=
-D_{\alpha_1,1,2}^{T}D_{\alpha_2,1,3}^{T}...D_{\alpha_k, l-1,n-1}^{T},
+Q=AR^{-1}=A(D_{\alpha_k,n-1,l}...D_{\alpha_2,1,3}D_{\alpha_1,1,2}A)^{-1}\\=
+\underbrace{AA^{-1}}_{E}D_{\alpha_1,1,2}^{-1}D_{\alpha_2,1,3}^{-1}... D_{\alpha_k, n-1,l}^{-1}=
+D_{\alpha_1,1,2}^{T}D_{\alpha_2,1,3}^{T}...D_{\alpha_k, n-1,l}^{T},
 \end{multline*}
 wobei im letzten Schritt ausgenutzt wurde, dass Drehmatrizen orthonormal sind.
 Die Matrizen $Q$ und $R$ sind beide von der Grösse $l\times l$.
@@ -42,7 +42,7 @@ Für den Spezialfall $l=n$ können sie so stehen gelassen werden.
 Für alle Fälle wo A aber die Grösse $l\times n$ hat, müssen die Dimensionen noch angepasst werden. um den Forderungen der $QR$-Zerlegung zu genügen.
 In der Matrix $R$ stehen ab der n. Zeile nur noch Nullen.
 Diese Zeilen können somit weggelassen werden und folglich alle Einträge ab der n. Spalte von Q.
-als Matrizen ausgeschrieben:
+Als Matrizen ausgeschrieben:
 \begin{multline*}
 A=QR=
 \begin{pmatrix}
