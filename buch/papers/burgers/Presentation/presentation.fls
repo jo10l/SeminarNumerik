@@ -1,0 +1,914 @@
+PWD C:\Users\m2schmid\Google Drive\HSR-Elektrotechnik\Frühlingssemester 2020\MatSem\SeminarNumerik\buch\papers\burgers\Presentation
+INPUT C:\Users\m2schmid\AppData\Local\MiKTeX\2.9\miktex\data\le\pdftex\pdflatex.fmt
+INPUT presentation.tex
+OUTPUT presentation.log
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamer.cls
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamer.cls
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasemodes.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasemodes.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasedecode.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasedecode.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\iftex\ifpdf.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\iftex\ifpdf.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\iftex\iftex.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\iftex\iftex.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseoptions.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseoptions.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\iftex\ifvtex.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\iftex\ifvtex.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.cfg
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.cfg
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size11.clo
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size11.clo
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgfcore.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgfcore.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\systemlayer\pgfsys.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\systemlayer\pgfsys.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pgfrcs.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pgfrcs.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common-lists.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-latex.def
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everyshi.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everyshi.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgfrcs.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgfrcs.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\pgf.revision.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\pgf.revision.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeys.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeysfiltered.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgf.cfg
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys-pdftex.def
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys-pdftex.def
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys-common-pdf.def
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsysprotocol.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsysprotocol.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcore.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcore.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmathcalc.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmathutil.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmathparser.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.basic.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.trigonometric.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.random.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.comparison.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.base.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.round.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.misc.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.integerarithmetics.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfloat.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfint.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepoints.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathconstruct.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathusage.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorescopes.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoregraphicstate.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoretransformations.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorequick.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreobjects.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepathprocessing.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorearrows.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreshade.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreimage.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreexternal.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorelayers.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoretransparency.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepatterns.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorerdf.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\xxcolor.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\xxcolor.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\atbegshi\atbegshi.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\atbegshi\atbegshi.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\infwarerr\infwarerr.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\infwarerr\infwarerr.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ltxcmds\ltxcmds.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ltxcmds\ltxcmds.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdftexcmds\pdftexcmds.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdftexcmds\pdftexcmds.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\kvsetkeys\kvsetkeys.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\kvsetkeys\kvsetkeys.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\kvdefinekeys\kvdefinekeys.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\kvdefinekeys\kvdefinekeys.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pdfescape\pdfescape.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pdfescape\pdfescape.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hycolor\hycolor.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hycolor\hycolor.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\letltxmacro\letltxmacro.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\letltxmacro\letltxmacro.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\auxhook\auxhook.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\auxhook\auxhook.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\kvoptions\kvoptions.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\kvoptions\kvoptions.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\intcalc\intcalc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\intcalc\intcalc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\etexcmds\etexcmds.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\etexcmds\etexcmds.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\bitset\bitset.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\bitset\bitset.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\bigintcalc\bigintcalc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\bigintcalc\bigintcalc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\atveryend\atveryend.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\atveryend\atveryend.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\rerunfilecheck\rerunfilecheck.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\rerunfilecheck\rerunfilecheck.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\uniquecounter\uniquecounter.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\uniquecounter\uniquecounter.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaserequires.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaserequires.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasecompatibility.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasecompatibility.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasefont.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasefont.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\sansmathaccent\sansmathaccent.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\sansmathaccent\sansmathaccent.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\sansmathaccent\sansmathaccent.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrlfile.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrlfile.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrlfile.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasetranslator.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasetranslator.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translator\translator.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translator\translator.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasemisc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasemisc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasetwoscreens.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasetwoscreens.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseoverlay.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseoverlay.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasetitle.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasetitle.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasesection.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasesection.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseframe.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseframe.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseverbatim.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseverbatim.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseframesize.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseframesize.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseframecomponents.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseframecomponents.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasecolor.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasecolor.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasenotes.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasenotes.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasetoc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasetoc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasetemplates.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasetemplates.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseauxtemplates.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseauxtemplates.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseboxes.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaseboxes.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaselocalstructure.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbaselocalstructure.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\enumerate.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\enumerate.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasenavigation.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasenavigation.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasetheorems.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasetheorems.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\amsthm.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\amsthm.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasethemes.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerbasethemes.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmss10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerthemedefault.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerthemedefault.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerfontthemedefault.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerfontthemedefault.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamercolorthemedefault.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamercolorthemedefault.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerinnerthemedefault.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerinnerthemedefault.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericonbook.pdf
+OUTPUT presentation.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericonbook.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericonbook.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericonbook.20.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericonbook.20.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericonbook.20.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericonarticle.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericonarticle.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericonarticle.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericonarticle.20.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericonarticle.20.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericonarticle.20.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericononline.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericononline.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericononline.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericononline.20.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericononline.20.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamericononline.20.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerouterthemedefault.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerouterthemedefault.sty
+INPUT common.tex
+INPUT common.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\fontenc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\fontenc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\jknappen\ec\ecss1095.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\epic\epic.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\epic\epic.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\array.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\array.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\lmodern.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\lmodern.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduleshapes.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduleplot.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pgffor.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pgffor.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pgfkeys.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pgfkeys.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeys.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgfkeys.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\math\pgfmath.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\math\pgfmath.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgffor.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\pgffor.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmath.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryplothandlers.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryplothandlers.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pgfmodulematrix.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytopaths.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytopaths.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgfplots\pgfplots.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgfplots\pgfplots.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\pgfplots.revision.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\pgfplots.revision.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsys-luatex.def
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\pgfplots.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\pgfplotscore.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\sys\pgfplotssysgeneric.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\libs\pgfplotslibrary.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\oldpgfcompatib\pgfplotsoldpgfsupp_loader.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryfpu.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryfpu.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryfpu.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\util\pgfplotsutil.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\liststructure\pgfplotsliststructure.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\liststructure\pgfplotsliststructureext.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\liststructure\pgfplotsarray.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\liststructure\pgfplotsmatrix.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\numtable\pgfplotstableshared.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\liststructure\pgfplotsdeque.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\util\pgfplotsbinary.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\util\pgfplotsbinary.data.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\util\pgfplotsutil.verb.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\libs\pgflibrarypgfplots.surfshading.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\sys\pgflibrarypgfplots.surfshading.pgfsys-pdftex.def
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\sys\pgflibrarypgfplots.surfshading.pgfsys-pdftex.def
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\util\pgfplotscolormap.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\util\pgfplotscolor.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\pgfplotsstackedplots.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\pgfplotsplothandlers.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\pgfplotsmeshplothandler.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\pgfplotsmeshplotimage.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\pgfplots.scaling.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\pgfplotscoordprocessing.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\pgfplots.errorbars.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\pgfplots.markers.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\pgfplotsticks.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgfplots\pgfplots.paths.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarydecorations.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarydecorations.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pgfmoduledecorations.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarydecorations.pathmorphing.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarydecorations.pathmorphing.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\decorations\pgflibrarydecorations.pathmorphing.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\decorations\pgflibrarydecorations.pathmorphing.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarydecorations.pathreplacing.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarydecorations.pathreplacing.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\decorations\pgflibrarydecorations.pathreplacing.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\decorations\pgflibrarydecorations.pathreplacing.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryplotmarks.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryplotmarks.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryplotmarks.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\pgflibraryplotmarks.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmisc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmisc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.cfg
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.cfg
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\svg\svg.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\svg\svg.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrbase.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrbase.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\shellesc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\shellesc.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\trimspaces\trimspaces.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\trimspaces\trimspaces.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\transparent\transparent.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\transparent\transparent.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\media9\media9.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\media9\media9.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3kernel\expl3.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3kernel\expl3.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3backend\l3backend-pdfmode.def
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3backend\l3backend-pdfmode.def
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3packages\l3keys2e\l3keys2e.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3packages\l3keys2e\l3keys2e.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3packages\xparse\xparse.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3packages\xparse\xparse.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\media9\pdfbase.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\media9\pdfbase.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ocgx2\ocgbase.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ocgx2\ocgbase.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\parskip\parskip.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\parskip\parskip.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryshapes.geometric.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryshapes.geometric.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\shapes\pgflibraryshapes.geometric.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\shapes\pgflibraryshapes.geometric.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerthemeFrankfurt.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerthemeFrankfurt.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerouterthemesmoothbars.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerouterthemesmoothbars.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerinnerthemerounded.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamerinnerthemerounded.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamercolorthemeorchid.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamercolorthemeorchid.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamercolorthemewhale.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\beamer\beamercolorthemewhale.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarybackgrounds.code.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarybackgrounds.code.tex
+INPUT presentation.aux
+INPUT presentation.aux
+OUTPUT presentation.aux
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmss.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmss.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmss10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\mkii\supp-pdf.mkii
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\mkii\supp-pdf.mkii
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\epstopdf-pkg\epstopdf-base.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\epstopdf-pkg\epstopdf-base.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\refcount\refcount.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\refcount\refcount.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\gettitlestring\gettitlestring.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\generic\gettitlestring\gettitlestring.sty
+INPUT presentation.out
+INPUT presentation.out
+INPUT presentation.out
+INPUT presentation.out
+INPUT .\presentation.out
+INPUT .\presentation.out
+OUTPUT presentation.out
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translator\translator-basic-dictionary-English.dict
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translator\translator-basic-dictionary-English.dict
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translator\translator-bibliography-dictionary-English.dict
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translator\translator-bibliography-dictionary-English.dict
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translator\translator-environment-dictionary-English.dict
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translator\translator-environment-dictionary-English.dict
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translator\translator-months-dictionary-English.dict
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translator\translator-months-dictionary-English.dict
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translator\translator-numbers-dictionary-English.dict
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translator\translator-numbers-dictionary-English.dict
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translator\translator-theorem-dictionary-English.dict
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\translator\translator-theorem-dictionary-English.dict
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmss8.tfm
+INPUT presentation.nav
+INPUT presentation.nav
+INPUT slides.tex
+INPUT slides.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmss12.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmss8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmss8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map
+INPUT slides\intro.tex
+INPUT slides\intro.tex
+INPUT slides\burgers.tex
+INPUT slides\burgers.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\ot1lmss.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\ot1lmss.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omllmm.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omllmm.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi6.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmsy.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmsy.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy6.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omxlmex.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omxlmex.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmex10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso8.tfm
+INPUT ..\BurgersEquation\images\Linear_Convection0.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection0.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection0.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection0.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection1.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection1.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection1.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection1.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection2.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection2.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection2.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection2.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection3.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection3.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection3.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection3.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection4.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection4.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection4.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection4.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection5.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection5.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection5.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection5.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection6.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection6.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection6.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection6.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection7.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection7.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection7.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection7.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection8.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection8.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection8.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection8.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection9.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection9.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection9.pdf
+INPUT ..\BurgersEquation\images\Linear_Convection9.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmss10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi7.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi5.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy7.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy5.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam5.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm5.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmss8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmss8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso8.tfm
+INPUT ..\BurgersEquation\images\Implicit_top.pdf
+INPUT ..\BurgersEquation\images\Implicit_top.pdf
+INPUT ..\BurgersEquation\images\Implicit_top.pdf
+INPUT ..\BurgersEquation\images\Implicit_top.pdf
+INPUT ..\BurgersEquation\images\Implicit_front.pdf
+INPUT ..\BurgersEquation\images\Implicit_front.pdf
+INPUT ..\BurgersEquation\images\Implicit_front.pdf
+INPUT ..\BurgersEquation\images\Implicit_front.pdf
+INPUT slides\nwp.tex
+INPUT slides\nwp.tex
+INPUT slides\images\frz.jpg
+INPUT .\slides\images\frz.jpg
+INPUT .\slides\images\frz.jpg
+INPUT .\slides\images\frz.jpg
+INPUT .\slides\images\frz.jpg
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmtt8.tfm
+INPUT slides\not.tex
+INPUT slides\not.tex
+INPUT ..\BurgersEquation\tikz\Gitter\gitter.pdf
+INPUT ..\BurgersEquation\tikz\Gitter\gitter.pdf
+INPUT ..\BurgersEquation\tikz\Gitter\gitter.pdf
+INPUT ..\BurgersEquation\tikz\Gitter\gitter.pdf
+INPUT slides\explicit.tex
+INPUT slides\explicit.tex
+INPUT ..\BurgersEquation\tikz\linear1\linear1.pdf
+INPUT ..\BurgersEquation\tikz\linear1\linear1.pdf
+INPUT ..\BurgersEquation\tikz\linear1\linear1.pdf
+INPUT ..\BurgersEquation\tikz\linear1\linear1.pdf
+INPUT ..\BurgersEquation\tikz\linear2\linear2.pdf
+INPUT ..\BurgersEquation\tikz\linear2\linear2.pdf
+INPUT ..\BurgersEquation\tikz\linear2\linear2.pdf
+INPUT ..\BurgersEquation\tikz\linear2\linear2.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmss17.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss17.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss17.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss17.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi12.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi12.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi12.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmss17.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmss17.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso17.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso17.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso17.tfm
+INPUT ..\BurgersEquation\images\multi_stable.pdf
+INPUT ..\BurgersEquation\images\multi_stable.pdf
+INPUT ..\BurgersEquation\images\multi_stable.pdf
+INPUT ..\BurgersEquation\images\multi_stable.pdf
+INPUT ..\BurgersEquation\images\multi_unstable.pdf
+INPUT ..\BurgersEquation\images\multi_unstable.pdf
+INPUT ..\BurgersEquation\images\multi_unstable.pdf
+INPUT ..\BurgersEquation\images\multi_unstable.pdf
+INPUT ..\BurgersEquation\images\expl0.pdf
+INPUT ..\BurgersEquation\images\expl0.pdf
+INPUT ..\BurgersEquation\images\expl0.pdf
+INPUT ..\BurgersEquation\images\expl0.pdf
+INPUT ..\BurgersEquation\images\expl1.pdf
+INPUT ..\BurgersEquation\images\expl1.pdf
+INPUT ..\BurgersEquation\images\expl1.pdf
+INPUT ..\BurgersEquation\images\expl1.pdf
+INPUT ..\BurgersEquation\images\expl2.pdf
+INPUT ..\BurgersEquation\images\expl2.pdf
+INPUT ..\BurgersEquation\images\expl2.pdf
+INPUT ..\BurgersEquation\images\expl2.pdf
+INPUT ..\BurgersEquation\images\expl3.pdf
+INPUT ..\BurgersEquation\images\expl3.pdf
+INPUT ..\BurgersEquation\images\expl3.pdf
+INPUT ..\BurgersEquation\images\expl3.pdf
+INPUT ..\BurgersEquation\images\expl4.pdf
+INPUT ..\BurgersEquation\images\expl4.pdf
+INPUT ..\BurgersEquation\images\expl4.pdf
+INPUT ..\BurgersEquation\images\expl4.pdf
+INPUT ..\BurgersEquation\images\expl5.pdf
+INPUT ..\BurgersEquation\images\expl5.pdf
+INPUT ..\BurgersEquation\images\expl5.pdf
+INPUT ..\BurgersEquation\images\expl5.pdf
+INPUT ..\BurgersEquation\images\expl6.pdf
+INPUT ..\BurgersEquation\images\expl6.pdf
+INPUT ..\BurgersEquation\images\expl6.pdf
+INPUT ..\BurgersEquation\images\expl6.pdf
+INPUT ..\BurgersEquation\images\expl7.pdf
+INPUT ..\BurgersEquation\images\expl7.pdf
+INPUT ..\BurgersEquation\images\expl7.pdf
+INPUT ..\BurgersEquation\images\expl7.pdf
+INPUT ..\BurgersEquation\images\expl8.pdf
+INPUT ..\BurgersEquation\images\expl8.pdf
+INPUT ..\BurgersEquation\images\expl8.pdf
+INPUT ..\BurgersEquation\images\expl8.pdf
+INPUT ..\BurgersEquation\images\expl9.pdf
+INPUT ..\BurgersEquation\images\expl9.pdf
+INPUT ..\BurgersEquation\images\expl9.pdf
+INPUT ..\BurgersEquation\images\expl9.pdf
+INPUT ..\BurgersEquation\images\expl10.pdf
+INPUT ..\BurgersEquation\images\expl10.pdf
+INPUT ..\BurgersEquation\images\expl10.pdf
+INPUT ..\BurgersEquation\images\expl10.pdf
+INPUT ..\BurgersEquation\images\expl11.pdf
+INPUT ..\BurgersEquation\images\expl11.pdf
+INPUT ..\BurgersEquation\images\expl11.pdf
+INPUT ..\BurgersEquation\images\expl11.pdf
+INPUT ..\BurgersEquation\images\expl12.pdf
+INPUT ..\BurgersEquation\images\expl12.pdf
+INPUT ..\BurgersEquation\images\expl12.pdf
+INPUT ..\BurgersEquation\images\expl12.pdf
+INPUT ..\BurgersEquation\images\expl13.pdf
+INPUT ..\BurgersEquation\images\expl13.pdf
+INPUT ..\BurgersEquation\images\expl13.pdf
+INPUT ..\BurgersEquation\images\expl13.pdf
+INPUT ..\BurgersEquation\images\expl14.pdf
+INPUT ..\BurgersEquation\images\expl14.pdf
+INPUT ..\BurgersEquation\images\expl14.pdf
+INPUT ..\BurgersEquation\images\expl14.pdf
+INPUT ..\BurgersEquation\images\expl15.pdf
+INPUT ..\BurgersEquation\images\expl15.pdf
+INPUT ..\BurgersEquation\images\expl15.pdf
+INPUT ..\BurgersEquation\images\expl15.pdf
+INPUT ..\BurgersEquation\images\expl16.pdf
+INPUT ..\BurgersEquation\images\expl16.pdf
+INPUT ..\BurgersEquation\images\expl16.pdf
+INPUT ..\BurgersEquation\images\expl16.pdf
+INPUT ..\BurgersEquation\images\expl17.pdf
+INPUT ..\BurgersEquation\images\expl17.pdf
+INPUT ..\BurgersEquation\images\expl17.pdf
+INPUT ..\BurgersEquation\images\expl17.pdf
+INPUT ..\BurgersEquation\images\expl18.pdf
+INPUT ..\BurgersEquation\images\expl18.pdf
+INPUT ..\BurgersEquation\images\expl18.pdf
+INPUT ..\BurgersEquation\images\expl18.pdf
+INPUT ..\BurgersEquation\images\expl19.pdf
+INPUT ..\BurgersEquation\images\expl19.pdf
+INPUT ..\BurgersEquation\images\expl19.pdf
+INPUT ..\BurgersEquation\images\expl19.pdf
+INPUT ..\BurgersEquation\tikz\linear3\linear3.pdf
+INPUT ..\BurgersEquation\tikz\linear3\linear3.pdf
+INPUT ..\BurgersEquation\tikz\linear3\linear3.pdf
+INPUT ..\BurgersEquation\tikz\linear3\linear3.pdf
+INPUT ..\BurgersEquation\tikz\linear4\linear4.pdf
+INPUT ..\BurgersEquation\tikz\linear4\linear4.pdf
+INPUT ..\BurgersEquation\tikz\linear4\linear4.pdf
+INPUT ..\BurgersEquation\tikz\linear4\linear4.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin40.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin40.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin40.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin40.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin41.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin41.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin41.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin41.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin42.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin42.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin42.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin42.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin43.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin43.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin43.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin43.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin44.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin44.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin44.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin44.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin45.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin45.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin45.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin45.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin46.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin46.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin46.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin46.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin47.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin47.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin47.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin47.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin48.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin48.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin48.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin48.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin49.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin49.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin49.pdf
+INPUT ..\BurgersEquation\images\Lin3_Lin49.pdf
+INPUT ..\BurgersEquation\images\Leap_Frog_front.pdf
+INPUT ..\BurgersEquation\images\Leap_Frog_front.pdf
+INPUT ..\BurgersEquation\images\Leap_Frog_front.pdf
+INPUT ..\BurgersEquation\images\Leap_Frog_front.pdf
+INPUT ..\BurgersEquation\images\Leap_Frog_top.pdf
+INPUT ..\BurgersEquation\images\Leap_Frog_top.pdf
+INPUT ..\BurgersEquation\images\Leap_Frog_top.pdf
+INPUT ..\BurgersEquation\images\Leap_Frog_top.pdf
+INPUT slides\implicit.tex
+INPUT slides\implicit.tex
+INPUT ..\BurgersEquation\tikz\quadratic\quadratic.pdf
+INPUT ..\BurgersEquation\tikz\quadratic\quadratic.pdf
+INPUT ..\BurgersEquation\tikz\quadratic\quadratic.pdf
+INPUT ..\BurgersEquation\tikz\quadratic\quadratic.pdf
+INPUT ..\BurgersEquation\tikz\linear5\linear5.pdf
+INPUT ..\BurgersEquation\tikz\linear5\linear5.pdf
+INPUT ..\BurgersEquation\tikz\linear5\linear5.pdf
+INPUT ..\BurgersEquation\tikz\linear5\linear5.pdf
+INPUT ..\BurgersEquation\tikz\implicit\implicit.pdf
+INPUT ..\BurgersEquation\tikz\implicit\implicit.pdf
+INPUT ..\BurgersEquation\tikz\implicit\implicit.pdf
+INPUT ..\BurgersEquation\tikz\implicit\implicit.pdf
+INPUT ..\BurgersEquation\tex\implicit\algo_cropped.pdf
+INPUT ..\BurgersEquation\tex\implicit\algo_cropped.pdf
+INPUT ..\BurgersEquation\tex\implicit\algo_cropped.pdf
+INPUT ..\BurgersEquation\tex\implicit\algo_cropped.pdf
+INPUT ..\BurgersEquation\images\imp0.pdf
+INPUT ..\BurgersEquation\images\imp0.pdf
+INPUT ..\BurgersEquation\images\imp0.pdf
+INPUT ..\BurgersEquation\images\imp0.pdf
+INPUT ..\BurgersEquation\images\imp1.pdf
+INPUT ..\BurgersEquation\images\imp1.pdf
+INPUT ..\BurgersEquation\images\imp1.pdf
+INPUT ..\BurgersEquation\images\imp1.pdf
+INPUT ..\BurgersEquation\images\imp2.pdf
+INPUT ..\BurgersEquation\images\imp2.pdf
+INPUT ..\BurgersEquation\images\imp2.pdf
+INPUT ..\BurgersEquation\images\imp2.pdf
+INPUT ..\BurgersEquation\images\imp3.pdf
+INPUT ..\BurgersEquation\images\imp3.pdf
+INPUT ..\BurgersEquation\images\imp3.pdf
+INPUT ..\BurgersEquation\images\imp3.pdf
+INPUT ..\BurgersEquation\images\imp4.pdf
+INPUT ..\BurgersEquation\images\imp4.pdf
+INPUT ..\BurgersEquation\images\imp4.pdf
+INPUT ..\BurgersEquation\images\imp4.pdf
+INPUT ..\BurgersEquation\images\imp5.pdf
+INPUT ..\BurgersEquation\images\imp5.pdf
+INPUT ..\BurgersEquation\images\imp5.pdf
+INPUT ..\BurgersEquation\images\imp5.pdf
+INPUT ..\BurgersEquation\images\imp6.pdf
+INPUT ..\BurgersEquation\images\imp6.pdf
+INPUT ..\BurgersEquation\images\imp6.pdf
+INPUT ..\BurgersEquation\images\imp6.pdf
+INPUT ..\BurgersEquation\images\imp7.pdf
+INPUT ..\BurgersEquation\images\imp7.pdf
+INPUT ..\BurgersEquation\images\imp7.pdf
+INPUT ..\BurgersEquation\images\imp7.pdf
+INPUT ..\BurgersEquation\images\imp8.pdf
+INPUT ..\BurgersEquation\images\imp8.pdf
+INPUT ..\BurgersEquation\images\imp8.pdf
+INPUT ..\BurgersEquation\images\imp8.pdf
+INPUT ..\BurgersEquation\images\imp9.pdf
+INPUT ..\BurgersEquation\images\imp9.pdf
+INPUT ..\BurgersEquation\images\imp9.pdf
+INPUT ..\BurgersEquation\images\imp9.pdf
+INPUT ..\BurgersEquation\images\imp10.pdf
+INPUT ..\BurgersEquation\images\imp10.pdf
+INPUT ..\BurgersEquation\images\imp10.pdf
+INPUT ..\BurgersEquation\images\imp10.pdf
+INPUT ..\BurgersEquation\images\imp11.pdf
+INPUT ..\BurgersEquation\images\imp11.pdf
+INPUT ..\BurgersEquation\images\imp11.pdf
+INPUT ..\BurgersEquation\images\imp11.pdf
+INPUT ..\BurgersEquation\images\imp12.pdf
+INPUT ..\BurgersEquation\images\imp12.pdf
+INPUT ..\BurgersEquation\images\imp12.pdf
+INPUT ..\BurgersEquation\images\imp12.pdf
+INPUT ..\BurgersEquation\images\imp13.pdf
+INPUT ..\BurgersEquation\images\imp13.pdf
+INPUT ..\BurgersEquation\images\imp13.pdf
+INPUT ..\BurgersEquation\images\imp13.pdf
+INPUT ..\BurgersEquation\images\imp14.pdf
+INPUT ..\BurgersEquation\images\imp14.pdf
+INPUT ..\BurgersEquation\images\imp14.pdf
+INPUT ..\BurgersEquation\images\imp14.pdf
+INPUT ..\BurgersEquation\images\imp15.pdf
+INPUT ..\BurgersEquation\images\imp15.pdf
+INPUT ..\BurgersEquation\images\imp15.pdf
+INPUT ..\BurgersEquation\images\imp15.pdf
+INPUT ..\BurgersEquation\images\imp16.pdf
+INPUT ..\BurgersEquation\images\imp16.pdf
+INPUT ..\BurgersEquation\images\imp16.pdf
+INPUT ..\BurgersEquation\images\imp16.pdf
+INPUT ..\BurgersEquation\images\imp17.pdf
+INPUT ..\BurgersEquation\images\imp17.pdf
+INPUT ..\BurgersEquation\images\imp17.pdf
+INPUT ..\BurgersEquation\images\imp17.pdf
+INPUT ..\BurgersEquation\images\imp18.pdf
+INPUT ..\BurgersEquation\images\imp18.pdf
+INPUT ..\BurgersEquation\images\imp18.pdf
+INPUT ..\BurgersEquation\images\imp18.pdf
+INPUT ..\BurgersEquation\images\imp19.pdf
+INPUT ..\BurgersEquation\images\imp19.pdf
+INPUT ..\BurgersEquation\images\imp19.pdf
+INPUT ..\BurgersEquation\images\imp19.pdf
+INPUT ..\BurgersEquation\images\Implicit_front.pdf
+INPUT ..\BurgersEquation\images\Implicit_front.pdf
+INPUT ..\BurgersEquation\images\Implicit_top.pdf
+INPUT ..\BurgersEquation\images\Implicit_top.pdf
+INPUT slides\sum.tex
+INPUT slides\sum.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmtt12.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss12.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss12.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi12.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi12.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmss12.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso12.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso12.tfm
+OUTPUT presentation.nav
+OUTPUT presentation.toc
+OUTPUT presentation.snm
+INPUT presentation.aux
+INPUT .\presentation.out
+INPUT .\presentation.out
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\lm\lm-ec.enc
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\lm\lm-mathsy.enc
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\lm\lm-rm.enc
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\lm\lm-mathit.enc
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\lm\lm-mathex.enc
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmex10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmex10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmmi10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmmi10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmmi12.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmmi12.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmss10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmss10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmss12.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmss12.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmss17.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmss17.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmss8.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmss8.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmsso10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmsso10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmsso17.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmsso17.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmsso8.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmsso8.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmsy10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmsy10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmsy5.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmsy5.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmsy6.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmsy6.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmsy8.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmsy8.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmtt12.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmtt12.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmtt8.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmtt8.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\txfonts\rtcxr.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\txfonts\rtcxr.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\txfonts\rtxmi.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\txfonts\rtxmi.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\txfonts\rtxr.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\txfonts\rtxr.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\txfonts\rtxsc.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\txfonts\rtxsc.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\txfonts\txsy.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\txfonts\txsy.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\times\utmb8a.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\times\utmb8a.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\times\utmr8a.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\times\utmr8a.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\times\utmri8a.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\times\utmri8a.pfb
