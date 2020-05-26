@@ -11,5 +11,9 @@ dependencies-steps =						\
 	papers/steps/problemstellung.tex				\
 	papers/steps/loesung.tex					\
 	papers/steps/folgerungen.tex			\
-	papers/steps/img/gravity_different_fixed_stepsize.pdf
+	\
+	papers/steps/img/gravity_different_fixed_stepsize.pdf\
+	papers/steps/img/Fehlberg_Flowchart.pdf\
+	papers/steps/img/ssc.pdf
+
 
