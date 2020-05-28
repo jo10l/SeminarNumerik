@@ -47,7 +47,7 @@ Durch die Einstellung $f(x) = A \sin(\omega t)$ wird die Gleichung zur sogenannt
 	\ddot{x}-\mu\left(1-x^{2}\right) \dot{x}+x = A \sin(\omega t)
 \label{vanderpol:equations:inhomogene_sin}
 \end{equation}
-In der praktischen Anwendung ist es so, wie wenn man einen Wechselstromgenerator an den Oszillator anschliesst. Wie vorher geschehen (Gl. \ref{vanderpol:equations:homogene_1} und  \ref{vanderpol:equations:homogene_2}), wird die Differentialgleichung auf die erste Ordnung reduziert, um eine numerische Lösung zu erhalten.
+In der praktischen Anwendung ist es so, wie wenn man einen Wechselstromgenerator an den Oszillator anschliesst. Wie vorher geschehen (Gl. \ref{vanderpol:equations:homogene_1} und  \ref{vanderpol:equations:homogene_2}), wird die Differentialgleichung auf die erste Ordnung reduziert, um eine numerische Lösung zu erhalten.
 \begin{align}
 \dot{x} &= y \label{vanderpol:equations:inhomogene_1} \\
 \dot{y} &= \mu\left(1-x^{2}\right) y - x + A \sin(\omega t)
@@ -56,14 +56,13 @@ In der praktischen Anwendung ist es so, wie wenn man einen Wechselstromgenerator
 Die Änderung der Amplitude $A$ verändert das Systemverhalten. Bei der Beobachtung der Frequenz des Oszillators wurden drei verschiedene Fälle erkannt. Wie in der Abb. \ref{vanderpol:figures:fft} gezeigt, ist die Frequenz des Van-der-Pol-Oszillators dominant, wenn der $A$-Wert kleiner als der kritische Wert ist. Wenn der Wert höher ist, dominiert die $\omega$-Frequenz. Durch Setzen der Werte $\mu=0.2$ und $\omega=1.15$ beträgt der kritische Wert von $A$ in diesem Fall $0.32$.
 \begin{equation}
 	\ddot{x}-0.2\left(1-x^{2}\right) \dot{x}+x = A \sin(1.15 t)
+	\label{vanderpol:equations:inhomogene_3}
 \end{equation}
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{papers/vanderpol/figures/fft_plot.png}
-	\caption{\todo{}\label{vanderpol:figures:fft}}
+	\caption{Phaseraum Diagramm und Frequenzspektrum der Gleichung \ref{vanderpol:equations:inhomogene_3} mit verschiedenen Werten von $A$.\label{vanderpol:figures:fft}}
 \end{figure}
-\todo{continuare capitolo}
-
 \subsection{Chaos}
 \label{vanderpol:subsection:chaos}
  
@@ -77,20 +76,6 @@ Die Änderung der Amplitude $A$ verändert das Systemverhalten. Bei der Beobacht
 Das angeführte Zitat ist genau die Definition, die das in diesem Kapitel untersuchte Problem erklärt, nämlich die Instabilität der numerischen Methoden. Letztere führen einen Rundungsfehler ein, der sich während der verschiedenen Iterationen ansammelt und zu völlig unterschiedlichen Lösungen führt. Dies kann auch nach einer bestimmten Zeitspanne geschehen.
 Etwas Ähnliches geschieht, wenn, immer in einem chaotischen System, eine kleine Variation der Anfangsbedingungen eingeführt wird.  Dieser kleine Unterschied kann, wie oben beschrieben, das langfristige Verhalten des Systems stark beeinflussen. Dieser Effekt wird auch als " Butterfly-Effekt " bezeichnet. Zur Erklärung dieses Phänomens verwendete Edward Lorentz in 1972 auf einer Konferenz diesen Satz: "Ein Schmetterling schlägt in Peking mit den Flügeln, und in New York kommt Regen statt Sonne". Kann eine solch minimale Veränderung der Anfangsbedingungen das Endergebnis vollständig verändern? Die Antwort ist offensichtlich ja, wie aus den Grafiken hervorgeht berichtet.
 
-\begin{tikzpicture}
- 
-\draw (-1,0) -- (1,0);
- 
-\begin{scope}[rotate=10]
- 
-\draw[fill=gray]  (-0.2,0) rectangle (0.2,-1.5) node[midway](a){$\bullet$};
-\draw[fill=gray, rotate around={15:(0, -1.5)}] (-0.2,-1.5) rectangle (0.2,-3)node[midway](a){$\bullet$};
-\draw[fill=white] (0,-1.5) circle(0.1);
-\draw[fill=white] (0,0) circle(0.1);
- 
-\end{scope}
- 
-\end{tikzpicture}
 \todo{cont. Capitolo, posizionare immagine}
 
 
