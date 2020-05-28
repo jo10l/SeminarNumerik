@@ -30,7 +30,7 @@ Es ist möglich, die Gleichung mit der folgenden Ersetzung auf den ersten Grad z
 Die Funktion neigt dazu, nach einer bestimmten Zeit in einer bestimmten Trajektorien zu oszillieren, unabhängig vom Anfangswert. Diese Orbit wird Grenzzyclus oder ``Limit Cycle'' genannt. Mit dem Parameter $\mu$ wird die Form der Umlaufbahn verändert. Es ist interessant zu bemerken, dass bei $\mu = 0$ die Gleichung $\ddot{x} + x = 0$ wird, nämlich eine linear harmonische Schwingung.
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth]{papers/vanderpol/figures/homogene_plot.png}
+	\includegraphics[width=\textwidth]{papers/vanderpol/figures/homogene_plot.pdf}
 	\caption{Phase und Zeit-Raum-Diagramm mit verschiedenen $\mu$\label{vanderpol:figures:homogene}}
 \end{figure}
 
@@ -53,7 +53,10 @@ In der praktischen Anwendung ist es so, wie wenn man einen Wechselstromgenerator
 \dot{y} &= \mu\left(1-x^{2}\right) y - x + A \sin(\omega t)
 \label{vanderpol:equations:inhomogene_2}
 \end{align}
-Die Änderung der Amplitude $A$ verändert das Systemverhalten. Bei der Beobachtung der Frequenz des Oszillators wurden drei verschiedene Fälle erkannt. Wie in der Abb. \ref{vanderpol:figures:fft} gezeigt, ist die Frequenz des Van-der-Pol-Oszillators dominant, wenn der $A$-Wert kleiner als der kritische Wert ist. Wenn der Wert höher ist, dominiert die $\omega$-Frequenz. Durch Setzen der Werte $\mu=0,2$ und $\omega=1,15$ beträgt der kritische Wert von $A$ in diesem Fall $0.32$.
+Die Änderung der Amplitude $A$ verändert das Systemverhalten. Bei der Beobachtung der Frequenz des Oszillators wurden drei verschiedene Fälle erkannt. Wie in der Abb. \ref{vanderpol:figures:fft} gezeigt, ist die Frequenz des Van-der-Pol-Oszillators dominant, wenn der $A$-Wert kleiner als der kritische Wert ist. Wenn der Wert höher ist, dominiert die $\omega$-Frequenz. Durch Setzen der Werte $\mu=0.2$ und $\omega=1.15$ beträgt der kritische Wert von $A$ in diesem Fall $0.32$.
+\begin{equation}
+	\ddot{x}-0.2\left(1-x^{2}\right) \dot{x}+x = A \sin(1.15 t)
+\end{equation}
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{papers/vanderpol/figures/fft_plot.png}
