@@ -108,6 +108,6 @@ def run(data):
 ani = animation.FuncAnimation(fig, run, data_gen, blit=False, interval=64,
                               repeat=False, init_func=init)
 plt.show()
-ani.save('untitled7.mp4')
+ani.save('planets.mp4')
 
 #---------------------end_gravity_animated--------------------------------

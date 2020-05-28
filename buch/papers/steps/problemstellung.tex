@@ -6,7 +6,8 @@
 \section{Problemstellung
 \label{steps:section:problemstellung}}
 \rhead{Problemstellung}
-Die Schrittweitensteuerung soll dazu dienen, numerische Berechnungen von Differenzialgleichungen (z.B. Runge-Kutta Verfahren) zu beschleunigen.
+Die Schrittlängensteuerung ,oft auch als Schrittweitensteuerung bezeichnet,
+soll dazu dienen, numerische Berechnungen von Differenzialgleichungen (z.B. Runge-Kutta Verfahren) zu beschleunigen.
 Um die optimale Schrittlänge zu bestimmen ist eine Fehlerschätzung nötig,
 was jedoch auch Rechenleistung beansprucht.
 Aus diesem Dilemma stammt auch einer der wichtigsten Knackpunkte des Themas:
@@ -23,13 +24,13 @@ $a(t)=P''(t)=\frac{(Pfix-P(t))\cdot m\cdot g}{|Pfix-P(t)|^{3}}$
 mit $P(0)=(0, 0)$, $Pfix(2, 1)$, $P'(0)=v(0)=(0.669, 0)$, $g=1$, $m=1$
 \label{buch:steps:fixed_comparison}}
 \end{figure}
-Die hier behandelten Beispiele basieren alle auf einem Runge-Kutta Verfahren
-vierter Ordnung. Zur veranschaulichung, welche Wirkung verschiedene Schrittgrössen
+
+Zur Veranschaulichung, welche Wirkung verschiedene Schrittgrössen
 auf das Resultat haben können, wird in Grafik~\ref{buch:steps:fixed_comparison} aufgezeigt.
+In dieser Grafik ist auch ersichtlich, dass fernab dem Gravitationszentrum auch grössere Schritte
+ausreichende Genauigkeit liefern und die kleinen Schritte somit nur in der Nähe des Gravitationszentrums
+nötig sind, wo die Geschwindigkeit und die Beschleunigung gross ist.
 
-
-%\subsection{De finibus bonorum et malorum
-%\label{steps:subsection:finibus}}
 %\ref{steps:section:folgerung}.
 
 
