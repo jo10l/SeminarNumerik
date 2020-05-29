@@ -1,0 +1,54 @@
+
+
+\documentclass[border=5pt]{standalone}
+\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+\usetikzlibrary{calc,shapes, matrix}
+\begin{document}
+
+\tikzset{
+  treenode/.style = {shape=rectangle,
+                     draw, anchor=center,
+                     text width=8em, align=center,
+                     top color=white, bottom color=white,
+                     inner sep=1ex},
+  decision/.style = {treenode, diamond, inner sep=0pt},
+  root/.style     = {treenode, font=\Large, bottom color=white},
+  env/.style      = {treenode, font=\ttfamily\normalsize},
+}
+\newcommand{\yesa}{edge node [above] {ja}}
+\newcommand{\yesl}{edge node [left] {ja}}
+\newcommand{\noa}{edge  node [above]  {nein}}
+\newcommand{\nol}{edge  node [left]  {nein}}
+\begin{tikzpicture}[-latex]
+  \matrix (chart)
+    [
+      matrix of nodes,
+      column sep      = 3em,
+      row sep         = 5ex,
+      column 1/.style = {nodes={env}},
+      column 2/.style = {nodes={env}}
+    ]
+    { Eingabe von $x_0, u_0, h_0, \varepsilon_0$, setze $j$:=0\\
+      Ein Schritt des Verfahrens: $u_j \to u_{j+1}$\\      
+      Berechnung der Fehlerschätzung $T(x_{j+1}, h_j)$\\
+      $T(x_{j+1}, h_j)<\frac{\varepsilon}{20}$ & Schrittweite verdoppeln: $h_{j+1}:=2h_j$\\
+      $T(x_{j+1}, h_j)<\varepsilon$\\
+      Schrittweite halbieren: $h_j:=\frac{h_j}{2}$, Schritt wiederhohlen! & $x_{j+1}:=x_j+h_j,$ $j:=j+1$\\
+    };
+  \draw
+  (chart-1-1) edge (chart-2-1)
+  (chart-2-1) edge (chart-3-1)
+  (chart-3-1) edge (chart-4-1)
+  (chart-4-1) \yesa  (chart-4-2)
+  (chart-4-1) \nol (chart-5-1)
+  (chart-5-1) \yesl (chart-6-1)
+  (chart-4-2) edge (chart-6-2);
+\draw (chart-5-1) \noa +(4.2, 0);
+ \draw (chart-6-1) -- +(-2,0) |- (chart-2-1);
+ \draw (chart-6-2) |- +(-3,-1.5) 
+  (chart-6-2) (0,-1.5)  (chart-6-1) +(-2, -1.5)
+  (chart-6-1)+(4, -1.5) -| +(-2,0)(chart-6-1); 
+\end{tikzpicture}
+\end{document}
+
