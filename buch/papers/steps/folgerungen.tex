@@ -8,7 +8,7 @@
 \rhead{Folgerungen}
 Schrittweitensteuerungen existieren in diversen Variationen, doch alle haben das selbe Ziel, nämlich
 das gesuchte Resultat mit möglichst wenig Schritten und mit der erforderlichen Genauigkeit zu berechnen.
-Nur dank der Schrittlängensteuerung ist es überhaupt möglich, bei Simulationsprogrammen wie Spice (Simulator für elektronischer Schaltungen)
+Nur dank der Schrittlängensteuerung ist es überhaupt möglich, bei Simulationsprogrammen wie Spice (Simulator für elektronische Schaltungen)
 innerhalb nützlicher Zeit ein Ergebnis zu haben.
 
 Doch auch die Verwendung der Schrittweitensteuerung löst nicht alle Probleme.
@@ -20,12 +20,9 @@ doch dadurch steigt zwangsläufig auch der Rechenaufwand.
 Auch zu wilde Funktionen können einer Schrittweitensteuerung Schwierigkeiten bereiten,
 da bei einigen Schrittweitensteuerungen der Schritt wiederholt werden muss,
 falls die Fehlerschätzung grösser ausfällt als erlaubt. Je nach Funktion kann es nun vorkommen,
-dass die Schrittweite Osziliert, also laufend verkleinert und vergrössert wird.
+dass die Schrittweite osziliert, also laufend verkleinert und vergrössert wird.
 Um die Wahrscheinlichkeit solcher Schwingungen zu minimieren werden beispielsweise Schwellen in den Algorithmus eingebaut,
 wie in Abbildung ~\ref{buch:steps:flowchartfehlberg} ersichtlich, indem die Schrittweite zwar verkleinert wird,
 falls der Fehler $T > \varepsilon$ ist, aber erst vergrössert wird, falls $T < \varepsilon / 20$.
 
-%\subsection{De finibus bonorum et malorum
-%\label{steps:subsection:malorum}}
-%
 %Text

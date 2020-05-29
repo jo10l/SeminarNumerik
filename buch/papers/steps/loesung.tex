@@ -3,24 +3,23 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Lösung
+\section{Realisierung
   \label{steps:section:loesung}}
-\rhead{Lösung}
-Um die bestmögliche Schrittweite zu bestimmen wird meist eine Fehlerschätzung verwendet.
-Diese erhält man beispielsweise indem mann vom aktuellen Punkt aus einen Probeschritt macht.
-Dabei reicht auch beim Runge-Kutta Algorithmus ein einfacher Eulerschritt aus.
+\rhead{Realisierung}
+Schrittweitensteuerungen lassen sich auf vielseitige Art und Weise realisieren,
+zwei Varianten davon werden nun näher vorgestellt.
 
 \subsection{Simple Schrittweitensteuerung mit konstannter Testschrittweite
   \label{steps:subsection:simplestep}}
 Eine Möglichkeit zur Realisierung einer simplen Schrittweitensteuerung ist es, einen fixen Testschritt zu machen,
-daraus dann eine Fehlerschätzung zu generiern, woraus sich eine der Kurve angepasste Schrittweite bestimmen lässt.
+daraus eine Fehlerschätzung zu generieren, woraus sich dann eine der Kurve angepasste Schrittweite bestimmen lässt.
 Die Funktionsweise dieser Methode wird nun anhand der Wahrscheinlichkeitsfunktion der Standardnormalverteilung vorgeführt.
 Für die Wahrscheinlichkeitsfunktion existiert zwar keine analytische Lösung,
 doch sie lässt sich aus der Wahrscheinlichkeitdichtefunktion
 \[
   \varphi(x)=\frac{1}{\sqrt{2\pi}\sigma}\mathrm{e}^{-\frac{(x-\mu)^2}{2 \sigma}}\;|\mu=0,\sigma=1
 \]
-Berechnen:
+berechnen:
 \[
   F(x)=\int_{-\infty}^{x} \varphi (\tilde{x}) \cdot \mathrm{d} \tilde{x}
 \]
@@ -31,17 +30,19 @@ wird die Integralfunktion in eine Differenzialgleichung umgewandelt:
 \]
 In folgendem Beispiel zur Abbildung ~\ref{buch:steps:examplessc} wurde bei $x_0=-7$ mit Startwert $F(-7)=\tilde{F}_0=0$ begonnen.
 Dabei wird für den Schritt $n$ die Steigung ($\varphi$) am Punkt $x_{n-1}, \tilde{F}_{n-1}$ (in Abbildung oranger Punkt mit rotem Kreuz) berechnet.
-Damit wird ein Eulerschritt mit der Testschrittweite $h_{test}=2$ (In Abbildung als schwarzer Balken oberhalb der x-Achse) gemacht $\implies P_{test}=(x_n+h_{test}, \tilde{F}_n+\varphi(x_n, \tilde{F}_n)$.
+Damit wird ein Eulerschritt mit der Testschrittweite $h_{test}=2$ (In Abbildung als schwarzer Balken oberhalb der x-Achse) gemacht
+$\implies P_{test}=(x_n+h_{test}, \tilde{F}_n+\varphi(x_n, \tilde{F}_n)$.
 Nun wird auch an diesem Punkt (In Abbildung als einsames rotes Kreuz am oberen Ende der Grafik) die Steigung ermittelt.
-Sind die beiden Steigungen ziemlich ähnlich, wird davon ausgegangen,
+Sind die beiden Steigungen am Start und am Endpunkt des Testschrittes ziemlich ähnlich, wird davon ausgegangen,
 dass die Kurve in diesem Bereich nur wenig ihre Richtung ändert und deshalb eine grosse Schrittweite gewählt werden darf.
 Ist der Unterschied (Abbildung, untere Grafik, Differenz zwischen phi(start), phi(test)) etwas grösser,
 wird die Schrittweite (In Abbildung roter Balken innerhalb der Testschrittweite) etwas kleiner gewählt.
 Konkret berechnet sich in diesem Beispiel die zu wählende Schrittweite wie folgt:
 \[
-  h=h_{test}/|\varphi(x_n, \tilde{F}_n)-\varphi(P_{test})|/q_{factor}\; |q_{factor}=20
+  h=\frac{h_{test}}{|\varphi(x_n, \tilde{F}_n)-\varphi(P_{test})|\cdot q_{factor}}\; |q_{factor}=20
 \]
-Wobei die Schrittweite nach oben zusätzlich durch die Testschrittweite begrenzt wird, da der Verlauf der Kurve jenseits des Testpunktes noch nicht bekannt ist.
+Wobei die Schrittweite nach oben zusätzlich durch die Testschrittweite begrenzt wird,
+da der Verlauf der Kurve jenseits des Testpunktes noch nicht bekannt ist.
 Auch eine Division durch Null muss abgefangen werden, falls die Steigung in beiden Punkten identisch ist,
 wobei dann die maximale Schrittweite $h=h_{test}$ gewählt werden darf.
 Mit der nun ermittelten Schrittweite wird ein Runge-Kutta-Schritt (4. Ordnung) gemacht,
@@ -50,7 +51,7 @@ wobei einer der Koeffizienten ($k_1$) bereits beim Testschritt ermittelt worden 
 Dieses Verfahren ist zwar in der Lage, die Schrittweite zu verkleinern, falls mit der Testschrittweite ein zu grosser Fehler resultieren würde,
 doch über den Fehler des gemachten Schrittes ist dann am Ende nichts bekannt.
 Eine weitere Schwäche dieses konstannten Testschrittes ist, dass bereits sehr kleine Schritte gewählt werden,
-sobald der Testschritt eine andere Steigung ertastet, obwohl der Knick der Kurve noch genügend weit entfernt ist.
+sobald der Testschritt eine andere Steigung ertastet, obwohl der "Knick" der Kurve noch genügend weit entfernt wäre.
 
 \begin{figure}
   \centering
@@ -62,7 +63,7 @@ sobald der Testschritt eine andere Steigung ertastet, obwohl der Knick der Kurve
 
 \subsection{Schrittweitensteuerung mit Fehlberg
   \label{steps:subsection:fehlberg}}
-Eine andere möglichkeit zur Realisierung einer Schrittweitensteuerung ist die Methode mit Fehlberg
+Eine andere Möglichkeit zur Realisierung einer Schrittweitensteuerung ist die Methode mit Fehlberg
 \cite{steps:Numerische-Mathematik}.
 Dabei wird der Fehler des aktuellen Schrittes anhand der Differenz zweier unterschiedlichen, parallelen
 Runge-Kutta Schritten geschätzt. Durch geschickte Kombination dieser beiden Schritte
@@ -76,7 +77,7 @@ Dabei werden zuerst alle Koeffizienten berechnet, welche für den Schritt 4. Ord
   k_4 & =f(x_j + \frac{3}{4}h, u_j+\frac{69}{128}hk_1-\frac{243}{128}hk_2+\frac{135}{64}hk_3)  \\
   k_5 & =f(x_j + h, u_j-\frac{17}{12}hk_1+\frac{27}{4}hk_2-\frac{27}{5}hk_3+\frac{16}{15}hk_4)
 \end{align*}
-Daraus können wir nun eine erste Schätzung für den Punkt am Schrittende erhalten:
+Daraus kann nun eine erste Schätzung für den Punkt am Schrittende gemacht werden:
 \[
   u_{j+1} =u_j +h\cdot(\frac{1}{9}k_1+\frac{9}{20}k_3+\frac{16}{45}k_4+\frac{1}{12}k_5)
 \]
@@ -97,8 +98,8 @@ lässt sich die Differenz auch direkt aus den Linearkombinationen ermitteln,
 sodass der zweite Schätzwert $\hat{u}_{j+1}$ überflüssig wird.
 
 Mit dieser Fehlerschätzung lässt sich nun ein Algorithmus wie in Abbildung ~\ref{buch:steps:flowchartfehlberg} steuern,
-welcher die Schrittlänge kontrolliert. Falls die Schätzung des Fehlers $T(x_{j+1}, h_j)$ nun grösser ist, als die erlaubte Toleranz $\varepsilon$,
-so wird die Schrittweite halbiert und der Schritt wiederholt.
+welcher die Schrittlänge kontrolliert. Falls die Schätzung des Fehlers $T(x_{j+1}, h_j)$ nun grösser ist als die erlaubte Toleranz $\varepsilon$,
+wird die Schrittweite halbiert und der Schritt wiederholt.
 Falls der Fehler viel kleiner ist als die erlaubte Toleranz, wird die Schrittweite für den nächsten Schritt verdoppelt.
 
 \begin{figure}
