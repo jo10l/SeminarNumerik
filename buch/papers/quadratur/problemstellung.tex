@@ -10,14 +10,17 @@
 
 Bei der Integration mit der Trapez-/Mittelpunktregel kann man die Genauigkeit
 der Annäherung verbessern, indem man mehr Teilintervalle berechnet.
-Dabei werden mehr Stützstellen auf der x-Achse benötigt und mehr Funktionsauswertungen
+Dabei werden mehr Stützstellen auf der $x$-Achse benötigt und mehr Funktionsauswertungen
 müssen berechnet werden.
 
 Die Wahl der Position und Anzahl Stützstellen stellt hierbei einer der beiden Freiheitsgrade
 in der Berechnung des Integrals dar.
 Der zweite Freiheitsgrad ist die Verwendung einer Gewichtung für eine spezifische Stützstelle.
-Das hinzuziehen einer Gewichtung erlaubt es, in einem Teilintervall mit hohem potenziellem 
-Fehler, diesen Fehler zu minimieren. 
+Das Hinzuziehen einer Gewichtung erlaubt es, in einem Teilintervall, 
+in dem die Annäherung stärkere Abweichungen zum eigentlichen Graphen hat, 
+diesen Fehler zu minimieren. 
+
+\textcolor{red}{Grafik hinzufügen, welche die Problematik von stützstellen mit hohem Fehlerpotential aufzeigt}
 
 Die Gauss-Quadratur basiert auf der Idee, dass die Stützstellen und deren Gewichtung so gewählt werden,
 dass das Resultat nun optimiert wird und möglichst genau berechnet werden kann.
@@ -39,14 +42,15 @@ Weitere Beispiele mathematischer Funktionen ohne elementare Stammfunktionen kön
 der Tabelle~\ref{buch:table:funktionenohnestammfunktion} entnommen werden.
 
 \begin{table}[h!]
+    \centering
     \begin{itemize}
-        \item $\frac{sin(x)}{x}$
-        \item $\frac{x}{sin(x)}$
-        \item $\frac{e^{x}}{x}$
-        \item $\frac{1}{ln(x)}$
-        \item $\frac{x}{ln(x)}$
-        \item $ln(sin(x))$
-        \item $e^{x}*ln(x)$
+        \item $\displaystyle \frac{\sin(x)}{x}$
+        \item $\displaystyle \frac{x}{\sin(x)}$
+        \item $\displaystyle \frac{e^{x}}{x}$
+        \item $\displaystyle \frac{1}{\operatorname{ln}(x)}$
+        \item $\displaystyle \frac{x}{\operatorname{ln}(x)}$
+        \item $\displaystyle \operatorname{ln}(\sin(x))$
+        \item $\displaystyle e^{x}\cdot\operatorname{ln}(x)$
     \end{itemize}
     \caption{Funktionen ohne elementare Stammfunktion
     \label{buch:table:funktionenohnestammfunktion}}
@@ -66,12 +70,12 @@ Die vier häufigsten Formen sind in der Tabelle~\ref{buch:table:gaussformen} abg
     
     \begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
         \hline
-            Name &  Untere Grenze & Obere Grenze & Formel \\
+        \text{Name} &  \text{Untere Grenze} & \text{Obere Grenze} & \text{Formel} \\
         \hline  
-            Legendre & -1 & 1 & p_{n}(x) = \int_{-1}^{1} f(x)\,dx \approx \sum_{i=0}^{n} A_{i} f(x_{i}) \\
-            Chebyshev &  -1 & 1 & T_{n}(x) = \int_{-1}^{1} (1-x^{2})^{-1/2} f(x)\,dy \approx \frac{\pi}{n+1} \sum_{i=0}^{n} f(x_{i}) \\
-            Laguerre &  0 & \infty & L_{n}(x) = \int_{0}^{\infty} e^{-x} f(x)\,dx \approx \sum_{i=0}^{n} A_{i} f(x_{i}) \\
-            Hermite & -\infty & \infty & H_{n}(x) = \int_{-\infty}^{\infty} f(x)\,dx \approx \sum_{i=0}^{n} A_{i} f(x_{i})\\
+        \text{Legendre} & -1 & 1 & p_{n}(x) = \int_{-1}^{1} f(x)\,dx \approx \sum_{i=0}^{n} A_{i} f(x_{i}) \\
+        \text{Chebyshev} &  -1 & 1 & T_{n}(x) = \int_{-1}^{1} (1-x^{2})^{-1/2} f(x)\,dy \approx \frac{\pi}{n+1} \sum_{i=0}^{n} f(x_{i}) \\
+        \text{Laguerre} &  0 & \infty & L_{n}(x) = \int_{0}^{\infty} e^{-x} f(x)\,dx \approx \sum_{i=0}^{n} A_{i} f(x_{i}) \\
+        \text{Hermite} & -\infty & \infty & H_{n}(x) = \int_{-\infty}^{\infty} f(x)\,dx \approx \sum_{i=0}^{n} A_{i} f(x_{i})\\
         \hline
     \end{tabular}
     \caption{Formen der Gauss-Quadratur
