@@ -444,6 +444,7 @@ INPUT slides\intro.tex
 INPUT slides\intro.tex
 INPUT slides\burgers.tex
 INPUT slides\burgers.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmss10.tfm
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\ot1lmss.fd
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\ot1lmss.fd
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss10.tfm
@@ -452,82 +453,23 @@ INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omllmm.fd
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omllmm.fd
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi10.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi8.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi6.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi7.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi5.tfm
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmsy.fd
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmsy.fd
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy10.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy8.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy6.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy7.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy5.tfm
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omxlmex.fd
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omxlmex.fd
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmex10.tfm
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam7.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso10.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso8.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso8.tfm
-INPUT ..\BurgersEquation\images\Linear_Convection0.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection0.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection0.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection0.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection1.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection1.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection1.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection1.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection2.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection2.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection2.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection2.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection3.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection3.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection3.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection3.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection4.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection4.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection4.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection4.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection5.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection5.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection5.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection5.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection6.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection6.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection6.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection6.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection7.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection7.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection7.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection7.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection8.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection8.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection8.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection8.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection9.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection9.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection9.pdf
-INPUT ..\BurgersEquation\images\Linear_Convection9.pdf
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmss10.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss10.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss8.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss8.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi10.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi7.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi5.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy10.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy7.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy5.tfm
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam7.tfm
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam5.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm5.tfm
@@ -540,20 +482,30 @@ INPUT ..\BurgersEquation\images\Implicit_top.pdf
 INPUT ..\BurgersEquation\images\Implicit_top.pdf
 INPUT ..\BurgersEquation\images\Implicit_top.pdf
 INPUT ..\BurgersEquation\images\Implicit_top.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmmi6.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\lmsy6.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso10.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso8.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso8.tfm
 INPUT ..\BurgersEquation\images\Implicit_front.pdf
 INPUT ..\BurgersEquation\images\Implicit_front.pdf
 INPUT ..\BurgersEquation\images\Implicit_front.pdf
 INPUT ..\BurgersEquation\images\Implicit_front.pdf
 INPUT slides\nwp.tex
 INPUT slides\nwp.tex
-INPUT slides\images\frz.jpg
-INPUT .\slides\images\frz.jpg
-INPUT .\slides\images\frz.jpg
-INPUT .\slides\images\frz.jpg
-INPUT .\slides\images\frz.jpg
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmtt8.tfm
 INPUT slides\not.tex
 INPUT slides\not.tex
 INPUT ..\BurgersEquation\tikz\Gitter\gitter.pdf
@@ -591,94 +543,10 @@ INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso17.tfm
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso17.tfm
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmsso17.tfm
-INPUT ..\BurgersEquation\images\multi_stable.pdf
-INPUT ..\BurgersEquation\images\multi_stable.pdf
-INPUT ..\BurgersEquation\images\multi_stable.pdf
-INPUT ..\BurgersEquation\images\multi_stable.pdf
 INPUT ..\BurgersEquation\images\multi_unstable.pdf
 INPUT ..\BurgersEquation\images\multi_unstable.pdf
 INPUT ..\BurgersEquation\images\multi_unstable.pdf
 INPUT ..\BurgersEquation\images\multi_unstable.pdf
-INPUT ..\BurgersEquation\images\expl0.pdf
-INPUT ..\BurgersEquation\images\expl0.pdf
-INPUT ..\BurgersEquation\images\expl0.pdf
-INPUT ..\BurgersEquation\images\expl0.pdf
-INPUT ..\BurgersEquation\images\expl1.pdf
-INPUT ..\BurgersEquation\images\expl1.pdf
-INPUT ..\BurgersEquation\images\expl1.pdf
-INPUT ..\BurgersEquation\images\expl1.pdf
-INPUT ..\BurgersEquation\images\expl2.pdf
-INPUT ..\BurgersEquation\images\expl2.pdf
-INPUT ..\BurgersEquation\images\expl2.pdf
-INPUT ..\BurgersEquation\images\expl2.pdf
-INPUT ..\BurgersEquation\images\expl3.pdf
-INPUT ..\BurgersEquation\images\expl3.pdf
-INPUT ..\BurgersEquation\images\expl3.pdf
-INPUT ..\BurgersEquation\images\expl3.pdf
-INPUT ..\BurgersEquation\images\expl4.pdf
-INPUT ..\BurgersEquation\images\expl4.pdf
-INPUT ..\BurgersEquation\images\expl4.pdf
-INPUT ..\BurgersEquation\images\expl4.pdf
-INPUT ..\BurgersEquation\images\expl5.pdf
-INPUT ..\BurgersEquation\images\expl5.pdf
-INPUT ..\BurgersEquation\images\expl5.pdf
-INPUT ..\BurgersEquation\images\expl5.pdf
-INPUT ..\BurgersEquation\images\expl6.pdf
-INPUT ..\BurgersEquation\images\expl6.pdf
-INPUT ..\BurgersEquation\images\expl6.pdf
-INPUT ..\BurgersEquation\images\expl6.pdf
-INPUT ..\BurgersEquation\images\expl7.pdf
-INPUT ..\BurgersEquation\images\expl7.pdf
-INPUT ..\BurgersEquation\images\expl7.pdf
-INPUT ..\BurgersEquation\images\expl7.pdf
-INPUT ..\BurgersEquation\images\expl8.pdf
-INPUT ..\BurgersEquation\images\expl8.pdf
-INPUT ..\BurgersEquation\images\expl8.pdf
-INPUT ..\BurgersEquation\images\expl8.pdf
-INPUT ..\BurgersEquation\images\expl9.pdf
-INPUT ..\BurgersEquation\images\expl9.pdf
-INPUT ..\BurgersEquation\images\expl9.pdf
-INPUT ..\BurgersEquation\images\expl9.pdf
-INPUT ..\BurgersEquation\images\expl10.pdf
-INPUT ..\BurgersEquation\images\expl10.pdf
-INPUT ..\BurgersEquation\images\expl10.pdf
-INPUT ..\BurgersEquation\images\expl10.pdf
-INPUT ..\BurgersEquation\images\expl11.pdf
-INPUT ..\BurgersEquation\images\expl11.pdf
-INPUT ..\BurgersEquation\images\expl11.pdf
-INPUT ..\BurgersEquation\images\expl11.pdf
-INPUT ..\BurgersEquation\images\expl12.pdf
-INPUT ..\BurgersEquation\images\expl12.pdf
-INPUT ..\BurgersEquation\images\expl12.pdf
-INPUT ..\BurgersEquation\images\expl12.pdf
-INPUT ..\BurgersEquation\images\expl13.pdf
-INPUT ..\BurgersEquation\images\expl13.pdf
-INPUT ..\BurgersEquation\images\expl13.pdf
-INPUT ..\BurgersEquation\images\expl13.pdf
-INPUT ..\BurgersEquation\images\expl14.pdf
-INPUT ..\BurgersEquation\images\expl14.pdf
-INPUT ..\BurgersEquation\images\expl14.pdf
-INPUT ..\BurgersEquation\images\expl14.pdf
-INPUT ..\BurgersEquation\images\expl15.pdf
-INPUT ..\BurgersEquation\images\expl15.pdf
-INPUT ..\BurgersEquation\images\expl15.pdf
-INPUT ..\BurgersEquation\images\expl15.pdf
-INPUT ..\BurgersEquation\images\expl16.pdf
-INPUT ..\BurgersEquation\images\expl16.pdf
-INPUT ..\BurgersEquation\images\expl16.pdf
-INPUT ..\BurgersEquation\images\expl16.pdf
-INPUT ..\BurgersEquation\images\expl17.pdf
-INPUT ..\BurgersEquation\images\expl17.pdf
-INPUT ..\BurgersEquation\images\expl17.pdf
-INPUT ..\BurgersEquation\images\expl17.pdf
-INPUT ..\BurgersEquation\images\expl18.pdf
-INPUT ..\BurgersEquation\images\expl18.pdf
-INPUT ..\BurgersEquation\images\expl18.pdf
-INPUT ..\BurgersEquation\images\expl18.pdf
-INPUT ..\BurgersEquation\images\expl19.pdf
-INPUT ..\BurgersEquation\images\expl19.pdf
-INPUT ..\BurgersEquation\images\expl19.pdf
-INPUT ..\BurgersEquation\images\expl19.pdf
 INPUT ..\BurgersEquation\tikz\linear3\linear3.pdf
 INPUT ..\BurgersEquation\tikz\linear3\linear3.pdf
 INPUT ..\BurgersEquation\tikz\linear3\linear3.pdf
@@ -687,46 +555,6 @@ INPUT ..\BurgersEquation\tikz\linear4\linear4.pdf
 INPUT ..\BurgersEquation\tikz\linear4\linear4.pdf
 INPUT ..\BurgersEquation\tikz\linear4\linear4.pdf
 INPUT ..\BurgersEquation\tikz\linear4\linear4.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin40.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin40.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin40.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin40.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin41.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin41.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin41.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin41.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin42.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin42.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin42.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin42.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin43.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin43.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin43.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin43.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin44.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin44.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin44.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin44.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin45.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin45.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin45.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin45.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin46.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin46.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin46.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin46.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin47.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin47.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin47.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin47.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin48.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin48.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin48.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin48.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin49.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin49.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin49.pdf
-INPUT ..\BurgersEquation\images\Lin3_Lin49.pdf
 INPUT ..\BurgersEquation\images\Leap_Frog_front.pdf
 INPUT ..\BurgersEquation\images\Leap_Frog_front.pdf
 INPUT ..\BurgersEquation\images\Leap_Frog_front.pdf
@@ -753,92 +581,14 @@ INPUT ..\BurgersEquation\tex\implicit\algo_cropped.pdf
 INPUT ..\BurgersEquation\tex\implicit\algo_cropped.pdf
 INPUT ..\BurgersEquation\tex\implicit\algo_cropped.pdf
 INPUT ..\BurgersEquation\tex\implicit\algo_cropped.pdf
-INPUT ..\BurgersEquation\images\imp0.pdf
-INPUT ..\BurgersEquation\images\imp0.pdf
-INPUT ..\BurgersEquation\images\imp0.pdf
-INPUT ..\BurgersEquation\images\imp0.pdf
-INPUT ..\BurgersEquation\images\imp1.pdf
-INPUT ..\BurgersEquation\images\imp1.pdf
-INPUT ..\BurgersEquation\images\imp1.pdf
-INPUT ..\BurgersEquation\images\imp1.pdf
-INPUT ..\BurgersEquation\images\imp2.pdf
-INPUT ..\BurgersEquation\images\imp2.pdf
-INPUT ..\BurgersEquation\images\imp2.pdf
-INPUT ..\BurgersEquation\images\imp2.pdf
-INPUT ..\BurgersEquation\images\imp3.pdf
-INPUT ..\BurgersEquation\images\imp3.pdf
-INPUT ..\BurgersEquation\images\imp3.pdf
-INPUT ..\BurgersEquation\images\imp3.pdf
-INPUT ..\BurgersEquation\images\imp4.pdf
-INPUT ..\BurgersEquation\images\imp4.pdf
-INPUT ..\BurgersEquation\images\imp4.pdf
-INPUT ..\BurgersEquation\images\imp4.pdf
-INPUT ..\BurgersEquation\images\imp5.pdf
-INPUT ..\BurgersEquation\images\imp5.pdf
-INPUT ..\BurgersEquation\images\imp5.pdf
-INPUT ..\BurgersEquation\images\imp5.pdf
-INPUT ..\BurgersEquation\images\imp6.pdf
-INPUT ..\BurgersEquation\images\imp6.pdf
-INPUT ..\BurgersEquation\images\imp6.pdf
-INPUT ..\BurgersEquation\images\imp6.pdf
-INPUT ..\BurgersEquation\images\imp7.pdf
-INPUT ..\BurgersEquation\images\imp7.pdf
-INPUT ..\BurgersEquation\images\imp7.pdf
-INPUT ..\BurgersEquation\images\imp7.pdf
-INPUT ..\BurgersEquation\images\imp8.pdf
-INPUT ..\BurgersEquation\images\imp8.pdf
-INPUT ..\BurgersEquation\images\imp8.pdf
-INPUT ..\BurgersEquation\images\imp8.pdf
-INPUT ..\BurgersEquation\images\imp9.pdf
-INPUT ..\BurgersEquation\images\imp9.pdf
-INPUT ..\BurgersEquation\images\imp9.pdf
-INPUT ..\BurgersEquation\images\imp9.pdf
-INPUT ..\BurgersEquation\images\imp10.pdf
-INPUT ..\BurgersEquation\images\imp10.pdf
-INPUT ..\BurgersEquation\images\imp10.pdf
-INPUT ..\BurgersEquation\images\imp10.pdf
-INPUT ..\BurgersEquation\images\imp11.pdf
-INPUT ..\BurgersEquation\images\imp11.pdf
-INPUT ..\BurgersEquation\images\imp11.pdf
-INPUT ..\BurgersEquation\images\imp11.pdf
-INPUT ..\BurgersEquation\images\imp12.pdf
-INPUT ..\BurgersEquation\images\imp12.pdf
-INPUT ..\BurgersEquation\images\imp12.pdf
-INPUT ..\BurgersEquation\images\imp12.pdf
-INPUT ..\BurgersEquation\images\imp13.pdf
-INPUT ..\BurgersEquation\images\imp13.pdf
-INPUT ..\BurgersEquation\images\imp13.pdf
-INPUT ..\BurgersEquation\images\imp13.pdf
-INPUT ..\BurgersEquation\images\imp14.pdf
-INPUT ..\BurgersEquation\images\imp14.pdf
-INPUT ..\BurgersEquation\images\imp14.pdf
-INPUT ..\BurgersEquation\images\imp14.pdf
-INPUT ..\BurgersEquation\images\imp15.pdf
-INPUT ..\BurgersEquation\images\imp15.pdf
-INPUT ..\BurgersEquation\images\imp15.pdf
-INPUT ..\BurgersEquation\images\imp15.pdf
-INPUT ..\BurgersEquation\images\imp16.pdf
-INPUT ..\BurgersEquation\images\imp16.pdf
-INPUT ..\BurgersEquation\images\imp16.pdf
-INPUT ..\BurgersEquation\images\imp16.pdf
-INPUT ..\BurgersEquation\images\imp17.pdf
-INPUT ..\BurgersEquation\images\imp17.pdf
-INPUT ..\BurgersEquation\images\imp17.pdf
-INPUT ..\BurgersEquation\images\imp17.pdf
-INPUT ..\BurgersEquation\images\imp18.pdf
-INPUT ..\BurgersEquation\images\imp18.pdf
-INPUT ..\BurgersEquation\images\imp18.pdf
-INPUT ..\BurgersEquation\images\imp18.pdf
-INPUT ..\BurgersEquation\images\imp19.pdf
-INPUT ..\BurgersEquation\images\imp19.pdf
-INPUT ..\BurgersEquation\images\imp19.pdf
-INPUT ..\BurgersEquation\images\imp19.pdf
 INPUT ..\BurgersEquation\images\Implicit_front.pdf
 INPUT ..\BurgersEquation\images\Implicit_front.pdf
 INPUT ..\BurgersEquation\images\Implicit_top.pdf
 INPUT ..\BurgersEquation\images\Implicit_top.pdf
 INPUT slides\sum.tex
 INPUT slides\sum.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\ec-lmtt12.tfm
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss12.tfm
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\lm\rm-lmss12.tfm
@@ -894,8 +644,6 @@ INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmsy8.pfb
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmtt12.pfb
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmtt12.pfb
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmtt8.pfb
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\lm\lmtt8.pfb
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\txfonts\rtcxr.pfb
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\txfonts\rtcxr.pfb
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\txfonts\rtxmi.pfb

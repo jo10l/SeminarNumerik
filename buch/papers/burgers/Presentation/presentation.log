@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350 64-bit) (preloaded format=pdflatex 2020.3.23)  22 MAY 2020 13:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350 64-bit) (preloaded format=pdflatex 2020.3.23)  23 MAY 2020 10:28
 entering extended mode
 **./presentation.tex
 (presentation.tex
@@ -1365,236 +1365,105 @@ your preamble.
 (presentation.nav) (slides.tex [1{C:/Users/m2schmid/AppData/Local/MiKTeX/2.9/pd
 ftex/config/pdftex.map}
 
-] (slides/intro.tex [2
-
-] [3
-
-] [4
-
-] [5
-
-] [6
-
-])
-(slides/burgers.tex
+] (slides/intro.tex) (slides/burgers.tex
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-11.
+73.
 
 ("C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ot1lmss.fd"
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-1.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 7
+3.
 ("C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-11.
+73.
 
 ("C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-11.
+73.
 ("C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 11.
+(Font)              <10> on input line 73.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 11.
+(Font)              <7> on input line 73.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 11.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 11.
+(Font)              <5> on input line 73.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 73.
 
 
 ("C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.f
 d"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 11.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 73.
 
 
 ("C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.f
 d"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 11.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 11.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <6> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 11.
- [7
-
-]
-<../BurgersEquation/images/Linear_Convection0.pdf, id=401, 1156.32pt x 650.43pt
->
-File: ../BurgersEquation/images/Linear_Convection0.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Linear_Convection0.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Linear_Convection0.pdf  used
- on input line 20.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Linear_Convection1.pdf, id=402, 1156.32pt x 650.43pt
->
-File: ../BurgersEquation/images/Linear_Convection1.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Linear_Convection1.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Linear_Convection1.pdf  used
- on input line 21.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Linear_Convection2.pdf, id=403, 1156.32pt x 650.43pt
->
-File: ../BurgersEquation/images/Linear_Convection2.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Linear_Convection2.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Linear_Convection2.pdf  used
- on input line 22.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Linear_Convection3.pdf, id=404, 1156.32pt x 650.43pt
->
-File: ../BurgersEquation/images/Linear_Convection3.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Linear_Convection3.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Linear_Convection3.pdf  used
- on input line 23.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Linear_Convection4.pdf, id=405, 1156.32pt x 650.43pt
->
-File: ../BurgersEquation/images/Linear_Convection4.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Linear_Convection4.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Linear_Convection4.pdf  used
- on input line 24.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Linear_Convection5.pdf, id=406, 1156.32pt x 650.43pt
->
-File: ../BurgersEquation/images/Linear_Convection5.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Linear_Convection5.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Linear_Convection5.pdf  used
- on input line 25.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Linear_Convection6.pdf, id=407, 1156.32pt x 650.43pt
->
-File: ../BurgersEquation/images/Linear_Convection6.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Linear_Convection6.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Linear_Convection6.pdf  used
- on input line 26.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Linear_Convection7.pdf, id=408, 1156.32pt x 650.43pt
->
-File: ../BurgersEquation/images/Linear_Convection7.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Linear_Convection7.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Linear_Convection7.pdf  used
- on input line 27.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Linear_Convection8.pdf, id=409, 1156.32pt x 650.43pt
->
-File: ../BurgersEquation/images/Linear_Convection8.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Linear_Convection8.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Linear_Convection8.pdf  used
- on input line 28.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Linear_Convection9.pdf, id=410, 1156.32pt x 650.43pt
->
-File: ../BurgersEquation/images/Linear_Convection9.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Linear_Convection9.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Linear_Convection9.pdf  used
- on input line 29.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8
-
- <../BurgersEquation/images/Linear_Convection0.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9 <../BurgersEquation/images/Linear_Convection1.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [10 <../BurgersEquation/images/Linear_Convection2.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11 <../BurgersEquation/images/Linear_Convection3.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [12 <../BurgersEquation/images/Linear_Convection4.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [13 <../BurgersEquation/images/Linear_Convection5.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [14 <../BurgersEquation/images/Linear_Convection6.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [15 <../BurgersEquation/images/Linear_Convection7.pdf>]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 54.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 54.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 54.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 54.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 73.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <7> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 54.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 73.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <5> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 54.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 73.
+ [2
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [16 <../BurgersEquation/images/Linear_Convection8.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [17 <../BurgersEquation/images/Linear_Convection9.pdf>] [18] [19
-
-] [20
+] [3
 
 ]
-<../BurgersEquation/images/Implicit_top.pdf, id=1237, 462.52798pt x 346.89601pt
->
+<../BurgersEquation/images/Implicit_top.pdf, id=212, 462.52798pt x 346.89601pt>
+
 File: ../BurgersEquation/images/Implicit_top.pdf Graphic file (type pdf)
 <use ../BurgersEquation/images/Implicit_top.pdf>
 Package pdftex.def Info: ../BurgersEquation/images/Implicit_top.pdf  used on in
-put line 92.
+put line 113.
 (pdftex.def)             Requested size: 220.33824pt x 165.25188pt.
 
-Overfull \hbox (21.16895pt too wide) in paragraph at lines 92--92
+Overfull \hbox (21.16895pt too wide) in paragraph at lines 113--113
  [] 
  []
 
-<../BurgersEquation/images/Implicit_front.pdf, id=1238, 462.52798pt x 346.89601
-pt>
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 113.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 113.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 113.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 113.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 113.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <6> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 113.
+<../BurgersEquation/images/Implicit_front.pdf, id=213, 462.52798pt x 346.89601p
+t>
 File: ../BurgersEquation/images/Implicit_front.pdf Graphic file (type pdf)
 <use ../BurgersEquation/images/Implicit_front.pdf>
 Package pdftex.def Info: ../BurgersEquation/images/Implicit_front.pdf  used on 
-input line 92.
+input line 113.
 (pdftex.def)             Requested size: 220.33824pt x 165.25188pt.
 
-Overfull \hbox (21.16895pt too wide) in paragraph at lines 92--92
+Overfull \hbox (21.16895pt too wide) in paragraph at lines 113--113
  [] 
  []
 
-[21
+[4
 
  <../BurgersEquation/images/Implicit_top.pdf> <../BurgersEquation/images/Implic
 it_front.pdf
 
 pdfTeX warning: pdflatex (file ../BurgersEquation/images/Implicit_front.pdf): P
 DF inclusion: multiple pdfs with page group included in a single page
->]) (slides/nwp.tex
-<slides/images/frz.jpg, id=1315, 455.7025pt x 650.43pt>
-File: slides/images/frz.jpg Graphic file (type jpg)
-<use slides/images/frz.jpg>
-Package pdftex.def Info: slides/images/frz.jpg  used on input line 13.
-(pdftex.def)             Requested size: 115.77495pt x 165.25188pt.
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-3.
-
-("C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\t1lmtt.fd"
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-[22
-
- <./slides/images/frz.jpg>]) (slides/not.tex
-<../BurgersEquation/tikz/Gitter/gitter.pdf, id=1357, 144.74376pt x 86.97795pt>
+>]) (slides/nwp.tex) (slides/not.tex
+<../BurgersEquation/tikz/Gitter/gitter.pdf, id=284, 144.74376pt x 86.97795pt>
 File: ../BurgersEquation/tikz/Gitter/gitter.pdf Graphic file (type pdf)
 <use ../BurgersEquation/tikz/Gitter/gitter.pdf>
 Package pdftex.def Info: ../BurgersEquation/tikz/Gitter/gitter.pdf  used on inp
@@ -1605,39 +1474,28 @@ Overfull \hbox (2.84285pt too wide) detected at line 28
 [][][] $[]$[][][][][][][][] $[]$[][][][][][] 
  []
 
-[23
+[5
 
- <../BurgersEquation/tikz/Gitter/gitter.pdf>]) (slides/explicit.tex [24
+ <../BurgersEquation/tikz/Gitter/gitter.pdf>]) (slides/explicit.tex [6
 
 ]
-<../BurgersEquation/tikz/linear1/linear1.pdf, id=1464, 102.77296pt x 83.0553pt>
-
+<../BurgersEquation/tikz/linear1/linear1.pdf, id=379, 102.77296pt x 83.0553pt>
 File: ../BurgersEquation/tikz/linear1/linear1.pdf Graphic file (type pdf)
 <use ../BurgersEquation/tikz/linear1/linear1.pdf>
 Package pdftex.def Info: ../BurgersEquation/tikz/linear1/linear1.pdf  used on i
 nput line 25.
-(pdftex.def)             Requested size: 292.14853pt x 236.07515pt.
+(pdftex.def)             Requested size: 199.1693pt x 160.96738pt.
 
-Overfull \hbox (92.97923pt too wide) in paragraph at lines 25--25
-[][]  
- []
-
-[25
+[7
 
  <../BurgersEquation/tikz/linear1/linear1.pdf>]
-<../BurgersEquation/tikz/linear2/linear2.pdf, id=1524, 102.77296pt x 83.0553pt>
-
+<../BurgersEquation/tikz/linear2/linear2.pdf, id=433, 102.77296pt x 83.0553pt>
 File: ../BurgersEquation/tikz/linear2/linear2.pdf Graphic file (type pdf)
 <use ../BurgersEquation/tikz/linear2/linear2.pdf>
 Package pdftex.def Info: ../BurgersEquation/tikz/linear2/linear2.pdf  used on i
 nput line 37.
-(pdftex.def)             Requested size: 292.14853pt x 236.07515pt.
-
-Overfull \hbox (92.97923pt too wide) in paragraph at lines 37--37
-[][]  
- []
-
-[26
+(pdftex.def)             Requested size: 199.1693pt x 160.96738pt.
+ [8
 
  <../BurgersEquation/tikz/linear2/linear2.pdf>]
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -1652,338 +1510,42 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <20.74> not available
 (Font)              Font shape `T1/lmss/m/sl' tried instead on input line 44.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <17.28> not available
 (Font)              Font shape `T1/lmss/m/sl' tried instead on input line 44.
- [27
+ [9
 
 ]
-<../BurgersEquation/images/multi_stable.pdf, id=1624, 1806.75pt x 939.51pt>
-File: ../BurgersEquation/images/multi_stable.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/multi_stable.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/multi_stable.pdf  used on in
-put line 48.
-(pdftex.def)             Requested size: 398.3386pt x 207.13724pt.
- [28
-
- <../BurgersEquation/images/multi_stable.pdf>]
-<../BurgersEquation/images/multi_unstable.pdf, id=1692, 1806.75pt x 939.51pt>
+<../BurgersEquation/images/multi_unstable.pdf, id=521, 1806.75pt x 939.51pt>
 File: ../BurgersEquation/images/multi_unstable.pdf Graphic file (type pdf)
 <use ../BurgersEquation/images/multi_unstable.pdf>
 Package pdftex.def Info: ../BurgersEquation/images/multi_unstable.pdf  used on 
 input line 52.
 (pdftex.def)             Requested size: 398.3386pt x 207.13724pt.
- [29
+ [10
 
  <../BurgersEquation/images/multi_unstable.pdf>]
-<../BurgersEquation/images/expl0.pdf, id=1760, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl0.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl0.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl0.pdf  used on input lin
-e 55.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl1.pdf, id=1761, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl1.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl1.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl1.pdf  used on input lin
-e 56.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl2.pdf, id=1762, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl2.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl2.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl2.pdf  used on input lin
-e 57.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl3.pdf, id=1763, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl3.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl3.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl3.pdf  used on input lin
-e 58.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl4.pdf, id=1764, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl4.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl4.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl4.pdf  used on input lin
-e 59.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl5.pdf, id=1765, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl5.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl5.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl5.pdf  used on input lin
-e 60.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl6.pdf, id=1766, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl6.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl6.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl6.pdf  used on input lin
-e 61.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl7.pdf, id=1767, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl7.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl7.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl7.pdf  used on input lin
-e 62.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl8.pdf, id=1768, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl8.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl8.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl8.pdf  used on input lin
-e 63.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl9.pdf, id=1769, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl9.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl9.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl9.pdf  used on input lin
-e 64.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl10.pdf, id=1770, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl10.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl10.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl10.pdf  used on input li
-ne 65.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl11.pdf, id=1771, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl11.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl11.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl11.pdf  used on input li
-ne 66.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl12.pdf, id=1772, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl12.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl12.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl12.pdf  used on input li
-ne 67.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl13.pdf, id=1773, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl13.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl13.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl13.pdf  used on input li
-ne 68.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl14.pdf, id=1774, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl14.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl14.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl14.pdf  used on input li
-ne 69.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl15.pdf, id=1775, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl15.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl15.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl15.pdf  used on input li
-ne 70.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl16.pdf, id=1776, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl16.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl16.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl16.pdf  used on input li
-ne 71.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl17.pdf, id=1777, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl17.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl17.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl17.pdf  used on input li
-ne 72.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl18.pdf, id=1778, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl18.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl18.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl18.pdf  used on input li
-ne 73.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/expl19.pdf, id=1779, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/expl19.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/expl19.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/expl19.pdf  used on input li
-ne 74.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [30
-
- <../BurgersEquation/images/expl0.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [31 <../BurgersEquation/images/expl1.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [32 <../BurgersEquation/images/expl2.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [33 <../BurgersEquation/images/expl3.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [34 <../BurgersEquation/images/expl4.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [35 <../BurgersEquation/images/expl5.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [36 <../BurgersEquation/images/expl6.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [37 <../BurgersEquation/images/expl7.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [38 <../BurgersEquation/images/expl8.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [39 <../BurgersEquation/images/expl9.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [40 <../BurgersEquation/images/expl10.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [41 <../BurgersEquation/images/expl11.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [42 <../BurgersEquation/images/expl12.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [43 <../BurgersEquation/images/expl13.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [44 <../BurgersEquation/images/expl14.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [45 <../BurgersEquation/images/expl15.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [46 <../BurgersEquation/images/expl16.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [47 <../BurgersEquation/images/expl17.pdf>]
-Overfull \hbox (1.53928pt too wide) detected at line 90
-[] \OT1/lmss/m/n/10.95 + \T1/lmss/m/sl/10.95 u[] [] \OT1/lmss/m/n/10.95 = \T1/l
-mss/m/n/10.95 0
- []
-
-
-Overfull \hbox (43.25308pt too wide) detected at line 90
+Overfull \hbox (3.41678pt too wide) detected at line 90
 \T1/lmss/m/sl/10.95 u[] \OT1/lmss/m/n/10.95 = []
  []
 
-<../BurgersEquation/tikz/linear3/linear3.pdf, id=3072, 131.22525pt x 83.0553pt>
-
+<../BurgersEquation/tikz/linear3/linear3.pdf, id=583, 131.22525pt x 83.0553pt>
 File: ../BurgersEquation/tikz/linear3/linear3.pdf Graphic file (type pdf)
 <use ../BurgersEquation/tikz/linear3/linear3.pdf>
 Package pdftex.def Info: ../BurgersEquation/tikz/linear3/linear3.pdf  used on i
 nput line 90.
-(pdftex.def)             Requested size: 373.02867pt x 236.07515pt.
+(pdftex.def)             Requested size: 199.1693pt x 126.06412pt.
+[11
 
-Overfull \hbox (134.02309pt too wide) in paragraph at lines 90--90
-[][]  
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [48 <../BurgersEquation/images/expl18.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [49 <../BurgersEquation/images/expl19.pdf>] [50 <../BurgersEquation/tikz/linea
-r3/linear3.pdf>]
-<../BurgersEquation/tikz/linear4/linear4.pdf, id=3278, 131.22525pt x 83.0553pt>
-
+ <../BurgersEquation/tikz/linear3/linear3.pdf>]
+<../BurgersEquation/tikz/linear4/linear4.pdf, id=637, 131.22525pt x 83.0553pt>
 File: ../BurgersEquation/tikz/linear4/linear4.pdf Graphic file (type pdf)
 <use ../BurgersEquation/tikz/linear4/linear4.pdf>
 Package pdftex.def Info: ../BurgersEquation/tikz/linear4/linear4.pdf  used on i
 nput line 102.
-(pdftex.def)             Requested size: 373.02867pt x 236.07515pt.
-
-Overfull \hbox (134.02309pt too wide) in paragraph at lines 102--102
-[][]  
- []
-
-[51
+(pdftex.def)             Requested size: 199.1693pt x 126.06412pt.
+ [12
 
  <../BurgersEquation/tikz/linear4/linear4.pdf>]
-<../BurgersEquation/images/Lin3_Lin40.pdf, id=3337, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/Lin3_Lin40.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Lin3_Lin40.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Lin3_Lin40.pdf  used on inpu
-t line 104.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Lin3_Lin41.pdf, id=3338, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/Lin3_Lin41.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Lin3_Lin41.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Lin3_Lin41.pdf  used on inpu
-t line 105.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Lin3_Lin42.pdf, id=3339, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/Lin3_Lin42.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Lin3_Lin42.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Lin3_Lin42.pdf  used on inpu
-t line 106.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Lin3_Lin43.pdf, id=3340, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/Lin3_Lin43.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Lin3_Lin43.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Lin3_Lin43.pdf  used on inpu
-t line 107.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Lin3_Lin44.pdf, id=3341, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/Lin3_Lin44.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Lin3_Lin44.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Lin3_Lin44.pdf  used on inpu
-t line 108.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Lin3_Lin45.pdf, id=3342, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/Lin3_Lin45.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Lin3_Lin45.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Lin3_Lin45.pdf  used on inpu
-t line 109.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Lin3_Lin46.pdf, id=3343, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/Lin3_Lin46.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Lin3_Lin46.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Lin3_Lin46.pdf  used on inpu
-t line 110.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Lin3_Lin47.pdf, id=3344, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/Lin3_Lin47.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Lin3_Lin47.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Lin3_Lin47.pdf  used on inpu
-t line 111.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Lin3_Lin48.pdf, id=3345, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/Lin3_Lin48.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Lin3_Lin48.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Lin3_Lin48.pdf  used on inpu
-t line 112.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/Lin3_Lin49.pdf, id=3346, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/Lin3_Lin49.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/Lin3_Lin49.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/Lin3_Lin49.pdf  used on inpu
-t line 113.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [52
-
- <../BurgersEquation/images/Lin3_Lin40.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [53 <../BurgersEquation/images/Lin3_Lin41.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [54 <../BurgersEquation/images/Lin3_Lin42.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [55 <../BurgersEquation/images/Lin3_Lin43.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [56 <../BurgersEquation/images/Lin3_Lin44.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [57 <../BurgersEquation/images/Lin3_Lin45.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [58 <../BurgersEquation/images/Lin3_Lin46.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [59 <../BurgersEquation/images/Lin3_Lin47.pdf>]
-<../BurgersEquation/images/Leap_Frog_front.pdf, id=3944, 462.52798pt x 346.8960
-1pt>
+<../BurgersEquation/images/Leap_Frog_front.pdf, id=690, 462.52798pt x 346.89601
+pt>
 File: ../BurgersEquation/images/Leap_Frog_front.pdf Graphic file (type pdf)
 <use ../BurgersEquation/images/Leap_Frog_front.pdf>
 Package pdftex.def Info: ../BurgersEquation/images/Leap_Frog_front.pdf  used on
@@ -1994,8 +1556,8 @@ Overfull \hbox (21.16895pt too wide) in paragraph at lines 126--126
  [] 
  []
 
-<../BurgersEquation/images/Leap_Frog_top.pdf, id=3945, 462.52798pt x 346.89601p
-t>
+<../BurgersEquation/images/Leap_Frog_top.pdf, id=691, 462.52798pt x 346.89601pt
+>
 File: ../BurgersEquation/images/Leap_Frog_top.pdf Graphic file (type pdf)
 <use ../BurgersEquation/images/Leap_Frog_top.pdf>
 Package pdftex.def Info: ../BurgersEquation/images/Leap_Frog_top.pdf  used on i
@@ -2006,14 +1568,10 @@ Overfull \hbox (21.16895pt too wide) in paragraph at lines 126--126
  [] 
  []
 
+[13
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [60 <../BurgersEquation/images/Lin3_Lin48.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [61 <../BurgersEquation/images/Lin3_Lin49.pdf>] [62 <../BurgersEquation/images
-/Leap_Frog_front.pdf> <../BurgersEquation/images/Leap_Frog_top.pdf
+ <../BurgersEquation/images/Leap_Frog_front.pdf> <../BurgersEquation/images/Lea
+p_Frog_top.pdf
 
 pdfTeX warning: pdflatex (file ../BurgersEquation/images/Leap_Frog_top.pdf): PD
 F inclusion: multiple pdfs with page group included in a single page
@@ -2022,254 +1580,49 @@ Overfull \hbox (12.04262pt too wide) detected at line 20
 \T1/lmss/m/sl/6 u[] \OT1/lmss/m/n/6 = []
  []
 
-<../BurgersEquation/tikz/quadratic/quadratic.pdf, id=4171, 102.77296pt x 83.055
-3pt>
+<../BurgersEquation/tikz/quadratic/quadratic.pdf, id=763, 102.77296pt x 83.0553
+pt>
 File: ../BurgersEquation/tikz/quadratic/quadratic.pdf Graphic file (type pdf)
 <use ../BurgersEquation/tikz/quadratic/quadratic.pdf>
 Package pdftex.def Info: ../BurgersEquation/tikz/quadratic/quadratic.pdf  used 
 on input line 20.
-(pdftex.def)             Requested size: 262.93164pt x 212.46619pt.
-
-Overfull \hbox (103.59865pt too wide) in paragraph at lines 20--20
-[][]  
- []
-
-[63
+(pdftex.def)             Requested size: 159.333pt x 128.77238pt.
+[14
 
  <../BurgersEquation/tikz/quadratic/quadratic.pdf>]
-<../BurgersEquation/tikz/linear5/linear5.pdf, id=4229, 102.77296pt x 83.0553pt>
-
+<../BurgersEquation/tikz/linear5/linear5.pdf, id=815, 102.77296pt x 83.0553pt>
 File: ../BurgersEquation/tikz/linear5/linear5.pdf Graphic file (type pdf)
 <use ../BurgersEquation/tikz/linear5/linear5.pdf>
 Package pdftex.def Info: ../BurgersEquation/tikz/linear5/linear5.pdf  used on i
 nput line 31.
-(pdftex.def)             Requested size: 292.14853pt x 236.07515pt.
-
-Overfull \hbox (92.97923pt too wide) in paragraph at lines 31--31
-[][]  
- []
-
-[64
+(pdftex.def)             Requested size: 199.1693pt x 160.96738pt.
+ [15
 
  <../BurgersEquation/tikz/linear5/linear5.pdf>]
-Overfull \hbox (7.73189pt too wide) detected at line 43
-\OMS/lmsy/m/n/10.95  \T1/lmss/m/sl/10.95 u[] dt u[] \OT1/lmss/m/n/10.95 + \T1/l
-mss/m/n/10.95 2 \T1/lmss/m/sl/10.95 dx u[] \OT1/lmss/m/n/10.95 + \T1/lmss/m/sl/
-10.95 u[] dt u[] \OT1/lmss/m/n/10.95 = \T1/lmss/m/n/10.95 2 \T1/lmss/m/sl/10.95
- dx u[]
- []
-
-<../BurgersEquation/tikz/implicit/implicit.pdf, id=4285, 131.22525pt x 83.0553p
-t>
+<../BurgersEquation/tikz/implicit/implicit.pdf, id=865, 131.22525pt x 83.0553pt
+>
 File: ../BurgersEquation/tikz/implicit/implicit.pdf Graphic file (type pdf)
 <use ../BurgersEquation/tikz/implicit/implicit.pdf>
 Package pdftex.def Info: ../BurgersEquation/tikz/implicit/implicit.pdf  used on
  input line 43.
-(pdftex.def)             Requested size: 335.7232pt x 212.46619pt.
+(pdftex.def)             Requested size: 159.333pt x 100.84952pt.
+ [16
 
-Overfull \hbox (96.71762pt too wide) in paragraph at lines 43--43
-[][]  
- []
+ <../BurgersEquation/tikz/implicit/implicit.pdf>] [17
 
-
-Overfull \hbox (2.84894pt too wide) detected at line 43
-[][][] $[]$[][][][][][][][] $[]$[][][][][][] 
- []
-
-[65
-
- <../BurgersEquation/tikz/implicit/implicit.pdf>] [66
-
-] [67
+] [18
 
 ]
-<../BurgersEquation/tex/implicit/algo_cropped.pdf, id=4423, 493.845pt x 226.847
-5pt>
+<../BurgersEquation/tex/implicit/algo_cropped.pdf, id=984, 493.845pt x 226.8475
+pt>
 File: ../BurgersEquation/tex/implicit/algo_cropped.pdf Graphic file (type pdf)
 <use ../BurgersEquation/tex/implicit/algo_cropped.pdf>
 Package pdftex.def Info: ../BurgersEquation/tex/implicit/algo_cropped.pdf  used
  on input line 100.
 (pdftex.def)             Requested size: 358.50229pt x 164.67656pt.
- [68
+ [19
 
  <../BurgersEquation/tex/implicit/algo_cropped.pdf>]
-<../BurgersEquation/images/imp0.pdf, id=4489, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp0.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp0.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp0.pdf  used on input line
- 102.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp1.pdf, id=4490, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp1.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp1.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp1.pdf  used on input line
- 103.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp2.pdf, id=4491, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp2.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp2.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp2.pdf  used on input line
- 104.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp3.pdf, id=4492, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp3.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp3.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp3.pdf  used on input line
- 105.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp4.pdf, id=4493, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp4.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp4.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp4.pdf  used on input line
- 106.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp5.pdf, id=4494, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp5.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp5.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp5.pdf  used on input line
- 107.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp6.pdf, id=4495, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp6.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp6.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp6.pdf  used on input line
- 108.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp7.pdf, id=4496, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp7.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp7.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp7.pdf  used on input line
- 109.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp8.pdf, id=4497, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp8.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp8.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp8.pdf  used on input line
- 110.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp9.pdf, id=4498, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp9.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp9.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp9.pdf  used on input line
- 111.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp10.pdf, id=4499, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp10.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp10.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp10.pdf  used on input lin
-e 112.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp11.pdf, id=4500, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp11.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp11.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp11.pdf  used on input lin
-e 113.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp12.pdf, id=4501, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp12.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp12.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp12.pdf  used on input lin
-e 114.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp13.pdf, id=4502, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp13.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp13.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp13.pdf  used on input lin
-e 115.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp14.pdf, id=4503, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp14.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp14.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp14.pdf  used on input lin
-e 116.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp15.pdf, id=4504, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp15.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp15.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp15.pdf  used on input lin
-e 117.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp16.pdf, id=4505, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp16.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp16.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp16.pdf  used on input lin
-e 118.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp17.pdf, id=4506, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp17.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp17.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp17.pdf  used on input lin
-e 119.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp18.pdf, id=4507, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp18.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp18.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp18.pdf  used on input lin
-e 120.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-<../BurgersEquation/images/imp19.pdf, id=4508, 1156.32pt x 650.43pt>
-File: ../BurgersEquation/images/imp19.pdf Graphic file (type pdf)
-<use ../BurgersEquation/images/imp19.pdf>
-Package pdftex.def Info: ../BurgersEquation/images/imp19.pdf  used on input lin
-e 121.
-(pdftex.def)             Requested size: 398.3386pt x 224.06114pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [69
-
- <../BurgersEquation/images/imp0.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [70 <../BurgersEquation/images/imp1.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [71 <../BurgersEquation/images/imp2.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [72 <../BurgersEquation/images/imp3.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [73 <../BurgersEquation/images/imp4.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [74 <../BurgersEquation/images/imp5.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [75 <../BurgersEquation/images/imp6.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [76 <../BurgersEquation/images/imp7.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [77 <../BurgersEquation/images/imp8.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [78 <../BurgersEquation/images/imp9.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [79 <../BurgersEquation/images/imp10.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [80 <../BurgersEquation/images/imp11.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [81 <../BurgersEquation/images/imp12.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [82 <../BurgersEquation/images/imp13.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [83 <../BurgersEquation/images/imp14.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [84 <../BurgersEquation/images/imp15.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [85 <../BurgersEquation/images/imp16.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [86 <../BurgersEquation/images/imp17.pdf>]
 File: ../BurgersEquation/images/Implicit_front.pdf Graphic file (type pdf)
 <use ../BurgersEquation/images/Implicit_front.pdf>
 Package pdftex.def Info: ../BurgersEquation/images/Implicit_front.pdf  used on 
@@ -2290,21 +1643,17 @@ Overfull \hbox (21.16895pt too wide) in paragraph at lines 134--134
  [] 
  []
 
+[20
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+] [21
 
- [87 <../BurgersEquation/images/imp18.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+]) (slides/sum.tex
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
+8.
 
- [88 <../BurgersEquation/images/imp19.pdf>] [89] [90
-
-]) (slides/sum.tex [91
-
-] [92
-
-] [93
-
-]
+("C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\t1lmtt.fd"
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <14.4> on input line 38.
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -2314,7 +1663,7 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <14.4> not available
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <12> not available
 (Font)              Font shape `T1/lmss/m/sl' tried instead on input line 38.
 
-[94
+[22
 
 ]))
 \tf@nav=\write6
@@ -2335,13 +1684,13 @@ Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: 4F10B3393B8D60CB3732DCB38B8043FA;368.
  ) 
 Here is how much of TeX's memory you used:
- 36207 strings out of 480934
- 878489 string characters out of 2898513
- 1237285 words of memory out of 3000000
- 51024 multiletter control sequences out of 15000+200000
- 640579 words of font info for 108 fonts, out of 3000000 for 9000
+ 35675 strings out of 480934
+ 861876 string characters out of 2898513
+ 1228080 words of memory out of 3000000
+ 50700 multiletter control sequences out of 15000+200000
+ 640258 words of font info for 107 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 67i,20n,106p,799b,794s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 67i,20n,106p,799b,772s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/m2schmid/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec
 .enc}{C:/Users/m2schmid/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm
 -mathsy.enc}{C:/Users/m2schmid/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvip
@@ -2364,19 +1713,18 @@ public/lm/lmsso8.pfb><C:/Users/m2schmid/AppData/Local/Programs/MiKTeX 2.9/fonts
 TeX 2.9/fonts/type1/public/lm/lmsy6.pfb><C:/Users/m2schmid/AppData/Local/Progra
 ms/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Users/m2schmid/AppData/Local/
 Programs/MiKTeX 2.9/fonts/type1/public/lm/lmtt12.pfb><C:/Users/m2schmid/AppData
-/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmtt8.pfb><C:/Users/m2schmid/A
-ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/txfonts/rtcxr.pfb><C:/Users
-/m2schmid/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/txfonts/rtxmi.pf
-b><C:/Users/m2schmid/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/txfon
-ts/rtxr.pfb><C:/Users/m2schmid/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
-blic/txfonts/rtxsc.pfb><C:/Users/m2schmid/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/txfonts/txsy.pfb><C:/Users/m2schmid/AppData/Local/Programs/MiKT
-eX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/m2schmid/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/m2schmid/AppData/Local
-/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on presentation.pdf (94 pages, 4026698 bytes).
+/Local/Programs/MiKTeX 2.9/fonts/type1/public/txfonts/rtcxr.pfb><C:/Users/m2sch
+mid/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/txfonts/rtxmi.pfb><C:/
+Users/m2schmid/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/txfonts/rtx
+r.pfb><C:/Users/m2schmid/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/t
+xfonts/rtxsc.pfb><C:/Users/m2schmid/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/txfonts/txsy.pfb><C:/Users/m2schmid/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/urw/times/utmb8a.pfb><C:/Users/m2schmid/AppData/Local/Programs/MiK
+TeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/m2schmid/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on presentation.pdf (22 pages, 1875953 bytes).
 PDF statistics:
- 6416 PDF objects out of 7423 (max. 8388607)
- 196 named destinations out of 1000 (max. 500000)
- 527 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1225 PDF objects out of 1440 (max. 8388607)
+ 52 named destinations out of 1000 (max. 500000)
+ 217 words of extra memory for PDF output out of 10000 (max. 10000000)
 
