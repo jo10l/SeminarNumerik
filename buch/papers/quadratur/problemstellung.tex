@@ -6,8 +6,75 @@
 \section{Problemstellung
 \label{quadratur:section:problemstellung}}
 \rhead{Problemstellung}
-\textcolor{red}{TODO: Problemstellung definieren}
+\subsection{Überlegung hinter der Gauss-Quadratur \label{quadratur:subsection:ueberlegung}}
 
-\subsection{De finibus bonorum et malorum
-\label{quadratur:subsection:finibus}}
-\textcolor{red}{TODO: Python code für problemstellung}
+Bei der Integration mit der Trapez-/Mittelpunktregel kann man die Genauigkeit
+der Annäherung verbessern, indem man mehr Teilintervalle berechnet.
+Dabei werden mehr Stützstellen auf der x-Achse benötigt und mehr Funktionsauswertungen
+müssen berechnet werden.
+
+Die Wahl der Position und Anzahl Stützstellen stellt hierbei einer der beiden Freiheitsgrade
+in der Berechnung des Integrals dar.
+Der zweite Freiheitsgrad ist die Verwendung einer Gewichtung für eine spezifische Stützstelle.
+Das hinzuziehen einer Gewichtung erlaubt es, in einem Teilintervall mit hohem potenziellem 
+Fehler, diesen Fehler zu minimieren. 
+
+Die Gauss-Quadratur basiert auf der Idee, dass die Stützstellen und deren Gewichtung so gewählt werden,
+dass das Resultat nun optimiert wird und möglichst genau berechnet werden kann.
+Dieses Verfahren erlaubt es, ein Polynom vom Grad $n$ mit nur $\frac{n-1}{2}$
+Funktionsauswertungen exakt zu berechnen.
+
+\subsection{Anwendungsbereiche der numerischen Integration \label{quadratur:subsection:anwendungsbereiche}}
+Die numerische Integration kann, wie im Kapitel~\ref{chapter:integration} beschrieben, dann verwendet
+werden, wenn keine Stammfunktion in analytischer Form für eine Funktion gefunden werden kann.
+Ein bekanntes Beispiel dafür ist die Wahrscheinlichkeitsverteilung der Standardnormalverteilung:
+\begin{equation}
+\Phi(x) 
+=
+\frac{1}{\sqrt{2\pi}}
+\int_{-\infty}^x e^{-t^2/2}\,dt
+\end{equation}
+
+Weitere Beispiele mathematischer Funktionen ohne elementare Stammfunktionen können aus 
+der Tabelle~\ref{buch:table:funktionenohnestammfunktion} entnommen werden.
+
+\begin{table}[h!]
+    \begin{itemize}
+        \item $\frac{sin(x)}{x}$
+        \item $\frac{x}{sin(x)}$
+        \item $\frac{e^{x}}{x}$
+        \item $\frac{1}{ln(x)}$
+        \item $\frac{x}{ln(x)}$
+        \item $ln(sin(x))$
+        \item $e^{x}*ln(x)$
+    \end{itemize}
+    \caption{Funktionen ohne elementare Stammfunktion
+    \label{buch:table:funktionenohnestammfunktion}}
+    
+\end{table}
+
+\newpage
+
+
+\subsection{Formen der Gauss-Quadratur
+\label{quadratur:subsection:gaussformen}}
+Es gibt verschiedene Ausprägungen der Gauss-Integration, abhängig vom jeweiligen Anwendungsbereich 
+erkennbar an den Grenzen des Integrals und der Wahl der Gewichtung.
+Die vier häufigsten Formen sind in der Tabelle~\ref{buch:table:gaussformen} abgebildet.
+
+\begin{table}[h!]
+    
+    \begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
+        \hline
+            Name &  Untere Grenze & Obere Grenze & Formel \\
+        \hline  
+            Legendre & -1 & 1 & p_{n}(x) = \int_{-1}^{1} f(x)\,dx \approx \sum_{i=0}^{n} A_{i} f(x_{i}) \\
+            Chebyshev &  -1 & 1 & T_{n}(x) = \int_{-1}^{1} (1-x^{2})^{-1/2} f(x)\,dy \approx \frac{\pi}{n+1} \sum_{i=0}^{n} f(x_{i}) \\
+            Laguerre &  0 & \infty & L_{n}(x) = \int_{0}^{\infty} e^{-x} f(x)\,dx \approx \sum_{i=0}^{n} A_{i} f(x_{i}) \\
+            Hermite & -\infty & \infty & H_{n}(x) = \int_{-\infty}^{\infty} f(x)\,dx \approx \sum_{i=0}^{n} A_{i} f(x_{i})\\
+        \hline
+    \end{tabular}
+    \caption{Formen der Gauss-Quadratur
+    \label{buch:table:gaussformen}}
+    
+\end{table}

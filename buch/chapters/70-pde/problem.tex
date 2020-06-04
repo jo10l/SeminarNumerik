@@ -1,0 +1,243 @@
+%
+% problem.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Problemstellung
+\label{section:pde:problem}}
+Gewöhnliche Differentialgleichungen werden durch eine einzige Funktion
+$f\colon \mathbb R\times\mathbb R^n: (t,x)\mapsto f(t,x)$ beschrieben,
+werden.
+Eine Lösung der Differentialgleichung
+\begin{equation}
+\frac{dx}{dt} = f(t,x)
+\label{pde:eqn:ode}
+\end{equation}
+mit der Anfangsbedingung
+\[
+x(t_0) = x_0
+\]
+ist eine Funktion $x(t)$ mit $x(t_0)=x_0$ derart, dass 
+\[
+\frac{dx(t)}{dt} = f(t, x(t)).
+\]
+Das Definitionsgebiet der Lösungsfunktion $x(t)$ ist ein Intervall
+der Form $[t_0,a]$ mit $a>t_0$.
+
+Für eine partielle Differentialgleichung ist die Situation wesentlich
+komplizierter.
+Zunächst gibt es Ableitungen der gesuchten Funktion $u(x_1,\dots,x_n)$
+nach allen unabhängigen Variablen zu
+berücksichtigen, so dass eine explizite Form der Differentialgleichung
+wie in~\eqref{pde:eqn:ode} grundsätzlich nicht mehr möglich ist.
+Das Definitionsgebiet ist eine fast beliebige Teilmenge
+$\Omega\subset\mathbb R^n$ eines $n$-dimensionalen Raumes.
+Insbesonderen kann das Definitionsgebiet sehr viel komplizierter sein
+als im Falle einer gewöhnlichen Differentialgleichungen.
+Die Form des Gebietes hat einen wesentlichen Einfluss auf die Lösungen
+der Differentialgleichung.
+Schliesslich wird es nicht mehr genügen, Werte in nur einem Randpunkt
+des Gebietes zu kennen, wie das bei einer gewöhnlichen Differentialgleichung
+der Fall war.
+Vielmehr ist es eine nichttriviale Frage, auf welchem Teil des Randes
+$\partial\Omega$ von $\Omega$ welche Funktions- oder Ableitungswerte
+vorgegeben werden müssen, damit die Lösung der Differentialgleichung
+eindeutig bestimmt ist.
+
+Der Einfachheit halber betrachten wir in diesem Kapitel nur partielle
+Differentialgleichungen für eine skalare Funktion $u=u(x_1,\dots,x_n)$.
+In diesem Abschnitt geht es darum zu klären, wie genau ein solches
+Problem gestellt werden muss.
+In Abschnitt~\ref{subsection:pde:gebiet} studieren wir ein sinnvolles
+Definitionsgebiet für die Differentialgleichung.
+In Abschnitt~\ref{subsection:pde:klassifikation} klassifizieren wir
+mögliche Differentialgleichungen bevor wir in
+Abschnitt~\ref{subsection:pde:randbedingungen} Randbedingungen und
+in Abschnitt~\ref{subsection:pde:loesung} Lösungen beschreiben.
+
+\subsection{Gebiet und Rand
+\label{subsection:pde:gebiet}}
+Eine partielle Differentialgleichung sucht eine Funktion
+\[
+u\colon \Omega\to\mathbb R
+\]
+$u(x_1,\dots,x_n)$, für die Beziehungen zwischen den partiellen
+Ableitungen nach den unabhängigen Variablen gelten.
+Für alle Punkte einer Menge $\Omega\subset\mathbb R^n$ muss
+als eine Gleichung ähnlich wie zum Beispiel
+\[
+\frac{\partial^2 u}{\partial x_1^2}
++
+\dots
++
+\frac{\partial^2 u}{\partial x_n^2}
+=
+0
+\qquad
+\forall \;
+(x_1,\dots,x_n)\in \Omega
+\]
+gelten.
+Diese Beobachtung schränkt die Art der Menge $\Omega$ bereits ein,
+wie im Folgenden diskutiert werden soll.
+
+Die Ableitung einer Funktion $u(x_1,\dots,x_n)$ in einem Punkt
+$x_0=(x_{0,1},\dots,x_{0,n})$ ist eine lineare Funktion 
+$Du(x_{0,1},\dots,x_{0,n}) $ derart, dass
+\[
+u(x_1,\dots,x_n) - u(x_{0,1},\dots,u_{0,n})
+=
+Du(x_{0,1},\dots,x_{0,n})\cdot (x-x_0) + o(|x-x_0|).
+\]
+Das Symbol $o(|x-x_0|)$ beschreibt eine Funktion, die schneller als
+ihr Argument gegen $0$ geht, so dass für den Grenzwert des
+Quotienten 
+\[
+\lim_{x\to x_0}\frac{o(|x-x_0|)}{|x-x_0|} = 0
+\]
+gilt.
+Der Grenzwert bedeutet, dass es für jedes $\varepsilon>0$ eine Umgebung
+$U_\delta(x_0)=\{x\;|\; |x-x_0|<\delta\}$ gibt derart, dass
+\[
+\bigl|
+u(x)-u(x_0) - Du(x_0)\cdot (x-x_0)
+\bigr|
+< \varepsilon\cdot |x-x_0|
+\qquad\forall x\in U_\delta(x_0)
+\]
+ist.
+Dies ist nur sinnvoll, wenn die ganze Umgebung $U_{\delta}(x_0)\subset \Omega$
+im Definitionsgebiet $\Omega$ der Differentialgleichung vorhanden ist.
+Dies führt auf die folgende Definition.
+
+\begin{definition}
+Eine Menge $\Omega$ heisst {\em offen}, wenn mit jedem Punkt $x\in \Omega$
+auch eine offene Umgebung $U_{\delta}(x)\subset\Omega$ darin enthalten ist.
+Ein {\em Gebiet} ist eine offene Menge in $\mathbb R^n$.
+\end{definition}
+
+Gebiete sind also genau die sinnvollen Definitionsgebiete für eine partielle
+Differentialgleichung.
+Es reicht allerdings nicht, dass die Funktion $u$ auf $\Omega$ definiert
+ist, da ja auch noch Randwerte erfüllt werden müssen.
+
+\begin{definition}
+Der {\em Abschluss} $\bar{\Omega}$ einer Menge $\Omega\subset\mathbb R^n$ ist
+die Menge aller Punkte in $\mathbb R^n$, die Grenzwerte von Folgen in
+$\Omega$ sind.
+Das {\em Innere} $\mathring{A}$ einer Menge $A$ ist die Menge aller Punkte
+$x$ derart, dass es eine Umgebung $U_\delta(x)$ gibt, die ganz in $A$
+enthalten ist: $U_{\delta}(x)\subset A$.
+\end{definition}
+
+Alternativ kann man den Abschluss auch charakterisieren als die Menge
+aller Punkte $x\in\mathbb R^n$, für die jede beliebige Umgebung
+$U_\delta(x)$ auch Punkte von $\Omega$ enthält, also
+$U_\delta(x)\cap \Omega\ne \emptyset$.
+Für ein Gebiet ist natürlich $\mathring\Omega=\Omega$.
+
+Die Lösung einer partiellen Differentialgleichung wird im Allgemeinen erst
+festgelegt sein, wenn zusätzlich Werte auf Teilen des ``Randes'' des
+Gebietes festgelegt worden sind.
+Nur Punkte, die als Grenzwerte von Punkten in $\Omega$ erreicht werden
+können, können zu diesem Zweck hinzugezogen werden.
+
+\begin{definition}
+Der {\em Rand} $\partial A$ einer Menge $A\subset\mathbb R^n$ ist
+$\partial A=\bar{A}\setminus\mathring{A}$.
+\end{definition}
+
+Während also eine Differentialgleichung typischerweise auf einem
+Gebiet $\Omega$ definiert ist, muss die gesuchte Lösungsfunktion
+sogar auf auf dem Abschluss $\bar{\Omega}$ definiert sein.
+Die Lösung wird im Allgemeinen erst dadurch festgelegt, dass zusätzlich
+Werte oder Ableitungen auf Teilen des Randes $\partial\Omega$ 
+vorgegeben werden.
+
+\subsection{Klassifikation der partiellen Differentialgleichungen
+\label{subsection:pde:klassifikation}}
+Eine partielle Differentialgleichung beschreibt eine Beziehung 
+zwischen den partiellen Ableitungen der Funktion $u(x_1,\dots,x_n)$.
+Wie bei den gewöhnlichen Differentialgleichungen klassifizieren wir
+auch partielle Differentialgleichungen nach der Ordnung.
+
+\begin{definition}
+Die {\em Ordnung} einer partiellen Differentialgleichung ist die
+Ordnung der höchsten Ableitung, die in der Differentialgleichung
+vorkommt.
+\end{definition}
+
+Die Beziehung zwischen den Ableitungen kann beschrieben werden durch
+eine Funktion
+\[
+F(x_1,\dots,x_n,u,p_1,\dots,p_n,t_{11},t_{12},\dots,t_{nn},\dots)
+\]
+derart, dass nach der Substitution
+\begin{align*}
+u&\to u(x_1,\dots,x_n)
+\\
+p_i&\to \frac{\partial u}{\partial x_i}
+\\
+t_{ij} &Ò\to \frac{\partial^2 u}{\partial x_i\,\partial x_j}
+\end{align*}
+die Differentialgleichung
+\[
+F\biggl(
+x_1,\dots,x_n,u(x_1,\dots,x_n),
+\frac{\partial u}{\partial x_1},\dots,\frac{\partial u}{\partial x_n},
+\frac{\partial u}{\partial x_1\,\partial x_1},
+\frac{\partial u}{\partial x_1\,\partial x_2},\dots
+\biggr)
+=0
+\]
+entsteht.
+Die Funktion $F$ kann also dazu verwendet werden, die verschiedenen
+möglichen partiellen Differentialgleichungen zu klassifizieren.
+
+\begin{beispiel}
+Die Differentialgleichung
+\[
+\frac{\partial^2 u}{\partial x_1^2}
++
+\frac{\partial^2 u}{\partial x_2^2}
+=
+0
+\]
+zweiter Ordnung wird beschrieben durch die Funktion
+\[
+F(x_1,x_2,u,p_1,p_2,t_{11},t_{12},t_{22})
+=
+t_{11} + t_{22}.
+\]
+Diese Funktion ist linear in $t_{11}$ und $t_{22}$.
+\end{beispiel}
+
+\begin{beispiel}
+Die partielle Differentialgleichung erster Ordnung von Burgers
+(Siehe auch Kapitel~\ref{chapter:burgers})
+\[
+\frac{\partial u}{\partial x_1}
++
+u
+\frac{\partial u}{\partial x_2}
+=
+0
+\]
+wird beschrieben durch die Funktion
+\[
+F(x_1,x_2,u,p_1,p_2)
+=
+p_1+up_2.
+\]
+Diese Funktion ist nicht linear in $u$ und $p_2$.
+\end{beispiel}
+
+\subsection{Randbedingungen
+\label{subsection:pde:randbedingungen}}
+
+
+
+
+
+
+
