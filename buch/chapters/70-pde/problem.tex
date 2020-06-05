@@ -5,6 +5,7 @@
 %
 \section{Problemstellung
 \label{section:pde:problem}}
+\rhead{Problemstellung}
 Gewöhnliche Differentialgleichungen werden durch eine einzige Funktion
 $f\colon \mathbb R\times\mathbb R^n: (t,x)\mapsto f(t,x)$ beschrieben,
 werden.
@@ -158,6 +159,10 @@ vorgegeben werden.
 \label{subsection:pde:klassifikation}}
 Eine partielle Differentialgleichung beschreibt eine Beziehung 
 zwischen den partiellen Ableitungen der Funktion $u(x_1,\dots,x_n)$.
+Dies ist auf sehr vielfältige Arten möglich, in die dieser Abschnitt
+etwas Ordnung bringen soll.
+
+\subsubsection{Ordnung}
 Wie bei den gewöhnlichen Differentialgleichungen klassifizieren wir
 auch partielle Differentialgleichungen nach der Ordnung.
 
@@ -167,10 +172,17 @@ Ordnung der höchsten Ableitung, die in der Differentialgleichung
 vorkommt.
 \end{definition}
 
+Für die folgende Diskussion reicht es, partielle Differentialgleichungen
+zweiter Ordnung zu betrachten.
+Die meisten in den Anwendungen vorkommenden Differentialgleichungen
+sind von dieser Art, so dass dies eine unwesentliche Einschränkung ist.
+Die Erweiterungen für höhere Ordnung sind offensichtlich.
+
+\subsubsection{Linearität}
 Die Beziehung zwischen den Ableitungen kann beschrieben werden durch
 eine Funktion
 \[
-F(x_1,\dots,x_n,u,p_1,\dots,p_n,t_{11},t_{12},\dots,t_{nn},\dots)
+F(x_1,\dots,x_n,u,p_1,\dots,p_n,t_{11},t_{12},\dots,t_{nn})
 \]
 derart, dass nach der Substitution
 \begin{align*}
@@ -185,14 +197,45 @@ die Differentialgleichung
 F\biggl(
 x_1,\dots,x_n,u(x_1,\dots,x_n),
 \frac{\partial u}{\partial x_1},\dots,\frac{\partial u}{\partial x_n},
-\frac{\partial u}{\partial x_1\,\partial x_1},
-\frac{\partial u}{\partial x_1\,\partial x_2},\dots
+\frac{\partial^2u}{\partial x_1^2},
+\frac{\partial^2u}{\partial x_1\,\partial x_2},\dots,
+\frac{\partial^2u}{\partial x_n^2}
 \biggr)
 =0
 \]
 entsteht.
+Für höhere Ordnung werden weitere Variablen benötigt, die für die
+höheren Ableitungen stehen.
 Die Funktion $F$ kann also dazu verwendet werden, die verschiedenen
 möglichen partiellen Differentialgleichungen zu klassifizieren.
+
+Eine partielle Differentialgleichung heisst {\em linear}, wenn die
+Funktion $F$ linear ist in den Argumenten $u$, $p_i$ und $t_{ij}$,
+wenn also gilt
+\begin{align}
+F(\dots,\lambda u' + \mu u'',\dots)
+&=
+\lambda F(\dots,u',\dots) + \mu F(\dots,u'',\dots)
+\label{pde:eqn:linearu}
+\\
+F(\dots,\lambda p'_i+\mu p''_i,\dots)
+&=
+\lambda F(\dots,p'_i,\dots) + \mu F(\dots,p''_i,\dots)
+&&\forall i
+\label{pde:eqn:linearp}
+\\
+F(\dots,\lambda t'_{ij}+\mu t''_{ij},\dots)
+&=
+\lambda F(\dots,t'_{ij},\dots) + \mu F(\dots,t''_{ij},\dots)
+&&\forall i,j.
+\label{pde:eqn:lineart}
+\end{align}
+Eine partielle Differentialgleichung heisst {\em quasilinear}, 
+wenn die Funktion $F$ linear ist in den Argumenten $p_i$ und $t_{ij}$,
+wenn also die Bedingungen~\eqref{pde:eqn:linearp} und \eqref{pde:eqn:lineart}
+gelten.
+Linearität in $u$, also die Bedingung~\eqref{pde:eqn:linearu} ist
+für eine quaslinieare partielle Differentialgleichung nicht verlangt.
 
 \begin{beispiel}
 Die Differentialgleichung
@@ -232,9 +275,268 @@ p_1+up_2.
 Diese Funktion ist nicht linear in $u$ und $p_2$.
 \end{beispiel}
 
+\subsubsection{Lineare Differentialgleichungen zweiter Ordnung}
+Ein für die Anwendungen besonders wichtiger Fall sind lineare
+Differentialgleichungen zweiter Ordnung.
+Für eine solche Gleichung ist die Funktion $F$ immer von der Form
+\[
+F(x_i,u,p_i,t_{ij})
+=
+\sum_{i,j=1}^n a_{ij}(x_1,\dots,x_n)t_{ij} + \sum_{i=1}^n b_i(x_1,\dots,x_n) p_i + c(x_1,\dots,x_n) u 
+\]
+Die Koeffizienten $a_{ij}$, $b_i$ und $c$ dürfen also von den Variablen
+$x_1,\dots,x_n$ abhängen, nicht aber von $u$ oder den Ableitungen.
+Die Differentialgleichung hat also die Form
+\begin{equation}
+\sum_{i,j=1}^n
+a_{ij}\frac{\partial^2 u}{\partial x_i\,\partial x_j}
++
+\sum_{i=1}^n
+b_i\frac{\partial u}{\partial x_i}
++
+cu
+=
+f
+\label{pde:eqn:eqn2nd}
+\end{equation}
+Da es in den zweiten Ableitungen nicht auf die Reihenfolge ankommt,
+kann die Matrix $a_{ij}$ immer symmetrisch gewählt werden.
+Die Matrix $A=(a_{ij})$ heisst die Symbolmatrix der Differentialgleichung.
+
+Es stellt sich heraus, dass die Terme zweiter Ordnung, also die 
+Matrix $A$, das Verhalten der Lösung wesentlich beeinflussen.
+Eine symmetrische Matrix kann durch eine Drehung immer in eine
+Diagonalmatrix transformiert werden.
+Durch Wechsel des Koordinatensystems kann man also erreichen, dass
+\[
+A
+=
+\begin{pmatrix}
+\lambda_1&         &      &         \\
+         &\lambda_2&      &         \\
+         &         &\ddots&         \\
+         &         &      &\lambda_n
+\end{pmatrix}
+\]
+ist.
+In diesen Koordinaten sind es nur noch die Eigenwerte
+$\lambda_1,\dots,\lambda_n$ der Matrix $A$, die das Verhalten der Lösung
+bestimmen.
+
+\begin{definition}
+Die Differentialgleichung
+\eqref{pde:eqn:eqn2nd}
+heisst {\em elliptisch}, wenn alle Eigenwerte positiv sind.
+Sie heisst {\em hyperbolisch}, wenn alle Eigenwerte bis auf einen negativen
+positiv sind.
+Sie heisst {\em parabolisch}, wenn alle Eigenwerte bis auf einen
+verschwindenden positiv sind.
+\end{definition}
+\index{elliptische partielle Differentialgleichung}%
+\index{hyperbolisch partielle Differentialgleichung}%
+\index{parabolisch partielle Differentialgleichung}%
+
+\begin{beispiel}
+Die {\em Wellengleichung}
+\[
+\frac{1}{a^2}\frac{\partial^2 u}{\partial t^2}
+=
+\Delta u 
+\quad\Rightarrow\quad
+\Delta u 
+-
+\frac{1}{a^2}\frac{\partial^2 u}{\partial t^2}
+=
+0
+\]
+hat die Symbolmatrix
+\[
+A=
+\begin{pmatrix}
+1& &      &              \\
+ &1&      &              \\
+ & &\ddots&              \\
+ & &      &\displaystyle-\frac{1}{a^2}
+\end{pmatrix}
+\]
+$n$ positive und einem negativen Eigenwert, diese Gleichung ist also
+hyperbolisch.
+Die Lösungen zeigen Wellencharakter und die Werte und ersten
+Ableitungen von $u$ zu einem Zeitpunkt $t_0$ bestimmen das Verhalten
+der Lösung vollständig.
+Eine hyperbolische Differentialgleichung hat also eine natürlich
+``Entwicklungsrichtung'', das Gebiet kann in Richtung ``Zukunft''
+offen sein, ohne dass die Eindeutigikeit der Lösung dadurch gefährdet wird.
+\end{beispiel}
+
+\begin{beispiel}
+Die Gleichung für das Potential einer Ladungsverteilung
+\[
+\Delta u = f
+\qquad\Rightarrow\qquad
+A=
+\begin{pmatrix}
+1& &      & \\
+ &1&      & \\
+ & &\ddots& \\
+ & &      &1
+\end{pmatrix}
+=E
+\]
+hat nur positive Eigenwerte, sie ist also elliptisch.
+Die Lösungen dieser Gleichung sind nur dann bestimmt, wenn Werte von $u$
+auf dem gesamten Rand des Gebietes vorgegeben werden.
+Es ist also nicht möglich, eine ``Zeitrichtung'' für die Entwicklung
+der Lösung einer solchen Differentialgleichung zu finden.
+\end{beispiel}
+
+Die Verschiedenartigkeit der Lösungen in Abhängigkeit vom Typ der
+Differentialgleichung hat zur Folge, dass verschiedene Lösungsverfahren
+zum Einsatz kommen müssen.
+Die Klassifikation einer Differentialgleichung ist also Vorbedingung
+für die Wahl eines geeigneten Lösungsverfahrens.
+
 \subsection{Randbedingungen
 \label{subsection:pde:randbedingungen}}
+Die Lösung einer partiellen Differentialgleichung ist erst eindeutig
+bestimmt, wenn Werte von $u$ oder von Ableitungen von $u$ auf geeignet
+gewählten Teilen das Randes $\partial\Omega$ des Gebietes $\Omega$
+vorgegeben sind.
+Die Theorie der partiellen Differentialgleichungen studiert ausführlich,
+welche Art von Randbedingungen wo auf dem Rand zu spezifizieren sind.
 
+\subsubsection{Dirichlet-Randbedingungen}
+Werte der Funktion auf dem Rand können vorgegeben werden, indem eine
+Funktion $g\colon \partial\Omega\to\mathbb R$ spezifiziert wird, so
+dass für alle Punkte $x\in\partial\Omega$ die Gleichung
+$
+u(x) = g(x) 
+$
+gilt.
+Diese Art von Randbedingungen heisst {\em Dirichlet-Randbedingungen}.
+\index{Dirichlet-Randbedingung}
+
+\subsubsection{Neumann-Randbedingungen}
+Die Theorie des Anfangswertproblems für gewöhnliche Differentialgleichungen
+besagt, dass die Lösung einer Differentialgleichung $n$-ter Ordnung erst
+festgelegt ist, wenn der Anfangswert und $n-1$-Ableitungen vorgegeben sind.
+Es ist zu erwarten, dass es auch bei gewissen partiellen
+Differentialgleichungen der Ordnung $n\ge 2$ nötig sein wird, 
+Ableitungen auf dem Rand vorzugeben.
+
+Im Allgemeinen wird es nicht genügen, nur Ableitungen vorzugeben,
+da sie Funktionen nur bis auf eine Konstanten festlegen können.
+Es wird also nötig sind, mindestens in einem Punkt zusätzlich einen
+Funktionswert vorzugeben.
+
+Es ist jedoch nicht sinnvoll, beliebige Ableitungen auf dem Rand
+vorzugeben.
+Wir illustrieren dies an einem einfachen Beispiel.
+Als Gebiet wählen wir $\Omega = \{(x,y)\in\mathbb R^2\;|\; x > 0\}$,
+der Rand ist also die $y$-Achse.
+Nehmen wir an, dass Werte der Ableitung $\partial u/\partial y$ 
+auf der $y$-Achse vorgegeben sind, also
+\[
+\frac{\partial u}{\partial y}(0,y)  = g(y).
+\]
+Ausserdem nehmen wir an, dass der Funktionswert $u(0,0)=u_0$ vorgegeben ist.
+Für die Funktion $f(y) = u(0,y)$ gilt daher $f'(y) = g(y)$ und $f(0)=u_0$.
+Daraus lässt sich die Funktion $f$ aber durch das Integral
+\[
+f(y) = u_0 + \int_0^y g(\eta)\,d\eta
+\]
+bestimmen.
+Die Vorgabe der Ableitung $\partial u/\partial y$ auf dem Rand und eines
+Wertes ist also gleichbedeutend mit der Vorgabe aller Werte $f(y)$ auf dem
+Rand.
+Statt der Ableitungen $\partial u/\partial y$ hätten wird daher auch
+Dirichlet-Randbedingungen $u(0,y) = f(y)$ vorgeben können.
+Es ist also nur sinnvoll, die Ableitung $\partial u/\partial x$ 
+auf dem Rand vorzugeben.
+
+Im vorangegangenen Abschnitt hat ein spezielles Beispiel bezeigt,
+dass Ableitungen entlang des Randes gegenüber Dirichlet-Randbedingungen
+keine neue Information liefern können.
+Nur die Ableitung in die Richtung senkrecht auf den Rand kann zusätzliche
+Information liefern.
+Dazu muss der Rand des Gebietes ausreichend glatt sein, so dass die
+Normale auf den Rand wohldefiniert ist.
+
+\begin{definition}
+Ist $u$ eine Funktion, die auf $\bar\Omega$ definiert ist.
+Sei $n$ die Normale auf den Rand $\partial\Omega$ in einem Punkt
+$x\in\partial\Omega$.
+Die {\em Normalableitung}
+\[
+\frac{\partial u}{\partial n}
+=
+\lim_{t\to 0+} \frac{u(x+tn)-u(x)}{t}
+\]
+in $x$ ist die Richtungsableitung 
+der Funktion $u$ in Richtung $n$.
+\end{definition}
+
+Im Falle der Wellengleichung
+\[
+\frac{\partial^2 u}{\partial x^2}
+-
+\frac{1}{a^2}
+\frac{\partial^2 u}{\partial t^2}
+=0
+\]
+beschreibt $u(t,x)$ zum Beispiel die Auslenkung einer gespannten Saite
+aus der Ruhelage.
+Es ist aus physikalischen Überlegungen klar, dass die Bewegung der Saite
+erst dann festgelegt ist, wenn Auslenkung und Geschwindigkeit der Saite
+zur Zeit $t=0$ vorgegeben werden.
+Die Vorgabe der Auslenkung zur Zeit $t=0$
+\[
+u(0,x) = f(x)
+\]
+ist eine Dirichlet-Randbedingung.
+Die Richtung $n$ der Zeitachse ist senkrecht auf dem Rand $t=0$,
+die Zeitableitung von $u$ ist also genau eine Normalableitung.
+Die Vorgabe der Geschwindigkeit
+\[
+\frac{\partial u}{\partial n}(0,x)
+=
+\frac{\partial u}{\partial t}(0,x)
+=
+g(x)
+\]
+ist also eine Vorgabe der Normalableitung.
+
+\begin{definition}
+Die Vorgabe der Normalableitung auf dem Rand $\partial\Omega$
+\[
+\frac{\partial u}{\partial n}(x) = h(x)\qquad \forall x\in\partial\Omega
+\]
+heisst eine {\em Neumann-Randbedingung}.
+\end{definition}
+\index{Neumann-Randbedingung}
+
+\subsection{Lösungen
+\label{subsection:pde:loesungen}}
+Ein vollständig gestelltes Problem mit partiellen Differentialgleichungen
+beginnt also immer mit einer Definition des Gebietes $\Omega$, also
+einer offenen Menge in $\mathbb R^n$.
+Die Differentialgleichung wird gegeben durch eine Funktion $F$ wie in
+Abschnitt~\ref{subection:pde:klassifikation} dargestellt.
+Ausserdem müssen Randbedingungen vorgegeben werden, wie in
+Abschnitt~\ref{subsection:pde:randbedingungen} dargestellt.
+Gesucht ist dann eine Funktion $u$, welche alle diese Bedingungen
+erfüllen soll.
+Dazu muss die Funktion nicht nur in $\Omega$ definiert sein, 
+sondern auch auf dem Rand.
+
+\begin{definition}
+Eine Lösung einer partiellen Differentialgleichung ist eine Funktion
+\[
+u\colon \bar{\Omega} \to \mathbb R:(x_1,\dots,x_n)\mapsto u(x_1,\dots,x_n)
+\]
+derart, dass die Differentialgleichung im Inneren, also in $\Omega$,
+erfüllt ist, und die Randbedingungen auf $\partial\Omega$.
+\end{definition}
 
 
 
