@@ -6,9 +6,9 @@
 \section{Numerische Lösung der Van der Pol Gleichung
 \label{vanderpol:section:loesung}}
 \rhead{Numerische Lösung der Van der Pol Gleichung}
-Der vorhergehende Abschnitt beschreibt die Antwort des Systems auf die Änderung der Anfangsbedingungen. Stattdessen soll nun analysiert werden, wie die Lösung der Gleichung \ref{vanderpol:equations:vdp} auch durch die Länge des Integrationsschrittes beeinflusst werden kann. Zuvor sind jedoch die verschiedenen Implementierungen der wichtigsten verwendeten Codes aufgelistet.
-\lstinputlisting[style=Python,caption={Implementierung des Runge-Kutta-Algorithmus in Python}, captionpos={b}, label={vanderpol:codes:RK_4}]{papers/vanderpol/codes/RK_4.py}
-Der Codeabschnitt \ref{vanderpol:codes:RK_4} stellt die Python-Implementierung des Runge-Kutta-Algorithmus vierter Ordnung vor. Die Koeffizienten werden gemäss der nachstehenden analytischen Definition berechnet
+Im folgenden Abschnitt werden die verschiedenen Implementierungen in Python gezeigt und erklärt, die auch für die Realisierung der verschiedenen Plots eingesetzt wurden.
+\lstinputlisting[style=Python,caption={Implementierung des Runge Kutta Algorithmus in Python}, captionpos={b}, label={vanderpol:codes:RK_4}]{papers/vanderpol/codes/RK_4.py}
+Der Codesabschnitt \ref{vanderpol:codes:RK_4} stellt die Python Implementierung des Runge Kutta Algorithmus vierter Ordnung vor. Die Koeffizienten werden gemäss der nachstehenden analytischen Definition berechnet
 \begin{align*}
 k_1 &= h \cdot f(t_n, y_n),\\
 k_2 &= h \cdot f\left(t_n + \frac{h}{2}, y_n + \frac{h}{2} k_1\right), \\
@@ -24,15 +24,15 @@ Der Code des Euler Algorithmus wurde nicht berichtet, denn es handelt sich um ei
 k_1 &= h \cdot f(t_n, y_n), \\
 y_{n+1} &= y_n + k_1 +O(h^2).
 \end{align*}
-\lstinputlisting[style=Python, caption={Implementierung der van der pol-Gleichung in Python}, captionpos={b}, label={vanderpol:codes:VDP_funk}]{papers/vanderpol/codes/VDP_funk.py}
-Der Codesabschnitt \ref{vanderpol:codes:VDP_funk} zeigt stattdessen die Implementierung der Differentialgleichung \ref{vanderpol:equations:inhomogene_2}.  Die entwickelte Idee lautet wie folgt: In In beiden Fällen stellt die Variable $z_n$ einen Vektor dar, der die beiden Werte der Funktionen $x_n$ und $\dot{x}_n$ enthält. Letzteres ist somit dem aktuellen Zustand $n$. Beide Funktionen erhalten auch einen zweiten Eingabeparameter $t_n$, der dem aktuellen Zeitpunkt entspricht. Der Code in \ref{vanderpol:codes:VDP_funk} kümmert sich um die Definition der Differentialgleichung, die dann in der in \ref{vanderpol:codes:RK_4} eingeführten Funktion verwendet wird, um den Kutta-Runge-Algorithmus auszuführen und $x_{n+1}$ und $\dot{x}_{n+1}$ als Ausgabe zu erhalten. Zusammengefasst werden die beiden Funktionen als Eingabe gegeben: ein bestimmter Zeitwert $t_n$, der aktuelle Wert der Funktion $x_{n}$ und ihre Ableitung $\dot{x}_{n}$. Es wird eine Ausgabe zurückgegeben, die dem nächsten Wert der Funktion $x_{n+1}$ und ihrer Ableitung $\dot{x}_{n+1}$ entspricht. Es wird in dieser Form dargestellt:
+\lstinputlisting[style=Python, caption={Implementierung der Van der Pol Gleichung in Python}, captionpos={b}, label={vanderpol:codes:VDP_funk}]{papers/vanderpol/codes/VDP_funk.py}
+Der Codesabschnitt \ref{vanderpol:codes:VDP_funk} zeigt stattdessen die Implementierung der Differentialgleichung \ref{vanderpol:equations:inhomogene_2}. Die entwickelte Idee lautet wie folgt: In In beiden Fällen stellt die Variable $z_n$ einen Vektor dar, der die beiden Werte der Funktionen $x_n$ und $\dot{x}_n$ enthält. Letzteres ist somit dem aktuellen Zustand $n$. Beide Funktionen erhalten auch einen zweiten Eingabeparameter $t_n$, der dem aktuellen Zeitpunkt entspricht. Der Code in \ref{vanderpol:codes:VDP_funk} kümmert sich um die Definition der Differentialgleichung, die dann in der in \ref{vanderpol:codes:RK_4} eingeführten Funktion verwendet wird, um den Kutta Runge Algorithmus auszuführen und $x_{n+1}$ und $\dot{x}_{n+1}$ als Ausgabe zu erhalten. Zusammengefasst: ein bestimmter Zeitwert $t_n$, der aktuelle Wert der Funktion $x_{n}$ und seine Ableitung $\dot{x}_{n}$ werden als Input für die beiden Funktionen gegeben. Es wird eine Ausgabe zurückgegeben, die dem nächsten Wert der Funktion $x_{n+1}$ und ihrer Ableitung $\dot{x}_{n+1}$ entspricht. Es wird in dieser Form dargestellt:
 \begin{equation}
 \begin{pmatrix}x_{n+1} \\ \dot{x}_{n+1} \end{pmatrix} = \begin{pmatrix}x_{n} \\ \dot{x}_{n} \end{pmatrix} + \frac{1}{6}(\vec{k_1} + 2\vec{k_2} + 2\vec{k_3} + \vec{k_4}).
 \label{vanderpol:equations:solve_alg}
 \end{equation}
-Die Konstanten von $k_1$ bis $k_4$ sind Vektoren, die die Koeffizienten für beide von uns benötigten Lösungen enthalten, nämlich $x_{n+1}$ und $\dot{x}_{n+1}$.
+Die Konstanten von $k_1$ bis $k_4$ sind Vektoren, die die Koeffizienten für beide benötigten Lösungen enthalten, nämlich $x_{n+1}$ und $\dot{x}_{n+1}$.
 Diesen werden dann gleichzeitig berechnet. Dieser Algorithmus ist eine Implementierung der Gleichung \ref{vanderpol:equations:homogene_1}.
-\lstinputlisting[style=Python,caption={Python-Algorithmus zur Berechnung der Lösung}, captionpos={b}, label={vanderpol:codes:solve}]{papers/vanderpol/codes/solve.py}
+\lstinputlisting[style=Python,caption={Python Algorithmus zur Berechnung der Lösung}, captionpos={b}, label={vanderpol:codes:solve}]{papers/vanderpol/codes/solve.py}
 Die Implementierung des in der Gleichung \ref{vanderpol:equations:solve_alg} beschriebenen Verfahrens wird im Abschnitt des Codes \ref{vanderpol:codes:solve} gezeigt.
 Um eine vollständige Lösung für einen beliebigen Bereich $[a, b]$ zu erhalten, muss man die darin enthaltenen Zeitwerte berechnen. Dieses Interval muss also diskretisiert werden, indem es in $n$ gleiche Teile aufgeteilt wird. Daraus ergibt sich eine Menge von Zeitwerten, die von \texttt{t\_min} bis \texttt{t\_max} läuft.
 Dies ist genau das, was im Codesabschnitt \ref{vanderpol:codes:solve} ausgeführt wird. Zu Beginn werden das Zeitintervall und die Anfangsbedingungen angegeben, ab denen die Iteration dann beginnt, was in diesem Fall zu einer Lösung von $\texttt{t\_min}=0.0$ bis $\texttt{t\_max}=950.0$ führt.

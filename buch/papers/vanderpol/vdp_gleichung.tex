@@ -6,7 +6,7 @@
 \section{Die Van der Pol Gleichung
 \label{vanderpol:section:vdp_gleichung}}
 \rhead{Die Van der Pol Gleichung}
-Die Van-der-Pol-Gleichung (Gl. \ref{vanderpol:equations:vdp}) ist eine {\em nichtlineare} Differentialgleichung zweiter Ordnung. 
+Die Van der Pol Gleichung (Gl. \ref{vanderpol:equations:vdp}) ist eine {\em nichtlineare} Differentialgleichung zweiter Ordnung. 
 Die Nichtlinearität wird durch die Tatsache festgelegt, dass der Koeffizient von $\dot{x}$ nicht linear ist. Tatsächlich sind $x^{2}$ und $x \cdot \dot{x}$ zwei nichtlineare Operationen.
 
 \subsection{Van der Pol Gleichung als Oszillator mit nichtlinearem Widerstand
@@ -23,13 +23,13 @@ Die Nichtlinearität wird durch die Tatsache festgelegt, dass der Koeffizient vo
   (0,-2) to [short, *-] (5,-2)
   to [R, l=$R$, v<=$u_R(i(t))$] (5,0);
 \end{tikzpicture} 
-\caption{RLC-Schaltung mit nichtlinearem Widerstand \label{vanderpol:figures:circuit}}
+\caption{RLC Schaltung mit nichtlinearem Widerstand \label{vanderpol:figures:circuit}}
 \end{figure}
-In der Abb. \ref{vanderpol:figures:circuit} steht ein klassischer RLC-Serienschwingkreis. In diesem Fall ist aber der Widerstandswert nicht linear. Dies bedeutet, dass die Beziehung zwischen Spannung und Strom nicht mehr vom Typ $u_R(i) = a \cdot i(t)$ lautet. Es kann jedoch als Polynom dargestellt werden, und zwar in unserem Fall dritter Ordnung anstatt des ersten, wie hier gezeigt: 
+In der Abb. \ref{vanderpol:figures:circuit} steht ein klassischer RLC Serienschwingkreis. In diesem Fall ist aber der Widerstandswert nicht linear. Dies bedeutet, dass die Beziehung zwischen Spannung und Strom nicht mehr vom Typ $u_R(i) = a \cdot i(t)$ lautet. Es kann jedoch als Polynom dargestellt werden, und zwar in unserem Fall dritter Ordnung anstatt des ersten, wie hier gezeigt: 
 \begin{equation}
 u_R(i) = a \cdot i^3 + b \cdot i^2 + c \cdot i + d.
 \end{equation}
-Eine solche Kennlinie könnte man zum Beispiel mit einer Tunneldiode, einer Anordnung von FET-Transistoren oder Operationsverstärkern erhalten. Die Konstanten könnten auf diese Weise zugeordnet werden:
+Eine solche Kennlinie könnte man zum Beispiel mit einer Tunneldiode, einer Anordnung von FET Transistoren oder Operationsverstärkern erhalten. Die Konstanten könnten auf diese Weise zugeordnet werden:
 \begin{equation*}
 a = \frac{R_0}{3 \cdot i_0^2}, \quad c = -R_0, \quad b = d = 0,
 \end{equation*}
@@ -49,7 +49,7 @@ Die Maschengleichung wird nun nach dem zweiten Kirchoffschen Gesetz:
 u_{\text{in}}(t) = u_R(t) + u_C(t) + u_L(t).
 \label{vanderpol:equations:kirchoff}
 \end{equation}
-Unter der Annahme, dass die Spannung $U_{\text{in}}$ eine über die Zeit unveränderliche Grösse ist, d.h. $U_{\text{in}}(t) = U_0$, die beiden Seiten der Gleichung \ref{vanderpol:equations:kirchoff} wird nach $t$ abgeleitet:
+Unter der Annahme, dass die Spannung $u_{\text{in}}$ eine über die Zeit unveränderliche Grösse ist, d.h. $u_{\text{in}}(t) = U_0$, die beiden Seiten der Gleichung \ref{vanderpol:equations:kirchoff} werden nach $t$ abgeleitet:
 
 \begin{align}
 \frac{dU_0}{dt} &= \frac{d}{dt}(u_R(t) + u_C(t) + u_L(t))\\
@@ -66,8 +66,8 @@ Abschliessend wird die Gleichung:
 \frac{d^{2}i}{dt^{2}} - \mu (1 - i^{2}) \frac{di}{dt} + i = 0.
 \label{vanderpol:equations:vdp_i}
 \end{equation}
-Es ist daher gezeigt, welche Art von System durch diese Differentialgleichung beschrieben werden könnte. Offensichtlich gibt es viele Möglichkeiten, diese Art von Nichtlinearität für den Spannungswert $U_R$ zu erreichen, einige sind oben aufgelistet.
-Wenn es versuchen wird, die gleiche Gleichung zu lösen, aber mit einem konstanten R-Wert, erhalten wir eine Differentialgleichung dieses Typs:
+Es ist daher gezeigt, welche Art von System durch diese Differentialgleichung beschrieben werden könnte. Offensichtlich gibt es viele Möglichkeiten, diese Art von Nichtlinearität für den Spannungswert $u_R(t)$ zu erreichen, einige sind oben aufgelistet.
+Wenn es versuchen wird, die gleiche Gleichung zu lösen, aber mit einem konstanten R Wert, erhalten wir eine Differentialgleichung dieses Typs:
 \begin{equation}
 \frac{d^{2}i}{d t^{2}}+\frac{R}{L} \frac{d i}{d t}+\frac{1}{LC}i = 0,
 \end{equation}
@@ -75,11 +75,11 @@ kann umgeschrieben werden als:
 \begin{equation}
 \frac{d^{2}i}{d t^{2}}+ 2\zeta \frac{d i}{d t}+\omega_0i = 0,
 \end{equation}
-wobei $\omega_0$ die Resonanzfrequenz und $\zeta$ die Dämpfungskonstante ist. Die eine solche Lösung hat:
+wobei $\omega_0$ die Resonanzfrequenz und $\zeta$ die Dämpfungskonstante sind. Die analytische Lösung lautet wie folgt:
 \begin{equation}
 i(t) = e^{-\zeta t} \cos(\omega_dt+\varphi_0).
 \end{equation}
-Das bedeutet, dass im Falle der Gl. \ref{vanderpol:equations:vdp_i}, d.h. die Van-der-Pol-Gleichung eine Schwingung vorliegt, die bei grossen Werten von $i^2$ einen positiven Dämpfungswert hat, der ihre Amplitude verringert. Bei kleinen Werten von $i^2$ ist der Dämpfungswert negativ, was dazu führt, dass die Amplitude grösser wird und somit in diesen beiden Zuständen schwingt.
+Das bedeutet, dass im Falle der Gl. \ref{vanderpol:equations:vdp_i}, d.h. die Van der Pol Gleichung eine Schwingung vorliegt, die bei grossen Werten von $i^2$ einen positiven Dämpfungswert hat, der ihre Amplitude verringert. Bei kleinen Werten von $i^2$ ist der Dämpfungswert negativ, was dazu führt, dass die Amplitude grösser wird und somit in diesen beiden Zuständen schwingt.
 
 \subsection{Homogene Gleichung
 \label{vanderpol:subsection:homogene}}
@@ -97,9 +97,9 @@ Die Funktion neigt unabhängig vom Anfangswert dazu, nach einer bestimmten Zeit 
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{papers/vanderpol/figures/homogene_plot.pdf}
-	\caption{Phase und Zeit-Raum-Diagramm mit verschiedenen $\mu$\label{vanderpol:figures:homogene}}
+	\caption{Phase und Zeit Raum Diagramm der Gl. \ref{vanderpol:equations:homogene_1} mit verschiedenen Werten von $\mu$\label{vanderpol:figures:homogene}}
 \end{figure}
-Die homogene Van-der-Pol-Gleichung ist stabil und zeigt {\em kein} chaotisches Verhalten.
+Die homogene Van der Pol Gleichung ist stabil und zeigt {\em kein} chaotisches Verhalten.
 \subsection{Inhomogene Gleichung}
 \label{vanderpol:subsection:inhomogene}
 Ausgehend von der Formel der inohomogenen Differentialgleichung
@@ -107,7 +107,7 @@ Ausgehend von der Formel der inohomogenen Differentialgleichung
 	\ddot{x}-\mu\left(1-x^{2}\right) \dot{x}+x = f(x),
 \label{vanderpol:equations:inhomogene_gen}
 \end{equation*}
-die sogenannte {\em angeregte Van der Pol Gleichung} wird daher erhalten, wenn $f(x) = A \sin(\omega t)$ gesetzt wird:
+die sogenannte {\em angeregte Van der Pol Gleichung} wird daher erhalten, wenn $f(x) = A \cdot \sin(\omega t)$ gesetzt wird:
 \begin{equation}
 	\ddot{x}-\mu\left(1-x^{2}\right) \dot{x}+x = A \cdot \sin(\omega t).
 \label{vanderpol:equations:inhomogene_sin}
