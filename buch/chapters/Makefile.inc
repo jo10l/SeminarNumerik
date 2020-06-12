@@ -50,6 +50,10 @@ CHAPTERFILES =								\
 	chapters/60-linsys/uebungsaufgaben/6002.tex			\
 	chapters/60-linsys/uebungsaufgaben/6003.tex			\
 	chapters/70-pde/chapter.tex					\
+	chapters/70-pde/problem.tex					\
+	chapters/70-pde/fdm.tex						\
+	chapters/70-pde/fvm.tex						\
+	chapters/70-pde/fem.tex						\
 	chapters/80-fourier/chapter.tex
 
 
