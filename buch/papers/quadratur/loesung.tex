@@ -5,10 +5,44 @@
 %
 \section{Lösung
 \label{quadratur:section:loesung}}
-\textcolor{red}{TODO: Lösung für problemstellung erarbeiten}
+\textcolor{red}{
+    TODO
+    \begin{itemize}
+        \item Gauss Legendre Formel zeigen
+        \item Beispiel berechnen mit Formel
+        \item Berechnung der Gewichtung
+        \item Berechnung der Position der Stützstellen
+        \item Erklären der verschiedenen Formen der Gauss-Quadratur und ihrer Anwendungen
+        \item 
+    \end{itemize}
+}
+
 
 \subsection{De finibus bonorum et malorum
 \label{quadratur:subsection:bonorum}}
 \textcolor{red}{TODO: Lösung in python}
+
+
+\subsection{Formen der Gauss-Quadratur
+\label{quadratur:subsection:gaussformen}}
+Es gibt verschiedene Ausprägungen der Gauss-Integration, abhängig vom jeweiligen Anwendungsbereich 
+erkennbar an den Grenzen des Integrals und der Wahl der Gewichtung.
+Die vier häufigsten Formen sind in der Tabelle~\ref{buch:table:gaussformen} abgebildet.
+
+\begin{table}[h!]
+    \begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
+        \hline
+        \text{Name} &  \text{Untere Grenze} & \text{Obere Grenze} & \text{Formel} \\
+        \hline  
+        \text{Legendre} & -1 & 1 & p_{n}(x) = \int_{-1}^{1} f(x)\,dx \approx \sum_{i=0}^{n} A_{i} f(x_{i}) \\
+        \text{Chebyshev} &  -1 & 1 & T_{n}(x) = \int_{-1}^{1} (1-x^{2})^{-1/2} f(x)\,dy \approx \frac{\pi}{n+1} \sum_{i=0}^{n} f(x_{i}) \\
+        \text{Laguerre} &  0 & \infty & L_{n}(x) = \int_{0}^{\infty} e^{-x} f(x)\,dx \approx \sum_{i=0}^{n} A_{i} f(x_{i}) \\
+        \text{Hermite} & -\infty & \infty & H_{n}(x) = \int_{-\infty}^{\infty} f(x)\,dx \approx \sum_{i=0}^{n} A_{i} f(x_{i})\\
+        \hline
+    \end{tabular}
+    \caption{Formen der Gauss-Quadratur
+    \label{buch:table:gaussformen}}
+    
+\end{table}
 
 
