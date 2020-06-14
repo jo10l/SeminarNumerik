@@ -60,7 +60,7 @@ Differenzausdrücken
 \end{figure}
 Die naheliegenste Approximation für die Differentialgleichung besteht
 darin, die Ableitungen durch Differenzenquotienten zu ersetzen (siehe 
-Abbildung~\ref{buch:pde:1abldiff}.
+Abbildung~\ref{buch:pde:1abldiff}).
 Mit der oben eingeführten Notation können die ersten Ableitungen durch
 die sogenannten {\em Vorwärtsdifferenzen}
 \index{Vorwärtsdifferenz}%
@@ -76,7 +76,7 @@ die sogenannten {\em Vorwärtsdifferenzen}
 \frac{u(x_{i,k+1}) - u(x_{ik})}{h_y}
 \label{chapter:pde:approx1st}
 \end{align}
-approximiert werden.
+approximiert werden (Abbildung~\ref{buch:pde:1abldiff} Mitte).
 Die Genauigkeit der Approximation kann offenbar verbessert werden, 
 indem $h_x$ und $h_y$ verkleinert werden.
 
@@ -112,7 +112,7 @@ Alternativ könnten statt der Vorwärtsdifferenzen die {\em Rückwärtsdifferenz
 \frac{u(x_{ik}) - u(x_{i,k-1})}{h_y}
 \label{chapter:pde:approxrueckwaerts}
 \end{align}
-verwendet werden.
+verwendet werden (Abbildung~\ref{buch:pde:1abldiff} unten).
 Die Genauigkeit wird dadurch jedoch nicht verbessert, die Punkte
 $(\xi,kh_y)$ und $(ih_x,\eta)$, an dem diese Ableitungswerte angenommen
 werden, liegen jetzt einfach links bzw.~unterhalb von von $x_{ik}$.
@@ -134,7 +134,8 @@ Ein Mittelweg könnte ein Differenzenquotient
 \end{align*}
 über ein symmetrisches Interval der doppelten Länge.
 \index{symmetrische Differenz}%
-Diese sogenannten {\em symmetrische Differenzen} sind eher repräsentativ
+Diese sogenannten {\em symmetrische Differenzen}
+(Abbildung~\ref{buch:pde:1abldiff}) sind eher repräsentativ
 für die Steigung im Punkt $x_{ik}$, dafür ist die Genauigkeit wegen des
 doppelt so langen Intervals kleiner.
 
