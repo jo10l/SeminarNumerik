@@ -395,8 +395,11 @@ I
 Es berechnet die Fläche des im ersten Quadranten liegenden Teils des
 Einheitskreises, hat also den Wert $I=\frac{\pi}4\simeq 0.78539816$.
 
-Das folgende Octave-Programm kann zur Berechnung verwendet werden:
-\lstinputlisting[language=Octave,style=Octave]{chapters/40-integration/trapez.m}
+Das Octave-Programm von Listing~\ref{buch:listing:integration} kann zur
+Berechnung verwendet werden.
+\lstinputlisting[style=Octave,float,caption={Programm zur
+Berechnung der Trapez- und Mittelpunktsummen für das Integral
+\eqref{buch:equation:kreis}},label={buch:listing:integration}]{chapters/40-integration/trapez.m}
 In Zeile~5 wird der Integrand als Funktion definiert.
 In Zeile~9 wird die Funktion \texttt{M(h,a,b,f)} definiert, die
 die Mittelpunktsumme $M(h)$ der Funktion $f$ berechnet.
