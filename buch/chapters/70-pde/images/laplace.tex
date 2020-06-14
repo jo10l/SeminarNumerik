@@ -1,0 +1,94 @@
+%
+% laplace.tex -- template for standalon tikz images
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\s{1.5}
+
+\fill[color=red!10]
+	({0.5*\s},{\s}) arc (0:180:{0.5*\s}) 
+	--
+	({-0.5*\s},{\s}) arc (0:-90:{0.5*\s})
+	--
+	({-\s},{0.5*\s}) arc (90:270:{0.5*\s})
+	--
+	({-\s},{-0.5*\s}) arc (90:0:{0.5*\s})
+	--
+	({-0.5*\s},{-\s}) arc (180:360:{0.5*\s})
+	--
+	({0.5*\s},{-\s}) arc (180:90:{0.5*\s})
+	--
+	({\s},{-0.5*\s}) arc (-90:90:{0.5*\s})
+	--
+	({\s},{0.5*\s}) arc (-90:-180:{0.5*\s})
+	-- cycle;
+\foreach \x in {-2,...,2}{
+	\draw[line width=0.2pt]
+		({\x*\s},{-2.2*\s}) -- ({\x*\s},{2.2*\s});
+}
+\node at ({-2*\s},{-2.2*\s}) [below] {$i-2$};
+\node at ({-1*\s},{-2.2*\s}) [below] {$i-1$};
+\node at (0,{-2.2*\s}) [below] {$i$};
+\node at ({1*\s},{-2.2*\s}) [below] {$i+1$};
+\node at ({2*\s},{-2.2*\s}) [below] {$i+2$};
+\foreach \y in {-2,...,2}{
+	\draw[line width=0.2pt]
+		({-2.2*\s},{\y*\s}) -- ({2.2*\s},{\y*\s});
+}
+\foreach \x in {-2,...,2}{
+	\foreach \y in {-2,...,2}{
+		\fill[color=white] ({\x*\s},{\y*\s}) circle[radius=0.1];
+		\fill ({\x*\s},{\y*\s}) circle[radius=0.08];
+	}
+}
+\draw[color=red,line width=1.4pt] (-\s,0)--(\s,0);
+\draw[color=red,line width=1.4pt] (0,-\s)--(0,\s);
+
+\fill[color=white] (0,0) circle[radius=0.3];
+\draw[color=red] (0,0) circle[radius=0.3];
+\node[color=red] at (0,0) {$-4$};
+
+\fill[color=white] (\s,0) circle[radius=0.3];
+\draw[color=red] (\s,0) circle[radius=0.3];
+\node[color=red] at (\s,0) {$1$};
+
+\fill[color=white] (-\s,0) circle[radius=0.3];
+\draw[color=red] (-\s,0) circle[radius=0.3];
+\node[color=red] at (-\s,0) {$1$};
+
+\fill[color=white] (0,\s) circle[radius=0.3];
+\draw[color=red] (0,\s) circle[radius=0.3];
+\node[color=red] at (0,\s) {$1$};
+
+\fill[color=white] (0,-\s) circle[radius=0.3];
+\draw[color=red] (0,-\s) circle[radius=0.3];
+\node[color=red] at (0,-\s) {$1$};
+
+\node at (0.1,0.1) [above right] {$u_{ik}$};
+\node at ({\s+0.1},0.1) [above right] {$u_{i+1,k}$};
+\node at ({-\s-0.1},0.1) [above left] {$u_{i+1,k}$};
+\node at (0.1,{\s+0.1}) [above right] {$u_{i,k+1}$};
+\node at (0.1,{-\s-0.1}) [below right] {$u_{i,k-1}$};
+\node at ({-1.5*\s},{-2*\s}) [above] {$h_x$};
+\node at ({-2*\s},{1.5*\s}) [right] {$h_y$};
+
+\node at (-4.3,{-2*\s}) [right] {$\mathstrut k-2$};
+\node at (-4.3,{-1*\s}) [right] {$\mathstrut k-1$};
+\node at (-4.3,{0*\s}) [right] {$\mathstrut k$};
+\node at (-4.3,{1*\s}) [right] {$\mathstrut k+1$};
+\node at (-4.3,{2*\s}) [right] {$\mathstrut k+2$};
+
+\end{tikzpicture}
+\end{document}
+

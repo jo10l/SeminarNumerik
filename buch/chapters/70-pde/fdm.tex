@@ -194,6 +194,15 @@ den Gitterpunkten rechts bzw.~links von $x_0$
 \end{beispiel}
 
 \subsubsection{Zweite Ableitungen}
+\begin{figure}
+\centering
+\includegraphics{chapters/70-pde/images/diff2.pdf}
+\caption{Differenzenquotienten für die zweiten Ableitungen.
+Links die zweite Ableitungen nach $x$, rechts die gemischte Ableitung.
+In den roten Kreisen das Gewicht des zugehörigen Wertes der Funktion
+im Differenzenquotienten.
+\label{buch:pde:diff2}}
+\end{figure}
 Eine Approximation für die zweite Ableitung können wir erhalten als
 Differenzenquotient aus der Vorwärts- und der Rückwärtsdifferenz:
 \begin{align*}
@@ -244,8 +253,10 @@ u_{i+1,k+1}-u_{i+1,k}
 u_{i,k+1}+u_{ik}
 )
 \end{align*}
-
-TODO: XXX Graphik, die die zweiten Ableitungen als "Stencils" darstellt.
+Die in Abbildung~\ref{buch:pde:diff2} dargestellten ``Schablonen''
+zeigen schematisch, wie die Ableitungen berechnet werden.
+In den roten Kreisen um die beteiligten Knotenvariablen stehen die
+Gewichte, mit denen die Knotenvariablen multipliziert werden müssen.
 
 \subsubsection{Neumann-Randbedingungen}
 Neumann-Randbedingungen geben die Ableitungen in Richtung der Normalen
@@ -300,6 +311,16 @@ TODO: XXX Abbildung, die die Probleme mit Neumann-Randbedingungen im
 Gitter illustriert
 
 \subsubsection{Das Poisson-Problem}
+\begin{figure}
+\centering
+\includegraphics{chapters/70-pde/images/laplace.pdf}
+\caption{Approximation des Laplace-Operators mit Summen von symmetrischen
+Differenzen.
+In den roten Kreisen die Gewichte, mit denen die Knotenvariablen 
+multipliziert werden müssen, um den Ausdruck
+\eqref{pde:eqn:poissongl} zu ergeben.
+\label{buch:pde:laplace}}
+\end{figure}
 Das Poisson-Problem ist die Differentialgleichung
 \[
 \frac{\partial^2 u}{\partial x^2}
@@ -360,7 +381,6 @@ für die verbleibenden Unbekannten regulär ist.
 Die Diskretisation führt also die Lösung der partiellen Differentialgleichung
 auf die Lösung eines linearen Gleichungssystems zurück.
 
-TODO: XXX Graphische Darstellung für Poisson-Gleichung und Diskretisation
 
 %
 % Explizite und implizite Verfahren
