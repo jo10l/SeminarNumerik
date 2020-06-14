@@ -140,8 +140,17 @@ für die Steigung im Punkt $x_{ik}$, dafür ist die Genauigkeit wegen des
 doppelt so langen Intervals kleiner.
 
 \begin{beispiel}
-TODO: XXX Abbildung, die die Resultate dieses Beispiels illustriert
-
+\begin{figure}
+\centering
+\includegraphics{chapters/70-pde/images/diffex.pdf}
+\caption{Differenzenquotienten für die Funktion $f(x)=x^2$.
+Die Vorwärts- und Rückwärtsdifferenzen im Punkt $x_0$ ergeben Approximationen
+für die Ableitungen, die mit der wahren Ableitung im Punkt $x_0\pm \frac{h}2$
+übereinstimmen.
+Die symmetrische Differenz im Punkt $x_0$ ergibt genau die Steigung von $f(x)$
+im Punkt $x_0$.
+\label{buch:pde:diffex}}
+\end{figure}
 Um die Unterschiede zwischen den Fehlern der verschiedenen
 Differenzapproximationen besser zu verstehen, approximieren wir die
 Ableitungen der Funktion $f(x)=x^2$ im Punkt $x_0$ und bestimmen den
@@ -180,7 +189,8 @@ f'(x_0).
 Für eine quadratische Funktion liefert also die symmetrische Differenz
 den exakten Wert der Ableitung im Punkt $x_0$, während die Vorwärts-
 und Rückwertsdifferenzen die Ableitungen in Punkten zwischen
-den Gitterpunkten rechts bzw.~links von $x_0$.
+den Gitterpunkten rechts bzw.~links von $x_0$
+(Abbildung~\ref{buch:pde:diffex}).
 \end{beispiel}
 
 \subsubsection{Zweite Ableitungen}
