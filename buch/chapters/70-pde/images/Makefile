@@ -3,7 +3,8 @@
 #
 # (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-images = derivatives.pdf diffex.pdf diff2.pdf laplace.pdf poisson.pdf
+images = derivatives.pdf diffex.pdf diff2.pdf laplace.pdf poisson.pdf \
+	neumann.pdf kont.pdf
 
 all:	$(images)
 
@@ -21,4 +22,10 @@ laplace.pdf:	laplace.tex
 
 poisson.pdf:	poisson.tex
 	pdflatex poisson.tex
+
+neumann.pdf:	neumann.tex
+	pdflatex neumann.tex
+
+kont.pdf:	kont.tex
+	pdflatex kont.tex
 

@@ -270,9 +270,20 @@ Normalableitung Vorwärts- oder Rückwärtsdifferenzen verwendet
 werden.
 
 \begin{beispiel}
+\begin{figure}
+\centering
+\includegraphics{chapters/70-pde/images/neumann.pdf}
+\caption{Neumann-Randbedingungen sind in einem diskretisierten Gebiet 
+einfach auszudrücken, solange die Gitterlinien mit dem Rand des 
+Gebietes zusammenfallen.
+Sie ergeben eine zusätzliche Gleichung zwischen den rot hinterlegten
+Punkten.
+Für die runden Teile des Randes gibt es keine einfachen Lösungen.
+\label{buch:pde:neumann-analysis}}
+\end{figure}
 Zur Illustration des Vorgehens approximieren wir die Normalableitungen
 für das Rechteckgebiet mit Rändern $x=0$, $x=Nh_x$, $y=0$ und $y=Mh_y$,
-welches in Abbildung~\ref{XXX} dargestellt ist.
+welches in Abbildung~\ref{buch:pde:neumann-analysis} dargestellt ist.
 In Punkten $x_{0k}$ und $x_{Nk}$ auf den vertikalen Rändern
 oder in Punkten $x_{i0}$ und $x_{iM}$ auf den horizontalen Rändern
 können wir Vorwärts- bzw.~Rückwärtsdifferenzen verwenden:
@@ -307,8 +318,6 @@ symmetrische Differenzen zu verwenden, da keine Funktionswerte ausserhalb
 des Gebietes bekannt sind.
 \end{beispiel}
 
-TODO: XXX Abbildung, die die Probleme mit Neumann-Randbedingungen im
-Gitter illustriert
 
 \subsubsection{Das Poisson-Problem}
 \begin{figure}
@@ -355,7 +364,7 @@ Die Randbedingungen legen die Werte
 u_{0k}&= g(0, kh)
 &
 u_{Nk}&= g(1, kh)
-&&0\le k\le N
+&&1\le k\le N
 \\
 u_{i0}&=g(ih,0)
 &
@@ -368,7 +377,8 @@ $4N$ Unbekannte sind also bereits bestimmt, es bleiben noch
 $(N+1)^2-4N = N^2-2N+1=(N-1)^2$ innere Werte zubestimmen.
 
 Die Differentialgleichung kann für jeden Punkt im Inneren des Gebietes
-$\Omega$ aufgestellt werden, es gilt
+$\Omega$ aufgestellt werden (die roten Punkte in
+Abbildung~\ref{buch:pde:poissongebiet}), es gilt
 \begin{align}
 \frac{\partial^2 u}{\partial x^2}(u_{ik})
 +
