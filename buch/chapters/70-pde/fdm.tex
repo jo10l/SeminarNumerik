@@ -322,20 +322,31 @@ multipliziert werden müssen, um den Ausdruck
 \label{buch:pde:laplace}}
 \end{figure}
 Das Poisson-Problem ist die Differentialgleichung
-\[
+\begin{equation}
 \frac{\partial^2 u}{\partial x^2}
 +
 \frac{\partial^2 u}{\partial y^2}
 =
 f
-\]
+\label{buch:pde:poissondgl}
+\end{equation}
 auf einem Gebiet $\Omega$, wobei wir als Beispiel ein Quadrat
 $\Omega = (0,1) \times (0,1)$ wählen.
 Die abstrakte Theorie sagt, dass die Lösung der Differentialgleichung
 eindeutig bestimmt ist, Randwerte $u(x)=g(x)$ für $x\in\partial\Omega$
 vorgegeben werden.
 
-Wir diskretisieren das Gebiet mit Hilfe des Gitters mit Gitterkonstanten
+\begin{figure}
+\centering
+\includegraphics{chapters/70-pde/images/poisson.pdf}
+\caption{Diskretisiertes Gebiet für die Differentialgleichung.
+Die Werte in den blauen Punkten auf dem Rand sind durch die Randbedingungen
+gegeben, nur die Werte in den roten Punkten müssen bestimmt werden.
+\eqref{buch:pde:poissondgl}.
+\label{buch:pde:poissongebiet}}
+\end{figure}
+Wir diskretisieren das Gebiet (Abbildung~\ref{buch:pde::poissongebiet})
+mit Hilfe des Gitters mit Gitterkonstanten
 $h=h_x=h_y=1/N$.
 Wir erhalten die $(N+1)^2$ Unbekannten $u_{ik}$ mit $0\le i\le N$ und 
 $0\le k\le N$.
@@ -352,6 +363,7 @@ u_{iN}&=g(ih,N)
 &&
 1\le i\le N
 \end{align*}
+fest.
 $4N$ Unbekannte sind also bereits bestimmt, es bleiben noch
 $(N+1)^2-4N = N^2-2N+1=(N-1)^2$ innere Werte zubestimmen.
 
