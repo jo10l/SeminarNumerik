@@ -4,7 +4,7 @@
 # (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
 images = derivatives.pdf diffex.pdf diff2.pdf laplace.pdf poisson.pdf \
-	neumann.pdf kont.pdf
+	neumann.pdf kont.pdf 2dpart.pdf gebiet.pdf offen.pdf
 
 all:	$(images)
 
@@ -28,4 +28,13 @@ neumann.pdf:	neumann.tex
 
 kont.pdf:	kont.tex
 	pdflatex kont.tex
+
+2dpart.pdf:	2dpart.tex
+	pdflatex 2dpart.tex
+
+gebiet.pdf:	gebiet.tex
+	pdflatex gebiet.tex
+
+offen.pdf:	offen.tex
+	pdflatex offen.tex
 
