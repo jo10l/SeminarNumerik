@@ -51,8 +51,16 @@ Ein gekrümmter Rand wird daher im Allgmeinen durch eine Kurve durch
 die Gitterpunkte approximiert werden müssen.
 
 \subsubsection{Erste Ableitungen}
+\begin{figure}
+\centering
+\includegraphics{chapters/70-pde/images/derivatives.pdf}
+\caption{Approximation der ersten Ableitung mit verschiedenen
+Differenzausdrücken
+\label{buch:pde:1abldiff}}
+\end{figure}
 Die naheliegenste Approximation für die Differentialgleichung besteht
-darin, die Ableitungen durch Differenzenquotienten zu ersetzen.
+darin, die Ableitungen durch Differenzenquotienten zu ersetzen (siehe 
+Abbildung~\ref{buch:pde:1abldiff}).
 Mit der oben eingeführten Notation können die ersten Ableitungen durch
 die sogenannten {\em Vorwärtsdifferenzen}
 \index{Vorwärtsdifferenz}%
@@ -68,7 +76,7 @@ die sogenannten {\em Vorwärtsdifferenzen}
 \frac{u(x_{i,k+1}) - u(x_{ik})}{h_y}
 \label{chapter:pde:approx1st}
 \end{align}
-approximiert werden.
+approximiert werden (Abbildung~\ref{buch:pde:1abldiff} Mitte).
 Die Genauigkeit der Approximation kann offenbar verbessert werden, 
 indem $h_x$ und $h_y$ verkleinert werden.
 
@@ -104,7 +112,7 @@ Alternativ könnten statt der Vorwärtsdifferenzen die {\em Rückwärtsdifferenz
 \frac{u(x_{ik}) - u(x_{i,k-1})}{h_y}
 \label{chapter:pde:approxrueckwaerts}
 \end{align}
-verwendet werden.
+verwendet werden (Abbildung~\ref{buch:pde:1abldiff} unten).
 Die Genauigkeit wird dadurch jedoch nicht verbessert, die Punkte
 $(\xi,kh_y)$ und $(ih_x,\eta)$, an dem diese Ableitungswerte angenommen
 werden, liegen jetzt einfach links bzw.~unterhalb von von $x_{ik}$.
@@ -126,13 +134,23 @@ Ein Mittelweg könnte ein Differenzenquotient
 \end{align*}
 über ein symmetrisches Interval der doppelten Länge.
 \index{symmetrische Differenz}%
-Diese sogenannten {\em symmetrische Differenzen} sind eher repräsentativ
+Diese sogenannten {\em symmetrische Differenzen}
+(Abbildung~\ref{buch:pde:1abldiff}) sind eher repräsentativ
 für die Steigung im Punkt $x_{ik}$, dafür ist die Genauigkeit wegen des
 doppelt so langen Intervals kleiner.
 
 \begin{beispiel}
-TODO: XXX Abbildung, die die Resultate dieses Beispiels illustriert
-
+\begin{figure}
+\centering
+\includegraphics{chapters/70-pde/images/diffex.pdf}
+\caption{Differenzenquotienten für die Funktion $f(x)=x^2$.
+Die Vorwärts- und Rückwärtsdifferenzen im Punkt $x_0$ ergeben Approximationen
+für die Ableitungen, die mit der wahren Ableitung im Punkt $x_0\pm \frac{h}2$
+übereinstimmen.
+Die symmetrische Differenz im Punkt $x_0$ ergibt genau die Steigung von $f(x)$
+im Punkt $x_0$.
+\label{buch:pde:diffex}}
+\end{figure}
 Um die Unterschiede zwischen den Fehlern der verschiedenen
 Differenzapproximationen besser zu verstehen, approximieren wir die
 Ableitungen der Funktion $f(x)=x^2$ im Punkt $x_0$ und bestimmen den
@@ -171,10 +189,20 @@ f'(x_0).
 Für eine quadratische Funktion liefert also die symmetrische Differenz
 den exakten Wert der Ableitung im Punkt $x_0$, während die Vorwärts-
 und Rückwertsdifferenzen die Ableitungen in Punkten zwischen
-den Gitterpunkten rechts bzw.~links von $x_0$.
+den Gitterpunkten rechts bzw.~links von $x_0$
+(Abbildung~\ref{buch:pde:diffex}).
 \end{beispiel}
 
 \subsubsection{Zweite Ableitungen}
+\begin{figure}
+\centering
+\includegraphics{chapters/70-pde/images/diff2.pdf}
+\caption{Differenzenquotienten für die zweiten Ableitungen.
+Links die zweite Ableitungen nach $x$, rechts die gemischte Ableitung.
+In den roten Kreisen das Gewicht des zugehörigen Wertes der Funktion
+im Differenzenquotienten.
+\label{buch:pde:diff2}}
+\end{figure}
 Eine Approximation für die zweite Ableitung können wir erhalten als
 Differenzenquotient aus der Vorwärts- und der Rückwärtsdifferenz:
 \begin{align*}
@@ -225,8 +253,10 @@ u_{i+1,k+1}-u_{i+1,k}
 u_{i,k+1}+u_{ik}
 )
 \end{align*}
-
-TODO: XXX Graphik, die die zweiten Ableitungen als "Stencils" darstellt.
+Die in Abbildung~\ref{buch:pde:diff2} dargestellten ``Schablonen''
+zeigen schematisch, wie die Ableitungen berechnet werden.
+In den roten Kreisen um die beteiligten Knotenvariablen stehen die
+Gewichte, mit denen die Knotenvariablen multipliziert werden müssen.
 
 \subsubsection{Neumann-Randbedingungen}
 Neumann-Randbedingungen geben die Ableitungen in Richtung der Normalen
@@ -281,21 +311,42 @@ TODO: XXX Abbildung, die die Probleme mit Neumann-Randbedingungen im
 Gitter illustriert
 
 \subsubsection{Das Poisson-Problem}
+\begin{figure}
+\centering
+\includegraphics{chapters/70-pde/images/laplace.pdf}
+\caption{Approximation des Laplace-Operators mit Summen von symmetrischen
+Differenzen.
+In den roten Kreisen die Gewichte, mit denen die Knotenvariablen 
+multipliziert werden müssen, um den Ausdruck
+\eqref{pde:eqn:poissongl} zu ergeben.
+\label{buch:pde:laplace}}
+\end{figure}
 Das Poisson-Problem ist die Differentialgleichung
-\[
+\begin{equation}
 \frac{\partial^2 u}{\partial x^2}
 +
 \frac{\partial^2 u}{\partial y^2}
 =
 f
-\]
+\label{buch:pde:poissondgl}
+\end{equation}
 auf einem Gebiet $\Omega$, wobei wir als Beispiel ein Quadrat
 $\Omega = (0,1) \times (0,1)$ wählen.
 Die abstrakte Theorie sagt, dass die Lösung der Differentialgleichung
 eindeutig bestimmt ist, Randwerte $u(x)=g(x)$ für $x\in\partial\Omega$
 vorgegeben werden.
 
-Wir diskretisieren das Gebiet mit Hilfe des Gitters mit Gitterkonstanten
+\begin{figure}
+\centering
+\includegraphics{chapters/70-pde/images/poisson.pdf}
+\caption{Diskretisiertes Gebiet für die Differentialgleichung.
+Die Werte in den blauen Punkten auf dem Rand sind durch die Randbedingungen
+gegeben, nur die Werte in den roten Punkten müssen bestimmt werden.
+\eqref{buch:pde:poissondgl}.
+\label{buch:pde:poissongebiet}}
+\end{figure}
+Wir diskretisieren das Gebiet (Abbildung~\ref{buch:pde::poissongebiet})
+mit Hilfe des Gitters mit Gitterkonstanten
 $h=h_x=h_y=1/N$.
 Wir erhalten die $(N+1)^2$ Unbekannten $u_{ik}$ mit $0\le i\le N$ und 
 $0\le k\le N$.
@@ -312,6 +363,7 @@ u_{iN}&=g(ih,N)
 &&
 1\le i\le N
 \end{align*}
+fest.
 $4N$ Unbekannte sind also bereits bestimmt, es bleiben noch
 $(N+1)^2-4N = N^2-2N+1=(N-1)^2$ innere Werte zubestimmen.
 
@@ -341,7 +393,6 @@ für die verbleibenden Unbekannten regulär ist.
 Die Diskretisation führt also die Lösung der partiellen Differentialgleichung
 auf die Lösung eines linearen Gleichungssystems zurück.
 
-TODO: XXX Graphische Darstellung für Poisson-Gleichung und Diskretisation
 
 %
 % Explizite und implizite Verfahren
