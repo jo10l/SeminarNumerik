@@ -552,6 +552,12 @@ INPUT papers\000template\packages.tex
 INPUT papers\000template\packages.tex
 INPUT papers\vanderpol\packages.tex
 INPUT papers\vanderpol\packages.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\wrapfig\wrapfig.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\blindtext\blindtext.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\blindtext\blindtext.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\xspace.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\xspace.sty
 INPUT papers\logistic\packages.tex
 INPUT papers\logistic\packages.tex
 INPUT papers\kettenbruch\packages.tex
@@ -605,8 +611,6 @@ INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\mkii\
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\mkii\supp-pdf.mkii
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\epstopdf-pkg\epstopdf-base.sty
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\epstopdf-pkg\epstopdf-base.sty
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\grfext\grfext.sty
-INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\grfext\grfext.sty
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\refcount\refcount.sty
@@ -1098,6 +1102,8 @@ INPUT chapters\30-interpolation\uebungsaufgaben\3001plot.pdf
 INPUT .\chapters\30-interpolation\uebungsaufgaben\3001plot.pdf
 INPUT .\chapters\30-interpolation\uebungsaufgaben\3001plot.pdf
 INPUT .\chapters\30-interpolation\uebungsaufgaben\3001plot.pdf
+INPUT chapters\30-interpolation\uebungsaufgaben\\3002.tex
+INPUT chapters\30-interpolation\uebungsaufgaben\\3002.tex
 INPUT chapters\40-integration\chapter.tex
 INPUT chapters\40-integration\chapter.tex
 INPUT chapters\40-integration\riemann.tex
@@ -1119,6 +1125,10 @@ INPUT chapters\40-integration\trapez.m
 INPUT chapters\40-integration\trapez.m
 INPUT chapters\40-integration\romberg.tex
 INPUT chapters\40-integration\romberg.tex
+INPUT chapters\40-integration\uebungsaufgaben\\4001.tex
+INPUT chapters\40-integration\uebungsaufgaben\\4001.tex
+INPUT chapters\40-integration\uebungsaufgaben\\4002.tex
+INPUT chapters\40-integration\uebungsaufgaben\\4002.tex
 INPUT chapters\50-ode\chapter.tex
 INPUT chapters\50-ode\chapter.tex
 INPUT chapters\50-ode\problemstellung.tex
@@ -1181,16 +1191,38 @@ INPUT chapters\50-ode\figures\kettenloesung.pdf
 INPUT .\chapters\50-ode\figures\kettenloesung.pdf
 INPUT .\chapters\50-ode\figures\kettenloesung.pdf
 INPUT .\chapters\50-ode\figures\kettenloesung.pdf
+INPUT chapters\50-ode\uebungsaufgaben\\5001.tex
+INPUT chapters\50-ode\uebungsaufgaben\\5001.tex
+INPUT chapters\50-ode\uebungsaufgaben\\5002.tex
+INPUT chapters\50-ode\uebungsaufgaben\\5002.tex
 INPUT chapters\60-linsys\chapter.tex
 INPUT chapters\60-linsys\chapter.tex
+INPUT chapters\60-linsys\thomas.tex
+INPUT chapters\60-linsys\thomas.tex
 INPUT chapters\60-linsys\gaussseidel.tex
 INPUT chapters\60-linsys\gaussseidel.tex
 INPUT chapters\60-linsys\qr.tex
 INPUT chapters\60-linsys\qr.tex
 INPUT chapters\60-linsys\jacobi.tex
 INPUT chapters\60-linsys\jacobi.tex
+INPUT chapters\60-linsys\uebungsaufgaben\\6002.tex
+INPUT chapters\60-linsys\uebungsaufgaben\\6002.tex
+INPUT chapters\60-linsys\uebungsaufgaben\\6003.tex
+INPUT chapters\60-linsys\uebungsaufgaben\\6003.tex
+INPUT chapters\60-linsys\uebungsaufgaben\6003iteration.tex
+INPUT chapters\60-linsys\uebungsaufgaben\6003iteration.tex
+INPUT chapters\60-linsys\uebungsaufgaben\\6001.tex
+INPUT chapters\60-linsys\uebungsaufgaben\\6001.tex
 INPUT chapters\70-pde\chapter.tex
 INPUT chapters\70-pde\chapter.tex
+INPUT chapters\70-pde\problem.tex
+INPUT chapters\70-pde\problem.tex
+INPUT chapters\70-pde\fdm.tex
+INPUT chapters\70-pde\fdm.tex
+INPUT chapters\70-pde\fvm.tex
+INPUT chapters\70-pde\fvm.tex
+INPUT chapters\70-pde\fem.tex
+INPUT chapters\70-pde\fem.tex
 INPUT chapters\80-fourier\chapter.tex
 INPUT chapters\80-fourier\chapter.tex
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\txfonts\t1xsc.tfm
@@ -1223,8 +1255,51 @@ INPUT papers\vanderpol\einleitung.tex
 INPUT papers\vanderpol\einleitung.tex
 INPUT papers\vanderpol\problemstellung.tex
 INPUT papers\vanderpol\problemstellung.tex
+INPUT papers\vanderpol\figures\homogene_plot.pdf
+INPUT .\papers\vanderpol\figures\homogene_plot.pdf
+INPUT .\papers\vanderpol\figures\homogene_plot.pdf
+INPUT .\papers\vanderpol\figures\homogene_plot.pdf
+INPUT papers\vanderpol\figures\fft_plot2.pdf
+INPUT .\papers\vanderpol\figures\fft_plot2.pdf
+INPUT .\papers\vanderpol\figures\fft_plot2.pdf
+INPUT .\papers\vanderpol\figures\fft_plot2.pdf
+INPUT papers\vanderpol\figures\initial_cond_DBLPEND.pdf
+INPUT .\papers\vanderpol\figures\initial_cond_DBLPEND.pdf
+INPUT .\papers\vanderpol\figures\initial_cond_DBLPEND.pdf
+INPUT .\papers\vanderpol\figures\initial_cond_DBLPEND.pdf
+INPUT papers\vanderpol\figures\initial_cond_VDP.pdf
+INPUT .\papers\vanderpol\figures\initial_cond_VDP.pdf
+INPUT .\papers\vanderpol\figures\initial_cond_VDP.pdf
+INPUT .\papers\vanderpol\figures\initial_cond_VDP.pdf
 INPUT papers\vanderpol\loesung.tex
 INPUT papers\vanderpol\loesung.tex
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.sty
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.sty
+INPUT papers\vanderpol\codes\RK_4.py
+INPUT papers\vanderpol\codes\RK_4.py
+INPUT papers\vanderpol\codes\RK_4.py
+INPUT papers\vanderpol\codes\VDP_funk.py
+INPUT papers\vanderpol\codes\VDP_funk.py
+INPUT papers\vanderpol\codes\VDP_funk.py
+INPUT papers\vanderpol\codes\solve.py
+INPUT papers\vanderpol\codes\solve.py
+INPUT papers\vanderpol\codes\solve.py
+INPUT papers\vanderpol\figures\EULER_schritt_delta_e-3.pdf
+INPUT .\papers\vanderpol\figures\EULER_schritt_delta_e-3.pdf
+INPUT .\papers\vanderpol\figures\EULER_schritt_delta_e-3.pdf
+INPUT .\papers\vanderpol\figures\EULER_schritt_delta_e-3.pdf
+INPUT papers\vanderpol\figures\RK_schritt_delta_e-3.pdf
+INPUT .\papers\vanderpol\figures\RK_schritt_delta_e-3.pdf
+INPUT .\papers\vanderpol\figures\RK_schritt_delta_e-3.pdf
+INPUT .\papers\vanderpol\figures\RK_schritt_delta_e-3.pdf
+INPUT papers\vanderpol\figures\RK_schritt_delta_2e-3_2.pdf
+INPUT .\papers\vanderpol\figures\RK_schritt_delta_2e-3_2.pdf
+INPUT .\papers\vanderpol\figures\RK_schritt_delta_2e-3_2.pdf
+INPUT .\papers\vanderpol\figures\RK_schritt_delta_2e-3_2.pdf
+INPUT papers\vanderpol\figures\RK_schritt_delta_2e-3.pdf
+INPUT .\papers\vanderpol\figures\RK_schritt_delta_2e-3.pdf
+INPUT .\papers\vanderpol\figures\RK_schritt_delta_2e-3.pdf
+INPUT .\papers\vanderpol\figures\RK_schritt_delta_2e-3.pdf
 INPUT papers\vanderpol\folgerungen.tex
 INPUT papers\vanderpol\folgerungen.tex
 INPUT papers\logistic\main.tex
@@ -1259,10 +1334,26 @@ INPUT papers\taylor\einleitung.tex
 INPUT papers\taylor\einleitung.tex
 INPUT papers\taylor\problemstellung.tex
 INPUT papers\taylor\problemstellung.tex
+INPUT papers\taylor\taylorPictures\DGLDarstellung.pdf
+INPUT .\papers\taylor\taylorPictures\DGLDarstellung.pdf
+INPUT .\papers\taylor\taylorPictures\DGLDarstellung.pdf
+INPUT .\papers\taylor\taylorPictures\DGLDarstellung.pdf
+INPUT papers\taylor\taylorPictures\LogisticFunction.pdf
+INPUT .\papers\taylor\taylorPictures\LogisticFunction.pdf
+INPUT .\papers\taylor\taylorPictures\LogisticFunction.pdf
+INPUT .\papers\taylor\taylorPictures\LogisticFunction.pdf
+INPUT papers\taylor\taylorPictures\FehlerRungeUndTaylor.pdf
+INPUT .\papers\taylor\taylorPictures\FehlerRungeUndTaylor.pdf
+INPUT .\papers\taylor\taylorPictures\FehlerRungeUndTaylor.pdf
+INPUT .\papers\taylor\taylorPictures\FehlerRungeUndTaylor.pdf
 INPUT papers\taylor\loesung.tex
 INPUT papers\taylor\loesung.tex
 INPUT papers\taylor\folgerungen.tex
 INPUT papers\taylor\folgerungen.tex
+INPUT papers\taylor\taylorPictures\TaylorFunktion.pdf
+INPUT .\papers\taylor\taylorPictures\TaylorFunktion.pdf
+INPUT .\papers\taylor\taylorPictures\TaylorFunktion.pdf
+INPUT .\papers\taylor\taylorPictures\TaylorFunktion.pdf
 INPUT papers\fem\main.tex
 INPUT papers\fem\main.tex
 INPUT buch7-blx.aux
@@ -1283,8 +1374,42 @@ INPUT papers\burgers\einleitung.tex
 INPUT papers\burgers\einleitung.tex
 INPUT papers\burgers\problemstellung.tex
 INPUT papers\burgers\problemstellung.tex
+INPUT papers\burgers\BurgersEquation\tikz\Gitter\gitter.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\Gitter\gitter.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\Gitter\gitter.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\Gitter\gitter.pdf
 INPUT papers\burgers\loesung.tex
 INPUT papers\burgers\loesung.tex
+INPUT papers\burgers\BurgersEquation\tikz\Linear1\Linear1.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\Linear1\Linear1.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\Linear1\Linear1.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\Linear1\Linear1.pdf
+INPUT papers\burgers\BurgersEquation\tikz\Linear2\Linear2.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\Linear2\Linear2.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\Linear2\Linear2.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\Linear2\Linear2.pdf
+INPUT papers\burgers\BurgersEquation\tikz\Linear3\Linear3.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\Linear3\Linear3.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\Linear3\Linear3.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\Linear3\Linear3.pdf
+INPUT papers\burgers\BurgersEquation\tikz\Linear4\Linear4.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\Linear4\Linear4.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\Linear4\Linear4.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\Linear4\Linear4.pdf
+INPUT papers\burgers\BurgersEquation\tikz\implicit\implicit.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\implicit\implicit.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\implicit\implicit.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\implicit\implicit.pdf
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\txfonts\t1xb.tfm
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\txfonts\t1xb.tfm
+INPUT papers\burgers\BurgersEquation\tikz\quadratic\quadratic.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\quadratic\quadratic.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\quadratic\quadratic.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\quadratic\quadratic.pdf
+INPUT papers\burgers\BurgersEquation\tikz\linear5\linear5.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\linear5\linear5.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\linear5\linear5.pdf
+INPUT .\papers\burgers\BurgersEquation\tikz\linear5\linear5.pdf
 INPUT papers\burgers\folgerungen.tex
 INPUT papers\burgers\folgerungen.tex
 INPUT papers\pade\main.tex
@@ -1307,10 +1432,22 @@ INPUT papers\qr\einleitung.tex
 INPUT papers\qr\einleitung.tex
 INPUT papers\qr\problemstellung.tex
 INPUT papers\qr\problemstellung.tex
+INPUT papers\qr\pics\gram.pdf
+INPUT .\papers\qr\pics\gram.pdf
+INPUT .\papers\qr\pics\gram.pdf
+INPUT .\papers\qr\pics\gram.pdf
+INPUT papers\qr\pics\gram2.pdf
+INPUT .\papers\qr\pics\gram2.pdf
+INPUT .\papers\qr\pics\gram2.pdf
+INPUT .\papers\qr\pics\gram2.pdf
 INPUT papers\qr\loesung.tex
 INPUT papers\qr\loesung.tex
 INPUT papers\qr\folgerungen.tex
 INPUT papers\qr\folgerungen.tex
+INPUT papers\qr\pics\comp.pdf
+INPUT .\papers\qr\pics\comp.pdf
+INPUT .\papers\qr\pics\comp.pdf
+INPUT .\papers\qr\pics\comp.pdf
 INPUT papers\laplace\main.tex
 INPUT papers\laplace\main.tex
 INPUT buch11-blx.aux
@@ -1331,8 +1468,49 @@ INPUT papers\perturbation\einleitung.tex
 INPUT papers\perturbation\einleitung.tex
 INPUT papers\perturbation\problemstellung.tex
 INPUT papers\perturbation\problemstellung.tex
-INPUT papers\perturbation\loesung.tex
-INPUT papers\perturbation\loesung.tex
+INPUT papers\perturbation\nummerische_loesung.tex
+INPUT papers\perturbation\nummerische_loesung.tex
+INPUT papers\perturbation\erster_loesungsansatz.tex
+INPUT papers\perturbation\erster_loesungsansatz.tex
+INPUT papers\perturbation\bilder\img1.png
+INPUT .\papers\perturbation\bilder\img1.png
+INPUT .\papers\perturbation\bilder\img1.png
+INPUT .\papers\perturbation\bilder\img1.png
+INPUT .\papers\perturbation\bilder\img1.png
+INPUT papers\perturbation\bilder\img2.png
+INPUT .\papers\perturbation\bilder\img2.png
+INPUT .\papers\perturbation\bilder\img2.png
+INPUT .\papers\perturbation\bilder\img2.png
+INPUT .\papers\perturbation\bilder\img2.png
+INPUT papers\perturbation\verbesserte_loesung.tex
+INPUT papers\perturbation\verbesserte_loesung.tex
+INPUT papers\perturbation\bilder\Ansatz2_Ordnung0_Errors.png
+INPUT .\papers\perturbation\bilder\Ansatz2_Ordnung0_Errors.png
+INPUT .\papers\perturbation\bilder\Ansatz2_Ordnung0_Errors.png
+INPUT .\papers\perturbation\bilder\Ansatz2_Ordnung0_Errors.png
+INPUT .\papers\perturbation\bilder\Ansatz2_Ordnung0_Errors.png
+INPUT papers\perturbation\weitere_verbesserungen.tex
+INPUT papers\perturbation\weitere_verbesserungen.tex
+INPUT papers\perturbation\bilder\halberintervall.png
+INPUT .\papers\perturbation\bilder\halberintervall.png
+INPUT .\papers\perturbation\bilder\halberintervall.png
+INPUT .\papers\perturbation\bilder\halberintervall.png
+INPUT .\papers\perturbation\bilder\halberintervall.png
+INPUT papers\perturbation\bilder\viertelintervall.png
+INPUT .\papers\perturbation\bilder\viertelintervall.png
+INPUT .\papers\perturbation\bilder\viertelintervall.png
+INPUT .\papers\perturbation\bilder\viertelintervall.png
+INPUT .\papers\perturbation\bilder\viertelintervall.png
+INPUT papers\perturbation\bilder\linear_error.png
+INPUT .\papers\perturbation\bilder\linear_error.png
+INPUT .\papers\perturbation\bilder\linear_error.png
+INPUT .\papers\perturbation\bilder\linear_error.png
+INPUT .\papers\perturbation\bilder\linear_error.png
+INPUT papers\perturbation\bilder\taylor_error.png
+INPUT .\papers\perturbation\bilder\taylor_error.png
+INPUT .\papers\perturbation\bilder\taylor_error.png
+INPUT .\papers\perturbation\bilder\taylor_error.png
+INPUT .\papers\perturbation\bilder\taylor_error.png
 INPUT papers\perturbation\folgerungen.tex
 INPUT papers\perturbation\folgerungen.tex
 INPUT papers\quadratur\main.tex
@@ -1355,8 +1533,20 @@ INPUT papers\steps\einleitung.tex
 INPUT papers\steps\einleitung.tex
 INPUT papers\steps\problemstellung.tex
 INPUT papers\steps\problemstellung.tex
+INPUT papers\steps\img\gravity_different_fixed_stepsize.pdf
+INPUT .\papers\steps\img\gravity_different_fixed_stepsize.pdf
+INPUT .\papers\steps\img\gravity_different_fixed_stepsize.pdf
+INPUT .\papers\steps\img\gravity_different_fixed_stepsize.pdf
 INPUT papers\steps\loesung.tex
 INPUT papers\steps\loesung.tex
+INPUT papers\steps\img\ssc.pdf
+INPUT .\papers\steps\img\ssc.pdf
+INPUT .\papers\steps\img\ssc.pdf
+INPUT .\papers\steps\img\ssc.pdf
+INPUT papers\steps\img\Fehlberg_Flowchart.pdf
+INPUT .\papers\steps\img\Fehlberg_Flowchart.pdf
+INPUT .\papers\steps\img\Fehlberg_Flowchart.pdf
+INPUT .\papers\steps\img\Fehlberg_Flowchart.pdf
 INPUT papers\steps\folgerungen.tex
 INPUT papers\steps\folgerungen.tex
 INPUT papers\francis\main.tex
@@ -1377,10 +1567,35 @@ INPUT buch16-blx.aux
 OUTPUT buch16-blx.aux
 INPUT papers\legendre\einleitung.tex
 INPUT papers\legendre\einleitung.tex
+INPUT papers\legendre\plots\wolframalpha.png
+INPUT .\papers\legendre\plots\wolframalpha.png
+INPUT .\papers\legendre\plots\wolframalpha.png
+INPUT .\papers\legendre\plots\wolframalpha.png
+INPUT .\papers\legendre\plots\wolframalpha.png
 INPUT papers\legendre\problemstellung.tex
 INPUT papers\legendre\problemstellung.tex
+INPUT papers\legendre\plots\plot_l.png
+INPUT .\papers\legendre\plots\plot_l.png
+INPUT .\papers\legendre\plots\plot_l.png
+INPUT .\papers\legendre\plots\plot_l.png
+INPUT .\papers\legendre\plots\plot_l.png
+INPUT papers\legendre\plots\plot_m.png
+INPUT .\papers\legendre\plots\plot_m.png
+INPUT .\papers\legendre\plots\plot_m.png
+INPUT .\papers\legendre\plots\plot_m.png
+INPUT .\papers\legendre\plots\plot_m.png
 INPUT papers\legendre\loesung.tex
 INPUT papers\legendre\loesung.tex
+INPUT papers\legendre\plots\legendre_struktur.png
+INPUT .\papers\legendre\plots\legendre_struktur.png
+INPUT .\papers\legendre\plots\legendre_struktur.png
+INPUT .\papers\legendre\plots\legendre_struktur.png
+INPUT .\papers\legendre\plots\legendre_struktur.png
+INPUT papers\legendre\plots\plot_diff_l_m.png
+INPUT .\papers\legendre\plots\plot_diff_l_m.png
+INPUT .\papers\legendre\plots\plot_diff_l_m.png
+INPUT .\papers\legendre\plots\plot_diff_l_m.png
+INPUT .\papers\legendre\plots\plot_diff_l_m.png
 INPUT papers\legendre\folgerungen.tex
 INPUT papers\legendre\folgerungen.tex
 INPUT papers\cg\main.tex
@@ -1428,7 +1643,27 @@ INPUT .\buch.out
 INPUT .\buch.out
 INPUT buch.run.xml
 OUTPUT buch.run.xml
+INPUT C:\Users\m2schmid\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\wasy\dpi600\wasy10.pk
+INPUT C:\Users\m2schmid\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\wasy\dpi600\wasy10.pk
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\base\8r.enc
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi5.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi5.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi7.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi7.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr7.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr7.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr9.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr9.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy6.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmsy6.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmtt10.pfb
+INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmtt10.pfb
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\latxfont\line10.pfb
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\latxfont\line10.pfb
 INPUT C:\Users\m2schmid\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\txfonts\rtcxr.pfb

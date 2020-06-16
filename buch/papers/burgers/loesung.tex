@@ -50,12 +50,10 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
 \subsubsection{Lineare Methode 2}
 	
 	
-	
 	Für die Multiplikation des zweiten Bruches muss nicht unbedingt der gesuchte Punkt $u_{i}^{n}$ verwendet werden.
 	Es kann auch der Punkt auf gleicher Stelle im Raum aber einen Zeitschritt in der Vergangenheit verwendet werden.
 	
 	
-
      \begin{figure}[!ht]
 	\centering
 	\includegraphics[height=.4\textwidth]{papers/burgers/BurgersEquation/tikz/Linear2/Linear2.pdf}
@@ -76,12 +74,20 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
     	\label{burgers:eq_ex_sol_lin2}
 	\end{equation}
 	
+\subsubsection{Stabilit\"atskriterium Lineare Methoden}
+	Die Stabilit\"at kann f\"ur diese L\"osungsmethode nicht garantiert werden.
+	Sie folgt dem Courant-Friedrichs-Lewy Kriterium
+	
+	
 \subsubsection{Leap-Frog Methode 1}
 	
 	Bei genauer Betrachtungen von den Ableitungen in \ref{burgers:fig:Linear1} und \ref{burgers:fig:Linear2} erkennt man, dass sich die berechnete Ableitung eigentlich zwischen den beiden Punkten befindet.
 	Theoretisch sollte man für ein optimales Resultat die Ableitung genau am Punkt $u_{i}^{n}$ erhalten.
+	
 	\medskip
 	Die Leap-Frog Diskretisierung umgeht diese Problematik indem sie f\"ur die Ableitung einen Punkt \"uberspringt.
+	Die daraus folgende L\"osung für die Ableitung befindet sich auf der gleichen Ebene im Raum wie der Punkt $u_{i}^{n}$, allerdings noch einen Zeitschritt zurück.
+	In \ref{burgers:eq_ex_lf1} ist die Leap-Frog Methode grafisch dargestellt.
 	
 	
 	\begin{figure}[!ht]
@@ -90,6 +96,8 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
 	\caption{Methode Explizit Leap-Frog 1}
 	\label{burgers:fig:Linear3}
 	\end{figure}
+	
+	Wiederum kann die Gleichung diskretisiert werden und nach dem gesuchten Punkt $u_{i}^{n}$ aufgel\"ost werden.
 	
 	\begin{equation}
 		\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} = \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n-1}\, \frac{u_{i+1}^{n-1}-u_{i-1}^{n-1}}{2\,\Delta x}=0
@@ -109,13 +117,26 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
 	\label{burgers:fig:Linear4}
 	\end{figure}
 
-\begin{equation}
-\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} = \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n}\, \frac{u_{i+1}^{n-1}-u_{i-1}^{n-1}}{2\,\Delta x}=0
-\end{equation}
+	Wie schon in den bis Anhien gezeigten Varianten kann f\"ur die Multiplikation der Punkt $u_{i}^{n-1}$ verwendet werden.
 
-\begin{equation}
-u_{i}^{n} = \frac{2 \Delta{x}\, u^{n-1}_{i}\,}{\Delta{t}\, u^{n-1}_{i+1}\, - \Delta{t}\, u^{n-1}_{i-1}\, + 2 \Delta{x}\,}
-\end{equation}
+	\begin{equation}
+	\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} = \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n}\, \frac{u_{i+1}^{n-1}-u_{i-1}^{n-1}}{2\,\Delta x}=0
+	\end{equation}
+	
+	\begin{equation}
+	u_{i}^{n} = \frac{2 \Delta{x}\, u^{n-1}_{i}\,}{\Delta{t}\, u^{n-1}_{i+1}\, - \Delta{t}\, u^{n-1}_{i-1}\, + 2 \Delta{x}\,}
+	\end{equation}
+
+\subsection{Stabilit\"atskriterium Leap-Frog Verfahren}
+	Mit der Einf\"uhrung des Leap-Frog Verfahrens 
+
+
+
+
+
+
+
+
 
 \subsection{Implizit}
 \subsubsection{Leap-Frog Verfahren}
