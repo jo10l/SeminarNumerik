@@ -1,0 +1,53 @@
+%
+% cnspektrum.tex -- Spektrum for the Crank-Nicholson method
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\sx{6}
+\def\sy{3}
+\def\r{0.02}
+
+\fill[color=gray!20] ({-1*\sx},0) rectangle ({1*\sx},{2*\sy});
+
+\draw[->] (-6.1,0) -- (6.3,0) coordinate[label={$\lambda$}];
+\draw[->] (0,-0.1) -- (0,{2*\sy+0.4}) coordinate[label={right:$c$}];
+
+\foreach \x in {-1,...,1}{
+	\draw ({\x*\sx},-0.1) -- ({\x*\sx},0.1);
+	\node at ({\x*\sx},-0.1) [below] {$\x$};
+}
+
+%\draw[line width=0.2pt] ({-1*\sx},0) -- ({-1*\sx},{2*\sy});
+%\draw[line width=0.2pt] ({1*\sx},0) -- ({1*\sx},{2*\sy});
+
+\draw (-0.1,{0.5*\sy}) -- (0.1,{0.5*\sy});
+\draw (-0.1,{1.0*\sy}) -- (0.1,{1.0*\sy});
+\draw (-0.1,{1.5*\sy}) -- (0.1,{1.5*\sy});
+\draw (-0.1,{2.0*\sy}) -- (0.1,{2.0*\sy});
+
+%\draw[line width=0.2pt] (0,{0.5*\sy}) -- (1.5,{0.5*\sy});
+%\draw[line width=0.2pt] (0,{1.0*\sy}) -- (1.5,{1.0*\sy});
+%\draw[line width=0.2pt] (0,{1.5*\sy}) -- (1.5,{1.5*\sy});
+%\draw[line width=0.2pt] (0,{2.0*\sy}) -- (1.5,{2.0*\sy});
+
+\node at (-0.1,{0.5*\sy}) [left] {$c=\frac12$};
+\node at (-0.1,{1.0*\sy}) [left] {$c=1$};
+\node at (-0.1,{1.5*\sy}) [left] {$c=\frac32$};
+\node at (-0.1,{2.0*\sy}) [left] {$c=2$};
+
+\input{cnspektrum.inc}
+
+\end{tikzpicture}
+\end{document}
+
