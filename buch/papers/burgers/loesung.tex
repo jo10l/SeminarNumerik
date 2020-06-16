@@ -38,7 +38,7 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
 	  	\end{equation}
 	  	
 	  	umgeschrieben werden.
-	  	Für den explizite Lösung muss \ref{burgers:eq_ex_lin} nach $ u_{i}^{n}$ aufgelöst werden.
+	  	Für den explizite Lösung muss \ref{burgers:eq_ex_lin1} nach $ u_{i}^{n}$ aufgelöst werden.
 	  	
 	  	\begin{equation}
 	  u_{i}^{n} = \frac{\Delta{x}\, u^{n-1}_{i}\,}{- \Delta{t}\, u^{n-1}_{i-1}\, + \Delta{t}\, u^{n-1}_{i}\, + \Delta{x}\,}
@@ -77,6 +77,16 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
 \subsubsection{Stabilit\"atskriterium Lineare Methoden}
 	Die Stabilit\"at kann f\"ur diese L\"osungsmethode nicht garantiert werden.
 	Sie folgt dem Courant-Friedrichs-Lewy Kriterium
+	\begin{equation}
+		  c = \frac{u \, \Delta t}{\Delta x} < c_{krit}.
+	\end{equation}
+	Wobei $ \Delta t$ und $\Delta x$ die diskreten Zeitschritte beschreiben.
+	Das Kriterium $c_{krit}$ ist von der gew\"ahlten L\"osungsmethode abh\"anig.
+	Beim Expliziten Verfahren beträgt $c_{krit} = 1$.
+	Falls $c_{krit} > 1$ bedeutet dies nichts anderes, als das Verh\"altnis zwischen $ \Delta t$ und $\Delta x$ zu gross ist.
+	F\"ur diesen Fall und mit der Annahme $u = 1$ m\"usste $ \Delta t$ gr\"osser sein als $\Delta x$.
+	Dies macht intuitiv Sinn, da der Raum nicht feiner abgetastet werden soll als die Zeit.
+	
 	
 	
 \subsubsection{Leap-Frog Methode 1}
@@ -117,7 +127,7 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
 	\label{burgers:fig:Linear4}
 	\end{figure}
 
-	Wie schon in den bis Anhien gezeigten Varianten kann f\"ur die Multiplikation der Punkt $u_{i}^{n-1}$ verwendet werden.
+	Wie schon in den bis anhin gezeigten Varianten kann f\"ur die Multiplikation den Punkt $u_{i}^{n-1}$ verwendet werden.
 
 	\begin{equation}
 	\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} = \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n}\, \frac{u_{i+1}^{n-1}-u_{i-1}^{n-1}}{2\,\Delta x}=0
@@ -128,18 +138,141 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
 	\end{equation}
 
 \subsection{Stabilit\"atskriterium Leap-Frog Verfahren}
-	Mit der Einf\"uhrung des Leap-Frog Verfahrens 
+	Mit der Einf\"uhrung des Leap-Frog Verfahrens wurde eine ungew\"unschte Instabilit\"at in das System gebracht.
+	Die Problematik ist, dass im Raum über Zwei Raumschritte abgetastet wird.
+	Dabei können schon in einem Abtastschritt eine Änderung vorkommen.
+	Von einer technischer Blickrichtung kann von einer Verletzung des Nyquist-Shannon-Abtasttheorem gesprochen werden.
+	Die Abtastrate beträgt nicht das doppelte der höchsten Frequenz im System.
 
+	
+	Ein Analytisches Beispiel aus \cite{burgers:lynch_2014} mit der Differentialgleichung der Reibung.
+	
+	\begin{equation}
+		\frac{dQ}{dt} = - \kappa Q, \,\,\,\,\, \text{with} Q=Q^0 \,\,\,\,\,\,\, \text{at} t=0
+	\end{equation}
 
+	Mit dem expliziten Verfahren w\"urde die Diskretisierung wie folgt aussehen
+	
+	\begin{equation}
+		\frac{Q^{n+1}-Q^n}{\Delta t} = - \kappa Q^n.
+	\end{equation}
 
+	Die L\"osung
+	
+		\begin{equation}
+			Q^n = Q^0(1-\kappa \Delta t)^n,
+		\end{equation}
+		
+	ist eine monoton fallende geometrische Reihe, falls $|\kappa \Delta t| <1$.
+	
+	\medskip
+	
+	Wird nun das Leap-Frog Verfahren angewendet \"andert sich die Diskretisierung
+	
+	\begin{equation}
+		\frac{Q^{n+1}-Q^{n-1}}{2 \Delta t} = - \kappa Q^n.
+	\end{equation}
 
+	Die L\"osung 
+	
+	\begin{equation}
+		-\frac{Q^{n+1}-Q^{n-1}}{\kappa 2 \Delta t} = - \kappa Q^n
+	\end{equation}
 
+	kann substituiert werden
+	
+		\begin{equation}
+			Q^n = Q^0\alpha ^n.
+			\label{burgers:eq_cm}
+		\end{equation}
+	
+	Dies ist wiederum eine monoton fallende L\"osung gegen Null, wenn $0 < \alpha < 1$.
+	
+	Setzen wir f\"ur $Q^n = \alpha$. $Q^{n+1} = \alpha^2$ und $Q^{n-1} = \alpha^0 = 1$,
+	erhaltet man
+	\begin{equation}
+		\frac{\alpha^2 -1}{2\Delta t} =  -\kappa \alpha
+	\end{equation}
 
+	\begin{equation}
+		\alpha^2 + (\kappa 2 \Delta t) \alpha  -1 = 0
+	\end{equation}
 
+	
+	\begin{equation}
+		\alpha = \frac{- \kappa 2 \Delta t \pm \sqrt{(\kappa 2 \Delta t)^2 + 4}}{2}
+	\end{equation}
 
+	\begin{equation}
+		\alpha_+ = \- \kappa\Delta t + \sqrt{\kappa^2 \Delta t^2 + 1}
+	\end{equation}
+	\begin{equation}
+		\alpha_- = \- \kappa\Delta t - \sqrt{\kappa^2 \Delta t^2 + 1}
+	\end{equation}
 
+	Man sieht, dass $|\alpha_+| < 1$ und somit eine abfallende, gegen Null gehende L\"osung entsteht.
+	Allerdings ist 	$|\alpha_-| > 1$ und damit w\"achst \eqref{burgers:eq_cm} ohne Limit mit $n$.
+	Dieser Anteil wird der  \textit{computational mode} genannt und entsteht bei der Verwendung des expliziten Leap-Frog Verfahren.
+
+	
 \subsection{Implizit}
+
+	Beim impliziten Verfahren werden Datenpunkte der gleichen Zeitebene wie der gesuchte Punkt $u_{i}^{n}$ verwendet.
+	
+
+\subsubsection{Quadratisch}
+     \begin{figure}[!ht]
+	\centering
+	\includegraphics[height=.4\textwidth]{papers/burgers/BurgersEquation/tikz/quadratic/quadratic.pdf}
+	\caption{Methode quadratic}
+	\label{burgers:fig:quadratic}
+	\end{figure}
+
+	Die direkteste Art der Diskretisierung kann wie folgt beschrieben werden.
+	Da der Punkt $u_{i}^{n}$ f\"ur die Multiplikation verwendet wird, entsteht eine quadratische Gleichung.
+
+
+\begin{equation}
+\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} = \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n}\, \frac{u_{i}^{n}-u_{i-1}^{n}}{\Delta x}=0
+\end{equation}
+
+	Die beiden L\"osung dieser Methode
+
+\begin{equation}
+  u_{i}^{n} = \begin{bmatrix}
+     \dfrac{\Delta{t}\, u^{n}_{i-1}\, - \Delta{x}\, - \sqrt{\Delta{t}\,^{2} \left(u^{n}_{i-1}\,\right)^{2} + 4 \Delta{t}\, \Delta{x}\, u^{n-1}_{i}\, - 2 \Delta{t}\, \Delta{x}\, u^{n}_{i-1}\, + \Delta{x}\,^{2}}}{2 \Delta{t}\,} \\[15pt]
+     \dfrac{\Delta{t}\, u^{n}_{i-1}\, - \Delta{x}\, + \sqrt{\Delta{t}\,^{2} \left(u^{n}_{i-1}\,\right)^{2} + 4 \Delta{t}\, \Delta{x}\, u^{n-1}_{i}\, - 2 \Delta{t}\, \Delta{x}\, u^{n}_{i-1}\, + \Delta{x}\,^{2}}}{2 \Delta{t}\,}
+  \end{bmatrix},
+\end{equation}
+
+	Wobei die Negative Teil der L\"osung nicht verwendet werden muss.
+
+\subsubsection{Linear}
+     \begin{figure}[!ht]
+	\centering
+	\includegraphics[height=.4\textwidth]{papers/burgers/BurgersEquation/tikz/linear5/linear5.pdf}
+	\caption{Methode Implizit Linear}
+	\label{burgers:fig:linear5}
+	\end{figure}
+	
+	Wird wie gewohnt der Wert  $u_{i}^{n-1}$ f\"ur die Multiplikation verwendet entsteht eine simplere lineare Gleichung.
+	
+	\begin{equation}
+	\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} = \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n-1}\, \frac{u_{i}^{n}-u_{i-1}^{n}}{\Delta x}=0
+	\end{equation}
+	
+	\begin{equation}
+	 u_{i}^{n} = \frac{u^{n-1}_{i}\, \left(\Delta{t}\, u^{n}_{i-1}\, + \Delta{x}\,\right)}{\Delta{t}\, u^{n-1}_{i}\, + \Delta{x}\,}
+	\end{equation}
+
+
+
+
 \subsubsection{Leap-Frog Verfahren}
+
+	Mit dem impliziten Leap-Frog Verfahren kann f\"ur die Ableitung im Raum denn Wert an der korrekten Stelle berechnet werden.
+	Nun wird allerdings der Punkt  $u_{i+1}^{n}$ f\"ur die Berechnung verwendet, welcher bei der Berechnung des Punktes  $u_{i}^{n}$ noch unbekannt ist.
+	Somit entsteht ein lineares Gleichungssystem.
 
      \begin{figure}[!ht]
 	\centering
@@ -148,36 +281,47 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
 	\label{burgers:fig:Implicit}
 \end{figure}
 
+Generell kann f\"ur die Gleichung aller Werte auf der gesuchten Zeitebene $U^n$ als gesuchte Unbekannte angenommen werden.
+
 \begin{equation}
 \frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} = \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n-1}\, \frac{u_{i+1}^{n}-u_{i-1}^{n}}{2\,\Delta x}=0
 \end{equation}
 
+Die Gleichung kann wie gewohnt in der Linearen Algebra sortiert werden.
 
 \begin{equation}
     \frac{u_{i}^{n+1}-u_{i}^{n}}{dt} + u_{i}^{n} \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx} = 0
 \end{equation}
-\begin{equation}
-  \frac{u_{i}^{n+1}-u_{i}^{n}}{dt} = -u_{i}^{n} \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx}
-\end{equation}
-\begin{equation}
-  u_{i}^{n+1}-u_{i}^{n} = -u_{i}^{n} \, dt \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx}
-\end{equation}
-\begin{equation}
-  u_{i}^{n+1} = -u_{i}^{n} \, dt \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx} + u_{i}^{n}
-\end{equation}
-\begin{equation}
-2 \, dx \,  u_{i}^{n+1} = -u_{i}^{n} \, dt \, \left(u_{i+1}^{n+1} - u_{i-1}^{n+1} \right) + 2 \, dx \, u_{i}^{n}
-\end{equation}
-\begin{equation}
-  2 \, dx \,  u_{i}^{n+1} + u_{i}^{n} \, dt \, u_{i+1}^{n+1} -u_{i}^{n} \, dt \, u_{i-1}^{n+1} =  2 \, dx \, u_{i}^{n}
-\end{equation}
+
+\begin{subequations}
+  \begin{align}
+  \frac{u_{i}^{n+1}-u_{i}^{n}}{dt} &= -u_{i}^{n} \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx} \\
+    u_{i}^{n+1}-u_{i}^{n} &= -u_{i}^{n} \, dt \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx}\\
+    u_{i}^{n+1} &= -u_{i}^{n} \, dt \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx} + u_{i}^{n}\\
+    2 \, dx \,  u_{i}^{n+1} &= -u_{i}^{n} \, dt \, \left(u_{i+1}^{n+1} - u_{i-1}^{n+1} \right) + 2 \, dx \, u_{i}^{n}\\
+    2 \, dx \,  u_{i}^{n+1} + u_{i}^{n} \, dt \, u_{i+1}^{n+1} -u_{i}^{n} \, dt \, u_{i-1}^{n+1} & =  2 \, dx \, u_{i}^{n}\\
+   -u_{i}^{n} \, dt \, u_{i-1}^{n+1} +  2 \, dx \,  u_{i}^{n+1} + u_{i}^{n} \, dt \, u_{i+1}^{n+1} &=  2 \, dx \, u_{i}^{n}
+  \end{align}
+\end{subequations}
 
 
-\begin{equation}
- -u_{i}^{n} \, dt \, u_{i-1}^{n+1} +  2 \, dx \,  u_{i}^{n+1} + u_{i}^{n} \, dt \, u_{i+1}^{n+1}=  2 \, dx \, u_{i}^{n}
-\end{equation}
+%\begin{equation}
+%  u_{i}^{n+1}-u_{i}^{n} = -u_{i}^{n} \, dt \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx}
+%\end{equation}
+%\begin{equation}
+%  u_{i}^{n+1} = -u_{i}^{n} \, dt \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx} + u_{i}^{n}
+%\end{equation}
+%\begin{equation}
+%2 \, dx \,  u_{i}^{n+1} = -u_{i}^{n} \, dt \, \left(u_{i+1}^{n+1} - u_{i-1}^{n+1} \right) + 2 \, dx \, u_{i}^{n}
+%\end{equation}
+%\begin{equation}
+%  2 \, dx \,  u_{i}^{n+1} + u_{i}^{n} \, dt \, u_{i+1}^{n+1} -u_{i}^{n} \, dt \, u_{i-1}^{n+1} =  2 \, dx \, u_{i}^{n}
+%\end{equation}
+%\begin{equation}
+% -u_{i}^{n} \, dt \, u_{i-1}^{n+1} +  2 \, dx \,  u_{i}^{n+1} + u_{i}^{n} \, dt \, u_{i+1}^{n+1}=  2 \, dx \, u_{i}^{n}
+%end{equation}
 
-
+Umgeschrieben in Matrix Notation
 
 \begin{equation}
 \left[{\begin{matrix}
@@ -200,8 +344,11 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
 { 2 \, dx \, u_{3}^{n}}\\[5pt]
 \vdots \\[5pt]
 {dx \, u_{M}^{n}}
-\end{matrix}}\right]
+\end{matrix}}\right].
   \end{equation}
+
+Gleichungssysteme mit dieser Anordnung der Terme werden tridiagonale Matrizen genannt.
+Sie haben die allgemeine Form
 
   \begin{equation}
     a_{i}x_{{i-1}}+b_{i}x_{i}+c_{i}x_{{i+1}}=d_{i}
@@ -225,6 +372,9 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
       \vdots \\{d_{n}}\\
     \end{bmatrix}
   \end{equation}
+  
+   und k\"onnen mit der Thomas Algorithmus schnell gel\"ost werden.
+   Mehr zum Algorithmus in \ref{buch:subsection:thomasalgorithmus}.
 
 \begin{algorithm}\caption{Tridiagonal matrix algorithm (Thomas algorithm)}\label{TDMA}
   \setlength{\lineskip}{7pt}
@@ -249,37 +399,3 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
 \end{algorithm}
 
 
-\subsubsection{Quadratisch}
-     \begin{figure}[!ht]
-	\centering
-	\includegraphics[height=.4\textwidth]{papers/burgers/BurgersEquation/tikz/quadratic/quadratic.pdf}
-	\caption{Methode quadratic}
-	\label{burgers:fig:quadratic}
-\end{figure}
-
-\begin{equation}
-\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} = \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n}\, \frac{u_{i}^{n}-u_{i-1}^{n}}{\Delta x}=0
-\end{equation}
-
-\begin{equation}
-  u_{i}^{n} = \begin{bmatrix}
-     \dfrac{\Delta{t}\, u^{n}_{i-1}\, - \Delta{x}\, - \sqrt{\Delta{t}\,^{2} \left(u^{n}_{i-1}\,\right)^{2} + 4 \Delta{t}\, \Delta{x}\, u^{n-1}_{i}\, - 2 \Delta{t}\, \Delta{x}\, u^{n}_{i-1}\, + \Delta{x}\,^{2}}}{2 \Delta{t}\,} \\[15pt]
-     \dfrac{\Delta{t}\, u^{n}_{i-1}\, - \Delta{x}\, + \sqrt{\Delta{t}\,^{2} \left(u^{n}_{i-1}\,\right)^{2} + 4 \Delta{t}\, \Delta{x}\, u^{n-1}_{i}\, - 2 \Delta{t}\, \Delta{x}\, u^{n}_{i-1}\, + \Delta{x}\,^{2}}}{2 \Delta{t}\,}
-  \end{bmatrix}
-\end{equation}
-
-\subsubsection{Linear}
-     \begin{figure}[!ht]
-	\centering
-	\includegraphics[height=.4\textwidth]{papers/burgers/BurgersEquation/tikz/linear5/linear5.pdf}
-	\caption{Methode Implizit Linear}
-	\label{burgers:fig:linear5}
-	\end{figure}
-	
-	\begin{equation}
-	\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} = \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n-1}\, \frac{u_{i}^{n}-u_{i-1}^{n}}{\Delta x}=0
-	\end{equation}
-	
-	\begin{equation}
-	 u_{i}^{n} = \frac{u^{n-1}_{i}\, \left(\Delta{t}\, u^{n}_{i-1}\, + \Delta{x}\,\right)}{\Delta{t}\, u^{n-1}_{i}\, + \Delta{x}\,}
-	\end{equation}
