@@ -1,0 +1,118 @@
+%
+% 2dpart.tex -- Partielle Integration in einem Rechteck
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{0.98}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\a{3}
+\def\b{10}
+\def\c{2}
+\def\d{6}
+
+\fill[color=gray!20] (\a,\c) rectangle (\b,\d);
+\node at ({0.5*(\a+\b)},{0.5*(\c+\d)+0.3}) {$\Omega$};
+\node at ({0.5*(\a+\b)},{0.5*(\c+\d)-0.3}) {$\displaystyle\int_{\Omega}(\nabla u(x))^2 + u(x)^2\,dx$};
+
+\draw[->] (-0.1,0)--(13.7,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1)--(0,8.3) coordinate[label={left:$y$}];
+
+\draw[line width=0.2pt] (\a,0)--(\a,8);
+\draw[line width=0.2pt] (\b,0)--(\b,8);
+\draw[line width=0.2pt] (0,\c)--(13.5,\c);
+\draw[line width=0.2pt] (0,\d)--(13.5,\d);
+
+\draw (\a,-0.1)--(\a,0.1);
+\node at (\a,-0.1) [below] {$a\mathstrut$};
+\draw (\b,-0.1)--(\b,0.1);
+\node at (\b,-0.1) [below] {$b\mathstrut$};
+
+\draw (-0.1,\c)--(0.1,\c);
+\node at (-0.1,\c) [left] {$c\mathstrut$};
+\draw (-0.1,\d)--(0.1,\d);
+\node at (-0.1,\d) [left] {$d\mathstrut$};
+
+\pgfmathparse{\a+0.5}
+\xdef\xstart{\pgfmathresult}
+
+\foreach \x in {\xstart,...,\b}{
+	\draw[->] (\x,\c) -- (\x,{\c-0.7});
+	\draw[->] (\x,\d) -- (\x,{\d+0.7});
+}
+
+\pgfmathparse{\c+0.5}
+\xdef\ystart{\pgfmathresult}
+
+\foreach \y in {\ystart,...,\d}{
+	\draw[->] (\a,\y) -- ({\a-0.7},\y);
+	\draw[->] (\b,\y) -- ({\b+0.7},\y);
+}
+
+\node at (\b,{0.5*(\c+\d)}) [right] {$\vec{n}\mathstrut$};
+\node at (\a,{0.5*(\c+\d)}) [left] {$\vec{n}\mathstrut$};
+\node at ({0.5*(\a+\b)-0.5},{\c}) [below] {$\vec{n}\mathstrut$};
+\node at ({0.5*(\a+\b)+0.5},{\d}) [above] {$\vec{n}\mathstrut$};
+
+% Farben
+\definecolor{orange}{rgb}{1,0.6,0.2}
+\definecolor{gruen}{rgb}{0.2,0.6,0.2}
+\definecolor{magenta}{rgb}{0.9,0.2,0.4}
+\definecolor{azure}{rgb}{0,0.2,1}
+
+% unterer Rand
+\node[color=orange] at ({0.5*(\a+\b)},{\c-1.3}) {$\displaystyle
+	-\int_a^b v_y(x,c)\,h(x,c) \,dx
+	=
+	\int_a^b h(x,c)\, \vec{v}(x,c) \cdot\, d\vec{n}
+	$};
+\node[color=orange] at ({0.5*(\a+\b)},\c) [above] {$\displaystyle
+	-v_y(x,c) = \vec{v} \cdot \vec{n}$};
+\draw[color=orange,line width=1.4pt] (\a,\c) -- (\b,\c);
+
+% oberer Rand
+\node[color=gruen] at ({0.5*(\a+\b)},{\d+1.3}) {$\displaystyle
+	\int_a^b v_y(x,d)\,h(x,d) \,dx
+	=
+	\int_a^b h(x,d)\, \vec{v}(x,d) \cdot\, d\vec{n}
+	$};
+\node[color=gruen] at ({0.5*(\a+\b)},\d) [below] {$\displaystyle
+	\phantom{-}v_y(x,d) = \vec{v} \cdot \vec{n}$};
+\draw[color=gruen,line width=1.4pt] (\a,\d) -- (\b,\d);
+
+% rechter Rand
+\fill[color=white,opacity=0.8] ({\b+1.1},1) rectangle ({\b+2.1},8);
+\node[color=magenta] at (\b+1,{0.5*(\c+\d)}) [below,rotate=90]
+	{$\displaystyle
+	\int_c^d h(b,y)\, v_x(b,y) \,dy
+	=
+	\int_c^d h(b,y)\,\vec{v}\cdot \,d\vec{n}
+	$};
+\node[color=magenta] at (\b,{0.5*(\c+\d)}) [above,rotate=90] {$\displaystyle
+	v_x(b,y) = \vec{v}\cdot \vec{n}
+	$};
+\draw[color=magenta,line width=1.4pt] (\b,\c) -- (\b,\d);
+
+% linker Rand
+\fill[color=white,opacity=0.8] ({\a-2.1},1) rectangle ({\a-1.1},8);
+\node[color=azure] at (\a-1,{0.5*(\c+\d)}) [below,rotate=-90] {$\displaystyle
+	-\int_c^d h(a,y)\, v_x(a,y) \,dy
+	=
+	\int_c^d h(a,y)\,\vec{v}\cdot \,d\vec{n}
+	$};
+\node[color=azure] at (\a,{0.5*(\c+\d)}) [above,rotate=-90] {$\displaystyle
+	-v_x(x,c) = \vec{v}\cdot \vec{n}
+	$};
+\draw[color=azure,line width=1.4pt] (\a,\c) -- (\a,\d);
+
+\end{tikzpicture}
+\end{document}
+
