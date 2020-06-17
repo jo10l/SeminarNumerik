@@ -197,14 +197,15 @@ class Burgers:
     def plot(self, data, save=False, title=''):
         SMALL_SIZE = 5
         MEDIUM_SIZE = 8
-        BIGGER_SIZE = 12
+        BIGGER_SIZE = 20
+        plt.rcParams['font.family'] = 'STIXGeneral'
 
-        plt.rc('font', size=SMALL_SIZE)          # controls default text sizes
-        plt.rc('axes', titlesize=SMALL_SIZE)     # fontsize of the axes title
-        plt.rc('axes', labelsize=MEDIUM_SIZE)    # fontsize of the x and y labels
-        plt.rc('xtick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
-        plt.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
-        plt.rc('legend', fontsize=SMALL_SIZE)    # legend fontsize
+        plt.rc('font', size=BIGGER_SIZE)          # controls default text sizes
+        plt.rc('axes', titlesize=BIGGER_SIZE)     # fontsize of the axes title
+        plt.rc('axes', labelsize=BIGGER_SIZE)    # fontsize of the x and y labels
+        plt.rc('xtick', labelsize=BIGGER_SIZE)    # fontsize of the tick labels
+        plt.rc('ytick', labelsize=BIGGER_SIZE)    # fontsize of the tick labels
+        plt.rc('legend', fontsize=BIGGER_SIZE)    # legend fontsize
         plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
 
         x = self.X.flatten()
@@ -224,7 +225,6 @@ class Burgers:
         axs.yaxis._axinfo["grid"]['color'] = (1, 1, 1, 0)
         axs.zaxis._axinfo["grid"]['color'] = (1, 1, 1, 0)
         axs.plot_trisurf(x, y, z, cmap=cm.jet, linewidth=0, antialiased=False, alpha=.99)
-        fig.subplots_adjust(top = 1, bottom=0, left=-.1, right=1.1)
         axs.view_init(30, -60)
 
 
@@ -235,8 +235,14 @@ class Burgers:
         #     fig.savefig(file, dpi=100)
 
         if save is True:
-           fig.subplots_adjust(top = 1, bottom=0, left=-.1, right=1.1)
+           fig.subplots_adjust(top = 1, bottom=0.0, left=-.1, right=1.1)
            axs.view_init(30, -60)
+           axs.tick_params(
+         labelbottom=False,
+         labelleft=False,
+         bottom=False,
+         left=False
+                     )
            fig.savefig('images/' +title+'_front.pdf')
            axs.view_init(89, -90)
            fig.subplots_adjust(top = 1.3, bottom=-.3, left=-.3, right=1.2)
@@ -468,13 +474,13 @@ def plot_multiple():
 # test%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if __name__ == '__main__':
 
-    b1 = Burgers(x_dim=10, t_dim=10, dx=.1, dt=.1)
+    b1 = Burgers(x_dim=10, t_dim=10, dx=.2, dt=.1)
     # plot_multiple()
     # lin_cov = b1.linear_convection(c=1)
     # Uq1 = b1.quadratic()
-    Ul1 = b1.linear1()
-    Ul2 = b1.linear2()
-    # Ul3 = b1.linear3(alpha=0)
+    # Ul1 = b1.linear1()
+    # Ul2 = b1.linear2()
+    Ul3 = b1.linear3(alpha=0)
     # Ul4 = b1.linear4(alpha=0)
     # Ul5 = b1.linear5()
     # Ucn = b1.crank_nicolson()
@@ -485,13 +491,13 @@ if __name__ == '__main__':
     # implicit = b1.implicit_as_leap_frog_forwards()
 
     # b1.plot_animate_rot_3D(Uq1, title='nlc_3d')
-    b1.plot_tikz([Ul1, Ul2,], ['Linear 1', 'Linear 2'])
+    # b1.plot_tikz([Ul1, Ul2,], ['Linear 1', 'Linear 2'])
     # b1.plot_animate_1D([Uq1, Ul5, implicit], ['Quadratic','Linear', 'Leap-Frog'], 'imp')
     # b1.plot(data=Uq1, save=False, title='Nonlinear_Convection')
     # b1.plot(data=lin_cov, save=False, title='Linear Convection')
     # b1.plot(data=Ul1, save=False, title='linear1')
     # b1.plot(data=Ul2, save=False, title='linear2')
-    # b1.plot(data=Ul3, save=True, title='Leap_Frog')
+    b1.plot(data=Ul3, save=True, title='Leap_Frog')
     # b1.plot(data=Ul4, save=False, title='linear4')
     # b1.plot(data=Ul5, save=False, title='linear5')
     # b1.plot(implicit, save=True, title='Implicit')
