@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 import copy
 from matplotlib import animation
-# import dill
-# from mayavi import mlab
+import tikzplotlib 
+
 
 
 class Burgers:
@@ -193,19 +193,6 @@ class Burgers:
 
         return implicit
 
-    def implicit_as_leap_frog_backwards_analytical(self):
-        implicit = copy.deepcopy(self.U1)
-
-        f = dill.load(open("myfile", "rb"))
-
-        for t in range(self.N-1):
-            res = []
-            for i in range(self.M):
-                res.append(f[i](self.dt, self.dx, implicit[:, t]))
-                # res.append(f[i](implicit[:, t]))
-            implicit[:, t+1] = res
-
-        return implicit
 
     def plot(self, data, save=False, title=''):
         SMALL_SIZE = 5
@@ -356,6 +343,71 @@ class Burgers:
         # Save
         # anim.save('images/' + title + '1D.mp4', fps=30, extra_args=['-vcodec', 'libx264'])
 
+    def plot_tikz(self, datas, legend):
+        fig = plt.figure(figsize=(25, 13))
+        cnt = 0
+        SMALL_SIZE = 5
+        MEDIUM_SIZE = 8
+        BIGGER_SIZE = 20
+        plt.rcParams['font.family'] = 'STIXGeneral'
+        plt.rc('font', size=BIGGER_SIZE)          # controls default text sizes
+        plt.rc('axes', titlesize=BIGGER_SIZE)     # fontsize of the axes title
+        plt.rc('axes', labelsize=BIGGER_SIZE)    # fontsize of the x and y labels
+        plt.rc('xtick', labelsize=BIGGER_SIZE)    # fontsize of the tick labels
+        plt.rc('ytick', labelsize=BIGGER_SIZE)    # fontsize of the tick labels
+        plt.rc('legend', fontsize=BIGGER_SIZE)    # legend fontsize
+        plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
+        for i in range(5):
+            for j in range(5):
+
+                axs = plt.subplot2grid((5, 5), (i, j))
+                
+                if i != 4:
+                    axs.tick_params(
+                                    labelbottom=False,
+                                    labelleft=False,
+                                    bottom=False,
+                                    left=False
+                                    )
+                else:
+                    plt.xlabel('space (m)')
+                    axs.tick_params(
+                                labelbottom=True,
+                                labelleft=False,
+                                bottom=True,
+                                left=False
+                                )
+                if j == 0:
+                    plt.ylabel('U (m)')
+                    axs.tick_params(
+                                    labelbottom=False,
+                                    labelleft=True,
+                                    bottom=False,
+                                    left=True
+                                    )
+                    if i == 4:
+                        plt.ylabel('U (m)')
+                        axs.tick_params(
+                                        labelbottom=True,
+                                        labelleft=True,
+                                        bottom=True,
+                                        left=True
+                                        )
+   
+
+                plt.ylim((0,1))
+                plt.xlim((0, self.x_dim))
+                plt.grid(True)
+                for k in range(len(datas)):
+                    plt.plot(self.x, datas[k][:,cnt], label=legend[k], lw=2)
+                textstr = 't = {} s'.format(cnt)
+                props = dict(boxstyle='round', facecolor='white', alpha=0.5)
+                tex = axs.text(0.05, 0.90, textstr, transform=axs.transAxes, fontsize=18,verticalalignment='top', bbox=props)
+                cnt += (self.M-1)//25
+        handles, labels = axs.get_legend_handles_labels()
+        fig.legend(handles, labels, loc='upper center', fontsize=25, ncol = 3)
+
+
 def plot_multiple():
     fig = plt.figure(figsize=(25, 13))
     cnt = 0
@@ -411,28 +463,30 @@ def plot_multiple():
     fig.savefig('images/multi_stable.pdf')
 
 
+
+
 # test%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if __name__ == '__main__':
 
     b1 = Burgers(x_dim=10, t_dim=10, dx=.1, dt=.1)
     # plot_multiple()
     # lin_cov = b1.linear_convection(c=1)
-    Uq1 = b1.quadratic()
+    # Uq1 = b1.quadratic()
     Ul1 = b1.linear1()
     Ul2 = b1.linear2()
     # Ul3 = b1.linear3(alpha=0)
     # Ul4 = b1.linear4(alpha=0)
-    Ul5 = b1.linear5()
+    # Ul5 = b1.linear5()
     # Ucn = b1.crank_nicolson()
     # implicit = b1.implicit_solver()
 
-    # implicit = b1.implicit_as_lin1()B
+    # implicit = b1.implicit_as_lin1()
     implicit = b1.implicit_as_leap_frog_backwards()
     # implicit = b1.implicit_as_leap_frog_forwards()
-    # implicit= b1.implicit_as_leap_frog_backwards_analytical()
 
     # b1.plot_animate_rot_3D(Uq1, title='nlc_3d')
-    b1.plot_animate_1D([Uq1, Ul5, implicit], ['Quadratic','Linear', 'Leap-Frog'], 'imp')
+    b1.plot_tikz([Ul1, Ul2,], ['Linear 1', 'Linear 2'])
+    # b1.plot_animate_1D([Uq1, Ul5, implicit], ['Quadratic','Linear', 'Leap-Frog'], 'imp')
     # b1.plot(data=Uq1, save=False, title='Nonlinear_Convection')
     # b1.plot(data=lin_cov, save=False, title='Linear Convection')
     # b1.plot(data=Ul1, save=False, title='linear1')
