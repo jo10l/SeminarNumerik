@@ -497,7 +497,7 @@ if __name__ == '__main__':
     # b1.plot(data=lin_cov, save=False, title='Linear Convection')
     # b1.plot(data=Ul1, save=False, title='linear1')
     # b1.plot(data=Ul2, save=False, title='linear2')
-    b1.plot(data=Ul3, save=True, title='Leap_Frog')
+    # b1.plot(data=Ul3, save=True, title='Leap_Frog')
     # b1.plot(data=Ul4, save=False, title='linear4')
     # b1.plot(data=Ul5, save=False, title='linear5')
     # b1.plot(implicit, save=True, title='Implicit')
