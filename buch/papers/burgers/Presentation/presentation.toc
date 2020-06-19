@@ -1,7 +1,0 @@
-\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
-\beamer@sectionintoc {2}{Burgers' Equation}{2}{0}{2}
-\beamer@sectionintoc {3}{Numerical Weather Prediction}{5}{0}{3}
-\beamer@sectionintoc {4}{Mathematical Notation}{5}{0}{4}
-\beamer@sectionintoc {5}{Explicit Approaches}{6}{0}{5}
-\beamer@sectionintoc {6}{Implicit Approaches}{14}{0}{6}
-\beamer@sectionintoc {7}{Summary}{22}{0}{7}
