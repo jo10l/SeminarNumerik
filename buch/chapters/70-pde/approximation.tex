@@ -1,0 +1,241 @@
+%
+% approximation.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\subsection{Approximation
+\label{pde:fem:subsection:approximation}}
+Das äquivalente Minimalproblem zu einer partiellen Differentialgleichung
+hat das Problem etwas vereinfacht, die Ordnung der Ableitung ist
+reduziert worden, aber ist ist immer noch ein Problem, in dem eine
+Funktion bestimmt werden muss, also ein unendlichdimensionales Problem.
+In dieser Form ist es daher immer noch nicht einer effizienten
+numerischen Lösung zugänglich.
+
+Zur Illustration soll in diesem Abschnitt das folgende Problem 
+gelöst werden.
+Auf dem Interval $\Omega=[0,\pi]$ ist eine Funktion $f(x)$ gegeben.
+Gesucht ist eine Funktion $u\colon [0,\pi]\to\mathbb R$ derart, dass
+\begin{equation}
+\begin{aligned}
+u''(x) &= f(x)
+\\
+u(0) &= u_0 & u(\pi)&= u_1.
+\end{aligned}
+\label{buch:pde:approx:beispiel}
+\end{equation}
+Als erstes müssen wir das äquivalente Minimalproblem finden.
+
+\begin{problem}
+Sei $F(x)$ eine Stammfunktion von $f(x)$.
+Eine Lösung des Differentialgleichungsproblems~\eqref{buch:pde:approx:beispiel}
+minimiert
+\[
+I(u)
+=
+\int_0^\pi (u'(x) - F(x))^2\,dx.
+\]
+\end{problem}
+
+\begin{proof}[Beweis]
+Die Richtungsableitung von $I(u)$ ist
+\begin{align*}
+\frac{dI}{d\varepsilon}(u+\varepsilon h)\bigg|_{\varepsilon=0}
+&=
+\int_0^\pi
+2(u'(x)+\varepsilon h'(x)-F(x)) h'(x) 
+\,dx
+\\
+&=
+2
+\int_0^\pi
+(
+u'(x)
+-
+F(x)
+)
+h'(x)
+\,dx
+\\
+&=
+2\biggl[(u'(x)-F(x))h(x)\biggr]_0^\pi
+-
+2\int_0^\pi
+(u''(x)
+-
+F'(x))
+h(x)
+\,dx
+\intertext{Der erste Term verschwindet wegen $h(0)=h(\pi)=0$ und es bleibt}
+&=
+2\int_0^\pi
+(u''(x)
+-
+f(x))
+h(x)
+\,dx
+=0.
+\end{align*}
+Dies muss für alle $h(x)$ gelten, so dass folgt
+$u''(x) -f(x)=0$ oder $u''(x)=f(x)$.
+\end{proof}
+
+Die Stammfunktion $F(x)$ ist nicht eindeutig bestimmt, vielmehr
+ist jede $F(x)+C$ ebenfalls eine Stammfunktion.
+Nach obiger Rechnung führt sie jedoch auf die gleichen Minima.
+
+Wir können aber davon ausgehen, dass die Lösungsfunktionen einigermassen
+glatt sind, also sich gut durch ein Polynom approximieren lässt.
+Wir approximieren jetzt $u(x)$ als Polynom und schreiben
+\[
+u(x) = a_0 + a_1x + a_2x^2 + \dots + a_nx^n.
+\]
+Das Minimalprinzip für $u(x)$ führt auf ein Minimalprinzip für 
+die Koeffizienten $a_k$.
+Zunächst brauchen wir die Ableitung von $u(x)$:
+\begin{align*}
+u'(x) &= \sum_{k=1}^n ka_kx^{k-1}.
+\end{align*}
+Jetzt müssen wir das Integral von
+\[
+(u'(x)-F(x))^2
+=
+u'(x)^2 - 2u'(x)F(x) + F(x)^2
+\]
+durch 
+die Koeffizienten $a_k$ ausdrücken.
+\begin{align*}
+\int_0^\pi u'(x)^2\,dx
+&=
+\int_0^\pi
+\sum_{i,j=1}^n ija_ia_jx^{i+j-2}
+\,dx
+=
+\sum_{i,j=1}^n ij \int_0^\pi x^{i+j-2}\,dx\, a_ia_j
+=
+\sum_{i,j=1}^n
+\underbrace{ij \frac{\pi^{i+j-1}}{i+j-1}}_{\displaystyle b_{ij}}
+a_ia_j
+=
+a^tBa
+\\
+\int_0^\pi u(x)'F(x) \,dx
+&=
+\int_0^\pi \sum_{i=1}^n ia_i x^{i-1} F(x) \,dx
+=
+\sum_{i=1}^n
+a_i
+\underbrace{\int_0^\pi 
+ix^{i-1} F(x)\,dx}_{\displaystyle =b_i}
+=
+b^t a
+\\
+\int_0^\pi F(x)^2\,dx &=: c
+\end{align*}
+Gesucht ist jetzt also ein Koeffizientenvektor $a$, der den
+Ausdruck
+\[
+Q(a) = a^t B a + b^t a + c
+\]
+minimiert.
+Der Summand $c$ kann natürlich weggelassen werden.
+
+Die Randbedingungen müssen natürlich auch erfüllt sein, auch
+diese können wir durch die Polynomkoeffizienten ausdrücken:
+\begin{align*}
+u_0=u(0)   &= a_0
+\\
+u_1=u(\pi) &= a_0 + a_1\pi + a_2\pi^2+\dots a_n\pi^n.
+\end{align*}
+Dies lässt sich auch in Matrixform mit der Matrix
+\[
+A=\begin{pmatrix}
+1&0&0&\dots&0\\
+1&\pi&\pi^2&\dots&\pi^n
+\end{pmatrix}
+\]
+als
+\[
+Aa = \begin{pmatrix}u_0\\u_1\end{pmatrix}
+\]
+schreiben.
+
+Wir machen das Problem noch etwas konkreter und verlangen $f(x)=1$
+und $u_0=u_1=0$.
+Dann ist $F(x)=x$ eine mögliche Stammfunktion und damit lässt sich
+der Vektor $b$ berechnen als
+\[
+b_i
+=
+\int_0^\pi i F(x) x^{i-1}\,dx
+=
+\int_0^\pi i x^i\,dx
+=
+\frac{i}{i+1}
+\pi^{i+1}.
+\]
+Die Matrix $B$ ist
+\begin{align*}
+B&=\begin{pmatrix}
+\pi   & \pi^2            & \pi^3            \\
+\pi^2 & \frac{4}{3}\pi^3 & \frac{3}{2}\pi^4 \\
+\pi^3 & \frac{3}{2}\pi^4 & \frac{9}{5}\pi^5
+\end{pmatrix}
+\end{align*}
+Aus den Randbedingung folgt $a_0=0$ und
+\[
+a_1\pi+a_2\pi^2=0
+\qquad\Rightarrow\qquad
+a_1 = \pi a_2.
+\]
+Die gesuchte Lösung muss sich also den Ausdruck
+\[
+a_2
+\begin{pmatrix}
+1\\\pi
+\end{pmatrix}^t
+\pi^3
+\begin{pmatrix}
+\frac43   &\frac32\pi\\
+\frac32\pi&\frac95\pi^2
+\end{pmatrix}
+\begin{pmatrix}
+1\\\pi
+\end{pmatrix}
+a_2
+-
+\begin{pmatrix}
+\frac23\pi^3\\\frac34\pi^4
+\end{pmatrix}
+\begin{pmatrix}
+1\\\pi
+\end{pmatrix}
+a_2
+=
+\biggl(
+\frac43\pi^3+3\pi^5 +\frac95\pi^7
+\biggr)
+a_2^2
+-\biggl(\frac23\pi^3+\frac34\pi^5\biggr)
+a^2
+\]
+Gesucht wird also nur das Minimum eines quadratischen Ausdrucks 
+in $a_2$, und dieses wird bei $a_2=\frac12$ angenommen.
+Tatsächlich kann man nachprüfen, dass
+\[
+u(x)
+=
+\frac12\biggl(x-\frac{\pi}2\biggr)^2 -\frac{\pi^2}8
+=
+\frac12x^2 -\frac12 x\pi +\frac{\pi^2}8 - \frac{\pi^2}8
+=
+\frac12x(x-\frac{\pi}2)
+\]
+eine Lösung des Problems ist.
+
+
+
+
+
+
+
