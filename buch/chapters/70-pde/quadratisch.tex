@@ -1,0 +1,538 @@
+%
+% quadratisch.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\subsection{Quadratische Minimalprobleme
+\label{buch:qm:subsection:quadratischeminimalprobleme}}
+In den vorangegangenen Beispielen wurde gezeigt, wie sich viele
+partielle Differentialgleichungen auf äquivalente Minimalprobleme
+zurückführen lassen.
+Indem man die Funktionen dann als Linearkombinationen approximiert,
+kann man daraus quadratische Minimalprobleme für die Koeffizienten
+dieser Linearkombinationen gewinnen.
+In diesem Abschnitt soll gezeigt werden, wie solche quadratischen
+Minimalprobleme algebraisch gelöst werden können.
+
+%
+% Least-Squares-Problem als Beispiel
+%
+\subsubsection{Least-Squares-Problem}
+Das folgende Problem ist ein wohlbekanntes Beispiel für eine einfaches
+quadratisches Minimalproblem.
+Es soll hier als Einstieg dienen, Ziel ist eine allgemeinere Form von
+Minimalproblem zu formulieren und die Analysis hinzuzuziehen, um das
+verallgemeinerte Problem zu lösen.
+Natürlich springt dabei auch ein neuer Beweis für die bekannte 
+Lösung des Least-Squares-Problems heraus.
+
+\begin{problem}
+\label{buch:qm:problem:ls}
+Sei $A$ eine $n\times m$-Matrix mit $m<n$ und $\operatorname{Rang} A=m$
+und $b$ ein $n$-dimensionaler Spaltenvektor.
+Finde einen $m$-dimensionalen Vektor $x$ derart, dass $|Ax-b|$ minimal ist.
+\end{problem}
+
+Die geometrische Intuition zur Lösung des Problems ist, dass 
+$Ax$ die Punkte eines Unterraums sind, der von den Spalten von $A$
+aufgespannt wird.
+Gesucht wird jetzt derjenige Punkt, der möglichst nahe am Punkt $b$
+liegt, der möglicherweise ausserhalb des Unterraums ist.
+Für diesen Punkt $Ax$ muss die Differenz $Ax-b$ auf dem Unterraum
+senkrecht stehen.
+Da dieser von den Spalten von $A$ aufgespannt wird, muss $Ax-b$ auf allen
+Spalten von $A$ senkrecht stehen.
+Das Skalarprodukt aller Spalten von $A$ mit $Ax-b$ muss daher verschwinden,
+also
+\[
+A^t(Ax-b) = 0
+\qquad\Rightarrow\qquad
+A^tAx = A^tb 
+\qquad\Rightarrow\qquad
+x = (A^tA)^{-1}A^tb.
+\]
+Diese Argumentation verwendet die geometrischen Eigenschaften des
+Skalarproduktes.
+Und funktioniert daher nur für den euklidischen Abstand, der von
+dem sehr speziellen quadratischen Ausdruck $x_1^2+\dots + x_n^2$
+berechnet wird.
+Im Folgenden soll das Problem für beliebige quadratische Ausdrücke
+verallgemeinert werden.
+
+%
+% Problemstellung
+%
+\subsubsection{Problemstellung}
+Das Least Squares Problem\ref{buch:qm:problem:ls} ist ein Spezialfall eines
+quadratischen Minimalproblems.
+
+\begin{problem}
+\label{buch:qm:problem:ls2}
+Sei $A$ eine Matrix und $b$ ein Vektor wie in Problem~\ref{buch:qm:problem:ls}.
+Finde einen Vektor $x$ derart, dass die quadratische Funktion
+\begin{equation}
+Q(x)
+=
+|Ax-b|^2
+=
+(Ax-b)^t(Ax-b)
+=
+x^tA^tAx -x^tA^tb - b^tAx +b^t b
+\label{buch:qm:eqn:ls2}
+\end{equation}
+minimiert wird.
+\end{problem}
+
+Während es in der ursprünglichen Formulierung des Least-Squares-Problems
+um die Minimierung des Abstands ging, ist jetzt ein Problem entstanden,
+in der ein allgemeinerer quadratischer Ausdruck der Form $x^tBx$ 
+minimiert werden muss, wobei $B=A^tA$ eine symmetrische Matrix ist.
+Allerdings ist immer noch die Beschreibung des Unterraums der zulässigen
+Punkte $Ax$ vermischt mit dem quadratischen Ausdruck, der minimiert werden
+soll, in dem ebenfalls die Matrix $A$ vorkommt.
+Um diese beiden Komponenten klarer zu trennen, formulieren wird das
+Problem wie folgt:
+
+\begin{problem}
+\label{buch:qm:problem:allg}
+Sei $B$ eine positiv definite, symmetrische $n\times n$-Matrix 
+und $A$ eine $m\times n$-Matrix mit $m<n$ und $\operatorname{Rang}A=m$.
+Sei weiter $b$ ein $m$-dimensionaler Vektor.
+Finde einen $n$-dimensionalen Vektor $x$ der $Ax=b$ erfüllt und
+$Q(x)=x^tbx$ minimiert.
+\end{problem}
+
+%
+% Nichtlineare Minimalprobleme
+%
+\subsubsection{Nichtlineare Minimalprobleme}
+In der Theorie der Funktionen mehrere Variablen lernt man die folgende
+Methode zur Lösung nichtlinearer Minimalprobleme.
+Sie wird oft auch die Methode der Lagrange-Multiplikatoren genannt,
+die Zahlen $\lambda_i$ heissen Lagrange-Multiplikatoren.
+
+\begin{lemma}
+\label{buch:qm:lemma:lagrangemultiplikatoren}
+Gegeben ist eine Funktion $f\colon \mathbb R^n \to \mathbb R$
+und $m$-Funktionen $g_i\colon\mathbb R^n \to \mathbb R$ mit $m<n$.
+Ist $x$ ein Punkt, in dem $f(x)$ minimiert wird und gleichzeitig
+$g_i(x)=0$ gilt, dann gibt es Zahlen $\lambda_i$ derart dass
+\[
+\nabla f(x) = \lambda_1 \nabla g_1(x)  + \dots + \lambda_m g_m(x)
+\]
+gilt.
+\end{lemma}
+
+Das Lemma~\ref{buch:qm:lemma:lagrangemultiplikatoren} besagt, dass
+$x$ und die Zahlen $\lambda_i$ als Lösung der Gleichungen
+\begin{equation}
+\begin{aligned}
+g_i(x)&=0\qquad i=1,\dots,m\\
+\nabla f(x) -\sum_{i=1}^m \nabla g_i(x)&=0
+\end{aligned}
+\label{label:qm:eqn:lagrangemultiplikatoren2}
+\end{equation}
+gefunden werden kann.
+Die letzte Gleichung ist eine Vektorgleichung mit $n$-Komponenten,
+das System~\eqref{label:qm:eqn:lagrangemultiplikatoren2} ist also
+ein Gleichungssystem mit $m+n$ Gleichungen für die $n+m$
+Unbekannten $x$ und $\lambda=(\lambda_1,\dots,\lambda_m)$, ein Zeilenvektor.
+
+Die Funktionen $g_i(x)=0$ können in einen $m$-dimensionalen Vektor
+$g(x)$ zusammengefasst werden, für die wir auch den Gradienten
+\[
+\nabla g(x)
+=
+\renewcommand\arraystretch{1.25}
+\begin{pmatrix}
+\displaystyle\frac{\partial g_1}{\partial x_1} & \dots
+	& \displaystyle\frac{\partial g_m}{\partial x_1}\\
+\displaystyle\frac{\partial g_1}{\partial x_2} & \dots
+	& \displaystyle\frac{\partial g_m}{\partial x_2}\\
+\vdots & \ddots & \vdots \\
+\displaystyle\frac{\partial g_1}{\partial x_n} & \dots
+	& \displaystyle\frac{\partial g_m}{\partial x_n}
+\end{pmatrix}
+\]
+definieren können.
+Mit diesen Notation wird das Gleichungssystem
+\eqref{label:qm:eqn:lagrangemultiplikatoren2}
+schreiben als
+\begin{equation}
+\begin{aligned}
+g(x)&=0\\
+\nabla f(x) - \lambda  \nabla g(x) &= 0.
+\end{aligned}
+\label{label:qm:eqn:lagrangemultiplikatoren3}
+\end{equation}
+In dieser Form versuchen wir das Problem zu lösen.
+
+%
+% Ableitungen
+%
+\subsubsection{Gradienten von linearen und quadratischen Formen}
+Für die Lösung eines quadratischen Minimalproblems mit Hilfe der Gleichungen
+\eqref{label:qm:eqn:lagrangemultiplikatoren3} muss der Gradient
+von quadratischen und linearen Funktionen berechnet werden können.
+In diesem Abschnitt tragen wir die benötigten Formeln zusammen
+
+\begin{lemma}
+\label{buch:qm:lemma:gradlin}
+Sei $v$ ein $n$-dimensionaler Spaltenvektor und $w$ ein $n$-dimensionaler
+Zeilenvektor.
+Der Gradient der Funktionen $f(x)=x^tv$ und $g(x)=wx$ ist
+\begin{equation}
+\begin{aligned}
+\nabla f &= v
+&&\text{und}&
+\nabla g &= w^t.
+\end{aligned}
+\end{equation}
+\end{lemma}
+
+\begin{proof}[Beweis]
+Die Funktionen $f$ und $g$ sind etwas ausführlicher geschrieben
+\[
+\begin{aligned}
+f(x) &= x^tv = \sum_{i=1}^n x_iv_i
+&&\text{und}&
+g(x) &= wx = \sum_{i=1}^n w_ix_i.
+\end{aligned}
+\]
+Die partiellen Ableitungen von $f$ und $g$ sind
+\begin{align*}
+\frac{\partial f}{\partial x_k}
+&=
+\sum_{i=1}^n \frac{\partial x_i}{\partial x_k} v_i
+=
+\sum_{i=1}^n \frac{\partial x_i}{\partial x_k} v_i
+=
+\sum_{i+1}^n \delta_{ik} v_i
+=
+v_k
+\\
+\frac{\partial f}{\partial x_k}
+&=
+\sum_{i=1}^n w_i\frac{\partial x_i}{\partial x_k}
+=
+\sum_{i=1}^n w_i\frac{\partial x_i}{\partial x_k}
+=
+\sum_{i+1}^n w_i\delta_{ik} =w_k
+\end{align*}
+also
+$\nabla f = v$ und $\nabla g = w$.
+\end{proof}
+
+\begin{lemma}
+\label{buch:qm:lemma:gradsquare}
+Ist $B$ eine $n\times n$-Matrix, dann ist der Gradient der
+quadratischen Form $q(x) = x^tBx$
+\begin{equation}
+\nabla q(x) = (B+B^t)x.
+\end{equation}
+Falls $B$ symmetrisch ist, ist $\nabla q(x) = 2Bx$.
+\end{lemma}
+
+\begin{proof}[Beweis]
+Die Funktion $q(x)$ ist ausführlicher geschrieben
+\[
+q(x) = x^tBx = \sum_{i,j=1}^n x_ib_{ij}x_j.
+\]
+Die partiellen Ableitungen sind
+\begin{align*}
+\frac{\partial q}{\partial x_k}
+&=
+\sum_{i,j=1}^n \frac{\partial}{\partial x_k} x_ib_{ij}x_j
+=
+\sum_{i,j=1}^n \frac{\partial x_i}{\partial x_k} b_{ij}x_j
++
+\sum_{i,j=1}^n x_ib_{ij}\frac{\partial x_j}{\partial x_k}
+=
+\sum_{i,j=1}^n \delta_{ik} b_{ij}x_j
++
+\sum_{i,j=1}^n x_ib_{ij}\delta_{jk}
+\\
+&=
+\sum_{j=1}^n b_{kj}x_j
++
+\sum_{i=1}^n x_ib_{ik}.
+\end{align*}
+Die beiden Terme sind die $k$-Komponente von $Bx$ und die $k$-Komponente von
+$B^tx$, es folgt $\nabla q(x) = (B+B^t)x$.
+\end{proof}
+
+
+%
+% Ein paar Matrix-Regeln
+%
+\subsubsection{Invertierung von Blockmatrizen}
+Eine $2\times 2$-Matrix ist sehr leicht zu invertieren, es ist
+\begin{equation}
+A=\begin{pmatrix}
+a&b\\
+c&d
+\end{pmatrix}
+\qquad\Rightarrow\qquad
+A^{-1}
+=
+\frac{1}{ad-bc}
+\begin{pmatrix}
+d&-b\\
+-c&a
+\end{pmatrix}.
+\label{buch:qm:eqn:inverse22}
+\end{equation}
+Dies lässt sich zum Beispiel mit dem Gauss-Algorithmus sofort
+beweisen.
+Auf die gleiche Weise kann man aber auch eine Formel für die Inverse
+einer Blockmatrix herleiten.
+
+\begin{lemma}
+\label{buch:qm:lemma:blockinverse}
+Gegeben ist die reguläre Matrix $(n+m)\times(n+m)$-Matrix
+\[
+M = \begin{pmatrix}
+A&B\\
+C&D
+\end{pmatrix},
+\qquad\text{und}\quad\left\{
+\quad
+\begin{aligned}
+&\text{$A$ eine $n\times n$-Matrix}\\
+&\text{$B$ eine $n\times m$-Matrix}\\
+&\text{$C$ eine $m\times n$-Matrix}\\
+&\text{$D$ eine $m\times m$-Matrix}.
+\end{aligned}
+\right.
+\]
+Falls $A$ regulär ist, ist auch $D-CA^{-1}B$ regulär und
+die Inverse von $M$ ist
+\begin{equation}
+M
+=
+\begin{pmatrix}
+A^{-1} - A^{-1}B(D-CA^{-1}B)^{-1}CA^{-1}  & -A^{-1}B(D-CA^{-1}B)^{-1} \\
+(D-CA^{-1}B)^{-1}CA^{-1}                 & (D-CA^{-1}B)^{-1}
+\end{pmatrix}.
+\label{buch:qm:eqn:blockinverse}
+\end{equation}
+\end{lemma}
+
+\begin{proof}[Beweis]
+Wir schreiben $E_n$ für die $n\times n$-Einheitsmatrizen und führen den
+Gaussalgorithmus auf einem Tableau von Blockmatrizen durch.
+Der Leser ist aufgefordert, sich zu überlegen, dass die Operationen
+des Gauss-Algorithmus auch funktionieren, wenn man sie in einer Algebra
+von Matrizen durchführt, man muss nur sorgfältig darauf achten, die
+Reihenfolge der Faktoren nicht zu verändern.
+
+Der erste Schritt im Gauss-Algorithmus ist die Pivot-Division durch
+$A$, was in der Matrizenalgebra die Multiplikation von links mit
+$A^{-1}$ wird.
+Nach Voraussetzung existiert $A^{-1}$, so dass die Zeilenoperatione
+mit Pivot $A$ durchgeführt werden kann:
+\begin{align*}
+\renewcommand\arraystretch{1.25}
+\begin{tabular}{|>{$}c<{$}>{$}c<{$}|>{$}c<{$}>{$}c<{$}|}
+\hline
+A&B&E_n&0   \\
+C&D&0  &E_m \\
+\hline
+\end{tabular}
+&\rightarrow
+\renewcommand\arraystretch{1.25}
+\begin{tabular}{|>{$}c<{$}>{$}c<{$}|>{$}c<{$}>{$}c<{$}|}
+\hline
+E_n&A^{-1}B&A^{-1}&0   \\
+C  &D      &0     &E_m \\
+\hline
+\end{tabular}
+\\
+&\rightarrow
+\renewcommand\arraystretch{1.25}
+\begin{tabular}{|>{$}c<{$}>{$}c<{$}|>{$}c<{$}>{$}c<{$}|}
+\hline
+E_n&A^{-1}B    &A^{-1}   &0   \\
+0  &D-CA^{-1}B &-CA^{-1} &E_m \\
+\hline
+\end{tabular}.
+\intertext{Jetzt muss die Pivotdivision durch $D-CA^{-1}B$ durchgeführt
+werden, was aber nur möglich ist, wenn $D-CA^{-1}B$ regulär ist.
+Wäre $D-CA^{-1}B$ nicht regulär, dann könnte auch $M$ nicht regulär
+sein.
+Somit kann auch die Pivotdivision durch $D-CA^{-1}B$ und das
+Rückwärtseinsetzen durchgeführt werden, was auf}
+&\rightarrow
+\renewcommand\arraystretch{1.25}
+\begin{tabular}{|>{$}c<{$}>{$}c<{$}|>{$}c<{$}>{$}c<{$}|}
+\hline
+E_n&A^{-1}B &A^{-1}                    &0   \\
+0  &E_m     &-(D-CA^{-1}B)^{-1}CA^{-1} &(D-CA^{-1}B)^{-1} \\
+\hline
+\end{tabular}
+\\
+&\rightarrow
+\renewcommand\arraystretch{1.25}
+\begin{tabular}{|>{$}c<{$}>{$}c<{$}|>{$}c<{$}>{$}c<{$}|}
+\hline
+E_n&0  &A^{-1}+A^{-1}B(D-CA^{-1}B)^{-1}CA^{-1} &-A^{-1}B(D-CA^{-1}B)^{-1} \\
+0  &E_m&-(D-CA^{-1}B)^{-1}CA^{-1}              &(D-CA^{-1}B)^{-1} \\
+\hline
+\end{tabular}
+\end{align*}
+führt.
+Daraus kann man die inverse Matrix von $M$ ablesen und findet
+\eqref{buch:qm:eqn:blockinverse}
+\end{proof}
+
+\begin{beispiel}
+Im Fall $n=m=1$ sind die Blöcke von $M$ gewöhnliche reelle Zahlen und es
+kommt nicht mehr auf die Reihenfolge der Faktoren an, damit bekommt man
+für die Inverse der Matrix
+\begin{align*}
+A&=\begin{pmatrix}a&b\\c&d\end{pmatrix}
+&
+A^{-1}
+&=
+\begin{pmatrix}
+\displaystyle \frac1a + \frac{b}a\biggl(d-\frac{cb}a\biggr)^{-1}\frac{c}a
+	&\displaystyle -\frac{b}a \biggl(d-\frac{cb}{a}\biggr)^{-1}
+\\[10pt]
+\displaystyle -\frac{c}a\biggl(d-\frac{cb}{a}\biggr)^{-1}
+	&\displaystyle \biggl(d-\frac{bc}{a}\biggr)^{-1}
+\end{pmatrix}
+\\
+&&&=
+\begin{pmatrix}
+\displaystyle \frac1a + \frac{bc}{a}\frac{1}{ad-bc}
+	&\displaystyle \frac{-b}{ad-bc}
+\\[10pt]
+\displaystyle \frac{-c}{ad-bc}
+	&\displaystyle \frac{a}{ad-bc}
+\end{pmatrix}
+\\
+&&&=
+\frac{1}{ad-bc}
+\begin{pmatrix}
+\displaystyle \frac{(ad-bc)-ad}a&-b\\
+-c&a
+\end{pmatrix}
+=
+\frac{1}{ad-bc}
+\begin{pmatrix}
+ d&-b\\
+-c& a
+\end{pmatrix},
+\end{align*}
+die Formel \eqref{buch:qm:eqn:inverse22}
+für die Inverse einer $2\times 2$-Matrix.
+\end{beispiel}
+
+\begin{korollar}
+\label{buch:qm:korollar:quadr}
+Ist $B$ eine symmetrische, positiv definite $n\times n$-Matrix und 
+und $A$ eine $m\times n$-Matrix mit $m\le n$ und $\operatorname{Rang}A=m$.
+Dann ist 
+\begin{equation}
+\begin{pmatrix}
+2B&-A^t \\
+-A & 0
+\end{pmatrix}^{-1}
+=
+\begin{pmatrix}
+\frac12B^{-1} - \frac12B^{-1}A^t(AB^{-1}A^t)^{-1}AB^{-1}
+      & -B^{-1}A(AB^{-1}A^t)^{-1} \\
+-(AB^{-1}A^t)^{-1}AB^{-1} & \frac12 (AB^{-1}A^t)^{-1}
+\end{pmatrix}
+\label{buch:qm:eqn:quadr}
+\end{equation}
+\end{korollar}
+
+\begin{proof}[Beweis]
+Dies ist der Fall $A=2B$, $B=-A^t$, $C=-A$ und $D=0$ des
+Lemmas~\ref{buch:qm:lemma:blockinverse}.
+\end{proof}
+
+%
+% Lösung des quadratischen Minimalproblems
+%
+\subsubsection{Die Lösung eines quadratischen Minimalproblems}
+Das quadratische Minimalproblem~\ref{buch:qm:problem:allg} sucht
+einen Vektor $x$ derart, dass $f(x)=x^tBx$ minimiert wird unter der
+Nebenbedingung $Ax=b$.
+Die Funktion $g(x)$ für dieses nichtlineare Extremalproblem ist
+$g(x)=Ax-b$.
+Nach dem Verfahren der Lagrange-Multiplikatoren
+\ref{buch:qm:lemma:lagrangemultiplikatoren}
+sind Vektoren $x$ und $\lambda$ zu finden derart, dass
+\begin{align*}
+g(x) &= 0
+\\
+\nabla f(x) -\lambda \nabla g(x) &=0
+\end{align*}
+gilt.
+Wir verwenden die Lemmata~\ref{buch:qm:lemma:gradlin}
+und \ref{buch:qm:lemma:gradsquare}
+zur Berechnung der Gradienten von $f(x)$ und $g(x)$:
+\begin{align*}
+\nabla f(x) &= (B+B^t)x
+\\
+\nabla g(x) &= A^t.
+\end{align*}
+So entsteht das lineare Gleichungssystem
+\[
+\left.
+\begin{aligned}
+2Bx - A^t\lambda &=0
+\\
+Ax-b&=0 &&\Rightarrow& Ax&=b
+\end{aligned}
+\right\}
+\quad\text{oder}\quad
+\begin{pmatrix}
+2B & -A^t \\
+ A & 0
+\end{pmatrix}
+\begin{pmatrix}x\\\lambda\end{pmatrix}
+=
+\begin{pmatrix}0\\ b\end{pmatrix}
+\]
+in Matrixform.
+
+Die Matrix hat die in Koroller
+\ref{buch:qm:korollar:quadr} untersuchte Form.
+Mit der Formel \eqref{buch:qm:eqn:quadr} für die Inverse können wir jetzt 
+die Lösung angeben:
+\begin{align*}
+x       &= B^{-1}A(AB^{-1}A^t)^{-1} b \\
+\lambda &= \frac12(AB^{-1}A^t)^{-1}b.
+\end{align*}
+Insbesondere ist damit die Lösung des quadratischen Minimalproblems
+vollständig auf Operationen mit Matrizenoperationen zurückgeführt.
+
+%
+% Neue Lösung für das Least-Squares-Problem
+%
+\subsubsection{Least Squares mit Hilfe des Gradienten}
+Zur weiteren Illustration der Rechentechnik mit Gradienten von
+Matrixfunktionen lösen wir hier auch noch das Least-Squares-Problem
+\ref{buch:qm:problem:ls2} mit dieser Methode.
+In diesem Fall haben wir keine Nebenbedingungen.
+Wir müssen nur das Minimum des Ausdrucks~\eqref{buch:qm:eqn:ls2}
+bestimmen.
+Wir tun dies, indem wir Nullstellen der Ableitung suchen.
+Der Gradient von $Q(x)$ ist
+\begin{align*}
+\nabla
+Q(x)
+&=
+2A^tA x -2 A^tb = 0
+&&\Rightarrow&A^tAx&=A^tb.
+\end{align*}
+Daraus leitet man die bekannte Lösung
+\[
+x = (A^tA)^{-1}A^tb
+\]
+ab.
+
+

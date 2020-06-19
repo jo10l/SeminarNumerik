@@ -64,9 +64,9 @@ sphere { o + 0.45 * (vnormalize(v1) +vnormalize(v2)) * rechterwinkelradius,
 
 #declare imagescale = 0.134;
 
-arrow(<-0.5,0,0>, <10.5,0,0>, 0.05, White)
-arrow(<0,0,-0.5>, <0,0,5.5>, 0.05, White)
-arrow(<0,-0.5,0>, <0,3.3,0>, 0.05, White)
+arrow(<-0.5,0,0>, <10.5,0,0>, 0.04, White)
+arrow(<0,0,-0.5>, <0,0,5.5>, 0.04, White)
+arrow(<0,-0.5,0>, <0,3.3,0>, 0.04, White)
 
 camera {
         location <-30, 10, 20>
