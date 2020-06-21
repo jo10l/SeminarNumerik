@@ -1,55 +1,76 @@
-%
-% problemstellung.tex -- Beispiel-File für die Beschreibung des Problems
-%
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
-%
 \section{Problemstellung
 \label{perturbation:section:problemstellung}}
 \rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
-\begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{perturbation:equation1}
+Eine Kanonenkugel wird in einem $45^{\circ}$ Winkel abgefeuert. 
+Sie besitzt eine Startgeschwindigkeit von 100 m/s in x- sowie y-Richtung. 
+Die Aufgabe besteht darin, die Position zum Zeitpunkt t zu berechnen.
+
+Dies ist ein gängiges Beispiel für den schiefen Wurf. 
+In der Regel werden dabei folgende Formeln verwendet:
+
+\begin{equation}\label{eq:x_simple}
+    x(t) = x_0 + v_{0_x}t
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+\begin{equation}\label{eq:y_simple}
+    y(t) = y_0 + v_{0_y}t - \frac{1}{2}gt^2
+\end{equation}
+%\begin{equation}\label{eq:vx_simple}
+%    v(t)_x = v_{0_x} 
+%\end{equation}
+%\begin{equation}\label{eq:vy_simple}
+%    v(t)_y = v_{0_y} - g \cdot t
+%\end{equation}
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
 
-\subsection{De finibus bonorum et malorum
-\label{perturbation:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{000tempmlate:equation1}.
+Nun möchten wir jedoch ein genaueres Ergebnis erzielen und den Luftwiderstand mitberücksichtigen.  
+Der Luftwiderstand $F_W$ ist proportional zum Quadrat der Geschwindigkeit. Es gilt folgende Formel:
+\[
+F_W = \underbrace{c_WA\frac{1}{2}\rho_{Luft}}_\text{k}v^2
+\]
+$c_W$ bezeichnet den Strömungswiderstand, $A$ die Widerstandsfläche und $\rho_{Luft}$ die Luftdichte. 
+Um die Berechnung simpel zu gestalten, gehen wir von einer konstanten Luftdichte $\rho_{Luft}$ aus und können so den Luftwiderstand zusammen fassen als $F_W = k \cdot v^2$.
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{perturbation:section:loesung}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{perturbation:section:folgerung}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+Formt man die Formel weiter um, erhält man das folgende Resultat:
+\[
+F_W = k \cdot |\vec{v}| \cdot \vec{v} = k \cdot \sqrt{v_x^2 + v_y^2} \cdot \begin{pmatrix}v_x\\v_y\end{pmatrix}
+\]
+
+Die ganze Kraft, die auf die Kugel wirkt, ist gemäss Newtons 2. Axiom $F = m \cdot a$. 
+Neben dem Luftwiderstand wirkt in y-Richtung zusätzlich die Gravitationskraft $F_G = m \cdot g$. 
+Somit lassen sich folgende Gleichungen aufstellen:
+\[
+m \cdot a_x = k \cdot \sqrt{v_x^2 + v_y^2} \cdot v_x
+\]
+\[
+m \cdot a_y = k \cdot \sqrt{v_x^2 + v_y^2} \cdot v_y + m \cdot g
+\]
+Dividiert durch m ergibt dies:
+\[
+a_x = \frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_x
+\]
+\[
+a_y = \frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_y + g
+\]
+
+Die Beschleunigung ist nicht bekannt. 
+Sie kann jedoch als zweite Ableitung der Position nach der Zeit ausgedrückt werden. 
+Die Geschwindigkeit entspricht der ersten Ableitung.  
+Somit ergibt sich das folgende System von Differentialgleichungen 2. Ordnung:
+
+\begin{equation}\label{eq:x_diff}
+\Ddot{r_x} = \frac{k}{m} \cdot \sqrt{\dot{r_x^2} + \dot{r_y^2}} \cdot \dot{r_x} 
+\end{equation}
+\begin{equation}\label{eq:y_diff}
+\Ddot{r_y} =   \frac{k}{m} \cdot \sqrt{\dot{r_x^2} + \dot{r_y^2}} \cdot \dot{r_y} + g      
+\end{equation}
+%\begin{equation}\label{eq:vx_diff}
+%\dot{v_x} = \frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_x
+%\end{equation}
+%\begin{equation}\label{eq:vy_diff}
+%\dot{v_y} = \frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_y + g   
+%\end{equation}
+
+
+
 
 

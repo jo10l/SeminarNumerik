@@ -31,7 +31,7 @@ awk 'BEGIN {
 	s = substr(s, i+2, length(s)-i-2)
 	i = match(s, "}{")
 	newpage = int(substr(s, 1, i))
-	if (chapterno > 10) {
+	if (chapterno > 9) {
 		printf("pdfjam --outfile separata/%s.pdf buch.pdf %d-%d\n", identifier, startpage + offsetpage, newpage + offsetpage - 1)
 	}
 	startpage = newpage

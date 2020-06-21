@@ -6,15 +6,16 @@
 
 hx = 0.1
 ht = 0.1
+kappa = 1
 
 N = 101;
 M = 50;
 
 A = eye(N);
 A = shift(A,-1) - 2 * A + shift(A,1);
-A(1,N) = 0;
-A(N,1) = 0;
-A = A * (ht/(hx^2));
+A = eye(N) + A * (kappa * ht/(hx^2));
+A(1,:) = A(2,:);
+A(N,1) = A(N-1,:);
 a=eig(A);
 max(e)
 min(e)
