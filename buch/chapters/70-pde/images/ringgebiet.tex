@@ -1,0 +1,76 @@
+%
+% ringgebiet.tex -- Ringgebiet, für das sich keine Ausdehnung der Funktion
+%                   \varphi(x,y) finden lässt
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\pgfmathparse{asin(1/3)}
+\xdef\a{\pgfmathresult}
+\pgfmathparse{3*cos(\a)}
+\xdef\x{\pgfmathresult}
+
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\fill[color=red!20]
+	(\a:4) arc (\a:{360-\a}:4)
+	--
+	({-\a}:4) arc (-\a:{180-\a}:1)
+	--
+	({-\a}:2) arc (-\a:{-360+\a}:2)
+	--
+	(\a:2) arc ({-180+\a}:\a:1);
+
+\draw[color=gray!50] (-4.1,\x) -- (4.1,\x);
+\draw[color=gray!50] (-4.1,-\x) -- (4.1,-\x);
+\draw[color=gray!50] (-\x,-4.1) -- (-\x,4.1);
+\draw[color=gray!50] (\x,-4.1) -- (\x,4.1);
+
+\node at (0,\x) [above right] {$1$};
+\node at (0,-\x) [below right] {$-1$};
+\node at (-\x,0) [above left] {$-1$};
+
+\draw[->] (-4.1,0) -- (4.5,0) coordinate[label={$x$}];
+\draw[->] (0,-4.1) -- (0,4.5) coordinate[label={left:$y$}];
+
+\node at (135:3) {$\Omega$};
+
+\draw[line width=0.5pt,color=blue] (\x,1) -- (0,0);
+
+\fill[color=white,opacity=0.7] (0.2,1.08) rectangle ({\x-0.1},1.8);
+
+\draw[->,color=blue] (\x,1.5) -- (\x,0.04);
+\draw[color=blue,line width=2pt]  (1.7,0) arc (0:\a:1.7);
+\fill[color=blue] (\x,1) circle[radius=0.04];
+\node[color=blue] at (\x,1) [above left]
+	{$\displaystyle \varphi(x,y) = \arctan\frac{y}{1}$};
+
+\fill[color=white,opacity=0.7] (-0.8,-1.8) rectangle ({\x-0.1},-1.08);
+
+\draw[->,color=darkgreen] (\x,-1.5) -- (\x,-0.04);
+\draw[line width=0.5pt,color=darkgreen] (\x,-1) -- (0,0);
+\draw[color=darkgreen,line width=2pt]  (0.7,0) arc (0:{360-\a}:0.7);
+\fill[color=darkgreen] (\x,-1) circle[radius=0.04];
+\node[color=darkgreen] at (\x,-1) [below left] {$\displaystyle \varphi(x,y) = 2\pi+\arctan\frac{y}{1}$};
+
+
+
+
+
+\fill[color=red] (\x,0) circle[radius=0.08];
+\fill[color=white,opacity=0.7] ({\x+0.1},-0.2) rectangle ({\x+0.4},0.2);
+\node[color=red] at (\x,0) [right] {$P$};
+
+\end{tikzpicture}
+\end{document}
+
