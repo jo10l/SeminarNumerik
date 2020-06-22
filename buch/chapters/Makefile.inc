@@ -30,6 +30,7 @@ CHAPTERFILES =								\
 	chapters/30-interpolation/hermite.tex				\
 	chapters/30-interpolation/bary.tex				\
 	chapters/30-interpolation/splines.tex				\
+	chapters/30-interpolation/bezier.tex				\
 	chapters/30-interpolation/uebungsaufgaben/3001.tex		\
 	chapters/40-integration/chapter.tex				\
 	chapters/40-integration/riemann.tex				\
