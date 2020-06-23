@@ -2,7 +2,7 @@
 \label{perturbation:section:verbesserte_loesung}}
 \rhead{Verbesserte Lösung}
 
-Anstelle lediglich den Anfangswert $v_0$ anzupassen, erhält man bessere Resultate, indem auch $\vec{r_0} = (x_0, y_0)$ variabel gestaltet wird. 
+Anstelle lediglich den Anfangswert $\vec{v_0}$ anzupassen, erhält man bessere Resultate, indem auch $\vec{r_0} = (x_0, y_0)$ variabel gestaltet wird. 
 Zudem kann man anstelle von $t$ nur die Differenz $\Delta t$ seit dem letzten Update von der Bodenstation betrachten.
 
 Wiederum ist das Ziel, dass der Flugkörper mit den einfachen Formeln \eqref{eq:x_simple} eine möglichst gute Approximation auf einfache Art und Weise berechnen kann, indem er die Anfangswerte $\vec{r_0}$ und $\vec{v_0}$ im Laufe der Zeit gemäss Weisungen der Bodenstation anpasst.
@@ -11,7 +11,7 @@ In einem ersten Schritt verlangen wir von der Bodenstation, welche $\vec{r}$, ab
 
 \begin{equation}
 \begin{aligned}
-x(t + \Delta t) &= x_0 + v_{0x}\Delta t
+x(t + \Delta t) &= x_0 + v_{0x}\Delta t\\
 y(t + \Delta t) &= y_0 + v_{0y}\Delta t - \frac{1}{2}g\Delta t^2
 \end{aligned}
 \end{equation}

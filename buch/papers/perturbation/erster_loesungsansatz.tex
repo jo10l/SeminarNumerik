@@ -4,7 +4,7 @@
 
 Die Formeln \eqref{eq:x_simple} sind ohne viel Rechenleistung berechenbar und somit auch als Flugobjekt durchführbar. Die Störungstheorie befasst sich damit, die Anfangswerte $x_0$, $y_0$, $v_{0x}$ und $v_{0y}$ so abzuändern, dass dennoch gute Approximationen für $x(t)$ und $y(t)$ gefunden werden können. Hierbei ist es die Aufgabe der Bodenstation, die notwendigen Startparameter dem Flugobjekt mitzuteilen, sodass dieses die Berechnung auf Basis der trivialen Formeln \ref{eq:x_simple}  vornehmen kann.
 
-Als ersten Lösungsansatz haben wir $v_{0x}$ und $v_{0y}$ durch lineare Funktionen abhängig von der Zeit ersetzt, aber $x_0$ und $y_0$ vorerst unberührt gelassen. Hintergrund dieser Überlegung ist, dass der Luftwiderstand ja nur die Geschwindigkeit beeinflusst.
+Als ersten Lösungsansatz haben wir $v_{0x}$ und $v_{0y}$ durch lineare Funktionen abhängig von der Zeit ersetzt, aber $x_0$ und $y_0$ vorerst unberührt gelassen. Hintergrund dieser Überlegung ist, dass der Luftwiderstand nur die Geschwindigkeit beeinflusst.
 \begin{equation*}
 	\begin{aligned}
 		v_{0x} \rightarrow v_{0x}(t) = v_{0x} + \phi_x \cdot t\\
@@ -33,7 +33,7 @@ $x_0$, $y_0$, $v_{0x}$ und $v_{0y}$ sind die bekannten Anfangsbedingungen des Pr
 Beispielsweise kann dieses Gleichungssystem für $t = 5s$ gelöst werden. Dadurch erhält man $\phi_x$ und $\phi_y$. Da hierzu allerdings $x(t=5)$ und $y(t=5)$ mittels Runge-Kutta berechnet werden müssen, ist dazu nur die Bodenstation in der Lage. 
 Die Werte $\phi_x$ und $\phi_y$ können nun aber dem Flugobjekt übertragen werden, welches mit den Formeln \eqref{eq:x_linear} seine Position in naher Zukunft nun autonom approximieren kann, beispielsweise für das Intervall $t \in [5,6)$. Anschliessend könnte die Bodenstation die Werte $\phi_x$ und $\phi_y$ für $t=6s$ neu berechnen, um den Fehler nicht beliebig anwachsen zu lassen.
 
-Geplottet ergibt dies das Resultat in Abbildung \ref{naive_linear_term}. Rot ist dabei das numerische Resultat der Differentialgleichungen \eqref{eq:x_diff}, blau ohne eingesetzte lineare Funktion und türkis die korrigierte Variante. Für die korrigierte Variante wurde eine Intervalllänge von $t=1s$ gewählt. Das heisst, sie bestimmt die Unbekannten $\phi_x$ und $\phi_y$ zu jeder vollen Sekunde $t \in \{1, 2, 3, \cdots, 25\}$ und nutzt jene Daten, um die Position jeweils eine Sekunde später vorherzusagen. 
+Das Resultat ist in Abbildung \ref{naive_linear_term} dargestellt. Grün ist dabei die exakte Flugbahn gemäss den Differentialgleichungen \eqref{eq:x_diff}, blau die linear Berechnete Bahn ohne Berücksichtigung des Luftwiderstandes und rot die korrigierte Variante. Für die korrigierte Variante wurde eine Intervalllänge von $t=1s$ gewählt. Das heisst, sie bestimmt die Unbekannten $\phi_x$ und $\phi_y$ zu jeder vollen Sekunde $t \in \{1, 2, 3, \cdots, 25\}$ und nutzt jene Daten, um die Position jeweils für die folgende Sekunde vorherzusagen. 
 Wie zu erkennen ist, kann ein Grossteil des Fehlers bereits vermieden werden.
 \begin{figure}
     \centering
