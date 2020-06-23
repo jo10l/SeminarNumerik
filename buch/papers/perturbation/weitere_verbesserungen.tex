@@ -1,21 +1,22 @@
 \section{Möglichkeiten zur Genauigkeitssteigerung
 \label{perturbation:section:weitereverbesserungen}}
 \rhead{Weitere Verbesserungen}
-In diesem Abschnitt diskutieren wir Verbesserungsmöglichkeiten, um den Fehler weiter zu minimieren. 
-Abbildung \ref{error} zeigt, dass der Fehler stark von der Intervalllänge abhängt. 
+In diesem Abschnitt diskutieren wir Verbesserungsmöglichkeiten, um den Fehler weiter zu minimieren.
+Abbildung \ref{error} zeigt, dass der Fehler stark von der Intervalllänge abhängt.
 Eine Reduktion der Intervalllänge beschreiben wir im nächsten Abschnitt.
 Weiter lassen sich mit Hilfe der Störungstheorie höherer Ordnung genauere Resultate erzielen.
 
 \subsection{Reduktion der Intervalllänge}
-In Abbildung \ref{error} ist der Fehler für die Intervalllänge von einer Sekunde ersichtlich. 
+In Abbildung \ref{error} ist der Fehler für die Intervalllänge von einer Sekunde ersichtlich.
 Wie man erkennen kann, nimmt dieser innerhalb eines solchen Intervalls stark zu.
-Dies ist vor allem unserem Beispiel geschuldet, da die Störung (in unserem Beispiel der Luftwiderstand) kurzfristig eine grosse Auswirkung auf das Resultat hat. 
-Bei Berechnungen von z.B. Satellitenbahnen wäre dies anders, da Störungen, wie die Gravitation von Planeten, viel kleiner sind und die Abweichungen erst bei längeren Intervalldauern auftreten.
+Dies ist vor allem unserem Beispiel geschuldet, da die Störung (in unserem Beispiel der Luftwiderstand) kurzfristig eine grosse Auswirkung auf das Resultat hat.
+Bei Berechnungen von z.B. Satellitenbahnen wäre dies anders, da Störungen,
+wie die Gravitation von Planeten, viel kleiner sind und die Abweichungen erst bei längeren Intervalldauern auftreten.
 
 Für unser Beispiel haben wir in einem ersten Schritt die Intervalllänge halbiert.
 Daraus resultierte der Fehler in Abbildung \ref{errorShortInterval}.
-Wie ersichtlich ist, ist der Fehler um ca. Faktor 4 kleiner. 
-Wir erhalten somit weitere 2 Bit Genauigkeitsgewinn. 
+Wie ersichtlich ist, ist der Fehler um ca. Faktor 4 kleiner.
+Wir erhalten somit weitere 2 Bit Genauigkeitsgewinn.
 Weiter ist zum Zeitpunkt $t=17s$ eine kleine numerische Instabilität beobachtbar.
 
 \begin{figure}
@@ -25,13 +26,14 @@ Weiter ist zum Zeitpunkt $t=17s$ eine kleine numerische Instabilität beobachtba
 	\label{errorShortInterval}
 \end{figure}
 
-In einem zweiten Schritt haben wir die Intervalllänge nochmals auf die Länge $0.25s$ halbiert. 
-Dies ist in Abbildung \ref{errorShortInterval2} ersichtlich. 
-Wir erhalten erneut einen Genauigkeitsgewinn um den Faktor 4 bzw. 2 Bit. 
-Dies lässt sich leider jedoch nicht weiter beliebig fortsetzen. 
-Die Rechenlast des Satelliten bleibt konstant und ist nicht von der Intervalllänge abhängig. 
-Der Aufwand für die Bodenstation nimmt jedoch zu. 
-Die numerischen Berechnungen für aufwendige Probleme (wie z.B. Satellitenbahnen) benötigen auch für die Bodenstation viel Rechenleistung und können nicht beliebig oft ausgeführt werden.
+In einem zweiten Schritt haben wir die Intervalllänge nochmals auf die Länge $0.25s$ halbiert.
+Dies ist in Abbildung \ref{errorShortInterval2} ersichtlich.
+Wir erhalten erneut einen Genauigkeitsgewinn um den Faktor 4 bzw. 2 Bit.
+Dies lässt sich leider jedoch nicht weiter beliebig fortsetzen.
+Die Rechenlast des Satelliten bleibt konstant und ist nicht von der Intervalllänge abhängig.
+Der Aufwand für die Bodenstation nimmt jedoch zu.
+Die numerischen Berechnungen für aufwendige Probleme (wie z.B. Satellitenbahnen) benötigen auch für die Bodenstation viel Rechenleistung und
+können nicht beliebig oft ausgeführt werden.
 
 \begin{figure}
     \centering
@@ -41,7 +43,11 @@ Die numerischen Berechnungen für aufwendige Probleme (wie z.B. Satellitenbahnen
 \end{figure}
 
 \subsection{Erhöhung der Ordnung}
-Eine andere Möglichkeit zur Steigerung der Genauigkeit eröffnet sich dadurch, dass man anstelle $x_0, y_0, v_{0x}$ und $v_{0y}$, was an sich Polynome nullter Ordnung sind, Polynome höherer Ordnung ansetzt. Wir schauen uns ein Beispiel erster Ordnung an. Wir ändern nun die Anfangsbedingungen folgendermassen. Um die Notation klar zu halten, werden wir nicht länger $x_0$ und $y_0$ verwenden, sondern vom Ortsvektor $\vec{r_0}$ sprechen.
+Eine andere Möglichkeit zur Steigerung der Genauigkeit eröffnet sich dadurch, dass man anstelle $x_0, y_0, v_{0x}$ und $v_{0y}$,
+was an sich Polynome nullter Ordnung sind, Polynome höherer Ordnung ansetzt.
+Wir schauen uns ein Beispiel erster Ordnung an.
+Wir ändern nun die Anfangsbedingungen folgendermassen.
+Um die Notation klar zu halten, werden wir nicht länger $x_0$ und $y_0$ verwenden, sondern vom Ortsvektor $\vec{r_0}$ sprechen.
 
 \begin{equation}
 \label{eq:ordnung1_linear_ansatz}
@@ -54,8 +60,8 @@ v_y &\longrightarrow \textcolor{blue}{v_{y0} + v_{y1}  \cdot \Delta t}\\
 \end{equation}
 
 Betrachten wir nun ein bestimmtes Intervall, etwa $t \in [5,6)$.
-Innerhalb dieses Intervalls arbeiten wir mit $t=5$, $\Delta t \in [0,1)$. 
-$t$ wird also fixiert und $\Delta t$ ist unsere neue Variable. 
+Innerhalb dieses Intervalls arbeiten wir mit $t=5$, $\Delta t \in [0,1)$.
+$t$ wird also fixiert und $\Delta t$ ist unsere neue Variable.
 So gilt nach Einsetzen in Gleichungen \eqref{eq:x_simple} 
 
 %todo die zteilenabstände brauchts nicht, ist nur für mich zum fehler vermeiden (zur übersicht)
@@ -81,9 +87,15 @@ v_y(t+ \Delta t) &= \textcolor{blue}{(v_{y0} + v_{y1} \cdot \Delta t)} - g \Delt
 \subsubsection{Lösung des Problems mit linearer Interpolation}
 \label{section:perturbation_ordnung1_linear}
 
-In obigen Gleichungen sind die acht Unbekannten $r_{x0}, r_{x1}, r_{y0}, r_{y1}, v_{x0}, v_{x1}, v_{y0}$ und $v_{y1}$ zu bestimmen. Zwar haben wir mit Gleichungen \ref{eq:ordnung1_linear_r} und \ref{eq:ordnung1_linear_v} nur vier Gleichungen zur Verfügung, indem wir aber $\Delta t$ variieren, können wir die Anzahl Gleichungen beliebig erhöhen. Das Gleichungssystem ist somit lösbar. Wir machen uns hierbei zu Nutze, dass die Bodenstation mit dem Runge-Kutta Verfahren $\vec{r}(t + \Delta t)$ und $\vec{v}(t + \Delta t)$ liefern kann. Dies sind also bekannte Werte, unabhängig davon, wie $\Delta t$ gesetzt wird.\\
+In obigen Gleichungen sind die acht Unbekannten $r_{x0}, r_{x1}, r_{y0}, r_{y1}, v_{x0}, v_{x1}, v_{y0}$ und $v_{y1}$ zu bestimmen.
+Zwar haben wir mit Gleichungen \ref{eq:ordnung1_linear_r} und \ref{eq:ordnung1_linear_v} nur vier Gleichungen zur Verfügung,
+indem wir aber $\Delta t$ variieren, können wir die Anzahl Gleichungen beliebig erhöhen.
+Das Gleichungssystem ist somit lösbar.
+Wir machen uns hierbei zu Nutze, dass die Bodenstation mit dem Runge-Kutta-Verfahren $\vec{r}(t + \Delta t)$ und $\vec{v}(t + \Delta t)$ liefern kann.
+Dies sind also bekannte Werte, unabhängig davon, wie $\Delta t$ gesetzt wird.\\
 
-Indem wir $\Delta t = 0$ setzen, erhalten wir auf relativ einfache Art und Weise all jene Unbekannten, die mit einer $0$ indiziert sind. Wir nutzen hierbei Gleichung \eqref{eq:ordnung1_linear_r} zur Bestimmung von $\vec{r_0}$, und Gleichung \eqref{eq:ordnung1_linear_v} zur Bestimmung von $\vec{v_0}$.
+Indem wir $\Delta t = 0$ setzen, erhalten wir auf relativ einfache Art und Weise all jene Unbekannten, die mit einer $0$ indiziert sind.
+Wir nutzen hierbei Gleichung \eqref{eq:ordnung1_linear_r} zur Bestimmung von $\vec{r_0}$, und Gleichung \eqref{eq:ordnung1_linear_v} zur Bestimmung von $\vec{v_0}$.
 
 \begin{equation}
 \label{eq:ordnung1_linear_solutionPart1}
@@ -95,7 +107,10 @@ v_{y0} &= v_y(t) \\
 \end{aligned}
 \end{equation}
 
-Um $v_{x1}$ und $v_{y1}$ zu bestimmen, können wir nun weiterhin Gleichung \ref{eq:ordnung1_linear_v} verwenden, müssen aber das $\Delta t$ alternieren. Für eine lineare Interpolation bietet sich $\Delta t = 1s$ an. Man könnte aber auch z.B. die halbe Intervalldauer $\Delta t = 0.5s$ wählen. Mit einer einfachen Umformung ergibt sich:
+Um $v_{x1}$ und $v_{y1}$ zu bestimmen, können wir nun weiterhin Gleichung \ref{eq:ordnung1_linear_v} verwenden, müssen aber das $\Delta t$ alternieren.
+Für eine lineare Interpolation bietet sich $\Delta t = 1s$ an.
+Man könnte aber auch z.B. die halbe Intervalldauer $\Delta t = 0.5s$ wählen.
+Mit einer einfachen Umformung ergibt sich:
 
 \begin{equation}
 \label{eq:ordnung1_linear_solutionPart2}
