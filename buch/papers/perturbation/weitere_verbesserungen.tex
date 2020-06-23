@@ -39,35 +39,48 @@ Da die numerischen Berechnungen für aufwänderige Formeln (wie Satellitenbahnen
 \end{figure}
 
 \subsection{Erhöhung der Ordnung}
-Eine andere Möglichkeit zur Steigerung der Genauigkeit eröffnet sich dadurch, dass man anstelle $x_0, y_0, v_{0_x}$ und $v_{0_y}$, was an sich Polynome nullter Ordnung sind, Polynome höherer Ordnung ansetzt. 
-Wir schauen uns ein Beispiel erster Ordnung an. 
-Um die Indizierung simpel zu halten, verwenden wir die Notation $x_0$ und $y_0$ wieder.
-\[
-\textcolor{red}{x_0 \longrightarrow x_0 +   x_1  \cdot \Delta t}
-\]
-\[
-\textcolor{red}{y_0 \longrightarrow y_0 +   y_1  \cdot \Delta t}
-\]
-Die Anfangsbedingungen für die Geschwindigkeit, also $v_{0_x}$ und $v_{0_y}$, ergeben sich durch Ableiten des Ortes, also durch Ableiten obiger Gleichung nach $\Delta t$. 
-Durch diesen Trick können wir die Anzahl der unbekannten Variablen im Rahmen halten.
-\[
-\textcolor{blue}{v_x \longrightarrow x_1}
-\]
-\[
-\textcolor{blue}{v_y \longrightarrow y_1}
-\]
+Eine andere Möglichkeit zur Steigerung der Genauigkeit eröffnet sich dadurch, dass man anstelle $x_0, y_0, v_{0x}$ und $v_{0y}$, was an sich Polynome nullter Ordnung sind, Polynome höherer Ordnung ansetzt. Wir schauen uns ein Beispiel erster Ordnung an. Wir ändern nun die Anfangsbedingungen folgendermassen. Um die Notation klar zu halten, werden wir nicht länger $x_0$ und $y_0$ verwenden, sondern vom Ortsvektor $\vec{r_0}$ sprechen.
 
-Betrachten wir nun ein bestimmtes Intervall, etwa $t \in [5,6)$. Innerhalb dieses Intervalls arbeiten wir mit $t=5$, $\Delta t \in [0,1)$. 
-$t$ wird also fixiert und $\Delta t$ ist unsere neue Variable. 
-So gilt nach Einsetzen in Gleichungen \eqref{eq:x_simple}
-\begin{equation}\label{eq:x_ordnung1}
- \begin{aligned}
-    x(t+ \Delta t) &= \textcolor{red}{x_0 +   x_1  \cdot \Delta t} + \textcolor{blue}{x_1} \Delta t \\
-    y(t+ \Delta t) &= \textcolor{red}{y_0 +   y_1  \cdot \Delta t} + \textcolor{blue}{y_1} \Delta t - \frac{1}{2}g \Delta t^2
- \end{aligned}
+\begin{equation}
+\label{eq:ordnung1_linear_ansatz}
+\begin{aligned}
+x_0 \longrightarrow & \textcolor{red}{r_{x0} +   r_{x1}  \cdot \Delta t}\\
+y_0 \longrightarrow & \textcolor{red}{r_{y0} +   r_{y1}  \cdot \Delta t}\\
+v_x \longrightarrow & \textcolor{blue}{v_{x0} + v_{x1}  \cdot \Delta t}\\
+v_y \longrightarrow & \textcolor{blue}{v_{y0} + v_{y1}  \cdot \Delta t}\\
+\end{aligned}
 \end{equation}
 
-\subsubsection{Lösung des Problems mit linearer Interpolation}
+Betrachten wir nun ein bestimmtes Intervall, etwa $t \in [5,6)$. Innerhalb dieses Intervalls arbeiten wir mit $t=5$, $\Delta t \in [0,1)$. 
+t wird also fixiert und $\Delta t$ ist unsere neue Variable. 
+So gilt nach Einsetzen in Gleichungen \eqref{eq:x_simple} 
+
+%todo die zteilenabstände brauchts nicht, ist nur für mich zum fehler vermeiden (zur übersicht)
+%kansnt alles wegmachen ;) schaut nmämlich ewtas komisch aus im pdf xD
+
+\begin{equation}\label{eq:ordnung1_linear_r}\begin{aligned}
+r_x(t + \Delta t) =& 
+\textcolor{red}{(r_{x_0} +   r_{x_1}  \cdot \Delta t)} +
+\textcolor{blue}{(v_{x_0} + v_{x_1}  \cdot \Delta t)} \cdot \Delta t \\
+r_y(t + \Delta t) =& 
+\textcolor{red}{(r_{y_0} +   r_{y_1} \cdot \Delta t)} +
+\textcolor{blue}{(v_{y_0} + v_{y_1} \cdot \Delta t)} \cdot \Delta t -
+\frac{1}{2}g \Delta t^2
+\end{aligned}
+\end{equation}
+
+Um das Problem lösen zu können, werden wir auch eine exklusive Betrachtung der Geschwindigkeit durchführen. Indem man Gleichung \ref{eq:x_simple} nach $t$ ableitet und anschliessend unseren Ansatz für die Anfangsbedingungen einsetzt, erhält man
+
+\begin{equation}\label{eq:ordnung1_linear_v}\begin{aligned}
+v_x(t + \Delta t) =& 
+\textcolor{blue}{(v_{x_0} + v_{x_1}  \cdot \Delta t)} \\
+v_y(t+ \Delta t) =& 
+\textcolor{blue}{(v_{y_0} + v_{y_1} \cdot \Delta t)} -
+g \Delta t
+\end{aligned}\end{equation}
+
+\subsubsection{Lösung des Problems mit linearer Interpolation}\label{section:perturbation_ordnung1_linear}
+
 In obigen Gleichungen sind die 8 Unbekannten $r_{x0}, r_{x1}, r_{y0}, r_{y1}, v_{x0}, v_{x1}, v_{y0}$ und $v_{y1}$ zu bestimmen. Zwar haben wir mit Gleichungen \ref{eq:ordnung1_linear_r} und \ref{eq:ordnung1_linear_v} nur vier Gleichungen, indem wir aber $\Delta t$ variieren, können wir die Anzahl Gleichungen beliebig erhöhen. Das Gleichungssystem ist somit lösbar. Wir machen uns hierbei zu Nutze, dass die Bodenstation mit dem Runge-Kutta Verfahren $\vec{r}(t + \Delta t)$ und $\vec{v}(t + \Delta t)$ liefern kann. Dies sind also bekannte Werte, unabhängig davon, wie $\Delta t$ gesetzt wird.\\
 
 Indem wir $\Delta t = 0$ setzen, erhalten wir auf relativ einfache Art und Weise all jene Unbekannte, die mit einer $0$ indiziert sind. Die Lösung ergibt sich direkt aus obigen Gleichungen. Wir Nutzen hierbei Gleichung \eqref{eq:ordnung1_linear_r} zur Bestimmung von $\vec{r_0}$, und Gleichung \eqref{eq:ordnung1_linear_v} zur Bestimmung von $\vec{v_0}$.
@@ -103,7 +116,7 @@ r_{y_1} =& \frac{r_y(t + \Delta t) - r_{y0} - \Delta t \cdot(v_{y0} + v_{y1}  \c
 \end{equation}
 
 
-Somit sind nun alle Unbekannten bestimmt und Gleichung \eqref{eq:ordnung1_linear_r} kann zur Bestimmung des Ortes herangezogen werden. Berechnen wir die Position schrittweise für die Intervalle $\{[0,1), [1, 2), \dots\}$ ergibt sich die euklidische Fehlerdistanz in Bild \eqref{fig:ordnung1_linear_error_A}.
+Somit sind nun alle Unbekannten bestimmt und Gleichung \eqref{eq:ordnung1_linear_r} kann zur Bestimmung des Ortes herangezogen werden. Berechnen wir die Position schrittweise für die Intervalle $\{[0,1), [1, 2), \dots\}$ ergibt sich die euklidische Fehlerdistanz in Bild \ref{fig:ordnung1_linear_error_A}.
 
 Anstelle der Interpolation an den Stützstellen $\Delta t = 0$ und $\Delta t = 1$ liessen sich, wie bereits erwähnt, auch die Stützstellen $\Delta t = 0$ und $\Delta t = 0.5s$ nutzen. Dies führt zu der Fehlerverteilung gemäss Bild \ref{fig:ordnung1_linear_error_B}.
 
