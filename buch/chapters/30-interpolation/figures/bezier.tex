@@ -11,22 +11,24 @@
 \usepackage{csvsimple}
 \usetikzlibrary{arrows,intersections,math}
 \begin{document}
-\def\skala{1}
+\def\skala{0.95}
 \begin{tikzpicture}[>=latex,thick,scale=\skala]
 
 \definecolor{darkgreen}{rgb}{0,0.6,0}
 
+\def\t{0.6}
+
 \begin{scope}[xshift=-5cm]
 \coordinate (P0) at (0,0);
 \coordinate (P1) at (4,1);
-\draw[line width=1.4pt] (P0) -- (P1);
+\draw[color=gray,line width=1.4pt] (P0) -- (P1);
 \fill[color=red] (P0) circle[radius=0.08];
 \fill[color=red] (P1) circle[radius=0.08];
 \node at (P0) [below] {$P_0$};
 \node at (P1) [below] {$P_1$};
 \def\punkt#1{({(1-#1)*0+#1*4},{(1-#1)*0+#1*1})}
-\node at \punkt{0.6} [above] {$Q(t)$};
-\fill[color=blue] \punkt{0.6} circle[radius=0.08];
+\node[darkgreen] at \punkt{0.6} [above] {$Q(t)$};
+\fill[color=darkgreen] \punkt{0.6} circle[radius=0.08];
 \end{scope}
 
 \begin{scope}[xshift=0cm]
@@ -34,20 +36,19 @@
 \coordinate (P1) at (1,5);
 \coordinate (P2) at (4,1);
 \draw[color=gray,line width=1.4pt] (P0) -- (P1) -- (P2);
-\def\t{0.6}
 \def\punkt#1{({(1-#1)*0+#1*1},{(1-#1)*0+#1*5})}
 \def\qunkt#1{({(1-#1)*1+#1*4},{(1-#1)*5+#1*1})}
 \def\runkt#1{({(1-#1)*(1-#1)*0+2*#1*(1-#1)*1+#1*#1*4},{(1-#1)*(1-#1)*0+2*#1*(1-#1)*5+#1*#1*1})}
 \fill[color=darkgreen] \punkt{\t} circle[radius=0.08];
-\node at \punkt{\t} [left] {$Q_0(t)$};
+\node[color=darkgreen] at \punkt{\t} [left] {$Q_0(t)$};
 \fill[color=darkgreen] \qunkt{\t} circle[radius=0.08];
-\node at \qunkt{\t} [above right] {$Q_1(t)$};
+\node[color=darkgreen] at \qunkt{\t} [above right] {$Q_1(t)$};
 \draw[color=darkgreen,line width=1.4pt] \punkt{\t} -- \qunkt{\t};
 \draw[color=blue,line width=1.4pt]
 	plot[domain=0:1,samples=100]
 		({(1-\x)*(1-\x)*0+2*\x*(1-\x)*1+\x*\x*4},{(1-\x)*(1-\x)*0+2*\x*(1-\x)*5+\x*\x*1});
 \fill[color=blue] \runkt{\t} circle[radius=0.08];
-\node at \runkt{\t} [below] {$R(t)$};
+\node[color=blue] at \runkt{\t} [below] {$R(t)$};
 \fill[color=red] (P0) circle[radius=0.08];
 \fill[color=red] (P1) circle[radius=0.08];
 \fill[color=red] (P2) circle[radius=0.08];
@@ -61,7 +62,31 @@
 \coordinate (P1) at (1,5);
 \coordinate (P2) at (3,4);
 \coordinate (P3) at (4,1);
-\draw[line width=1.4pt] (P0) -- (P1) -- (P2) -- (P3);
+\def\qunktnull#1{({(1-#1)*0+#1*1},{(1-#1)*0+#1*5})}
+\def\qunkteins#1{({(1-#1)*1+#1*3},{(1-#1)*5+#1*4})}
+\def\qunktzwei#1{({(1-#1)*3+#1*4},{(1-#1)*4+#1*1})}
+\draw[color=gray!40,line width=1.4pt] (P0) -- (P1) -- (P2) -- (P3);
+\draw[color=darkgreen!40,line width=1.4pt] \qunktnull{\t} -- \qunkteins{\t};
+\draw[color=darkgreen!40,line width=1.4pt] \qunkteins{\t} -- \qunktzwei{\t};
+\fill[color=darkgreen!40] \qunktnull{\t} circle[radius=0.08];
+\fill[color=darkgreen!40] \qunkteins{\t} circle[radius=0.08];
+\fill[color=darkgreen!40] \qunktzwei{\t} circle[radius=0.08];
+\node[color=darkgreen] at \qunktnull{\t} [left] {$Q_0(t)$};
+\node[color=darkgreen] at \qunkteins{\t} [above right] {$Q_1(t)$};
+\node[color=darkgreen] at \qunktzwei{\t} [right] {$Q_2(t)$};
+\def\runktnull#1{({(1-#1)*(1-#1)*0+2*(1-#1)*#1*1+#1*#1*3},{(1-#1)*(1-#1)*0+2*(1-#1)*#1*5+#1*#1*4})}
+\def\runkteins#1{({(1-#1)*(1-#1)*1+2*(1-#1)*#1*3+#1*#1*4},{(1-#1)*(1-#1)*5+2*(1-#1)*#1*4+#1*#1*1})}
+\draw[color=blue!40,line width=1.4pt] \runktnull{\t} -- \runkteins{\t};
+\fill[color=blue!40] \runktnull{\t} circle[radius=0.08];
+\fill[color=blue!40] \runkteins{\t} circle[radius=0.08];
+\node[color=blue] at \runktnull{\t} [above left] {$R_0(t)$};
+\node[color=blue] at \runkteins{\t} [above right] {$R_1(t)$};
+
+\def\s#1{({(1-#1)*(1-#1)*(1-#1)*0+3*(1-#1)*(1-#1)*#1*1+3*(1-#1)*#1*#1*3+#1*#1*#1*4},{(1-#1)*(1-#1)*(1-#1)*0+3*(1-#1)*(1-#1)*#1*5+3*(1-#1)*#1*#1*4+#1*#1*#1*1})} 
+\draw[line width=1.4pt,color=orange] plot[domain=0:1,samples=100]
+	({(1-\x)*(1-\x)*(1-\x)*0+3*(1-\x)*(1-\x)*\x*1+3*(1-\x)*\x*\x*3+\x*\x*\x*4},{(1-\x)*(1-\x)*(1-\x)*0+3*(1-\x)*(1-\x)*\x*5+3*(1-\x)*\x*\x*4+\x*\x*\x*1});
+\fill[color=orange] \s{\t} circle[radius=0.08];
+\node at \s{\t} [below left] {$S(t)$};
 \fill[color=red] (P0) circle[radius=0.08];
 \fill[color=red] (P1) circle[radius=0.08];
 \fill[color=red] (P2) circle[radius=0.08];
