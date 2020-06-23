@@ -1,0 +1,46 @@
+%
+% beziern.tex -- Bezier-Kurve höherer Ordnung
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\coordinate (A) at (0,0);
+\coordinate (B) at (2,5);
+\coordinate (C) at (5,7);
+\coordinate (D) at (8,2);
+\coordinate (E) at (9,-1);
+\coordinate (F) at (12,3);
+
+\draw[color=gray!20,line width=1.4pt] (A) -- (B) -- (C) -- (D) -- (E) -- (F);
+
+\draw[color=blue,line width=1.4pt]
+	plot[domain=0:1,samples=100]
+	({1*(1-\x)*(1-\x)*(1-\x)*(1-\x)*(1-\x)*0+5*(1-\x)*(1-\x)*(1-\x)*(1-\x)*\x*2+10*(1-\x)*(1-\x)*(1-\x)*\x*\x*5+10*(1-\x)*(1-\x)*\x*\x*\x*8+5*(1-\x)*\x*\x*\x*\x*9+1*\x*\x*\x*\x*\x*12},{1*(1-\x)*(1-\x)*(1-\x)*(1-\x)*(1-\x)*0+5*(1-\x)*(1-\x)*(1-\x)*(1-\x)*\x*5+10*(1-\x)*(1-\x)*(1-\x)*\x*\x*7+10*(1-\x)*(1-\x)*\x*\x*\x*2+5*(1-\x)*\x*\x*\x*\x*(-1)+1*\x*\x*\x*\x*\x*3});
+
+\fill[color=red] (A) circle[radius=0.08];
+\fill[color=red] (B) circle[radius=0.08];
+\fill[color=red] (C) circle[radius=0.08];
+\fill[color=red] (D) circle[radius=0.08];
+\fill[color=red] (E) circle[radius=0.08];
+\fill[color=red] (F) circle[radius=0.08];
+
+\node at (A) [left] {$P_0$};
+\node at (B) [above left] {$P_1$};
+\node at (C) [above] {$P_2$};
+\node at (D) [below left] {$P_3$};
+\node at (E) [left] {$P_4$};
+\node at (F) [above left] {$P_5$};
+
+\end{tikzpicture}
+\end{document}
+

@@ -5,7 +5,7 @@
 #
 all:	h.pdf rolle.pdf nullstellen.pdf sin.pdf l.pdf norm.pdf tscheb.pdf \
 	basis.pdf tschebasis.pdf polygon.pdf vergleich.pdf integral.pdf \
-	bezier.pdf
+	bezier.pdf bezierberechnung.pdf beziern.pdf bezierhermite.pdf
 
 %.pdf:	%.tex
 	pdflatex $<
@@ -43,4 +43,13 @@ integral.pdf:	integral.tex
 
 bezier.pdf:	bezier.tex
 	pdflatex bezier.tex
+
+bezierberechnung.pdf:	bezierberechnung.tex
+	pdflatex bezierberechnung.tex
+
+beziern.pdf:	beziern.tex
+	pdflatex beziern.tex
+
+bezierhermite.pdf:	bezierhermite.tex
+	pdflatex bezierhermite.tex
 
