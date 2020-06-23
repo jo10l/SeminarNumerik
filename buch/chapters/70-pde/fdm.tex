@@ -270,9 +270,20 @@ Normalableitung Vorwärts- oder Rückwärtsdifferenzen verwendet
 werden.
 
 \begin{beispiel}
+\begin{figure}
+\centering
+\includegraphics{chapters/70-pde/images/neumann.pdf}
+\caption{Neumann-Randbedingungen sind in einem diskretisierten Gebiet 
+einfach auszudrücken, solange die Gitterlinien mit dem Rand des 
+Gebietes zusammenfallen.
+Sie ergeben eine zusätzliche Gleichung zwischen den rot hinterlegten
+Punkten.
+Für die runden Teile des Randes gibt es keine einfachen Lösungen.
+\label{buch:pde:neumann-analysis}}
+\end{figure}
 Zur Illustration des Vorgehens approximieren wir die Normalableitungen
 für das Rechteckgebiet mit Rändern $x=0$, $x=Nh_x$, $y=0$ und $y=Mh_y$,
-welches in Abbildung~\ref{XXX} dargestellt ist.
+welches in Abbildung~\ref{buch:pde:neumann-analysis} dargestellt ist.
 In Punkten $x_{0k}$ und $x_{Nk}$ auf den vertikalen Rändern
 oder in Punkten $x_{i0}$ und $x_{iM}$ auf den horizontalen Rändern
 können wir Vorwärts- bzw.~Rückwärtsdifferenzen verwenden:
@@ -307,8 +318,6 @@ symmetrische Differenzen zu verwenden, da keine Funktionswerte ausserhalb
 des Gebietes bekannt sind.
 \end{beispiel}
 
-TODO: XXX Abbildung, die die Probleme mit Neumann-Randbedingungen im
-Gitter illustriert
 
 \subsubsection{Das Poisson-Problem}
 \begin{figure}
@@ -355,7 +364,7 @@ Die Randbedingungen legen die Werte
 u_{0k}&= g(0, kh)
 &
 u_{Nk}&= g(1, kh)
-&&0\le k\le N
+&&1\le k\le N
 \\
 u_{i0}&=g(ih,0)
 &
@@ -368,7 +377,8 @@ $4N$ Unbekannte sind also bereits bestimmt, es bleiben noch
 $(N+1)^2-4N = N^2-2N+1=(N-1)^2$ innere Werte zubestimmen.
 
 Die Differentialgleichung kann für jeden Punkt im Inneren des Gebietes
-$\Omega$ aufgestellt werden, es gilt
+$\Omega$ aufgestellt werden (die roten Punkte in
+Abbildung~\ref{buch:pde:poissongebiet}), es gilt
 \begin{align}
 \frac{\partial^2 u}{\partial x^2}(u_{ik})
 +
@@ -393,101 +403,5 @@ für die verbleibenden Unbekannten regulär ist.
 Die Diskretisation führt also die Lösung der partiellen Differentialgleichung
 auf die Lösung eines linearen Gleichungssystems zurück.
 
-
-%
-% Explizite und implizite Verfahren
-%
-\subsection{Explizite und Implizite Verfahren
-\label{pde:subsection:explizitimplizit}}
-Der vorangegangene Abschnitt hat gezeigt, dass für die Approximation
-der Differentialgleichung und der Randbedingungen verschiedene 
-Optionen zur Verfügung stehen.
-In diesem Abschnitt soll am Beispiel der Wärmeleitungsgleichung
-illustriert werden, wie daraus verschiedene Näherungsverfahren für
-die Lösung werden, die ganz unterschiedliche Konvergenzeigenschaften
-haben können.
-
-\subsubsection{Die Wärmeleitungsgleichung}
-TODO: XXX Graphik mit Definitionsbereich und Diskretisation für die
-Wärmeleitungsgleichung.
-
-Als Beispiel für die bisher entwickelte Theorie versuchen wir,
-auf dem Gebiet
-\[
-\Omega = \{ (x,t)\;|\; 0 < x < 1\wedge 0<t\}
-\]
-die  Wärmeleitungsgleichung
-\[
-\frac{\partial u}{\partial t}
-=
-\kappa\frac{\partial^2 u}{\partial x^2}
-\]
-lösen mit den Randbedingungen
-\[
-\begin{aligned}
-u(x,0)&=f(x)&&x\in[0,1]
-\\
-\frac{\partial u}{\partial n}(x,t)=\frac{\partial u}{\partial x}(x,t)&=0&&x\in \{0,1\}.
-\end{aligned}
-\]
-Die Funktion $u(x,t)$ beschreibt die Temperatur an der Position $x$
-eines Stabes der Länge $1$ zur Zeit $t$, der zur Zeit $t=0$ die 
-Temperaturverteilung $f(x)$ hatte und an den Enden isoliert ist.
-
-Zur Diskretisation verwenden wir ein Gitter mit Gitterkonstanten
-$h_x=1/N$ und $h_t$.
-Die zu bestimmenden Unbekannten sind die $u_{ik}$ mit
-$0\le i\le N$ und $k\ge 0$.
-Die Randbedingungen auf dem Rand $t=0$ geben die Werte 
-\[
-u_{i0} = u(ih_x,0) = f(ih_x)
-\]
-vor.
-Die Neumann-Randbedingungen am linken und rechten Rand können mit Hilfe
-der Vorwärts- bzw.~Rückwärts-Differenzen approximiert werden:
-\begin{align*}
-\frac{\partial u}{\partial n}(x_{0k})
-&\simeq
-\frac{u_{1k}-u_{0k}}{h_x}
-=
-0
-&&\text{und}&
-\frac{\partial u}{\partial n}(x_{0k})
-&\simeq
-\frac{u_{Nk}-u_{N-1,k}}{h_x}
-=
-0
-\intertext{Dies bedeutet, dass die beiden Werte nahe des Randes
-gleich sind}
-u_{0k}&=u_{1k}&&\text{und}&u_{Nk}&=u_{N-1,k}.
-\end{align*}
-Die Differentialgleichung verwendet die zweite Ableitung nach $x$, 
-für die wir die Approximation
-\[
-\frac{\partial^2u}{\partial x^2}(x_{ik})
-=
-\frac{u_{i+1,k}-2u_{ik}+u_{i-1,k}}{hx^2}
-\]
-verwenden können.
-Für die erste Ableitung nach der Zeit könnten Vorwärts- oder
-Rückwärts-Differenzen verwendet werden, in beiden Fällen entsteht
-ein unvermeidbarer Fehler und ein jeweils anderes numerisches
-Lösungsverfahren.
-
-\subsubsection{Euler-Verfahren}
-
-\subsubsection{Rückwärts}
-
-\subsubsection{Implizites Verfahren}
-
-%
-% Stabilität und Computational Mode
-%
-\subsection{Stabilität und Computational Mode
-\label{pde:subsection:stabilitaet}}
-
-
-
-
-
-
+\input{chapters/70-pde/waermeleitung.tex}
+\input{chapters/70-pde/stabilitaet.tex}

@@ -1,0 +1,42 @@
+%
+% explizitd.tex -- template for standalon tikz images
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\sx{6}
+\def\sy{1}
+\input{explizitd.inc}
+
+\draw[->] (-0.1,0) -- (12.6,0) coordinate[label={$c$}];
+\draw[->] (0,-0.1) -- (0,7.5) coordinate[label={right:$\varrho(\tilde{A})$}];
+
+\foreach \y in {1,...,7}{
+	\draw (-0.1,\y)--(0.1,\y);
+	\node at (-0.1,\y) [left] {$\y$};
+}
+
+\draw ({0.5*\sx},-0.1) -- ({0.5*\sx},0.1);
+\draw ({1*\sx},-0.1) -- ({1*\sx},0.1);
+\draw ({1.5*\sx},-0.1) -- ({1.5*\sx},0.1);
+\draw ({2*\sx},-0.1) -- ({2*\sx},0.1);
+
+\node at ({0*\sx},-0.1) [below] {$0$};
+\node at ({0.5*\sx},-0.1) [below] {$\frac12$};
+\node at ({1*\sx},-0.1) [below] {$1$};
+\node at ({1.5*\sx},-0.1) [below] {$\frac{3}{2}$};
+\node at ({2*\sx},-0.1) [below] {$2$};
+
+\end{tikzpicture}
+\end{document}
+

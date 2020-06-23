@@ -101,7 +101,7 @@ verschwindet:}
 \label{pde:fem:1integral}
 \end{align}
 Jetzt kann das Integralprinzip~\ref{pde:XXX} angewendet werden: das
-Inntegral~\eqref{pde:fem:1integral} kann nur dann für alle Funktionen
+Integral~\eqref{pde:fem:1integral} kann nur dann für alle Funktionen
 $h(x)$ verschwinden, wenn
 \[
 u''(x)=-\lambda u(x)
@@ -188,7 +188,7 @@ Die Ableitung nach $\varepsilon$ an der Stelle $\varepsilon=0$ ist
 \,dy \,dx.
 \end{align*}
 
-Der erste Term im Integranden enthält wieder Ableitungen der Funktion
+Das erste Term im Integranden enthält wieder Ableitungen der Funktion
 $h$, die wir loswerden müssen.
 
 \begin{lemma}
@@ -225,6 +225,10 @@ v_y(x,c) h(x,c)
 \end{lemma}
 
 \begin{proof}[Beweis]
+\definecolor{orange}{rgb}{1,0.6,0.2}
+\definecolor{gruen}{rgb}{0.2,0.6,0.2}
+\definecolor{magenta}{rgb}{0.9,0.2,0.4}
+\definecolor{azure}{rgb}{0,0.2,1}
 Wir teilen das Integral mit Hilfe von
 \[
 v(x,y)\cdot\nabla h(x,y) = 
@@ -244,10 +248,11 @@ I_1+I_2
 \]
 auf, die wir separat berechnen können.
 Für den ersten Summanden erhalten wir
-\begin{align*}
+\begin{align}
 I_1
 &=
 \int_a^b\int_c^d v_x(x,y) \frac{\partial h}{\partial x}(x,y)\,dy\,dx
+\notag
 \\
 &=
 \int_c^d
@@ -255,6 +260,7 @@ I_1
 v_x(x,y) \frac{\partial h}{\partial x}(x,y)
 \,dx
 \,dy
+\notag
 \\
 &=
 \int_c^d
@@ -265,6 +271,7 @@ v_x(x,y) h(x,y)
 \int_a^b \frac{\partial v_x}{\partial x}(x,y) h(x,y)
 \,dx
 \,dy
+\notag
 \\
 &=
 \int_c^d
@@ -275,12 +282,16 @@ v_x(a,y) h(a,y)
 \int_a^b \frac{\partial v_x}{\partial x}(x,y) h(x,y)
 \,dx
 \,dy
+\notag
 \\
 &=
 \int_c^d
-v_x(b,y) h(b,y)
+{\color{magenta}
+v_x(b,y) h(b,y)}
+{\color{azure}
+\mathstrut
 -
-v_x(a,y) h(a,y)
+v_x(a,y) h(a,y)}
 \,dy
 -
 \int_a^b
@@ -288,12 +299,14 @@ v_x(a,y) h(a,y)
 \frac{\partial v_x}{\partial x}(x,y) h(x,y)
 \,dy
 \,dx.
+\label{buch:pde:part2dI1}
 \intertext{%
 Die zweite Summe ist noch einfacher, weil es gar nicht erst notwendig ist,
 die Integrationsreihenfolge zu ändern:}
 I_2
 &=
 \int_a^b\int_c^d v_y(x,y)\frac{\partial h}{\partial y}\,dy\,dx
+\notag
 \\
 &=
 \int_a^b
@@ -303,36 +316,75 @@ I_2
 \frac{\partial v_y}{\partial y} h(x,y)
 \,dy
 \,dx
+\notag
 \\
 &=
-\int_a^b v_y(x,d)h(x,d)-v_y(x,c)h(x,c)\,dx
+\int_a^b
+{\color{gruen}
+v_y(x,d)h(x,d)}
+{\color{orange}\mathstrut
+-v_y(x,c)h(x,c)}
+\,dx
 -
 \int_a^b
 \int_c^d
 \frac{\partial v_y}{\partial y} h(x,y)
 \,dy
 \,dx
-\end{align*}
+\label{buch:pde:part2dI2}
+\end{align}
 Die beiden Terme zusammen geben genau die im Lemma behauptete Formel.
 \end{proof}
 
+\begin{figure}
+\centering
+\includegraphics{chapters/70-pde/images/2dpart.pdf}
+\caption{Die Randterme des Integrals \eqref{pde:fem:part2d}  können
+als ein Flussintegral über den Rand des Rechtecks geschrieben werden.
+Dazu müssen die Integrale über die einzelnen Kanten des Rechtecks einzeln
+als Flussintegrale über die Kante geschrieben werden.
+Die Terme werden auch in den Gleichungen
+\eqref{buch:pde:part2dI1} und \eqref{buch:pde:part2dI2}
+mit den gleichen Farben hervorgehoben.
+\label{buch:pde:pfadintegral}}
+\end{figure}
 Der erste Integral auf der rechten Seite von Lemma~\ref{pde:lemma:partint2}
 kombiniert Integrale von $v_x(x,y) h(x,y)$ über die beiden vertikalen Kanten 
 des Rechtecks, während das zweite Integral die Integrale von
-$v_y(x,y)h(x,y)$ über die horizontalen Kanten kombiniert.
+$v_y(x,y)h(x,y)$ über die horizontalen Kanten kombiniert (siehe auch
+Abbildung~\ref{buch:pde:pfadintegral}.
 Schreibt man $\vec{n}(x,y)$ für die nach aussen zeigende Normale auf den Rand 
 des Rechtecks, dann können diese Integrale alle einheitlich geschrieben
 werden.
-\begin{align*}
-&\text{untere Kante}&   y&=c &&\text{Integral über} &
--v_x(x,c)h(x,c) &=\vec{n}(x,y) \vec{v}(x,c)h(x,c)\\
-&\text{obere Kante} &   y&=d &&\text{Integral über} &
- v_x(x,c)h(x,c) &=\vec{n}(x,y) \vec{v}(x,c)h(x,d)\\
-&\text{linke Kante} &   x&=a &&\text{Integral über} &
--v_y(a,y)h(a,y) &=\vec{n}(x,y) \vec{a}(x,y)h(a,y)\\
-&\text{rechte Kante}&   x&=b &&\text{Integral über} &
- v_y(b,y)h(b,y) &=\vec{n}(x,y) \vec{v}(b,y)h(b,y)\\
-\end{align*}
+\begin{center}
+\definecolor{orange}{rgb}{1,0.6,0.2}
+\definecolor{gruen}{rgb}{0.2,0.6,0.2}
+\definecolor{magenta}{rgb}{0.9,0.2,0.4}
+\definecolor{azure}{rgb}{0,0.2,1}
+\begin{tabular}{l >{$}c<{$} >{$}l<{$}}
+Kante& &\text{Integrand}
+\\[2pt]
+\hline
+\\[-7pt]
+\color{orange}untere Kante
+	&y=c
+	&         - v_x(x,c)h(x,c) = h(x,c) \, \vec{v}(x,c) \cdot \vec{n}(x,c)
+\\[4pt]
+\color{gruen}obere Kante
+	&y=d
+	&\phantom{-}v_x(x,d)h(x,d) = h(x,d) \, \vec{v}(x,d) \cdot \vec{n}(x,d)
+\\[4pt]
+\color{azure}linke Kante
+	&x=a
+	&         - v_y(a,y)h(a,y) = h(a,y) \, \vec{v}(a,y) \cdot \vec{n}(a,y)
+\\[4pt]
+\color{magenta}rechte Kante
+	&x=b
+ 	&\phantom{-}v_y(b,y)h(b,y) = h(b,y) \, \vec{v}(b,y) \cdot \vec{n}(b,y)
+\\[4pt]
+\hline
+\end{tabular}
+\end{center}
 Es folgt also, dass die einfachen Integrale in 
 Lemma~\ref{pde:lemma:partint2} das Integral
 \[
@@ -396,109 +448,8 @@ Dies gilt genau dann für jede Funktion $h$, wenn
 wenn also $u$ eine Lösung des Eigenwertproblems ist.
 \end{proof}
 
-\subsection{Approximation
-\label{pde:fem:subsection:approximation}}
-
-\subsection{Quadratische Minimalprobleme}
-Die Approximation von Abschnitt~\ref{pde:fem:subsection:approximation}
-wandelt das äquivalente Minimalproblem einer partiellen Differentialgleichung
-um in ein Minimalproblem für die Koeffizienten der Approximation.
-Um die Koeffiziente zu bestimmen, kann man also versuchen, das
-Minimalproblem für die endlich vielen Approximationskoeffizienten zu
-bestimmen.
-Das besondere am Minimalproblem ist, dass es sich um ein quadratisches
-Minimalproblem handelt.
-
-\begin{lemma}
-\label{pde:fem:gradq}
-Sei $A$ eine symmetrische $n\times n$-Matrix, dann ist der Gradient der
-Funktion $Q(x) = x^t Ax$
-\[
-\operatorname{grad}Q(x)
-=
-\nabla Q(x)
-=
-2Ax.
-\]
-\end{lemma}
-
-\begin{proof}[Beweis]
-Die Ableitung nach der Variablen $x_i$ ist
-\begin{align*}
-\frac{\partial}{\partial x_i} Q(x)
-&=
-\frac{\partial x^t}{\partial x_i} Ax
-+
-x^t A \frac{\partial x}{\partial x_i}
-\\
-&=
-e_i^t Ax
-+
-x^tAe_i
-=
-e_i^t Ax
-+
-e_i^t Ax
-=
-2e_i^t Ax
-\end{align*}
-wegen der Symmetrie der Matrix $A$.
-Das Skalarprodukt $e_i^t Ax$ ist die $i$-te Komponente des Vektors $Ax$.
-Der Gradient ist der Vektor bestehend aus diesen Komponenten, also
-$\operatorname{grad}Q(x) = Ax$.
-\end{proof}
-
-\begin{satz}
-Seien $A$ und $B$ positiv definite Matrizen.
-Dann ist der Vektor $x$ eine Lösung der Gleichung
-\[
-Ax=\lambda Bx+c
-\]
-genau dann, wenn er den Ausdruck
-\[
-I(x)
-=
-x^tAx - \lambda x^tBx - c^tx
-\]
-minimiert.
-\end{satz}
-
-\begin{proof}[Beweis]
-Am Minimum von $I(x)$ verschwindet der Gradient.
-Der Gradient der quadratischen Terme ist in Lemma~\ref{pde:fem:gradq}
-bereits bestimmt worden.
-Der Gradient des linearen Terms ist
-\begin{align*}
-\frac{\partial}{\partial x_i}c^tx
-&=
-\frac{\partial}{\partial x_i}\sum_{k=1}^n c_kx_k
-=
-\sum_{k=1}^n c_k\frac{\partial x_k}{\partial x_i}
-=
-\sum_{k=1}^n c_k\delta_{ki}
-=
-c_i
-\\
-\Rightarrow\qquad
-\operatorname{grad}c^tx&=c.
-\end{align*}
-Damit kann jetzt der Gradient von $I(x)$ bestimmt werden, er ist
-\begin{align*}
-0=\operatorname{grad}I(x)
-&=
-2Ax - 2\lambda Bx - c
-\\
-\Leftrightarrow
-\qquad
-\qquad
-Ax&=\lambda Bx+c.
-\end{align*}
-Durch Multiplikation mit $B^{-1}$ wird daraus die Gleichung
-\[
-B^{-1}Ax=\lambda x + B^{-1}c.
-\]
-\end{proof}
-
+\input{chapters/70-pde/approximation.tex}
+\input{chapters/70-pde/quadratisch.tex}
 
 
 

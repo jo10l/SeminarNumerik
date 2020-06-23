@@ -22,7 +22,7 @@ D_{\alpha,i,j}=
 beschrieben werden, wobei $c=\cos(\alpha)$ und $s=\sin(\alpha)$.
 Drehungen dieser Art heissen Givens-Rotationen.
 
-Es ist nun möglich, Elemente in der unterhalb der Diagonalen einer $l\times n $-Matrix $A$ mit geeigneten Givens-Rotationen auf Null zu bringen, und um so eine obere Dreiecksmatrix $R$ zu erhalten.
+Es ist nun möglich, Elemente unterhalb der Diagonalen einer $l\times n $-Matrix $A$ mit geeigneten Givens-Rotationen auf Null zu bringen, und um so eine obere Dreiecksmatrix $R$ zu erhalten.
 Das Produkt aller inversen Drehmatrizen ist dann eine orthonormierte Matrix $Q$, da alle Drehmatrizen $D_{\alpha_k,i,j}$ orthonormal sind.
 
 Das wird nun an dieser Stelle im Detail betrachtet.
@@ -33,15 +33,22 @@ R = D_{\alpha_k,n-1,l}...D_{\alpha_2,1,3}D_{\alpha_1,1,2}A.
 Auf die Matrix $Q$ kommt man dann mit
 \begin{multline*}
 Q=AR^{-1}=A(D_{\alpha_k,n-1,l}...D_{\alpha_2,1,3}D_{\alpha_1,1,2}A)^{-1}\\=
-\underbrace{AA^{-1}}_{E}D_{\alpha_1,1,2}^{-1}D_{\alpha_2,1,3}^{-1}... D_{\alpha_k, n-1,l}^{-1}=
+\underbrace{AA^{-1}}_{\displaystyle=E}D_{\alpha_1,1,2}^{-1}D_{\alpha_2,1,3}^{-1}... D_{\alpha_k, n-1,l}^{-1}=
 D_{\alpha_1,1,2}^{T}D_{\alpha_2,1,3}^{T}...D_{\alpha_k, n-1,l}^{T},
 \end{multline*}
 wobei im letzten Schritt ausgenutzt wurde, dass Drehmatrizen orthonormal sind.
+Die Winkel $\alpha_k$ müssen dabei nicht explizit bestimmt werden.
+Es reicht aus $s_k = \sin(\alpha_k)$ und $c_k=\cos(\alpha_k)$ unter der Nebenbedingung
+\begin{equation*}
+s_k^2+c_k^2 = 1
+\end{equation*}
+so zu wählen, sodass das gewünschte Element nach der Matrixmultiplikation verschwindet.
+
 Die Matrizen $Q$ und $R$ sind beide von der Grösse $l\times l$.
 Für den Spezialfall $l=n$ können sie so stehen gelassen werden.
-Für alle Fälle wo A aber die Grösse $l\times n$ hat, müssen die Dimensionen noch angepasst werden. um den Forderungen der $QR$-Zerlegung zu genügen.
-In der Matrix $R$ stehen ab der n. Zeile nur noch Nullen.
-Diese Zeilen können somit weggelassen werden und folglich alle Einträge ab der n. Spalte von Q.
+Für die Fälle wo $A$ aber die Grösse $l\times n$ hat, müssen die Dimensionen noch angepasst werden. um den Forderungen der $QR$-Zerlegung zu genügen.
+In der Matrix $R$ stehen ab der $n.$ Zeile nur noch Nullen.
+Diese Zeilen können somit weggelassen werden und folglich alle Einträge ab der $n.$ Spalte von $Q$.
 Als Matrizen ausgeschrieben:
 \begin{multline*}
 A=QR=
@@ -68,8 +75,8 @@ q_{l1}&\cdots&q_{ln}\\
 r_{11}&r_{12}&\cdots&r_{1n}\\
 0     &r_{22}&\cdots&r_{2n}\\
 \vdots&\vdots&\ddots&\vdots\\
-0     &0     &\cdots&r_{nn}.
-\end{pmatrix}
+0     &0     &\cdots&r_{nn}
+\end{pmatrix}.
 \end{multline*}
-$Q$ ist daraufhin also eine $l\times n$-Matrize und $R$ ist von der Grösse $n\times n$, wie verlangt.
+$Q$ ist daraufhin also eine $l\times n$-Matrize und $R$ ist von der Grösse $n\times n$, wie es verlangt wurde.
 

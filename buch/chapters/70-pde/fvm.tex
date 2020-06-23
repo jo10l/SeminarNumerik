@@ -178,6 +178,16 @@ Die Integralform der Kontinuitätsgleichung wird damit
 
 
 \subsection{Diskretisation}
+\begin{figure}
+\centering
+\includegraphics{chapters/70-pde/images/kont.pdf}
+\caption{Diskretisation der Kontinuitätsgleichung~\eqref{pde:fvm:1dim}
+mit Hilfe diskreter Volumina. 
+Die Variablen $m_{ik}$ stehen für die im Interval $[ih_x,(i+1)h_x]$
+enthaltene Masse, $j_{ik}$ steht für die im Zeitinterval $[kh_t,(k+1)h_t]$
+durch das Intervallende $ih_x$ fliessende Masse.
+\label{buch:pde:fvdisk}}
+\end{figure}
 Die Integralform~\eqref{pde:eqn:integralform}
 der Kontinuitätsgleichung suggeriert, dass die Integrale
 in dieser Gleichung bessere Variablen für eine Diskretisation
@@ -194,7 +204,7 @@ j_{ik}
 &=
 \int_{kh_t}^{(k+1)h_t} j(ih_x,\tau) \,d\tau
 \end{align*}
-der Funktionen über Kanten im Gitter, wie in Abbildung~\ref{pde:disk:vars}
+der Funktionen über Kanten im Gitter, wie in Abbildung~\ref{buch:pde:fvdisk}
 dargestellt.
 Die Kontinuitätsgleichung wird damit zu
 \begin{equation}
