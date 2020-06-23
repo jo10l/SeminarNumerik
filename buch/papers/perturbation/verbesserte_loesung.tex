@@ -2,7 +2,8 @@
 \label{perturbation:section:verbesserte_loesung}}
 \rhead{Verbesserte Lösung}
 
-Anstelle lediglich den Anfangswert $\vec{v_0}$ anzupassen, erhält man bessere Resultate, indem auch $\vec{r_0} = (x_0, y_0)$ variabel gestaltet wird.
+Anstelle lediglich den Anfangswert $\vec{v_0} = (v_{0x}, v_{0y})$ anzupassen, erhält man bessere Resultate,
+indem auch $\vec{r_0} = (r_{0x}, r_{0y})$ variabel gestaltet wird.
 Zudem kann man anstelle von $t$ nur die Differenz $\Delta t$ seit dem letzten Update von der Bodenstation betrachten.
 
 Wiederum ist das Ziel, dass der Flugkörper mit den einfachen Formeln \eqref{eq:x_simple} eine möglichst gute Approximation auf einfache Art und Weise berechnen kann,
@@ -14,12 +15,12 @@ Es ergeben sich folgende Formeln:
 
 \begin{equation}
 \begin{aligned}
-x(t + \Delta t) &= x_0 + v_{0x}\Delta t\\
-y(t + \Delta t) &= y_0 + v_{0y}\Delta t - \frac{1}{2}g\Delta t^2
+r_x(t + \Delta t) &= r_{0x} + v_{0x}\Delta t\\
+r_y(t + \Delta t) &= r_{0y} + v_{0y}\Delta t - \frac{1}{2}g\Delta t^2
 \end{aligned}
 \end{equation}
 
-Verlangt man von der Bodenstation jede Sekunde neue Werte für die Elemente $x_0, y_0, v_{0x}$ und $v_{0y}$ gibt dies eine Genauigkeit von 2 Stellen.
+Verlangt man von der Bodenstation jede Sekunde neue Werte für die Elemente $r_{0x}, r_{0y}, v_{0x}$ und $v_{0y}$ gibt dies eine Genauigkeit von 2 Stellen.
 In Abbildung \ref{error} ist der Fehler ersichtlich.
 Dieser ist als euklidische Distanz zur effektiven Position dargestellt.
 

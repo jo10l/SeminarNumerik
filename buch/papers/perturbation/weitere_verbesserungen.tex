@@ -4,7 +4,7 @@
 In diesem Abschnitt diskutieren wir Verbesserungsmöglichkeiten, um den Fehler weiter zu minimieren.
 Abbildung \ref{error} zeigt, dass der Fehler stark von der Intervalllänge abhängt.
 Eine Reduktion der Intervalllänge beschreiben wir im nächsten Abschnitt.
-Weiter lassen sich mit Hilfe der Störungstheorie höherer Ordnung genauere Resultate erzielen.
+Weiter lässt sich die Genauigkeit mit Hilfe der Störungstheorie höherer Ordnung weiter verbessern.
 
 \subsection{Reduktion der Intervalllänge}
 In Abbildung \ref{error} ist der Fehler für die Intervalllänge von einer Sekunde ersichtlich.
@@ -43,11 +43,11 @@ können nicht beliebig oft ausgeführt werden.
 \end{figure}
 
 \subsection{Erhöhung der Ordnung}
-Eine andere Möglichkeit zur Steigerung der Genauigkeit eröffnet sich dadurch, dass man anstelle $x_0, y_0, v_{0x}$ und $v_{0y}$,
+Eine andere Möglichkeit zur Steigerung der Genauigkeit eröffnet sich dadurch,
+dass man anstelle $r_{0x}, r_{0y}, v_{0x}$ und $v_{0y}$,
 was an sich Polynome nullter Ordnung sind, Polynome höherer Ordnung ansetzt.
 Wir schauen uns ein Beispiel erster Ordnung an.
-Wir ändern nun die Anfangsbedingungen folgendermassen.
-Um die Notation klar zu halten, werden wir nicht länger $x_0$ und $y_0$ verwenden, sondern vom Ortsvektor $\vec{r_0}$ sprechen.
+Die Anfangsbedingungen werden folgendermassen geändert:
 
 \begin{equation}
 \label{eq:ordnung1_linear_ansatz}
@@ -139,9 +139,9 @@ In beiden Grafiken ist schön zu erkennen, wie der Fehler jeweils bei einer Stü
 Es ist auch gut zu erkennen, dass die Wahl der Stützstellen jeweils am Anfang und am Ende erfolgen sollte, um einen maximalen Bereich des Intervalls abzudecken.
 
 Vergleichen wir den Fehler aus Grafik \ref{fig:ordnung1_linear_error_A} mit Polynomen nullter Ordnung in Grafik \ref{error} erkennen wir erneut eine Genauigkeitssteigerung um Faktor vier.
-Die Erhöhung der Ordnung um eins hat also den selben Effekt wie wie Halbierung der Intervalldauer.
+Die Erhöhung der Ordnung um eins hat also den selben Effekt wie die Halbierung der Intervalldauer.
 
-Selbstverständlich könnte der Anwender auch beide Verfahren kombinieren.
+Selbstverständlich könnte der Anwender auch beide Verfahren, also die Erhöhung der Ordnung und die Reduktion der Intervalllänge, kombinieren.
 Der Fehler davon ist in Grafik \ref{fig:ordnung1_linear_error_C} abgebildet.
 Erneut ist er viermal kleiner geworden.
 Die Abweichung beträgt nun kaum noch mehr als $1m$.
