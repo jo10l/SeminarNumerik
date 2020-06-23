@@ -3,7 +3,7 @@
 #
 # (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-all:	3001fehler.pdf 3001plot.pdf
+all:	3001fehler.pdf 3001plot.pdf 3003kreis.pdf 3003fehler.pdf
 
 3001fehler.pdf:	3001fehler.tex 3001path.tex
 	pdflatex 3001fehler.tex
@@ -14,4 +14,9 @@ all:	3001fehler.pdf 3001plot.pdf
 3001path.tex 3001graph.tex:	3001.m
 	octave 3001.m
 
+3003kreis.pdf:	3003kreis.tex
+	pdflatex 3003kreis.tex
+
+3003fehler.pdf:	3003fehler.tex
+	pdflatex 3003fehler.tex
 
