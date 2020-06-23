@@ -64,12 +64,9 @@ Innerhalb dieses Intervalls arbeiten wir mit $t=5$, $\Delta t \in [0,1)$.
 $t$ wird also fixiert und $\Delta t$ ist unsere neue Variable.
 So gilt nach Einsetzen in Gleichungen \eqref{eq:x_simple} 
 
-%todo die zteilenabstände brauchts nicht, ist nur für mich zum fehler vermeiden (zur übersicht)
-%kansnt alles wegmachen ;) schaut nmämlich ewtas komisch aus im pdf xD
-
 \begin{equation}\label{eq:ordnung1_linear_r}
 \begin{aligned}
-r_x(t + \Delta t) &= \textcolor{red}{(r_{x0} +   r_{x1}  \cdot \Delta t)} + \textcolor{blue}{(v_{x0} + v_{x1}  \cdot \Delta t)} \cdot \Delta t \\
+r_x(t + \Delta t) &= \textcolor{red}{(r_{x0} +   r_{x1} \cdot \Delta t)} + \textcolor{blue}{(v_{x0} + v_{x1}  \cdot \Delta t)} \cdot \Delta t \\
 r_y(t + \Delta t) &= \textcolor{red}{(r_{y0} +   r_{y1} \cdot \Delta t)} + \textcolor{blue}{(v_{y0} + v_{y1} \cdot \Delta t)} \cdot \Delta t - \frac{1}{2}g \Delta t^2
 \end{aligned}
 \end{equation}
@@ -194,7 +191,7 @@ Damit ist bereits eine Annäherung des Ortes möglich.
 Analog könnte man auch die Geschwindigkeit betrachten.
 
 Beide Varianten, Interpolation und Taylorentwicklung, sind legitim.
-Die Interpolation ist am Anfang und Ende des Intervalles exakt, hat dafür aber in der Mitte einen relativ hohen Fehler.
+Die Interpolation ist am Anfang und Ende des Intervalls exakt, hat dafür aber in der Mitte einen relativ hohen Fehler.
 Die Taylorentwicklung ist vor allem zu Beginn des Intervalls exakt.
 Dies, da insbesondere bei höheren Ordnungen auch die Krümmung des Kurvenverlaufs berücksichtigt wird.
-Da sich allerdings alle Stützstellen am Anfang des Intervalles befinden, wird der Kurvenverlauf zum Ende des Intervalles hin immer ungenauer.
+Da sich allerdings alle Stützstellen am Anfang des Intervalls befinden, wird der Kurvenverlauf zum Ende des Intervalls hin immer ungenauer.
