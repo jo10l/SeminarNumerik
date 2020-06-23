@@ -4,7 +4,8 @@
 # (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
 all:	h.pdf rolle.pdf nullstellen.pdf sin.pdf l.pdf norm.pdf tscheb.pdf \
-	basis.pdf tschebasis.pdf polygon.pdf vergleich.pdf integral.pdf
+	basis.pdf tschebasis.pdf polygon.pdf vergleich.pdf integral.pdf \
+	bezier.pdf
 
 %.pdf:	%.tex
 	pdflatex $<
@@ -39,4 +40,7 @@ vergleich.pdf:	vergleich.tex
 
 integral.pdf:	integral.tex
 	pdflatex integral.tex
+
+bezier.pdf:	bezier.tex
+	pdflatex bezier.tex
 

@@ -234,7 +234,110 @@ s(t) &=& (1-t) \bigl( (1-t)^2 p_0 &+& 2t(1-t)         p_1 &+& t^2     p_2 &\bigr
      &=& (1-t)^3 p_0 &+& 3t(1-t)^2 p_1 &+& 3t^2(1-t) p_2 &+& t^3 p_3\rlap{.}\phantom{\bigr)}
 \end{linsys}
 \end{equation*}
+Der Tagententialvektor an den Stellen $t=0$ und $t=1$ ist
+\begin{align*}
+\dot{s}(t)
+&=
+-3(1-t)^2p_0 + (3(1-t)^2-6t(1-t))p_1 + (6t(1-t)-3t^2)p_2 + 3t^2p_3
+\\
+\Rightarrow\qquad
+\dot{s}(0) &= -3p_0+3p_1 = 3(p_1-p_0)
+\\
+\dot{s}(1) &= -3p_2 + 3p_3 = 3(p_3-p_2),
+\end{align*}
+die Kurve verlässt also wie erwartet den Punkt $P_0$ genau in Richtung 
+auf $P_1$ und kommt genau aus der Richtung von $P_2$ in $P_3$ an.
 
+Man kann auch die Spline-Funktionen wieder aus der zweidimensionalen
+Kurve $s(t)$ rekonstruieren.
+Gegeben sind dafür zwei Werte $y_0$ und $y_1$ und die Steigungen $m_0$ und
+$m_1$ in den Punkten $x=0$ und $x=1$.
+Der Graph des kubischen Polynoms $p(x)$ mit $p(0)=y_0$, $p(1)=y_1$,
+$p'(0)=m_0$ und $p'(1)=m_1$ soll jetzt als Bézier-Kurve geschrieben werden.
+Dazu müssen die Kontrollpunkte gefunden werden.
+Es ist klar, dass $P_0=(0,y_0)$ und $P_3=(1,y_1)$.
+Für die inneren Kontrollpunkte muss ein geeigneter $x$-Wert gewählt werden,
+also
+\[
+P_1=
+(x_1,y_0+x_1m_0)
+\qquad
+\text{und}
+\qquad
+P_2
+=
+(x_2,y_1-(1-x_2)m_1)
+\]
+Wählt man $x_1=\frac13$ und $x_2=\frac23$, dann wird
+\begin{align*}
+x(t)
+&=
+(1-t)^3\cdot 0 + 3t(1-t)^2\cdot \frac13 + 3t^2(1-t)\cdot \frac23 + t^3\cdot 1
+\\
+&=
+t-2t^2+t^3 + 2t^2 -2t^3 + t^3 = t.
+\end{align*}
+Mit dieser Wahl ist also $x=t$, so dass das gesuchte Polynom $p(x)=y(x)$ wird:
+\begin{align*}
+p(x)
+=
+y(x)
+&=
+(1-x)^3 y_0
++
+3x(1-x)^2\biggl(y_0+\frac13m_0\biggr)
++
+3x^2(1-x) \biggl(y_1-\frac13m_1\biggr)
++
+x^3 y_1
+\\
+&=
+\bigl((1-x)^3+3x(1-x)^2\bigr)
+y_0
++
+x(1-x)^2 m_0
+-
+x^2(1-x) m_1
++
+\bigl(3x^2(1-x)+x^3\bigr)
+y_1
+\\
+&=
+(1+2x)(1-x)^2 y_0
++
+x(1-x)^2 m_0
++
+x^2(x-1) m_1
++
+x^2(3-2x) y_1.
+\end{align*}
+Die Koeffizienten von $y_0$, $y_1$, $m_0$ und $m_1$ sind die Polynome
+\begin{equation}
+\begin{aligned}
+y_0:&&
+H_0(x)
+&=
+2x^3-3x^2+1
+&\quad&
+&m_0:&&
+H_0^1(x)
+&=
+x-2x^2+x^3
+\\
+y_1:&&
+H_1(x)
+&=
+3x^2-2x^3
+&\quad&
+&m_1:&&
+H_1^1(x)
+&=
+x^3-x^2
+\end{aligned}
+\label{buch:bezier:eqn:H}
+\end{equation}
+Die Polynome \eqref{buch:bezier:eqn:H} stimmen mit den Polynomen überein,
+die in \eqref{buch:equation:hermite:h} gefunden worden sind.
 
 
 

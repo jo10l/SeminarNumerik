@@ -1,0 +1,77 @@
+%
+% bezier.tex -- Bezier-Kurven
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+
+\begin{scope}[xshift=-5cm]
+\coordinate (P0) at (0,0);
+\coordinate (P1) at (4,1);
+\draw[line width=1.4pt] (P0) -- (P1);
+\fill[color=red] (P0) circle[radius=0.08];
+\fill[color=red] (P1) circle[radius=0.08];
+\node at (P0) [below] {$P_0$};
+\node at (P1) [below] {$P_1$};
+\def\punkt#1{({(1-#1)*0+#1*4},{(1-#1)*0+#1*1})}
+\node at \punkt{0.6} [above] {$Q(t)$};
+\fill[color=blue] \punkt{0.6} circle[radius=0.08];
+\end{scope}
+
+\begin{scope}[xshift=0cm]
+\coordinate (P0) at (0,0);
+\coordinate (P1) at (1,5);
+\coordinate (P2) at (4,1);
+\draw[color=gray,line width=1.4pt] (P0) -- (P1) -- (P2);
+\def\t{0.6}
+\def\punkt#1{({(1-#1)*0+#1*1},{(1-#1)*0+#1*5})}
+\def\qunkt#1{({(1-#1)*1+#1*4},{(1-#1)*5+#1*1})}
+\def\runkt#1{({(1-#1)*(1-#1)*0+2*#1*(1-#1)*1+#1*#1*4},{(1-#1)*(1-#1)*0+2*#1*(1-#1)*5+#1*#1*1})}
+\fill[color=darkgreen] \punkt{\t} circle[radius=0.08];
+\node at \punkt{\t} [left] {$Q_0(t)$};
+\fill[color=darkgreen] \qunkt{\t} circle[radius=0.08];
+\node at \qunkt{\t} [above right] {$Q_1(t)$};
+\draw[color=darkgreen,line width=1.4pt] \punkt{\t} -- \qunkt{\t};
+\draw[color=blue,line width=1.4pt]
+	plot[domain=0:1,samples=100]
+		({(1-\x)*(1-\x)*0+2*\x*(1-\x)*1+\x*\x*4},{(1-\x)*(1-\x)*0+2*\x*(1-\x)*5+\x*\x*1});
+\fill[color=blue] \runkt{\t} circle[radius=0.08];
+\node at \runkt{\t} [below] {$R(t)$};
+\fill[color=red] (P0) circle[radius=0.08];
+\fill[color=red] (P1) circle[radius=0.08];
+\fill[color=red] (P2) circle[radius=0.08];
+\node at (P0) [below] {$P_0$};
+\node at (P1) [above] {$P_1$};
+\node at (P2) [below] {$P_2$};
+\end{scope}
+
+\begin{scope}[xshift=5cm]
+\coordinate (P0) at (0,0);
+\coordinate (P1) at (1,5);
+\coordinate (P2) at (3,4);
+\coordinate (P3) at (4,1);
+\draw[line width=1.4pt] (P0) -- (P1) -- (P2) -- (P3);
+\fill[color=red] (P0) circle[radius=0.08];
+\fill[color=red] (P1) circle[radius=0.08];
+\fill[color=red] (P2) circle[radius=0.08];
+\fill[color=red] (P3) circle[radius=0.08];
+\node at (P0) [below] {$P_0$};
+\node at (P1) [above] {$P_1$};
+\node at (P2) [above right] {$P_2$};
+\node at (P3) [below] {$P_3$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+
