@@ -8,7 +8,5 @@ dependencies-perturbation =						\
 	papers/perturbation/main.tex					\
 	papers/perturbation/references.bib				\
 	papers/perturbation/einleitung.tex				\
-	papers/perturbation/problemstellung.tex				\
-	papers/perturbation/loesung.tex					\
-	papers/perturbation/folgerungen.tex
+	papers/perturbation/problemstellung.tex	
 
