@@ -105,7 +105,8 @@ v_{y1} &=  \frac{v_y(t + \Delta t) - v_{y0} + g \cdot t}{\Delta t}
 \end{aligned}
 \end{equation}
 
-Wie zu erkennen ist, machen wir bereits Gebrauch von den zuvor bestimmten Unbekannten. Zu guter Letzt können mit Gleichung \ref{eq:ordnung1_linear_r} die zwei verbleibenden Unbekannten bestimmt werden:
+Wie zu erkennen ist, machen wir bereits Gebrauch von den zuvor bestimmten Unbekannten.
+Zu guter Letzt können mit Gleichung \ref{eq:ordnung1_linear_r} die zwei verbleibenden Unbekannten bestimmt werden:
 
 \begin{equation}
 \label{eq:ordnung1_linear_solutionPart3}
@@ -116,15 +117,22 @@ r_{y_1} &= \frac{r_y(t + \Delta t) - r_{y0} - \Delta t \cdot(v_{y0} + v_{y1}  \c
 \end{equation}
 
 
-Somit sind nun alle Unbekannten bestimmt und Gleichung \eqref{eq:ordnung1_linear_r} kann zur Bestimmung des Ortes herangezogen werden. Berechnen wir die Position schrittweise für die Intervalle $\{[0,1), [1, 2), \dots\}$ ergibt sich die euklidische Fehlerdistanz in Bild \ref{fig:ordnung1_linear_error_A}.
+Somit sind nun alle Unbekannten bestimmt und Gleichung \eqref{eq:ordnung1_linear_r} kann zur Bestimmung des Ortes herangezogen werden.
+Berechnen wir die Position schrittweise für die Intervalle $\{[0,1), [1, 2), \dots\}$ ergibt sich die euklidische Fehlerdistanz in Bild \ref{fig:ordnung1_linear_error_A}.
 
-Anstelle der Interpolation an den Stützstellen $\Delta t = 0$ und $\Delta t = 1$ liessen sich, wie bereits erwähnt, auch die Stützstellen $\Delta t = 0$ und $\Delta t = 0.5s$ nutzen. Dies führt zu der Fehlerverteilung gemäss Bild \ref{fig:ordnung1_linear_error_B}.
+Anstelle der Interpolation an den Stützstellen $\Delta t = 0$ und $\Delta t = 1$ liessen sich, wie bereits erwähnt, auch die Stützstellen $\Delta t = 0$ und $\Delta t = 0.5s$ nutzen.
+Dies führt zu der Fehlerverteilung gemäss Bild \ref{fig:ordnung1_linear_error_B}.
 
-In beiden Grafiken ist schön zu erkennen, wie der Fehler jeweils bei einer Stützstelle auf $0$ sinkt, zwischen den Stützstellen aber einen Anstieg verzeichnet. Es ist auch gut zu erkennen, dass die Wahl der Stützstellen jeweils am Anfang und am Ende erfolgen sollte, um einen maximalen Bereich des Intervalls abzudecken. 
+In beiden Grafiken ist schön zu erkennen, wie der Fehler jeweils bei einer Stützstelle auf $0$ sinkt, zwischen den Stützstellen aber einen Anstieg verzeichnet.
+Es ist auch gut zu erkennen, dass die Wahl der Stützstellen jeweils am Anfang und am Ende erfolgen sollte, um einen maximalen Bereich des Intervalls abzudecken.
 
-Vergleichen wir den Fehler aus Grafik \ref{fig:ordnung1_linear_error_A} mit Polynomen nullter Ordnung in Grafik \ref{error} erkennen wir erneut eine Genauigkeitssteigerung um Faktor vier. Die Erhöhung der Ordnung um eins hat also den selben Effekt wie wie Halbierung der Intervalldauer.
+Vergleichen wir den Fehler aus Grafik \ref{fig:ordnung1_linear_error_A} mit Polynomen nullter Ordnung in Grafik \ref{error} erkennen wir erneut eine Genauigkeitssteigerung um Faktor vier.
+Die Erhöhung der Ordnung um eins hat also den selben Effekt wie wie Halbierung der Intervalldauer.
 
-Selbstverständlich könnte der Anwender auch beide Verfahren kombinieren. Der Fehler davon ist in Grafik \ref{fig:ordnung1_linear_error_C} abgebildet. Erneut ist er viermal kleiner geworden. Die Abweichung beträgt nun kaum noch mehr als $1m$.
+Selbstverständlich könnte der Anwender auch beide Verfahren kombinieren.
+Der Fehler davon ist in Grafik \ref{fig:ordnung1_linear_error_C} abgebildet.
+Erneut ist er viermal kleiner geworden.
+Die Abweichung beträgt nun kaum noch mehr als $1m$.
 
 \begin{figure}
 	\centering
@@ -148,9 +156,10 @@ Selbstverständlich könnte der Anwender auch beide Verfahren kombinieren. Der F
 \end{figure}
 
 \subsubsection{Lösung des Problems mit Taylorreihen}
-Anstelle von linearer Interpolation kann man die Unbekannten $r_{x0}, r_{x1}, r_{y0}, \dots$ auch mit anderen Verfahren bestimmen. 
-Wir können den Ansatz \eqref{eq:ordnung1_linear_ansatz} als Taylorentwicklungen interpretieren. 
-Betrachten wir nur die Ortskoordinate und leiten wir diese nach $\Delta t$ ab, erhalten wir das folgende System. Um die Notation kurz zu halten, verwenden wir Vektornotation anstelle der Aufteilung nach $x$- und $y$-Komponenten.
+Anstelle von linearer Interpolation kann man die Unbekannten $r_{x0}, r_{x1}, r_{y0}, \dots$ auch mit anderen Verfahren bestimmen.
+Wir können den Ansatz \eqref{eq:ordnung1_linear_ansatz} als Taylorentwicklungen interpretieren.
+Betrachten wir nur die Ortskoordinate und leiten wir diese nach $\Delta t$ ab, erhalten wir das folgende System.
+Um die Notation kurz zu halten, verwenden wir Vektornotation anstelle der Aufteilung nach $x$- und $y$-Komponenten.
 
 \begin{equation}
 \label{eq:ordnung1_taylor_ansatz}
@@ -160,11 +169,17 @@ Betrachten wir nur die Ortskoordinate und leiten wir diese nach $\Delta t$ ab, e
 \end{aligned}
 \end{equation}
 
-Die Unbekannte $\vec{r_0}$ ist erneut durch setzen von $\Delta t = 0$ sehr einfach zu erlangen, analog zu Kapitel \ref{section:perturbation_ordnung1_linear}. $\vec{r_1}$ kann ebenfalls ohne grossen Aufwand bestimmt werden, indem wir die Ableitung mit Hilfe der Bodenstation wie folgt annähern:
+Die Unbekannte $\vec{r_0}$ ist erneut durch setzen von $\Delta t = 0$ sehr einfach zu erlangen, analog zu Kapitel \ref{section:perturbation_ordnung1_linear}.
+$\vec{r_1}$ kann ebenfalls ohne grossen Aufwand bestimmt werden, indem wir die Ableitung mit Hilfe der Bodenstation wie folgt annähern:
 \[
 \vec{\dot{r}}(t) \approx \frac{\vec{r}(t+\epsilon) - \vec{r}(t)}{\epsilon}
 \]
 
-Damit ist bereits eine Annäherung des Ortes möglich. Analog könnte man auch die Geschwindigkeit betrachten.
+Damit ist bereits eine Annäherung des Ortes möglich.
+Analog könnte man auch die Geschwindigkeit betrachten.
 
-Beide Varianten, Interpolation und Taylorentwicklung, sind legitim. Die Interpolation ist am Anfang und Ende des Intervalles exakt, hat dafür aber in der Mitte einen relativ hohen Fehler. Die Taylorentwicklung ist vor allem zu Beginn des Intervalls exakt. Dies, da insbesondere bei höheren Ordnungen auch die Krümmung des Kurvenverlaufs berücksichtigt wird. Da sich allerdings alle Stützstellen am Anfang des Intervalles befinden, wird der Kurvenverlauf zum Ende des Intervalles hin immer ungenauer.
+Beide Varianten, Interpolation und Taylorentwicklung, sind legitim.
+Die Interpolation ist am Anfang und Ende des Intervalles exakt, hat dafür aber in der Mitte einen relativ hohen Fehler.
+Die Taylorentwicklung ist vor allem zu Beginn des Intervalls exakt.
+Dies, da insbesondere bei höheren Ordnungen auch die Krümmung des Kurvenverlaufs berücksichtigt wird.
+Da sich allerdings alle Stützstellen am Anfang des Intervalles befinden, wird der Kurvenverlauf zum Ende des Intervalles hin immer ungenauer.

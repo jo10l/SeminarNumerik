@@ -1,11 +1,11 @@
 \section{Problemstellung
 \label{perturbation:section:problemstellung}}
 \rhead{Problemstellung}
-Eine Kanonenkugel wird in einem $45^{\circ}$ Winkel abgefeuert. 
-Sie besitzt eine Startgeschwindigkeit von 100 m/s in $x$ sowie $y$-Richtung. 
+Eine Kanonenkugel wird in einem $45^{\circ}$ Winkel abgefeuert.
+Sie besitzt eine Startgeschwindigkeit von 100 m/s in $x$ sowie $y$-Richtung.
 Die Aufgabe besteht darin, die Position zum Zeitpunkt $t$ zu berechnen.
 
-Dies ist ein gängiges Beispiel für den schiefen Wurf. 
+Dies ist ein gängiges Beispiel für den schiefen Wurf.
 In der Regel werden dabei folgende Formeln verwendet:
 
 \begin{equation}\label{eq:x_simple}
@@ -22,12 +22,13 @@ In der Regel werden dabei folgende Formeln verwendet:
 %\end{equation}
 
 
-Nun möchten wir jedoch ein genaueres Ergebnis erzielen und den Luftwiderstand mitberücksichtigen.  
-Der Luftwiderstand $F_W$ ist proportional zum Quadrat der Geschwindigkeit. Es gilt folgende Formel:
+Nun möchten wir jedoch ein genaueres Ergebnis erzielen und den Luftwiderstand mitberücksichtigen.
+Der Luftwiderstand $F_W$ ist proportional zum Quadrat der Geschwindigkeit.
+Es gilt folgende Formel:
 \[
 F_W = \underbrace{c_WA\frac{1}{2}\rho_{\text{Luft}}}_\text{k}v^2
 \]
-$c_W$ bezeichnet den Strömungswiderstand, $A$ die Widerstandsfläche und $\rho_{\text{Luft}}$ die Luftdichte. 
+$c_W$ bezeichnet den Strömungswiderstand, $A$ die Widerstandsfläche und $\rho_{\text{Luft}}$ die Luftdichte.
 Um die Berechnung simpel zu gestalten, gehen wir von einer konstanten Luftdichte $\rho_{\text{Luft}}$ aus und können so den Luftwiderstand zusammen fassen als $F_W = k \cdot v^2$.
 
 Formt man die Formel weiter um, erhält man das folgende Resultat:
@@ -35,8 +36,8 @@ Formt man die Formel weiter um, erhält man das folgende Resultat:
 F_W = k \cdot |\vec{v}| \cdot \vec{v} = k \cdot \sqrt{v_x^2 + v_y^2} \cdot \begin{pmatrix}v_x\\v_y\end{pmatrix}
 \]
 
-Die ganze Kraft, die auf die Kugel wirkt, ist gemäss Newtons zweitem Axiom $F = m \cdot a$. 
-Neben dem Luftwiderstand wirkt in $y$-Richtung zusätzlich die Gravitationskraft $F_G = m \cdot g$. 
+Die ganze Kraft, die auf die Kugel wirkt, ist gemäss Newtons zweitem Axiom $F = m \cdot a$.
+Neben dem Luftwiderstand wirkt in $y$-Richtung zusätzlich die Gravitationskraft $F_G = m \cdot g$.
 Somit lassen sich folgende Gleichungen aufstellen:
 \begin{align*}
 m \cdot a_x &= k \cdot \sqrt{v_x^2 + v_y^2} \cdot v_x\\
@@ -49,9 +50,9 @@ a_x &= \frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_x\\
 a_y &= \frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_y + g
 \end{align*}
 
-Die Beschleunigung ist nicht bekannt. 
-Sie kann jedoch als zweite Ableitung der Position nach der Zeit ausgedrückt werden. 
-Die Geschwindigkeit entspricht der ersten Ableitung.  
+Die Beschleunigung ist nicht bekannt.
+Sie kann jedoch als zweite Ableitung der Position nach der Zeit ausgedrückt werden.
+Die Geschwindigkeit entspricht der ersten Ableitung.
 Somit ergibt sich das folgende System von Differentialgleichungen zweiter Ordnung:
 
 \begin{equation}\label{eq:x_diff}
