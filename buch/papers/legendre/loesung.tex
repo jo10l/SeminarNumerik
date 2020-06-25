@@ -8,25 +8,26 @@
 \rhead{Lösung}
 \subsection{Anfangswerte
 \label{legendre:subsection:anfangswerte}}
-Jede Rekursionsbeziehung braucht seine Anfangswerte.
+Jede Rekursionsbeziehung braucht ihre Anfangswerte.
 Sowohl für die $l$-Rekursion \eqref{legendre:recurrence-l} als auch für die $m$-Rekursion \eqref{legendre:recurrence-m} werden je zwei Anfangswerte benötigt.
 Für die $l$-Rekursion \eqref{legendre:recurrence-l} werden die Anfangswerte $P^{l}_{l}(x)$ und $P^{l}_{l+1}(x)$ benötigt.
 Für die $m$-Rekursion \eqref{legendre:recurrence-m} wird mittels Anfangswert $P^{l}_{l}(x)$ die beiden weiteren Anfangswerte $P^{l}_{l+1}(x)$ und $P^{l+1}_{l+1}(x)$ berechnet.
-Diese Anfangswerte lassen sich mittels nachfolgenden Formeln berechnen:
+Diese Anfangswerte lassen sich mittels den Formeln
 % Anfangswerte
 \begin{equation}
 \begin{aligned}
 P^{l}_{l}(x)
-&=(-1)(2l-1)!!(1-x^2)^{l/2}\\
+&=(-1)(2l-1)!!(1-x^2)^{l/2},\\
 % Anfangswert P^{l}_{l+1}
 P^{l}_{l+1}(x)
-&=x(2l+1)P^{l}_{l}(x)\\
+&=x(2l+1)P^{l}_{l}(x),\\
 % Anfangswert P^{l+1}_{l+1}
 P^{l+1}_{l+1}(x)
 &=-(2l+1)\sqrt{1-x^2}P^{l}_{l}(x)
 \label{legendre:anfangswerte}
 \end{aligned}
 \end{equation}
+berechnen, die sich aus der geschlossenen Form \eqref{legendre:geschlosseneform} herleiten lassen.
 Bei der Berechnung des Anfangswertes $P^{l}_{l}(x)$ gilt es zu beachten, dass $!!$ für die Doppelfakultät steht und nicht für die Fakultät der Fakultät.
 Im Gegensatz zur einfachen Fakultät werden bei der Doppelfakultät nur die geraden, respektive ungeraden Faktoren zwischen $1$ und der Zahl selber berücksichtigt.
 Berechnen lässt sich die Doppelfakultät wie folgt:
@@ -39,7 +40,7 @@ k!! =
 \label{legendre:doppelfakultaet}
 \end{equation}
 
-In der Einleitung (\ref{legendre:section:einleitung}) wurde bereits erwähnt, dass die Rekursionsformeln weniger Rechenaufwand benötigen als die Formel für die geschlossene Form \eqref{legendre:geschlosseneform}.
+In der Einleitung \ref{legendre:section:einleitung} wurde bereits erwähnt, dass die Rekursionsformeln weniger Rechenaufwand benötigen als die Formel für die geschlossene Form \eqref{legendre:geschlosseneform}.
 Dies gilt auch noch unter Einbezug dieser Anfangswerte.
 
 \subsection{$m$-Rekursion
@@ -52,7 +53,7 @@ Daraus entsteht die neue Formel für die $m$-Rekursion:
 \begin{equation}
 P^{m-1}_{l}(x)
 = \left[ \frac{2mxP^{m}_{l}(x)}{- \sqrt{1-x^2}}-P^{m+1}_{l} \right]
-\frac{1}{(l+m)(l-m+1)}
+\frac{1}{(l+m)(l-m+1)} .
 \label{legendre:recurrence-m-neu}
 \end{equation}
 Wird die umgeformte Rekursionsgleichung \eqref{legendre:recurrence-m-neu} auf numerische Instabilität untersucht, fällt sofort der Term $\sqrt{1-x^2}$ auf.
@@ -81,7 +82,7 @@ Dies führt zur neuen Formel für die $l$-Rekursion:
 % umgeformte Rekursionsformel in l-Richtung
 \begin{equation}
 P^{m}_{l+1}(x)
-= \frac{(2l+1)xP^{m}_{l}(x)-(l+m)P^{m}_{l-1}(x)}{(l-m+1)} 
+= \frac{(2l+1)xP^{m}_{l}(x)-(l+m)P^{m}_{l-1}(x)}{(l-m+1)} .
 \label{legendre:recurrence-l-neu}
 \end{equation}
 Im Gegensatz zur $m$-Rekursion ist der Term $\sqrt{1-x^2}$ in der Formel für die $l$-Rekursion \eqref{legendre:recurrence-l-neu} nicht vorhanden.
@@ -107,9 +108,9 @@ Dies spricht dafür, die $l$-Rekursion zu verwenden.
 Ein weiterer Punkt, der für die $l$-Rekursion spricht, ist, dass die GNU Scientific Library \cite{legendre:gsl} diese Implementation, mit den gleichen Anfangswerten wie in Abschnitt \ref{legendre:subsection:anfangswerte} beschrieben, verwendet.
 Die Implementation der GNU Scientific Library wird allgemein als numerisch stabil angesehen.
 % Plot in l-Richtung
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \centering
-\includegraphics[width=1.0\linewidth]{papers/legendre/plots/plot_diff_l_m}
-\caption{Differenz zweier zugeordneten Legendrepolynome mit Grad 50 und Ordnung 3, einmal berechnet mittels \texorpdfstring{$l$}{l}-Rekursion und einmal berechnet mittels \texorpdfstring{$m$}{m}-Rekursion.}
+\includegraphics[width=1.0\linewidth]{papers/legendre/plots/plot_diff_l_m_small.png}
+\caption{Differenz zweier zugeordneten Legendrepolynome mit \texorpdfstring{$l=50$}{l=50} und \texorpdfstring{$m=3$}{m=3}, einmal berechnet mittels \texorpdfstring{$l$}{l}-Rekursion und einmal berechnet mittels \texorpdfstring{$m$}{m}-Rekursion.}
 \label{legendre:fig:plot-diff}
 \end{figure}

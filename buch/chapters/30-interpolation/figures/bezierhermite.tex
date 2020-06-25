@@ -1,0 +1,97 @@
+%
+% bezierhermite.tex -- Hermite-Interpolationspolynome mit Bezier-Kurven
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{0.99}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\kurve#1#2#3#4{
+	\draw[color=blue,line width=1.4pt]
+		plot[domain=0:1,samples=100]
+			({6*((1-\x)*(1-\x)*(1-\x)*0+3*(1-\x)*(1-\x)*\x*(1/3)+3*(1-\x)*\x*\x*(2/3)+\x*\x*\x*1)},{6*((1-\x)*(1-\x)*(1-\x)*(#1)+3*(1-\x)*(1-\x)*\x*(#1+#3/3)+3*(1-\x)*\x*\x*(#2-#4/3)+\x*\x*\x*(#2))});
+}
+
+\begin{scope}
+\coordinate (A) at (0,6);
+\coordinate (B) at (2,6);
+\coordinate (C) at (4,0);
+\coordinate (D) at (6,0);
+\draw[->] (-0.14,0) -- (6.5,0) coordinate[label={$x$}];
+\draw[->] (0,-0.14) -- (0,6.5) coordinate[label={right:$y$}];
+\draw (6,-0.14) -- (6,0.14);
+\node at (6,-0.14) [below] {$1$};
+\draw (-0.14,6) -- (0.14,6);
+\node at (-0.14,6) [left] {$1$};
+\draw[color=gray!40,line width=1.4pt] (A) -- (B) -- (C) -- (D);
+\kurve{1}{0}{0}{0}
+\fill[color=red] (A) circle[radius=0.08];
+\fill[color=red] (B) circle[radius=0.08];
+\fill[color=red] (C) circle[radius=0.08];
+\fill[color=red] (D) circle[radius=0.08];
+\end{scope}
+
+\begin{scope}[xshift=7cm]
+\coordinate (A) at (0,0);
+\coordinate (B) at (2,0);
+\coordinate (C) at (4,6);
+\coordinate (D) at (6,6);
+\draw[->] (-0.14,0) -- (6.5,0) coordinate[label={$x$}];
+\draw[->] (0,-0.14) -- (0,6.5) coordinate[label={right:$y$}];
+\draw (6,-0.14) -- (6,0.14);
+\node at (6,-0.14) [below] {$1$};
+\draw (-0.14,6) -- (0.14,6);
+\node at (-0.14,6) [left] {$1$};
+\draw[color=gray!40,line width=1.4pt] (A) -- (B) -- (C) -- (D);
+\kurve{0}{1}{0}{0}
+\fill[color=red] (A) circle[radius=0.08];
+\fill[color=red] (B) circle[radius=0.08];
+\fill[color=red] (C) circle[radius=0.08];
+\fill[color=red] (D) circle[radius=0.08];
+\end{scope}
+
+\begin{scope}[yshift=-3cm]
+\coordinate (A) at (0,0);
+\coordinate (B) at (2,2);
+\coordinate (C) at (4,0);
+\coordinate (D) at (6,0);
+\draw[->] (-0.14,0) -- (6.5,0) coordinate[label={$x$}];
+\draw[->] (0,-0.14) -- (0,2.5) coordinate[label={right:$y$}];
+\draw (6,-0.14) -- (6,0.14);
+\node at (6,-0.14) [below] {$1$};
+\draw[color=gray!40,line width=1.4pt] (A) -- (B) -- (C) -- (D);
+\kurve{0}{0}{1}{0}
+\fill[color=red] (A) circle[radius=0.08];
+\fill[color=red] (B) circle[radius=0.08];
+\fill[color=red] (C) circle[radius=0.08];
+\fill[color=red] (D) circle[radius=0.08];
+\end{scope}
+
+\begin{scope}[xshift=7cm,yshift=-3cm]
+\coordinate (A) at (0,0);
+\coordinate (B) at (2,0);
+\coordinate (C) at (4,-2);
+\coordinate (D) at (6,0);
+\draw[->] (-0.14,0) -- (6.5,0) coordinate[label={$x$}];
+\draw[->] (0,-0.14) -- (0,2.5) coordinate[label={right:$y$}];
+\draw (6,-0.14) -- (6,0.14);
+\node at (6,0.14) [above] {$1$};
+\draw[color=gray!40,line width=1.4pt] (A) -- (B) -- (C) -- (D);
+\kurve{0}{0}{0}{1}
+\fill[color=red] (A) circle[radius=0.08];
+\fill[color=red] (B) circle[radius=0.08];
+\fill[color=red] (C) circle[radius=0.08];
+\fill[color=red] (D) circle[radius=0.08];
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

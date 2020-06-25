@@ -1,0 +1,64 @@
+%
+% tikztemplate.tex -- template for standalon tikz images
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\sx{1}
+\def\sy{3}
+
+\input{cm.tex}
+
+\begin{scope}
+\clip (0,0) rectangle (13.5,6);
+
+%\draw[color=red] \floatthousand;
+%\draw[color=red] \floattenthousand;
+%\draw[color=red] \floathundredthousand;
+
+%\draw[color=red] \doublethousand;
+%\draw[color=red] \doubletenthousand;
+%\draw[color=red] \doublehundredthousand;
+
+\draw[color=red,line width=1.4pt] \longdoublehundred;
+\draw[color=red,line width=1.4pt] \longdoublethousand;
+\draw[color=red,line width=1.4pt] \longdoubletenthousand;
+\draw[color=red,line width=1.4pt] \longdoublehundredthousand;
+
+\end{scope}
+
+\draw[color=blue,line width=1.4pt] plot[domain=0:13.5,samples=100]
+	({\x},{3*exp(-\x)});
+
+\draw[->] (-0.1,0) -- (13.7,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,6.5) coordinate[label={right:$y$}];
+
+\foreach \x in {1,...,13}{
+	\draw (\x,-0.1) -- (\x,0.1);
+	\node at (\x,-0.1) [below] {$\x$};
+}
+
+\draw (-0.1,\sy) -- (0.1,\sy);
+\draw (-0.1,{2*\sy}) -- (0.1,{2*\sy});
+\node at (-0.1,{1*\sy}) [left] {$1$};
+\node at (-0.1,{2*\sy}) [left] {$2$};
+\node at (-0.1,-0.1) [below left] {$0$};
+
+\node at (6.5,{1.6*\sy}) [left] {$h=10^{-2}$};
+\node at (8.8,{1.6*\sy}) [left] {$h=10^{-3}$};
+\node at (11.1,{1.6*\sy}) [left] {$h=10^{-4}$};
+\node at (13.4,{1.6*\sy}) [left] {$h=10^{-5}$};
+
+\end{tikzpicture}
+\end{document}
+

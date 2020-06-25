@@ -1,0 +1,32 @@
+Beschreiben Sie den Viertel des Einheitskreises im ersten Quadranten
+als eine Bézier-Kurve mit Kontrollpunkten 
+\[
+(1,0),\quad (1,y_0), \quad (x_0,1) \quad\text{und}\quad (0,1).
+\]
+Wählen Sie $x$ und $y$ so, dass die Abweichung vom Einheitskreis
+minimal wird.
+
+\begin{loesung}
+Die Bézier-Kurve hat die Koordinaten
+\begin{align*}
+x(t)
+&=
+(1-t)^3\cdot1
++
+3(1-t)^2t\cdot1
++
+3(1-t)t^2\cdot x_0
++
+t^3\cdot 0
+\\
+y(t)
+&=
+(1-t)^3\cdot0
++
+3(1-t)^2t\cdot y_0
++
+3(1-t)t^2\cdot 1
++
+t^3\cdot 1
+\end{align*}
+\end{loesung}

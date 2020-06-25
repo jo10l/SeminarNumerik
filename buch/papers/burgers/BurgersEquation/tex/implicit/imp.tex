@@ -1,0 +1,271 @@
+\documentclass[border=10pt]{article}
+\usepackage[left=25mm,right=25mm,top=25mm,bottom=25mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{lipsum}
+\usepackage{amscd}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{textcomp}
+\usepackage{txfonts}
+\usepackage[all]{xy}
+\usepackage{paralist}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{slashed}
+\usepackage{pdfpages}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{color}
+
+\begin{document}
+
+\subsubsection*{Implicit leap frog approach with solver}
+
+
+Mit drei Zeitschritten
+
+\begin{equation}
+ \left|  \begin{array}{lcl}
+   \frac{u^{n+1}_0 - u^{n}_0}{dt} + u^{n}_0  \frac{u^{n+1}_1 - u^{n+1}_0}{dx} & = & 0 \\[6pt]
+   \frac{u^{n+1}_1 - u^{n}_1}{dt} + u^{n}_1  \frac{u^{n+1}_2 - u^{n+1}_0}{2\, dx}  & = & 0 \\[6pt]
+   \frac{u^{n+1}_2 - u^{n}_2}{dt} + u^{n}_2  \frac{u^{n+1}_2 - u^{n+1}_1}{dx}  & = & 0  \end{array} \right|
+\end{equation}
+
+\begin{equation}
+  \left[  \begin{array}{lcl}
+  u^{n+1}_0 & = & \frac{2 dx u^{n}_{0} \left(- dt u^{n}_{1} + dt u^{n}_{2} + dx\right)}{dt^{2} u^{n}_{0} u^{n}_{1} - 2 dt^{2} u^{n}_{0} u^{n}_{2} + dt^{2} u^{n}_{1} u^{n}_{2} - 2 dt dx u^{n}_{0} + 2 dt dx u^{n}_{2} + 2 dx^{2}}\\[9pt]
+
+  u^{n+1}_1 & = & \frac{dx u^{n}_{1} \left(- dt u^{n}_{0} + dt u^{n}_{2} + 2 dx\right)}{dt^{2} u^{n}_{0} u^{n}_{1} - 2 dt^{2} u^{n}_{0} u^{n}_{2} + dt^{2} u^{n}_{1} u^{n}_{2} - 2 dt dx u^{n}_{0} + 2 dt dx u^{n}_{2} + 2 dx^{2}} \\[9pt]
+
+  u^{n+1}_2 & = & \frac{2 dx u^{n}_{2} \left(- dt u^{n}_{0} + dt u^{n}_{1} + dx\right)}{dt^{2} u^{n}_{0} u^{n}_{1} - 2 dt^{2} u^{n}_{0} u^{n}_{2} + dt^{2} u^{n}_{1} u^{n}_{2} - 2 dt dx u^{n}_{0} + 2 dt dx u^{n}_{2} + 2 dx^{2}}
+   \end{array} \right]
+\end{equation}
+
+\begin{equation}
+  \left[  \begin{array}{lcl}
+  u^{n+1}_0 & = & \frac{2 u^{n}_0 \left(2 dt^{2} u^{n}_1 u^{n}_2 + dt dx u^{n}_1 + dt dx u^{n}_2 + dx^{2}\right)}{dt^{2} u^{n}_0 u^{n}_1 - 2 dt^{2} u^{n}_0 u^{n}_2 + dt^{2} u^{n}_1 u^{n}_2 - 2 dt dx u^{n}_0 + 2 dt dx u^{n}_2 + 2 dx^{2}}\\[9pt]
+  u^{n+1}_1 & = &
+- \frac{u^{n}_1 \left(4 dt^{2} u^{n}_0 u^{n}_2 + 3 dt dx u^{n}_0 - 3 dt dx u^{n}_2 - 2 dx^{2}\right)}{dt^{2} u^{n}_0 u^{n}_1 - 2 dt^{2} u^{n}_0 u^{n}_2 + dt^{2} u^{n}_1 u^{n}_2 - 2 dt dx u^{n}_0 + 2 dt dx u^{n}_2 + 2 dx^{2}}\\[9pt]
+  u^{n+1}_2 & = &
+\frac{2 u^{n}_2 \left(2 dt^{2} u^{n}_0 u^{n}_1 - dt dx u^{n}_0 - dt dx u^{n}_1 + dx^{2}\right)}{dt^{2} u^{n}_0 u^{n}_1 - 2 dt^{2} u^{n}_0 u^{n}_2 + dt^{2} u^{n}_1 u^{n}_2 - 2 dt dx u^{n}_0 + 2 dt dx u^{n}_2 + 2 dx^{2}}
+  \end{array} \right]
+\end{equation}
+
+Mit Vier Zeitschritten
+
+
+\begin{equation}
+ \left|  \begin{array}{lcl}
+    \frac{u^{n+1}_0 - u^{n}_0}{dt} + u^{n}_0  \frac{u^{n+1}_1 - u^{n+1}_0}{dx}  & = & 0 \\[6pt]
+    \frac{u^{n+1}_1 - u^{n}_1}{dt} + u^{n}_1  \frac{u^{n+1}_2 - u^{n+1}_0}{2\, dx} & = & 0  \\[6pt]
+    \frac{u^{n+1}_2 - u^{n}_2}{dt} + u^{n}_2  \frac{u^{n+1}_3 - u^{n+1}_1}{2\, dx}  & = & 0 \\[6pt]
+    \frac{u^{n+1}_3 - u^{n}_3}{dt} + u^{n}_3  \frac{u^{n+1}_3 - u^{n+1}_2}{dx}  & = & 0  \end{array} \right|
+\end{equation}
+
+\begin{equation}
+  \left[  \begin{array}{lcl}
+  u^{n+1}_0 & = & \frac{dx u^{n}_{0} \left(dt^{3} u^{n}_{1} u^{n}_{2} u^{n}_{3} - 2 dt^{2} dx u^{n}_{2} u^{n}_{3} - 3 dt^{2} u^{n}_{1} u^{n}_{2} \left(dt u^{n}_{3} + dx\right) + 2 dt u^{n}_{1} \left(dt^{2} u^{n}_{2} u^{n}_{3} + 2 dx \left(dt u^{n}_{3} + dx\right)\right) - 4 dx^{2} \left(dt u^{n}_{3} + dx\right)\right)}{- dt^{4} u^{n}_{0} u^{n}_{1} u^{n}_{2} u^{n}_{3} - 2 dt^{2} dx u^{n}_{0} u^{n}_{1} \left(dt u^{n}_{3} + dx\right) + 2 dt^{2} dx u^{n}_{2} u^{n}_{3} \left(dt u^{n}_{0} - dx\right) + dt^{2} u^{n}_{1} u^{n}_{2} \left(dt u^{n}_{0} - dx\right) \left(dt u^{n}_{3} + dx\right) + 4 dx^{2} \left(dt u^{n}_{0} - dx\right) \left(dt u^{n}_{3} + dx\right)}\\[9pt]
+
+  u^{n+1}_1 & = & \frac{dx u^{n}_{1} \left(dt^{2} u^{n}_{2} u^{n}_{3} \left(dt u^{n}_{0} - dx\right) - dt u^{n}_{0} \left(dt^{2} u^{n}_{2} u^{n}_{3} + 2 dx \left(dt u^{n}_{3} + dx\right)\right) - 2 dt u^{n}_{2} \left(dt u^{n}_{0} - dx\right) \left(dt u^{n}_{3} + dx\right) + 2 \left(dt u^{n}_{0} - dx\right) \left(dt^{2} u^{n}_{2} u^{n}_{3} + 2 dx \left(dt u^{n}_{3} + dx\right)\right)\right)}{- dt^{4} u^{n}_{0} u^{n}_{1} u^{n}_{2} u^{n}_{3} - 2 dt^{2} dx u^{n}_{0} u^{n}_{1} \left(dt u^{n}_{3} + dx\right) + 2 dt^{2} dx u^{n}_{2} u^{n}_{3} \left(dt u^{n}_{0} - dx\right) + dt^{2} u^{n}_{1} u^{n}_{2} \left(dt u^{n}_{0} - dx\right) \left(dt u^{n}_{3} + dx\right) + 4 dx^{2} \left(dt u^{n}_{0} - dx\right) \left(dt u^{n}_{3} + dx\right)} \\[9pt]
+
+  u^{n+1}_2 & = & \frac{dx u^{n}_{2} \left(- dt^{2} u^{n}_{0} u^{n}_{1} \left(dt u^{n}_{3} + dx\right) + 2 dt u^{n}_{1} \left(dt u^{n}_{0} - dx\right) \left(dt u^{n}_{3} + dx\right) + dt u^{n}_{3} \left(dt^{2} u^{n}_{0} u^{n}_{1} - 2 dx \left(dt u^{n}_{0} - dx\right)\right) - 2 \left(dt u^{n}_{3} + dx\right) \left(dt^{2} u^{n}_{0} u^{n}_{1} - 2 dx \left(dt u^{n}_{0} - dx\right)\right)\right)}{- dt^{4} u^{n}_{0} u^{n}_{1} u^{n}_{2} u^{n}_{3} - 2 dt^{2} dx u^{n}_{0} u^{n}_{1} \left(dt u^{n}_{3} + dx\right) + 2 dt^{2} dx u^{n}_{2} u^{n}_{3} \left(dt u^{n}_{0} - dx\right) + dt^{2} u^{n}_{1} u^{n}_{2} \left(dt u^{n}_{0} - dx\right) \left(dt u^{n}_{3} + dx\right) + 4 dx^{2} \left(dt u^{n}_{0} - dx\right) \left(dt u^{n}_{3} + dx\right)} \\[9pt]
+
+  u^{n+1}_3 & = & \frac{dx u^{n}_{3} \left(- dt^{3} u^{n}_{0} u^{n}_{1} u^{n}_{2} - 2 dt^{2} dx u^{n}_{0} u^{n}_{1} + 3 dt^{2} u^{n}_{1} u^{n}_{2} \left(dt u^{n}_{0} - dx\right) - 2 dt u^{n}_{2} \left(dt^{2} u^{n}_{0} u^{n}_{1} - 2 dx \left(dt u^{n}_{0} - dx\right)\right) + 4 dx^{2} \left(dt u^{n}_{0} - dx\right)\right)}{- dt^{4} u^{n}_{0} u^{n}_{1} u^{n}_{2} u^{n}_{3} - 2 dt^{2} dx u^{n}_{0} u^{n}_{1} \left(dt u^{n}_{3} + dx\right) + 2 dt^{2} dx u^{n}_{2} u^{n}_{3} \left(dt u^{n}_{0} - dx\right) + dt^{2} u^{n}_{1} u^{n}_{2} \left(dt u^{n}_{0} - dx\right) \left(dt u^{n}_{3} + dx\right) + 4 dx^{2} \left(dt u^{n}_{0} - dx\right) \left(dt u^{n}_{3} + dx\right)}
+   \end{array} \right]
+\end{equation}
+
+
+
+\subsubsection*{Implicit leap frog analytical approach}
+
+\begin{equation}
+    \frac{u_{i}^{n+1}-u_{i}^{n}}{dt} + u_{i}^{n} \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx} = 0
+\end{equation}
+\begin{equation}
+  \frac{u_{i}^{n+1}-u_{i}^{n}}{dt} = -u_{i}^{n} \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx}
+\end{equation}
+\begin{equation}
+  u_{i}^{n+1}-u_{i}^{n} = -u_{i}^{n} \, dt \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx}
+\end{equation}
+\begin{equation}
+  u_{i}^{n+1} = -u_{i}^{n} \, dt \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx} + u_{i}^{n}
+\end{equation}
+\begin{equation}
+2 \, dx \,  u_{i}^{n+1} = -u_{i}^{n} \, dt \, \left(u_{i+1}^{n+1} - u_{i-1}^{n+1} \right) + 2 \, dx \, u_{i}^{n}
+\end{equation}
+\begin{equation}
+  2 \, dx \,  u_{i}^{n+1} + u_{i}^{n} \, dt \, u_{i+1}^{n+1} -u_{i}^{n} \, dt \, u_{i-1}^{n+1} =  2 \, dx \, u_{i}^{n}
+\end{equation}
+
+Vektorschreibweise:
+
+\begin{equation}
+ -u_{i}^{n} \, dt \, u_{i-1}^{n+1} +  2 \, dx \,  u_{i}^{n+1} + u_{i}^{n} \, dt \, u_{i+1}^{n+1}=  2 \, dx \, u_{i}^{n}
+\end{equation}
+
+
+
+\begin{equation}
+\left[{\begin{matrix}
+{dx- u_{1}^{n}\, dt}&{ u_{1}^{n} \, dt}&{0}&{}&{0}\\[5pt]
+{-u_{2}^{n} \, dt}&{ 2 \, dx}&{ u_{2}^{n} \, dt}&{}&{0}\\[5pt]
+{0}&{-u_{3}^{n} \, dt}&{ 2 \, dx}&\ddots &{0}\\[5pt]
+{0}&{0}&\ddots &\ddots &{ u_{M-1}^{n} \, dt}\\[5pt]
+{0}&{0}&{}&{-u_{M}^{n} \, dt}&{dx + u_{1}^{M}\, dt}
+\end{matrix}}
+\right]\left[{\begin{matrix}
+{ u_{1}^{n+1}}\\[5pt]
+{ u_{2}^{n+1}}\\[5pt]
+{ u_{3}^{n+1}}\\[5pt]
+\vdots \\[5pt]
+{ u_{M}^{n+1}}
+\end{matrix}}\right]
+=\left[{\begin{matrix}
+{dx \, u_{1}^{n}}\\[5pt]
+{ 2 \, dx \, u_{2}^{n}}\\[5pt]
+{ 2 \, dx \, u_{3}^{n}}\\[5pt]
+\vdots \\[5pt]
+{dx \, u_{M}^{n}}
+\end{matrix}}\right]
+  \end{equation}
+
+  \begin{equation}
+    a_{i}x_{{i-1}}+b_{i}x_{i}+c_{i}x_{{i+1}}=d_{i}
+  \end{equation}
+
+
+  \begin{equation}
+    \begin{bmatrix}{b_{1}}&{c_{1}}&{}&{}&{0}\\
+      {a_{2}}&{b_{2}}&{c_{2}}&{}&{}\\
+      {}&{a_{3}}&{b_{3}}&\ddots &{}\\
+      {}&{}&\ddots &\ddots &{c_{n-1}}\\
+      {0}&{}&{}&{a_{n}}&{b_{n}}\\
+      \end{bmatrix}
+      \begin{bmatrix}{x_{1}}\\
+      {x_{2}}\\{x_{3}}\\\vdots \\
+      {x_{n}}\\
+      \end{bmatrix}
+      =
+      \begin{bmatrix}{d_{1}}\\
+      {d_{2}}\\{d_{3}}\\
+      \vdots \\{d_{n}}\\
+    \end{bmatrix}
+  \end{equation}
+
+\begin{algorithm}\caption{Tridiagonal matrix algorithm (Thomas algorithm)}\label{TDMA}
+  \setlength{\lineskip}{7pt}
+  \begin{algorithmic}[1]
+    \Function{Thomas}{$\textbf{a}, \textbf{b}, \textbf{c}, \textbf{d}$}
+      \Comment{Vectors}
+      \State $\hat c_1 \gets$ $ \dfrac{c_1}{b_1}$
+      \State $\hat d_1 \gets \dfrac{d_1}{b_1}$
+      \For{$i = 2,3,\dots,n-1$}
+      \Comment{Forward sweep}
+        \State $\hat c_i \gets \dfrac{c_i}{b_i-a_i \, \hat c_{i-1}}$
+        \State $\hat d_i \gets \dfrac{d_i - a_i \, \hat d_{i-1}}{b_i-a_i \, \hat c_{i-1}}$
+      \EndFor
+      \State $x_n \gets \hat d_n$
+      \For{$i = n-1,n-2,\dots,1$}
+      \Comment{Backwards substitution}
+        \State $x_i \gets \hat d_i - \hat c_i \, x_{i+1}$
+      \EndFor
+      \State \textbf{return} $\textbf{x}$
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+\end{document}
+
+%
+% \begin{equation}
+%   2 \, dx \,  u_{j+1} + u_{j} \, dt \,   \textbf{A}\,u_{j+1} -u_{j} \, dt \,  \textbf{B}\,u_{j+1} =  2 \, dx \, u_{j}
+% \end{equation}
+%
+% \begin{equation}
+% \left(2\,dx\,\textbf{E} +   \textbf{A}\,u_{j}\,dt -   \textbf{B}\,u_{j}\,dt  \right)  u_{j+1}  =  2 \, dx \, u_{j}
+% \end{equation}
+%
+% \begin{equation}
+%     u_{j+1} = \left(2\,dx\,\textbf{E} +   \textbf{A}\,u_{j}\,dt -   \textbf{B}\,u_{j}\,dt  \right)^{-1}  2 \, dx \, u_{j}
+% \end{equation}
+%
+% \begin{equation}
+%   \textbf{A} =
+%   \begin{bmatrix}
+%     0  & 1 & 0 & \dots & 0 & 0 & 0  \\
+%     0  & 0 & 1 & \dots & 0 & 0 & 0 \\
+%     0  & 0 & 0 & \dots & 0 & 0 & 0 \\
+%     0  & 0 & 0 & \dots & 0 & 0 & 0 \\
+%     \vdots & \vdots & \vdots& \ddots&  \vdots& \vdots  & \vdots\\
+%     0 & 0 & 0 & \dots & 0 & 0 & 1 \\
+%     0 & 0 & 0 & \dots & 0 & 0 & 0
+%   \end{bmatrix}
+% \end{equation}
+%
+% \begin{equation}
+%     \textbf{B} =
+%     \begin{bmatrix}
+%         0  & 0 & 0 & \dots & 0 & 0 & 0  \\
+%         1  & 0 & 0 & \dots & 0 & 0 & 0 \\
+%         0  & 1 & 0 & \dots & 0 & 0 & 0 \\
+%         0  & 0 & 1 & \dots & 0 & 0 & 0 \\
+%         \vdots & \vdots & \vdots& \ddots&  \vdots& \vdots  & \vdots\\
+%         0 & 0 & 0 & \dots & 1 & 0 & 0 \\
+%         0 & 0 & 0 & \dots & 0 & 1 & 0
+%     \end{bmatrix}
+% \end{equation}
+
+
+
+%
+% \subsubsection*{Implicit leapfrog quadratic}
+%
+% \begin{equation}
+%     \frac{u_{i}^{n+1}-u_{i}^{n}}{dt} + u_{i}^{n+1} \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx} = 0
+% \end{equation}
+% \begin{equation}
+%   \frac{u_{i}^{n+1}-u_{i}^{n}}{dt} = -u_{i}^{n+1} \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx}
+% \end{equation}
+% \begin{equation}
+%   u_{i}^{n+1}-u_{i}^{n} = -u_{i}^{n+1} \, dt \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx}
+% \end{equation}
+% \begin{equation}
+%   u_{i}^{n+1} = -u_{i}^{n+1} \, dt \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx} + u_{i}^{n}
+% \end{equation}
+% \begin{equation}
+% 2 \, dx \,  u_{i}^{n+1} = -u_{i}^{n+1} \, dt \, \left(u_{i+1}^{n+1} - u_{i-1}^{n+1} \right) + 2 \, dx \, u_{i}^{n}
+% \end{equation}
+% \begin{equation}
+%   2 \, dx \,  u_{i}^{n+1} + u_{i}^{n+1} \, dt \, u_{i+1}^{n+1} -u_{i}^{n+1} \, dt \, u_{i-1}^{n+1} =  2 \, dx \, u_{i}^{n}
+% \end{equation}
+%
+% \begin{equation}
+%   2 \, dx \,  u_{j+1} + u_{j+1} \, dt \,   \textbf{A}\,u_{j+1} -u_{j+1} \, dt \,  \textbf{B}\,u_{j+1} =  2 \, dx \, u_{j}
+% \end{equation}
+%
+% \begin{equation}
+%   2 \, dx \,  u_{j+1} +  \textbf{A}\, u_{j+1}^2 \, dt    -  \textbf{B} \, u_{j+1}^2 \, dt =  2 \, dx \, u_{j}
+% \end{equation}
+%
+% \begin{equation}
+% \left (  \textbf{A}\,  dt -    \textbf{B} \, dt \right) u_{j+1}^2  + 2 \, dx \,  u_{j+1} -  2 \, dx \, u_{j} =  0
+% \end{equation}
+%
+% \begin{equation}
+%   u_{j+1} = \dfrac{-2 \, dx \pm \sqrt{(2 \, dx)^2 - 4\left (  \textbf{A}\,  dt -    \textbf{B} \, dt \right)2 \, dx \, u_{j}}}{2\left (  \textbf{A}\,  dt -    \textbf{B} \, dt \right)}
+% \end{equation}
+%
+% \end{document}
