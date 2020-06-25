@@ -1,0 +1,113 @@
+%
+% poisson.tex -- template for standalon tikz images
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\fill[color=red!10] (1,0.2)
+	-- (9,0.2) arc (-90:0:0.8)
+	-- (9.8,9) arc (0:90:0.8)
+	-- (1,9.8) arc (90:180:0.8)
+	-- (0.2,1) arc (180:270:0.8)
+	-- cycle;
+
+\draw[->] (-0.1,0) -- (10.3,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,10.3) coordinate[label={left:$y$}];
+\draw (10,0) -- (10,10) -- (0,10);
+
+\foreach \x in {1,...,9}{
+	\foreach \y in {1,...,9}{
+		\fill[color=white] (\x,\y) circle[radius=0.1];
+		\fill[color=red] (\x,\y) circle[radius=0.08];
+	}
+}
+
+\foreach \x in {1,...,9}{
+	\fill[color=white] (\x,0) circle[radius=0.1];
+	\fill[color=blue] (\x,0) circle[radius=0.08];
+	\fill[color=white] (\x,10) circle[radius=0.1];
+	\fill[color=blue] (\x,10) circle[radius=0.08];
+}
+\foreach \y in {1,...,9}{
+	\fill[color=white] (0,\y) circle[radius=0.1];
+	\fill[color=blue] (0,\y) circle[radius=0.08];
+	\fill[color=white] (10,\y) circle[radius=0.1];
+	\fill[color=blue] (10,\y) circle[radius=0.08];
+}
+\node[color=blue] at (1,0) [below] {$\mathstrut u_{10}$};
+\node[color=blue] at (2,0) [below] {$\mathstrut u_{20}$};
+\node[color=blue] at (3,0) [below] {$\mathstrut u_{30}$};
+\node[color=blue] at (4,0) [below] {$\mathstrut u_{40}$};
+\node[color=blue] at (5,0) [below] {$\mathstrut u_{50}$};
+\node[color=blue] at (6.5,0) [below] {$\mathstrut \cdots$};
+\node[color=blue] at (8,0) [below] {$\mathstrut u_{N-2,0}$};
+\node[color=blue] at (9,0) [below] {$\mathstrut u_{N-1,0}$};
+
+\node[color=blue] at (1,10) [above] {$\mathstrut u_{1N}$};
+\node[color=blue] at (2,10) [above] {$\mathstrut u_{2N}$};
+\node[color=blue] at (3,10) [above] {$\mathstrut u_{3N}$};
+\node[color=blue] at (4,10) [above] {$\mathstrut u_{4N}$};
+\node[color=blue] at (5,10) [above] {$\mathstrut u_{5N}$};
+\node[color=blue] at (6.5,10) [above] {$\mathstrut \cdots$};
+\node[color=blue] at (8,10) [above] {$\mathstrut u_{N-2,N}$};
+\node[color=blue] at (9,10) [above] {$\mathstrut u_{N-1,N}$};
+
+\node[color=blue] at (10,1) [right] {$\mathstrut u_{N1}$};
+\node[color=blue] at (10,2) [right] {$\mathstrut u_{N2}$};
+\node[color=blue] at (10,3) [right] {$\mathstrut u_{N3}$};
+\node[color=blue] at (10,4) [right] {$\mathstrut u_{N4}$};
+\node[color=blue] at (10,5) [right] {$\mathstrut u_{N5}$};
+\node[color=blue] at (10,6) [right] {$\mathstrut u_{N6}$};
+\node[color=blue] at (10,7.09) [right] {$\mathstrut\quad \vdots$};
+\node[color=blue] at (10,8) [right] {$\mathstrut u_{N,N-2}$};
+\node[color=blue] at (10,9) [right] {$\mathstrut u_{N,N-1}$};
+
+\node[color=blue] at (0,1) [left] {$\mathstrut u_{01}$};
+\node[color=blue] at (0,2) [left] {$\mathstrut u_{02}$};
+\node[color=blue] at (0,3) [left] {$\mathstrut u_{03}$};
+\node[color=blue] at (0,4) [left] {$\mathstrut u_{04}$};
+\node[color=blue] at (0,5) [left] {$\mathstrut u_{05}$};
+\node[color=blue] at (0,6) [left] {$\mathstrut u_{06}$};
+\node[color=blue] at (0,7.09) [left] {$\mathstrut \vdots\quad$};
+\node[color=blue] at (0,8) [left] {$\mathstrut u_{0,N-2}$};
+\node[color=blue] at (0,9) [left] {$\mathstrut u_{0,N-1}$};
+
+\foreach \x in {1,...,5}{
+	\foreach \y in {1,...,6}{
+		\node[color=red] at (\x,\y)
+			[above] {$\mathstrut u_{\x\y}$};
+	}
+	\node[color=red] at (\x,8) [above] {$\mathstrut u_{\x,N-2}$};
+	\node[color=red] at (\x,9) [above] {$\mathstrut u_{\x,N-1}$};
+	\node[color=red] at (\x,7.59) {$\mathstrut\vdots$};
+}
+\foreach \y in {1,...,6}{
+	\node[color=red] at (8,\y) [above] {$\mathstrut u_{N-2,\y}$};
+	\node[color=red] at (9,\y) [above] {$\mathstrut u_{N-1,\y}$};
+}
+
+\node[color=red] at (7.8,8) [above] {$\mathstrut u_{N-2,N-2}$};
+\node[color=red] at (7.8,9) [above] {$\mathstrut u_{N-2,N-1}$};
+\node[color=red] at (9.2,8) [above] {$\mathstrut u_{N-1,N-2}$};
+\node[color=red] at (9.2,9) [above] {$\mathstrut u_{N-1,N-1}$};
+
+\node[color=red] at (8,7.59) {$\mathstrut\vdots$};
+\node[color=red] at (9,7.59) {$\mathstrut\vdots$};
+
+\foreach \y in {1,...,6,8,9}{
+	\node[color=red] at (6.5,\y) [above] {$\mathstrut \cdots$};
+}
+
+\end{tikzpicture}
+\end{document}
+

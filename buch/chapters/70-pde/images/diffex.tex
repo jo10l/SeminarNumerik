@@ -1,0 +1,128 @@
+%
+% diffex.tex -- template for standalon tikz images
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\xnull{0.5}
+\def\schritt{2.2}
+
+\pgfmathparse{\xnull-\schritt}
+\xdef\xlinks{\pgfmathresult}
+
+\pgfmathparse{\xnull-0.5*\schritt}
+\xdef\xhlinks{\pgfmathresult}
+
+\pgfmathparse{\xnull+0.5*\schritt}
+\xdef\xhrechts{\pgfmathresult}
+
+\pgfmathparse{\xnull+\schritt}
+\xdef\xrechts{\pgfmathresult}
+
+\pgfmathparse{(\xnull+\xhlinks)/3}
+\xdef\mhlinks{\pgfmathresult}
+
+\pgfmathparse{(\xnull+\xhrechts)/3}
+\xdef\mhrechts{\pgfmathresult}
+
+\pgfmathparse{(\xnull+\xlinks)/3}
+\xdef\mlinks{\pgfmathresult}
+
+\pgfmathparse{(\xnull+\xrechts)/3}
+\xdef\mrechts{\pgfmathresult}
+
+\pgfmathparse{2*\xnull/3}
+\xdef\mnull{\pgfmathresult}
+
+\pgfmathparse{\xnull*\xnull/3}
+\xdef\ynull{\pgfmathresult}
+
+\pgfmathparse{\xlinks*\xlinks/3}
+\xdef\ylinks{\pgfmathresult}
+
+\pgfmathparse{\xhlinks*\xhlinks/3}
+\xdef\yhlinks{\pgfmathresult}
+
+\pgfmathparse{\xrechts*\xrechts/3}
+\xdef\yrechts{\pgfmathresult}
+
+\pgfmathparse{\xhrechts*\xhrechts/3}
+\xdef\yhrechts{\pgfmathresult}
+
+\begin{scope}[xshift=-3.5cm]
+	\draw[->] (-3.1,0)--(3.3,0) coordinate[label={$x$}];
+	\draw[->] (-0,-0.1)--(-0,3.3) coordinate[label={left:$y$}];
+	\draw[color=red,line width=1.4pt]
+		plot[domain=-3:3,samples=100] (\x,{\x*\x/3});
+	\draw[line width=0.2pt] (\xrechts,0)--(\xrechts,\yrechts);
+	\draw[line width=0.2pt] (\xlinks,0)--(\xlinks,\ylinks);
+	\draw (\xrechts,-0.1) -- (\xrechts,0.1);
+	\node at (\xrechts,-0.1) [below] {$x_0+h$};
+	\draw (\xlinks,-0.1) -- (\xlinks,0.1);
+	\node at (\xlinks,-0.1) [below] {$x_0-h$};
+	\clip (-3,-1) rectangle (3,3);
+	\draw[color=blue]
+		({\xlinks-5},{\ylinks-5*\mlinks})
+		--
+		({\xnull+5},{\ynull+5*\mlinks});
+	\draw[color=blue]
+		({\xnull-5},{\ynull-5*\mrechts})
+		--
+		({\xrechts+5},{\yrechts+5*\mrechts});
+	\draw[color=blue,line width=0.2pt]
+		({\xhlinks-5},{\yhlinks-5*\mlinks})
+		--
+		({\xhlinks+5},{\yhlinks+5*\mlinks});
+	\draw[color=blue,line width=0.2pt]
+		({\xhrechts-5},{\yhrechts-5*\mrechts})
+		--
+		({\xhrechts+5},{\yhrechts+5*\mrechts});
+	\fill[color=blue] (\xlinks,\ylinks) circle[radius=0.08];
+	\fill[color=blue] (\xnull,\ynull) circle[radius=0.08];
+	\fill[color=blue] (\xrechts,\yrechts) circle[radius=0.08];
+	\fill[color=blue] (\xhrechts,\yhrechts) circle[radius=0.06];
+	\fill[color=blue] (\xhlinks,\yhlinks) circle[radius=0.06];
+	\draw (\xnull,-0.1)--(\xnull,0.1);
+	\node at (\xnull,-0.1) [below] {$x_0$};
+\end{scope}
+
+\begin{scope}[xshift=3.5cm]
+	\draw[->] (-3.1,0)--(3.3,0) coordinate[label={$x$}];
+	\draw[->] (-0,-0.1)--(-0,3.3) coordinate[label={left:$y$}];
+	\draw[color=red,line width=1.4pt]
+		plot[domain=-3:3,samples=100] (\x,{\x*\x/3});
+	\draw[line width=0.2pt] (\xrechts,0)--(\xrechts,\yrechts);
+	\draw[line width=0.2pt] (\xlinks,0)--(\xlinks,\ylinks);
+	\draw (\xrechts,-0.1) -- (\xrechts,0.1);
+	\node at (\xrechts,-0.1) [below] {$x_0+h$};
+	\draw (\xlinks,-0.1) -- (\xlinks,0.1);
+	\node at (\xlinks,-0.1) [below] {$x_0-h$};
+	\clip (-3,-1) rectangle (3,3);
+	\draw[color=blue]
+		({\xnull-5},{\ynull-5*\mnull})
+		--
+		({\xnull+5},{\ynull+5*\mnull});
+	\draw[color=blue]
+		({\xlinks-5},{\ylinks-5*\mnull})
+		--
+		({\xrechts+5},{\yrechts+5*\mnull});
+	\fill[color=blue] (\xlinks,\ylinks) circle[radius=0.08];
+	\fill[color=blue] (\xnull,\ynull) circle[radius=0.08];
+	\fill[color=blue] (\xrechts,\yrechts) circle[radius=0.08];
+	\draw (\xnull,-0.1)--(\xnull,0.1);
+	\node at (\xnull,-0.1) [below] {$x_0$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

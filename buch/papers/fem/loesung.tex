@@ -6,35 +6,52 @@
 \section{Lösung
 \label{fem:section:loesung}}
 \rhead{Lösung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
+Zuerst muss die DGL in ein äqualentes Minimalprobelm übersetzt werden in der Form
 
-\subsection{De finibus bonorum et malorum
+\begin{equation}
+14.1 \Rightarrow \int_\Omega (\nabla u)^2 +\lambda u^2 dx
+\label{fem:equation3}
+\end{equation}
+
+Approximation der unbekannten Funktion mit 
+
+\begin{equation}
+u(x,y) =  \sum_{k=0} N_k^e(x,y) \cdot u(x,y)_k^e
+\label{fem:equation3}
+\end{equation}
+
+N = Formfunktion des Elementes e und Knoten k
+
+\begin{equation}
+A =  \sum_{k=0} \iint_{\!\!\!\!\!\!\!\Omega} \epsilon \cdot \nabla N_k(x,y) \cdot N_l(x,y) dS = \sum \iint_{\!\!\!\!\!\!\!\Omega} h(x) \cdot N_l(x,y) dS, l = 1,2,...N
+\label{fem:equation3}
+\end{equation}
+
+Zu lösendes GL- System
+\begin{equation}
+Au(x,y) = b
+\label{fem:GL}
+\end{equation}
+
+wobei A eine Matrix, u der Vektor der Unbekannten und b der Ansatzfunktionenvektor ist.
+
+\subsection{linearer Ansatzfunktion
 \label{fem:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
 
+\begin{equation}
+u(x,y) = c_1 + c_2x + c_3y
+\label{fem:equation3}
+\end{equation}
 
+mit einem Allgemeinen Dreieck:
+
+\begin{equation}
+N(x,y) = \int_a^b\int_c^{d-(d-c)(x-a)/(b-a)} u(x,y) dxdy
+\label{fem:Dreieck_alg}
+\end{equation}
+
+Gemäss Abschnitt 2.2.2 Buch von Schwarz sind die Werte entlang einer Seite eines Dreiecks- Elements gleich  der angrenzenden Linie eines anderen Dreiecks, wenn die Eckpunktwerte gleich sind. Die Frage Warum soll dass so sein? Weil Funktion $h(x)$ bei jedem Element gleich ist sowie es sich bei $h(x)$ hierbei um eine Lineare Funktion handelt.
+
+\subsection{Quadratischer Ansatz
+\label{fem:subsection:bonorum}}
+ Abschnitt 
