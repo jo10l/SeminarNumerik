@@ -8,7 +8,7 @@ Wie in Abschnitt \ref{buch:section:qr} schon genauer betrachtet, kann eine Matri
 \begin{equation*}
 A=QR.
 \end{equation*}
-$Q$ ist dabei wieder ein $l\times n$-Matrix, diesmal aber mit orthonormierten Spalten.
+$Q$ ist dabei wieder eine $l\times n$-Matrix, diesmal aber mit orthonormierten Spalten.
 $R$ ist eine obere Dreiecksmatrix der Grösse $n\times n$.
 
 \subsection{Anwendungsbeispiel Least-Squares\label{qr:section:ls}}
@@ -17,7 +17,8 @@ Ein lineares Gleichungssystem
 \begin{equation}
 Ax=b\label{qr:sle}
 \end{equation}
-hat in praktischen Fällen keine Lösung, wenn die $l\times n$ Matrix mehr Zeilen als Spalten hat, bzw. überdefiniert ist.
+hat in praktischen Fällen keine Lösung, wenn die $l\times n$-Matrix $A$ mehr Zeilen als Spalten hat, bzw. überdefiniert ist.
+
 Mit der Methode der kleinsten Quadrate kann aber ein Vektor $\hat{x}$ gefunden werden welcher die $L^2$-Norm
 \begin{equation*}
 ||A\hat{x}-b||_2
@@ -35,13 +36,14 @@ A^TA\hat{x}=A^Tb-\underbrace{A^Tb_{\perp}}_{\displaystyle=0}
 \quad\Leftrightarrow\quad A^TA\hat{x}=A^Tb \label{qr:ls1},
 \end{equation}
 wobei der letzte Term verschwindet, da alle Spalten von $A$ und $b_{\perp}$ orthogonal zueinander stehen und somit alle Skalarprodukte verschwinden.
-Das Matrixprodukt $A^TA$ ist unter Umständen aufwändig zu berechnen.
+Das Matrixprodukt $A^TA$ ist unter Umständen aufwändig zu berechnen und muss auch noch invertiert werden, um $\hat{x}$ zu erhalten.
+
 Geht man nun aber den Umweg über die $QR$-Zerlegung, bzw. $A=QR$ kann die Gleichung \ref{qr:ls1} umgeschrieben werden:
 \begin{equation*}
 (QR)^TQR\hat{x}=(QR)^Tb \quad \Leftrightarrow \quad R^T\underbrace{Q^TQ}_{\displaystyle=E}R\hat{x}= R^TQ^Tb \quad \Leftrightarrow \quad
 R^TR\hat{x}=R^TQ^Tb,
 \end{equation*}
-wobei $Q^TQ=E$, da Q nach Definition orthogonal ist.
+wobei $Q^TQ=E$, da $Q$ nach Definition orthogonal ist.
 Die Determinante von $R^T$ ist
 \begin{equation*}
 \det(R^T)=\det(R)=\det
@@ -62,4 +64,4 @@ und weiter vereinfacht
 \begin{equation}
 \hat{x}=R^{-1}Q^Tb,
 \end{equation}
-was somit das Least-Squares Problem mit dem Umweg über die $QR-$Zerlegung auf kompakte Weise löst.
+was somit das Least-Squares-Problem mit dem Umweg über die $QR-$Zerlegung auf kompakte Weise löst.
