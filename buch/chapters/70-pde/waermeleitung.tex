@@ -254,7 +254,7 @@ verwenden Vorwärtsdifferenzen, also
 \frac{u_{i,k+1}-u_{ik}}{h_t}
 &=
 \kappa
-\frac{\partial^2}{\partial x^2}(u_{ik})
+\frac{\partial^2u}{\partial x^2}(x_{ik})
 \simeq
 \kappa
 \frac{u_{i,k-1}-2u_{ik}+u_{i,k+1}}{h_x^2}
@@ -299,11 +299,11 @@ die Form
 u_{k+1}
 =
 \begin{pmatrix}
-&  &    &    &    &    & \\
-& c&1-2c&  c &    &    & \\
-&  &  c &1-2c&  c &    & \\
-&  &    &  c &1-2c&  c & \\
-&  &    &    &    &    & 
+\ddots&\ddots&\ddots&    &      &      &      \\
+      &     c&  1-2c&  c &      &      &      \\
+      &      &    c &1-2c&  c   &      &      \\
+      &      &      &  c &1-2c  &  c   &      \\
+      &      &      &    &\ddots&\ddots&\ddots
 \end{pmatrix}
 u_k.
 \]
@@ -344,11 +344,11 @@ Die diskretisierte Gleichung wird dann
 In Matrixform kann man dies als
 \[
 \begin{pmatrix}
-&  &    &    &    &    & \\
-&-c&1+2c& -c &    &    & \\
-&  & -c &1+2c& -c &    & \\
-&  &    & -c &1+2c& -c & \\
-&  &    &    &    &    & 
+%\ddots&\ddots&\ddots&    &      &      &      \\
+      &    -c&  1+2c& -c &      &      &      \\
+      &      &   -c &1+2c& -c   &      &      \\
+      &      &      & -c &1+2c  & -c   &      \\
+      &      &      &    &\ddots&\ddots&\ddots
 \end{pmatrix}
 u_k
 =
@@ -407,20 +407,20 @@ cu_{i-1,k}+2(1-c)u_{i,k}+cu_{i+1,k},
 was sich leichter in Matrixform 
 \begin{equation}
 \begin{pmatrix}
-&      &        &        &        &        &        \\
+&\ddots& \ddots &        &        &        &        \\
 &  -c  & 2(1+c) &  -c    &        &        &        \\
 &      &  -c    & 2(1+c) &  -c    &        &        \\
 &      &        &  -c    & 2(1+c) &  -c    &        \\
-&      &        &        &        &        &        
+&      &        &        & \ddots & \ddots &        
 \end{pmatrix}
 u_{k+1}
 =
 \begin{pmatrix}
-&      &        &        &        &        &        \\
+&\ddots&\ddots  &        &        &        &        \\
 &   c  & 2(1-c) &   c    &        &        &        \\
 &      &   c    & 2(1-c) &   c    &        &        \\
 &      &        &   c    & 2(1-c) &   c    &        \\
-&      &        &        &        &        &        
+&      &        &        &\ddots  & \ddots &        
 \end{pmatrix}
 u_k
 \end{equation}

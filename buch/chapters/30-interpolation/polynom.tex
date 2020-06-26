@@ -297,6 +297,69 @@ wird die Berechnung instabil und der Fehler nimmt wieder zu.
 \end{figure}
 
 \subsubsection{Der Mittelwertsatz der Differentialrechnung}
+Der Satz von Rolle sagt etwas über die Nullstellen von der Ableitung
+einer differenzierbaren Funktion.
+Zwischen zwei Argumentwerten mit gleichem Funktionswert gibt es immer
+eine Nullstelle der Ableitung.
+Der Mittelwertsatz der Differentialrechnung verallgemeinert diese
+Aussage auf beliebige Werte.
+
+\begin{satz}[Mittelwertsatz]
+Zu einer auf dem Intervall $[a,b]$ differenzierbaren Funktion $f(x)$ gibt
+es immer ein $\xi\in[a,b]$ mit
+\[
+f'(\xi) = \frac{f(b)-f(a)}{b-a}.
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+Man betrachtet die Funktion 
+\[
+g(x) = f(x) - \frac{f(b)-f(a)}{b-a}(x-a),
+\]
+sie hat an den Intervallenden die Werte
+\begin{align*}
+g(a) &= f(a) - \frac{f(b)-f(a)}{b-a}(a-a)=f(a),
+\\
+g(b) &= f(b) - \frac{f(b)-f(a)}{b-a}(b-a) = f(b) - \bigl(f(b)-f(a)\bigr) = f(a).
+\end{align*}
+Die Funktionswerte an den Intervallenden sind also gleich,
+nach dem Satz~\ref{buch:satz:rolle} von Rolle hat also
+die Ableitung $g'$ eine Nullstelle $\xi\in[a,b]$:
+\[
+g'(\xi) = f'(\xi) - \frac{f(b)-f(a)}{b-a} = 0
+\quad
+\Rightarrow
+\qquad
+f'(\xi) = \frac{f(b)-f(a)}{b-a}.
+\qedhere
+\]
+\end{proof}
+
+Der Mittelwertsatz verspricht die Existenz eines Arguments $\xi\in[a,b]$,
+gibt aber keinerlei Hinweise darauf, wie $\xi$ berechnet werden könnte. 
+Ausserdem ist lässt sich der Satz in dieser Form nicht auf höherdimensionale
+Situationen verallgemeinern.
+In vielen Anwendungen des Mittelwertsatzes ist der genaue Wert von $\xi$
+gar nicht nötig.
+Meistens wird nur verwendet, dass die Ableitung eine Abschätzung dafür
+gibt, wie gross der Unterschied zwischen $f(b)$ und $f(a)$ sein kann.
+Dies kann zum Beispiel wie im folgenden Satz formuliert werden.
+
+\begin{satz}
+Für eine in $[a,b]$ stetig differenzierbare Funktion
+$f\colon [a,b]\to\mathbb R^n$ gibt es ein $\xi\in[a,b]$ mit
+\[
+|f(b)-f(a)| \le |f'(\xi)|\cdot |b-a|.
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+\cite{buch:dieudonne}
+\end{proof}
+
+Diese Form ist ausreichend, um zum Beispiel Fehlerabschätzungen in der
+Numerik durchzuführen.
 
 \subsubsection{Taylorreihe mit Restformel}
 
