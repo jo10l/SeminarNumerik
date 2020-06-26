@@ -6,4 +6,32 @@
 \chapter{Partielle Differentialgleichungen\label{chapter:pde}}
 \lhead{Partielle Differentialgleichungen}
 \rhead{}
+Elektrische oder magnetische Felder sind Funktionen der Ortskoordinaten
+und der Zeit.
+Die Veränderung dieser Fehler mit der Zeit hängt ab von der Anwesenheit
+oder der Bewegung von Ladungen, wie sie von den Maxwellschen Gleichungen
+\begin{align*}
+\nabla\cdot\vec{E} &= \frac{\varrho}{\varepsilon_0}
+\\
+\nabla\cdot\vec{B} &= 0
+\\
+\nabla\times\vec{E} &= -\frac{\partial\vec{B}}{\partial t}
+\\
+\nabla\times\vec{B} &= \mu_0\vec{\jmath}
+	+ \frac{1}{c^2}\frac{\partial\vec{E}}{\partial t}
+\end{align*}
+beschrieben werden.
+Dies sind Gleichungen zwischen den Komponenten der Felder sind Gleichungen,
+die die partiellen Ableitungen der gesuchten Funktionen nach Ortskoordinaten
+und der Zeit enhalten.
+Solche partiellen Differentialgleichungen können nicht mit den Methoden
+gelöst werden, die für gewöhnliche Differentialgleichungen entwickelt 
+worden sind.
+In diesem Kapitel sollen die wichtigsten Ideen zusammengetragen werden,
+die besser geeigneten Verfahren zu Grunde liegen.
 
+
+\input{chapters/70-pde/problem.tex}
+\input{chapters/70-pde/fdm.tex}
+\input{chapters/70-pde/fvm.tex}
+\input{chapters/70-pde/fem.tex}

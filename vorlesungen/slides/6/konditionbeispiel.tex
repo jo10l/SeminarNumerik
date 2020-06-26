@@ -1,0 +1,70 @@
+%
+% konditionbeispiel.tex
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\begin{frame}
+\frametitle{Beispiel: Kahan-Matrix}
+\vspace{-15pt}
+\begin{columns}[t]
+\begin{column}{0.32\hsize}
+\begin{block}{Kahan-Matrix}
+\vspace{-10pt}
+\[
+A=\begin{pmatrix}
+1000000&999999\\
+\phantom{0}999999&999998
+\end{pmatrix}
+\]
+\end{block}
+\end{column}
+\begin{column}{0.64\hsize}
+\uncover<3->{%
+\begin{block}{Inverse der Kahan-Matrix}
+\vspace{-10pt}
+\[
+A^{-1}=
+\begin{pmatrix}
+          -999990.385579839& \phantom{-}999991.385572224\\
+\phantom{-}999991.385572224&           -999992.385564610
+\end{pmatrix}
+\]
+\end{block}}
+\end{column}
+\end{columns}
+\uncover<2->{%
+Zeilen ``fast'' gleich, $A$ ``fast singulär''}
+\begin{columns}[t]
+\begin{column}{0.28\hsize}
+\uncover<4->{%
+\begin{block}{Singulärwerte}
+\vspace{-20pt}
+\begin{align*}
+s_1&=\phantom{-}2.0000\cdot 10^6 \\
+s_2&=  -5.0000\cdot 10^{-7}
+\end{align*}
+\end{block}}
+\end{column}
+\begin{column}{0.26\hsize}
+\uncover<5->{%
+\begin{block}{Konditionszahl}
+Sehr schlecht:
+\[
+\kappa = 4.0000 \cdot 10^{12}
+\]
+\end{block}}
+\end{column}
+\begin{column}{0.4\hsize}
+\uncover<6->{%
+\begin{block}{$AA^{-1}\stackrel{?}{=}E$}
+Trotz \texttt{double}-Rechnung
+\[
+\begin{pmatrix}
+   1.00012207& -0.00012207 \\
+   0\phantom{.00000000}& \phantom{-}1\phantom{.00000000}
+\end{pmatrix}
+\]
+\end{block}}
+\end{column}
+\end{columns}
+\end{frame}

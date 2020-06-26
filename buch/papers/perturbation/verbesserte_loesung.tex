@@ -1,0 +1,32 @@
+\section{Verbesserte Lösung
+\label{perturbation:section:verbesserte_loesung}}
+\rhead{Verbesserte Lösung}
+
+Anstelle lediglich den Anfangswert $\vec{v_0} = (v_{0x}, v_{0y})$ anzupassen, erhält man bessere Resultate,
+indem auch $\vec{r_0} = (r_{0x}, r_{0y})$ variabel gestaltet wird.
+Zudem kann man anstelle von $t$ nur die Differenz $\Delta t$ seit dem letzten Update von der Bodenstation betrachten.
+
+Wiederum ist das Ziel, dass der Flugkörper mit den einfachen Formeln \eqref{eq:x_simple} eine möglichst gute Approximation auf einfache Art und Weise berechnen kann,
+indem er die Anfangswerte $\vec{r_0}$ und $\vec{v_0}$ im Laufe der Zeit gemäss Weisungen der Bodenstation anpasst.
+
+In einem ersten Schritt verlangen wir von der Bodenstation, welche $\vec{r}$, aber auch $\vec{v}$ mit dem Runge-Kutta-Verfahren berechnen kann,
+eben diese Werte um so eine Approximation mit den simplen Formeln \eqref{eq:x_simple} tätigen zu können.
+Es ergeben sich folgende Formeln:
+
+\begin{equation}
+\begin{aligned}
+r_x(t + \Delta t) &= r_{0x} + v_{0x}\Delta t\\
+r_y(t + \Delta t) &= r_{0y} + v_{0y}\Delta t - \frac{1}{2}g\Delta t^2
+\end{aligned}
+\end{equation}
+
+Verlangt man von der Bodenstation jede Sekunde neue Werte für die Elemente $r_{0x}, r_{0y}, v_{0x}$ und $v_{0y}$ gibt dies eine Genauigkeit von 2 Stellen.
+In Abbildung \ref{error} ist der Fehler ersichtlich.
+Dieser ist als euklidische Distanz zur effektiven Position dargestellt.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.7]{papers/perturbation/bilder/perturbation_fig3.eps}
+    \caption{Fehler als euklidische Distanz}
+	\label{error}
+\end{figure}

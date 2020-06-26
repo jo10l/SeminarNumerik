@@ -50,8 +50,10 @@ definiert durch
 \begin{equation}
 x_k^{(m)}
 =
+\frac{1}{a_{kk}}\bigl(
 b_k  - a_{k1}x_1^{(m)} - \dots - a_{k,k-1}x_{k-1}^{(m)}
 - a_{k,k+1}x_{k+1}^{(m-1)} - \dots - a_{kn}x_n^{(m-1)}
+\bigr)
 \label{buch:eqn:gs:iteration}
 \end{equation}
 mit Startwert $x^{(0)}=0$
@@ -255,5 +257,34 @@ Startwerte $x_0$ linear konvergent, wenn der Spektralradius
 \varrho\bigl( (L+D)^{-1}U \bigr) < 1
 \]
 ist.
+
+\subsection{Zerlegungsverfahren
+\label{buch:subsection:zerlegung}}
+Das Gauss-Seidel-Verfahren ist nur ein Beispiel einer ganzen Familie
+von iterativen Lösungsverfahren für lineare Gleichungssysteme.
+Sie basieren alle auf einer Zerlegung $A=B+C$ der Matrix $A$.
+Das Gauss-Seidel-Verfahren ist der Fall
+\[
+A = \underbrace{D+L}_{\displaystyle = B} + \underbrace{R}_{\displaystyle = C}.
+\]
+Das ursprüngliche Gleichungssystem $Ax=b$ wird jetzt ebenfalls
+aufgeteilt in $Bx+Cx=b$.
+Ein iteratives Verfahren ergibt sich jetzt dadurch, dass für die beiden $x$
+in der Aufteilung verschiedene Iterationen der Lösung verwendet werden,
+also $Bx^{(m+1)} + Cx^{(m)} = b$.
+Dies ist natürlich nur sinnvoll, wenn sich die Matrix $B$ wesentlich
+leichter invertieren lässt als $A$, da andernfalls die Bestimmung von
+$x^{(m+1)}$ nicht einfacher ist als die Lösung des ursprünglichen
+Gleichungssystems.
+Wir erhalten somit das Iterationsverfahren
+\begin{equation}
+x^{(m+1)}
+=
+B^{-1}(b-Cx^{(m)})
+=
+b_0 - B^{-1}Cx^{(m)}
+\end{equation}
+
+
 
 

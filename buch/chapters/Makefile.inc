@@ -30,6 +30,7 @@ CHAPTERFILES =								\
 	chapters/30-interpolation/hermite.tex				\
 	chapters/30-interpolation/bary.tex				\
 	chapters/30-interpolation/splines.tex				\
+	chapters/30-interpolation/bezier.tex				\
 	chapters/30-interpolation/uebungsaufgaben/3001.tex		\
 	chapters/40-integration/chapter.tex				\
 	chapters/40-integration/riemann.tex				\
@@ -43,10 +44,21 @@ CHAPTERFILES =								\
 	chapters/50-ode/software.tex					\
 	chapters/50-ode/randwert.tex					\
 	chapters/60-linsys/chapter.tex					\
+	chapters/60-linsys/thomas.tex					\
 	chapters/60-linsys/gaussseidel.tex				\
 	chapters/60-linsys/qr.tex					\
 	chapters/60-linsys/jacobi.tex					\
+	chapters/60-linsys/uebungsaufgaben/6002.tex			\
+	chapters/60-linsys/uebungsaufgaben/6003.tex			\
 	chapters/70-pde/chapter.tex					\
+	chapters/70-pde/problem.tex					\
+	chapters/70-pde/fdm.tex						\
+	chapters/70-pde/waermeleitung.tex				\
+	chapters/70-pde/stabilitaet.tex					\
+	chapters/70-pde/fvm.tex						\
+	chapters/70-pde/fem.tex						\
+	chapters/70-pde/approximation.tex				\
+	chapters/70-pde/quadratisch.tex					\
 	chapters/80-fourier/chapter.tex
 
 

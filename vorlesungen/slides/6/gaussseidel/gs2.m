@@ -19,8 +19,9 @@ D = diag([1, 2, 2, 1])
 
 A = R + D + L
 
-C = inverse(D+L)*R;
-spectralradius = max(abs(eig(C)))
+B = inverse(D+L)*R
+[V, lambda] = eig(B)
+spectralradius = max(abs(diag(lambda)))
 
 b = [4;2;1;3]
 global d;
@@ -56,7 +57,7 @@ function retval = f(x)
 	global d;
 	global w;
 	y = abs(x);
-	s = sprintf("%.*f", d, y)
+	s = sprintf("%.*f", d, y);
 	if (x < 0)
 		if (length(s) < w)
 			retval = sprintf("\\phantom{%0*d}\\hbox{$-%s$}", w - length(s), 0, s);
@@ -70,14 +71,13 @@ function retval = f(x)
 			retval = sprintf("\\phantom{+}%s", s);
 		end
 	end
-	retval
 end
 
 fn = fopen("gs2.tex", "w")
 
-for l = (1:10)
+for l = (1:7)
 	fprintf(fn, "\\only<%d>{\n", l+1);
-	fprintf(fn, "Iteration $n=%d$\n", l);
+	fprintf(fn, "Iteration $n=%d$:\n", l);
 	fprintf(fn, "\\[\n");
 	fprintf(fn, "\\begin{linsys}{6}\n");
 

@@ -108,17 +108,25 @@ chapter5 =								\
 
 chapter6 =								\
 	../slides/6/linalg.tex						\
+	../slides/6/kondition.tex					\
+	../slides/6/konditionbeispiel.tex					\
+	../slides/6/splitting.tex					\
 	../slides/6/gaussseidel/iteration.tex				\
 	../slides/6/gaussseidel/matrix.tex				\
 	../slides/6/gaussseidel/spektralradius.tex			\
+	../slides/6/gaussseidel/lambda.tex				\
 	../slides/6/gaussseidel/beispiel.tex				\
 	../slides/6/gaussseidel/gs.tex					\
 	../slides/6/gaussseidel/beispiel2.tex				\
 	../slides/6/gaussseidel/gs2.tex					\
+	../slides/6/gaussseidel/konvergenz.tex				\
+	../slides/6/gaussseidel/beispielkonv.tex			\
+	../slides/6/powermethod.tex					\
 	../slides/6/jacobi/eigenwerte.tex				\
 	../slides/6/jacobi/drehung.tex					\
 	../slides/6/jacobi/iteration.tex				\
 	../slides/6/jacobi/konvergenz.tex				\
+	../slides/6/jacobi/jm.tex					\
 	../slides/6/fem/introbeispiel.tex				\
 	../slides/6/fem/integralprinzip.tex				\
 	../slides/6/chapter.tex

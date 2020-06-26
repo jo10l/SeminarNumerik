@@ -240,7 +240,7 @@ Trapez mit Eckpunkten $(x_{i-1},0)$, $(x_i,0)$,
 $(x_{i-1},f(x_{i-1}))$ und
 $(x_i,f(x_i))$.
 Die Mittellinie eines solchen Trapezes hat die Länge
-$\frac12(f(x_{i-1}) +f(x_i))$, die Höhe ist $h$.
+$\frac12(f(x_{i-1}) +f(x_i))$, die Höhe ist $x_i-x_{i-1}=h$.
 Der Flächeninhalt eines einzelnen Trapezes ist daher
 $\frac{h}2(f_(x_{i-1}+f(x_i))$ und es ergibt sich die Approximation
 \begin{align}
@@ -395,8 +395,11 @@ I
 Es berechnet die Fläche des im ersten Quadranten liegenden Teils des
 Einheitskreises, hat also den Wert $I=\frac{\pi}4\simeq 0.78539816$.
 
-Das folgende Octave-Programm kann zur Berechnung verwendet werden:
-\lstinputlisting[language=Octave,style=Octave]{chapters/40-integration/trapez.m}
+Das Octave-Programm von Listing~\ref{buch:listing:integration} kann zur
+Berechnung verwendet werden.
+\lstinputlisting[style=Octave,float,caption={Programm zur
+Berechnung der Trapez- und Mittelpunktsummen für das Integral
+\eqref{buch:equation:kreis}},label={buch:listing:integration}]{chapters/40-integration/trapez.m}
 In Zeile~5 wird der Integrand als Funktion definiert.
 In Zeile~9 wird die Funktion \texttt{M(h,a,b,f)} definiert, die
 die Mittelpunktsumme $M(h)$ der Funktion $f$ berechnet.
@@ -441,7 +444,7 @@ zusammengestellt.
 \end{tabular}
 \caption{Approximation des Integrals~\eqref{buch:equation:kreis}
 mit Hilfe der Trapezregel.
-Unterstrichen die Stellen des Wertes von $T(h)$, die bereits korrekt sind.
+Unterstrichen sind die Stellen des Wertes von $T(h)$, die bereits korrekt sind.
 \label{buch:table:kreis}}
 \end{table}
 Für den Wert von $T(h)$ in Zeile $k$ der Tabelle sind

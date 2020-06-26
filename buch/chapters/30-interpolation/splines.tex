@@ -22,6 +22,9 @@ Die Steigungen in den Stützstellen sind also Lösungen eines
 Optimierungsproblems, welches nicht die am besten passende, sonder
 die ``schönste'' Kurve durch die Stützstellen sucht.
 
+%
+% Anforderungen an die Interplierende Funktion
+%
 \subsection{Anforderungen and die interpolierende Funktion
 \label{buch:subsection:anforderungen}}
 Gegeben seien wie früher Punkte
@@ -70,6 +73,9 @@ minimiert.
 Man beachte, dass nirgends verlangt wird, dass die Ableitungen von $g$
 an den Stützstellen irgendwie mit der Funktion $f$ in Verbingung steht.
 
+%
+% Das Optimierungsproblem
+%
 \subsection{Das Optimierungsproblem
 \label{buch:subsection:variation}}
 Zunächst ist nicht klar, ob das eben gestellt Optimierungsproblem überhaupt
@@ -114,6 +120,7 @@ Funktion $y(t)$ beschrieben wird, welche das Integral
 minimiert.
 \end{beispiel}
 
+\subsubsection{Die Euler-Lagrange-Gleichungen}
 Um zu zeigen, dass die Interpolationsfunktion $g$ existiert, lösen
 wir daher das folgende, wesentlich allgemeinere Problem.
 
@@ -141,7 +148,122 @@ sie ist Lösung der {\em Euler-Lagrange-Differentialgleichung}
 \end{equation}
 \end{satz}
 
+\subsubsection{Richtungsableitung}
+Die Verbindung zwischen den Extrema von $J(y)$ und der
+Euler-Lagrange-Differentialgleichung entsteht durch die Ableitung 
+von $J(y)$ nach $y$.
+Zunächst ist allerdings zu klären, was diese Ableitung überhaupt bedeuten
+soll.
+Diese Ableitung soll in linearer Näherung wiedergeben können, was
+passiert, wenn die Funktion $y(x)$ verändert wird.
+Es gibt natürlich unendlich viele Stellen, in denen die Funktion
+modifiziert werden kann, es handelt sich also um einen Ableitungsbegriff
+in einem unendlichdimensionalen Vektorraum.
+Die geometrische Intuition, die für den Begriff des Gradienten
+verwendet wird, kann in der unendlichdimensionalen Situation versahgen,
+wir müssen also etwas vorsichtiger sein.
+
+Ungefährlich ist, die Veränderng von $J(y)$ nur in einer Richtung 
+zu untersuchen.
+Dazu ersetzen wir $y(x)$ durch $y_{\varepsilon}(x)=y(x)+\varepsilon h(x)$
+und planen, den Parameter $\varepsilon$ zu verändern.
+Es ist natürlich $y(x)=y_0(x)$.
+Damit $y_{\varepsilon}(x)$ immer noch ein möglicher Kandidat für das Minimum
+von $J(y)$ ist, müssen die Endpunkte von $y_{\varepsilon}(x)$ gleich sein,
+es muss also
+\begin{equation}
+\left.
+\begin{aligned}
+y_{\varepsilon}(a)&=y(a) \\
+y_{\varepsilon}(b)&=y(b) 
+\end{aligned}
+\right\}
+\qquad\Rightarrow\qquad
+h(a)=h(b)=0
+\label{buch:variation:rand}
+\end{equation}
+gelten.
+
+Die Funktion $J(\varepsilon) = J(y+\varepsilon h) = J(y_{\varepsilon})$
+hängt jetzt nur noch von einem Parameter ab, die Ableitung davon ist
+wohldefiniert.
+Ist ausserdem $y$ ein Minimum, dann muss die Ableitung von
+$J(y_{\varepsilon})$ nach $\varepsilon$ für $\varepsilon=0$
+verschwinden, also
+\[
+0
+=
+\frac{d}{d\varepsilon} J(\varepsilon)\bigg|_{\varepsilon=0}
+=
+\frac{d}{d\varepsilon} J(y+\varepsilon h)\bigg|_{\varepsilon=0}.
+\]
+Dies muss für jede beliebige Funktion gelten, welche die Randbedingung
+\eqref{buch:variation:rand} erfüllt.
+
+\subsubsection{Integralprinzip}
+Die Möglichkeit, die Funktion nur unter der minimalen Bedingung
+\eqref{buch:variation:rand} frei zu wählen, schränkt die Funktion
+$y(x)$ ein.
+Dies ist der Inhalt des folgenden Prinzips
+\begin{figure}
+\centering
+\includegraphics{chapters/30-interpolation/figures/integral.pdf}
+\caption{Wenn das Integral von $g(x) h(x)$ für jede Funktion $h(x)$
+verschwinden, dann muss auch $g(x)$ verschwinden.
+In einer Umgebung eines Punktes $\bar{x}$, wo $g(\bar{x})\ne 0$ ist,
+kann man $h(x)$ derart von $0$ verschieden wählen (blaue Kurve),
+dass das Integral nicht verschwindet.
+Der Widerspruch zeigt, dass $g(\bar{x})=0$ sein muss.
+\label{buch:interpolation:figure:integralprinzip}}
+\end{figure}
+
+\begin{lemma}[Integralprinzip]
+\label{buch:lemma:integralprinzip}
+Sei $g(x)$ eine stetige Funktion auf dem Interval $[a,b]$.
+Ausserdem gilt
+\[
+\int_a^b g(x)  h(x)\,dx = 0
+\]
+für jede auf $[a,b]$ definierte stetige Funktion mit $h(a)=h(b)=0$.
+Dann ist $g(x)=0$.
+\end{lemma}
+
 \begin{proof}[Beweis]
+Wir führen die Annahme, dass es einen Punkt $\bar{x}$ gibt mit
+$g(\bar{x})\ne 0$, zu einem Widerspruch.
+
+Nehmen wir also an, dass $g(\bar{x})>0$ ist.
+Dann ist $g(x)>0$ wegen der Stetigkeit von $g$ auch noch ein einer
+$\varepsilon$-Umgebung von $\bar{x}$ von $0$ verschieden.
+Wir wählen $h(x)$ als stetige Funktion mit folgenden Eigenschaften
+\begin{enumerate}
+\item
+Die Funktion wird nirgends negativ: $h(x)\ge 0$.
+\item
+$h(x)$ verschwindet ausserhalb der $\varepsilon$-Umgebung von $\bar{x}$.
+\item
+$h(\bar{x})=1$.
+\end{enumerate}
+Eine solche Funktion ist in
+Abbildung~\ref{buch:interpolation:figure:integralprinzip} links
+blau dargestellt.
+Da $g(x)$ in der Umgebung $>0$ ist, folgt
+\[
+\int_a^b g(x)\,h(x)\,dx
+=
+\int_{\bar{x}-\varepsilon}^{\bar{x}+\varepsilon}
+\underbrace{g(x)}_{\displaystyle>0}\,\underbrace{h(x)}_{\displaystyle\ge 0}\,dx
+>
+0,
+\]
+im Widerspruch zu den Voraussetzungen.
+
+Der Fall $g(\bar{x})<0$ wird analog dazu behandelt, wie in
+Abbildung~\ref{buch:interpolation:figure:integralprinzip} rechts
+dargestellt.
+\end{proof}
+
+\subsubsection{Beweis von Satz~\ref{buch:satz:eulerlagrange}}
 Wir gehen wie folgt vor: wir zeigen zunächst, dass eine solche Funktion
 eine Differentialgleichung erfüllen muss.
 Dann beziehen wir uns auf bekannte Sätze der Theorie der gewöhnlichen
@@ -249,7 +371,7 @@ die Gleichung
 \frac{\partial L}{\partial y}L(x,y(x),y'(x)).
 \end{equation}
 gelten muss.
-\end{proof}
+Damit ist der Beweis von Satz~\ref{buch:satz:eulerlagrange} vollständig.
 
 \begin{beispiel}
 Wir wenden die Euler-Lagrange-Gleichung auf die Lagrange-Funktion
@@ -277,6 +399,9 @@ m\ddot{y} = -V'(y).
 Dies ist das 2.~Newtonsche Gesetz.
 \end{beispiel}
 
+%
+% Lösung des Optimierungsproblems
+%
 \subsection{Lösung des Optimierungsproblems
 \label{buch:subsection:splineinterpolant}}
 Leider lässt sich der Satz~\ref{buch:variation:eulerlagrange}
@@ -317,6 +442,9 @@ Integrieren die zweite Ableitung der Funktion $h$ los werden:}
 \end{align}
 Auf Grund der Definition von $h$ verschwindet der mittlere Term.
 
+%
+% Bedingungen im Inneren der Teilintervalle
+%
 \subsubsection{Bedingungen im Inneren der Teilintervalle}
 Jetzt nutzen wir wieder die freie Wahlmöglichkeit der Funktion $h$
 aus.
@@ -328,6 +456,9 @@ wenn also $g^{(4)}(x)=0$ im Inneren jedes Teilintervals $[x_i,x_{i+1}]$.
 Es folgt, dass in jedem Teilinterval die Funktion $g$ ein kubisches Polynom 
 sein muss.
 
+%
+% Bedingungen an den Stützstellen
+%
 \subsubsection{Bedingungen an den Stützstellen}
 Aus dem verbleibenden ersten Term von
 Gleichung~\eqref{buch:equation:splines:integiert}
@@ -369,6 +500,9 @@ g''(x_0+) = g''(x_n-) = 0
 \end{equation}
 sein muss.
 
+%
+% Ein Gleichungssystem für die Steigungen
+%
 \subsubsection{Ein Gleichungssystem für die Steigungen}
 Zur Lösung des eingangs gestellten Interpolationsproblems ist jetzt
 also für jedes Teilinterval $[x_i,x_{i+1}]$ ein kubisches Polynom $g_i(x)$
@@ -594,6 +728,4 @@ f_n-f_{n-1}
 \end{pmatrix}
 \]
 
-\subsection{Bézier-Kurven und Splines in der Ebene
-\label{buch:subsection:bezier}}
-
+\input{chapters/30-interpolation/bezier.tex}

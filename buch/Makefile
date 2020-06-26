@@ -25,4 +25,5 @@ buch.idx:	buch.tex $(TEXFILES) images
 buch.ind:	buch.idx
 	makeindex buch.idx
 
-
+separate:	buch.aux buch.pdf
+	bash splitpapers
