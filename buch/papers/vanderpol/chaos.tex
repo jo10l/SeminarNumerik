@@ -51,7 +51,7 @@ Per Definition ist ein chaotisches System sehr empfindlich gegenüber Veränderu
 \caption{Doppelpendel\label{vanderpol:figures:doublependulum}}
 \end{figure}
 Kann also eine solch minimale Veränderung der Anfangsbedingungen das Endergebnis vollständig verändern? Die Antwort ist offensichtlich ja, was auch durch die Grafiken auf den folgenden Seiten bewiesen wird.
-\subsubsection{Doppelpendel}
+\subsubsection{Doppelpendel\cite{vanderpol:bibdopperlpendel}}
 \label{vanderpol:subsubsection:doppelpendel}
 Im Falle des Bildes Abbildung \ref{vanderpol:figures:init_cond_dbl_pend} wurde die Lösung des im Abbildung \ref{vanderpol:figures:doublependulum} dargestellten Systems, ein Doppelpendel, dargestellt. Es wird natürlich nicht im Detail behandelt, da dies nicht die Aufgabe dieses Kapitels ist. Es handelt sich jedoch um ein praktisches Beispiel, das genau zeigt, was im Anfangszitat zusammengefasst ist. Die beiden gezeigten Funktionen stellen den $\alpha$ Winkel zweier Doppelpendel mit Anfangsbedingungen dar, die eine geringe Abweichung aufweisen. Die Ausgangssituation wird also durch die folgenden Werte beschrieben:
 
@@ -102,13 +102,10 @@ $\dot{x_1}(0) = \dot{x_2}(0) = 5$
 \item
 $x_1(0) = x_2(0) = 0$
 \end{itemize}
-In diesem Fall wurden im Gegensatz zu den in Abbildung \ref{vanderpol:figures:init_cond_VDP} gezeigten Daten zwei verschiedene Integrationsschritte gewählt. Die Ergebnisse sind jedoch fast die gleichen. Im Falle der Runge Kutta Lösung wird deutlich, dass der Divergenzpunkt aufgrund der Änderung der Integrationsschritt noch vor dem liegt, der sich durch die Veränderung der Anfangsbedingungen ergibt. Auch in diesem Fall verursachte eine Differenz in der Grössenordnung von $10^{-3}$ eine starke Abweichung. Der Runge Kutta Algorithmus hat einen Rundungsfehler in der Grössenordnung von $O(h^5)$, während Euler $O(h^2)$ hat. Dies wirkt sich auf die Zeit $t_0$ aus, wenn Chaos eintritt. Im ersten Fall haben wir $t_0 \cong 770,5$ wie in Abbildung \ref{vanderpol:figures:RK_schritt_e-3} gezeigt, während im zweiten Fall $t_0 \cong 59,7$ wie in Abbildung \ref{vanderpol:figures:EULER_schritt} gezeigt.
-In den folgenden Plots wird gezeigt, wie die Abnahme des Integrationsschrittes $h$ immer zu einem Divergenzpunkt $t_0$ führt, an dem das System chaotisch wird. Im Fall von Abbildung \ref{vanderpol:figures:RK_schritt_2e-3} ist der Schritt $h_1=0.007$ und $h_2=0.009$ . In Abbildung \ref{vanderpol:figures:RK_schritt_2e-3_2} wird die Schrittlänge auf $h_1=0.005$ und $h_2=0.007$ verringert. 
+Im Gegensatz zu den in Abbildung \ref{vanderpol:figures:init_cond_VDP} gezeigten Daten werden nun zwei verschiedene Integrationsschritte ausgewählt, während die Anfangsbedingungen gleich bleiben. Die Ergebnisse sind jedoch fast die gleichen. Im Falle der Runge-Kutta Lösung wird deutlich, dass der Divergenzpunkt aufgrund der Änderung der Integrationsschritt noch vordem liegt, der sich durch die Veränderung der Anfangsbedingungen ergibt. Auch in diesem Fall verursachte eine Divergenz in der Grössenordnung von $10^{-3}$ eine starke Abweichung. Der Runge-Kutta Algorithmus hat einen Rundungsfehler in der Grössenordnung von $O(h5)$, während Euler $O(h2)$ hat. Dies wirkt sich auf die Zeit $t_{0}$ aus. Wo also der Fehler grösser ist, d.h. im Falle von Euler, haben wir eine Vorwegnahme der Divergenz. In der Tabelle \ref{vanderpol:tab:tab1} wurden die verschiedenen Parameter mit den relativen Abbildungen aufgelistet, in denen die berechneten numerischen Lösungen dargestellt sind. Es zeigt sich, dass die Lösungen trotz der Abnahme des Integrationsschrittes immer einen Punkt der Divergenz $t_{0}$ erreichen. Ein kleinerer Integrationsschritt führt also nicht zu einer höheren Genauigkeit, sondern zu einer Verschiebung des Punktes $t_{0}$ nach rechts. Jenseits dieses Punktes konvergieren die beiden Lösungen nicht und können daher nicht als korrekt betrachtet werden. 
 
 \begin{table}[]
 \centering
-\caption{resultat}
-\label{tab:my-table}
 \begin{tabular}{|c|r|r|c|r|c|}
 \hline
 Verfaren	& $h_1$ & $h_2$ 	& $\Delta_h$ & $t_0\cong$ 	& Abbildung \\ \hline
@@ -117,6 +114,8 @@ Runge-Kutta & 0.01  & 0.009	& $1 \cdot 10^{-3}$ & 770.5 & \ref{vanderpol:figures
 Runge-Kutta & 0.009 & 0.007	& $2 \cdot 10^{-3}$ & 551.2 & \ref{vanderpol:figures:RK_schritt_2e-3} 	\\ 
 Runge-Kutta & 0.007 & 0.005	& $2 \cdot 10^{-3}$ & 476.5 & \ref{vanderpol:figures:RK_schritt_2e-3_2} \\ \hline
 \end{tabular}
+\caption{Ergebnisse der Divergenzzeiten, berechnet mit der Software in Python.}
+\label{vanderpol:tab:tab1}
 \end{table}
 
 \begin{figure}
