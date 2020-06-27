@@ -305,6 +305,7 @@ Der Mittelwertsatz der Differentialrechnung verallgemeinert diese
 Aussage auf beliebige Werte.
 
 \begin{satz}[Mittelwertsatz]
+\label{buch:satz:mittelwertsatz}
 Zu einer auf dem Intervall $[a,b]$ differenzierbaren Funktion $f(x)$ gibt
 es immer ein $\xi\in[a,b]$ mit
 \[
@@ -355,16 +356,264 @@ $f\colon [a,b]\to\mathbb R^n$ gibt es ein $\xi\in[a,b]$ mit
 \end{satz}
 
 \begin{proof}[Beweis]
-\cite{buch:dieudonne}
+\cite[(8.5.1)]{buch:dieudonne}
 \end{proof}
 
 Diese Form ist ausreichend, um zum Beispiel Fehlerabschätzungen in der
 Numerik durchzuführen.
 
-\subsubsection{Taylorreihe mit Restformel}
+\subsubsection{Taylorreihe mit Lagrange-Restterm}
+Die Ableitung $f'(a)$ einer Funktion $f(x)$ an der Stelle $a$ ist definiert
+als die beste lineare Approximation
+\[
+f(x) = f(a) + f'(a)\cdot (x-a) + o(|x-a|).
+\]
+Der Mittelwertsatz besagt, dass
+\[
+f(x) = f(a) + f'(\xi) \cdot (x-a)
+\]
+für ein geeignetes $\xi\in[a,x]$.
+Man kann also sagen, dass $f(a)$ eine Approximation für $f(x)$ mit einem
+Fehler der Form $f'(\xi)\cdot(x-a)$ für ein geeignetes $\xi\in[a,x]$ ist.
+Das Taylor-Polynom verallgemeinert diese Beobachtung auf eine Approximation
+höherer Ordnung.
+
+\begin{satz}
+Sei $f(x)$ eine $n+1$-mal stetig differenzierbare Funktion in einer
+Umgebung von $a$.
+Dann ist das {\em Taylor-Polynom}
+\begin{align*}
+Tf_{a,n}(x)
+&=
+f(a) + f'(a)\cdot (x-a) + f''(x)\frac{(x-a)^2}{2!} + f'''(x)\frac{(x-a)^3}{3!}
++\dots+f^{(n)}(a)\frac{(x-a)^n}{n!}
+\\
+&=
+\sum_{k=0}^n
+f^{(k)}(a) \frac{(x-a)^k}{k!}
+\end{align*}
+eine Approximation von $f(x)$ derart, dass
+\[
+f(a)=Tf_{a,n}(a),\quad
+f'(a)=Tf_{a,n}'(a),\quad
+f''(a)=Tf_{a,n}''(a),\quad
+\dots,\quad
+f^{(n)}(a)=Tf_{a,n}^{(n)}(a).
+\]
+Ausserdem gibt es einen Wert $\xi\in[a,x]$ derart, dass der Fehler
+\[
+R_{n,a}f(x)
+=
+f(x) - T_{n,a}f(x)
+=
+f^{(n+1)}(\xi)\frac{(x-a)^{n+1}}{(n+1)!}
+\]
+ist.
+\end{satz}
+\index{Taylor-Polynom}
+$R_{n,a}f(x)$ heisst das {\em Lagrange-Restglied} des Taylor-Polynoms.
+
+\begin{proof}[Beweis]
+Zunächst kann die Behauptung über die Ableitungen von $T_{n,a}f(x)$ durch
+die Rechnung
+\begin{align*}
+T_{n,a}f'(x)
+&=
+f'(a) + f''(a) \cdot (x-a) + f'''(a)\frac{(x-a)^2}{2!} + \dots
+&&\Rightarrow&
+T_{n,a}f'(a) 
+&=
+f'(a)
+\\
+T_{n,a}f''(x)
+&=
+f''(a) + f'''(a) \cdot (x-a) + \dots
+&&\Rightarrow&
+T_{n,a}f''(a) 
+&=
+f''(a)
+\\
+&\;\vdots&&&&\;\vdots
+\\
+T_{n,a}f^{(n)}(x)
+&=
+f^{(n)}(a)
+&&\Rightarrow&
+T_{n,a}f^{(n)}(a)
+&=
+f^{(n)}(a)
+\end{align*}
+direkt bestätigt werden.
+Daraus folgt, dass die Funktion $g(x) = f(x) - T_{n,a}f(x)$ die Eigenschaft
+\begin{equation}
+g(a) = g'(a) = g''(a) = \dots = g^{(n)}(a)=0
+\label{buch:taylor:gabl}
+\end{equation}
+hat.
+Es muss als nur gezeigt werden, dass unter den Voraussetzungen
+\eqref{buch:taylor:gabl} eine Zahl $\xi$ ergibt derart, dass
+\[
+g(x) = g^{(n+1)}(\xi)\frac{(x-a)^{n+1}}{(n+1)!}
+\]
+gilt.
+Der Fall $n=0$ ist der Mittelwertsatz~\ref{buch:satz:mittelwertsatz}.
+
+Für $n>0$ kann die Behauptung mit vollständiger Induktion bewiesen werden.
+Sei also bereits bewiesen, dass für eine Funktion, deren Ableitungen bis
+zur Ordnung $n-1$ an der Stelle $a$ verschwinden, eine Zahl $\xi\in[a,x]$
+existiert mit
+\[
+g(x) = g^{(n)}(\xi)\frac{(x-a)^n}{n!}
+\]
+und müssen jetzt zeigen, dass dies auch für $n+1$ gilt.
+
+Wir müssen $g(x)$ mit $(x-a)^{n+1}$ vergleichen und untersuchen
+dazu den Quotienten
+\[
+\frac{g(x)}{(x-a)^{n+1}}.
+\]
+Zur Abkürzung schreiben wir $h(x) = (x-a)^{n+1}$, es ist also der
+Quotient 
+\[
+\frac{g(x)}{h(x)}
+=
+\frac{g(x)-g(a)}{h(x)-h(a)}
+\]
+zu berechnen.
+Die Funktion
+\[
+q(\xi) = g(\xi) \bigl(h(x)-h(a)\bigr) - h(\xi) \bigl(g(x)-h(a)\bigr)
+\]
+hat an den Stellen $a$ und $x$ die gleichen Werte
+\begin{align*}
+q(a)
+&=
+g(a) \bigl((h(x)-h(a)\bigr) - h(a) \bigl((g(x) - g(a)\bigr)
+=
+g(a)h(x)-g(x)h(a)
+\\
+q(x)
+&=
+g(x) \bigl((h(x)-h(a)\bigr) - h(x) \bigl((g(x) - g(a)\bigr)
+=
+-g(x)h(a)+g(a)h(x).
+\end{align*}
+Da $q(a)=q(x)$ ist, muss nach dem Satz von Rolle dazwischen ein Wert $\xi_1$
+existieren, für den $q'(\xi_1)=0$ gilt, also
+\[
+0
+=
+q'(\xi_1)
+=
+g'(\xi_1) \bigl(h(x)-h(a)\bigr) - h'(\xi) \bigl(g(x)-g(a)\bigr)
+\qquad\Rightarrow\qquad
+\frac{g'(\xi_1)}{h'(\xi_1)}
+=
+\frac{g(x)-g(a)}{h(x)-h(a)}.
+\]
+Da die Ableitung $h'(x)=(n+1)(x-a)^n$ ist, folgt
+\begin{equation}
+\frac{g'(\xi_1)}{h'(\xi_1)}
+=
+\frac{g'(\xi_1)}{(n+1) (\xi_1-a)^n}
+=
+\frac{g(x)-g(a)}{h(x)-h(a)}
+=
+\frac{g(x)}{(x-a)^{n+1}}.
+\label{buch:taylor:eqn1}
+\end{equation}
+Die Ableitungen der Ordnung $\le n-1$ der Funktion $g'(x)$ verschwinden
+im Punkt $a$, nach Induktionsvoraussetzung gibt es also ein $\xi$ derart,
+dass
+\[
+g'(\xi_1)
+=
+(g')^{(n)}(\xi) \frac{(\xi_1-a)^{n}}{n!}
+=
+g^{(n+1)}(\xi)\frac{(\xi_1-a)^n}{n!}
+\]
+gilt.
+Setzt man dies in \eqref{buch:taylor:eqn1} ein, erhält man
+\[
+\frac{g(x)}{(x-a)^{n+1}}
+=
+\frac{g'(\xi_1)}{(n+1)(\xi_1-a)^n}
+=
+g^{(n+1)}(\xi)\frac{(\xi_1-a)^n}{n!} \frac{1}{(n+1)(\xi_1-a)^n}
+=
+g^{(n+1)}(\xi)\frac{1}{(n+1)!}.
+\]
+Durch Multiplikation mit $(x-a)^{n+1}$ erhalten wir
+\[
+g(x) = g^{(n+1)}(\xi)\frac{(x-a)^{n+1}}{(n+1)!}.
+\]
+Damit ist der Induktionsschritt vollzogen und die Restwertformel bewiesen.
+\end{proof}
+
+\begin{beispiel}
+Die Funktion $f(x)=x^N$ hat an der Stelle $a=0$ verschwindende
+Ableitungen bis zur Ordnung $N-1$.
+Das Taylor-Polynom $Tf_{0,n}(x)$ der Ordnung $n$ dieser Funktion
+verschwindet daher für $n<N$.
+Nach der Restformel des Taylor gibt es Zahlen $\xi_n$ derart
+\begin{align*}
+R_{n,0}f(x)
+=
+f(x)
+&=
+x^N
+= 
+f^{(n+1)}(\xi_n) \frac{x^{n+1}}{(n+1)!}
+\\
+&=
+\frac{
+N\cdot(N-1)\cdot(N-2)\cdot\dots\cdot(N-n)
+}{
+1\cdot 2 \cdot 3 \cdot\dots \cdot (n+1)
+}
+\xi_n^{N-n-1} 
+=
+\binom{N}{n+1} \xi_n^{N-n-1}
+\\
+\Rightarrow\qquad
+\xi_n
+&=
+\binom{N}{n+1}^{\frac{-1}{N-n-1}} x^{\frac{N}{N-n-1}}.
+\qedhere
+\end{align*}
+\end{beispiel}
+
+Im Hinblick auf die nachfolgende Diskussion des Fehlers des
+Interpolationspolynoms formulieren wir dies noch als eine
+Fehlerabschätzung.
+Das Taylor-Polynom approximiert die Funktion $f(x)$ durch ein
+Polynom vom Grad $n$.
+Der Fehler des Taylor-Polynoms ist
+\[
+|f(x) - T_{n,a}f(x)|
+=
+\biggl|
+f^{(n+1)}(\xi)
+\frac{(x-a)^{n+1}}{(n+1)!}
+\biggr|
+=
+|f^{(n+1)}(\xi)|\cdot
+\biggl|
+\frac{(x-a)^{n+1}}{(n+1)!}
+\biggr|
+\le
+\max_{\xi\in [a,x]} |f^{(n+1)}(\xi)|
+\biggl|
+\frac{(x-a)^{n+1}}{(n+1)!}
+\biggr|,
+\]
+er ist also beschränkt einerseits durch ein Polynom mit Grad $n+1$
+und den grössten Wert der $(n+1)$-te Ableitung im Intervall $[a,x]$.
+Die Fehlerformel für das Interpolationspolynom wird von der genau
+gleichen Art sein.
 
 \subsubsection{Fehler des Lagrange-Interpolationspolynoms}
-Der folgende satz gibt vollständige Auskunft über den Fehler des
+Der folgende Satz gibt vollständige Auskunft über den Fehler des
 Interpolationspolynoms.
 
 \begin{satz}
@@ -377,7 +626,7 @@ a = x_0 < x_1 < x_2 < \dots  < x_{n-1} < x_n=b
 übereinstimmt.
 Dann gibt es für jedes $x\in[a,b]$ ein $\xi_x\in [a,b]$ mit
 \begin{equation}
-f(x) - p(x) = \frac{f^{(n+1)}(\xi_x)}{(n+1)!} l(x)
+f(x) - p(x) = \frac{f^{(n+1)}(\xi_x)}{(n+1)!} l(x).
 \label{buch:equation:polyfehler}
 \end{equation}
 \end{satz}
@@ -440,6 +689,10 @@ ist
 |f(x)-p(x)| \le \frac{\|f^{(n+1)}\|}{(n+1)!} |l(x)|.
 \]
 \end{korollar}
+
+Der Fehler des Interpolationspolynoms vom Grad $n$ ist also beschränkt
+durch das Polynom $l(x)$ vom Grad $n+1$ und den grössten Wert der
+$(n+1)$-ten Ableitung von $f(x)$.
 
 \begin{beispiel}
 \begin{figure}
