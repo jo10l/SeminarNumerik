@@ -350,54 +350,106 @@ f'(\xi) = \frac{f(b)-f(a)}{b-a}.
 \]
 \end{proof}
 
+Die von Abbildung~\ref{buch:polynome:figure:mittelwertsatz} vermittelte
+Intuition lässt sich auch für beliebige parametrisierte Kurven
+$\gamma\colon[a,b]\to\mathbb R:\to\mapsto (x(t),y(t))$ in der Ebene
+verallgemeinern (Abbildung~\ref{buch:polynome:figure:mittelwertsatz} rechts).
+Sind die Punkte $A=(x(a),y(a))$ und $B=(y(a),y(b))$ verschieden,
+so dass die Richtung von $A$ nach $B$ wohldefiniert ist, dann erwarten
+wir einen Zwischenstelle $\xi$ mit einer Tangente mit derselben Richtung.
+
+\begin{satz}
+\label{buch:satz:mittelwertsatz2d}
+Sei $\gamma\colon[a,b]\to\mathbb R:t\mapsto (x(t),y(t))$ eine
+stetig differenzierbare ebene Kurve mit $|\dot{gamma}(t)|\ne 0$ für
+alle $t\in[a,b]$ und $A=\gamma(a)\ne\gamma(b)=B$.
+Dann gibt es ein $\xi\in[a,b]$ derart, dass $\dot{\gamma}(\xi)$ die gleiche
+Richtung hat wie $\overrightarrow{AB}$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Zwei Vektoren haben die gleiche Richtung, wenn die Determinante
+mit den Vektoren als Spaltenvektoren verschwindet.
+Der Mittelpunkt der Strecke $AB$ ist
+$M=(x_M,y_M) = (\frac12(x(a)+x(b)),\frac12(y(a)+y(b)))$.
+Wir definieren die Funktion
+\[
+h(t)
+=
+\det(\overrightarrow{M\gamma(t)}, \overrightarrow{AB})
+=
+\biggl|
+\begin{matrix}
+x(t) - x_M & x(b)-x(a) \\
+y(t) - y_M & y(b)-y(a)
+\end{matrix}
+\biggr|
+\]
+Da die Strecken $AB$ und $MA$ bzw.~$MB$ gleich sind, ist an den
+Stellen $t=a$ und $t=b$ 
+\[
+h(a)
+=
+\det (\overrightarrow{MA},\overrightarrow{AB})
+= 0
+\qquad\text{and}\qquad
+h(b)
+=
+\det (\overrightarrow{MB},\overrightarrow{AB})
+=
+0.
+\]
+Nach dem Satz von Rolle muss es daher ein $\xi\in[a,b]$ geben mit
+\begin{equation}
+0
+=
+h'(\xi)
+=
+\det(
+\dot{\gamma}(\xi),
+\overrightarrow{AB}
+)
+=
+\biggl|
+\begin{matrix}
+x'(\xi) & x(b)-x(a) \\
+y'(\xi) & y(b)-y(a)
+\end{matrix}
+\biggr|,
+\label{buch:polynome:eqn:mittelwertsatz2d}
+\end{equation}
+was natürlich wieder bedeutet, dass die Tangente $\dot{\gamma}(\xi)$ 
+parallel ist zur Strecke $AB$.
+\end{proof}
+
+
 \begin{satz}[Verallgemeinerter Mittelwertsatz]
 \label{buch:satz:vmittelwertsatz}
 Sind $x(t)$ und $y(t)$ stetig differenzierbare Funktionen auf dem Interval
-$[a,b]$, dann gibt es ein $\xi\in[a,b]$ mit
+$[a,b]$ derart, dass $x(a)\ne x(b)$ oder $y(a)\ne x(b)$ und ausserdem
+$y'(t)\ne 0$ für $t\in[a,b]$.
+Dann gibt es ein $\xi\in[a,b]$ mit
 \[
 \frac{y'(\xi)}{x'(\xi)}
 =
 \frac{y(b)-y(a)}{x(b)-x(a)}.
 \]
-Geometrisch bedeutet dies, dass die ebene Kurve $t\mapsto (x(t),y(t))$
-eine Tangen parallel zur Sekante durch $(x(a),y(a))$ und $(x(b),y(b))$ hat.
 \end{satz}
 
 \begin{proof}[Beweis]
-Mit der Notation $\Delta x=x(b)-x(a)$ und $\Delta y=y(b)-y(a)$ betrachte
-die Funktion
+Die Bedingungen bedeuten, dass die die Kurve $\gamma(x(t),y(t))$
+den Voraussetzungen des Satzes~\ref{buch:satz:mittelwertsatz2d}
+genügt.
+Es gibt daher einen Punkten $\xi\in[a,b]$ wo die Tangente
+parallel zur Strecke $AB$ ist.
+Nach~\label{buch:polynome:eqn:mittelwertsatz2d} bedeutet dies
 \[
-f(t)
-=
-x(t) \Delta y - y(t) \Delta x
-\]
-hat die gleichen Werte
-\begin{align*}
-f(a)
-&=
-x(a) \bigl(y(b)-y(a)\bigr) - y(a)\bigl(x(b)-x(a)\bigr)
-=
-x(a)y(b)-y(a)x(b)
-\\
-f(b)
-&=
-x(b) \bigl(y(b)-y(a)\bigr) - y(b)\bigl(x(b)-x(a)\bigr)
-=
--x(b)y(a)+y(b)x(a)
-\end{align*}
-an den Intervallenden.
-Nach dem Satz von Rolle~\ref{buch:satz:rolle}
-gibt es einen Zwischenwert $\xi$ derart, dass
-\[
-0
-=
-f'(\xi)
-=
-x'(\xi) \Delta y - y'(\xi)\Delta x
-\qquad\Rightarrow\qquad
-\frac{y'(\xi)}{x'(\xi)}
-=
-\frac{\Delta y}{\Delta x}
+y'(\xi) \cdot (x(b)-x(a))
+-
+x'(\xi) \cdot (y(b)-y(a))
+=0
+\qquad\Rightarrow\quad
+\frac{x'(\xi)}{y'(\xi)}
 =
 \frac{y(b)-y(a)}{x(b)-x(a)}.
 \qedhere

@@ -83,14 +83,19 @@
 \begin{scope}[xshift=3.5cm]
 
 	\coordinate (A) at (3,1);
-	\coordinate (B) at (0,3);
-	\coordinate (C) at (4,6.5);
-	\coordinate (D) at (5,3);
+	%\coordinate (B) at (0,3);
+	%\coordinate (C) at (4,6.5);
+	\coordinate (B) at (5,3);
 
 	\xdef\xlinks{3}
 	\xdef\ylinks{1}
 	\xdef\xrechts{5}
 	\xdef\yrechts{3}
+	\pgfmathparse{(\xlinks+\xrechts)/2}
+	\xdef\xmitte{\pgfmathresult}
+	\pgfmathparse{(\ylinks+\yrechts)/2}
+	\xdef\ymitte{\pgfmathresult}
+	\coordinate (M) at (\xmitte,\ymitte);
 
 	\pgfmathparse{(\yrechts-\ylinks)/(\xrechts-\xlinks)}
 	\xdef\m{\pgfmathresult}
@@ -108,19 +113,30 @@
 	\pgfmathparse{(1-\t)*(1-\t)*(1-\t)*1+3*(1-\t)*(1-\t)*\t*3+3*(1-\t)*\t*\t*6.5+\t*\t*\t*3});
 	\xdef\yzero{\pgfmathresult}
 
-	\draw[color=blue] ({\xzero-2},{\yzero-2*\m})
-		-- ({\xzero+2},{\yzero+2*\m});
+	\pgfmathparse{\xzero+1.5}
+	\xdef\xend{\pgfmathresult}
+	\pgfmathparse{\yzero+1.5*\m}
+	\xdef\yend{\pgfmathresult}
+
+	\draw[color=blue] ({\xzero-2},{\yzero-2*\m}) -- (\xzero,\yzero);
+	\draw[->,color=blue,line width=1.4pt] (\xzero,\yzero) -- (\xend,\yend);
+	\node[color=blue] at (\xend, \yend) [right]
+		{$\displaystyle\begin{pmatrix}x'(\xi)\\y'(\xi)\end{pmatrix}$};
 	\fill[color=white] (\xzero,\yzero) circle[radius=0.08];
 	\draw[color=blue] (\xzero,\yzero) circle[radius=0.08];
 
 	\fill[color=white] (A) circle[radius=0.08];
-	\fill[color=white] (D) circle[radius=0.08];
+	\fill[color=white] (M) circle[radius=0.08];
+	\fill[color=white] (B) circle[radius=0.08];
 
 	\draw[color=red] (A) circle[radius=0.08];
-	\draw[color=red] (D) circle[radius=0.08];
+	\draw (M) circle[radius=0.08];
+	\draw[color=red] (B) circle[radius=0.08];
 
-	\node at (A) [below right] {$(x(a),y(a))$};
-	\node at (D) [left] {$(x(b),y(b))$};
+	\node at (A) [below right] {$A=(x(a),y(a))$};
+	\node at (B) [left] {$B=(x(b),y(b))$};
+	\node at ({0.5*(\xlinks+\xrechts)},{0.5*(\ylinks+\yrechts)})
+		[above left] {$M$};
 
 	\node at (\xzero,\yzero) [right] {$(x(\xi),y(\xi))$};
 
