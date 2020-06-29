@@ -22,31 +22,58 @@ D_{\alpha,i,j}=
 beschrieben werden, wobei $c=\cos(\alpha)$ und $s=\sin(\alpha)$.
 Drehungen dieser Art heissen Givens-Rotationen.
 
-Es ist nun möglich, Elemente unterhalb der Diagonalen einer $l\times n $-Matrix $A$ mit geeigneten Givens-Rotationen auf Null zu bringen, und um so eine obere Dreiecksmatrix $R$ zu erhalten.
-Das Produkt aller inversen Drehmatrizen ist dann eine orthonormierte Matrix $Q$, da alle Drehmatrizen $D_{\alpha_k,i,j}$ orthonormal sind.
+Es ist nun möglich, Elemente unterhalb der Diagonalen einer $l\times n $-Matrix $A$ mit geeigneten Givens-Rotationen auf Null zu bringen, um so eine obere Dreiecksmatrix $R$ zu erhalten.
+Das Produkt aller inversen Drehmatrizen ist dann eine orthogonale Matrix $Q$, da alle Drehmatrizen $D_{\alpha_k,i,j}$ orthogonal sind.
 
 Das wird nun an dieser Stelle im Detail betrachtet.
-Zuerst wird mit Givens-Rotationen ($D_{\alpha_k, i, j}$ der Grösse $l\times l$) die Matrix $R$ berechnet: 
+Zuerst wird mit Givens-Rotationen ($D_{\alpha_k, i, j}$ ist von der Grösse $l\times l$) die Matrix $R$ berechnet: 
 \begin{equation*}
-R = D_{\alpha_k,n-1,l}...D_{\alpha_2,1,3}D_{\alpha_1,1,2}A.		
+R = D_{\alpha_k,l,n-1}...D_{\alpha_2,3,1}D_{\alpha_1,2,1}A.		
 \end{equation*}
+
+
+Die erste Drehmatrix soll bewirken, dass das Element in der 2. Zeile und 1. Spalte nach der Multiplikation 
+\begin{equation*}
+	D_{\alpha_1, 2,1}A=
+	\begin{pmatrix}
+		c_1   &-s_1  &\cdots &0\\
+		\color{red}s_1   & \color{red}c_1  &\color{red}\cdots &\color{red}0\\
+		\vdots&\vdots&\ddots&\vdots\\
+		0     &0     &\cdots&1\\
+	\end{pmatrix}
+	\begin{pmatrix}
+		\color{red}a_{11}&a_{12}&\cdots&a_{1n}\\
+		\color{red}a_{21}&a_{22}&\cdots&a_{2n}\\
+		\color{red}\vdots&\vdots&\ddots&\vdots\\
+		\color{red}a_{l1}&a_{l2}&\cdots&a_{ln}
+	\end{pmatrix}
+\end{equation*}
+verschwindet.
+Interessant sind dabei nur die rot eingefärbte Zeile und Spalte, dessen Multiplikation auf Null gesetzt werden muss:
+\begin{equation*}
+	s_1 a_{11}+c_1 a_{21}=0,
+\end{equation*}
+und da $s_1=\sin(\alpha_1)$ und $c_1=\cos(\alpha_1)$, kennt man noch die Nebenbedingung
+\begin{equation*}
+	s_1^2+c_1^2=1.
+\end{equation*} 
+Dieses Gleichungssystem mit zwei unbekannten und zwei Gleichungen kann somit nach $s_1$ und $c_2$ aufgelöst werden, wobei es wegen der quadratischen Nebenbedingung immer zwei Lösungen gibt.
+Welche genommen wird spielt aber keine Rolle, da nur die Auswirkung der Drehung und nicht der eigentliche Drehwinkel relevant ist.
+
+Die Matrix $D_{\alpha_1, 2,1}$ ist so vollständig bestimmt, ohne dass der Winkel $\alpha_1$ explizit bestimmt werden musste.
+Dies kann so für alle weiteren Drehmatrizen $D_{\alpha_2, 3,1}$ bis $D_{\alpha_k, l,n-1}$ durchgeführt werden.
+
 Auf die Matrix $Q$ kommt man dann mit
-\begin{multline*}
-Q=AR^{-1}=A(D_{\alpha_k,n-1,l}...D_{\alpha_2,1,3}D_{\alpha_1,1,2}A)^{-1}\\=
-\underbrace{AA^{-1}}_{\displaystyle=E}D_{\alpha_1,1,2}^{-1}D_{\alpha_2,1,3}^{-1}... D_{\alpha_k, n-1,l}^{-1}=
-D_{\alpha_1,1,2}^{T}D_{\alpha_2,1,3}^{T}...D_{\alpha_k, n-1,l}^{T},
-\end{multline*}
-wobei im letzten Schritt ausgenutzt wurde, dass Drehmatrizen orthonormal sind.
-Die Winkel $\alpha_k$ müssen dabei nicht explizit bestimmt werden.
-Es reicht aus $s_k = \sin(\alpha_k)$ und $c_k=\cos(\alpha_k)$ unter der Nebenbedingung
-\begin{equation*}
-s_k^2+c_k^2 = 1
-\end{equation*}
-so zu wählen, sodass das gewünschte Element nach der Matrixmultiplikation verschwindet.
+\begin{align*}
+Q&=AR^{-1}\\&=A(D_{\alpha_k,l,n-1}...D_{\alpha_2,3,1}D_{\alpha_1,2,1}A)^{-1}\\&=
+\underbrace{AA^{-1}}_{\displaystyle=E}D_{\alpha_1,2,1}^{-1}D_{\alpha_2,3,1}^{-1}... D_{\alpha_k, l,n-1}^{-1}=
+D_{\alpha_1,2,1}^{T}D_{\alpha_2,3,1}^{T}...D_{\alpha_k, l,n-1}^{T},
+\end{align*}
+wobei im letzten Schritt ausgenutzt wurde, dass Drehmatrizen orthogonal sind.
 
 Die Matrizen $Q$ und $R$ sind beide von der Grösse $l\times l$.
 Für den Spezialfall $l=n$ können sie so stehen gelassen werden.
-Für die Fälle wo $A$ aber die Grösse $l\times n$ hat, müssen die Dimensionen noch angepasst werden. um den Forderungen der $QR$-Zerlegung zu genügen.
+Für alle Fälle aber wo $l>n$ müssen die Dimensionen noch angepasst werden, um den Forderungen der $QR$-Zerlegung zu genügen.
 In der Matrix $R$ stehen ab der $n.$ Zeile nur noch Nullen.
 Diese Zeilen können somit weggelassen werden und folglich alle Einträge ab der $n.$ Spalte von $Q$.
 Als Matrizen ausgeschrieben:
@@ -78,5 +105,5 @@ r_{11}&r_{12}&\cdots&r_{1n}\\
 0     &0     &\cdots&r_{nn}
 \end{pmatrix}.
 \end{multline*}
-$Q$ ist daraufhin also eine $l\times n$-Matrize und $R$ ist von der Grösse $n\times n$, wie es verlangt wurde.
+$Q$ ist daraufhin also eine $l\times n$-Matrize und $R$ ist von der Grösse $n\times n$, wie verlangt.
 

@@ -1,0 +1,26 @@
+%
+% 3003fehler.tex -- Fehler in Abhängigkeit von t für verschiedene a
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\a{0.552}
+
+\draw[color=blue,line width=1.4pt]
+	plot[domain=0:1,samples=100]
+	({10*\x},{1000*(((((((18*\x-54)*\x+63)*\x-36)*\x+9)*\x*\x)*\a+(((((-24*\x+72)*\x-66)*\x+12)*\x+6)*\x*\x))*\a+(((((8*\x-24)*\x+18)*\x+4)*\x-6)*\x*\x))});
+
+
+\end{tikzpicture}
+\end{document}
+
