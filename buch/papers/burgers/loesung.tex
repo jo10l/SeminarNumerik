@@ -7,7 +7,7 @@
 \label{burgers:section:loesung}}
 \rhead{Lösungsmethoden}
 
-Das Kaptiel \ref{chapter:pde} beschreibt den theoretischen Aspekt der Numerik  partieller Differentialgleichungen.
+Das Kaptiel \autoref{chapter:pde} beschreibt den theoretischen Aspekt der Numerik  partieller Differentialgleichungen.
 In diesem Abschnitt wird auf die numerischen Lösungsmethoden der Gleichung von Burgers eingegangen.
 
 
@@ -30,13 +30,13 @@ Folgend werden zwei grundlegende Varianten mit jeweils einer kleinen Variation a
 		\label{burgers:fig:Linear1}
 		\end{figure}
 
-	Die grundlegende Gleichung \eqref{burgers:eq_invisid_burgers} kann mit der gewählten Methode
+	Die grundlegende  \autoref{burgers:eq_invisid_burgers} kann mit der gewählten Methode
 	\begin{equation}
 	  	\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} \cong \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n}\, \frac{u_{i}^{n-1}-u_{i-1}^{n-1}}{\Delta x}=0
 	  	  \label{burgers:eq_ex_lin1}
 	  	\end{equation}
         umgeschrieben werden.
-	  	Für die Lösung muss \eqref{burgers:eq_ex_lin1} nach
+	  	Für die Lösung muss die \autoref{burgers:eq_ex_lin1} nach
 
 	  	\begin{equation}
 	  u_{i}^{n} = \frac{\Delta{x}\, u^{n-1}_{i}\,}{- \Delta{t}\, u^{n-1}_{i-1}\, + \Delta{t}\, u^{n-1}_{i}\, + \Delta{x}\,}
@@ -149,7 +149,7 @@ gefunden werden.
 
 	\medskip
 
-	Die erw\"ahte Instabilit\"at im \autoref{burgers:sec:nwp} auf welche Richardson gestossen ist, ist dieselbe welche hier beschrieben wird.
+	Die erw\"ahte Instabilit\"at im Abschnitt \ref{burgers:sec:nwp} auf welche Richardson gestossen ist, ist dieselbe welche hier beschrieben wird.
 	Ein analytisches Beispiel aus \cite{burgers:lynch_2014} mit der Differentialgleichung der Reibung.
 
 	\begin{equation}
@@ -197,7 +197,7 @@ gefunden werden.
         \end{align}
     \end{subequations}
 	Man sieht, dass $|\alpha_+| < 1$ und somit eine abfallende, gegen Null gehende L\"osung entsteht.
-	Allerdings ist 	$|\alpha_-| > 1$ und damit w\"achst \eqref{burgers:eq_cm} ohne Limit mit $n$.
+	Allerdings ist 	$|\alpha_-| > 1$ und damit w\"achst die \autoref{burgers:eq_cm} ohne Limit mit $n$.
 	Dieser Anteil wird der  \textit{computational mode} genannt und entsteht bei der Verwendung des expliziten Leap-Frog Verfahren.
 
 	In \autoref{burgers:fig:cm1} kann diese Instabilit\"at beobachtet werden.
@@ -211,6 +211,17 @@ gefunden werden.
 	\label{burgers:fig:cm1}
 	\end{figure}
 
+	\paragraph{Unterdrückung des Computational Mode}
+	\label{burgers:sec:cm}
+
+	Dieser hochfrequente Fehler kann mittels eines digitalen Tiefpass-Filters eliminiert werden.
+	Das sogenannte Robert-Asselin-Time-Filter \cite{burgers:time_filter} kann hierf\"uhr eingesetzt werden.
+	Das Filter 
+		\begin{equation}
+			\hat{u}(t_n,x_i) = u(t_n,x_i)+ \frac{\alpha}{2} [ \, u(t_n,x_{i-1}) - 2u(t_n,x_i)+u(t_n,x_{i+1}) ] \,
+		\end{equation}
+	
+	wird in dieser Anwendung allerdings nicht auf die Zeit, sonder auf die Raum-Dom\"ane angewendet.
 
 
 \subsection{Implizit}
@@ -236,10 +247,10 @@ gefunden werden.
 
 	\begin{equation}
 	  u_{i}^{n} =
-	     \dfrac{\Delta{t}\, u^{n}_{i-1}\, - \Delta{x}\, \pm \sqrt{\Delta{t}\,^{2} \left(u^{n}_{i-1}\,\right)^{2} + 4 \Delta{t}\, \Delta{x}\, u^{n-1}_{i}\, - 2 \Delta{t}\, \Delta{x}\, u^{n}_{i-1}\, + \Delta{x}\,^{2}}}{2 \Delta{t}},
+	     \dfrac{\Delta{t}\, u^{n}_{i-1}\, - \Delta{x}\, \pm \sqrt{\Delta{t}\,^{2} (u^{n}_{i-1})^{2} + 4 \Delta{t}\, \Delta{x}\, u^{n-1}_{i}\, - 2 \Delta{t}\, \Delta{x}\, u^{n}_{i-1}\, + \Delta{x}\,^{2}}}{2 \Delta{t}},
 	\end{equation}
 	wobei der negative Teil der L\"osung zu einer instabilität führt.
-	
+
 
 	\subsubsection{Linear}
 	\label{burgers:sec:imp_lin}

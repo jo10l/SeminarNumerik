@@ -87,7 +87,7 @@ class Burgers:
         linear3 = copy.deepcopy(self.U1)
         for t in np.linspace(1, self.N-1, self.N-1, dtype=int):
             for x in np.linspace(1, self.M-2, self.M-2, dtype=int):
-                linear3[x, t-1] += alpha*(linear3[x+1, t-1]+linear3[x-1, t-1]-2*linear3[x, t-1])
+                linear3[x, t-1] += alpha/2*(linear3[x+1, t-1]+linear3[x-1, t-1]-2*linear3[x, t-1])
             for x in np.linspace(1, self.M-2, self.M-2, dtype=int):
                 xi = linear3[x, t-1]*(linear3[x+1, t-1]-linear3[x-1, t-1])/(2*self.dx)
                 linear3[x, t] = -self.dt*xi+linear3[x, t-1]
@@ -478,20 +478,22 @@ if __name__ == '__main__':
     # plot_multiple()
     # lin_cov = b1.linear_convection(c=1)
     # Uq1 = b1.quadratic()
-    # Ul1 = b1.linear1()
+    Ul1 = b1.linear1()
     # Ul2 = b1.linear2()
-    Ul3 = b1.linear3(alpha=0)
+    Ul3 = b1.linear3(alpha=0.4)
+    Ul32 = b1.linear3(alpha=0.8)
+
     # Ul4 = b1.linear4(alpha=0)
     # Ul5 = b1.linear5()
     # Ucn = b1.crank_nicolson()
     # implicit = b1.implicit_solver()
 
     # implicit = b1.implicit_as_lin1()
-    implicit = b1.implicit_as_leap_frog_backwards()
+    # implicit = b1.implicit_as_leap_frog_backwards()
     # implicit = b1.implicit_as_leap_frog_forwards()
 
     # b1.plot_animate_rot_3D(Uq1, title='nlc_3d')
-    # b1.plot_tikz([Ul1, Ul2,], ['Linear 1', 'Linear 2'])
+    b1.plot_tikz([Ul1, Ul3, Ul32], ['Explicit Linear', r'Explicit Leap Frog with Filter, $\alpha = 0.4$', r'Explicit Leap Frog with Filter, $\alpha = 0.8$'])
     # b1.plot_animate_1D([Uq1, Ul5, implicit], ['Quadratic','Linear', 'Leap-Frog'], 'imp')
     # b1.plot(data=Uq1, save=False, title='Nonlinear_Convection')
     # b1.plot(data=lin_cov, save=False, title='Linear Convection')
