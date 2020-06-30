@@ -354,7 +354,7 @@ class Burgers:
         cnt = 0
         SMALL_SIZE = 5
         MEDIUM_SIZE = 8
-        BIGGER_SIZE = 20
+        BIGGER_SIZE = 22
         plt.rcParams['font.family'] = 'STIXGeneral'
         plt.rc('font', size=BIGGER_SIZE)          # controls default text sizes
         plt.rc('axes', titlesize=BIGGER_SIZE)     # fontsize of the axes title
@@ -408,7 +408,7 @@ class Burgers:
                     plt.plot(self.x, datas[k][:,cnt], label=legend[k], lw=2)
                 textstr = 't = {} s'.format(cnt)
                 props = dict(boxstyle='round', facecolor='white', alpha=0.5)
-                tex = axs.text(0.05, 0.90, textstr, transform=axs.transAxes, fontsize=18,verticalalignment='top', bbox=props)
+                tex = axs.text(0.05, 0.90, textstr, transform=axs.transAxes, fontsize=20,verticalalignment='top', bbox=props)
                 cnt += (self.M-1)//25
         handles, labels = axs.get_legend_handles_labels()
         fig.legend(handles, labels, loc='upper center', fontsize=25, ncol = 3)
@@ -474,14 +474,14 @@ def plot_multiple():
 # test%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if __name__ == '__main__':
 
-    b1 = Burgers(x_dim=10, t_dim=10, dx=.2, dt=.1)
+    b1 = Burgers(x_dim=10, t_dim=10, dx=.1, dt=.1)
     # plot_multiple()
     # lin_cov = b1.linear_convection(c=1)
     # Uq1 = b1.quadratic()
     Ul1 = b1.linear1()
     # Ul2 = b1.linear2()
-    Ul3 = b1.linear3(alpha=0.4)
-    Ul32 = b1.linear3(alpha=0.8)
+    Ul3 = b1.linear3(alpha=0.9)
+    Ul32 = b1.linear3(alpha=1.8)
 
     # Ul4 = b1.linear4(alpha=0)
     # Ul5 = b1.linear5()
@@ -493,7 +493,7 @@ if __name__ == '__main__':
     # implicit = b1.implicit_as_leap_frog_forwards()
 
     # b1.plot_animate_rot_3D(Uq1, title='nlc_3d')
-    b1.plot_tikz([Ul1, Ul3, Ul32], ['Explicit Linear', r'Explicit Leap Frog with Filter, $\alpha = 0.4$', r'Explicit Leap Frog with Filter, $\alpha = 0.8$'])
+    b1.plot_tikz([Ul1, Ul3, Ul32], ['Explicit Linear', r'Explicit Leap Frog with Filter, $\alpha = 0.9$', r'Explicit Leap Frog with Filter, $\alpha = 1.8$'])
     # b1.plot_animate_1D([Uq1, Ul5, implicit], ['Quadratic','Linear', 'Leap-Frog'], 'imp')
     # b1.plot(data=Uq1, save=False, title='Nonlinear_Convection')
     # b1.plot(data=lin_cov, save=False, title='Linear Convection')
