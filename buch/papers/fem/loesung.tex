@@ -8,6 +8,21 @@
 \rhead{Lösung}
 Zuerst muss die DGL in ein äqualentes Minimalprobelm übersetzt werden in der Form
 
+Im Gegensatz zu den finiten Elementen im 1 dimensionalen Raum muss bei der Bildung der abgeschwächten Form bzw. in der Übersetzung in das Minimalproblem der Fakt des höheren Dimension mitberücksichtigt werden. Daher wird anstatt der Form für den 1 dimensionalen Fall
+
+\begin{equation}
+			\int_0^1 u \textcolor{red}{'} (x)^2 + \lambda u(x)^2 dx
+			\label{fem:Minimal1D}
+\end{equation}
+
+die mehrdimensionale Form mit dem Laplace Operator verwendet
+
+\begin{equation}
+			\int_{\Omega} (\textcolor{red}{\nabla} u)^2 + \lambda u^2 dx
+			\label{fem:Minimal2D}
+\end{equation}
+
+
 \begin{equation}
 14.1 \Rightarrow \int_\Omega (\nabla u)^2 +\lambda u^2 dx
 \label{fem:equation3}

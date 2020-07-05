@@ -7,6 +7,37 @@
 \label{fem:section:problemstellung}}
 \rhead{Problemstellung}
 
+Die DGL in der Ebene hat die die Form:
+
+\begin{equation}
+	\Delta u = \lambda u
+	\label{fem:DGL2D}
+\end{equation} 
+
+während der Laplace Operator bezechnend für die ausführlichen folgenden Ausdruck steht wobei nach beiden Variable partiell 2 mal abgeleitet wird.
+
+\begin{equation}
+	\Delta = \frac{\partial ^2}{\partial x^2} + \frac{\partial ^2}{\partial y^2}
+\end{equation} 
+
+Daraus lässt sich erkennen, dass sich die Vorgehensweise angepasst werden muss. Der Vorteil iegt jedoch auch darin, dass sobald die Erkenntnis für die zusätzliche DImension gewonnen wurde, analog für weitere Dimensionen einsetzen lässt.
+
+Im Gegensatz zu den finiten Elementen im 1 dimensionalen Raum muss bei der Bildung der abgeschwächten Form bzw. in der Übersetzung in das Minimalproblem der Fakt des höheren Dimension mitberücksichtigt werden. Daher wird anstatt der Form für den 1 dimensionalen Fall
+
+\begin{equation}
+			\int_0^1 u \textcolor{red}{'} (x)^2 + \lambda u(x)^2 dx
+			\label{fem:Minimal1D}
+\end{equation}
+
+die mehrdimensionale Form mit dem Laplace Operator verwendet
+
+\begin{equation}
+			\int_{\Omega} (\textcolor{red}{\nabla} u)^2 + \lambda u^2 dx
+			\label{fem:Minimal2D}
+\end{equation}
+
+
+
 Die Randbedingungen der DGL müssen für  $h(x)$:
 
 \begin{itemize}
