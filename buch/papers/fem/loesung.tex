@@ -13,6 +13,7 @@ Zuerst muss die DGL in ein äqualentes Minimalprobelm übersetzt werden in der F
 \label{fem:equation3}
 \end{equation}
 
+
 Approximation der unbekannten Funktion mit 
 
 \begin{equation}
@@ -20,7 +21,7 @@ u(x,y) =  \sum_{k=0} N_k^e(x,y) \cdot u(x,y)_k^e
 \label{fem:equation3}
 \end{equation}
 
-N = Formfunktion des Elementes e und Knoten k
+
 
 \begin{equation}
 A =  \sum_{k=0} \iint_{\!\!\!\!\!\!\!\Omega} \epsilon \cdot \nabla N_k(x,y) \cdot N_l(x,y) dS = \sum \iint_{\!\!\!\!\!\!\!\Omega} h(x) \cdot N_l(x,y) dS, l = 1,2,...N
@@ -43,6 +44,12 @@ u(x,y) = c_1 + c_2x + c_3y
 \label{fem:equation3}
 \end{equation}
 
+\begin{equation}
+c_i= \int_{\triangle i} (\nabla u)^2 +\lambda u^2 dx
+\label{fem:equation3}
+\end{equation}
+
+oder\\
 mit einem Allgemeinen Dreieck:
 
 \begin{equation}
