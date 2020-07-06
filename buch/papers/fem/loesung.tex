@@ -38,7 +38,7 @@ Das Allgemeine Dreieck mit den Eckpunkten $P_1(x_1, y_1$),$ P_2(x_2, y_2)$ und $
 			\label{fem:linTransformation}
 \end{equation}
 
-auf das gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 überfürt werden.
+auf das gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 überführt werden.
 
 \begin{equation}
 			J = \left[ \begin{array}{rr}
@@ -54,29 +54,18 @@ auf das gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 über
 \end{equation}
 
 \begin{equation}
-			\xi_x = \frac{y_3 - y_1}{J}, 
-			\label{fem:newTransformation}
+			\xi_x = \frac{y_3 - y_1}{J}, \eta_x = -\frac{y_2 - y_1}{J}
+			\label{fem:newKoordinate}
 \end{equation}
+
+
 
 \subsection{Ansatzfunktionen wählen}
 
-Als Ansatzfunktionen stehen diverse Standard- Funktionen in der Ebene zur Verfügung. Sie reichen von einfacheren linearen Termen bis hinzu quadratischen. Es kann in der ebene sowohl mit Dreicecken als auch mit Rechtecken gearbeitet werden. Die Wahl der Ansatzfunktionen bzw. der Flächen- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet.
+Als Ansatzfunktionen stehen diverse Standard- Funktionen in der Ebene zur Verfügung. Sie reichen von einfacheren linearen Termen bishinzu quadratischen. Es kann in der ebene sowohl mit Dreicecken als auch mit Rechtecken gearbeitet werden. Die Wahl der Ansatzfunktionen bzw. der Flächen- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet.
 
-In einem ersten Schritt wird die lineare Ansatzfunktionen mit Einheitsdreecken angewendet.
+In einem ersten Schritt wird die lineare Ansatzfunktionen mit Einheitsdreiecken angewendet.
 
-Das Einheitsdreieck hat 
-
-%\begin{equation}
-%A =  \sum_{k=0} \iint_{\!\!\!\!\!\!\!\Omega} \epsilon \cdot \nabla N_k(x,y) \cdot N_l(x,y) %dS = \sum \iint_{\!\!\!\!\!\!\!\Omega} h(x) \cdot N_l(x,y) dS, l = 1,2,...N
-%\label{fem:equation3}
-%\end{equation}
-
-%Zu lösendes GL- System
-%Au(x,y) = b
-%\label{fem:GL}
-\%end{equation}
-
-%wobei A eine Matrix, u der Vektor der Unbekannten und b der Ansatzfunktionenvektor ist.
 
 \subsubsection{linearer Ansatzfunktion mit Dreiecken
 \label{fem:subsection:bonorum}}
@@ -88,32 +77,58 @@ u(x,y) = c_1 + c_2x + c_3y
 \label{fem:equationSchwarzLinear}
 \end{equation}
 
-Zu dieser Ansatzfunktion wird dann noch die Formfunktion eines Einheitsdreieckes verwendet.
+Die Formel xXx kann einfach in das Minimalproblem xXx eingesetzt werden.
 
+Das Minimalproblem beinhaltet jedoch noch nicht fir Formfunktion. Diese wird in das Gebietsintegral des Minimalproblem eingesetzt sprich $\int_{\Omega}$ wird durch das folgende Einheitsdreieck Flächenelement ersetzt.
 
 \begin{equation}
 \int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} f(x,y) dx dy
-\label{fem:equation3}
+\label{fem:FlaecheDreieck}
 \end{equation}
 
-
-
+Das Einsetzung des linearen Ansatzes und des gewählten Flächenelements haben dann die Form
 
 \begin{equation}
-c_i= \int_{\triangle i} (\nabla u)^2 +\lambda u^2 dx
-\label{fem:equation3}
+\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} c_1 + c_2x + c_3y dx dy
+\label{fem:MinimalproblemElement}
 \end{equation}
 
-oder\\
-mit einem Allgemeinen Dreieck:
+Wichtig zu verstehen ist, dass dieses Minimalproblem auf jedes Flächenelement angewendet wird. Als Beispiel kann vorgestellt werden, dass wenn ein Dreieck mit 2 Dreiecken aproxximiert wird, das Minimalproblem \ref{fem:MinimalproblemElement} auf jedes der beiden Dreiecke angewendet wird.
+
+\subsubsection{linearer Ansatzfunktion mit Parallelogramm
+\label{fem:subsection:lineParallel}}
 
 \begin{equation}
-N(x,y) = \int_a^b\int_c^{d-(d-c)(x-a)/(b-a)} u(x,y) dxdy
-\label{fem:Dreieck_alg}
-\end{equation}
+	u(x,y) = c_1 + c_2 x + c_3 y + c_4 xy
+\end{equation} 
+
+
+%\begin{equation}
+%c_i= \int_{\triangle i} (\nabla u)^2 +\lambda u^2 dx
+%\label{fem:equation3}
+%\end{equation}
+
+%oder\\
+%mit einem Allgemeinen Dreieck:
+
+%\begin{equation}
+%N(x,y) = \int_a^b\int_c^{d-(d-c)(x-a)/(b-a)} u(x,y) dxdy
+%\label{fem:Dreieck_alg}
+%\end{equation}
 
 Gemäss Abschnitt 2.2.2 Buch von Schwarz sind die Werte entlang einer Seite eines Dreiecks- Elements gleich  der angrenzenden Linie eines anderen Dreiecks, wenn die Eckpunktwerte gleich sind. Die Frage Warum soll dass so sein? Weil Funktion $h(x)$ bei jedem Element gleich ist sowie es sich bei $h(x)$ hierbei um eine Lineare Funktion handelt.
 
-\subsection{Quadratischer Ansatz
+\subsubsection{Quadratischer Ansatz
 \label{fem:subsection:bonorum}}
- Abschnitt 
+
+\begin{equation}
+	u(x,y) = c_1 + c_2 x + c_3 y + c_4 x^2 + c_5 xy + c_6 y^2
+	\label{fem:equationSchwarzquadratischD}
+\end{equation}
+
+%\begin{equation}
+%	u(x,y) = c_1 + c_2 x + c_3 y + c_4 x^2 + c_5 xy + c_6 y^2 + c_7 x^2y + c_8 xy^2
+%	\label{fem:equationSchwarzquadratischP}
+%\end{equation} 
+
+%\subsection{Aufstellung der Matrix
