@@ -5,18 +5,17 @@
 %
 \section{Einleitung\label{fem:section:einleitung}}
 \rhead{Einleitung}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{fem:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
+Das Kochrezept für das Vorgehen bei der Finiten Element Methode in der Ebene ist analog zur FEM im 1 Dimensionalen Raum. Jedoch müssen zusätzliche Parameter beachtet werden, die vorher einfach gegeben oder geschenkt wurden. Der weitere Schritt zur FEM im 3 Dimensionalen Raum ist fast identisch, wird jedoch in diesem "Buch/Kapitel" nicht näher erläutert. Zu erwähnen ist noch, dass das Kochrezept nicht einfach anwenden heisst von Formeln im Falle der Finiten Elemente. Es müssen mehrere Überlegungen gemacht werden, die jedoch der gleichen Idee folgen.\\
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
+Das Konzept oder die Idee der Finiten Elemente ist wie folgend:
+
+\begin{enumerate}
+	\item Differentialgleichungssystem aufstellen und in eine abgeschwächte Form bringen wie z.B. DGL in ein äqualentes minimalproblem umsetzen.
+	\item Ansatzfunktionen für Lösung finden bzw. die Lösungsfunktion approximieren
+	\item Minimalprinzip auf die Approximation anwenden durch Multiplikation mit den Wichtungsfunktionen
+	\item Lineare Gleichungen für die Koeffizienten aufstellen durch Integration <-evt. nur Gallerkin
+	\item Das Gleichungssystem lösen und dadurch die Koeffizienten der Approximation bestimmen
+\end{enumerate}
+
 
 

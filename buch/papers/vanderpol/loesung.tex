@@ -3,38 +3,43 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Lösung
+\section{Numerische Lösung der Van der Pol Gleichung
 \label{vanderpol:section:loesung}}
-\rhead{Lösung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
-
-\subsection{De finibus bonorum et malorum
-\label{vanderpol:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
-
-
+\rhead{Numerische Lösung der Van der Pol Gleichung}
+Im folgenden Abschnitt werden die verschiedenen Implementierungen in Python gezeigt und erklärt, die auch für die Realisierung der verschiedenen Plots eingesetzt wurden.
+\lstinputlisting[style=Python,float,caption={Implementierung des Runge Kutta Algorithmus in Python},label={vanderpol:codes:RK_4}]{papers/vanderpol/codes/RK_4.py}
+\subsection{Implementation des Runge-Kutta-Verfahrens
+\label{vanderpol:subsection:rk}}
+Der Codesabschnitt in Abbildung \ref{vanderpol:codes:RK_4} stellt die Python Implementierung des Runge Kutta Algorithmus vierter Ordnung vor. Die Koeffizienten werden gemäss der analytischen Definition
+\begin{align*}
+k_1 &= h \cdot f(t_n, y_n),\\
+k_2 &= h \cdot f\left(t_n + \frac{h}{2}, y_n + \frac{h}{2} k_1\right), \\
+k_3 &= h \cdot f\left(t_n + \frac{h}{2}, y_n + \frac{h}{2} k_2\right), \\
+k_4 &= h \cdot f(t_n + h, y_n + h k_3),
+\end{align*}
+berechnet und dann wird der gewichtete Durchschnitt
+\begin{equation}
+y_{n+1} = y_n + \frac{1}{6}(k_1 + 2k_2 + 2k_3 + k_4) +O(h^5)
+\end{equation}
+ermittelt.
+\subsubsection{Implementation des Euler-Verfahrens
+\label{vanderpol:subsubsection:euler}}
+Der Code des Euler Algorithmus wurde nicht gezeigt, denn es handelt sich um eine vereinfachte Version des Codesabschnitt \ref{vanderpol:codes:RK_4}, in dem nur der Koeffizient $k_1$ berechnet werden muss. Da dies ein einziger Wert ist, ist es nicht notwendig, einen Mittelwert zu bilden. Die Berechnung wird dann reduziert auf
+\begin{align*}
+k_1 &= h \cdot f(t_n, y_n), \\
+y_{n+1} &= y_n + k_1 +O(h^2).
+\end{align*}
+\lstinputlisting[style=Python,float,caption={Implementierung der Van der Pol Gleichung in Python},label={vanderpol:codes:VDP_funk}]{papers/vanderpol/codes/VDP_funk.py}
+\subsection{Implementation der Differentialgleichung
+\label{vanderpol:subsection:diff}}
+Der Codesabschnitt \ref{vanderpol:codes:VDP_funk} zeigt stattdessen die Implementierung der Differentialgleichung \eqref{vanderpol:equations:inhomogene_2}. Die entwickelte Idee lautet wie folgt: In beiden Fällen stellt die Variable $z_n$ einen Vektor dar, der die beiden Werte der Funktionen $x_n$ und $\dot{x}_n$ enthält. Beide Funktionen erhalten auch einen zweiten Eingabeparameter $t_n$, der dem aktuellen Zeitpunkt entspricht. Der Code in \ref{vanderpol:codes:VDP_funk} kümmert sich um die Definition der Differentialgleichung, die dann in der in Abschnitt \ref{vanderpol:codes:RK_4} eingeführten Funktion verwendet wird, um den Kutta Runge Algorithmus auszuführen und $x_{n+1}$ und $\dot{x}_{n+1}$ als Ausgabe zu erhalten. Zusammengefasst: ein bestimmter Zeitwert $t_n$, der aktuelle Wert der Funktion $x_{n}$ und seine Ableitung $\dot{x}_{n}$ werden als Input für die beiden Funktionen gegeben. Es wird eine Ausgabe zurückgegeben, die dem nächsten Wert der Funktion $x_{n+1}$ und ihrer Ableitung $\dot{x}_{n+1}$ entspricht. Es wird in der Form
+\begin{equation}
+\begin{pmatrix}x_{n+1} \\ \dot{x}_{n+1} \end{pmatrix} = \begin{pmatrix}x_{n} \\ \dot{x}_{n} \end{pmatrix} + \frac{1}{6}(\vec{k_1} + 2\vec{k_2} + 2\vec{k_3} + \vec{k_4})
+\label{vanderpol:equations:solve_alg}
+\end{equation}
+dargestellt. Die Konstanten von $k_1$ bis $k_4$ sind Vektoren, die die Koeffizienten für beide benötigten Lösungen enthalten, nämlich $x_{n+1}$ und $\dot{x}_{n+1}$.
+Diesen werden dann gleichzeitig berechnet. Dieser Algorithmus ist eine Implementierung der Gleichung \eqref{vanderpol:equations:homogene_1}.
+\lstinputlisting[style=Python,float,caption={Python Algorithmus zur Berechnung der Lösung},label={vanderpol:codes:solve}]{papers/vanderpol/codes/solve.py}
+Die Implementierung des in der Gleichung \eqref{vanderpol:equations:solve_alg} beschriebenen Verfahrens wird im Abschnitt des Codes \ref{vanderpol:codes:solve} gezeigt.
+Um eine vollständige Lösung für einen beliebigen Bereich $[a, b]$ zu erhalten, muss man die darin enthaltenen Zeitwerte berechnen. Dieses Interval muss also diskretisiert werden, indem es in $n$ gleiche Teile aufgeteilt wird. Daraus ergibt sich eine Menge von Zeitwerten, die von \texttt{t\_min} bis \texttt{t\_max} läuft.
+Dies ist genau das, was im Codesabschnitt \ref{vanderpol:codes:solve} ausgeführt wird. Zu Beginn werden das Zeitintervall und die Anfangsbedingungen angegeben, ab denen die Iteration dann beginnt, was in diesem Fall zu einer Lösung von $\texttt{t\_min}=0.0$ bis $\texttt{t\_max}=950.0$ führt.

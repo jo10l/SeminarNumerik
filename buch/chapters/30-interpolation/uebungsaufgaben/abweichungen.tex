@@ -1,0 +1,74 @@
+%
+% abweichungen.tex -- 
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math,calc}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\input{differenz.tex}
+\input{unterschied.tex}
+
+\xdef\s{3.75}
+
+\makeatletter
+\newcommand{\gettikzxy}[3]{%
+  \tikz@scan@one@point\pgfutil@firstofone#1\relax
+  \edef#2{\the\pgf@x}%
+  \edef#3{\the\pgf@y}%
+}
+\makeatother
+
+\def\punkta#1#2{
+	\gettikzxy{#1}{\x}{\y}
+	\draw[line width=0.2pt] #1 -- (\x,0);
+	\draw (\x,-0.1) -- (\x,0.1);
+	\fill[color=red] #1 circle[radius=0.1];
+	\fill[color=white] #1 circle[radius=0.08];
+	\node[color=red] at #1 {\tiny $#2$};
+}
+\def\punktb#1#2{
+	\fill[color=red] #1 circle[radius=0.1];
+	\fill[color=white] #1 circle[radius=0.08];
+	\node[color=red] at #1 {\tiny $#2$};
+}
+
+\begin{scope}[xshift=0cm]
+\draw[->] (-0.1,0)--(5.4,0) coordinate[label={$t$}];
+\draw[->] (0,-0.1)--(0,5.4) coordinate[label={right:$|\vec{b}(t)-\vec{k}(t)|$}];
+\unterschiedpfad{5}{0.3}
+\node at (0,-0.1) [below] {$0$};
+\node at (2.5,-0.1) [below] {$0.5$};
+\node at (5,-0.1) [below] {$1$};
+\draw (-0.1,{\s*0.5})--(0.1,{\s*0.5});
+\node at (-0.1,{\s*0.5}) [left] {$0.005$};
+\draw (-0.1,{\s*1.0})--(0.1,{\s*1.0});
+\node at (-0.1,{\s*1.0}) [left] {$0.010$};
+\end{scope}
+
+\begin{scope}[xshift=8.2cm,yshift=2.5cm]
+\draw[->] (-2.6,0)--(2.9,0) coordinate[label={$x$}];;
+\draw[->] (0,-2.6)--(0,2.9) coordinate[label={right:$y$}];;
+\differenzpfad{0.375}{0.375}
+\draw (-0.1,{\s*0.5})--(0.1,{\s*0.5});
+\node at (0.1,{\s*0.5}) [right] {$0.005$};
+\draw (-0.1,{-\s*0.5})--(0.1,{-\s*0.5});
+\node at (-0.1,{-\s*0.5}) [left] {$-0.005$};
+\draw ({\s*0.5},-0.1)--({\s*0.5},0.1);
+\node at ({\s*0.5},0.1) [right,rotate=90] {$0.005$};
+\draw ({-\s*0.5},-0.1)--({-\s*0.5},0.1);
+\node at ({-\s*0.5},-0.1) [right,rotate=-90] {$-0.005$};
+\node at (-1.0,2.1) [left] {$\vec{b}(t)-\vec{k}(t)$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

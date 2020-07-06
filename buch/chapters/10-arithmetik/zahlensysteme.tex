@@ -626,4 +626,332 @@ behindern.
 %
 \subsection{Hochpräzisionsbibliotheken
 \label{buch:subsection:mp}}
-TODO: GMP
+Die Diskussion der numerischen Effekte hat gezeigt, dass es nötig sein
+kann, Berechnungen mit sehr viel höherer Präzision durchzuführen, um die
+Genauigkeit des Schlussresultats garantieren zu können.
+Weder die Gleitkomma-Datentypen noch die Arithmetik-Prozessoren der
+CPUs unterstützen aber beliebig grosse Gleitkommazahlen.
+Es müssen daher Bibliotheken verwendet werden, die solche Datentypen
+und die arithmetischen Operationen nachbilden.
+
+Als Beispiel soll die Exponentialfunktion $e^{-100}$ mit
+Hilfe der Taylor-Reihe
+\[
+e^x
+=
+1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \dots
+=
+\sum_{k=0}^\infty \frac{x^k}{k!}
+\]
+berechnet werden.
+In Abschnitt~\ref{buch:subsection:verschiebung} wird gezeigt, dass
+für negative Argument $x$ die Berechnung wegen Verschmierung mit sehr
+viel grösserer Genauigkeit durchgeführt werden muss, wenn das Resultat
+exakt sein soll.
+In diesem Beispiel wird das illustriert, indem die gleiche Berechnung
+mit verschiedener Genauigkeit mit einer Hochpräzisionsbibliothek
+durchgeführt wird.
+Dazu wird das Treiberprogramm von Listing~\ref{numerik:listing:main}
+verwendet.
+\begin{lstlisting}[float,style=C,caption={Treiber-Programm zur Berechnung von $e^x$ mit verschiedenen Hochpräzisionsbibliotheken.},label={numerik:listing:main}]
+int     main(int argc, char *argv[]) {
+        int     bits = 32;
+        while (bits <= 512) {
+                experiment(bits);
+                bits <<= 1;
+        }
+
+        return EXIT_SUCCESS;
+}
+\end{lstlisting}
+Die Implementation der Funktion \texttt{experiment(double x)} mit 
+verschiedenen Hochpräzisionsbibliotheken wird weiter unten beschrieben.
+
+\subsubsection{GNU GMP}
+Die freie GNU GMP Bibliothek erschien 1991 und kann auf \url{http://gmplib.org}
+gefunden werden.
+Die Implementation ist nicht zu IEEE 754 konform und es ist nicht garantiert,
+dass verschiedene Maschinen identische Resultate mit dem gleichen Code
+erhalten.
+Daher wird empfohlen, für neue Projek die MPFR Bibliothek (siehe nächsten
+Abschnitt) zu verwenden.
+\begin{lstlisting}[float,style=C,caption={C-Programm zur Berechnung von $e^x$ mit Hilfe der Taylor-Reihe, implementiert mit GMP},label={numerik:listing:gmp}]
+#include <gmp.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+double  gmpexp(double x) {
+        mpf_t   X, P, S;
+        /* Variablen initialisieren */
+        mpf_init(X);
+        mpf_init(P);
+        mpf_init(S);
+        mpf_set_d(X, x);
+        mpf_set_d(P, 1.);
+        mpf_set_d(S, 1.);
+
+        /* Hilfsvariablen fuer Zwischenresultate */
+        mpf_t   R, Q;
+        mpf_init(R);
+        mpf_init(Q);
+
+        for (int i = 1; i < 1000; i++) {
+                /* P = P * X / i */
+                mpf_mul(Q, P, X);
+                mpf_div_ui(R, Q, i);
+                mpf_set(P, R);
+                /* S = S + P */
+                mpf_add(Q, S, P);
+                mpf_set(S, Q);
+        }
+
+        double  result = mpf_get_d(S);
+
+        mpf_clear(X);
+        mpf_clear(P);
+        mpf_clear(S);
+        mpf_clear(R);
+        mpf_clear(Q);
+
+        return result;
+}
+
+void    experiment(int bits) {
+        /* Setze Mindestgenauigkeit der Variablen */
+        mpf_set_default_prec(bits);
+        double  x = -100;
+        double  y = gmpexp(x);
+        double  z = exp(x);
+
+        printf("bits:         %d\n", bits);
+        printf("GMP:          %.20g\n", y);
+        printf("Prozessor:    %.20g\n", z);
+        printf("Fehler:       %.20g\n\n", y - z);
+}
+\end{lstlisting}
+
+In Zeile 40 in der Funktion \texttt{void experiment(int bits)} wird die
+minimale Genauigkeit, mit der die Bibliothek rechnen soll.
+Die Aufrufe von \verb+mpf_init(mpf_t op)+ in der Funktion
+\texttt{double gmpexp(double x)} initialisieren die Variablen
+mit mindstens dieser Genauigkeit.
+Welche Genauigkeit genau gewählt wird hängt von der Wortlänge der
+verwendeten Maschine ab.
+
+In den Zeilen 20--26 wird die Taylorreihe summiert.
+In der Variable \texttt{P} ist der Wert des aktuellen Summanden
+gespeichert.
+Der nächste Summand kann daraus mittels $\texttt{P}\cdot x/i$
+berechnet werden, wobei $i$ der Wert der Zählervariablen ist,
+mit der die Summanden indiziert werden.
+In Zeile~24 wird die Summe wieder in einen \texttt{double}-Wert
+mit Maschinenpräzision umgewandelt.
+
+\begin{table}
+\centering
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|}
+\hline
+\text{Bits} & \text{GMP} & \texttt{double} &\text{Fehler} \\
+\hline
+ 32 &
+-2.378447678\cdot 10^{\phantom{-}19} &
+ 3.720075976\cdot 10^{-44}           &
+-2.378447678\cdot 10^{\phantom{-}19}
+\\
+ 64 &
+-2.378447678\cdot 10^{\phantom{-}19} &
+ 3.720075976\cdot 10^{-44}           &
+-2.378447678\cdot 10^{\phantom{-}19} 
+\\
+ 128 &
+ 1.384432347\cdot 10^{\phantom{-0}1} &
+ 3.720075976\cdot 10^{-44}           &
+ 1.384432347\cdot 10^{\phantom{-0}1}
+\\
+ 256 &
+-1.339761431\cdot 10^{-39} &
+ 3.720075976\cdot 10^{-44} &
+-1.339798632\cdot 10^{-39}
+\\
+ 512 &
+ 3.720075976\cdot 10^{-44} &
+ 3.720075976\cdot 10^{-44} &
+-4.978412222\cdot 10^{-60}
+\\
+\hline
+\end{tabular}
+\caption{Tabelle der Resultate der Berechnung von $e^{-100}$ mit Hilfe
+der Taylorreihe der Exponentialfunktion unter Verwendung des Programms
+von Listing~\ref{numerik:listing:gmp} mit verschiedenen Bitlängen.
+\label{numerik:expresultate:gmp}}
+\end{table}
+
+Die Resultate der Berechnung sind in Tabelle~\ref{numerik:expresultate:gmp}
+zusammengestellt.
+Zunächst fällt auf, dass der Fehler der Berechnung mit 32 bit und mit 64 bit
+gleich gross ist.
+Dies rührt daher, dass die Bibliothek für die 32 bit Rechnung die gleiche
+Genauigkeit verwendet wie bei 64 bit.
+Selbst die Präzision von 256 bit reicht nicht aus, um $e^{-100}$ 
+berechnen.
+Erst im letzten Resultat stimmt das Resultat mit 16 signifikanten Stellen.
+Eine genauere Untersuchung zeigt, dass die volle Genauigkeit bei
+384 bits erreicht wird.
+
+\subsubsection{GNU Multiple Precision Floating-Point Reliable Library}
+Die GNU Multiple Precision Floating-Point Reliable Library versucht,
+die Defizite der GMP zu kompensieren.
+Mit der Funktion \verb+mpfr_set_default_prec(int bits)+ wird nicht die
+minimale sondern die exakte Anzahl Bits festgelegt, mit der gerechnet
+werden soll.
+Bei jeder Operation, bei der gerundet werden muss, kann spezifiziert
+werden, in welche Richtung die Rundung vorgenommen werden soll.
+Schliesslich ist die Implementation konform mit dem IEEE 754 Standard,
+so dass bei Verwendung dieser Bibliothek garantiert ist, dass die
+Resultate nicht von der Plattform abhängen.
+
+\begin{lstlisting}[float,style=C,caption={C-Programm zur Berechnung von $e^x$ mit Hilfe der Taylor-Reihe, implementiert mit MPFR},label={numerik:listing:mpfr}]
+#include <mpfr.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+double  mpfrexp(double x) {
+        mpfr_t  X, P, S;
+        /* Variablen initialisieren */
+        mpfr_init(X);
+        mpfr_init(P);
+        mpfr_init(S);
+        mpfr_set_d(X, x, MPFR_RNDN);
+        mpfr_set_d(P, 1., MPFR_RNDN);
+        mpfr_set_d(S, 1., MPFR_RNDN);
+
+        /* Hilfsvariablen fuer Zwischenresultate */
+        mpfr_t  R, Q;
+        mpfr_init(R);
+        mpfr_init(Q);
+
+        for (int i = 1; i < 1000; i++) {
+                /* P = P * X / i */
+                mpfr_mul(Q, P, X, MPFR_RNDN);
+                mpfr_div_ui(R, Q, i, MPFR_RNDN);
+                mpfr_set(P, R, MPFR_RNDN);
+                /* S = S + P */
+                mpfr_add(Q, S, R, MPFR_RNDN);
+                mpfr_set(S, Q, MPFR_RNDN);
+        }
+
+        double  result = mpfr_get_d(S, MPFR_RNDN);
+
+        mpfr_clear(X);
+        mpfr_clear(P);
+        mpfr_clear(S);
+        mpfr_clear(R);
+        mpfr_clear(Q);
+
+        return result;
+}
+
+void    experiment(int bits) {
+        /* Setze exakte Genauigkeit der Variablen */
+        mpfr_set_default_prec(bits);
+        double  x = -100;
+        double  y = mpfrexp(x);
+        double  z = exp(x);
+
+        printf("bits:         %d\n", bits);
+        printf("GMP:          %.20g\n", y);
+        printf("Prozessor:    %.20g\n", z);
+        printf("Fehler:       %.20g\n\n", y - z);
+}
+\end{lstlisting}
+
+
+\begin{table}
+\centering
+\begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|}
+\hline
+\text{Bits} & \text{GMP} & \texttt{double} &\text{Fehler} \\
+\hline
+32 &
+ 4.040280437\cdot 10^{\phantom{-}32} &
+ 3.720075976\cdot 10^{-44} &
+ 4.040280437\cdot 10^{\phantom{-}32}
+\\
+64 &
+-1.797196708\cdot 10^{\phantom{-}23} &
+ 3.720075976\cdot 10^{-44}           &
+-1.797196708\cdot 10^{\phantom{-}23} 
+\\
+128 &
+ 3.777954147\cdot 10^{\phantom{-0}3} &
+ 3.720075976\cdot 10^{-44} &
+ 3.777954147\cdot 10^{\phantom{-0}3}
+\\
+256 &
+-5.943812579\cdot 10^{-39} &
+ 3.720075976\cdot 10^{-44} &
+-5.943849780\cdot 10^{-39}
+\\
+328 &
+ 3.720075976\cdot 10^{-44} &
+ 3.720075976\cdot 10^{-44} &
+ 3.196140646\cdot 10^{-57}
+\\
+329 &
+ 3.720075976\cdot 10^{-44} &
+ 3.720075976\cdot 10^{-44} &
+-1.941580766\cdot 10^{-58}
+\\
+330 &
+ 3.720075976\cdot 10^{-44} &
+ 3.720075976\cdot 10^{-44} &
+ 5.326901077\cdot 10^{-58}
+\\
+331 &
+ 3.720075976\cdot 10^{-44} &
+ 3.720075976\cdot 10^{-44} &
+ 4.132082144\cdot 10^{-58}
+\\
+332 &
+ 3.720075976\cdot 10^{-44} &
+ 3.720075976\cdot 10^{-44} &
+ 7.467618333\cdot 10^{-59}
+\\
+333 &
+ 3.720075976\cdot 10^{-44} &
+ 3.720075976\cdot 10^{-44} &
+-8.463300777\cdot 10^{-59}
+\\
+334 &
+ 3.720075976\cdot 10^{-44} &
+ 3.720075976\cdot 10^{-44} &
+-9.956824444\cdot 10^{-60}
+\\
+512 &
+ 3.720075976\cdot 10^{-44} &
+ 3.720075976\cdot 10^{-44} &
+ 0\phantom{.000000000\cdot 10^{-00}}
+\\
+\hline
+\end{tabular}
+\caption{Tabelle der Resultate der Berechnung von $e^{-100}$ mit Hilfe
+der Taylorreihe der Exponentialfunktion unter Verwendung des Programms
+von Listing~\ref{numerik:listing:mpfr} mit verschiedenen Bitlängen.
+\label{numerik:expresultate:mpfr}}
+\end{table}
+
+In Tabelle~\ref{numerik:expresultate:mpfr} sind die Resultate
+zusammengestellt.
+Es fällt sofort auf, dass 32 bit und 64 bit verschiedene Resultate
+geben.
+In der MPFR-Implementation macht jedes einzelne Bit einen Unterschied.
+Die MPFR-Bibliothek kann daher auch als Labor für Experimente über
+die Abhängigkeit der Fehler von der Genauigkeit der Arithmetik dienen.
+
+Die Programmierung mit diesen Bibliotheken ist wegen der
+vielen Funktionsaufrufe eher etwas mühsam.
+Moderne C++-Wrapper ermöglichen dank Operator-Überladung eine intuitivere
+Notation.
+
