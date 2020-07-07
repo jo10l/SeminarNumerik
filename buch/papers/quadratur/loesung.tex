@@ -13,7 +13,6 @@ $I = \int_{-1}^{1}\sqrt{(1-x^2)}\,dx$ verwendet und
 wir berechnen die Formel mit vier Stützstellen.
 \newline
 
-\noindent
 Zudem werden in der Tabelle~\ref{buch:table:gaussbeispielwerte} die Werte der 
 Stützstellen und der Gewichte angegeben. Die Berechnung der Stützstellen, der Gewichte
 und die verschiedenen Formen der Gauss-Quadratur werden in den folgenden Sektionen 
@@ -27,8 +26,8 @@ hergeleitet.
         \hline
         $-0.861136 $ & $ 0.347855 $ \\
         $-0.339981 $ & $ 0.652145 $ \\
-        $ 0.339981 $ & $ 0.652145 $ \\
-        $ 0.861136 $ & $ 0.347855 $ \\
+        $\phantom{-} 0.339981 $ & $ 0.652145 $ \\
+        $\phantom{-} 0.861136 $ & $ 0.347855 $ \\
         \hline
     \end{tabular}
     \caption{Werte für vier Stützstellen und deren Gewichte
@@ -36,7 +35,7 @@ hergeleitet.
 \end{table}
 
 \noindent
-In der Abbildung~\ref{quadratur:figure:gausslegendre1} sind die Vier Stützstellen 
+In der Abbildung~\ref{quadratur:figure:gausslegendre1} sind die vier Stützstellen 
 ersichtlich.
 
 \begin{figure}[!h]
@@ -93,6 +92,8 @@ berechnen, indem man die Stützstellen $x_{i}$ und die Gewichte $A_{i}$ einsetzt
 Das Resultat $1.580278$ ist bereits deutlich besser an der tatsächlichen Fläche $1.570796$ 
 angenähert, als die Resultate der Trapezformel. 
 
+
+
 \textcolor{red}{
     TODO
     \begin{itemize}
@@ -105,10 +106,11 @@ angenähert, als die Resultate der Trapezformel.
     \end{itemize}
 }
 
+\subsection{Berechnung der Position der Stützstellen
+\label{quadratur:subsection:stützstellenberechnung}}
 
-\subsection{De finibus bonorum et malorum
-\label{quadratur:subsection:bonorum}}
-\textcolor{red}{TODO: Lösung in python}
+\subsection{Berechnung der Gewichte an den Stützstellen
+\label{quadratur:subsection:gewichtsberechnung}}
 
 
 \subsection{Formen der Gauss-Quadratur
@@ -129,8 +131,7 @@ Die vier häufigsten Formen sind in der Tabelle~\ref{buch:table:gaussformen} abg
         \hline
     \end{tabular}
     \caption{Formen der Gauss-Quadratur
-    \label{buch:table:gaussformen}}
-    
+    \label{buch:table:gaussformen}}   
 \end{table}
 
 
