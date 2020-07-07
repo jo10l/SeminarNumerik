@@ -6,40 +6,55 @@
 \section{Problemstellung
 \label{fem:section:problemstellung}}
 \rhead{Problemstellung}
-Anforderung an $h(x)$:
+
+Die DGL in der Ebene hat die die Form:
+
+\begin{equation}
+	\Delta u = \lambda u
+	\label{fem:DGL2D}
+\end{equation} 
+
+während der Laplace Operator bezechnend für die ausführlichen folgenden Ausdruck steht wobei nach beiden Variable partiell 2 mal abgeleitet wird.
+
+\begin{equation}
+	\Delta = \frac{\partial ^2}{\partial x^2} + \frac{\partial ^2}{\partial y^2}
+\end{equation} 
+
+Daraus lässt sich erkennen, dass sich die Vorgehensweise angepasst werden muss. Der Vorteil iegt jedoch auch darin, dass sobald die Erkenntnis für die zusätzliche DImension gewonnen wurde, analog für weitere Dimensionen einsetzen lässt.
+
+Hinzu kommt noch die Randbedingungen der DGL erfüllt sein müssen die da lauten:
 
 \begin{itemize}
-	\item 1. stetig Differenzierbar (Steigung)
-	\item 2. stetig Differenzierbar (Krümmung)
-	\item an Knoten muss $h(x) = 0$ sein
+	\item 1. stetig Differenzierbar in den Stützstellen (Steigung)
+	\item 2. stetig Differenzierbar an den übergängen der Elementen (Krümmung)
 \end{itemize}
 
-Poisson-Gleichung:
 
-\begin{equation}
-\frac{\partial^2 u(x,y)}{\partial x^2} \frac{\partial^2 u(x,y)}{\partial y^2} = - u(x,y)  \in \Omega
-\label{fem:equation5}
-\end{equation}
 
-Randbedingungen:
-\begin{equation}
-u = 0, (x,y)\in \Omega
-\label{fem:rand1}
-\end{equation}
+%Poisson-Gleichung:
 
-\begin{equation}
-u = U (x,y)\in \Omega
-\label{fem:rand2}
-\end{equation}
+%\begin{equation}
+%\frac{\partial^2 u(x,y)}{\partial x^2} \frac{\partial^2 u(x,y)}{\partial y^2} = - u(x,y)  \in %\Omega
+%\label{fem:equation5}
+%\end{equation}
 
-\begin{equation}
-\frac{\partial u}{n} = 0, (x,y)\in \Omega
-\label{fem:rand3}
-\end{equation}
+%Randbedingungen:
+%\begin{equation}
+%u = 0, (x,y)\in \Omega
+%\label{fem:rand1}
+%\end{equation}
+
+%\begin{equation}
+%u = U (x,y)\in \Omega
+%\label{fem:rand2}
+%\end{equation}
+
+%\begin{equation}
+%\frac{\partial u}{n} = 0, (x,y)\in \Omega
+%\label{fem:rand3}
+%\end{equation}
  
-$\Rightarrow$ 4 Parameter $\Rightarrow$ Polynom 3. Grades\\
-
-
+%$\Rightarrow$ 4 Parameter $\Rightarrow$ Polynom 3. Grades\\
 
 \begin{equation}
 \iint_{\!\!\!\!\!\!\!\Omega} \limits (u_2^2 + u_y^2)) \,dx dy
