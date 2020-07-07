@@ -41,7 +41,7 @@ ersichtlich.
 \begin{figure}[!h]
     \centering
     \includegraphics[scale=0.5]{papers/quadratur/figures/GaussLegendre1.png}
-    \caption{
+    \caption{ Position der Stützstellen
     \label{quadratur:figure:gausslegendre1}}
 \end{figure}
 
@@ -92,22 +92,79 @@ berechnen, indem man die Stützstellen $x_{i}$ und die Gewichte $A_{i}$ einsetzt
 Das Resultat $1.580278$ ist bereits deutlich besser an der tatsächlichen Fläche $1.570796$ 
 angenähert, als die Resultate der Trapezformel. 
 
-
-
-\textcolor{red}{
-    TODO
-    \begin{itemize}
-        \item Gauss Legendre Formel zeigen (Done)
-        \item Beispiel berechnen mit Formel (Done)
-        \item Berechnung der Gewichtung
-        \item Berechnung der Position der Stützstellen
-        \item Erklären der verschiedenen Formen der Gauss-Quadratur und ihrer Anwendungen
-        \item 
-    \end{itemize}
-}
-
 \subsection{Berechnung der Position der Stützstellen
 \label{quadratur:subsection:stützstellenberechnung}}
+Um die Position der Stützstellen zu bestimmen, benötigt man zuerst die Anzahl Stützstellen, 
+die für die Quadratur einer Funktion benötig werden.
+
+Wie in der Sektion~\ref{quadratur:section:problemstellung} erwähnt, 
+kann man mit $n$ Stützstellen ein Polynom vom Grad $2n-1$ exakt berechnen.
+Anders ausgedrückt: Hat man ein Polynom vom Grad $g$, 
+benötigt man für eine exatkte Berechnung $\frac{g+1}{2}$ Stützstellen.
+
+\subsubsection{Beispiel}
+Angenommen, man hat die Funktion $f(x) = 5 \cdot x^{7} + 2 \cdot x^{5} - 8 \cdot x^{3} + x + 3$.
+Der Grad der Funktion lässt sich aus dem höchsten vorkommenden exponenten von $x$ ableiten,
+also $7$.
+Für ein Polynom vom Grad $7$ werden $\frac{7+8}{2} = 4$ Stützstellen benötigt.
+In der Abbildung~\ref{quadratur:figure:polynom} ist die Funktion mit den vier Stützstellen ersichtlich.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.5]{papers/quadratur/figures/polynom.png}
+    \caption{ Funktion des Polynom mit vier Stützstellen
+    \label{quadratur:figure:polynom}}
+\end{figure}
+
+Weiss man, wieviele Stützstellen $n$ man für die Berechnung der Quadratur verwenden möchte,
+kann man die Position der Stützstellen berechnen. 
+Dafür hat man drei Möglichkeiten:
+
+\subsubsection{Werte in der Tabelle nachschlagen}
+Für die gängigsten Formen der Gauss-Quadratur existieren Tabellen mit vorberechneten Werten für die
+Position der Stützstellen und deren Gewichte. 
+Es ist möglich, dass für grosse $n$ keine Tabellenwerte gefunden werden und die Berechnung 
+selber durchgeführt werden muss
+
+In der Tabelle~\ref{buch:table:gaussabscissenwerte} sind die Werte für $n <= 6$ beschrieben.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        $n$ & Stützstellen $x_{i}$ für $n$ \\
+        \hline
+        $1$ & $ \phantom{-} 0.00000 $ \\
+        \hline
+        $2$ & $ -0.57735 $ \\
+            & $ \phantom{-} 0.57735 $ \\
+        \hline
+        $3$ & $ -0.77460 $ \\
+            & $ \phantom{-} 0.77460 $ \\
+            & $ \phantom{-} 0.00000 $ \\
+        \hline
+        $4$ & $ -0.86114 $ \\
+            & $ \phantom{-} 0.86114 $ \\
+            & $ -0.33998 $ \\
+            & $ \phantom{-} 0.33998 $ \\
+        \hline
+        $5$ & $ -0.90618 $ \\
+            & $ \phantom{-} 0.90618 $ \\
+            & $ -0.53847 $ \\
+            & $ \phantom{-} 0.53847 $ \\
+            & $ \phantom{-} 0.00000 $ \\
+        \hline
+        $6$ & $ -0.93247 $ \\
+            & $ \phantom{-} 0.93247 $ \\
+            & $ -0.66121 $ \\
+            & $ \phantom{-} 0.66121 $ \\
+            & $ -0.23862 $ \\
+            & $ \phantom{-} 0.23862 $ \\
+        \hline
+    \end{tabular}
+    \caption{Werte für Stützstellen der Gaussquadratur für $n <= 6$
+    \label{buch:table:gaussabscissenwerte}}    
+\end{table}
 
 \subsection{Berechnung der Gewichte an den Stützstellen
 \label{quadratur:subsection:gewichtsberechnung}}
@@ -134,4 +191,14 @@ Die vier häufigsten Formen sind in der Tabelle~\ref{buch:table:gaussformen} abg
     \label{buch:table:gaussformen}}   
 \end{table}
 
-
+\textcolor{red}{
+    TODO
+    \begin{itemize}
+        \item Gauss Legendre Formel zeigen (Done)
+        \item Beispiel berechnen mit Formel (Done)
+        \item Berechnung der Gewichtung
+        \item Berechnung der Position der Stützstellen
+        \item Erklären der verschiedenen Formen der Gauss-Quadratur und ihrer Anwendungen
+        \item Fehler der Gauss-Quadratur
+    \end{itemize}
+}
