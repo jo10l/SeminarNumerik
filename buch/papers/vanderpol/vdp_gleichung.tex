@@ -61,13 +61,13 @@ Die verschiedenen Konstanten werden wie folgt definiert:
 \begin{equation*}
 \frac{R_0}{L}=\mu, \quad C=\frac{\mu}{R_0}, \quad i_0 = 1,
 \end{equation*}
-so entspricht  die Gleichung:
+so folgt die Gleichung:
 \begin{equation}
 \frac{d^{2}i}{dt^{2}} - \mu (1 - i^{2}) \frac{di}{dt} + i = 0.
 \label{vanderpol:equations:vdp_i}
 \end{equation}
 Es ist daher gezeigt, welche Art von System durch diese Differentialgleichung beschrieben werden könnte. Offensichtlich gibt es viele Möglichkeiten, diese Art von Nichtlinearität für den Spannungswert $u_R(t)$ zu erreichen, einige sind oben aufgelistet.
-Wenn es versuchen wird, die gleiche Gleichung zu lösen, aber mit einem konstanten $R$ Wert, erhalten wir eine Differentialgleichung des Typs
+Wenn versucht wird, die gleiche Gleichung zu lösen, aber mit einem konstanten $R$ Wert, erhalten wir eine Differentialgleichung des Typs
 \begin{equation}
 \frac{d^{2}i}{d t^{2}}+\frac{R}{L} \frac{d i}{d t}+\frac{1}{LC}i = 0.
 \end{equation}
@@ -104,10 +104,10 @@ Die homogene Van der Pol Gleichung ist stabil und zeigt {\em kein} chaotisches V
 \label{vanderpol:subsection:inhomogene}
 Ausgehend von der Formel der inhomogenen Differentialgleichung
 \begin{equation*}
-	\ddot{x}-\mu(1-x^{2}) \dot{x}+x = f(x),
+	\ddot{x}-\mu(1-x^{2}) \dot{x}+x = f(t),
 \label{vanderpol:equations:inhomogene_gen}
 \end{equation*}
-die sogenannte {\em angeregte Van der Pol Gleichung} wird daher erhalten, wenn $f(x) = A \cdot \sin(\omega t)$ gesetzt wird:
+die sogenannte {\em angeregte Van der Pol Gleichung} wird daher erhalten, wenn $f(t) = A \cdot \sin(\omega t)$ gesetzt wird:
 \begin{equation}
 	\ddot{x}-\mu(1-x^{2}) \dot{x}+x = A \cdot \sin(\omega t).
 \label{vanderpol:equations:inhomogene_sin}

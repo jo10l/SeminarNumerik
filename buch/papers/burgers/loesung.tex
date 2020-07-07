@@ -7,19 +7,19 @@
 \label{burgers:section:loesung}}
 \rhead{Lösungsmethoden}
 
-Das Kaptiel \ref{chapter:pde} beschreibt den theoretischen Aspekt der Numerik  partieller Differentialgleichungen.
+Das \autoref{chapter:pde} beschreibt den theoretischen Aspekt der Numerik  partieller Differentialgleichungen.
 In diesem Abschnitt wird auf die numerischen Lösungsmethoden der Gleichung von Burgers eingegangen.
 
 
 \subsection{Explizit}
 
-Bei der Lösung der Gleichung mit dem expliziten Ansatz werden für die Berechnung des gewünschten Punktes $u_i^n$ auf Stellen eine  Zeitschritt in der Vergangenheit $u^{n-1}$ zurückgegriffen.
-Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation aufgezeigt.
+Bei der Lösung der Gleichung mit dem expliziten Ansatz werden für die Berechnung des gewünschten Punktes $u_i^n$, auf Stellen einen Zeitschritt in der Vergangenheit $u^{n-1}$ zurückgegriffen.
+Nachfolgend werden zwei grundlegende Varianten mit jeweils einer kleinen Variation aufgezeigt.
 
 \subsubsection{Lineare Methoden}
 
 	Die Ableitung in der Zeit wird mit der Differenz der beiden Punkte $u_{i}^{n}-u_{i}^{n-1}$ realisiert.
-	Wobei die Ableitung im Raum mit der Differenz $u_{i}^{n-1}-u_{i-1}^{n-1}$ abstrahiert wird.
+	Die Ableitung im Raum wird mit der Differenz $u_{i}^{n-1}-u_{i-1}^{n-1}$ abstrahiert.
 	Sie wird grafisch in \autoref{burgers:fig:Linear1} dargestellt.
 
 
@@ -36,7 +36,7 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
 	  	  \label{burgers:eq_ex_lin1}
 	  	\end{equation}
         umgeschrieben werden.
-	  	Für die Lösung muss \eqref{burgers:eq_ex_lin1} nach $ u_{i}^{n}$
+	  	Für die Lösung muss die Gleichung \eqref{burgers:eq_ex_lin1} nach
 
 	  	\begin{equation}
 	  u_{i}^{n} = \frac{\Delta{x}\, u^{n-1}_{i}\,}{- \Delta{t}\, u^{n-1}_{i-1}\, + \Delta{t}\, u^{n-1}_{i}\, + \Delta{x}\,}
@@ -46,8 +46,9 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
 
 \medskip
 
-	Für die Multiplikation des zweiten Bruches muss nicht unbedingt der gesuchte Punkt $u_{i}^{n}$ verwendet werden, siehe die grafische Darstellung in \autoref{burgers:fig:Linear2}.
-	Es kann auch der Punkt auf gleicher Stelle im Raum aber einen Zeitschritt in der Vergangenheit verwendet werden.
+	Für die Multiplikation des zweiten Bruches muss nicht unbedingt der gesuchte Punkt $u_{i}^{n}$ verwendet werden.
+	Siehe dazu die grafische Darstellung in \autoref{burgers:fig:Linear2}.
+	Es kann sowohl der Punkt auf gleicher Stelle im Raum, als auch einen Zeitschritt in der Vergangenheit verwendet werden.
 
 
      \begin{figure}
@@ -56,13 +57,13 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
 	\caption{Lineare explizite Methode mit  $u_{i}^{n-1}$ f\"ur die Multiplikation}
 	\label{burgers:fig:Linear2}
 	\end{figure}
-	Wobei sich die Gleichung
+	Die Gleichung
 	\begin{equation}
 			\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} \cong \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n-1}\, \frac{u_{i}^{n-1}-u_{i-1}^{n-1}}{\Delta x}=0
 		\label{burgers:eq_ex_lin2}
 	\end{equation}
-	 nur minimal ändert.
-	 Auch kann wieder eine Lösung für den gesuchten Punkt $u_{i}^{n}$ 
+	ändert sich nur minimal.
+	 Auch kann wieder eine Lösung für den gesuchten Punkt
 
 	\begin{equation}
 		u_{i}^{n} = \frac{u^{n-1}_{i}\, \left(\Delta{t}\, u^{n-1}_{i-1}\, - \Delta{t}\, u^{n-1}_{i}\, + \Delta{x}\,\right)}{\Delta{x}\,}
@@ -70,25 +71,25 @@ Folgend werden zwei Grundlegende Varianten mit jeweils einer kleinen Variation a
 	\end{equation}
 gefunden werden.
 
-\subsubsection{Stabilit\"atskriterium Lineare Methoden}
+\subsubsection{Stabilit\"atskriterium lineare Methoden}
 	Die Stabilit\"at kann f\"ur diese L\"osungsmethode nicht garantiert werden.
 	Sie folgt dem Courant-Friedrichs-Lewy Kriterium
 	\begin{equation}
 		  c = \frac{u \, \Delta t}{\Delta x} < c_{\text{krit}}.
 	\end{equation}
-	Wobei $ \Delta t$ und $\Delta x$ die diskrete Schrittgr\"osse beschreiben.
+	$ \Delta t$ und $\Delta x$  beschreiben die diskrete Schrittgr\"osse.
 	Das Kriterium $c_{\text{krit}}$ ist von der gew\"ahlten L\"osungsmethode abh\"anig.
-	Beim Expliziten Verfahren beträgt $c_{\text{krit}} = 1$.
+	Beim expliziten Verfahren beträgt $c_{\text{krit}} = 1$.
 	Falls $c_{\text{krit}} > 1$ bedeutet dies, dass das Verh\"altnis zwischen $ \Delta t$ und $\Delta x$ zu gross ist und die Berechnungen instabil werden.
 	F\"ur diesen Fall und mit der Annahme $u = 1$ m\"usste $ \Delta t$ gr\"osser sein als $\Delta x$.
-	Dies macht intuitiv Sinn, da der Raum nicht feiner abgetastet werden sollte als die Zeit.
+	Dies macht konsequenterweise Sinn, da der Raum nicht feiner abgetastet werden sollte als die Zeit.
 
 
 
 \subsubsection{Leap-Frog Methode}
 
-	Bei genauer Betrachtungen von den Ableitungen in \autoref{burgers:fig:Linear1} und \autoref{burgers:fig:Linear2} erkennt man, dass sich die berechnete Ableitung eigentlich zwischen den beiden Punkten befindet.
-	Theoretisch sollte man für ein optimales Resultat die Ableitung genau am Punkt $u_{i}^{n}$ erhalten.
+	Bei genauer Betrachtung der Ableitungen in \autoref{burgers:fig:Linear1} und \autoref{burgers:fig:Linear2} erkennt man, dass sich die berechnete Ableitung eigentlich zwischen den beiden Punkten befindet.
+	Grunds\"atzlich sollte man für ein optimales Resultat die Ableitung genau am Punkt $u_{i}^{n}$ erhalten.
 
 	\medskip
 	Die Leap-Frog Diskretisierung umgeht diese Problematik indem sie f\"ur die Ableitung einen Punkt \"uberspringt.
@@ -102,20 +103,22 @@ gefunden werden.
 		\label{burgers:fig:Linear4}
 		\end{figure}
 
-	Wiederum kann die Gleichung diskretisiert werden und nach dem gesuchten Punkt $u_{i}^{n}$ aufgel\"ost werden.
-
+	Wiederum kann die Gleichung
 	\begin{equation}
 	\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} \cong \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n}\, \frac{u_{i+1}^{n-1}-u_{i-1}^{n-1}}{2\,\Delta x}=0
 	\end{equation}
+	diskretisiert und nach dem gesuchten Punkt
+
 
 	\begin{equation}
 	u_{i}^{n} = \frac{2 \Delta{x}\, u^{n-1}_{i}\,}{\Delta{t}\, u^{n-1}_{i+1}\, - \Delta{t}\, u^{n-1}_{i-1}\, + 2 \Delta{x}\,}
 	\end{equation}
+ aufgel\"ost werden.
 
 \medskip
 
-	Wie schon in den bis anhin gezeigten Varianten kann f\"ur die Multiplikation den Punkt $u_{i}^{n-1}$ verwendet werden (\autoref{burgers:fig:Linear3}).
-	Die Diskretisierung \"anderst sich zu
+	Wie bereits in den gezeigten Varianten kann f\"ur die Multiplikation der Punkt $u_{i}^{n-1}$ verwendet werden (\autoref{burgers:fig:Linear3}).
+	Die Diskretisierung \"andert sich zu
 
 	\begin{figure}
 	\centering
@@ -123,7 +126,6 @@ gefunden werden.
 	\caption{Explizite Leap-Frog Methode mit  $u_{i}^{n-1}$ f\"ur die Multiplikation}
 	\label{burgers:fig:Linear3}
 	\end{figure}
-
 
 
 
@@ -140,16 +142,16 @@ gefunden werden.
 
 
 \subsubsection{Stabilit\"atskriterium Leap-Frog Verfahren}
-	Mit der Einf\"uhrung des Leap-Frog Verfahrens wurde eine ungew\"unschte Instabilit\"at in das System gebracht.
+	Mit der Einf\"uhrung des Leap-Frog Verfahrens wurde eine unerw\"unschte Instabilit\"at in das System gebracht.
 	Die Problematik ist, dass im Raum über zwei Raumschritte abgetastet wird.
 	Dabei kann schon in einem Abtastschritt eine Änderung vorkommen.
 	Von einer technischer Blickrichtung kann von einer Verletzung des Nyquist-Shannon-Abtasttheorem gesprochen werden.
-	Die Abtastrate beträgt nicht das doppelte der höchsten Frequenz im System.
+	Die Abtastrate beträgt nicht das Doppelte der höchsten Frequenz im System.
 
 	\medskip
 
-	Die erw\"ahte Instabilit\"at im \autoref{burgers:sec:nwp} auf welche Richardson gestossen ist, ist dieselbe welche hier beschrieben wird.
-	Ein analytisches Beispiel aus \cite{burgers:lynch_2014} mit der Differentialgleichung der Reibung.
+	Die erw\"ahnte Instabilit\"at im Abschnitt \ref{burgers:sec:nwp}, auf die Richardson gestossen ist, ist die hier beschriebe.
+	Ein analytisches Beispiel aus der Biografie von Richardson \cite{burgers:lynch_2014} mit der Differentialgleichung der Reibung.
 
 	\begin{equation}
 		\frac{dQ}{dt} = - \kappa Q, \,\,\,\,\, \text{wobei} \, \,\,\,\,\,\, Q=Q^0 \,\,\,\,\,\,\, \text{bei} \,\,\,\,\,\,\,\, t=0
@@ -169,36 +171,38 @@ gefunden werden.
 	\begin{equation}
 		\frac{Q^{n+1}-Q^{n-1}}{2 \Delta t} = - \kappa Q^n.
 	\end{equation}
-	Die L\"osung
+	Die Gleichung kann weiter nach
 	\begin{equation}
 		-\frac{Q^{n+1}-Q^{n-1}}{\kappa 2 \Delta t} = Q^n
 	\end{equation}
-	kann substituiert werden
+	aufgelöst werden.
+	Weiter kann die gefundene Lösung substituiert
 		\begin{equation}
-			Q^n = Q^0\alpha ^n.
+			Q^n = Q^0\xi ^n.
 			\label{burgers:eq_cm}
 		\end{equation}
-	Dies ist wiederum eine monoton fallende L\"osung gegen Null, wenn $0 < \alpha < 1$.
-	Setzen wir f\"ur $Q^n = \alpha$, $Q^{n+1} = \alpha^2$ und $Q^{n-1} = \alpha^0$,
-	erhaltet man
+	werden.
+	Dies ist wiederum eine monoton fallende L\"osung gegen Null, wenn $0 < \xi < 1$.
+	Setzen wir f\"ur $Q^n = \xi$, $Q^{n+1} = \xi^2$ und $Q^{n-1} = \xi^0$,
+	erhält man
 	\begin{equation}
-		\frac{\alpha^2 -1}{2\Delta t} =  -\kappa \alpha.
+		\frac{\xi^2 -1}{2\Delta t} =  -\kappa \xi.
 	\end{equation}
-    Diese quadratische Gleichung kann mit den folgenden Schritten aufgelöst werden.
+    Diese quadratische Gleichung kann mit den folgenden Schritten aufgelöst werden:
 \begin{subequations}
     \begin{align}
-            \alpha^2 + (\kappa 2 \Delta t) \alpha  -1 &= 0 \\
-            \alpha &= \frac{- \kappa 2 \Delta t \pm \sqrt{(\kappa 2 \Delta t)^2 + 4}}{2}\\
-            \alpha_+ &= \- \kappa\Delta t + \sqrt{\kappa^2 \Delta t^2 + 1}\\
-            \alpha_- &= \- \kappa\Delta t - \sqrt{\kappa^2 \Delta t^2 + 1}
+            \xi^2 + (\kappa 2 \Delta t) \xi  -1 &= 0 \\
+            \xi &= \frac{- \kappa 2 \Delta t \pm \sqrt{(\kappa 2 \Delta t)^2 + 4}}{2}\\
+            \xi_+ &= \- \kappa\Delta t + \sqrt{\kappa^2 \Delta t^2 + 1}\\
+            \xi_- &= \- \kappa\Delta t - \sqrt{\kappa^2 \Delta t^2 + 1}.
         \end{align}
     \end{subequations}
-	Man sieht, dass $|\alpha_+| < 1$ und somit eine abfallende, gegen Null gehende L\"osung entsteht.
-	Allerdings ist 	$|\alpha_-| > 1$ und damit w\"achst \eqref{burgers:eq_cm} ohne Limit mit $n$.
+	Man sieht, dass $|\xi_+| < 1$ und somit eine abfallende, gegen Null gehende L\"osung entsteht.
+	Allerdings ist 	$|\xi_-| > 1$ und damit w\"achst die Gleichung \eqref{burgers:eq_cm} ohne Limit mit $n$.
 	Dieser Anteil wird der  \textit{computational mode} genannt und entsteht bei der Verwendung des expliziten Leap-Frog Verfahren.
 
 	In \autoref{burgers:fig:cm1} kann diese Instabilit\"at beobachtet werden.
-	Mit Fortschreitender Zeit w\"urde die L\"osung gegen $\infty$ gehen.
+	Mit fortschreitender Zeit w\"urde die L\"osung gegen $\infty$ gehen.
 
     \begin{figure}
 	\centering
@@ -208,7 +212,18 @@ gefunden werden.
 	\label{burgers:fig:cm1}
 	\end{figure}
 
+	\paragraph{Unterdrückung des Computational Mode}
+	\label{burgers:sec:cm}
 
+	Dieser hochfrequente Fehler kann mittels eines digitalen Tiefpass-Filters eliminiert werden.
+	Das sogenannte Robert-Asselin-Time-Filter \cite{burgers:time_filter} kann hierf\"uhr eingesetzt werden.
+	Das Filter
+		\begin{equation}
+			\hat{u}(t_n,x_i) = u(t_n,x_i)+ \frac{\alpha}{2} [ \, u(t_n,x_{i-1}) - 2u(t_n,x_i)+u(t_n,x_{i+1}) ] \,
+		\end{equation}
+
+	wird in dieser Anwendung allerdings nicht auf die Zeit, sondern auf die Raum-Dom\"ane angewendet.
+	Mit dem D\"ampfungsfaktor $\alpha$ kann das Filter auf die Applikation angepasst werden.
 
 \subsection{Implizit}
 
@@ -223,20 +238,21 @@ gefunden werden.
 	\label{burgers:fig:quadratic}
 	\end{figure}
 
-	Die direkteste Art der Diskretisierung, \autoref{burgers:fig:quadratic}, kann wie folgt beschrieben werden .
+	Die direkteste Art der Diskretisierung, \autoref{burgers:fig:quadratic}, kann wie folgt beschrieben werden.
 	Da der Punkt $u_{i}^{n}$ f\"ur die Multiplikation verwendet wird, entsteht
 	\begin{equation}
 	\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} \cong \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n}\, \frac{u_{i}^{n}-u_{i-1}^{n}}{\Delta x}=0
 	\end{equation}
 	eine quadratische Gleichung.
-	Die beiden L\"osung dieser Methode
-	
+	Die beiden L\"osungen dieser Methode
+
 	\begin{equation}
 	  u_{i}^{n} =
-	     \dfrac{\Delta{t}\, u^{n}_{i-1}\, - \Delta{x}\, \pm \sqrt{\Delta{t}\,^{2} \left(u^{n}_{i-1}\,\right)^{2} + 4 \Delta{t}\, \Delta{x}\, u^{n-1}_{i}\, - 2 \Delta{t}\, \Delta{x}\, u^{n}_{i-1}\, + \Delta{x}\,^{2}}}{2 \Delta{t}}
+	     \dfrac{\Delta{t}\, u^{n}_{i-1}\, - \Delta{x}\, \pm \sqrt{\Delta{t}\,^{2} (u^{n}_{i-1})^{2} + 4 \Delta{t}\, \Delta{x}\, u^{n-1}_{i}\, - 2 \Delta{t}\, \Delta{x}\, u^{n}_{i-1}\, + \Delta{x}\,^{2}}}{2 \Delta{t}},
 	\end{equation}
-	wobei die Negative Teil der L\"osung nicht verwendet werden muss.
-	
+	dabei f\"uhrt der negative Teil der L\"osung zu einer Instabilität.
+
+
 	\subsubsection{Linear}
 	\label{burgers:sec:imp_lin}
 	     \begin{figure}
@@ -245,26 +261,26 @@ gefunden werden.
 		\caption{Implizite lineare Methode}
 		\label{burgers:fig:linear5}
 		\end{figure}
-	
-		Wird wie gewohnt der Wert  $u_{i}^{n-1}$ f\"ur die Multiplikation verwendet entsteht eine simplere lineare Gleichung
+
+		Wird wie gewohnt der Wert  $u_{i}^{n-1}$ f\"ur die Multiplikation verwendet, entsteht eine simplere lineare Gleichung
 	    \begin{equation}
 		\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} \cong \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n-1}\, \frac{u_{i}^{n}-u_{i-1}^{n}}{\Delta x}=0,
 		\label{burgers:eq:imp_lin}
 		\end{equation}
-		welche in \autoref{burgers:fig:linear5} dargestellt ist.
+		die in \autoref{burgers:fig:linear5} dargestellt ist.
 	    Die L\"osung kann mit
 	    \begin{equation}
 		 u_{i}^{n} = \frac{u^{n-1}_{i}\, \left(\Delta{t}\, u^{n}_{i-1}\, + \Delta{x}\,\right)}{\Delta{t}\, u^{n-1}_{i}\, + \Delta{x}\,}
 		 \label{burgers:eq:imp_lin_sol}
 		\end{equation}
 	    gefunden werden.
-	
+
 	\subsubsection{Leap-Frog Verfahren}
-	
-		Mit dem impliziten Leap-Frog Verfahren (\autoref{burgers:fig:Implicit}) kann f\"ur die Ableitung im Raum denn Wert an der korrekten Stelle berechnet werden.
+
+		Mit dem impliziten Leap-Frog Verfahren (\autoref{burgers:fig:Implicit}) kann f\"ur die Ableitung im Raum der Wert an der korrekten Stelle berechnet werden.
 		Nun wird allerdings der Punkt  $u_{i+1}^{n}$ f\"ur die Berechnung verwendet, welcher bei der Berechnung des Punktes  $u_{i}^{n}$ noch unbekannt ist.
 		Somit entsteht ein lineares Gleichungssystem.
-	
+
 	    \begin{figure}
 		\centering
 		\includegraphics[height=.4\textwidth]{papers/burgers/BurgersEquation/tikz/implicit/implicit.pdf}
@@ -275,9 +291,9 @@ gefunden werden.
 	\begin{equation}
 	\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} \cong \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n-1}\, \frac{u_{i+1}^{n}-u_{i-1}^{n}}{2\,\Delta x}=0
 	\end{equation}
-	Die Gleichung kann nach den Unbekannten 
+	Die Gleichung kann nach den Unbekannten
 	\begin{equation}
-	   -u_{i}^{n-1} \, \Delta t \, u_{i-1}^{n} +  2 \, dx \,  u_{i}^{n} + u_{i}^{n-1} \, \Delta t \, u_{i+1}^{n} =  2 \, \Delta x \, u_{i}^{n-1}
+	   -u_{i}^{n-1} \, \Delta t \, u_{i-1}^{n} +  2 \, \Delta x \,  u_{i}^{n} + u_{i}^{n-1} \, \Delta t \, u_{i+1}^{n} =  2 \, \Delta x \, u_{i}^{n-1}
 	\end{equation}
 	sortiert werden.
 	%\begin{subequations}
@@ -290,8 +306,8 @@ gefunden werden.
 	%   -u_{i}^{n} \, dt \, u_{i-1}^{n+1} +  2 \, dx \,  u_{i}^{n+1} + u_{i}^{n} \, dt \, u_{i+1}^{n+1} &=  2 \, dx \, u_{i}^{n}
 	%  \end{align}
 	%\end{subequations}
-	
-	
+
+
 	%\begin{equation}
 	%  u_{i}^{n+1}-u_{i}^{n} = -u_{i}^{n} \, dt \, \frac{u_{i+1}^{n+1} - u_{i-1}^{n+1}}{2 \, dx}
 	%\end{equation}
@@ -307,17 +323,17 @@ gefunden werden.
 	%\begin{equation}
 	% -u_{i}^{n} \, dt \, u_{i-1}^{n+1} +  2 \, dx \,  u_{i}^{n+1} + u_{i}^{n} \, dt \, u_{i+1}^{n+1}=  2 \, dx \, u_{i}^{n}
 	%end{equation}
-	Weiter kann f\"ur die Randpunkte das Leap-Frog Verfahren nicht angewendet werden.
+	F\"ur die Randpunkte kann das Leap-Frog Verfahren nicht angewendet werden.
 	Nachfolgend wurde f\"ur diese Punkte das Verfahren in \autoref{burgers:sec:imp_lin} verwendet.
-	
+
 	Das Gleichungssystem kann in Matrix-Notation umgeschrieben werden als
 	\begin{equation}
 	\left[{\begin{matrix}
-	{dx- u_{1}^{n-1}\, dt}&{ u_{1}^{n-1} \, dt}&{0}&{\dots}&{0}\\[5pt]
-	{-u_{2}^{n-1} \, dt}&{ 2 \, dx}&{ u_{2}^{n-1} \, dt}&{\dots}&{0}\\[5pt]
-	{0}&{-u_{3}^{n-1} \, dt}&{ 2 \, dx}&\ddots &{0}\\[5pt]
-	{0}&{0}&\ddots &\ddots &{ u_{M-1}^{n-1} \, dt}\\[5pt]
-	{0}&{0}&{\dots}&{-u_{M}^{n-1} \, dt}&{dx + u_{M}^{n-1}\, dt}
+	{dx- u_{1}^{n-1}\, \Delta t}&{ u_{1}^{n-1} \, \Delta t}&{0}&{\dots}&{0}\\[5pt]
+	{-u_{2}^{n-1} \, \Delta t}&{ 2 \, \Delta x}&{ u_{2}^{n-1} \, \Delta t}&{\dots}&{0}\\[5pt]
+	{0}&{-u_{3}^{n-1} \, \Delta t}&{ 2 \, \Delta x}&\ddots &{0}\\[5pt]
+	{0}&{0}&\ddots &\ddots &{ u_{M-1}^{n-1} \, \Delta t}\\[5pt]
+	{0}&{0}&{\dots}&{-u_{M}^{n-1} \, \Delta t}&{\Delta x + u_{M}^{n-1}\, \Delta t}
 	\end{matrix}}
 	\right]\left[{\begin{matrix}
 	{ u_{1}^{n}}\\[5pt]
@@ -327,15 +343,15 @@ gefunden werden.
 	{ u_{M}^{n}}
 	\end{matrix}}\right]
 	=\left[{\begin{matrix}
-	{dx \, u_{1}^{n-1}}\\[5pt]
-	{ 2 \, dx \, u_{2}^{n-1}}\\[5pt]
-	{ 2 \, dx \, u_{3}^{n-1}}\\[5pt]
+	{\Delta x \, u_{1}^{n-1}}\\[5pt]
+	{ 2 \, \Delta  \, u_{2}^{n-1}}\\[5pt]
+	{ 2 \, \Delta x \, u_{3}^{n-1}}\\[5pt]
 	\vdots \\[5pt]
-	{dx \, u_{M}^{n-1}}
+	{\Delta x \, u_{M}^{n-1}}
 	\end{matrix}}\right].
 	  \end{equation}
 	Gleichungssysteme mit dieser Anordnung der Terme werden tridiagonale Matrizen genannt.
-	Sie haben die allgemeine Form
+	Die Gleichungen haben die allgemeine Form
 	  \begin{equation}
 	    a_{i}x_{{i-1}}+b_{i}x_{i}+c_{i}x_{{i+1}}=d_{i}
 	  \end{equation}
@@ -357,9 +373,9 @@ gefunden werden.
 	      \vdots \\{d_{n}}\\
 	    \end{bmatrix}
 	  \end{equation}
-	   und k\"onnen mit dem Thomas Algorithmus \autoref{TDMA} mit der Geschwindigkeit $O(n)$ gel\"ost werden.
-	   Mehr zum Algorithmus im \autoref{buch:subsection:thomasalgorithmus}.
-	
+	   und k\"onnen mit dem Thomas Algorithmus \autoref{TDMA} \cite{burgers:thomas} mit der Geschwindigkeit $O(n)$ gel\"ost werden.
+	   Mehr zum Algorithmus im Abschnitt \ref{buch:subsection:thomasalgorithmus}.
+
 	\begin{algorithm}\caption{Tridiagonal matrix algorithm (Thomas algorithm)}\label{TDMA}
 	  \setlength{\lineskip}{7pt}
 	  \begin{algorithmic}[1]
@@ -370,6 +386,9 @@ gefunden werden.
 	      \For{$i = 2,3,\dots,n-1$}
 	      \Comment{Forward sweep}
 	        \State $\hat c_i \gets \dfrac{c_i}{b_i-a_i \, \hat c_{i-1}}$
+	      \EndFor
+		  \For{$i = 2,3,\dots,n$}
+	      \Comment{Forward sweep}
 	        \State $\hat d_i \gets \dfrac{d_i - a_i \, \hat d_{i-1}}{b_i-a_i \, \hat c_{i-1}}$
 	      \EndFor
 	      \State $x_n \gets \hat d_n$
@@ -381,9 +400,9 @@ gefunden werden.
 	    \EndFunction
 	  \end{algorithmic}
 	\end{algorithm}
-	
+
 	\subsubsection{Stabilit\"atskriterium Implizite Verfahren}
-	
+
 	Eine Instabilit\"at wie in den expliziten Verfahren konnte nicht beobachtet werden.
-	Alles gezeigten Varianten k\"onnen als stabil betrachtet werden.
-	Mehr dazu im \autoref{pde:subsection:stabilitaet}
+	All gezeigten Varianten k\"onnen als stabil betrachtet werden.
+	Mehr dazu im Abschnitt \ref{pde:subsection:stabilitaet}
