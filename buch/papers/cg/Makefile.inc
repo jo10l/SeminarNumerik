@@ -9,5 +9,6 @@ dependencies-cg =						\
 	papers/cg/references.bib				\
 	papers/cg/steepest_descent.tex				\
 	papers/cg/herleitung_algorithmus.tex			\
+	papers/cg/ergebnisse.tex				\
 
 
