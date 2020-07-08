@@ -19,7 +19,7 @@ Die Änderung der Amplitude $A$ in die Gleichung \eqref{vanderpol:equations:inho
 ``Chaos: When the present determines the future, but the approximate present does not approximately determine the future.''\cite{vanderpol:biblorenz}
 \end{cquote}
 \noindent Das angeführte Zitat ist genau die Definition, die das in diesem Kapitel untersuchte Problem erklärt, nämlich die Instabilität der numerischen Methoden. Letztere führen zu einem Rundungsfehler, der sich während der verschiedenen Iterationen ansammelt. Diese hängt von der für den Integrationsschritt gewählten Länge ab. Mehrere Längen entsprechen daher unterschiedlichen Werten des Fehlers.
-Per Definition ist ein chaotisches System sehr empfindlich gegenüber Veränderungen, auch wenn diese minimal sind. Zwei Fehler aufgrund von zwei unterschiedlichen Integrationsschritten können somit zu zwei völlig unterschiedlichen Lösungen führen. In der Regel tritt die Divergenz zwischen den beiden Lösungen nach einer bestimmten Zeitspanne auf. Etwas Ähnliches geschieht, immer in einem chaotischen System, wenn eine kleine Variation der Anfangsbedingungen eingeführt wird. Dieser kleine Unterschied kann, analog zu dem durch Fehler verursachten, das Langzeitverhalten des Systems stark beeinflussen. Diese Empfindlichkeit gegenüber Veränderungen im Ausgangszustand ist auch bekannt als {\em Butterfly Effect}. Zur Erklärung dieses Phänomens verwendete Edward Lorentz in 1972 auf einer Konferenz den Satz: ``Ein Schmetterling schlägt in Peking mit den Flügeln, und in New York kommt Regen statt Sonne''.
+Per Definition ist ein chaotisches System sehr empfindlich gegenüber Veränderungen, auch wenn diese minimal sind. Zwei Fehler aufgrund von zwei unterschiedlichen Integrationsschritten können somit zu zwei völlig unterschiedlichen Lösungen führen. In der Regel tritt die Divergenz zwischen den beiden Lösungen nach einer bestimmten Zeitspanne auf. Etwas Ähnliches geschieht immer in einem chaotischen System, wenn eine kleine Variation der Anfangsbedingungen eingeführt wird. Dieser kleine Unterschied kann, analog zu dem durch Fehler verursachten, das Langzeitverhalten des Systems stark beeinflussen. Diese Empfindlichkeit gegenüber Veränderungen im Ausgangszustand ist auch bekannt als {\em Butterfly Effect}. Zur Erklärung dieses Phänomens verwendete Edward Lorentz in 1972 auf einer Konferenz den Satz: ``Ein Schmetterling schlägt in Peking mit den Flügeln, und in New York kommt Regen statt Sonne''.
 \begin{figure}
 \centering
 \begin{tikzpicture}[scale=1]
@@ -57,9 +57,9 @@ Im Falle des Bildes Abbildung \ref{vanderpol:figures:init_cond_dbl_pend} wurde d
 
 \begin{itemize}
 \item
-$\alpha_1(0) = \frac{\pi}{2}$
+Rote Kurve in Abbildung \ref{vanderpol:figures:init_cond_dbl_pend}: $\alpha_1(0) = \frac{\pi}{2}$
 \item
-$\alpha_2(0) = \alpha_1(0) + \delta, \quad \delta = 10^{-3}$
+Blaue Kurve in Abbildung \ref{vanderpol:figures:init_cond_dbl_pend}: $\alpha_2(0) = \alpha_1(0) + \delta, \quad \delta = 10^{-3}$
 \item
 $\dot{\alpha_1}(0) = \dot{\alpha_2}(0)= 1 \frac{m}{s}, \quad \dot{\beta_1}(0) = \dot{\beta_2}(0)= 1 \frac{m}{s}, \quad \beta_1(0)=\beta_2(0)=\displaystyle\frac{\pi}{2}$
 \end{itemize}
@@ -80,9 +80,9 @@ Dasselbe geschieht auch im Fall der Van der Pol Gleichung. Im  Abbildung \ref{va
 
 \begin{itemize}
 \item
-$\dot{x_1}(0) = 5$
+Rote Kurve in Abbildung \ref{vanderpol:figures:init_cond_VDP}: $\dot{x_1}(0) = 5$
 \item
-$\dot{x_2}(0) = \dot{x_1}(0) + \delta, \quad \delta = 10^{-3}$ 
+Blaue Kurve in Abbildung \ref{vanderpol:figures:init_cond_VDP}: $\dot{x_2}(0) = \dot{x_1}(0) + \delta, \quad \delta = 10^{-3}$ 
 \item
 $x_1(0) = x_2(0) = 0$
 \end{itemize}
