@@ -3,18 +3,143 @@
 \rhead{Herleitung des Algorithmus}
 
 \subsection{Intuition}
-%TODO grafics "Abstieg auf Koordinatenachsen"
+Die Idee vom CG-Algorithmus ist es, die Schwächen von Gradient Descent auszubessern.
+Dies geschieht, indem pro Dimension des Minimierungsproblems nur ein Schritt benötigt wird.
+Intuitiv kann man sich dies als Abstieg entlang der Koordinatenachsen vorstellen, wie in Abbildung \ref{cg:abb:koordabstieg} gezeigt.
+Ein solches Verfahren findet immer in $N$ Schritten die exakte Lösung.
+
+\begin{figure}	
+	\centering
+	\includegraphics{papers/cg/images/descent-2}
+	\caption{2D Abstieg entlang der Koordinatenachsen, 2 Schritte genügen um die exakte Lösung zu finden. 
+		Abbildung aus dem Seminar Buch von 2014 \cite{cg:book:hpc}.}
+	\label{cg:abb:koordabstieg}
+\end{figure}
+
+Auf den ersten Blick ist dies sehr vielversprechend.
+Allerdings ist die Konvergenz dieses Verfahrens unter Umständen sehr schlecht, da die Koordinatenachsen in hochdimensionalen Problemen weit weg vom Gradienten sind.
+Dabei haben viele Dimensionen keinen richtigen Einfluss und ein Abstieg in deren Richtung verbessert die Approximation nur minimal.
+In Abbildung \ref{cg:abb:koordabstieg2} sieht man dieses Verhalten noch besser an einem 3D Beispiel.
+Es wäre also wünschenswert einen Algorithmus zu finden, welcher:
+\begin{itemize}
+	\item in $N$ Schritten die exakte Lösung findet
+	\item trotzdem schnell Konvergiert (eine gute Approximation findet sich bereits nach weniger Schritten)
+\end{itemize}
+Dies wird mit dem CG-Algorithmus erreicht.
+
+\begin{figure}	
+	\centering
+	\includegraphics[width=0.8\hsize]{papers/cg/images/descent3d.jpg}
+	\caption{3D Abstieg entlang der Koordinatenachsen, 3 Schritte genügen um die exakte Lösung zu finden. 
+		Abbildung aus dem Seminar Buch von 2014 \cite{cg:book:hpc}.}
+	\label{cg:abb:koordabstieg2}
+\end{figure}
+
+
 
 \subsection{Optimale Suchrichtung \label{cg:subsection:suchrichtung}}
 
-Nun muss nur noch die optimale nächste Suchrichtung $d_{k+1}$ gefunden werden.
-Damit jeder Schritt das Problem um eine Dimension reduziert, muss jede neue Suchrichtung orthogonal im Sinne von $A$ auf allen bisherigen Richtungen stehen. %TODO Grafik
-Dies ist erreicht wenn das Residuum $r_k$ mithilfe des Gram-Schmidt-Orthogonalisierungsverfahren auf $d_k$ orthogonalisiert wird %TODO beweis dafür  (S. 80)
-\begin{equation}
-d_{k+1}
-= 
-r_{k+1} - \frac{\langle d_k , r_{k+1} \rangle_A}{\langle d_k , d_k \rangle_A} d_k.
+Erreicht werden kann dies, indem jeweils orthogonalisierte Richtungen verwendet werden.
+Kombiniert mit der optimalen Abstiegslänge aus \ref{cg:subsection:schrittweite} führt dies dazu, dass genau $N$ Schritte zur exakten Lösung führen.
+Wie beim Abstieg entlang der Koordinatenachsen werden also nur neue Richtungen $d_{k+1}$ verwendet, welche orthogonal (in $A$) auf allen bisherigen Richtungen stehen
+\begin{equation} 
+	d_{k+1}  \perp_A  d_k  \perp_A  d_{k-1}  \dots \perp_A  d_0.
 \end{equation}
+Jetzt stellt sich also noch die Frage, wie diese orthogonalen Richtungen zu wählen sind um eine schnelle Konvergenz zu erreichen.
+Es bietet sich wiederum der negative Gradient $r_{k+1} = b - Ax_{k+1}$ (Residuum) an, welcher danach mithilfe eines Orthogonalisierungsverfahrens orthogonalisiert werden kann.
+Der negative Gradient entspricht per Definition der lokal optimalen Richtung um schnell abzusteigen und ist somit die beste Wahl.
 
-\subsection{Genügt Orthogonalisierung auf der letzten Richtung?}
+Wir verwenden das Gram-Schmidt-Orthogonalisierungsverfahren um den Gradienten auf den bisherigen Richtungen zu orthogonalisieren.
+Dabei wollen wir orthogonal in Bezug auf $A$ sein, weshalb das verallgemeinerte Skalarprodukt $\langle \dots \rangle_A$ verwendet wird 
+\begin{equation}
+	d_{k+1} 
+	= 
+	r_{k+1} - \sum_{i=0}^{k} \frac{\langle d_i , r_{k+1} \rangle_A}{\langle d_i , d_i \rangle_A} d_i.
+\end{equation}
+Diese vielen Orthogonalisierungen sind rechenintensiv und würden die Performance des CG-Algortihmus beeinträchtigen.
+Im nächsten Abschnitt wird gezeigt, dass es genügt das Orthogonalisierungsverfahren auf der letzten Abstiegsrichtung durchzuführen.
+Die neue Richtung ist dann automatisch auch auf allen vorherigen Richtungen orthogonal.
+Dies führt zur folgenden, vereinfachten Berechnung
+\begin{equation}
+	d_{k+1}
+	= 
+	r_{k+1} - \frac{\langle d_k , r_{k+1} \rangle_A}{\langle d_k , d_k \rangle_A} d_k.
+\end{equation}
+Abbildung \ref{cg:abb:cg1} zeigt wie in einem zweidimensionalen Problem in 2 Schritten die exakte Lösung gefunden wird und schon nach Schritt 1 eine möglichst gute Approximation erreicht wird.
+Die orthogonalisierungen sind besser im dreidimensionalen Beispiel von Abbildung \ref{cg:abb:cg2} zu sehen.
+Orthogonale Vektoren bezüglich $A$ werden auch als konjugiert bezeichnet, weshalb der Name konjugierte Gradienten Sinn macht.
+\begin{figure}	
+	\centering
+	\includegraphics{papers/cg/images/descent-3}
+	\caption{2D Abstieg mit dem CG-Algorithmus, 2 Schritte genügen um die exakte Lösung zu finden. 
+		Abbildung aus dem Seminar Buch von 2014 \cite{cg:book:hpc}.}
+	\label{cg:abb:cg1}
+\end{figure}
 
+\begin{figure}	
+	\centering
+	\includegraphics[width=0.8\hsize]{papers/cg/images/cg3d-large.jpg}
+	\caption{3D Abstieg mit dem CG-Algorithmus, 3 Schritte genügen um die exakte Lösung zu finden. 
+		Abbildung aus dem Seminar Buch von 2014 \cite{cg:book:hpc}.}
+	\label{cg:abb:cg2}
+\end{figure}
+
+\subsection{Wieso genügt Orthogonalisierung auf der letzten Richtung?}
+Für die Effizienz des Algorithmus ist es entscheidend, dass eine einzige Orthogonalisierung genügt.
+Wieso dies funktioniert, soll hier in abgekürzter Form bewiesen werden.
+
+\begin{proof}[Beweis]
+Für den Beweis genügt es den Fall $b=0$ zu betrachten, da $b$ nur einen Offset bei der Residuumsberechnung darstellt.
+Damit eine $A$-Orthogonalisierung des Residuums auf $d_k$ genügt, muss das Residuum bereits $A$-orthogonal auf den vorherigen $\langle d_1, \dots ,d_{k-1} \rangle$ Richtungen stehen
+\begin{equation} \label{cg:eq:ortho1}
+	r_{k+1} \perp_A \langle d_1, \dots ,d_{k-1} \rangle.
+\end{equation} 
+Aus dem Aufbau des Algorithmus lässt sich die Vermutung ableiten, dass die Residuen und die Richtungen den selben Raum aufspannen.
+Wir nehmen also an, dass
+\begin{equation}\label{cg:eq:ortho2}
+\langle r_1, \dots ,r_{k-1} \rangle 
+= 
+\langle d_1, \dots ,d_{k-1} \rangle.
+\end{equation}
+Mit dieser Eigenschaft lässt sich die Gleichung \ref{cg:eq:ortho1} umstellen zu
+\begin{align} \label{cg:eq:ortho3}
+	r_{k+1} 	&\perp_A \langle r_1, \dots ,r_{k-1} \rangle \\
+	0 			&= \langle r_{k+1}, r_i \rangle_A \quad \forall i < k-1 \\
+				&= \langle r_{k+1}, Ar_i \rangle \quad \forall i < k-1 
+\end{align} 
+Wir nehmen ausserdem an, dass sich die Residuen als Linearkombinationen von $r_1$ und $A$ ausdrücken lassen
+\begin{equation}
+	\langle r_1, \dots ,r_k \rangle = \langle r_1, Ar_1 \dots ,A^{k-1}r_1 \rangle.
+\end{equation}
+Dann können wir die Menge der Vektoren $Ar_i$ aus \ref{cg:eq:ortho3} schreiben als
+\begin{align}\label{cg:eq:ortho4}
+	A \langle r_1, r_2, \dots , r_{k-1} \rangle &= A \langle r_1, Ar_1 \dots ,A^{k-2}r_1 \rangle \\
+												&= \langle Ar_1, A^2r_1 \dots ,A^{k-1}r_1 \rangle \\
+												&\subset \langle r_1, Ar_1 \dots ,A^{k-1}r_1 \rangle \\
+												&= \langle r_1, r_2, \dots , r_k \rangle.
+\end{align} 
+Da der Algorithmus eine optimale Schrittweite verwendet, steht der neue Punkt $x_{k+1}$ $A$-orthogonal auf allen bisherigen Abstiegsrichtungen $d_1, \dots, d_k$.
+Dieses Verhalten ist gut sichtbar in Abbildung \ref{cg:abb:cg1}.
+Da $r_{k+1} = -Ax_k$ (weil $b=0$), führt die $A$-Orthogonalität von $x_{k+1}$ dazu, dass $r_{k+1}$ Orthogonal auf $d_1, \dots, d_k$ steht
+\begin{equation}\label{cg:eq:ortho5}
+	\langle x_{k+1}, d_i \rangle_A = \langle Ax_{k+1}, d_i \rangle = \langle r_{k+1}, d_i \rangle \quad \forall i \le k.
+\end{equation}
+Durch Anwenden von Gleichung \ref{cg:eq:ortho2} auf \ref{cg:eq:ortho4} ist die Menge der Vektoren $Ar_i$
+\begin{equation}
+	\langle r_1, r_2, \dots , r_k \rangle = \langle d_1, d_2 \dots ,d_k \rangle$.
+\end{equation} 
+Wenn wir nun Gleichung \ref{cg:eq:ortho5} betrachten, sehen wir dass dadurch die Bedingung aus Gleichung \label{cg:eq:ortho3} erfüllt ist.
+Somit ist die Anfangsvermutung $r_{k+1} \perp_A \langle d_1, \dots ,d_{k-1} \rangle$ bewiesen.
+\end{proof}
+
+In diesem Beweis haben zwei Teile gefehlt, welche nun auch noch nachträglich bewiesen werden.
+Das erste wäre die Annahme, dass die Residuen und die Richtungen den selben Raum aufspannen ($\langle r_1, \dots ,r_{k-1} \rangle = \langle d_1, \dots ,d_{k-1} \rangle)$).
+\begin{proof}[Beweis]
+	
+\end{proof}
+Das zweite wäre die Annahme, dass sich die Residuen als Linearkombinationen von $r_1$ und $A$ ausdrücken lassen ($\langle r_1, \dots ,r_k \rangle = \langle r_1, Ar_1 \dots ,A^{k-1}r_1 \rangl$).
+\begin{proof}[Beweis]
+	
+\end{proof}
+
+	

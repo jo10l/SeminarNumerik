@@ -11,8 +11,7 @@ Gradient Descent ist eine bekannte Methode um iterativ ein Minimierungsproblem z
 Dabei wird immer eine gewisse Schrittweite weit entlang des Gradienten des Minimierungsproblems abgestiegen.
 Eine Darstellung von einem 2-Dimensionalen Minimierungsproblem mit Gradient Descent findet sich in Abbildung \ref{cg:abb:steepest_descent}.
 
-\begin{figure}
-	
+\begin{figure}	
 	\centering
 	\includegraphics{papers/cg/images/descent-1}
 	\caption{Gradient Descent für ellipsenförmige Niveaulinien (schlechte Konditionierung) in 2D. 
@@ -117,21 +116,22 @@ Somit haben wir nun die optimale Schrittlänge gefunden.
 
 Daraus lässt sich nun der nächste Punkt $x_{k+1}$ berechnen als
 \begin{equation}
-	x_{k+1} = \frac{\langle d_k , r_k \rangle}{\langle d_k , d_k \rangle_A} d_k.
+	x_{k+1} = x_k + \frac{\langle d_k , r_k \rangle}{\langle d_k , d_k \rangle_A} d_k.
 \end{equation}
 
 \subsection{Berechnung des Gradienten}
-Die neue Suchrichtung $d_{k+1}$ entspricht dem Gradienten von $\Phi(x_{k+1})$ 
+Die neue Suchrichtung $d_{k+1}$ entspricht dem negativen Gradienten von $\Phi(x_{k+1})$.
+Dieser Gradient lässt sich berechnen als
 \begin{equation}
-	d_{k+1} = \nabla \Phi(x_{k+1}) = \nabla \frac{1}{2} x_{k+1}^T A x_{k+1} - x_{k+1}^T b = Ax_{k+1} - b,
+	d_{k+1} = - \nabla \Phi(x_{k+1}) = - \nabla \frac{1}{2} x_{k+1}^T A x_{k+1} - x_{k+1}^T b = -(Ax_{k+1} - b) = b - Ax_{k+1}.
 \end{equation}
-wie bereits im Abschnitt \ref{cg:subsection:Minimierungsproblem} gezeigt.
+Somit ist die neue Abstiegsrichtung identisch zum neuen Residuum $r_{k+1}$.
 
 \subsection{Probleme beim Gradient Descent}
 Mit den hier hergeleiteten Resultaten kann eine approximative Lösung gefunden werden.
 Die Konvergenzgeschwindigkeit ist allerdings stark abhängig von der Form von $A$.
 Das Beispiel in Abbildung \ref{cg:abb:steepest_descent} zeigt (in 2D), wie Gradient Descent bei ovalen Niveaulinien zu oszillieren beginnt.
-Die Konvergenz ist also in diesem Fall sehr langsam.
+Die Konvergenz ist also in diesem Fall sehr langsam, die exakte Lösung wird nie erreicht.
 Falls die Niveaulinien allerdings eher rund sind, erhöht sich die Konvergenzgeschwindigkeit.
 
 Diese Probleme werden mit der Erweiterung zum CG-Algorithmus behoben.
