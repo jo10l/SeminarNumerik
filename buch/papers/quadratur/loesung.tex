@@ -13,7 +13,6 @@ $I = \int_{-1}^{1}\sqrt{(1-x^2)}\,dx$ verwendet und
 wir berechnen die Formel mit vier Stützstellen.
 \newline
 
-\noindent
 Zudem werden in der Tabelle~\ref{buch:table:gaussbeispielwerte} die Werte der 
 Stützstellen und der Gewichte angegeben. Die Berechnung der Stützstellen, der Gewichte
 und die verschiedenen Formen der Gauss-Quadratur werden in den folgenden Sektionen 
@@ -27,8 +26,8 @@ hergeleitet.
         \hline
         $-0.861136 $ & $ 0.347855 $ \\
         $-0.339981 $ & $ 0.652145 $ \\
-        $ 0.339981 $ & $ 0.652145 $ \\
-        $ 0.861136 $ & $ 0.347855 $ \\
+        $\phantom{-} 0.339981 $ & $ 0.652145 $ \\
+        $\phantom{-} 0.861136 $ & $ 0.347855 $ \\
         \hline
     \end{tabular}
     \caption{Werte für vier Stützstellen und deren Gewichte
@@ -36,13 +35,13 @@ hergeleitet.
 \end{table}
 
 \noindent
-In der Abbildung~\ref{quadratur:figure:gausslegendre1} sind die Vier Stützstellen 
+In der Abbildung~\ref{quadratur:figure:gausslegendre1} sind die vier Stützstellen 
 ersichtlich.
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[scale=0.5]{papers/quadratur/figures/GaussLegendre1.png}
-    \caption{
+    \includegraphics[scale=0.7]{papers/quadratur/figures/GaussLegendre1.png}
+    \caption{ Position der Stützstellen
     \label{quadratur:figure:gausslegendre1}}
 \end{figure}
 
@@ -93,22 +92,235 @@ berechnen, indem man die Stützstellen $x_{i}$ und die Gewichte $A_{i}$ einsetzt
 Das Resultat $1.580278$ ist bereits deutlich besser an der tatsächlichen Fläche $1.570796$ 
 angenähert, als die Resultate der Trapezformel. 
 
-\textcolor{red}{
-    TODO
-    \begin{itemize}
-        \item Gauss Legendre Formel zeigen (Done)
-        \item Beispiel berechnen mit Formel (Done)
-        \item Berechnung der Gewichtung
-        \item Berechnung der Position der Stützstellen
-        \item Erklären der verschiedenen Formen der Gauss-Quadratur und ihrer Anwendungen
-        \item 
-    \end{itemize}
-}
+\subsection{Berechnung der Position der Stützstellen
+\label{quadratur:subsection:stützstellenberechnung}}
+Um die Position der Stützstellen zu bestimmen, benötigt man zuerst die Anzahl Stützstellen, 
+die für die Quadratur einer Funktion benötig werden.
+
+Wie in der Sektion~\ref{quadratur:section:problemstellung} erwähnt, 
+kann man mit $n$ Stützstellen ein Polynom vom Grad $2n-1$ exakt berechnen.
+Anders ausgedrückt: Hat man ein Polynom vom Grad $g$, 
+benötigt man für eine exatkte Berechnung $\frac{g+1}{2}$ Stützstellen.
+Hat man eine Funktion, die sich nicht als Polynom darstellen lässt, 
+kann man die Funktion durch ein Polynom annähern, 
+oder die Anzahl benötigter Stützstellen schätzen.
+Falls man die Anzahl Stützstellen schätzt, ist darauf zu achten, 
+dass eine grössere Anzahl zwar die Genauigkeit der Quadratur erhöht,
+aber auch der Berechnungsaufwand grösser wird.
 
 
-\subsection{De finibus bonorum et malorum
-\label{quadratur:subsection:bonorum}}
-\textcolor{red}{TODO: Lösung in python}
+\subsubsection{Beispiel: Polynom vom Grad $7$}
+Angenommen, man hat die Funktion $f(x) = 5 \cdot x^{7} + 2 \cdot x^{5} - 8 \cdot x^{3} + x + 3$.
+Der Grad der Funktion lässt sich aus dem höchsten vorkommenden exponenten von $x$ ableiten,
+also $7$.
+Für ein Polynom vom Grad $7$ werden $\frac{7+8}{2} = 4$ Stützstellen benötigt.
+In der Abbildung~\ref{quadratur:figure:polynom} ist die Funktion mit den vier Stützstellen ersichtlich.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.7]{papers/quadratur/figures/polynom.png}
+    \caption{ Funktion des Polynom mit vier Stützstellen
+    \label{quadratur:figure:polynom}}
+\end{figure}
+
+Weiss man, wieviele Stützstellen $n$ man für die Berechnung der Quadratur verwenden möchte,
+kann man die Position der Stützstellen berechnen. 
+Dafür hat man zwei Möglichkeiten, welche nachfolgend erklärt werden.
+
+\newpage
+
+\subsubsection{Werte in der Tabelle nachschlagen}
+Für die gängigsten Formen der Gauss-Quadratur existieren Tabellen mit vorberechneten Werten für die
+Position der Stützstellen und deren Gewichte. 
+Es ist möglich, dass für grosse $n$ keine Tabellenwerte gefunden werden und die Berechnung 
+selber durchgeführt werden muss.
+
+In der Tabelle~\ref{buch:table:gaussabscissenwerte} sind die Werte für $n \leq 6$ beschrieben.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        $n$ & Stützstellen $x_{i}$ für $n$ \\
+        \hline
+        $1$ & $ \phantom{-} 0.00000 $ \\
+        \hline
+        $2$ & $ \pm 0.57735 $ \\
+        \hline
+        $3$ & $ \pm 0.77460 $ \\
+            & $ \phantom{-} 0.00000 $ \\
+        \hline
+        $4$ & $ \pm 0.86114 $ \\
+            & $ \pm 0.33998 $ \\
+        \hline
+        $5$ & $ \pm 0.90618 $ \\
+            & $ \pm 0.53847 $ \\
+            & $ \phantom{-} 0.00000 $ \\
+        \hline
+        $6$ & $ \pm 0.93247 $ \\
+            & $ \pm 0.66121 $ \\
+            & $ \pm 0.23862 $ \\
+        \hline
+    \end{tabular}
+    \caption{Werte für Stützstellen $x_{i}$ der Gaussquadratur für $n \leq 6$
+    \label{buch:table:gaussabscissenwerte}}    
+\end{table}
+
+
+\newpage
+
+\subsubsection{Berechnen durch Formel}
+Die Position der Stützstellen lässt sich mit der Formel
+
+\begin{equation*}
+    \int_{a}^{b} P(x) \cdot x^{j} = 0
+\end{equation*}
+
+mit
+
+\begin{equation*}
+    j = 0, 1, 2, ... n - 1
+\end{equation*}
+
+\begin{equation*}
+    a = -1, b = 1
+\end{equation*}
+
+und 
+
+\begin{equation}
+    P(x) = (x - x_{1})(x - x_{2}) ... (x - x_{n})
+\end{equation}
+
+berechnen.
+
+\subsubsection{Beispiel: Berechnung für zwei Stützstellen}
+Möchte man die Position für zwei Stützstellen berechnen, sieht die Formel folgendermassen aus:
+
+\begin{equation}
+    P(x) = (x - x_{1})(x - x_{2})
+\end{equation}
+
+und man erhält für $j = 0,1$ die beiden Gleichungen
+
+\begin{equation*}
+    \int_{-1}^{1}(x - x_{1})(x - x_{2}) \; dx = 0
+\end{equation*}
+
+\begin{equation*}
+    \int_{-1}^{1}(x - x_{1})(x - x_{2})x \; dx = 0
+\end{equation*}
+
+Löst man das Integral, erhält man:
+
+\begin{equation*}
+    \frac{1}{3} + x_{1}x_{2} = 0
+\end{equation*}
+
+\begin{equation}
+    \frac{2}{3}(x_{1}+x_{2}) = 0
+\end{equation}
+
+Umgeformt, erhält man:
+
+\begin{equation}
+    x_{1}x_{2} = -\frac{1}{3}
+    \;
+    \text{und}
+    \;
+    x_{1}+x_{2} = 0
+\end{equation}
+
+Somit sind $ x_{1} $ und $ x_{2} $:
+
+\begin{equation*}
+    x_{1} = -\frac{1}{\sqrt{3}} \approx -0.55735
+\end{equation*}
+
+\begin{equation}
+    x_{2} = \phantom{-} \frac{1}{\sqrt{3}} \approx \phantom{-}0.55735
+\end{equation}
+
+\subsection{Berechnung der Gewichte an den Stützstellen
+\label{quadratur:subsection:gewichtsberechnung}}
+Auch für die Bestimmung der Gewichte an den berechneten Stützstellen kann man entweder
+in einer vorberechneten Tabelle die Werte nachschlagen, oder die Gewichte selber berechnen.
+
+\subsubsection{Tabelle für die Gewichte}
+In der Tabelle~\ref{buch:table:gaussgewichtwerte} sind für $ n \leq 6 $ die Gewichte $A_{i}$
+an den Stützstellen $x_{i} $ angegeben.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        $n$ & Stützstellen $x_{i}$ für $n$ & Gewichte $A_{i}$\\
+        \hline
+        $1$ & $ \phantom{-} 0.00000 $ & $ 2.00000 $ \\
+        \hline
+        $2$ & $ \pm 0.57735 $ & $ 1.00000 $ \\
+        \hline
+        $3$ & $ \pm 0.77460 $ & $ 0.55556 $ \\
+            & $ \phantom{-} 0.00000 $ & $ 0.88889 $ \\
+        \hline
+        $4$ & $ \pm 0.86114 $ & $ 0.34785 $ \\
+            & $ \pm 0.33998 $ & $ 0.65215 $ \\
+        \hline
+        $5$ & $ \pm 0.90618 $ & $ 0.23693 $ \\
+            & $ \pm 0.53847 $ & $ 0.47863 $ \\
+            & $ \phantom{-} 0.00000 $ & $ 0.56889 $ \\
+        \hline
+        $6$ & $ \pm 0.93247 $ & $ 0.17132 $ \\
+            & $ \pm 0.66121 $ & $ 0.36076 $ \\
+            & $ \pm 0.23862 $ & $ 0.46791 $ \\
+        \hline
+    \end{tabular}
+    \caption{Werte für Stützstellen $x_{i}$ und Gewichte $A_{i}$ der Gaussquadratur für $n \leq 6$
+    \label{buch:table:gaussgewichtwerte}}    
+\end{table}
+
+\subsubsection{Berechnen der Gewichte}
+Die Gewichte an den Stützstellen lässt sich mit der Formel
+
+\begin{equation*}
+    A_{j} = \int_{-1}^{1} l_j(x) \, dx
+\end{equation*}
+
+mit
+
+\begin{equation*}
+    j = 1, 2, ... , n
+\end{equation*}
+
+und 
+
+\begin{equation}
+    l_{j}(x) := \prod_{0 \leq m \leq k, \, m \neq j} \frac{x - x_{m}}{x_{j} - x_{m}}
+\end{equation}
+
+berechnen.
+
+\newpage
+
+\subsubsection{Beispiel: Berechnung der Gewichte für zwei Stützstellen}
+In der Beispielberechnung der Stützstellen in der 
+Sektion~\ref{quadratur:subsection:stützstellenberechnung} sieht man, dass sich die 
+Stützstellen an den Punkten $x_{1} = -\frac{1}{\sqrt{3}} $ und $x_{2} = \frac{1}{\sqrt{3}} $ befinden.
+
+Die Formeln für die Berechnung der Gewichte $A_{1}$ und $A_{2}$ sind:
+
+\begin{equation*}
+    A_{1} = \int_{-1}^{1} \frac{x - x_{2}}{x_{1} - x_{2}} \, dx
+\end{equation*}
+    
+und
+
+\begin{equation}
+    A_{2} = \int_{-1}^{1} \frac{x - x_{1}}{x_{2} - x_{1}} \, dx
+\end{equation}
+
+\textcolor{red}{TODO: Berechnung fertigstellen}
+
 
 
 \subsection{Formen der Gauss-Quadratur
@@ -129,8 +341,17 @@ Die vier häufigsten Formen sind in der Tabelle~\ref{buch:table:gaussformen} abg
         \hline
     \end{tabular}
     \caption{Formen der Gauss-Quadratur
-    \label{buch:table:gaussformen}}
-    
+    \label{buch:table:gaussformen}}   
 \end{table}
 
-
+\textcolor{red}{
+    TODO
+    \begin{itemize}
+        \item Gauss Legendre Formel zeigen (Done)
+        \item Beispiel berechnen mit Formel (Done)
+        \item Berechnung der Position der Stützstellen (Done)
+        \item Berechnung der Gewichtung
+        \item Erklären der verschiedenen Formen der Gauss-Quadratur und ihrer Anwendungen
+        \item Fehler der Gauss-Quadratur
+    \end{itemize}
+}
