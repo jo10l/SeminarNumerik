@@ -51,7 +51,7 @@ Der negative Gradient entspricht per Definition der lokal optimalen Richtung um 
 
 Wir verwenden das Gram-Schmidt-Orthogonalisierungsverfahren um den Gradienten auf den bisherigen Richtungen zu orthogonalisieren.
 Dabei wollen wir orthogonal in Bezug auf $A$ sein, weshalb das verallgemeinerte Skalarprodukt $\langle \dots \rangle_A$ verwendet wird 
-\begin{equation}
+\begin{equation}\label{cg:eq:gram}
 	d_{k+1} 
 	= 
 	r_{k+1} - \sum_{i=0}^{k} \frac{\langle d_i , r_{k+1} \rangle_A}{\langle d_i , d_i \rangle_A} d_i.
@@ -60,7 +60,7 @@ Diese vielen Orthogonalisierungen sind rechenintensiv und würden die Performanc
 Im nächsten Abschnitt wird gezeigt, dass es genügt das Orthogonalisierungsverfahren auf der letzten Abstiegsrichtung durchzuführen.
 Die neue Richtung ist dann automatisch auch auf allen vorherigen Richtungen orthogonal.
 Dies führt zur folgenden, vereinfachten Berechnung
-\begin{equation}
+\begin{equation} 
 	d_{k+1}
 	= 
 	r_{k+1} - \frac{\langle d_k , r_{k+1} \rangle_A}{\langle d_k , d_k \rangle_A} d_k.
@@ -102,9 +102,9 @@ Wir nehmen also an, dass
 \langle d_1, \dots ,d_{k-1} \rangle.
 \end{equation}
 Mit dieser Eigenschaft lässt sich die Gleichung \ref{cg:eq:ortho1} umstellen zu
-\begin{align} \label{cg:eq:ortho3}
-	r_{k+1} 	&\perp_A \langle r_1, \dots ,r_{k-1} \rangle \\
-	0 			&= \langle r_{k+1}, r_i \rangle_A \quad \forall i < k-1 \\
+\begin{align}\label{cg:eq:ortho3}
+	r_{k+1} 	&\perp_A \langle r_1, \dots ,r_{k-1} \rangle \nonumber \\
+	0 			&= \langle r_{k+1}, r_i \rangle_A \quad \forall i < k-1 \nonumber\\
 				&= \langle r_{k+1}, Ar_i \rangle \quad \forall i < k-1 
 \end{align} 
 Wir nehmen ausserdem an, dass sich die Residuen als Linearkombinationen von $r_1$ und $A$ ausdrücken lassen
@@ -113,33 +113,52 @@ Wir nehmen ausserdem an, dass sich die Residuen als Linearkombinationen von $r_1
 \end{equation}
 Dann können wir die Menge der Vektoren $Ar_i$ aus \ref{cg:eq:ortho3} schreiben als
 \begin{align}\label{cg:eq:ortho4}
-	A \langle r_1, r_2, \dots , r_{k-1} \rangle &= A \langle r_1, Ar_1 \dots ,A^{k-2}r_1 \rangle \\
-												&= \langle Ar_1, A^2r_1 \dots ,A^{k-1}r_1 \rangle \\
-												&\subset \langle r_1, Ar_1 \dots ,A^{k-1}r_1 \rangle \\
-												&= \langle r_1, r_2, \dots , r_k \rangle.
+	A \langle r_1, r_2, \dots , r_{k-1} \rangle &= A \langle r_1, Ar_1 \dots ,A^{k-2}r_1 \rangle \nonumber\\
+												&= \langle Ar_1, A^2r_1 \dots ,A^{k-1}r_1 \rangle \nonumber\\
+												&\subset \langle r_1, Ar_1 \dots ,A^{k-1}r_1 \rangle = \langle r_1, r_2, \dots , r_k \rangle.
 \end{align} 
 Da der Algorithmus eine optimale Schrittweite verwendet, steht der neue Punkt $x_{k+1}$ $A$-orthogonal auf allen bisherigen Abstiegsrichtungen $d_1, \dots, d_k$.
 Dieses Verhalten ist gut sichtbar in Abbildung \ref{cg:abb:cg1}.
 Da $r_{k+1} = -Ax_k$ (weil $b=0$), führt die $A$-Orthogonalität von $x_{k+1}$ dazu, dass $r_{k+1}$ Orthogonal auf $d_1, \dots, d_k$ steht
 \begin{equation}\label{cg:eq:ortho5}
-	\langle x_{k+1}, d_i \rangle_A = \langle Ax_{k+1}, d_i \rangle = \langle r_{k+1}, d_i \rangle \quad \forall i \le k.
+	\langle x_{k+1}, d_i \rangle_A = \langle Ax_{k+1}, d_i \rangle = \langle r_{k+1}, d_i \rangle = 0 \quad \forall i \le k.
 \end{equation}
 Durch Anwenden von Gleichung \ref{cg:eq:ortho2} auf \ref{cg:eq:ortho4} ist die Menge der Vektoren $Ar_i$
 \begin{equation}
-	\langle r_1, r_2, \dots , r_k \rangle = \langle d_1, d_2 \dots ,d_k \rangle$.
+	\langle r_1, r_2, \dots , r_k \rangle = \langle d_1, d_2 \dots ,d_k \rangle.
 \end{equation} 
-Wenn wir nun Gleichung \ref{cg:eq:ortho5} betrachten, sehen wir dass dadurch die Bedingung aus Gleichung \label{cg:eq:ortho3} erfüllt ist.
+Wenn wir dies mit Gleichung \ref{cg:eq:ortho5} vergleichen, sehen wir dass dadurch die Bedingung aus Gleichung \ref{cg:eq:ortho3} erfüllt ist.
 Somit ist die Anfangsvermutung $r_{k+1} \perp_A \langle d_1, \dots ,d_{k-1} \rangle$ bewiesen.
 \end{proof}
 
-In diesem Beweis haben zwei Teile gefehlt, welche nun auch noch nachträglich bewiesen werden.
-Das erste wäre die Annahme, dass die Residuen und die Richtungen den selben Raum aufspannen ($\langle r_1, \dots ,r_{k-1} \rangle = \langle d_1, \dots ,d_{k-1} \rangle)$).
+In diesem Beweis haben zwei Teile gefehlt, welche nun noch nachträglich bewiesen werden.
+Das erste wäre die Annahme, dass die Residuen und die Richtungen den selben Raum aufspannen $\langle r_1, \dots ,r_{k-1} \rangle = \langle d_1, \dots ,d_{k-1} \rangle$.
+
 \begin{proof}[Beweis]
-	
+Wir beginnen damit den Algorithmus für die Berechnungen von $d_k$ aufzuschreiben (vgl. Gleichung \ref{cg:eq:gram})und erhalten
+\begin{align}
+	d_1 &= r_1 \nonumber\\
+	d_2	&= r_2 - a_2 d_1\nonumber\\
+	d_3	&= r_3 - a_{31} d_1 - a_{32} d_2\nonumber\\
+	d_k &= r_k - \sum_{i=1}^{k-1} a_{ki} d_i.
+\end{align}
+Durch Umstellen nach $r_k$, sieht man dass $r_k$ aus $\langle d1, d2, \dots, d_k \rangle$ linear kombiniert werden kann.
+Dasselbe macht man für $d_k$, wobei $d_i$ mit $i<k$ aufgelöst wird bis $d_1 = r_1$.
+Daraus folgt dass auch $d_k$ aus $\langle r_1, r_2, \dots, r_k \rangle$ linear kombiniert werden kann.
+Somit ist $\langle r_1, \dots ,r_{k-1} \rangle = \langle d_1, \dots ,d_{k-1} \rangle$ bewiesen.
 \end{proof}
-Das zweite wäre die Annahme, dass sich die Residuen als Linearkombinationen von $r_1$ und $A$ ausdrücken lassen ($\langle r_1, \dots ,r_k \rangle = \langle r_1, Ar_1 \dots ,A^{k-1}r_1 \rangl$).
+
+Das zweite wäre die Annahme, dass sich die Residuen als Linearkombinationen von $r_1$ und $A$ ausdrücken lassen $\langle r_1, \dots ,r_k \rangle = \langle r_1, Ar_1 \dots ,A^{k-1}r_1 \rangle$.
+
 \begin{proof}[Beweis]
-	
+Wir beginnen wiederum damit, den Algorithmus aufzuschreiben (diesmal für $r_k$) und erhalten
+\begin{align}
+	r_1 &= -Ax_1 \\
+	r_2	&= -Ax_2 = -A(x_1-r_1) = Ar_1 - r_1 \nonumber\\
+	r_3 &= -Ax_3 = -A(x_2-r_2) = Ar_2 - r_2 \nonumber\\
+	r_k &= Ar_{k-1} - r_{k-1} \in \langle r_1, Ar_1, \dots, A^{k-1}r_1 \rangle.
+\end{align}
+womit diese zweite Annahme bereits bewiesen wäre.
 \end{proof}
 
 	
