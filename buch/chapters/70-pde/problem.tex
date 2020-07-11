@@ -82,6 +82,16 @@ gelten.
 Diese Beobachtung schränkt die Art der Menge $\Omega$ bereits ein,
 wie im Folgenden diskutiert werden soll.
 
+\begin{figure}
+\centering
+\includegraphics{chapters/70-pde/images/offen.pdf}
+\caption{Jeder innere Punkt einer Menge hat eine $\varepsilon$-Umgebung, 
+die ebenfalls in der Menge enthalten ist.
+Jede Umgebung des Punktes $P$ enthält aber auch Punkte ausserhalb der
+Menge $\Omega$, $P$ ist daher ein Randpunkt.
+\label{buch:pde:figure:offen}}
+\end{figure}
+
 Die Ableitung einer Funktion $u(x_1,\dots,x_n)$ in einem Punkt
 $x_0=(x_{0,1},\dots,x_{0,n})$ ist eine lineare Funktion 
 $Du(x_{0,1},\dots,x_{0,n}) $ derart, dass
@@ -109,7 +119,7 @@ u(x)-u(x_0) - Du(x_0)\cdot (x-x_0)
 ist.
 Dies ist nur sinnvoll, wenn die ganze Umgebung $U_{\delta}(x_0)\subset \Omega$
 im Definitionsgebiet $\Omega$ der Differentialgleichung vorhanden ist.
-Dies führt auf die folgende Definition.
+Dies führt auf die folgende Definition (siehe auch Abbildung~\ref{buch:pde:figure:offen}.
 
 \begin{definition}
 Eine Menge $\Omega$ heisst {\em offen}, wenn mit jedem Punkt $x\in \Omega$
@@ -121,6 +131,18 @@ Gebiete sind also genau die sinnvollen Definitionsgebiete für eine partielle
 Differentialgleichung.
 Es reicht allerdings nicht, dass die Funktion $u$ auf $\Omega$ definiert
 ist, da ja auch noch Randwerte erfüllt werden müssen.
+
+\begin{figure}
+\centering
+\includegraphics{chapters/70-pde/images/gebiet.pdf}
+\caption{Inneres und Rand einer Punktmenge $A$ in der Ebene.
+Die sechs Strahlen der Menge $A$ links können nichts zu den Randwerten
+einer partiellen Differentialgleichunb beitragen, weil sie keinen
+Einfluss auf Werte in inneren Punkten (Mitte) haben können.
+Randwerte müssen daher nur auf einem Teil des Randes $\partial\mathring{A}$
+des Inneren (rechts) spezifiziert werden.
+\label{buch:pde:figure:gebiet}}
+\end{figure}
 
 \begin{definition}
 Der {\em Abschluss} $\bar{\Omega}$ einer Menge $\Omega\subset\mathbb R^n$ ist

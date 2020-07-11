@@ -1,0 +1,158 @@
+%
+% mittelwertsatz.tex -- template for standalon tikz images
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\xdef\xlinks{1}
+
+\xdef\x{\xlinks}
+\pgfmathparse{0.5*\x*(8-\x)-3}
+\xdef\ylinks{\pgfmathresult}
+
+\xdef\xrechts{5.5}
+\xdef\x{\xrechts}
+\pgfmathparse{0.5*\x*(8-\x)-3}
+\xdef\yrechts{\pgfmathresult}
+
+\pgfmathparse{(\yrechts-\ylinks)/(\xrechts-\xlinks)}
+\xdef\m{\pgfmathresult}
+
+\pgfmathparse{atan(\m)}
+\xdef\a{\pgfmathresult}
+
+\pgfmathparse{4-\m}
+\xdef\xzero{\pgfmathresult}
+\xdef\x{\xzero}
+\pgfmathparse{0.5*\x*(8-\x)-3}
+\xdef\yzero{\pgfmathresult}
+
+\begin{scope}[xshift=-3.5cm]
+	\draw[line width=0.2pt] (\xlinks,0) -- (\xlinks,\ylinks);
+	\draw[line width=0.2pt] (\xrechts,0) -- (\xrechts,\yrechts);
+	\draw[line width=0.2pt] (\xzero,0) -- (\xzero,\yzero);
+	\draw[color=red,line width=1.4pt]
+		plot[domain=1:5.5,samples=100]
+			({\x},{0.5*\x*(8-\x)-3});
+
+	\draw[color=blue] ({\xlinks-0.5},{\ylinks-\m*0.5})
+		--
+		({\xrechts+0.5},{\yrechts+\m*0.5});
+	\begin{scope}
+		\clip (0,0) rectangle (6.5,6.5);
+		\draw[color=blue] (0.5,{\yzero-\m*(\xzero-0.5)})
+			--
+			(6,{\yzero+\m*(6-\xzero)});
+	\end{scope}
+	\fill[color=white] (\xzero,\yzero) circle[radius=0.08];
+	\draw[color=blue] (\xzero,\yzero) circle[radius=0.08];
+
+	\fill[color=white] (\xlinks,\ylinks) circle[radius=0.08];
+	\draw[color=red] (\xlinks,\ylinks) circle[radius=0.08];
+	\fill[color=white] (\xrechts,\yrechts) circle[radius=0.08];
+	\draw[color=red] (\xrechts,\yrechts) circle[radius=0.08];
+
+	\draw (\xlinks,-0.1) -- (\xlinks,0.1);
+	\node at (\xlinks,-0.1) [below] {$a$};
+	\draw (\xrechts,-0.1) -- (\xrechts,0.1);
+	\node at (\xrechts,-0.1) [below] {$b$};
+	\draw (\xzero,-0.1) -- (\xzero,0.1);
+	\node at (\xzero,-0.1) [below] {$\xi$};
+
+	\node at (\xlinks,\ylinks) [above left] {$f(a)$};
+	\node at (\xzero,\yzero) [below right] {$f(\xi)$};
+	\node at (\xrechts,\yrechts) [below right] {$f(b)$};
+
+	\node[color=blue] at (2,{\yzero+\m*(2-\xzero)})
+		[above,rotate=\a] {$f'(\xi)$};
+
+	\draw[->] (-0.1,0) -- (6.5,0) coordinate[label={$x$}];
+	\draw[->] (0,-0.1) -- (0,6.5) coordinate[label={right:$y$}];
+\end{scope}
+
+\begin{scope}[xshift=3.5cm]
+
+	\coordinate (A) at (3,1);
+	%\coordinate (B) at (0,3);
+	%\coordinate (C) at (4,6.5);
+	\coordinate (B) at (5,3);
+
+	\xdef\xlinks{3}
+	\xdef\ylinks{1}
+	\xdef\xrechts{5}
+	\xdef\yrechts{3}
+	\pgfmathparse{(\xlinks+\xrechts)/2}
+	\xdef\xmitte{\pgfmathresult}
+	\pgfmathparse{(\ylinks+\yrechts)/2}
+	\xdef\ymitte{\pgfmathresult}
+	\coordinate (M) at (\xmitte,\ymitte);
+
+	\pgfmathparse{(\yrechts-\ylinks)/(\xrechts-\xlinks)}
+	\xdef\m{\pgfmathresult}
+	\draw[color=blue] ({\xlinks-0.5},{\ylinks-0.5*\m})
+		--
+		({\xrechts+0.5},{\yrechts+0.5*\m});
+
+	\draw[color=red,line width=1.4pt] plot[domain=0:1,samples=100]
+		({(1-\x)*(1-\x)*(1-\x)*3+3*(1-\x)*(1-\x)*\x*0+3*(1-\x)*\x*\x*4+\x*\x*\x*5},{(1-\x)*(1-\x)*(1-\x)*1+3*(1-\x)*(1-\x)*\x*3+3*(1-\x)*\x*\x*6.5+\x*\x*\x*3});
+
+	\xdef\tzero{0.483}
+	\xdef\t{\tzero}
+	\pgfmathparse{(1-\t)*(1-\t)*(1-\t)*3+3*(1-\t)*(1-\t)*\t*0+3*(1-\t)*\t*\t*4+\t*\t*\t*5};
+	\xdef\xzero{\pgfmathresult}
+	\pgfmathparse{(1-\t)*(1-\t)*(1-\t)*1+3*(1-\t)*(1-\t)*\t*3+3*(1-\t)*\t*\t*6.5+\t*\t*\t*3});
+	\xdef\yzero{\pgfmathresult}
+
+	\pgfmathparse{\xzero+1.5}
+	\xdef\xend{\pgfmathresult}
+	\pgfmathparse{\yzero+1.5*\m}
+	\xdef\yend{\pgfmathresult}
+
+	\draw[color=blue] ({\xzero-2},{\yzero-2*\m}) -- (\xzero,\yzero);
+	\draw[->,color=blue,line width=1.4pt] (\xzero,\yzero) -- (\xend,\yend);
+	\node[color=blue] at (\xend, \yend) [right]
+		{$\displaystyle\begin{pmatrix}x'(\xi)\\y'(\xi)\end{pmatrix}$};
+	\fill[color=white] (\xzero,\yzero) circle[radius=0.08];
+	\draw[color=blue] (\xzero,\yzero) circle[radius=0.08];
+
+	\fill[color=white] (A) circle[radius=0.08];
+	\fill[color=white] (M) circle[radius=0.08];
+	\fill[color=white] (B) circle[radius=0.08];
+
+	\draw[color=red] (A) circle[radius=0.08];
+	\draw (M) circle[radius=0.08];
+	\draw[color=red] (B) circle[radius=0.08];
+
+	\node at (A) [below right] {$A=(x(a),y(a))$};
+	\node at (B) [left] {$B=(x(b),y(b))$};
+	\node at ({0.5*(\xlinks+\xrechts)},{0.5*(\ylinks+\yrechts)})
+		[above left] {$M$};
+
+	\node at (\xzero,\yzero) [right] {$(x(\xi),y(\xi))$};
+
+	\pgfmathparse{atan(\m)}
+	\xdef\a{\pgfmathresult}
+
+	\node[color=blue] at ({\xlinks+1.7},{\ylinks+1.7*\m})
+		[below,rotate=\a] {$\displaystyle m = \frac{y(b)-y(a)}{x(b)-x(a)}$};
+
+	\node[color=blue]  at ({\xzero-1},{\yzero-1*\m}) [above,rotate=\a]
+		{$\displaystyle\frac{y'(\xi)}{x'(\xi)}=m$};
+
+	\draw[->] (-0.1,0) -- (6.5,0) coordinate[label={$x$}];
+	\draw[->] (0,-0.1) -- (0,6.5) coordinate[label={right:$y$}];
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+
