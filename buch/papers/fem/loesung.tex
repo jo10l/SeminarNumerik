@@ -7,24 +7,33 @@
 \label{fem:section:loesung}}
 \rhead{Lösung}
 
-\subsection{Minimalproblem bilden}
+\subsection{Schritt 1 Minimalproblem bilden}
 Zuerst muss die DGL in ein äqualentes Minimalprobelm übersetzt werden in der Form
 
 Im Gegensatz zu den finiten Elementen im 1 dimensionalen Raum muss bei der Bildung der abgeschwächten Form bzw. in der Übersetzung in das Minimalproblem der Fakt des höheren Dimension mitberücksichtigt werden. Daher wird anstatt der Form für den 1 dimensionalen Fall
 
 \begin{equation}
-			\int_0^1 u \textcolor{red}{'} (x)^2 + \lambda u(x)^2 dx
+			\int_0^1 u \textcolor{red}{'} (x)^2 - \lambda u(x)^2 dx dy
 			\label{fem:Minimal1D}
 \end{equation}
 
 die mehrdimensionale Form mit dem Laplace Operator verwendet
 
 \begin{equation}
-			\int_{\Omega} (\textcolor{red}{\nabla} u)^2 + \lambda u^2 dx
+			\int_{\Omega} (\textcolor{red}{\nabla} u)^2 - \lambda u^2 dx dy
 			\label{fem:Minimal2D}
 \end{equation}
 
-Wie zu erkennen ist, wird die Ableitung im 1 Dimensionalen durch einen Laplace Operator ersetzt in der Anwendung in der Ebene.
+Wie zu erkennen ist, wird die Ableitung im 1 Dimensionalen durch einen Laplace Operator ersetzt (in der Anwendung in der Ebene. oder im mehrdimensinalen Fall).
+
+Der Integrationsterm \ref{fem:Minimal2D} wird gemäss der Summenregel in 2 Terme zerlegt nämlich 
+
+\begin{equation}
+			\int_{\Omega} (\nabla u)^2 dn dy - \lambda \int_{\Omega} u^2 dx \, dy
+			\label{fem:Minimal2D2Term}
+\end{equation}
+
+Nun ist die Bildung des MInimalproblems abgeschlossen. In einem nächsten Schritt sollen je nach Ausgangslage, gewisse Vorbereitungen getroffen werden in im folgenden Abschnitt erläutert werden.
 
 \subsection{Vorbereitung}
 
@@ -60,14 +69,14 @@ auf das gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 über
 
 
 
-\subsection{Ansatzfunktionen wählen}
+\subsection{ 2. Ansatzfunktionen auf Lösung approximieren}
 
 Als Ansatzfunktionen stehen diverse Standard- Funktionen in der Ebene zur Verfügung. Sie reichen von einfacheren linearen Termen bishinzu quadratischen. Es kann in der ebene sowohl mit Dreicecken als auch mit Rechtecken gearbeitet werden. Die Wahl der Ansatzfunktionen bzw. der Flächen- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet.
 
 In einem ersten Schritt wird die lineare Ansatzfunktionen mit Einheitsdreiecken angewendet.
 
 
-\subsubsection{linearer Ansatzfunktion mit Dreiecken
+\subsubsection{Schritt 2 Aproximieren mit linearer Ansatzfunktion und Einheisdreiecken
 \label{fem:subsection:bonorum}}
 
 Die lineare Ansatzfunktion wir gemäss folgender Formel angewendet bzw verwendet.
@@ -77,25 +86,99 @@ u(x,y) = c_1 + c_2x + c_3y
 \label{fem:equationSchwarzLinear}
 \end{equation}
 
-Die Formel xXx kann einfach in das Minimalproblem xXx eingesetzt werden.
+Die Formel \ref{fem:equationSchwarzLinear} kann direkt in das Minimalproblem \ref{fem:Minimal2D} eingesetzt werden.
 
-Das Minimalproblem beinhaltet jedoch noch nicht fir Formfunktion. Diese wird in das Gebietsintegral des Minimalproblem eingesetzt sprich $\int_{\Omega}$ wird durch das folgende Einheitsdreieck Flächenelement ersetzt.
+Das Minimalproblem beinhaltet jedoch noch nicht die Formfunktion des Flächenelements. Diese wird in das Gebietsintegral des Minimalproblem eingesetzt sprich $\int_{\Omega}$ wird durch das folgende Flächenelement nämlich durch das Einheitsdreieck ersetzt.
 
 \begin{equation}
-\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} f(x,y) dx dy
+\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} f(x,y) dx\,dy
 \label{fem:FlaecheDreieck}
 \end{equation}
 
 Das Einsetzung des linearen Ansatzes und des gewählten Flächenelements haben dann die Form
 
 \begin{equation}
-\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} c_1 + c_2x + c_3y dx dy
+\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} c_1 + c_2x + c_3y dx \, dy
 \label{fem:MinimalproblemElement}
 \end{equation}
 
 Wichtig zu verstehen ist, dass dieses Minimalproblem auf jedes Flächenelement angewendet wird. Als Beispiel kann vorgestellt werden, dass wenn ein Dreieck mit 2 Dreiecken aproxximiert wird, das Minimalproblem \ref{fem:MinimalproblemElement} auf jedes der beiden Dreiecke angewendet wird.
 
-\subsubsection{linearer Ansatzfunktion mit Parallelogramm
+Da die partielle Ableitung für die gewählte lineare Funktion $f(u)$ erigbt offensichtlich das Resultat
+
+\begin{equation}
+	\nabla u = 	
+	\left[ \begin{array}{r}
+	c_2  \\
+	c_3 \\
+	\end{array}\right]
+	\label{fem:equationSchwarzquadratischP}
+\end{equation} 
+
+\subsubsection{Gleichungssystem aufstellen }
+
+Für jedes Flächenelement gilt die Gleichung \ref{fem:MinimalproblemElement}. Nun müssen alle diese Elemente in eine Matrix umgeschrieben werden die sich wie folgt zusammensetzen lässt.
+
+\begin{equation}
+			\underbrace{ \int_{\Omega} (\nabla u)^2 dx \, dy} \, -  \, \underbrace{\lambda \int_{\Omega} u^2 dx \,dy}
+			\label{fem:Minimal2TermLinAlg}
+\end{equation}
+
+
+\begin{equation}
+			c^t Ac \, - \, \lambda c^t Bc
+			\label{fem:Minimal2LinAlg}
+\end{equation}
+
+Die Matrix A wird gebildet durch die Teilmatrizen eines jeden Flächenelements. Die Teilmatrix eines Flächenelements besteht  aus dem Integgrale des 1. Terms von \ref{fem:Minimal2TermLinAlg} 
+
+\begin{equation}
+			\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} \left( \begin{array}{c} c_2 \\ c_3\\	
+\end{array} \right)^2 dx \, dy
+			\label{fem:Minimal2LinAlgA}
+\end{equation}
+
+was dann zu der entsrechenden Teilmatrix eines Elements
+
+\begin{equation}
+	\left( \begin{array}{cc}
+	c_2^2 \int_{\Omega} 1 dx \, dy & 0  \\ 
+	0 & c_3^2 \int_{\Omega} 1 dx \, dy  \\
+	\end{array}\right)
+	\label{fem:TeilmatrixA}
+\end{equation}
+
+wird dann in die Matrix A eingefügt und somti sämtliche Teilmatrizen aller Flächenelemente beinhaltet.
+
+$ A = \begin{pmatrix} 0 & 0 & \hdotsfor{4} & 0 \\
+	0 & c_2^2 \int_{\Omega} 1 dx \, dy & \vdots & 0 & \vdots & & \vdots \\
+	\vdots & \vdots & c_3^2 \int_{\Omega} 1 dx \, dy & 0 & \vdots  & & \\
+	\vdots & \vdots & 0 & \ddots &  c_2^2 \int_{\Omega} 1 dx \, dy & & \\
+	\vdots & \vdots & 0 & 0 & 0 & c_3^2 \int_{\Omega} 1 dx \, dy & \\
+	0 & \hdotsfor{2} & 0 &  & & &  \ddots  \\
+	\end{pmatrix}$ 
+
+
+Matrix B 
+
+\begin{equation}
+			\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} c_0^2 + c_1^2 x^2 + c_2^2 y^2 + 2 c_0 c_1 x + 2 c_0 c_2 y + 2 c_1 c_2 xy \, dx \, dy
+			\label{fem:Minimal2LinAlgB}
+\end{equation}
+
+Ergibt für jedes Flächenelement die Teilmatix B
+
+\begin{equation}
+ B = \left( \begin{array}{ccc}
+	- \lambda \int_{\Omega} 1 &  - \lambda \int_{\Omega} x & - \lambda \int_{\Omega} y  \\
+	- \lambda \int_{\Omega} x & - \lambda \int_{\Omega} x^2 &  - \lambda \int_{\Omega} xy \\
+	- \lambda \int_{\Omega} y & - \lambda \int_{\Omega} xy &  - \lambda \int_{\Omega} y^2 \\
+	\end{array}\right)
+	\label{fem:MatrixB}
+\end{equation}
+
+
+\subsection{linearer Ansatzfunktion mit Parallelogramm
 \label{fem:subsection:lineParallel}}
 
 \begin{equation}
