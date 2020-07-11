@@ -8,30 +8,21 @@
 \begin{refsection}
 \chapterauthor{Raphael Unterer}
 
-Ein paar Hinweise für die korrekte Formatierung des Textes
-\begin{itemize}
-\item
-Absätze werden gebildet, indem man eine Leerzeile einfügt.
-Die Verwendung von \verb+\\+ ist nur in Tabellen und Arrays gestattet.
-\item
-Die explizite Platzierung von Bildern ist nicht erlaubt, entsprechende
-Optionen werden gelöscht. 
-Verwenden Sie Labels und Verweise, um auf Bilder hinzuweisen.
-\item
-Beginnen Sie jeden Satz auf einer neuen Zeile. 
-Damit ermöglichen Sie dem Versionsverwaltungssysteme, Änderungen
-in verschiedenen Sätzen von verschiedenen Autoren ohne Konflikt 
-anzuwenden.
-\item 
-Bilden Sie auch für Formeln kurze Zeilen, einerseits der besseren
-Übersicht wegen, aber auch um GIT die Arbeit zu erleichtern.
-\end{itemize}
+Die Methode der konjugierten Gradienten (kurz CG) bezeichnet einen schnellen Algorithmus zum Lösen grosser linearer Gleichungssysteme.
+Grosse lineare Gleichungssysteme zu lösen ist ein klassisches numerisches Problem.
+Diese treten in diversen Anwendungen auf, unter anderem beim Lösen von partiellen Differenzialgleichungen.
 
+Im Kapitel \ref{chapter:linsys} wurden bereits einige numerische Algorithmen vorgestellt um lineare Gleichungssysteme approximativ zu lösen.
+Die Methode der konjugierten Gradienten löst im Gegensatz dazu ein lineares Gleichungssystem nicht approximativ sondern genau.
+Dazu benötigt CG genau $N$, wobei $N$ die Anzahl Gleichungen und Unbekannten bezeichnet.
+
+Im Rahmen dieses Kapitels wird dieser CG-Algorithmus hergeleitet und einige Untersuchungen werden vorgenommen.
+
+\input{papers/cg/voraussetzungen.tex}
+\input{papers/cg/steepest_descent.tex}
 \input{papers/cg/herleitung_algorithmus.tex}
-\input{papers/cg/einleitung.tex}
-\input{papers/cg/problemstellung.tex}
-\input{papers/cg/loesung.tex}
-\input{papers/cg/folgerungen.tex}
+\input{papers/cg/algorithmus.tex}
+\input{papers/cg/ergebnisse.tex}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
