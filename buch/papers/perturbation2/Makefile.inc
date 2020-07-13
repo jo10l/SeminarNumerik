@@ -3,12 +3,12 @@
 #
 # (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-dependencies-000template =						\
-	papers/000template/packages.tex					\
-	papers/000template/main.tex					\
-	papers/000template/references.bib				\
-	papers/000template/einleitung.tex				\
-	papers/000template/problemstellung.tex				\
-	papers/000template/loesung.tex					\
-	papers/000template/folgerungen.tex
+dependencies-perturbation2 =						\
+	papers/perturbation2/packages.tex					\
+	papers/perturbation2/main.tex					\
+	papers/perturbation2/references.bib				\
+	papers/perturbation2/einleitung.tex				\
+	papers/perturbation2/problemstellung.tex				\
+	papers/perturbation2/loesung.tex					\
+	papers/perturbation2/folgerungen.tex
 
