@@ -16,7 +16,7 @@ class JsonComposer:
     def add_eig_basis(self, e, lam, color):
         self.elems.append({
             "type" : "eigbasis",
-            "e" : e.tolist(),
+            "e" : (e * [lam]).tolist(),
             "lam" : lam.tolist(),
             "color" : color
         })

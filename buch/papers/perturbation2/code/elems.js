@@ -20,10 +20,10 @@ class FancyVector extends THREE.Group {
     constructor(dir, hexColor=0xff0000) {
 
         // normalize the direction vector (convert to vector of length 1)
-        dir.normalize();
+        // dir.normalize();
 
         var origin = new THREE.Vector3( 0, 0, 0 );
-        var length = 1;
+        var length = dir.length();
 
         var r = 0.02
         var r_head = 0.05
@@ -48,8 +48,8 @@ class FancyVector extends THREE.Group {
 
         this.add(cylinder)
         this.add(cone)
-        var text = `${dir.x.toFixed(2)} ${dir.y.toFixed(2)} ${dir.z.toFixed(2)}`
-        this.add( new Text( new THREE.Vector3(0,1,0), text))
+        // var text = `${dir.x.toFixed(2)} ${dir.y.toFixed(2)} ${dir.z.toFixed(2)}`
+        // this.add( new Text( new THREE.Vector3(0,1,0), text))
 
         var matrix1 = new THREE.Matrix4().makeRotationAxis ( new THREE.Vector3(1,0,0), -Math.PI/2 )
         var matrix = new THREE.Matrix4().lookAt ( new THREE.Vector3(0,0,0), dir,  new THREE.Vector3(1,1,1))
@@ -186,7 +186,7 @@ class CoordinateSystem extends THREE.Group{
     constructor(dir, hexColor=0xff0000) {
 
         var material = new THREE.LineBasicMaterial({
-            color: 0x888888
+            color: 0xcccccc
         });
 
         var points = [];
@@ -344,6 +344,22 @@ class Cubetransform extends THREE.Group {
         this.add(line2)
         this.add(line3)
         this.add(line4)
+
+
+        // var line=new three3DExtras.tubeLine([-1,0,1],[1,0,1],0.02,'#B02735');
+        // scene.add(line.getObject3D());
+
+        // var trail_line = new MeshLine();
+        // trail_line.setGeometry( geometry4,  function( p ) { return p; }  ); // makes width taper
+        // // Create the line material
+        // var trail_material = new MeshLineMaterial( {
+        //     color: new THREE.Color( "rgb(255, 2, 2)" ),
+        //     lineWidth: 10,
+        // });
+        // var trail_mesh = new THREE.Mesh( trail_line.geometry, trail_material ); // this syntax could definitely be improved!
+        // this.add(trail_mesh)
+
+
         // this.add(cube)
 
         // cylinder.translateY((length-l_head)/2)

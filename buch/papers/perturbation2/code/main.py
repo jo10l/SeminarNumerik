@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+import jscomposer
+
 np.set_printoptions(precision=3)
 
 def correct_direction(x, x0):
@@ -103,8 +105,11 @@ def example3d():
     # A = np.array([[0.8,0,0],[0,1,0],[0,0,1.2]], dtype=np.float64)
     # B = np.array([[0.9,0.1,0.3],[0.2,1.1,0.3],[0.3,0.3,1.2]], dtype=np.float64)
 
-    # A = np.array([[1,2,3],[2,3,4],[5,6,7]], dtype=np.float64)
-    # B = np.array([[1,2.3,3.4],[2.4,3,4.3],[5.4,6.3,7]], dtype=np.float64)
+    A = np.array([[1,2,3],[2,3,4],[5,6,7]], dtype=np.float64)
+    B = np.array([[1,2.3,3.4],[2.4,3,4.3],[5.4,6.3,7]], dtype=np.float64)
+
+    A = np.array([[2,0,0],[0,1.6,0],[0,0,1.2]], dtype=np.float64)
+    B = np.array([[2.15,0.1,-0.15],[0.1,1.6,0.15],[-0.15,0.15,1.1]], dtype=np.float64)
 
     x0, x_correct, x_perb, lam0, lam_correct, lam_perb = test(A, B)
 
@@ -134,20 +139,18 @@ def example3d():
 def example2d_2():
 
     A = np.array([[1,2],[3,4]], dtype=np.float64)
-    B = np.array([[1.1,2.3],[3.1,4.2]], dtype=np.float64)
+    B = np.array([[1.1,2.3],[2.3,4.2]], dtype=np.float64)
 
     A = np.array([[1,0],[0,1]], dtype=np.float64)
     B = np.array([[-1, 0.5],[0.5, 1]], dtype=np.float64)
 
-    A = np.array([[1,0.1],[0.2,1.5]], dtype=np.float64)
-    B = np.array([[0.95, 0.5],[0.15, 1.55]], dtype=np.float64)
+    A = np.array([[1,0.4],[0.4,1.5]], dtype=np.float64)
+    B = np.array([[0.95, 0.6],[0.6, 1.4]], dtype=np.float64)
 
     x0, x_correct, x_perb, lam0, lam_correct, lam_perb = test(A, B)
 
     plt.axis('equal')
     plt.show()
-
-    import jscomposer
 
     def to33(x):
         y = np.zeros((3, 3))
@@ -179,8 +182,71 @@ def example2d_2():
 
     pass
 
+def show_degen():
+
+    src = np.array([[1,0,0],[0,1,0],[0,0,1]], dtype=np.float64)
+
+    A = np.array([[2,0,0],[0,2,0],[0,0,1.2]], dtype=np.float64)
+    A = np.array([[2,0,0],[0,1.6,0],[0,0,1.2]], dtype=np.float64)
+
+    dst = A @ src
+
+    lam0, x0 = np.linalg.eig(A)
+
+    jc = jscomposer.JsonComposer()
+
+    # jc.add_transform(np.eye(3), "bbbbbb")
+
+    jc.add_transform(src, "666666")
+    jc.add_transform(dst, "000099")
+    # jc.add_transform(to33(B-A), "00ff00")
+
+    # jc.add_basis(x0, "666666")
+    # jc.add_basis(x_perb, "ff0000")
+    # jc.add_basis(x_correct, "000099")
+
+    jc.add_eig_basis(x0, lam0, "000099")
+
+    jc.save()
+
+    pass
+
+def show_degen():
+
+    src = np.array([[1,0,0],[0,1,0],[0,0,1]], dtype=np.float64)
+
+    A = np.array([[2,0,0],[0,2,0],[0,0,1.2]], dtype=np.float64)
+    B = np.array([[0.4,0.1,-0.2],[0.1,0,0.3],[-0.2,0.3,0.1]], dtype=np.float64)
+
+    dstA = A @ src
+    dstB = A @ src
+
+    lam0, x0 = np.linalg.eig(A)
+
+    jc = jscomposer.JsonComposer()
+
+    # jc.add_transform(np.eye(3), "bbbbbb")
+
+    jc.add_transform(src, "666666")
+    jc.add_transform(dstA, "000099")
+    jc.add_transform(dstB, "009900")
+    # jc.add_transform(to33(B-A), "00ff00")
+
+    # jc.add_basis(x0, "666666")
+    # jc.add_basis(x_perb, "ff0000")
+    # jc.add_basis(x_correct, "000099")
+
+    jc.add_eig_basis(x0, lam0, "000099")
+    jc.add_eig_basis(x0, lam0, "000099")
+
+    jc.save()
+
+    pass
+
 if __name__ == "__main__":
 
-    example2d_2()
-    # example3d()
+    # example2d_2()
+    example3d()
+    # show_degen()
+    # show_degen2()
 

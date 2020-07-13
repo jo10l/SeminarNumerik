@@ -77,7 +77,7 @@ scene.add (new Text(zz, "z"))
 
 
 
-scene.add( new CoordinateSystem())
+// scene.add( new CoordinateSystem())
 
 
 renderer.render(scene,camera);
