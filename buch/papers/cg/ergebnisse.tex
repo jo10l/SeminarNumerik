@@ -19,7 +19,7 @@ Falls schnelle Konvergenz verlangt wird, kann sich somit eine Präkonditionierun
 
 Zum Abschluss zeigt Abbildung \ref{cg:abb:no_conv} was passiert wenn $A$ nicht positiv definit ist.
 Das aufgestellte Minimierungsproblem von \ref{cg:subsection:Minimierungsproblem} stimmt dadurch nicht und der CG-Algorithmus scheitert.
-Dies äussert sich durch starke Oszillazion bei hohem absolutem Fehler.
+Dies äussert sich durch starke Oszillation bei hohem absolutem Fehler.
 
 \begin{figure}	
 	\centering
@@ -46,6 +46,6 @@ Dies äussert sich durch starke Oszillazion bei hohem absolutem Fehler.
 \subsection{Fazit}
 Die hier vorgestellte Methode der konjugierten Gradienten (CG) liefert schnelle, genaue Resultate für grosse lineare Gleichungssysteme.
 Besonders interessant ist, dass theoretisch sogar die exakte Lösung gefunden wird (nach $N$ Schritten).
-In der Implementation stellt sich dies aufgrund der begrenzten digitalen Genauigkeit natürlich als unmöglich heraus.
+In der Implementation stellt sich dies aufgrund der begrenzten numerischen Genauigkeit natürlich als unmöglich heraus.
 Trotzdem ist diese Eigenschaft hilfreich, da es eine fixe Obergrenze für die Anzahl Schritte darstellt.
 Falls die Kondition gut ist (was häufig der Fall ist), ist die Konvergenz sehr schnell und es werden deutlich weniger als $N$ Schritte benötigt.

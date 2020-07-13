@@ -9,7 +9,7 @@
 Um den CG-Algorithmus zu verstehen, ist es hilfreich zuerst die Gradient Descent Methode zu analysieren.
 Gradient Descent ist eine bekannte Methode um iterativ ein Minimierungsproblem zu lösen.
 Dabei wird immer eine gewisse Schrittweite weit entlang des Gradienten des Minimierungsproblems abgestiegen.
-Eine Darstellung von einem 2-Dimensionalen Minimierungsproblem mit Gradient Descent findet sich in Abbildung \ref{cg:abb:steepest_descent}.
+Eine Darstellung von einem 2-dimensionalen Minimierungsproblem mit Gradient Descent findet sich in Abbildung \ref{cg:abb:steepest_descent}.
 
 \begin{figure}	
 	\centering
@@ -89,7 +89,7 @@ Dazu stellen wir wieder ein Minimierungsproblem auf
 	x_k^T b - \alpha d_k^T b .
 \end{equation}
 In $\alpha$ haben wir hier eine quadratische Gleichung, welche einer nach oben geöffneten Parabel entspricht (da $d_k^T A d_k \ge 0$).
-Somit ist es möglich ein klares Minimum zu finden, indem wir die Gleichung nach $\alpha$ ableiten und null setzen
+Somit ist es möglich ein klares Minimum zu finden, indem wir die Gleichung nach $\alpha$ ableiten und null setzen:
 \begin{equation}
 	\frac{\partial \Phi(x_k + \alpha d_k) }{\partial \alpha}
 	= 
