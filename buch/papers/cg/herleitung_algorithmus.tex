@@ -35,13 +35,11 @@ Dies wird mit dem CG-Algorithmus erreicht.
 	\label{cg:abb:koordabstieg2}
 \end{figure}
 
-
-
 \subsection{Optimale Suchrichtung \label{cg:subsection:suchrichtung}}
 
-Erreicht werden kann dies, indem jeweils orthogonalisierte Richtungen verwendet werden.
+Wie in \ref{cg:subsec:aortho} anhand eines Beispiels gezeigt wurde, ist es sinnvoll dazu jeweils $A$-orthogonalisierte Richtungen verwendet werden.
 Kombiniert mit der optimalen Abstiegslänge aus \ref{cg:subsection:schrittweite} führt dies dazu, dass genau $N$ Schritte zur exakten Lösung führen.
-Wie beim Abstieg entlang der Koordinatenachsen werden also nur neue Richtungen $d_{k+1}$ verwendet, welche orthogonal (in $A$) auf allen bisherigen Richtungen stehen
+Wie beim Abstieg entlang der Koordinatenachsen werden also nur neue Richtungen $d_{k+1}$ verwendet, welche $A$-orthogonal auf allen bisherigen Richtungen stehen
 \begin{equation} 
 	d_{k+1}  \perp_A  d_k  \perp_A  d_{k-1}  \dots \perp_A  d_0.
 \end{equation}
@@ -67,7 +65,6 @@ Dies führt zur folgenden, vereinfachten Berechnung
 \end{equation}
 Abbildung \ref{cg:abb:cg1} zeigt wie in einem zweidimensionalen Problem in 2 Schritten die exakte Lösung gefunden wird und schon nach Schritt 1 eine möglichst gute Approximation erreicht wird.
 Die orthogonalisierungen sind besser im dreidimensionalen Beispiel von Abbildung \ref{cg:abb:cg2} zu sehen.
-Orthogonale Vektoren bezüglich $A$ werden auch als konjugiert bezeichnet, weshalb der Name konjugierte Gradienten Sinn macht.
 \begin{figure}	
 	\centering
 	\includegraphics{papers/cg/images/descent-3}
