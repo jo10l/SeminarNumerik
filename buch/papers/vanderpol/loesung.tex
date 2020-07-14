@@ -10,7 +10,7 @@ Im folgenden Abschnitt werden die verschiedenen Implementierungen in Python geze
 \lstinputlisting[style=Python,float,caption={Implementierung des Runge Kutta Algorithmus in Python},label={vanderpol:codes:RK_4}]{papers/vanderpol/codes/RK_4.py}
 \subsection{Implementation des Runge-Kutta-Verfahrens
 \label{vanderpol:subsection:rk}}
-Der Codesabschnitt in Abbildung \ref{vanderpol:codes:RK_4} stellt die Python Implementierung des Runge Kutta Algorithmus vierter Ordnung vor. Die Koeffizienten werden gemäss der analytischen Definition
+Der Codesabschnitt in Listing \ref{vanderpol:codes:RK_4} stellt die Python Implementierung des Runge-Kutta-Algorithmus vierter Ordnung vor. Die Koeffizienten werden gemäss der analytischen Definition
 \begin{align*}
 k_1 &= h \cdot f(t_n, y_n),\\
 k_2 &= h \cdot f\left(t_n + \frac{h}{2}, y_n + \frac{h}{2} k_1\right), \\
@@ -32,12 +32,12 @@ y_{n+1} &= y_n + k_1 +O(h^2).
 \lstinputlisting[style=Python,float,caption={Implementierung der Van der Pol Gleichung in Python},label={vanderpol:codes:VDP_funk}]{papers/vanderpol/codes/VDP_funk.py}
 \subsection{Implementation der Differentialgleichung
 \label{vanderpol:subsection:diff}}
-Der Codesabschnitt \ref{vanderpol:codes:VDP_funk} zeigt stattdessen die Implementierung der Differentialgleichung \eqref{vanderpol:equations:inhomogene_2}. Die entwickelte Idee lautet wie folgt: In beiden Fällen stellt die Variable $z_n$ einen Vektor dar, der die beiden Werte der Funktionen $x_n$ und $\dot{x}_n$ enthält. Beide Funktionen erhalten auch einen zweiten Eingabeparameter $t_n$, der dem aktuellen Zeitpunkt entspricht. Der Code in \ref{vanderpol:codes:VDP_funk} kümmert sich um die Definition der Differentialgleichung, die dann in der in Abschnitt \ref{vanderpol:codes:RK_4} eingeführten Funktion verwendet wird, um den Kutta Runge Algorithmus auszuführen und $x_{n+1}$ und $\dot{x}_{n+1}$ als Ausgabe zu erhalten. Zusammengefasst: ein bestimmter Zeitwert $t_n$, der aktuelle Wert der Funktion $x_{n}$ und seine Ableitung $\dot{x}_{n}$ werden als Input für die beiden Funktionen gegeben. Es wird eine Ausgabe zurückgegeben, die dem nächsten Wert der Funktion $x_{n+1}$ und ihrer Ableitung $\dot{x}_{n+1}$ entspricht. Es wird in der Form
+Der Codesabschnitt \ref{vanderpol:codes:VDP_funk} zeigt stattdessen die Implementierung der Differentialgleichung \eqref{vanderpol:equations:inhomogene_2}. Die entwickelte Idee lautet wie folgt: In beiden Fällen stellt die Variable $z_n$ einen Vektor dar, der die beiden Werte der Funktionen $x_n$ und $\dot{x}_n$ enthält. Beide Funktionen erhalten auch einen zweiten Eingabeparameter $t_n$, der dem aktuellen Zeitpunkt entspricht. Der Code in Listing \ref{vanderpol:codes:VDP_funk} kümmert sich um die Definition der Differentialgleichung, die dann in der in Abschnitt \ref{vanderpol:codes:RK_4} eingeführten Funktion verwendet wird, um den Kutta-Runge-Algorithmus auszuführen und $x_{n+1}$ und $\dot{x}_{n+1}$ als Ausgabe zu erhalten. Zusammengefasst: ein bestimmter Zeitwert $t_n$, der aktuelle Wert der Funktion $x_{n}$ und seine Ableitung $\dot{x}_{n}$ werden als Input für die beiden Funktionen gegeben. Es wird eine Ausgabe zurückgegeben, die dem nächsten Wert der Funktion $x_{n+1}$ und ihrer Ableitung $\dot{x}_{n+1}$ entspricht. Es wird in der Form
 \begin{equation}
 \begin{pmatrix}x_{n+1} \\ \dot{x}_{n+1} \end{pmatrix} = \begin{pmatrix}x_{n} \\ \dot{x}_{n} \end{pmatrix} + \frac{1}{6}(\vec{k_1} + 2\vec{k_2} + 2\vec{k_3} + \vec{k_4})
 \label{vanderpol:equations:solve_alg}
 \end{equation}
-dargestellt. Die Konstanten von $k_1$ bis $k_4$ sind Vektoren, die die Koeffizienten für beide benötigten Lösungen enthalten, nämlich $x_{n+1}$ und $\dot{x}_{n+1}$.
+dargestellt. Die Konstanten von $\vec{k_1}$ bis $\vec{k_4}$ sind Vektoren, die die Koeffizienten für beide benötigten Lösungen enthalten, nämlich $x_{n+1}$ und $\dot{x}_{n+1}$.
 Diesen werden dann gleichzeitig berechnet. Dieser Algorithmus ist eine Implementierung der Gleichung \eqref{vanderpol:equations:homogene_1}.
 \lstinputlisting[style=Python,float,caption={Python Algorithmus zur Berechnung der Lösung},label={vanderpol:codes:solve}]{papers/vanderpol/codes/solve.py}
 Die Implementierung des in der Gleichung \eqref{vanderpol:equations:solve_alg} beschriebenen Verfahrens wird im Abschnitt des Codes \ref{vanderpol:codes:solve} gezeigt.
