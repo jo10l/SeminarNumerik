@@ -5,51 +5,193 @@
 %
 \section{Problemstellung
 \label{perturbation2:section:problemstellung}}
-\rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+\rhead{Idee}
+
+Das Eigenwertproblem sucht die Vektoren $v_i \in \mathbb {R}^{n} $, die angewendet mit einer Matrix $\bm H$ nicht die Richtung ändern und sich dabei nur mit $\lambda_i \in \mathbb R$ skalieren:
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{perturbation2:equation1}
+    \bm H \bm v_i = \lambda_i \bm v_i
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+Manche Applikation benötigen nur Eigenwerte einer Matrix $\bm H(\varepsilon)$, die nur wenig von der Matrix $\bm H$ mit bekannten Eigenwerten und Eivenvektoren abweicht.
+Dies lässt sich ausdrücken mit der summe
+\begin{gather*}
+    \bm H = \bm H_0 + \varepsilon \bm H_1 \\
+    \varepsilon \in \mathbb{R^+} \ll 1 \\
+    \lambda^{(0)}, \bm v^{(0)} \quad \text{bekannt},
+\end{gather*}
+wobei $\varepsilon \ll 1 $ ausdrücken soll, dass der zweite Term der Summe viel kleiner ist als $\bm H_0$
 
-\subsection{De finibus bonorum et malorum
-\label{perturbation2:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{000tempmlate:equation1}.
+Die Erigenwertperturbation erlaubt es, die Eigenwerte $\lambda_i(\varepsilon)$ und Eigenvektoren  $v_i(\varepsilon)$ von $\bm H$ zu approximieren.
+Das Verfahren hat jedoch die limitierung, dass die Eigenvektoren von $H_0$ zueinander othogonal sein, was für alle symetrischen $\bm H$ zutrifft.
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{perturbation2:section:loesung}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{perturbation2:section:folgerung}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+\section{Anwendungen}
+
+Die Eigenwertperturbation kann überall angewendet werden wo ein grobes modell mit kleinen Einflüssen erweitert werden kann.
+
+Das wohl grösste Anwendungsgebiet ist das lösen der der Schrödingergleichung in der Quantenmechanik.
+Aus dieser Anwendung wurde die Eigenwertperturbationstheorie auch entwickelt. %TODO check this
+%TODO elaborate
+                
+Einfluss von Planeten and die Umlaufbahn anderer Planeten
+
+Berechnung einer Trajektorie unter berücksichtigung der Luftfeuchtigkeit %TODO ref paper in matsem
+
+\section{Idee}
 
 
+$\bm H(\varepsilon)$ kann als Taylorreihe geschrieben werden.
+
+\begin{equation*}
+    \bm H(\varepsilon) = \bm H_0 + \varepsilon \bm H_1 \GR{ + \varepsilon^2 \bm H_2  + \varepsilon^3 \bm H_3 + \dots}
+\end{equation*}
+
+\begin{align*}
+    \bm v_i(\varepsilon) = \bm v_{0i} + \varepsilon \bm v_{1i} \GR{ + \varepsilon^2 \bm v_{2i}  + \varepsilon^3 \bm v_{3i} + \dots} \\
+    \lambda_i(\varepsilon) = \lambda_{0i} + \varepsilon \lambda_{1i} \GR{ + \varepsilon^2 \lambda_{0i}  + \varepsilon^3 \lambda_{3i} + \dots}
+\end{align*}
+
+Als approximation genügen wir uns mit einer Approximation erster ordnung. 
+
+
+
+Gesucht ist nun eine lösung für das Gleichungssystem
+\begin{align}
+    \bm H(\varepsilon) \bm v_i(\varepsilon) &= \lambda_i(\varepsilon) \bm v_i(\varepsilon) \\
+    (\bm H_0 + \varepsilon \bm H_1)
+    (\bm v_{0i} + \varepsilon \bm v_{1i})
+    &=
+    (\lambda_{0i} + \varepsilon \lambda_{1i})
+    (\bm v_{0i} + \varepsilon \bm v_{1i}) \\
+    & \phantom{2} \vdots \nonumber\\
+    \bm v_{0j}^T \bm H_0 \bm v_{0i}
+    &=
+    \delta_{ij} \lambda_{1i} + 
+    ( \lambda_{0i} - \lambda_{0j} )
+    \bm v_{0j}^T  \bm v_{0i} .
+\end{align}
+
+\begin{equation*}
+    \delta_{ij} = \bm v_{0j}^T \bm H_0 \bm v_{0i}
+    = \begin{cases}
+        0 \quad (i \neq j),\\
+        1 \quad (i = j)
+        \end{cases}
+\end{equation*}
+
+
+
+
+\begin{alignat*}{3}
+    i = j \quad & \rightarrow  \quad && \lambda_{1i}&& = \bm v_{0i}^T \bm H_1 \bm v_{0i} \\
+    i \neq j \quad & \rightarrow \quad && \bm v_{0j}^T \bm v_{1i}&& = \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
+\end{alignat*}
+
+Berechnung der Eigenwerte
+
+\begin{align*}
+    \lambda_i(\varepsilon)
+    &=
+    \lambda_{0i} + \varepsilon \lambda_{1i} \\
+    &=
+    \lambda_{0i} + \varepsilon \bm v_{0i}^T \bm H_1 \bm v_{0i}
+\end{align*}
+
+Berechnung der Eigenvektoren
+
+\begin{align*}
+    \bm v_i(\varepsilon)
+    &=
+    \bm v_{0i} + \varepsilon \bm v_{1i} \\
+    &=
+    \bm v_{0i} + \varepsilon \sum_{j} ( \bm v_{0j}^T \bm v_{1i}) \, \bm v_{0j} \\
+    &=
+    \bm v_{0i} + \varepsilon ( \bm v_{0i}^T \bm v_{1i}) \bm v_{0i} + \varepsilon \sum_{j \neq i} (\bm v_{0j}^T v_{1i}) \, \bm v_{0j}
+\end{align*}
+
+\begin{align*}
+    \bm v_i(\varepsilon)
+    &=
+    \bm v_{0i} + \varepsilon ( \bm v_{0i}^T \bm v_{1i}) \bm v_{0i} + \varepsilon \sum_{j \neq i} (\bm v_{0j}^T \bm v_{1i}) \, \bm v_{0j} \\
+    &=
+    \bm v_{0i} ( 1 + (\bm v_{0i}^T \bm v_{1i}) ) + \varepsilon \sum_{j \neq i}
+    \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
+    \, \bm v_{0j} \\
+    &=
+    \bm v_{0i} ( 1 + \mathrm{Im}(\varepsilon \gamma) ) + \varepsilon \sum_{j \neq i}
+    \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
+    \, \bm v_{0j}
+    \quad
+    \QED
+\end{align*}
+
+
+Zusammenfassend, 
+
+\begin{align*}
+    \lambda_i(\varepsilon)
+    &=
+    \lambda_{0i} + \varepsilon \bm v_{0i}^T \bm H_1 \bm v_{0i}\\
+    \bm v_i(\varepsilon)
+    &=
+    \lambda_{0i} + \varepsilon \bm v_{0i}^T \bm H_1 \bm v_{0i}
+    \bm v_{0i} ( 1 + \mathrm{Im}(\varepsilon \gamma) ) + \varepsilon \sum_{j \neq i}
+    \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
+    \, \bm v_{0j}
+\end{align*}
+
+
+
+\section{Entartung}
+
+Was, wenn zwei oder mehr Eigenwerte gleich sind?
+
+Die Eigenvektoren sind nicht mehr eindeutig.
+
+Sie werden von numerischen Programmen einfach gewählt:
+
+
+Entartete Eigenwerte können Division durch Null auslösen
+
+\begin{equation*} %TODO maybe ref to equation
+    \bm v_i(\varepsilon)
+    =
+    \bm v_{0i} ( 1+ \mathrm{Im}(\varepsilon \gamma)) + \varepsilon \sum_{j \neq i}
+    \frac{\GN{\bm v_{0j}^T \bm H_1 \bm v_{0i}}}{\RD{\lambda_{0i} - \lambda_{0j}}}
+    \, \bm v_{0j}
+\end{equation*}
+
+Kein Problem, wenn Zähler auch Null ist %TODO not true since 0/0.. show with previous equation
+
+Falls entartet, wähle $\bm v_{0i}$, so dass
+\begin{equation*}
+    \GN{\bm v_{0j}^T \bm H_1 \bm v_{0i}} = 0 \quad \forall \quad i,j \quad entartet
+\end{equation*}
+
+
+Bilde $\bm H_1$ auf basis von entarteten, zufällig gewählten Eigenvektoren ab
+\begin{equation*}
+    \bm H^\prime = \bm v_{0i}^T \bm H_1 \bm v_{0i} \quad \forall \quad i \quad entartet
+\end{equation*}
+Löse kleines Eigenwertproblem (alle $\lambda_i$ sind noch bekannt)
+\begin{equation*}
+    \bm H^\prime \bm v_{i}^\prime = \lambda_{i} \bm v_i^\prime \quad \forall \quad i \quad entartet
+\end{equation*}
+Transformiere gefundene Eigenvektoren zurück und verwende diese als die neuen, korrekten Eigenvektoren
+\begin{equation*}
+    \bm v_{0i} \gets \bm v_{0i} \bm v_{i}^\prime  \quad \forall \quad i \quad entartet
+\end{equation*}
+
+\begin{align*}
+    \lambda_i(\varepsilon)
+    & \gets
+    \lambda_{0i} + \varepsilon \bm v_{0i}^T \bm H_1 \bm v_{0i}\\
+    \bm H^\prime & \gets \bm v_{0i}^T \bm H_1 \bm v_{0i} \quad \forall \quad i \quad entartet \\
+    \bm v^\prime & \gets \mathrm{Eig} \Big( \bm H^\prime \Big) \\
+    \bm v_{0i} & \gets \bm v_{0i} \bm v^\prime  \quad \forall \quad i \quad entartet \\
+    \bm v_i(\varepsilon)
+    & \gets
+    \lambda_{0i} + \varepsilon \bm v_{0i}^T \bm H_1 \bm v_{0i}
+        \bm v_{0i} ( 1 + \mathrm{Im}(\varepsilon \gamma) ) + \varepsilon \sum_{j \neq i, \,nicht\,entartet}
+        \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
+        \, \bm v_{0j}
+\end{align*}
