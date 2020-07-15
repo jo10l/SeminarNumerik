@@ -11,7 +11,7 @@ In der Regel werden dabei folgende Formeln verwendet:
 \begin{equation}\label{eq:x_simple}
 \begin{aligned}
     x(t) &= x_0 + v_{0x}t\\
-    y(t) &= y_0 + v_{0y}t - \frac{1}{2}gt^2
+    y(t) &= y_0 + v_{0y}t - \frac{1}{2}gt^2.
 \end{aligned}
 \end{equation}
 %\begin{equation}\label{eq:vx_simple}
@@ -26,14 +26,14 @@ Nun möchten wir jedoch ein genaueres Ergebnis erzielen und den Luftwiderstand m
 Der Luftwiderstand $F_W$ ist proportional zum Quadrat der Geschwindigkeit.
 Es gilt folgende Formel:
 \[
-F_W = \underbrace{c_WA\frac{1}{2}\rho_{\text{Luft}}}_\text{k}v^2
+F_W = \underbrace{c_WA\frac{1}{2}\rho_{\text{Luft}}}_\text{k}v^2.
 \]
 $c_W$ bezeichnet den Strömungswiderstand, $A$ die Widerstandsfläche und $\rho_{\text{Luft}}$ die Luftdichte.
 Um die Berechnung simpel zu gestalten, gehen wir von einer konstanten Luftdichte $\rho_{\text{Luft}}$ aus und können so den Luftwiderstand zusammen fassen als $F_W = k \cdot v^2$.
 
 Formt man die Formel weiter um, erhält man das folgende Resultat:
 \[
-F_W = k \cdot |\vec{v}| \cdot \vec{v} = k \cdot \sqrt{v_x^2 + v_y^2} \cdot \begin{pmatrix}v_x\\v_y\end{pmatrix}
+F_W = k \cdot |\vec{v}| \cdot \vec{v} = k \cdot \sqrt{v_x^2 + v_y^2} \cdot \begin{pmatrix}v_x\\v_y\end{pmatrix}.
 \]
 
 Die ganze Kraft, die auf die Kugel wirkt, ist gemäss Newtons zweitem Axiom $F = m \cdot a$.
@@ -41,13 +41,12 @@ Neben dem Luftwiderstand wirkt in $y$-Richtung zusätzlich die Gravitationskraft
 Somit lassen sich folgende Gleichungen aufstellen:
 \begin{align*}
 m \cdot a_x &= k \cdot \sqrt{v_x^2 + v_y^2} \cdot v_x\\
-m \cdot a_y &= k \cdot \sqrt{v_x^2 + v_y^2} \cdot v_y + m \cdot g
+m \cdot a_y &= k \cdot \sqrt{v_x^2 + v_y^2} \cdot v_y - m \cdot g.
 \end{align*}
-
 Dividiert durch $m$ ergibt dies:
 \begin{align*}
 a_x &= \frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_x\\
-a_y &= \frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_y + g
+a_y &= \frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_y - g.
 \end{align*}
 
 Die Beschleunigung ist nicht bekannt.
@@ -57,8 +56,8 @@ Somit ergibt sich das folgende System von Differentialgleichungen zweiter Ordnun
 
 \begin{equation}\label{eq:x_diff}
 \begin{aligned}
-\Ddot{r_x} = \frac{k}{m} \cdot \sqrt{\dot{r_x^2} + \dot{r_y^2}} \cdot \dot{r_x}\\
-\Ddot{r_y} =   \frac{k}{m} \cdot \sqrt{\dot{r_x^2} + \dot{r_y^2}} \cdot \dot{r_y} + g
+\Ddot{r_x} &= \frac{k}{m} \cdot \sqrt{\dot{r_x^2} + \dot{r_y^2}} \cdot \dot{r_x}\\
+\Ddot{r_y} &=   \frac{k}{m} \cdot \sqrt{\dot{r_x^2} + \dot{r_y^2}} \cdot \dot{r_y} - g.
 \end{aligned}     
 \end{equation}
 %\begin{equation}\label{eq:vx_diff}
