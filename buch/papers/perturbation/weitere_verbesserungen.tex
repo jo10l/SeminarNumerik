@@ -55,7 +55,7 @@ Die Anfangsbedingungen werden folgendermassen geändert:
 x_0 &\longrightarrow \textcolor{red}{r_{x0} +  r_{x1}  \cdot \Delta t}\\
 y_0 &\longrightarrow \textcolor{red}{r_{y0} +  r_{y1}  \cdot \Delta t}\\
 v_x &\longrightarrow \textcolor{blue}{v_{x0} + v_{x1}  \cdot \Delta t}\\
-v_y &\longrightarrow \textcolor{blue}{v_{y0} + v_{y1}  \cdot \Delta t}\\
+v_y &\longrightarrow \textcolor{blue}{v_{y0} + v_{y1}  \cdot \Delta t}.
 \end{aligned}
 \end{equation}
 
@@ -67,7 +67,7 @@ So gilt nach Einsetzen in Gleichungen \eqref{eq:x_simple}
 \begin{equation}\label{eq:ordnung1_linear_r}
 \begin{aligned}
 r_x(t + \Delta t) &= \textcolor{red}{(r_{x0} +   r_{x1} \cdot \Delta t)} + \textcolor{blue}{(v_{x0} + v_{x1}  \cdot \Delta t)} \cdot \Delta t \\
-r_y(t + \Delta t) &= \textcolor{red}{(r_{y0} +   r_{y1} \cdot \Delta t)} + \textcolor{blue}{(v_{y0} + v_{y1} \cdot \Delta t)} \cdot \Delta t - \frac{1}{2}g \Delta t^2
+r_y(t + \Delta t) &= \textcolor{red}{(r_{y0} +   r_{y1} \cdot \Delta t)} + \textcolor{blue}{(v_{y0} + v_{y1} \cdot \Delta t)} \cdot \Delta t - \frac{1}{2}g \Delta t^2.
 \end{aligned}
 \end{equation}
 
@@ -77,7 +77,7 @@ Indem man Gleichung \ref{eq:x_simple} nach $t$ ableitet und anschliessend unsere
 \begin{equation}\label{eq:ordnung1_linear_v}
 \begin{aligned}
 v_x(t + \Delta t) &= \textcolor{blue}{(v_{x0} + v_{x1}  \cdot \Delta t)} \\
-v_y(t+ \Delta t) &= \textcolor{blue}{(v_{y0} + v_{y1} \cdot \Delta t)} - g \Delta t
+v_y(t+ \Delta t) &= \textcolor{blue}{(v_{y0} + v_{y1} \cdot \Delta t)} - g \Delta t.
 \end{aligned}
 \end{equation}
 
@@ -89,10 +89,10 @@ Zwar haben wir mit Gleichungen \ref{eq:ordnung1_linear_r} und \ref{eq:ordnung1_l
 indem wir aber $\Delta t$ variieren, können wir die Anzahl Gleichungen beliebig erhöhen.
 Das Gleichungssystem ist somit lösbar.
 Wir machen uns hierbei zu Nutze, dass die Bodenstation mit dem Runge-Kutta-Verfahren $\vec{r}(t + \Delta t)$ und $\vec{v}(t + \Delta t)$ liefern kann.
-Dies sind also bekannte Werte, unabhängig davon, wie $\Delta t$ gesetzt wird.\\
+Dies sind also bekannte Werte, unabhängig davon, wie $\Delta t$ gesetzt wird.
 
 Indem wir $\Delta t = 0$ setzen, erhalten wir auf relativ einfache Art und Weise all jene Unbekannten, die mit einer $0$ indiziert sind.
-Wir nutzen hierbei Gleichung \eqref{eq:ordnung1_linear_r} zur Bestimmung von $\vec{r_0}$, und Gleichung \eqref{eq:ordnung1_linear_v} zur Bestimmung von $\vec{v_0}$.
+Wir nutzen hierbei Gleichung \eqref{eq:ordnung1_linear_r} zur Bestimmung von $\vec{r}_0$, und Gleichung \eqref{eq:ordnung1_linear_v} zur Bestimmung von $\vec{v}_0$.
 
 \begin{equation}
 \label{eq:ordnung1_linear_solutionPart1}
@@ -100,11 +100,11 @@ Wir nutzen hierbei Gleichung \eqref{eq:ordnung1_linear_r} zur Bestimmung von $\v
 r_{x0} &= r_x(t) \\
 r_{y0} &= r_y(t) \\
 v_{x0} &= v_x(t) \\
-v_{y0} &= v_y(t) \\
+v_{y0} &= v_y(t).
 \end{aligned}
 \end{equation}
 
-Um $v_{x1}$ und $v_{y1}$ zu bestimmen, können wir nun weiterhin Gleichung \ref{eq:ordnung1_linear_v} verwenden, müssen aber das $\Delta t$ alternieren.
+Um $v_{x1}$ und $v_{y1}$ zu bestimmen, können wir nun weiterhin Gleichung \eqref{eq:ordnung1_linear_v} verwenden, müssen aber das $\Delta t$ anpassen.
 Für eine lineare Interpolation bietet sich $\Delta t = 1s$ an.
 Man könnte aber auch z.B. die halbe Intervalldauer $\Delta t = 0.5s$ wählen.
 Mit einer einfachen Umformung ergibt sich:
@@ -113,18 +113,17 @@ Mit einer einfachen Umformung ergibt sich:
 \label{eq:ordnung1_linear_solutionPart2}
 \begin{aligned}
 v_{x1} &=  \frac{v_x(t + \Delta t) - v_{x0}}{\Delta t} \\
-v_{y1} &=  \frac{v_y(t + \Delta t) - v_{y0} + g \cdot t}{\Delta t}
+v_{y1} &=  \frac{v_y(t + \Delta t) - v_{y0} + g \cdot t}{\Delta t}.
 \end{aligned}
 \end{equation}
-
 Wie zu erkennen ist, machen wir bereits Gebrauch von den zuvor bestimmten Unbekannten.
-Zu guter Letzt können mit Gleichung \ref{eq:ordnung1_linear_r} die zwei verbleibenden Unbekannten bestimmt werden:
+Zu guter Letzt können mit Gleichung \eqref{eq:ordnung1_linear_r} die zwei verbleibenden Unbekannten bestimmt werden:
 
 \begin{equation}
 \label{eq:ordnung1_linear_solutionPart3}
 \begin{aligned}
 r_{x_1} &= \frac{r_x(t + \Delta t) - r_{x0} - \Delta t \cdot(v_{x0} + v_{x1}  \cdot \Delta t)}{\Delta t} \\
-r_{y_1} &= \frac{r_y(t + \Delta t) - r_{y0} - \Delta t \cdot(v_{y0} + v_{y1}  \cdot \Delta t) + 0.5gt^2}{\Delta t}
+r_{y_1} &= \frac{r_y(t + \Delta t) - r_{y0} - \Delta t \cdot(v_{y0} + v_{y1}  \cdot \Delta t) + \frac{1}{2}gt^2}{\Delta t}.
 \end{aligned}
 \end{equation}
 
@@ -176,15 +175,15 @@ Um die Notation kurz zu halten, verwenden wir Vektornotation anstelle der Auftei
 \begin{equation}
 \label{eq:ordnung1_taylor_ansatz}
 \begin{aligned}
-\vec{r} &=  \vec{r_0} + \vec{r_1} \cdot \Delta t \\
-\vec{\dot{r}} &= \vec{r_1} \\
+\vec{r} &=  \vec{r}_0 + \vec{r}_1 \cdot \Delta t \\
+\dot{\vec{r}} &= \vec{r}_1 \\
 \end{aligned}
 \end{equation}
 
-Die Unbekannte $\vec{r_0}$ ist erneut durch setzen von $\Delta t = 0$ sehr einfach zu erlangen, analog zu Kapitel \ref{section:perturbation_ordnung1_linear}.
-$\vec{r_1}$ kann ebenfalls ohne grossen Aufwand bestimmt werden, indem wir die Ableitung mit Hilfe der Bodenstation wie folgt annähern:
+Die Unbekannte $\vec{r}_0$ ist erneut durch setzen von $\Delta t = 0$ sehr einfach zu erlangen, analog zu Abschnitt \ref{section:perturbation_ordnung1_linear}.
+$\vec{r}_1$ kann ebenfalls ohne grossen Aufwand bestimmt werden, indem wir die Ableitung mit Hilfe der Bodenstation wie folgt annähern:
 \[
-\vec{\dot{r}}(t) \approx \frac{\vec{r}(t+\epsilon) - \vec{r}(t)}{\epsilon}
+\dot{\vec{r}}(t) \approx \frac{\vec{r}(t+\epsilon) - \vec{r}(t)}{\epsilon}
 \]
 
 Damit ist bereits eine Annäherung des Ortes möglich.
