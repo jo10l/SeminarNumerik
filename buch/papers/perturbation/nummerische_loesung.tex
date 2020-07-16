@@ -15,16 +15,16 @@ Das System wird somit um eine Ordnung reduziert, erhält aber im Austausch zusä
 	\dot{r_x} &= v_x  \\
 	\dot{r_y} &= v_y \\
 	\dot{v_x} &= \frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_x \\
-	\dot{v_y} &= \frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_y + g
+	\dot{v_y} &= \frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_y - g
 \end{aligned}
 \end{equation*}
 Als Vektor formuliert:
 \[
-\frac{d}{dt}\begin{pmatrix}r_x\\r_y\\v_x\\v_y\end{pmatrix} = \begin{pmatrix}v_x\\v_y\\\frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_x\\\frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_y + g\end{pmatrix}
+\frac{d}{dt}\begin{pmatrix}r_x\\r_y\\v_x\\v_y\end{pmatrix} = \begin{pmatrix}v_x\\v_y\\\frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_x\\\frac{k}{m} \cdot \sqrt{v_x^2 + v_y^2} \cdot v_y - g\end{pmatrix}
 \]
 
 Damit haben wir eine mit dem  Runge-Kutta-Verfahren lösbare Variante der Differentialgleichung gefunden.
-Der Python Code in \ref{buch:listing:diffprogram} löst die Differentialgleichung mit Hilfe der Library \textit{SciPy}.
+Der Python Code in Listing \ref{buch:listing:diffprogram} löst die Differentialgleichung mit Hilfe der Library \textit{SciPy}.
 Die Bodenstation, die zu komplexen Berechnungen in der Lage ist,
 führt also in einem regelmässigen Zeitintervall die Funktion \lstinline[language=Python]{runge_kutta(t)}
 auf dem Differentialgleichungssystem aus und erhält so die Position und die Geschwindigkeit zu einem bestimmten Zeitpunkt.
