@@ -3,7 +3,7 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Iterative Gleichungslösung nach Gauss-Seidel
+\section{Iterative Gleichungslösung
 \label{buch:section:gaussseidel}}
 \rhead{Gauss-Seidel-Iteration}
 Gegeben ist eine lineares Gleichungssystem von $n$ Gleichungen mit
@@ -149,10 +149,10 @@ U
 0      & 0      & \dots  & 0         & 0           & a_{n-1,n} \\
 0      & 0      & \dots  & 0         & 0           & 0
 \end{pmatrix}
-\\
+\intertext{und}
 D
 &=
-\operatorname{diag} (a_{11}, a_{22},\dots , a_{n-1,n-1}, a_{nn})
+\operatorname{diag} (a_{11}, a_{22},\dots , a_{n-1,n-1}, a_{nn}).
 \end{align*}
 Die Iterationsformel~\eqref{buch:eqn:gs:iteration} lässt sich
 mit diesen Matrizen schreiben als
@@ -240,16 +240,36 @@ konvergieren, weil der Fehler nach jedem zweiten Schritt um den
 Faktor $\frac23$ kleiner geworden ist.
 \end{beispiel}
 
-Dies führt uns auf das Konzept des Spektralradius
+Dies führt uns auf die Grösse
+\begin{equation}
+\pi(M)
+=
+\limsup_{n\to\infty} \|M^n\|^\frac1n.
+\label{buch:eqn:gelfand-grenzwert}
+\end{equation}
+Ist $\pi(M) > 1$, dann gibt es Anfangsvektoren $v$ für die Iteration,
+für die $M^kv$ über alle Grenzen wächst.
+Ist $\pi(M) < 1$, dann wird jeder Anfangsvektor $v$ zu einer Iterationsfolge
+$M^kv$ führen, die gegen $0$ konvergiert.
+Die Kennzahl $\pi(M)$ erlaubt also zu entscheiden, ob ein
+Iterationsverfahren konvergent ist.
+
+Die Berechnung von $\pi(M)$ als Grenzwert ist sehr unhandlich.
+Viel einfacher ist der Begriff des Spektralradius.
 
 \begin{definition}
-Der {\em Spektralradius} der Matrix $M$ ist
-\[
-\varrho(M)
-=
-\limsup_{n\to\infty} \|A^n\|^\frac1n.
-\]
+\label{buch:definition:spektralradius}
+Der {\em Spektralradius} der Matrix $M$ ist der Betrag des betragsgrössten
+Eigenwertes.
 \end{definition}
+
+Wir werden später zeigen, dass $\pi(M) = \varrho(M)$, dies ist auch
+bekannt als der Satz von Gelfand.
+Um die beiden Begriffe bis dann auseinander halten zu können,
+nennen wir den Grenzwert~\ref{buch:eqn:gelfand-grenzwert}
+den {\em Gelfand-Radius} $\pi(M)$ der Matrix $M$.
+Wir erlauben uns aber, die Überlegungen zu den Iterationsverfahren
+mit dem Spektralradius zu formulieren.
 
 Das Gauss-Seidel-Iterationsverfahren ist also genau dann für alle
 Startwerte $x_0$ linear konvergent, wenn der Spektralradius
@@ -285,6 +305,111 @@ B^{-1}(b-Cx^{(m)})
 b_0 - B^{-1}Cx^{(m)}
 \end{equation}
 
+Iteriert wird also die Anwendung der Matrix $B^{-1}C$.
+Aus der oben entwickelten Theorie lesen wir ab, dass das Zerlgungsverfahren
+genau dann konvergiert, wenn der Spektralradius 
+$\varrho(B^{-1}C)$ von $B^{-1}C$ kleiner ist als $1$.
 
+\subsubsection{Das Verfahren von Jacobi}
+Beim Gauss-Seidel-Verfahren wurde jede einzelne Gleichung des
+Gleichungssytems nach einer der Variablen aufgelöst und der neue
+Wert bei der nächsten Iteration gleich wieder verwendet.
+Man hätte natürlich auch erst aus jeder Gleichung einen neuen
+Wert für alle Variablen bestimmen können, bevor man diese neuen
+Werte in der nächsten Iteration verwendet.
+Schreibt man das Gleichungssysten wieder als
+\[
+(L+D+U) x
+=
+Lx + D {\color{red}x} + Ux
+=
+b
+\]
+dann bedeutet dies, dass man  nach der roten Variablen ${\color{red}x}$
+auflöst, also
+\[
+D{\color{red}x}
+=
+Lx + Ux + b
+\qquad\Rightarrow\qquad
+{\color{red}x}
+=
+D^{-1}(L+U)x + D^{-1}b.
+\]
+Auch dieses nach {\em Jacobi} benannte Verfahren ist also ein
+Zerlegungsverfahren, diesmal mit $B=D$ und $C=L+U$.
+Es konvergiert genau dann, wenn $\varrho(D^{-1}(L+U))<1$.
+Dieser Fall tritt dann ein, wenn die Diagonalelemente  sehr viel grösser
+sind als der Rest der Matrix.
 
+\subsubsection{Richardson-Verfahren}
+Das {\em Richardson-Verfahren} ist besonders gut geeignet für den
+Fall, dass die Matrix $A$ nahe an einem Vielfachen der Einheitsmatrix
+ist.
+Man verwendet dazu die Aufspaltung
+\[
+A = B + C = \tau E  + (A - \tau E).
+\]
+Die Matrix $B=\tau E$ ist sehr einfach zu invertieren: $B^{-1}=\frac1\tau E$.
+Das Richardson-Verfahren zeichnet sich also durch sehr geringen Aufwand
+bei der Invertierung aus.
+Die zu iterierende Matrix ist 
+\[
+B^{-1}C
+=
+\frac{1}{\tau}E(A-\tau E)
+=
+\frac1\tau A  - E.
+\]
+Je näher die Matrix $A$ bei $\tau E$ liegt, desto näher werden die 
+Eigenwerte von $A$ bei denen von $\tau E$ also bei $\tau$ liegen,
+und desto näher werden die Eigenwerte von $B^{-1}C$ bei $0$ liegen,
+was zu Konvergenz des Verfahrens führt.
 
+\subsubsection{Successive Overrelaxation (SOR)}
+Das Richardson-Verfahren enthält einen Parameter, mit dem man die Konvergenz
+beeinflussen kann.
+Das Gauss-Seidel-Verfahren andererseits versucht jede einzelne Variable
+ohne Rücksicht auf alle anderen zu korrigieren.
+Die einzelne Korrektur soll also den ganzen verbleibenden Fehler
+ausbügeln.
+Es ist verständlich, dass damit zu viel korrigiert wird.
+Man kann diese Überkorrektur verbessern und einen Parameter einführen.
+Man nennt dies {\em Successive Overrelaxation} und verwendet dafür die
+Aufspaltung
+\[
+A = B_\omega + C_\omega
+=
+\underbrace{
+\biggl(
+\frac1{\omega}D+L
+\biggr)}_{\displaystyle=B_\omega}
++
+\underbrace{
+\biggl(1-\frac1\omega\biggr) D+L}_{\displaystyle = C_\omega}.
+\]
+Geignete Werte von $\omega$ liegen zwischen $0$ und $2$,
+das Gauss-Seidel-Verfahren ist der Fall $\omega = 1$.
+Man kann zeigen, dass dieses Verfahren für symmetrische Matrizen
+immer konvergiert.
+
+\begin{beispiel}
+Zur Illustration berechnen wir die verschiedenen Spektralradien für
+eine symmetrische $30\times 30$-Matrix der Form $E + R$,
+wobei $R$ aus zufälligen Werten
+im Interval $[0,0.1]$ besteht.
+\begin{figure}
+\centering
+\includegraphics{chapters/60-linsys/images/sp.pdf}
+\caption{Spektralradius für das Richardson-Verfahren in Abhängigkeit
+von $\tau$ und für SOR in Abhängigkeit von $\omega$.
+In beiden Fällen gibt es einen Parameterwert, für den die
+Konvergenzgeschwindigkeit maximal ist.
+\label{buch:figure:spektralradius}}
+\end{figure}
+In Abbildung ist der Spektralradius der Iterationsmatrix für
+das Richardson-Verfahren und für SOR dargestellt.
+In beiden Fällen gibt es einen Wert für den Parameter,
+für den der Spektralradius minimal und damit die Konvergenzgeschwindigkeit
+am grössten wird.
+\end{beispiel}
