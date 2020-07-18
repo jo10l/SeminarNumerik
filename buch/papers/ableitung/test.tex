@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\usepackage{filecontents}
+
+\definecolor{one}{HTML}{383368}
+\definecolor{two}{HTML}{d9b6b2}
+\definecolor{three}{HTML}{db8a31}
+\definecolor{four}{HTML}{bb52e1}
+\definecolor{five}{HTML}{db6210}
+
+\begin{document}
+
+	\begin{tikzpicture}
+	\begin{semilogyaxis}[xmin=0, xmax=1000, ymin=10e-15, ymax=10 width=\textwidth]
+	\addplot[one, line width=1pt] table [x=epoch, mark=none, y=loss, col sep=comma] {data/backprop.csv};
+	\addplot[two] table [x=epoch, mark=none, y=loss, col sep=comma] {data/h1-support2.csv};
+	\addplot[three] table [x=epoch, mark=none, y=loss, col sep=comma] {data/h1-support4.csv};
+	\addplot[four] table [x=epoch, mark=none, y=loss, col sep=comma] {data/h1-support6.csv};
+	\addplot[five] table [x=epoch, mark=none, y=loss, col sep=comma] {data/h1-support8.csv};
+	
+	\addlegendentry{Backprop}	
+	\addlegendentry{Support: 2}
+	\addlegendentry{Support: 4}
+	\addlegendentry{Support: 6}
+	\addlegendentry{Support: 8}
+	
+	
+	\end{semilogyaxis}
+	\end{tikzpicture}
+	
+		
+	\begin{tikzpicture}
+	\begin{semilogyaxis}[xmin=0, xmax=1000, ymin=10e-15, ymax=10]
+	\addplot[one, line width=1pt] table [x=epoch, mark=none, y=loss, col sep=comma] {data/backprop.csv};
+	\addplot[two] table [x=epoch, mark=none, y=loss, col sep=comma] {data/h01-support2.csv};
+	\addplot[three] table [x=epoch, mark=none, y=loss, col sep=comma] {data/h01-support4.csv};
+	\addplot[four] table [x=epoch, mark=none, y=loss, col sep=comma] {data/h01-support6.csv};
+	\addplot[five] table [x=epoch, mark=none, y=loss, col sep=comma] {data/h01-support8.csv};
+
+	\addlegendentry{Backprop}	
+	\addlegendentry{Support: 2}
+	\addlegendentry{Support: 4}
+	\addlegendentry{Support: 6}
+	\addlegendentry{Support: 8}
+					
+		
+	\end{semilogyaxis}
+	\end{tikzpicture}
+	
+
+	
+	\begin{tikzpicture}
+	\begin{semilogyaxis}[xmin=0, xmax=1000, ymin=10e-15, ymax=10]
+	\addplot[one, line width=1pt] table [x=epoch, mark=none, y=loss, col sep=comma] {data/backprop.csv};
+	\addplot[two] table [x=epoch, mark=none, y=loss, col sep=comma] {data/h001-support2.csv};
+	\addplot[three] table [x=epoch, mark=none, y=loss, col sep=comma] {data/h001-support4.csv};
+	\addplot[four] table [x=epoch, mark=none, y=loss, col sep=comma] {data/h001-support6.csv};
+	\addplot[five] table [x=epoch, mark=none, y=loss, col sep=comma] {data/h001-support8.csv};
+	
+	\addlegendentry{Backprop}	
+	\addlegendentry{Support: 2}
+	\addlegendentry{Support: 4}
+	\addlegendentry{Support: 6}
+	\addlegendentry{Support: 8}
+	
+	
+	\end{semilogyaxis}
+	\end{tikzpicture}
+\end{document}
