@@ -14,6 +14,9 @@ Gelfand-Radius $\pi(M)$ übereinstimmen.
 In diesem Abschnitt sollen diese Kennzahl noch etwas vertieft
 untersucht werden.
 
+%
+% Gelfand-Radius und Eigenwerte
+%
 \subsection{Gelfand-Radius und Eigenwerte
 \label{buch:subsection:spektralradius}}
 In Abschnitt~\ref{buch:subsection:konvergenzbedingung}
@@ -102,7 +105,10 @@ Folglich ist
 \lim_{k\to\infty} \frac{|A^kv|^\frac1k}{|\lambda_1|}
 =
 \lim_{k\to\infty}|v_1|^{\frac1k}
+=
+1.
 \]
+Dies gilt für alle Vektoren $v$, für die $v_1\ne 0$ ist.
 Der maximale Wert dafür wird erreicht, wenn man für 
 $v$ einen Eigenvektor der Länge $1$ zum Eigenwert $\lambda_1$ einsetzt,
 dann ist $v=v_1$.
@@ -114,10 +120,12 @@ Es folgt dann
 =
 \lim_{k\to\infty} |A^kv|^\frac1k
 =
-|\lambda_1|.
+|\lambda_1|
+=
+\varrho(A).
 \]
 Damit ist gezeigt, dass im Spezialfall einer diagonalisierbaren Matrix der
-Spektralradius tatsächlich der Betrag des betragsgrössten Eigenwertes ist.
+Gelfand-Radius tatsächlich der Betrag des betragsgrössten Eigenwertes ist.
 
 \subsubsection{Blockmatrizen}
 Wir betrachten jetzt eine $(n+m)\times(n+m)$-Blockmatrix der Form
@@ -275,7 +283,7 @@ Für jede komplexe $n\times n$-Matrix $A$ gilt
 \end{satz}
 
 \begin{proof}[Beweis]
-Der Satz~\label{buch:spektralradius:grenzwert} zeigt, dass der
+Der Satz~\ref{buch:spektralradius:grenzwert} zeigt, dass der
 Spektralradius ein scharfes Kriterium dafür ist, ob $\|A^k\|$ 
 gegen 0 oder $\infty$ konvergiert.
 Andererseits ändert ein Faktor $tA$ den Spektralradius ebenfalls um
@@ -303,82 +311,50 @@ Der Spektralradius von $A(\varepsilon)$ ist
 \]
 er ist also $>1$ für negatives $\varepsilon$ und $<1$ für positives
 $\varepsilon$.
-Aus dem Satz~\label{buch:spektralradius:grenzwert} liest man daher ab,
+Aus dem Satz~\ref{buch:spektralradius:grenzwert} liest man daher ab,
 dass $\|A(\varepsilon)^k\|$ genau dann gegen $0$ konvergiert, wenn
 $\varepsilon > 0$ ist und divergiert genau dann, wenn $\varepsilon< 0$ ist.
 
 Aus der Bemerkung nach dem Beweis von
-Satz~\label{buch:spektralradius:grenzwert} schliesst man daher, dass 
+Satz~\ref{buch:spektralradius:grenzwert} schliesst man daher, dass 
 es im Fall $\varepsilon > 0$ eine Konstante $M$ gibt mit
-\[
+\begin{align*}
 \|A(\varepsilon) ^k\|\le M\varrho(\varepsilon)^k
-\quad\Rightarrow\quad
+\quad&\Rightarrow\quad
 \|A(\varepsilon) ^k\|^\frac1k\le M^\frac1k\varrho(\varepsilon)
-\quad\Rightarrow\quad
+\\
+&\Rightarrow\quad
 \pi(A) \le  \varrho(A(\varepsilon))
 \underbrace{\lim_{k\to\infty} M^\frac1k}_{\displaystyle=1}
 =
 \varrho(A(\varepsilon))
 =
 \varrho(A)+\varepsilon.
-\]
+\end{align*}
 Dies gilt für beliebige $\varepsilon >0$, es folgt daher
 $\pi(A) \le \varrho(A)$.
 
 Andererseits gibt es für $\varepsilon <0$ eine Konstante $m$ mit
-\[
+\begin{align*}
 \|A(\varepsilon) ^k\|\ge m\varrho(\varepsilon)^k
-\quad\Rightarrow\quad
+\quad&\Rightarrow\quad
 \|A(\varepsilon) ^k\|^\frac1k\ge m^\frac1k\varrho(\varepsilon)
-\quad\Rightarrow\quad
+\\
+&\Rightarrow\quad
 \pi(A) \ge  \varrho(A(\varepsilon))
 \underbrace{\lim_{k\to\infty} m^\frac1k}_{\displaystyle=1}
 =
 \varrho(A(\varepsilon))
 =
 \varrho(A)+\varepsilon.
-\]
+\end{align*}
 Dies gilt für beliebige $\pi(A) \ge \varrho(A)$.
 Zusammen mit $\pi(A) \le \varrho(A)$ folgt $\pi(A)=\varrho(A)$.
 \end{proof}
 
-
-%\subsubsection{Jordan-Blockmatrizen mit gleichem $\lambda$}
-%Setzt man mehrer Jordan-Blöcke in eine Blockmatrix der Form
-%\[
-%A
-%=
-%\begin{pmatrix}
-%J_{n_1}(\lambda_1) &        0         & \dots & 0 \\
-%       0         & J_{n_2}(\lambda_2) & \dots & 0 \\[-4pt]
-%\vdots           &\vdots            &\ddots &\vdots \\
-%       0         &        0         & \dots &J_{n_l}(\lambda_l)
-%\end{pmatrix},
-%\]
-%dann hat jeder einzelne Block den Spektralradius
-%$\pi(J_{n_i}(\lambda)=|\lambda|$.
-%Es folgt aus Lemma~\ref{buch:spektralradius::lemma:diagonalbloecke},
-%dass der Spektralradius $ \pi(A) = |\lambda| $ ist.
 %
-%\subsubsection{Allgemeiner Fall}
-%In der linearen Algebra lernt man, dass sich jede Matrix schreiben
-%lässt als eine Blockmatrix 
-%mit Blöcke der Form~\eqref{buch:spektralradius:eqn:jordan}
-%auf der Diagonalen.
-%Da jeder einzelne dieser Blöcke Spektralradius $|\lambda|$ hat,
-%folgt wieder mit Lemma~\ref{buch:spektralradius:lemma:diagonalbloecke},
-%dass der Spektralradius der Betrag des betragsgrössten Eigenwertes ist.
-%Damit haben wir folgenden Satz bewiesen.
+% Konditionszahl
 %
-%\begin{satz}
-%Sei $A$ eine $n\times n$-Matrix, mit betragsgrösstem Eigenwert
-%$\lambda_1$.
-%Dann ist der Spektralradius
-%\[
-%\varrho(A) = \lim_{k\to\infty} \|A^k\|^\frac1k = |\lambda_1|.
-%\]
-%\end{satz}
-
 \subsection{Konditionszahl
 \label{buch:subsection:konditionszahl}}
 Der Spektralradius $\varrho(A)$ einer Matrix $A$ gibt darüber Auskunft,
