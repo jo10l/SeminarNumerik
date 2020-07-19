@@ -83,14 +83,24 @@ Ef(x+2h) \approx & Ef(x) + Df'(x)(+2h) + E\frac{1}{2}f''(x)(+2h)^2+E\frac{1}{6} 
 
 Bei einsetzen dieser Gleichungen in die erste Gleichung (siehe oben) ist ersichtlich, dass nur die Koeffizienten der 2. Ordnung bestehen bleiben müssen und folglich 1 ergeben müssen. Der Rest sollte durch Auslöschung verschwinden. Der Einfachheit halber können die Terme nach Ableitungsgrad sortiert werden:
 
+%\begin{equation}
+%\begin{split}
+%f(x) \cdot (A + B + C + D + E) & = 0 \\
+%\frac{1}{2} f'(x)(h) \cdot (-2A - B + D + 2E) &= \frac{2}{h}\\
+%\frac{1}{6} f''(x)(h^2) \cdot (4A + B + D + 4E) &= 0 \\
+%\frac{1}{24} f''''(x)(h^3) \cdot (-8A - B + D + 8E) &= 0 \\
+%\frac{1}{120} f'''''(x)(h^4) \cdot (16A + B + D + 16E) &= 0 
+%\end{split}
+%\end{equation}
+
 \begin{equation}
-\begin{split}
-f(x) \cdot (A + B + C + D + E) & = 0 \\
-\frac{1}{2} f'(x)(h) \cdot (-2A - B + D + 2E) &= \frac{2}{h}\\
-\frac{1}{6} f''(x)(h^2) \cdot (4A + B + D + 4E) &= 0 \\
-\frac{1}{24} f''''(x)(h^3) \cdot (-8A - B + D + 8E) &= 0 \\
-\frac{1}{120} f'''''(x)(h^4) \cdot (16A + B + D + 16E) &= 0 
-\end{split}
+\begin{linsys}{6}
+f(x)                        \cdot(&&  A&+&B&+&C&+&D&+&  E)&=&0 \\
+\frac{1}{2} f'(x)(h)        \cdot(&&-2A&-&B& & &+&D&+& 2E)&=&\frac{2}{h}\\
+\frac{1}{6} f''(x)(h^2)     \cdot(&&14A&+&B& & &+&D&+& 4E)&=&0 \\
+\frac{1}{24} f''''(x)(h^3)  \cdot(&&-8A&-&B& & &+&D&+& 8E)&=&0 \\
+\frac{1}{120} f'''''(x)(h^4)\cdot(&&16A&+&B& & &+&D&+&16E)&=&0 
+\end{linsys}
 \end{equation}
 
 Dies lässt sich auch in Matrix Form wie folgt schreiben:
