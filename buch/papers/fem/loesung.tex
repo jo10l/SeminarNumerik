@@ -6,33 +6,16 @@
 \section{Lösung
 \label{fem:section:loesung}}
 \rhead{Lösung}
+Um eine gute Lösung für die DGL in der Ebene zu finden wird das Gesamte gebiet in Teilgebiet unterteilt und auf jedes Teilgebiet wird eine Approximation angewendet mit der sogennanten Ansatzfunktion.\\
+In diesem Kapitel wird der Begriff Ansatzfunktion verwendet, der bis anhin nicht verwendet wurde. Unter Ansatzfunktion wird eine Funktion verstanden, die frei wählbar ist und unbekannte Koeffizienten enthalten, welche berechnet werden sollen. Diese gewählte Ansatzfunktion gibt somit den Freiheitsgrad vor. Je höher die Ordnung der Ansatzfunktion desto besser soll die Approximation werden. So die Hoffnung. Allerdings hat dies auch Konsequenzen, die im Verlauf dieses Kapitels beschrieben werden. Nicht jede Funktion kann verwendet werden, dass es auch hier Randbedingungen gibt, die Beachtet und erfüllt werden müssen.\\
 
-\subsection{Schritt 1 Minimalproblem bilden}
+Als Ansatzfunktionen stehen diverse Standard- Funktionen in der Ebene zur Verfügung. Sie reichen von einfacheren linearen Termen bishinzu quadratischen oder noch höheren Funktions- Ordnungen. Als Standardverfahren in der Ebene haben sich Flächenelement wie Dreicecken oder Parallelogramme bewährt. Die Wahl der  der Flächen- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
 
-Analog bei den Finiten Elementen im 1 dimensionale Raum, muss auch die DGL in der Ebene zuerst in ein äquivalentes Minimalproblem übersetzt werden. Das Minimalproblem für FEM in einer Dimension hatte die Form
+Um möglichst einfach darzustellen, wie das Verfahren der Finiten Elemente vonstatten geht, wurde auf eine einfache Approximation mit Einheitsdreiecken und einem linearen Ansatz gewählt. 
 
-\begin{equation}
-			\int_0^1 u \textcolor{red}{'} (x)^2 - \lambda \, u(x)^2 dx \,dy
-			\label{fem:Minimal1D}
-\end{equation}
-Im Unterschied zu den mehrdimensionale Form wird anstatt der einfachen Ableitungt der Laplace Operator verwendet der zugleich zweifache Differenziebarkeit von der Ansatzfunktion $u(x)$ fordert. Zudem wird nicht mehr über eine Strecke integriert sondern nun über ein Gebiet $\Omega$ was gleichbedeutend für eine Integration über eine Fläche steht.
-
-\begin{equation}
-			\int_{\Omega} (\textcolor{red}{\nabla} u)^2 - \lambda u^2 dx dy
-			\label{fem:Minimal2D}
-\end{equation}
-Der Integrationsterm \ref{fem:Minimal2D} wird gemäss der Summenregel in 2 Terme zerlegt nämlich 
-
-\begin{equation}
-			\int_{\Omega} (\nabla u)^2 \, dx \, dy - \lambda \int_{\Omega} u^2 dx \, dy
-			\label{fem:Minimal2D2Term}
-\end{equation}
-Nun ist die Bildung des Minimalproblems abgeschlossen. In einem nächsten Schritt sollen je nach Ausgangslage, gewisse Vorbereitungen getroffen werden die in dem folgenden Abschnitt erläutert werden.
-
-\subsection{Vorbereitung für den Schritt 2}
+\subsection{Vorbereitung}
 
 Damit die Integration über das gewählte Flächenelement Dreieck oder Parallelogramm einfacher fällt, wird als Vorbereitung im entsprechenden Fall das gewählte Flächenelement in ein Einheitsdreieck oder in ein Eineheitsparallelogramm transformiert. Dies bringt auch den Vorteil, dass die gewählten Formfunktionen gleich behandelt werden können. \\
-
 Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $ P_2(x_2, y_2)$ und $P3(x_3,y_3)$ kann mit Hilfe der linearen Transformation \ref{fem:linTransformation} 
 
 \begin{equation}
@@ -67,28 +50,61 @@ Die Transformation soll untern den elementaren Regeln der Analysis vorgenommen w
 Die Jacobi- Determinante entspricht der doppelten Fläche des Dreiecks. Die partiellen Ableitungen werden gemäss der Kettenregel zu 
 
 \begin{equation}
-			\xi_x = \frac{y_3 - y_1}{J}, \eta_x = -\frac{y_2 - y_1}{J}
+			\begin{aligned}
+			u_x = u_{\xi} \xi_x + u_{\eta} \eta_x \\
+			u_y = u_{\xi} \xi_y + u_{\eta} \eta_y 
+			\end{aligned}
 			\label{fem:newKoordinate}
 \end{equation}
 Auf Grund der linearen Transformation \ref{fem:linTransformation} ergeben sich nach der partieller Differentiation der Beiden Beziehungen nach $x$ zu nächst
 
 \begin{equation}
-			\xi_x = \frac{y_3 - y_1}{J}, \eta_x = -\frac{y_2 - y_1}{J}
-			\label{fem:newKoordinate}
+			\begin{aligned}
+			1  = (x_2 -x_1) \eta_x + (x_3 -x_1) \eta_x \\
+			0 = (y_2 -y_1) \eta_x + (y_3 -y_1) \eta_x \\
+			 \end{aligned}
+\end{equation}
+Nach Auflösung  der beiden Gleichungen nach $\xi_x$ und $\eta_x$ ergibt sich
+
+\begin{equation}
+			\xi_x = \frac{y_3 - y_1}{J} \quad \eta_x = -\frac{y_2 - y_1}{J}
+\end{equation}
+Analog nach der partiellen Ableitung nach $y$ erhält man
+
+\begin{equation}
+			\xi_x = \frac{x_3 - x_1}{J} \quad \eta_x = -\frac{x_2 - x_1}{J}
 \end{equation}
 
+\subsection{Schritt 1 Minimalproblem bilden}
+
+Analog bei den Finiten Elementen im 1 dimensionale Raum, muss auch die DGL in der Ebene zuerst in ein äquivalentes Minimalproblem übersetzt werden. Das Minimalproblem für FEM in einer Dimension hatte die Form
+
+\begin{equation}
+			\int_0^1 u \textcolor{red}{'} (x)^2 - \lambda \, u(x)^2 dx \,dy
+			\label{fem:Minimal1D}
+\end{equation}
+Im Unterschied zu den mehrdimensionale Form wird anstatt der einfachen Ableitungt der Laplace Operator verwendet der zugleich zweifache Differenziebarkeit von der Ansatzfunktion $u(x)$ fordert. Zudem wird nicht mehr über eine Strecke integriert sondern nun über ein Gebiet $\Omega$ was gleichbedeutend für eine Integration über eine Fläche steht.
+
+\begin{equation}
+			\int_{\Omega} (\textcolor{red}{\nabla} u)^2 - \lambda u^2 dx \, dy
+			\label{fem:Minimal2D}
+\end{equation}
+Der Integrationsterm \ref{fem:Minimal2D} wird gemäss der Summenregel in 2 Terme zerlegt nämlich 
+
+\begin{equation}
+			\int_{\Omega} (\nabla u)^2 \, dx \, dy - \lambda \int_{\Omega} u^2 dx \, dy
+			\label{fem:Minimal2D2Term}
+\end{equation}
+Nun ist die Bildung des Minimalproblems abgeschlossen. In einem nächsten Schritt sollen je nach Ausgangslage, gewisse Vorbereitungen getroffen werden die in dem folgenden Abschnitt erläutert werden.
 
 \subsection{ 2. Ansatzfunktionen auf Lösung approximieren}
 
-Als Ansatzfunktionen stehen diverse Standard- Funktionen in der Ebene zur Verfügung. Sie reichen von einfacheren linearen Termen bishinzu quadratischen oder noch höheren Funktions- Ordnungen. Als Standardverfahren in der Ebene haben sich Flächenelement wie Dreicecken oder Parallelogrammebewährt. Die Wahl der  der Flächen- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
+%Als Ansatzfunktionen stehen diverse Standard- Funktionen in der Ebene zur Verfügung. Sie reichen von einfacheren linearen Termen bishinzu quadratischen oder noch höheren Funktions- Ordnungen. Als Standardverfahren in der Ebene haben sich Flächenelement wie Dreicecken oder Parallelogrammebewährt. Die Wahl der  der Flächen- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
 
-Die Wahl der Art der Approximationsfunktion wie linear oder quadratisch wird in xXx behandelt.
+%Die Wahl der Art der Approximationsfunktion wie linear oder quadratisch wird in xXx behandelt.
 
-Um möglichst einfach darzustellen, wie das Verfahren der Finiten Elemente vonstatten geht, wurde auf eine einfache Approximation mit Einheitsdreiecken und einem linearen Ansatz gewählt. 
+%Um möglichst einfach darzustellen, wie das Verfahren der Finiten Elemente vonstatten geht, wurde auf eine einfache Approximation mit Einheitsdreiecken und einem linearen Ansatz gewählt. 
 
-
-\subsubsection{Schritt 2 Aproximieren mit linearer Ansatzfunktion und Einheisdreiecken
-\label{fem:subsection:bonorum}}
 
 Die lineare Ansatzfunktion hat die folgende Form
 
