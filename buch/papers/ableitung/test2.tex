@@ -1,0 +1,59 @@
+\subsection{Gradientenabstieg im neuronalen Netzwerk}
+Um den Gradientenabstieg zu erklären reicht ein einfaches neuronales Netzwerk mit nur einem Neuron.
+Ein Neuron entspricht der kleinsten Einheit eines neuronalen Netzwerks, welches in der Abbildung \ref{ableitung:fig:neuronal_network} dargestelt ist.
+\begin{figure}
+	\begin{center}
+		\input{papers/ableitung/neuronal_network.tex}
+		\caption{Übersicht eines Neuronalen Netzwerks}
+		\label{ableitung:fig:neuronal_network}
+	\end{center}
+\end{figure}
+Um das verfahren der numerischen Ableitung zu erklären reicht ein Beispiel mit einem Neuron.
+Im Grunde ist dies das einfachste implementierbare Netzwerk.
+Dieses ein Neuron Netzwerk soll eine uns bekannte Abbildungsfunktion trainieren für welche wir einfach die Daten generieren können.
+Daher verwendn wir als Beispiel ein digitales Not-Gate \ref{ableitung:fig:not_gate} die genauera Abbildung von Input $x$ und Output $y$ kann der Tabelle entnommen werden.
+\begin{figure}
+	\begin{center}
+
+		\begin{tikzpicture}
+		
+		\node (x) at (0, 1) {$x$};
+		\node (y) at (2, 1) {$y$};
+		
+		\node[not gate US, draw] at ($(x) + (0.8, 0)$) (notx) {};
+		
+		\draw (x) -- (notx.input);
+		\draw (notx.output) -- (y);
+		\end{tikzpicture}	
+		\begin{tabular}{cc}
+			\hline
+			$x$ & $y$ \\
+			\hline
+			0 & 1 \\ 
+			1 & 0 \\ 
+			\hline
+			
+		\end{tabular}
+
+		\caption{Einfaches Not-Gate mit zugehöriger Logik Tabelle}
+		\label{ableitung:fig:not_gate}
+	\end{center}
+\end{figure}
+
+Das einzelne Neruron umfasst 2 Paramter ($w$, $b$) und eine Aktivierungsfunktion $\sigma$. Das Trainieren des neuronalen Netzwerks geschieht nun in 3 Schritten.
+\begin{itemize}
+	\item \textbf{Initialisierung}
+	\item \textbf{Forward Propagation:} Der Input $x$ wird durch das neuronale Netzwerk gerechnet und ein Output $\hat{y}$ wird erzeugt.
+	\item \textbf{Loss Berechnung:} Die Loss-Funktion berechnet die Abweichung zwischen $\hat{y}$ und dem von uns zu erwartendem Output $y$.
+	\item \textbf{back prop?}
+\end{itemize}
+
+\subsection{Lernen als Optimierungsproblem}
+Ein Netzwerk und der Traininsprozess kann mathematisch formalisiert werden, um die Notation zu vereinfachen halten wir folgende Parameter und Komponenten fest:
+\begin{itemize}
+	\item{\textbf{$x$:} Input ins Neuronale Netzwerk}
+	\item{\textbf{$y$:} Erwarteter Output aus dem Neuronalen Netzwerk gem. dem Trainingsdatensatz}
+	\item{\textbf{$\hat{y}$:} Effektiver gerechneter Output aus den neuronalen Netzwerk}
+	\item{\textbf{Loss Funktion $\Lb$:}  Die Funktion welche den Fehler zwischen dem gerechenten und tatsächlechen Output berechnet, als Bsp MSE: $\sum_{i=0}^{n}\left( L(y,\hat{y}) \right)$ }
+\end{itemize}
+%			L &= MSE(y,\hat{y}) = \left(\hat{y}-y\right)^{2}
