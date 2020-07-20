@@ -4,13 +4,13 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Problemstellung
-\label{perturbation2:section:problemstellung}}
+\label{ew:section:problemstellung}}
 \rhead{Idee}
 
 Das Eigenwertproblem sucht die Vektoren $v_i \in \mathbb {R}^{n} $, die angewendet mit einer Matrix $\bm H$ nicht die Richtung ändern und sich dabei nur mit $\lambda_i \in \mathbb R$ skalieren:
 \begin{equation} 
     \bm H \bm v_i = \lambda_i \bm v_i
-\end{equation} \label{perturbation2:eq:eig}
+\end{equation} \label{ew:eq:eig}
 
 Manche Applikation benötigen nur Eigenwerte einer Matrix $\bm H(\varepsilon)$, die nur wenig von der Matrix $\bm H$ mit bekannten Eigenwerten und Eivenvektoren abweicht.
 Dies lässt sich mit der Summe
@@ -53,15 +53,15 @@ $\bm H(\varepsilon)$ kann als Taylorreihe geschrieben werden.
 \end{equation*}
 Ebenso können die Eigenwerte und Eigenvektoren von $\bm H(\varepsilon)$ als Taylorreihen geschrieben werden.
 \begin{align*}
-    \bm v_i(\varepsilon) = \bm v_{0i} + \varepsilon \bm v_{1i} \GR{ + \varepsilon^2 \bm v_{2i}  + \varepsilon^3 \bm v_{3i} + \dots} \label{perturbation2:eq:eigvec} \\
-    \lambda_i(\varepsilon) = \lambda_{0i} + \varepsilon \lambda_{1i} \GR{ + \varepsilon^2 \lambda_{0i}  + \varepsilon^3 \lambda_{3i} + \dots}  \label{perturbation2:eq:eigval}
+    \bm v_i(\varepsilon) = \bm v_{0i} + \varepsilon \bm v_{1i} \GR{ + \varepsilon^2 \bm v_{2i}  + \varepsilon^3 \bm v_{3i} + \dots} \label{ew:eq:eigvec} \\
+    \lambda_i(\varepsilon) = \lambda_{0i} + \varepsilon \lambda_{1i} \GR{ + \varepsilon^2 \lambda_{0i}  + \varepsilon^3 \lambda_{3i} + \dots}  \label{ew:eq:eigval}
 \end{align*}
 Für kleine $\varepsilon$ sollte eine Approximation erster ordnung genügen.
 Somit können alle Terme mit $\varepsilon^2$ und höher weggelassen werden.
 Falls diese genauigkeit nicht genügt, kann auch eine Methode mit einer Approximation zweiter Ordnung gewählt werden.
 Diese ist jedoch aufwendiger herzuleiten und wird in diesem Paper nicht angeschaut.
 
-Nach einsetzen der gekürzten Taylorreihen in Gleichung \ref{perturbation2:eq:eig} erhalten wir 
+Nach einsetzen der gekürzten Taylorreihen in Gleichung \ref{ew:eq:eig} erhalten wir 
 \begin{align}
     \bm H(\varepsilon) \bm v_i(\varepsilon)
     &=
@@ -110,7 +110,7 @@ Aus dieser Gleichung können mittels koeffizientenvergleich zwei nützliche Form
     i \neq j \quad & \rightarrow \quad && \bm v_{0j}^T \bm v_{1i}&& = \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
 \end{alignat*}
 
-Die Eigenwerte $\lambda_{1i}$ können einfach in \ref{perturbation2:eq:eigval} eingesetz werden und liefern die fertige Formel für   
+Die Eigenwerte $\lambda_{1i}$ können einfach in \ref{ew:eq:eigval} eingesetz werden und liefern die fertige Formel für   
 \begin{align*}
     \lambda_i(\varepsilon)
     &=

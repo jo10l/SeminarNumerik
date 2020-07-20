@@ -1,9 +1,9 @@
 #
-# Makefile -- make file for the paper perturbation2
+# Makefile -- make file for the paper ew
 #
 # (c) 2020 Prof Dr Andreas Mueller
 #
 
 images:
-	@echo "no images to be created in perturbation2"
+	@echo "no images to be created in ew"
 
