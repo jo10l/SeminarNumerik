@@ -8,21 +8,28 @@
 \rhead{Idee}
 
 Das Eigenwertproblem sucht die Vektoren $v_i \in \mathbb {R}^{n} $, die angewendet mit einer Matrix $\bm H$ nicht die Richtung ändern und sich dabei nur mit $\lambda_i \in \mathbb R$ skalieren:
-\begin{equation}
+\begin{equation} 
     \bm H \bm v_i = \lambda_i \bm v_i
-\end{equation}
+\end{equation} \label{perturbation2:eq:eig}
 
 Manche Applikation benötigen nur Eigenwerte einer Matrix $\bm H(\varepsilon)$, die nur wenig von der Matrix $\bm H$ mit bekannten Eigenwerten und Eivenvektoren abweicht.
-Dies lässt sich ausdrücken mit der summe
-\begin{gather*}
-    \bm H = \bm H_0 + \varepsilon \bm H_1 \\
-    \varepsilon \in \mathbb{R^+} \ll 1 \\
-    \lambda^{(0)}, \bm v^{(0)} \quad \text{bekannt},
-\end{gather*}
-wobei $\varepsilon \ll 1 $ ausdrücken soll, dass der zweite Term der Summe viel kleiner ist als $\bm H_0$
+Dies lässt sich mit der Summe
+\begin{equation}
+    \bm H(\varepsilon) = \bm H_0 + \varepsilon \bm H_1
+\end{equation}
+schreiben, wobei $\varepsilon \ll 1 $ ausdrücken soll, dass der zweite Term der Summe viel kleiner ist als $\bm H_0$
 
 Die Erigenwertperturbation erlaubt es, die Eigenwerte $\lambda_i(\varepsilon)$ und Eigenvektoren  $v_i(\varepsilon)$ von $\bm H$ zu approximieren.
 Das Verfahren hat jedoch die limitierung, dass die Eigenvektoren von $H_0$ zueinander othogonal sein, was für alle symetrischen $\bm H$ zutrifft.
+Daher fassen wir zusammen,
+\begin{gather*}
+    \bm H(\varepsilon) = \bm H_0 + \varepsilon \bm H_1 \\
+    \varepsilon \in \mathbb{R^+} \ll 1 \\
+    \lambda^{(0)}, \bm v^{(0)} \quad \text{bekannt} \\
+    \bm H_0 \text{symetrisch}
+\end{gather*} %TODO check if only H_0 must be symetric
+
+
 
 \section{Anwendungen}
 
@@ -38,56 +45,72 @@ Berechnung einer Trajektorie unter berücksichtigung der Luftfeuchtigkeit %TODO 
 
 \section{Idee}
 
-
+Die Schreibweise als Funktion von $\varepsilon$ deutet auf eine Taylorreihe hin. 
 $\bm H(\varepsilon)$ kann als Taylorreihe geschrieben werden.
 
 \begin{equation*}
     \bm H(\varepsilon) = \bm H_0 + \varepsilon \bm H_1 \GR{ + \varepsilon^2 \bm H_2  + \varepsilon^3 \bm H_3 + \dots}
 \end{equation*}
-
+Ebenso können die Eigenwerte und Eigenvektoren von $\bm H(\varepsilon)$ als Taylorreihen geschrieben werden.
 \begin{align*}
-    \bm v_i(\varepsilon) = \bm v_{0i} + \varepsilon \bm v_{1i} \GR{ + \varepsilon^2 \bm v_{2i}  + \varepsilon^3 \bm v_{3i} + \dots} \\
-    \lambda_i(\varepsilon) = \lambda_{0i} + \varepsilon \lambda_{1i} \GR{ + \varepsilon^2 \lambda_{0i}  + \varepsilon^3 \lambda_{3i} + \dots}
+    \bm v_i(\varepsilon) = \bm v_{0i} + \varepsilon \bm v_{1i} \GR{ + \varepsilon^2 \bm v_{2i}  + \varepsilon^3 \bm v_{3i} + \dots} \label{perturbation2:eq:eigvec} \\
+    \lambda_i(\varepsilon) = \lambda_{0i} + \varepsilon \lambda_{1i} \GR{ + \varepsilon^2 \lambda_{0i}  + \varepsilon^3 \lambda_{3i} + \dots}  \label{perturbation2:eq:eigval}
 \end{align*}
+Für kleine $\varepsilon$ sollte eine Approximation erster ordnung genügen.
+Somit können alle Terme mit $\varepsilon^2$ und höher weggelassen werden.
+Falls diese genauigkeit nicht genügt, kann auch eine Methode mit einer Approximation zweiter Ordnung gewählt werden.
+Diese ist jedoch aufwendiger herzuleiten und wird in diesem Paper nicht angeschaut.
 
-Als approximation genügen wir uns mit einer Approximation erster ordnung. 
-
-
-
-Gesucht ist nun eine lösung für das Gleichungssystem
+Nach einsetzen der gekürzten Taylorreihen in Gleichung \ref{perturbation2:eq:eig} erhalten wir 
 \begin{align}
-    \bm H(\varepsilon) \bm v_i(\varepsilon) &= \lambda_i(\varepsilon) \bm v_i(\varepsilon) \\
+    \bm H(\varepsilon) \bm v_i(\varepsilon)
+    &=
+    \lambda_i(\varepsilon) \bm v_i(\varepsilon) \\
     (\bm H_0 + \varepsilon \bm H_1)
     (\bm v_{0i} + \varepsilon \bm v_{1i})
     &=
     (\lambda_{0i} + \varepsilon \lambda_{1i})
     (\bm v_{0i} + \varepsilon \bm v_{1i}) \\
     & \phantom{2} \vdots \nonumber\\
+    \bm v_{0j}^T \bm H_0 \bm v_{0i},
+\end{align}
+wobei alle variabeln bekannt sind, ausser $\lambda_{1i}$ und $\bm v_{1i})$.
+Die Gleichung soll nun umgeformt werden, um diese variablen zu bestimmen.
+
+%TODO elaborate algebra
+Ausmultiplizieren
+
+Da in den Voraussetzungen orthogonale Eigenvektoren $\bm v_{0i}$ gefordert sind, sind alle inneren produkte
+\begin{equation}
+    \bm v_{,i}^T \bm v_{,j} = 0 \quad \forall \quad i \neq j
+\end{equation}
+Das Anwenden von $\bm H_0$ auf $\bm v_{0i}$ ändert nur, dass die Eigenvektoren von der Matrix mit $\lambda_{1i}$ skaliert werden.
+Somit können wir vereinfachen
+\begin{equation*}
     \bm v_{0j}^T \bm H_0 \bm v_{0i}
-    &=
+    = \delta_{ij} \lambda_{1i}
+    = \begin{cases}
+        0 \quad (i \neq j),\\
+        \lambda_{1i} \quad (i = j)
+        \end{cases}
+\end{equation*}
+und erhalten
+\begin{equation}
+    \bm H(\varepsilon) \bm v_i(\varepsilon)
+    =
     \delta_{ij} \lambda_{1i} + 
     ( \lambda_{0i} - \lambda_{0j} )
     \bm v_{0j}^T  \bm v_{0i} .
-\end{align}
-
-\begin{equation*}
-    \delta_{ij} = \bm v_{0j}^T \bm H_0 \bm v_{0i}
-    = \begin{cases}
-        0 \quad (i \neq j),\\
-        1 \quad (i = j)
-        \end{cases}
-\end{equation*}
+\end{equation}
 
 
-
-
+Aus dieser Gleichung können mittels koeffizientenvergleich zwei nützliche Formeln extrahiert werden:
 \begin{alignat*}{3}
     i = j \quad & \rightarrow  \quad && \lambda_{1i}&& = \bm v_{0i}^T \bm H_1 \bm v_{0i} \\
     i \neq j \quad & \rightarrow \quad && \bm v_{0j}^T \bm v_{1i}&& = \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
 \end{alignat*}
 
-Berechnung der Eigenwerte
-
+Die Eigenwerte $\lambda_{1i}$ können einfach in \ref{perturbation2:eq:eigval} eingesetz werden und liefern die fertige Formel für   
 \begin{align*}
     \lambda_i(\varepsilon)
     &=
@@ -96,7 +119,9 @@ Berechnung der Eigenwerte
     \lambda_{0i} + \varepsilon \bm v_{0i}^T \bm H_1 \bm v_{0i}
 \end{align*}
 
-Berechnung der Eigenvektoren
+Die Berechnung der Eigenvektoren ist etwas aufwendiger.
+
+%TODO elaborate
 
 \begin{align*}
     \bm v_i(\varepsilon)
@@ -140,18 +165,10 @@ Zusammenfassend,
 \end{align*}
 
 
-
 \section{Entartung}
 
-Was, wenn zwei oder mehr Eigenwerte gleich sind?
-
-Die Eigenvektoren sind nicht mehr eindeutig.
-
-Sie werden von numerischen Programmen einfach gewählt:
-
-
-Entartete Eigenwerte können Division durch Null auslösen
-
+Die ebenso hergeleitete Formel für die Eigenvektoren ist nicht definiert für einen Spezialfall.
+Wenn zwei Eigenwerte von $\bm H_0$ gleich lange sind, entsteht eine Division durch Null:
 \begin{equation*} %TODO maybe ref to equation
     \bm v_i(\varepsilon)
     =
@@ -159,6 +176,100 @@ Entartete Eigenwerte können Division durch Null auslösen
     \frac{\GN{\bm v_{0j}^T \bm H_1 \bm v_{0i}}}{\RD{\lambda_{0i} - \lambda_{0j}}}
     \, \bm v_{0j}
 \end{equation*}
+Die gleichen Eigenwerte haben zur folge, dass die dazugehörigen Eigenvektoren nicht mehr eindeutig definiert sind, sondern irgendwo orthogonal auf einer Hyperebene liegen können.
+Es gibt also keinen Eigenvektor mehr sondern einen Eigenraum.
+Mehrfache Eigwenwerte nennt man entartet.
+
+%TODO illustrate
+
+Bei einer numerischen berechung der Eigenvektoren, wie es zum Beispiel MATLAB oder NumPy macht, wird ein Eigenvektor in diesem Eigenraum gewählt..
+
+Entartete Eigenwerte von $\bm H_0$ können aber durch addition einer geeigneten Matrix $\bm H_1$ in eizelne gespalten werden werden.
+Als Beispiel, wenn $\varepsilon = 1$, 
+\begin{align}
+    \bm H_0 &= 
+    \begin{pmatrix}
+        1 & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 2
+    \end{pmatrix},
+    \quad
+    \lambda_0 = \{1, 1, 2\},
+    \quad
+    \bm v_0 = \{
+    \begin{pmatrix}
+        ?\\
+        ?\\
+        0
+    \end{pmatrix},
+    \begin{pmatrix}
+        ?\\
+        ?\\
+        0
+    \end{pmatrix},
+    \begin{pmatrix}
+        0\\
+        0\\
+        1
+    \end{pmatrix}
+    \}
+    \\
+    \bm H_1 &= 
+    \begin{pmatrix}
+        1 & 0 & 0\\
+        0 & 2 & 0\\
+        0 & 0 & 2
+    \end{pmatrix},
+    \quad
+    \lambda_0 = \{1, 2, 3\},
+    \quad
+    \bm v_0 = \{
+    \begin{pmatrix}
+        1\\
+        0\\
+        0
+    \end{pmatrix},
+    \begin{pmatrix}
+        0\\
+        ?\\
+        ?
+    \end{pmatrix},
+    \begin{pmatrix}
+        0\\
+        ?\\
+        ?
+    \end{pmatrix}
+    \}
+    \\
+    \bm H(\varepsilon) &= 
+    \begin{pmatrix}
+        2 & 0 & 0\\
+        0 & 3 & 0\\
+        0 & 0 & 4
+    \end{pmatrix},
+    \quad
+    \lambda_0 = \{2, 3, 4\},
+    \quad
+    \bm v_0 = \{
+    \begin{pmatrix}
+        1\\
+        0\\
+        0
+    \end{pmatrix},
+    \begin{pmatrix}
+        0\\
+        1\\
+        0
+    \end{pmatrix},
+    \begin{pmatrix}
+        0\\
+        0\\
+        1
+    \end{pmatrix}
+    \}.
+\end{align}
+Die Dimensionen der Eigenvektoren, die einen Eigenraum bilden sind mit $?$ gekennzeichnet.
+
 
 Kein Problem, wenn Zähler auch Null ist %TODO not true since 0/0.. show with previous equation
 
@@ -172,6 +283,8 @@ Bilde $\bm H_1$ auf basis von entarteten, zufällig gewählten Eigenvektoren ab
 \begin{equation*}
     \bm H^\prime = \bm v_{0i}^T \bm H_1 \bm v_{0i} \quad \forall \quad i \quad entartet
 \end{equation*}
+Dadurch erhalten wir eine kleinere Matrix $\bm H^\prime$.
+
 Löse kleines Eigenwertproblem (alle $\lambda_i$ sind noch bekannt)
 \begin{equation*}
     \bm H^\prime \bm v_{i}^\prime = \lambda_{i} \bm v_i^\prime \quad \forall \quad i \quad entartet
@@ -181,6 +294,7 @@ Transformiere gefundene Eigenvektoren zurück und verwende diese als die neuen, 
     \bm v_{0i} \gets \bm v_{0i} \bm v_{i}^\prime  \quad \forall \quad i \quad entartet
 \end{equation*}
 
+Zusammengefasst, auch für entartete $\lambda_0$ git somit
 \begin{align*}
     \lambda_i(\varepsilon)
     & \gets
@@ -193,5 +307,5 @@ Transformiere gefundene Eigenvektoren zurück und verwende diese als die neuen, 
     \lambda_{0i} + \varepsilon \bm v_{0i}^T \bm H_1 \bm v_{0i}
         \bm v_{0i} ( 1 + \mathrm{Im}(\varepsilon \gamma) ) + \varepsilon \sum_{j \neq i, \,nicht\,entartet}
         \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
-        \, \bm v_{0j}
+        \, \bm v_{0j}.
 \end{align*}
