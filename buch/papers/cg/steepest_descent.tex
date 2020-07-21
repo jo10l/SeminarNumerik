@@ -9,7 +9,7 @@
 Um den CG-Algorithmus zu verstehen, ist es hilfreich zuerst die Gradient Descent Methode zu analysieren.
 Gradient Descent ist eine bekannte Methode um iterativ ein Minimierungsproblem zu lösen.
 Dabei wird immer eine gewisse Schrittweite weit entlang des Gradienten des Minimierungsproblems abgestiegen.
-Eine Darstellung von einem 2-Dimensionalen Minimierungsproblem mit Gradient Descent findet sich in Abbildung \ref{cg:abb:steepest_descent}.
+Eine Darstellung von einem 2-dimensionalen Minimierungsproblem mit Gradient Descent findet sich in Abbildung \ref{cg:abb:steepest_descent}.
 
 \begin{figure}	
 	\centering
@@ -67,12 +67,13 @@ Der folgende Beweis zeigt, wieso dies ein sinnvoller Ansatz ist.
 	0 &\le \frac{{\lambda}^2}{2} y^T A y + \lambda y^T \left(Ax - b \right) \quad \forall \quad y \in \mathbb{R}^N  .
 	\end{align}
 	Der erste Term ist dabei quadratisch in $\lambda$, $A$ ist positiv definit und somit ist immer $\frac{{\lambda}^2}{2} y^T A y \ge 0$.
-	Beim zweiten Term ist diese Bedingung nur erfüllt für alle $y$, wenn $Ax - b = 0$.
-	Damit ist bewiesen, dass eine Lösung für die Gleichung $Ax = b$ durch Minimierung von $\Phi(x)$ gefunden wird.
+	Beim zweiten Term ist diese Bedingung nur erfüllt, wenn $Ax - b = 0$ für alle $y$.
+	Damit ist bewiesen, dass dann eine Lösung für die Gleichung $Ax = b$ durch Minimierung von $\Phi(x)$ gefunden wird.
 \end{proof}
 
 \subsection{Berechnung der Schrittweite \label{cg:subsection:schrittweite}}
 Falls eine Suchrichtung gegeben ist, kann die optimale Schrittweite bestimmt werden um $\Phi(x)$ minimal werden zu lassen.
+Als Suchrichtung bezeichnen wir die Richtung, in welcher das aktuelle $x$ verbessert werden soll (wir suchen in dieser Richtung nach einem minimalen $\Phi(x)$).
 Gegeben: 
 \begin{itemize}
 	\item Aktueller Index $k$
@@ -81,27 +82,30 @@ Gegeben:
 \end{itemize}
 Wir suchen nun die optimale Schrittweite $\alpha$, um möglichst nahe an die Lösung zu kommen in der gegebenen Suchrichtung.
 Dazu stellen wir wieder ein Minimierungsproblem auf
-\begin{equation}
+\begin{align}
 	\Phi(x_k + \alpha d_k) 
-	= 
+	&= 
 	\frac{1}{2} x_k^T A x_k + \alpha x_k^T A d_k + \frac{1}{2} {\alpha}^2 d_k^T A d_k
 	-
-	x_k^T b - \alpha d_k^T b .
+	x_k^T b - \alpha d_k^T b \\
+	&= \frac{1}{2} {\alpha}^2 d_k^T A d_k + \alpha \left( x_k^T A d_k - d_k^T b \right) + \frac{1}{2} x_k^T A x_k -	x_k^T b.
+\end{align}
+Durch die Symmetrie von $A$ gilt $x_k^T A d_k = d_k^T A x_k$ und man kann das Minimierungsproblem weiter vereinfachen zu
+\begin{equation}
+	\Phi(x_k + \alpha d_k) = \frac{1}{2} {\alpha}^2 d_k^T A d_k + \alpha d_k^T\left( A x_k - b \right) + \frac{1}{2} x_k^T \left( A x_k - b \right).
 \end{equation}
-In $\alpha$ haben wir hier eine quadratische Gleichung, welche einer nach oben geöffneten Parabel entspricht (da $d_k^T A d_k \ge 0$).
-Somit ist es möglich ein klares Minimum zu finden, indem wir die Gleichung nach $\alpha$ ableiten und null setzen
+Hier haben wir eine quadratische Gleichung in $\alpha$, welche einer nach oben geöffneten Parabel entspricht (da $d_k^T A d_k \ge 0$).
+Somit ist es möglich ein klares Minimum zu finden, indem wir die Gleichung nach $\alpha$ ableiten und null setzen:
 \begin{equation}
 	\frac{\partial \Phi(x_k + \alpha d_k) }{\partial \alpha}
 	= 
-	x_k^T A d_k + \alpha  d_k^T A d_k - d_k^T b
+	\alpha  d_k^T A d_k + d_k^T\left( A x_k - b \right)
 	=
 	0 .
 \end{equation}
 Dies ergibt für $\alpha$ 
 \begin{equation}
 	\alpha
-	= 
-	\frac{d_k^T b - x_k^T A d_k}{d_k^T A d_k}
 	=
 	\frac{d_k^T \left(b - A x_k\right)}{d_k^T A d_k}.
 \end{equation}
@@ -123,9 +127,12 @@ Daraus lässt sich nun der nächste Punkt $x_{k+1}$ berechnen als
 Die neue Suchrichtung $d_{k+1}$ entspricht dem negativen Gradienten von $\Phi(x_{k+1})$.
 Dieser Gradient lässt sich berechnen als
 \begin{equation}
-	d_{k+1} = - \nabla \Phi(x_{k+1}) = - \nabla \frac{1}{2} x_{k+1}^T A x_{k+1} - x_{k+1}^T b = -(Ax_{k+1} - b) = b - Ax_{k+1}.
+	d_{k+1} = - \nabla \Phi(x_{k+1}) = - \nabla \left( \frac{1}{2} x_{k+1}^T A x_{k+1} - x_{k+1}^T b \right) = -(Ax_{k+1} - b) = b - Ax_{k+1},
 \end{equation}
-Somit ist die neue Abstiegsrichtung identisch zum neuen Residuum $r_{k+1}$.
+Wobei zur Berechnung der quadratischen Ableitung Lemma \ref{buch:qm:lemma:gradsquare} zur Anwendung kommt.
+\begin{beobachtung} \label{cg:beob:residuum}
+	Somit ist die neue Abstiegsrichtung identisch zum neuen Residuum $r_{k+1}$.
+\end{beobachtung}
 
 \subsection{Probleme beim Gradient Descent}
 Mit den hier hergeleiteten Resultaten kann eine approximative Lösung gefunden werden.
@@ -135,3 +142,53 @@ Die Konvergenz ist also in diesem Fall sehr langsam, die exakte Lösung wird nie
 Falls die Niveaulinien allerdings eher rund sind, erhöht sich die Konvergenzgeschwindigkeit.
 
 Diese Probleme werden mit der Erweiterung zum CG-Algorithmus behoben.
+
+\subsection{Beispiel zur Motivation der $A$-Orthogonalität} \label{cg:subsec:aortho}
+Das folgende Beispiel soll ausgehend von Gradient Descent die Motivation liefern, weshalb im CG-Algorithmus die $A$-Orthogonalität wichtig ist.
+Unter $A$-Orthogonalität ($\perp_A$) zweier Vektoren versteht man, dass deren verallgemeinertes Skalarprodukt zu $A$ verschwindet:
+\begin{equation}
+	a \perp_A b \Longrightarrow a^T A b = \langle a , b \rangle_A = 0.
+\end{equation}
+Richtungen welche $A$-orthogonal stehen, werden auch konjugiert bezüglich $A$ genannt.
+Dies erklärt den Namen des CG-Verfahrens.
+Für das Beispiel definieren wir $A$, $b$, $x_1$ und berechnen $x_2$:
+\begin{align}\nonumber
+	A 	&= 		\begin{pmatrix}
+				4 & 0\\
+				0 & 9 
+				\end{pmatrix} \nonumber\\
+	b 	&= 		\begin{pmatrix}
+				0\\
+				0
+				\end{pmatrix} \nonumber\\
+	x_1 &= 		\begin{pmatrix}
+				1\\
+				1
+				\end{pmatrix} \nonumber\\
+	r_1	&= 		b - A x_1 = - 	\begin{pmatrix}
+								4\\
+								9
+								\end{pmatrix} \nonumber\\
+	d_1 &= r_1 \nonumber\\
+	x_2 &= x_1 + \frac{\langle r_1 , r_1 \rangle}{\langle r_1 , r_1 \rangle_A} r_1 = 	\begin{pmatrix}
+																						0.51\\
+																						-0.1
+																						\end{pmatrix}. \\
+\end{align}
+Dieses Gleichungssystem hat den Nullpunkt als Lösung $x = \begin{pmatrix}0\\0\end{pmatrix}$.
+Um im nächsten Schritt eine Lösung finden zu können, müsste die nächste Abstiegsrichtung dem Vektor von $x_2$ zum Ursprung entsprechen.
+Wenn wir das $A$-Skalarprodukt von $-x_2$ und $d_1$ berechnen, verschwindet dieses:
+\begin{equation}
+	\langle -x_2 , d_1 \rangle_A = 	-x_2^T A d_1 = 
+		\begin{pmatrix} 0.51 & -0.1 \end{pmatrix} 
+		\begin{pmatrix} 4 & 0\\
+						0 & 9 
+		\end{pmatrix} 
+		\begin{pmatrix} -4\\
+						-9 
+		\end{pmatrix} = 0 \nonumber
+\end{equation}
+was der $A$-Orthogonalität entspricht.
+Damit ist gezeigt, dass die optimale zweite Abstiegsrichtung $A$-orthogonal zur ersten Abstiegsrichtung wäre.
+Also ist $A$-Orthogonalität das entscheidende Konzept um dem CG-Algorithmus zu ermöglichen in $N$-Schritten eine exakte Lösung zu finden.
+Abbildung \ref{cg:abb:cg1} zeigt das Resultat einer solchen optimalen Wahl der zweiten Abstiegsrichtung.

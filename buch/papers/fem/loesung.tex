@@ -7,24 +7,33 @@
 \label{fem:section:loesung}}
 \rhead{Lösung}
 
-\subsection{Minimalproblem bilden}
+\subsection{Schritt 1 Minimalproblem bilden}
 Zuerst muss die DGL in ein äqualentes Minimalprobelm übersetzt werden in der Form
 
 Im Gegensatz zu den finiten Elementen im 1 dimensionalen Raum muss bei der Bildung der abgeschwächten Form bzw. in der Übersetzung in das Minimalproblem der Fakt des höheren Dimension mitberücksichtigt werden. Daher wird anstatt der Form für den 1 dimensionalen Fall
 
 \begin{equation}
-			\int_0^1 u \textcolor{red}{'} (x)^2 + \lambda u(x)^2 dx
+			\int_0^1 u \textcolor{red}{'} (x)^2 - \lambda u(x)^2 dx dy
 			\label{fem:Minimal1D}
 \end{equation}
 
 die mehrdimensionale Form mit dem Laplace Operator verwendet
 
 \begin{equation}
-			\int_{\Omega} (\textcolor{red}{\nabla} u)^2 + \lambda u^2 dx
+			\int_{\Omega} (\textcolor{red}{\nabla} u)^2 - \lambda u^2 dx dy
 			\label{fem:Minimal2D}
 \end{equation}
 
-Wie zu erkennen ist, wird die Ableitung im 1 Dimensionalen durch einen Laplace Operator ersetzt in der Anwendung in der Ebene.
+Wie zu erkennen ist, wird die Ableitung im 1 Dimensionalen durch einen Laplace Operator ersetzt (in der Anwendung in der Ebene. oder im mehrdimensinalen Fall).
+
+Der Integrationsterm \ref{fem:Minimal2D} wird gemäss der Summenregel in 2 Terme zerlegt nämlich 
+
+\begin{equation}
+			\int_{\Omega} (\nabla u)^2 dn dy - \lambda \int_{\Omega} u^2 dx \, dy
+			\label{fem:Minimal2D2Term}
+\end{equation}
+
+Nun ist die Bildung des MInimalproblems abgeschlossen. In einem nächsten Schritt sollen je nach Ausgangslage, gewisse Vorbereitungen getroffen werden in im folgenden Abschnitt erläutert werden.
 
 \subsection{Vorbereitung}
 
@@ -60,66 +69,199 @@ auf das gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 über
 
 
 
-\subsection{Ansatzfunktionen wählen}
+\subsection{ 2. Ansatzfunktionen auf Lösung approximieren}
 
-Als Ansatzfunktionen stehen diverse Standard- Funktionen in der Ebene zur Verfügung. Sie reichen von einfacheren linearen Termen bishinzu quadratischen. Es kann in der ebene sowohl mit Dreicecken als auch mit Rechtecken gearbeitet werden. Die Wahl der Ansatzfunktionen bzw. der Flächen- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet.
+Als Ansatzfunktionen stehen diverse Standard- Funktionen in der Ebene zur Verfügung. Sie reichen von einfacheren linearen Termen bishinzu quadratischen oder noch höheren Funktions- Ordnungen. Als Standardverfahren in der Ebene haben sich Flächenelement wie Dreicecken oder Parallelogrammebewährt. Die Wahl der  der Flächen- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
 
-In einem ersten Schritt wird die lineare Ansatzfunktionen mit Einheitsdreiecken angewendet.
+Die Wahl der Art der Approximationsfunktion wie linear oder quadratisch wird in xXx behandelt.
+
+Um möglichst einfach darzustellen, wie das Verfahren der Finiten Elemente vonstatten geht, wurde auf eine einfache Approximation mit Einheitsdreiecken und einem linearen Ansatz gewählt. 
 
 
-\subsubsection{linearer Ansatzfunktion mit Dreiecken
+\subsubsection{Schritt 2 Aproximieren mit linearer Ansatzfunktion und Einheisdreiecken
 \label{fem:subsection:bonorum}}
 
-Die lineare Ansatzfunktion wir gemäss folgender Formel angewendet bzw verwendet.
+Die lineare Ansatzfunktion hat die folgende Form
 
 \begin{equation}
 u(x,y) = c_1 + c_2x + c_3y
 \label{fem:equationSchwarzLinear}
 \end{equation}
 
-Die Formel xXx kann einfach in das Minimalproblem xXx eingesetzt werden.
+Die Ansatzfunktion \ref{fem:equationSchwarzLinear} kann somit direkt in das Minimalproblem \ref{fem:Minimal2D} eingesetzt werden. Ziel ist es, dass die unbekannten Koeffizienten $c_1, c_2 und c_3$ anhand dieses Verfahrens bestimmt werden.
 
-Das Minimalproblem beinhaltet jedoch noch nicht fir Formfunktion. Diese wird in das Gebietsintegral des Minimalproblem eingesetzt sprich $\int_{\Omega}$ wird durch das folgende Einheitsdreieck Flächenelement ersetzt.
+Das Minimalproblem beinhaltet jedoch noch nicht die Formfunktion des Flächenelements. Diese wird in das Gebietsintegral des Minimalproblem eingesetzt sprich $\int_{\Omega}$ wird durch das folgende Flächenelement bzw. Flächenintegral ersetzt. Wie bereits ankeündigt wird das Einheitsdreieck für dieses Beispiel verwendet.
 
 \begin{equation}
-\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} f(x,y) dx dy
+\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} f(x,y) \, dx\,dy
 \label{fem:FlaecheDreieck}
 \end{equation}
 
-Das Einsetzung des linearen Ansatzes und des gewählten Flächenelements haben dann die Form
+Schlussendlich ergibt das Einsatzen der Ansatzfunktion und des Flächenintegrals dann folgenden Ausdruck.
 
 \begin{equation}
-\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} c_1 + c_2x + c_3y dx dy
+\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} c_1 + c_2x + c_3y \, dx \, dy
 \label{fem:MinimalproblemElement}
 \end{equation}
 
-Wichtig zu verstehen ist, dass dieses Minimalproblem auf jedes Flächenelement angewendet wird. Als Beispiel kann vorgestellt werden, dass wenn ein Dreieck mit 2 Dreiecken aproxximiert wird, das Minimalproblem \ref{fem:MinimalproblemElement} auf jedes der beiden Dreiecke angewendet wird.
+Wichtig zu verstehen ist, dass dieses Minimalproblem bzw. der Ausdruck \ref{fem:MinimalproblemElement} auf jedes Flächenelement angewendet wird. Sprich jedes Element hat einn zugehöriges Minimalproblems. Als Beispiel kann vorgestellt werden, dass wenn ein Rechteck mit 2 Dreiecken aproximiert wird, das Minimalproblem \ref{fem:MinimalproblemElement} auf jedes der beiden Dreiecke angewendet wird. Je feiner die Auflösung, desto grösser das Gleichungs- System das Schluss endlich gelöst werden muss.
 
-\subsubsection{linearer Ansatzfunktion mit Parallelogramm
-\label{fem:subsection:lineParallel}}
+Nun kann der erste Teil der Berechnung beginnen. Die partielle Ableitung nach dergewählten linearen Funktion $f(u)$ erigbt das Resultat
+
+\begin{equation}
+	\nabla u = 	
+	\left[ \begin{array}{r}
+	c_2  \\
+	c_3 \\
+	\end{array}\right]
+	\label{fem:equationSchwarzquadratischP}
+\end{equation} 
+
+\subsubsection{Gleichungssystem aufstellen }
+
+Für jedes Flächenelement gilt die Gleichung \ref{fem:MinimalproblemElement}. Nun müssen alle diese Elemente in eine Matrix umgeschrieben werden die sich wie folgt zusammensetzen lässt.
+
+\begin{equation}
+			\underbrace{ \int_{\Omega} (\nabla u)^2 dx \, dy} \, -  \, \underbrace{\lambda \int_{\Omega} u^2 dx \,dy}
+			\label{fem:Minimal2TermLinAlg}
+\end{equation}
+
+
+\begin{equation}
+			c^t Ac \, - \, \lambda c^t Bc
+			\label{fem:Minimal2LinAlg}
+\end{equation}
+
+Die Matrix A wird gebildet durch die Teilmatrizen eines jeden Flächenelements. Die Teilmatrix eines Flächenelements besteht  aus dem Integgrale des 1. Terms von \ref{fem:Minimal2TermLinAlg} 
+
+\begin{equation}
+			\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} \left( \begin{array}{c} c_2 \\ c_3\\	
+\end{array} \right)^2 dx \, dy
+			\label{fem:Minimal2LinAlgA}
+\end{equation}
+
+was dann zu der entsrechenden Teilmatrix eines Dreiecks führt
+
+\begin{equation}
+	\left( \begin{array}{cc}
+	c_2^2 \int_{\Omega} 1 dx \, dy & 0  \\ 
+	0 & c_3^2 \int_{\Omega} 1 dx \, dy  \\
+	\end{array}\right)
+	\label{fem:TeilmatrixA}
+\end{equation}
+
+und wird dann in die Matrix A eingefügt bzw. zusammengefasst, dass  somti sämtliche Teilmatrizen aller Flächenelemente in der Matrix A vorhanden sind.
+
+\begin{equation}
+ A = \begin{pmatrix} 0 & 0 & \hdotsfor{4} & 0 \\
+	0 & \textcolor{green}{ c_2^2 \int_{\Omega} 1 dx \, dy }& \vdots & 0 & \vdots & & \vdots \\
+	\vdots & \vdots & \textcolor{green}{c_3^2 \int_{\Omega} 1 dx \, dy }& 0 & \vdots  & & \\
+	\vdots & \vdots & 0 & \ddots & \textcolor{red}{ c_2^2 \int_{\Omega} 1 dx \, dy }& & \\
+	\vdots & \vdots & 0 & 0 & 0 & \textcolor{red}{c_3^2 \int_{\Omega} 1 dx \, dy} & \\
+	0 & \hdotsfor{2} & 0 &  & & &  \ddots  \\
+	\end{pmatrix}
+	\label{fem:MatrixA}
+\end{equation}
+
+Eine jede Farbe soll veranschaulichen, dass dies ein Dreieck- Flächenelement darstellt.\\
+Die Matrix A ist nun bekannt. Es fehlt jedoch noch die Matrix B um das Gleichungs-System zu komplettieren. Die Matrix B wird nun wie folgt definiert. Um die folgende Form zu erhalten muss lediglich der rechte Term von \ref{fem:Minimal2D2Term} für die einzelne Koeffizienten berechnet werden was dann den folgenden Ausdruck ergibt
+
+\begin{equation}
+			\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} \textcolor{cyan}{c_0^2} + \textcolor{blue}{c_1^2 x^2} + \textcolor{red}{c_2^2 y^2} + \textcolor{green}{2 c_0 c_1 x} + \textcolor{orange}{2 c_0 c_2 y} +\textcolor{purple}{ 2 c_1 c_2 xy} \, dx \, dy
+			\label{fem:Minimal2LinAlgB}
+\end{equation}
+
+Nun soll dies wieder in die Matrix- Schreibweise übertragen werden was dann eine Teilmatrix B eines Dreickes entspricht
+
+\begin{equation}
+ B = \left( \begin{array}{ccc}
+	\textcolor{cyan}{- \lambda \int_{\Omega} 1} &  \textcolor{green}{- \lambda \int_{\Omega} x} & \textcolor{orange}{- \lambda \int_{\Omega} y}  \\
+	\textcolor{green}{- \lambda \int_{\Omega}x} & \textcolor{blue}{- \lambda \int_{\Omega} x^2} &  \textcolor{purple}{- \lambda \int_{\Omega} xy} \\
+	\textcolor{orange}{- \lambda \int_{\Omega} y} & \textcolor{purple}{- \lambda \int_{\Omega} xy} & \textcolor{red}{ - \lambda \int_{\Omega} y^2} \\
+	\end{array}\right)
+	\label{fem:MatrixB}
+\end{equation}
+
+Diese Teilmatrix B eines jeden Flächenelements wird dann wieder analog der Matrix A in eine Matrix B eingesetzt, so dass diese dann alle Teilmatrizen aller Dreieck-  Flächenstücke enthält.
+
+
+\subsection{Schritt 3 Minimalprinizip anwenden auf Approximation}
+
+Nun folgt der nächste Schritt nämlich das Minimieren des quadratischen Ausdrucks
+\begin{equation}
+	c^t Ac - c^t \lambda Bc
+\end{equation}
+
+Was so viel bedeutet wie nach den Koeffizienten $c_k$ ableiten was für den  für 1. Term
+\begin{equation}
+	\nabla c^t Ac = 2Ac
+\end{equation}
+
+ergibt und für den 2. Term den Ausdruck
+
+\begin{equation}
+	\nabla c^t \lambda Bc = 2\lambda Bc
+\end{equation}
+
+Diese Ableitungen erscheinen nicht gerade ersichtlich insbesondere der Faktor 2. 
+
+Das ableiten im 1- Dimensionalen Raum ergibt nach der klassichen Analysis
+
+\begin{equation}
+	\frac{d}{dx} ax^2 = 2ax
+\end{equation}
+
+Um die Ableitung in einem n-Dimensionalen, quadratischen Matrix vorzunehmen muss diese erst in einen Summennotation umgeschrieben werden wie folgt
+
+\begin{equation}
+			x^tAx, x \in \mathbb{R}^n
+\end{equation}
+
+Zu erkennen ist, dass nach der Ableitung von x die Produkt- Regel zum tragen kommt. 
+
+\begin{equation}
+	\sum_{i,j} \frac{\partial x_i}{\partial x_n} a_{ij} x_j + \sum_{i,j} x_i a_{ij} \frac{\partial x_j}{\partial x_n}
+\end{equation}
+
+Dies kann vereinfacht werden anhand der folgenden Kürzungs- Berechnung:
+
+\begin{equation}
+	\sum_{j} a_{nj} x_j + \sum_{i,j} x_i a_{in} = \sum_{j} a_nj x_j + \sum_{\textcolor{red}{\not{j}} i} a_{n \textcolor{red}{\not{j}} i} x_{\textcolor{red}{\not{j}} i} = 2(Ax)_n
+\end{equation}
+
+\subsection{Schritt 5 Gleichungssystem aufstellen}
+
+Nun kann das Gleichungssystem aufgestellt werden.
+\begin{equation}
+	2Ac - 2\lambda Bc = 0 \Rightarrow (A-\lambda B)c = 0
+	\label{fem:GLLang}
+\end{equation}
+
+Durch das umschreiben der Gleichung \ref{fem:GLLang} ist ersichtlich, dass es sich um ein Eigenwertproblem für die Matrix $B^{-1}A$ handelt.
+
+\begin{equation}
+		B^{-1}Ac = \lambda c
+ \end{equation}
+ 
+Dieses kann z.B. durch das Jacobi Verfahren, beschrieben im Kapitel 6.4 gelöst werden.
+ 
+\subsection{Andere lineare Ansatzfunktionen
+\label{fem:subsection:Ansatzfunktionen}}
+
+Neben dem durchgerechneten Beispiel des Einheitsdreiecks kann auch eine andere Formfunktion verwendet werden. Die folgende Formfunktion gilt für den linearen Ansatz eines Parallelogramms.
 
 \begin{equation}
 	u(x,y) = c_1 + c_2 x + c_3 y + c_4 xy
 \end{equation} 
 
 
-%\begin{equation}
-%c_i= \int_{\triangle i} (\nabla u)^2 +\lambda u^2 dx
-%\label{fem:equation3}
-%\end{equation}
-
-%oder\\
-%mit einem Allgemeinen Dreieck:
-
-%\begin{equation}
-%N(x,y) = \int_a^b\int_c^{d-(d-c)(x-a)/(b-a)} u(x,y) dxdy
-%\label{fem:Dreieck_alg}
-%\end{equation}
-
-Gemäss Abschnitt 2.2.2 Buch von Schwarz sind die Werte entlang einer Seite eines Dreiecks- Elements gleich  der angrenzenden Linie eines anderen Dreiecks, wenn die Eckpunktwerte gleich sind. Die Frage Warum soll dass so sein? Weil Funktion $h(x)$ bei jedem Element gleich ist sowie es sich bei $h(x)$ hierbei um eine Lineare Funktion handelt.
-
 \subsubsection{Quadratischer Ansatz
 \label{fem:subsection:bonorum}}
+
+Der Vorteil des quadratischen Ansatzes liegt darin, dass die Freiheitsgeraden erhöht werden. Somit kann unter umständen eine bessere Approximation erreicht werden.
+Zu beachten ist allerdings, dass diese die Matrix enorm aufblasen bzw. vergrössern und dann mehr Ressourcen in Anspruch nehmen, um die Matrix bzw. die Eigen werte zu berechnen.
+
+In der Gleichung \ref{fem:equationSchwarzquadratischD}  ist der Ansatz für das Einheitsdreieck gegeben. Und in der Gleichung \ref{fem:equationSchwarzquadratischP} der quadratische Ansatz für ein Einheitsparallelogramm.
 
 \begin{equation}
 	u(x,y) = c_1 + c_2 x + c_3 y + c_4 x^2 + c_5 xy + c_6 y^2
@@ -131,16 +273,5 @@ Gemäss Abschnitt 2.2.2 Buch von Schwarz sind die Werte entlang einer Seite eine
 	\label{fem:equationSchwarzquadratischP}
 \end{equation} 
 
-\subsection{Aufstellung der Matrix
-\label{fem:subsection:goon}}
-
-\begin{equation}
-	\nabla u = 	
-	\left[ \begin{array}{r}
-	\frac{\partial x}{\partial u}  \\
-	\frac{\partial x}{\partial y}   \\
-	\end{array}\right]
-	\label{fem:equationSchwarzquadratischP}
-\end{equation} 
 
 
