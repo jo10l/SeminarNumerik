@@ -40,23 +40,24 @@ Dies wird mit dem CG-Algorithmus erreicht.
 Wie in \ref{cg:subsec:aortho} anhand eines Beispiels gezeigt wurde, ist es sinnvoll dazu jeweils $A$-orthogonalisierte Richtungen verwendet werden.
 Kombiniert mit der optimalen Abstiegslänge aus \ref{cg:subsection:schrittweite} führt dies dazu, dass genau $N$ Schritte zur exakten Lösung führen.
 Wie beim Abstieg entlang der Koordinatenachsen werden also nur neue Richtungen $d_{k+1}$ verwendet, welche $A$-orthogonal auf allen bisherigen Richtungen stehen
-\begin{equation} 
+\begin{equation}
 	d_{k+1}  \perp_A  d_k  \perp_A  d_{k-1}  \dots \perp_A  d_0.
 \end{equation}
-Jetzt stellt sich also noch die Frage, wie diese orthogonalen Richtungen zu wählen sind um eine schnelle Konvergenz zu erreichen.
-Es bietet sich wiederum der negative Gradient $r_{k+1} = b - Ax_{k+1}$ (Residuum) an, welcher danach mithilfe eines Orthogonalisierungsverfahrens orthogonalisiert werden kann.
+Jetzt stellt sich also noch die Frage, wie diese $A$-orthogonalen Richtungen zu wählen sind um eine schnelle Konvergenz zu erreichen.
+Es bietet sich wiederum der negative Gradient $r_{k+1} = b - Ax_{k+1}$ (Residuum, vgl. Beobachtung \ref{cg:beob:residuum}) an, welcher danach mithilfe eines Orthogonalisierungsverfahrens $A$-orthogonalisiert werden kann.
 Der negative Gradient entspricht per Definition der lokal optimalen Richtung um schnell abzusteigen und ist somit die beste Wahl.
 
-Wir verwenden das Gram-Schmidt-Orthogonalisierungsverfahren um den Gradienten auf den bisherigen Richtungen zu orthogonalisieren.
+Wir verwenden das Gram-Schmidt-Orthogonalisierungsverfahren um den Gradienten auf den bisherigen Richtungen zu $A$-orthogonalisieren.
 Dabei wollen wir orthogonal in Bezug auf $A$ sein, weshalb das verallgemeinerte Skalarprodukt $\langle \dots \rangle_A$ verwendet wird 
 \begin{equation}\label{cg:eq:gram}
 	d_{k+1} 
 	= 
 	r_{k+1} - \sum_{i=0}^{k} \frac{\langle d_i , r_{k+1} \rangle_A}{\langle d_i , d_i \rangle_A} d_i.
 \end{equation}
-Diese vielen Orthogonalisierungen sind rechenintensiv und würden die Performance des CG-Algorithmus beeinträchtigen.
+Diese vielen $A$-Skalarprodukte sind rechenintensiv und würden die Performance des CG-Algorithmus beeinträchtigen.
 Im nächsten Abschnitt wird gezeigt, dass es genügt das Orthogonalisierungsverfahren auf der letzten Abstiegsrichtung durchzuführen.
 Die neue Richtung ist dann automatisch auch auf allen vorherigen Richtungen orthogonal.
+In der Summe von \ref{cg:eq:gramram} wird daher nur der letzte Term benötigt.
 Dies führt zur folgenden, vereinfachten Berechnung
 \begin{equation} 
 	d_{k+1}
@@ -64,7 +65,7 @@ Dies führt zur folgenden, vereinfachten Berechnung
 	r_{k+1} - \frac{\langle d_k , r_{k+1} \rangle_A}{\langle d_k , d_k \rangle_A} d_k.
 \end{equation}
 Abbildung \ref{cg:abb:cg1} zeigt wie in einem zweidimensionalen Problem in 2 Schritten die exakte Lösung gefunden wird und schon nach Schritt 1 eine möglichst gute Approximation erreicht wird.
-Die orthogonalisierungen sind besser im dreidimensionalen Beispiel von Abbildung \ref{cg:abb:cg2} zu sehen.
+Die $A$-orthogonalisierungen sind besser im dreidimensionalen Beispiel von Abbildung \ref{cg:abb:cg2} zu sehen.
 \begin{figure}	
 	\centering
 	\includegraphics{papers/cg/images/descent-3}
@@ -139,6 +140,7 @@ Wir beginnen damit den Algorithmus für die Berechnungen von $d_k$ aufzuschreibe
 	d_1 &= r_1 \nonumber\\
 	d_2	&= r_2 - a_2 d_1\nonumber\\
 	d_3	&= r_3 - a_{31} d_1 - a_{32} d_2\nonumber\\
+	&\shortvdotswithin{=} \nonumber
 	d_k &= r_k - \sum_{i=1}^{k-1} a_{ki} d_i.
 \end{align}
 Durch Umstellen nach $r_k$, sieht man dass $r_k$ aus $\langle d1, d2, \dots, d_k \rangle$ linear kombiniert werden kann.
@@ -152,9 +154,10 @@ Das zweite wäre die Annahme, dass sich die Residuen als Linearkombinationen von
 \begin{proof}[Beweis]
 Wir beginnen wiederum damit, den Algorithmus aufzuschreiben (diesmal für $r_k$) und erhalten
 \begin{align}
-	r_1 &= -Ax_1 \\
+	r_1 &= -Ax_1 \nonumber\\
 	r_2	&= -Ax_2 = -A(x_1-r_1) = Ar_1 - r_1 \nonumber\\
 	r_3 &= -Ax_3 = -A(x_2-r_2) = Ar_2 - r_2 \nonumber\\
+	&\shortvdotswithin{=} \nonumber
 	r_k &= Ar_{k-1} - r_{k-1} \in \langle r_1, Ar_1, \dots, A^{k-1}r_1 \rangle.
 \end{align}
 womit diese zweite Annahme bereits bewiesen wäre.

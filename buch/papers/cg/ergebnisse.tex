@@ -2,8 +2,8 @@
 \label{cg:section:ergebnisse}
 \rhead{Ergebnisse}
 
-In diesem Abschnitt werden kurz die Ergebnisse der Implementation erwähnt.
-Die Implementation wurde mit Python erstellt und ermöglicht eine Konvergenzuntersuchung.
+In diesem Abschnitt werden kurz die Ergebnisse der Implementation dargestellt.
+Die Implementation wurde mit Python erstellt und ermöglicht eine Konvergenzuntersuchung (Code ist zu finden in \cite{cg:online:code}).
 Es zeigte sich, dass die Konvergenzgeschwindigkeit stark von der Konditionierung von $A$ abhängt.
 Die Konditionierung wird mit der Konditionszahl $\kappa_A$ gemessen, welche das Verhältnis vom grössten zum kleinsten Eigenwert von $A$ bezeichnet.
 Je grösser $\kappa_A$ ist, desto schwerer ist ein Problem zu lösen.
@@ -18,7 +18,7 @@ Also haben wir einen starken Einfluss der Konditionierung auf die Konvergenzgesc
 Falls schnelle Konvergenz verlangt wird, kann sich somit eine Präkonditionierung lohnen, welche $\kappa_A$ verbessern würde.
 
 Zum Abschluss zeigt Abbildung \ref{cg:abb:no_conv} was passiert wenn $A$ nicht positiv definit ist.
-Das aufgestellte Minimierungsproblem von \ref{cg:subsection:Minimierungsproblem} stimmt dadurch nicht und der CG-Algorithmus scheitert.
+Das in \ref{cg:subsection:Minimierungsproblem} aufgestellte Minimierungsproblem stimmt dadurch nicht und der CG-Algorithmus scheitert.
 Dies äussert sich durch starke Oszillation bei hohem absolutem Fehler.
 
 \begin{figure}	

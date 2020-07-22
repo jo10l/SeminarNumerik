@@ -5,17 +5,10 @@
 %
 \section{Einleitung\label{fem:section:einleitung}}
 \rhead{Einleitung}
-Finite Elemente in der Ebene bzw. Finite Elemente Methode (FEM) mit einer höheren Ordnung als 1 weisen ein paar komplexere Vorgehen auf, als diejenige in der ersten Dimension. Wie in den anderen Kapiteln des Buches ist auch bei der Finiten Element Methode das Ziel ein mathematisches Konstrukt so zurecht zu legen, dass die DGL durch eine Lineares Gleichungssystem so approximiert wird, damit die Berechnung von einem "leistungsfähigem" Rechner durchgeführt werden kann. Das Kochrezept für das Vorgehen bei der Finiten Element Methode in der Ebene ist analog zur FEM im 1 Dimensionalen Raum vom Konzept hergesehen. Die zusätzlichen komplexeren Regeln im mehrdimensionalen Fall, welche beachtet werden müssen, waren in der Dimension 1 einfach gegeben oder sogar geschenkt. Der Vorteil des Verstehens im 2 Dimensionalen Fall bringt den Vorteil mit sich, dass die Vorgehensweise zur FEM im 3 Dimensionalen Raum identisch ist. Dies gilt auch für höhere FEM Ordnungen. Dieses  "Buch/Kapitel" beschränkt sich auf die 2. Ordnung bzw. FEM in der Ebene. Zu erwähnen ist noch für den Leser, dass das Kochrezept nicht einfach anwenden Formeln heisst wie es z.B in der Linearen Algebra der Fall ist :) . Es handelt sich um Grund- Konzepte, welche Überlegungen erfordern, die in diesem Kapitel aufgezeigt werden.\\
+Finite Elemente in der Ebene bzw. Finite Elemente Methode (FEM) in einer höheren Dimension als 1 haben ein paar zusätzliche Regeln die beachtet werden müssen. Die zweidimensionale Elemente werden benötigt stationäre oder instationäre Feldprobleme zu behandeln wie z.B. die Simulation des magnetischen Feldlinien. In diesem Kapitel finden sie die Idee bzw. die Beschreibung dieser zusätzlichen Reglen. Das Kochrezept für das Vorgehen bei den Finiten Element Methode in der Ebene ist analog zur FEM im 1 Dimensionalen Raum vom Konzept hergesehen. Die zusätzlichen komplexeren Regeln oder Ansprüche im mehrdimensionalen Fall, welche beachtet werden müssen, waren in der Dimension 1einfach gegeben oder sogar geschenkt. Der Vorteil des Verstehens im 2 Dimensionalen Fall bringt den Vorteil mit sich, dass die Vorgehensweise zur FEM im 3 Dimensionalen Raum identisch ist. Dies gilt auch für noch höhere FEM Dimensionen. Dieses  "Buch/Kapitel" beschränkt sich auf die 2. Ordnung bzw. FEM in der Ebene. Es handelt sich um Grund- Konzepte, welche Überlegungen erfordern, die in diesem Kapitel aufgezeigt werden.\\
 
-Zuerst wird das nochmals das Grundkonzept oder die Idee der Finiten Elemente Methode erläutert.
+Das Grundkonzept der Finiten Element Methode ist im Kapitel 7 beschrieben, falls der Leser sich nochmals eine Übersicht zu den Finiten Element verschaffen möchte.
 
-\begin{enumerate}
-	\item Differentialgleichungssystem aufstellen und in eine abgeschwächte Form bringen wie z.B. DGL in ein äqualentes minimalproblem umsetzen.
-	\item Ansatzfunktionen für Lösung finden bzw. die Lösungsfunktion approximieren
-	\item Minimalprinzip auf die Approximation anwenden durch Multiplikation mit den Wichtungsfunktionen
-	\item Lineare Gleichungen für die Koeffizienten aufstellen durch Integration 
-	\item Das Gleichungssystem lösen und dadurch die Koeffizienten der Approximation bestimmen
-\end{enumerate}
 
-In den nächsten folgenden Zeilen soll drauf eingeangen werden, wie die einzelnen Schritte umgesetzt werden sollen und insbesondere die jeweilige Nutzung dargestellt werden.
+In den nächsten folgenden Zeilen soll drauf eingeangen werden, wie die einzelnen Schritte umgesetzt werden in der Ebene und insbesondere die jeweilige Nutzung dargestellt werden.
 
