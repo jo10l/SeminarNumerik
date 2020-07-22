@@ -157,7 +157,7 @@ und ein wenig umgeformt
     \delta_{ij} \lambda_{1i} + 
     ( \lambda_{0i} - \lambda_{0j} )
     \bm v_{0j}^T  \bm v_{0i} .
-\end{equation}
+\end{equation} \label{ew:eq:f}
 
 Aus dieser Gleichung können mittels Koeffizientenvergleich zwei nützliche Formeln extrahiert werden:
 \begin{alignat}{3}
@@ -242,10 +242,8 @@ Wenn zwei Eigenwerte von $\bm H_0$ gleich lange sind, entsteht eine Division dur
     \, \bm v_{0j}
 \end{equation*}
 Die gleichen Eigenwerte haben zur folge, dass die dazugehörigen Eigenvektoren nicht mehr eindeutig definiert sind, sondern irgendwo orthogonal auf einer Hyperebene liegen können.
-Es gibt also keinen Eigenvektor mehr sondern einen Eigenraum.
+Es gibt also keinen Eigenvektor mehr sondern einen Eigenraum. %TODO too much sondern
 Mehrfache Eigenwerte nennt man entartet.
-
-%TODO illustrate
 
 Bei einer numerischen Berechnung der Eigenvektoren, wie es zum Beispiel MATLAB oder NumPy macht, wird ein Eigenvektor in diesem Eigenraum gewählt..
 
@@ -333,31 +331,49 @@ Als Beispiel, wenn $\varepsilon = 1$,
     \end{pmatrix}
     \}.
 \end{align}
-Die Dimensionen der Eigenvektoren, die einen Eigenraum bilden sind mit $?$ gekennzeichnet.
+Die Dimensionen der Eigenvektoren, die einen Eigenraum bilden sind mit $?$ gekennzeichnet. %TODO illustrate
 
 
-Kein Problem, wenn Zähler auch Null ist %TODO not true since 0/0.. show with previous equation
+Um das Problem mit der Division durch Null in formel \ref{ew:eq:f2} in den Griff zu kriegen, müssen wir nochmals eine Formel zurück und Formel \label{ew:eq:f} für $i \neq j$ und $\lambda_{0i} = \lambda_{0j}$ anschauen:
+Dabei erhalten wir
+\begin{align}
+    \bm v_{0j}^T \bm H_1 \bm v_{0i}
+    &=
+    \delta_{ij} \lambda_{1i} + 
+    ( \lambda_{0i} - \lambda_{0j} )
+    \bm v_{0j}^T  \bm v_{0i}
+    \\
+    \bm v_{0j}^T \bm H_1 \bm v_{0i}
+    &=
+    0 +
+    0
+    \bm v_{0j}^T  \bm v_{0i}
+    = 0.
+\end{align}
+Falls $i, j$ entartet sind, geht die Gleichung auf. Wir können also Formel ? auch für entartete Eigenwerte brauchen, falls %TODO ref
+\begin{equation}
+    \bm v_{0j}^T \bm H_1 \bm v_{0i} = 0 \quad \forall \quad i,j \quad entartet.
+\end{equation} \label{ew:eq:condition-degenerated}
+Im Bruch mit division durch Null haben wir nun $\frac{0}{0}$.
 
-Falls entartet, wähle $\bm v_{0i}$, so dass
-\begin{equation*}
-    \GN{\bm v_{0j}^T \bm H_1 \bm v_{0i}} = 0 \quad \forall \quad i,j \quad entartet
-\end{equation*}
-
+Damit \ref{ew:eq:condition-degenerated} stimmt, müssen die Eigenvektoren $\bm v_{0i}$ so gewählt werden, dass sie %TODO ??????
 
 Bilde $\bm H_1$ auf Basis von entarteten, zufällig gewählten Eigenvektoren ab
 \begin{equation*}
     \bm H^\prime = \bm v_{0i}^T \bm H_1 \bm v_{0i} \quad \forall \quad i \quad entartet
 \end{equation*}
-Dadurch erhalten wir eine kleinere Matrix $\bm H^\prime$.
-
-Löse kleines Eigenwertproblem (alle $\lambda_i$ sind noch bekannt)
+Dadurch erhalten wir eine kleinere Matrix $\bm H^\prime$, welche nur die dimensionen des Eigenraums hat.
+Von dieser müssen wir nun die Eigenvektoren finden mit dem Eigenwertproblem
 \begin{equation*}
     \bm H^\prime \bm v_{i}^\prime = \lambda_{i} \bm v_i^\prime \quad \forall \quad i \quad entartet
 \end{equation*}
-Transformiere gefundene Eigenvektoren zurück und verwende diese als die neuen, korrekten Eigenvektoren
+Allerdings ist dieses problem einiges einfacher als das ursprüngliche Eigenwertproblem, da die Matrix viel kleiner ist, und die Eigenwerte $\lambda_i$ noch bekannt sind.
+Die gefundenen Eigenvektoren müssen nun zurücktransformiert werden und anstelle der zufälligen Vektoren verwendet werden.
 \begin{equation*}
-    \bm v_{0i} \gets \bm v_{0i} \bm v_{i}^\prime  \quad \forall \quad i \quad entartet
+    \bm v_{0i} \gets \bm v_{0i} \bm v_{i}^\prime \quad \forall \quad i \quad entartet
 \end{equation*}
+
+%TODO wieso kann summand weggelassen werden?
 
 Zusammengefasst, auch für entartete $\lambda_0$ gilt somit
 \begin{align*}
