@@ -13,13 +13,12 @@ der Annäherung verbessern, indem man mehr Teilintervalle berechnet.
 Dabei werden mehr Stützstellen auf der $x$-Achse benötigt und mehr Funktionsauswertungen
 müssen berechnet werden.
 
-\noindent
 Die Wahl der Position und Anzahl Stützstellen stellt hierbei einer der beiden Freiheitsgrade
 in der Berechnung des Integrals dar.
 Der zweite Freiheitsgrad ist die Verwendung einer Gewichtung für eine spezifische Stützstelle.
 Das Hinzuziehen einer Gewichtung erlaubt es, in einem Teilintervall, 
 in dem die Annäherung stärkere Abweichungen zum eigentlichen Graphen hat, 
-diesen Fehler zu minimieren. 
+diese Abweichung zu minimieren. 
 
 
 \subsubsection{Beispiel: Integration einer Funktion mit der Trapezregel}
@@ -28,12 +27,12 @@ zeigt die Verbesserung der Genauigkeit unter Verwendung von mehr Stützstellen o
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[scale=0.6]{papers/quadratur/figures/GaussTrapez1}
+    \includegraphics[scale=0.7]{papers/quadratur/figures/GaussTrapez1}
     \caption{Integration mit der Trapezregel mit drei Stützstellen
     \label{quadratur:figure:trapez1}} 
 \end{figure}
 
-\noindent
+
 In der Grafik~\ref{quadratur:figure:trapez1} sieht man die Integration der Funktion $I = \int_{-1}^{1}\sqrt{(1-x^2)}\,dx$
 mit der Trapezregel mit drei Stützstellen an den Punkten $x=-1, x=0, x=1$.
 Die Funktion $I$ beschreibt hierbei einen Halbkreis um das Zentrum $x=0$, 
@@ -54,7 +53,7 @@ Man erhält die Fläche $1.2$ welche bereits etwas näher am tatsächlichen Resu
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[scale=0.6]{papers/quadratur/figures/GaussTrapez2}
+    \includegraphics[scale=0.7]{papers/quadratur/figures/GaussTrapez2}
     \caption{Integration mit der Trapezregel mit vier Stützstellen
     \label{quadratur:figure:trapez2}}  
 \end{figure}
@@ -63,15 +62,17 @@ Man erhält die Fläche $1.2$ welche bereits etwas näher am tatsächlichen Resu
 In der Grafik~\ref{quadratur:figure:trapez2} werden vier Stützstellen verwendet und man erhält zwei Teilintervalle mit 
 rechtwinkligen Dreiecken mit den Seitenlängen $l_{x}=0.6666, l_{y}=0.94281$ und einem Rechteck mit den Seitenlängen
 $l_{x}=0.6666, l_{y}=0.94281$. 
-Die Resultierende Fläche lässt sich mit der Formel $A= 2\cdot (l_{x} \cdot l_{y})$ berechnen 
+Die resultierende Fläche lässt sich mit der Formel $A= 2\cdot (l_{x} \cdot l_{y})$ berechnen 
 und man erhält das Resultat $A=1.2571$.
 Auch diese Annäherung weicht noch vom eingentlichen Resultat $\frac{\pi}{2} \approx 1.570796$ ab.
 
 \noindent
 Die Gauss-Quadratur basiert auf der Idee, dass die Stützstellen und deren Gewichtung so gewählt werden,
-dass das Resultat nun optimiert wird und möglichst genau berechnet werden kann.
+dass das Resultat optimiert wird und möglichst genau berechnet werden kann.
 Dieses Verfahren erlaubt es, ein Polynom vom Grad $n$ mit nur $\frac{n-1}{2}$
 Funktionsauswertungen exakt zu berechnen.
+\noindent
+Die Bedeutung dieser Eigenschaft wird im Abschnitt~\ref{quadratur:subsection:stützstellenberechnung} genauer beschrieben.
 
 \newpage
 
@@ -97,7 +98,7 @@ oder auch Gauss'sche Glockenkurve, wie in der Grafik~\ref{quadratur:figure:gauss
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[scale=0.6]{papers/quadratur/figures/GaussDistribution1}
+    \includegraphics[scale=0.7]{papers/quadratur/figures/GaussDistribution1}
     \caption{Darstellung der Normalverteilung mit $\sigma=0.25$ und $\mu=0$
     \label{quadratur:figure:gaussdistribution}}
 \end{figure}

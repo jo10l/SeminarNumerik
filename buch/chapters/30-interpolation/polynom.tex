@@ -297,11 +297,418 @@ wird die Berechnung instabil und der Fehler nimmt wieder zu.
 \end{figure}
 
 \subsubsection{Der Mittelwertsatz der Differentialrechnung}
+Der Satz von Rolle sagt etwas über die Nullstellen von der Ableitung
+einer differenzierbaren Funktion.
+Zwischen zwei Argumentwerten mit gleichem Funktionswert gibt es immer
+eine Nullstelle der Ableitung.
+Der Mittelwertsatz der Differentialrechnung verallgemeinert diese
+Aussage auf beliebige Werte.
 
-\subsubsection{Taylorreihe mit Restformel}
+\begin{figure}
+\centering
+\includegraphics{chapters/30-interpolation/figures/mittelwertsatz.pdf}
+\caption{Der Mittelwertsatz~\ref{buch:satz:mittelwertsatz} besagt, dass
+die Sekante des Graphen einer differenzierbaren Funktion immer eine
+Tangente mit der gleichen Steigung hat.
+Diese Eigenschaft kann man auch für eine beliebige ebene Kurven
+erwarten (rechts), dies ist der Inhalt des verallgemeinerten
+Mittelwertsatzes~\ref{buch:satz:vmittelwertsatz}.
+\label{buch:polynome:figure:mittelwertsatz}}
+\end{figure}
+
+\begin{satz}[Mittelwertsatz]
+\label{buch:satz:mittelwertsatz}
+Zu einer auf dem Intervall $[a,b]$ differenzierbaren Funktion $f(x)$ gibt
+es immer ein $\xi\in[a,b]$ mit
+\[
+f'(\xi) = \frac{f(b)-f(a)}{b-a}
+\]
+(Abbildung~\ref{buch:polynome:figure:mittelwertsatz}).
+\end{satz}
+
+\begin{proof}[Beweis]
+Man betrachtet die Funktion 
+\[
+g(x) = f(x) - \frac{f(b)-f(a)}{b-a}(x-a),
+\]
+sie hat an den Intervallenden die Werte
+\begin{align*}
+g(a) &= f(a) - \frac{f(b)-f(a)}{b-a}(a-a)=f(a),
+\\
+g(b) &= f(b) - \frac{f(b)-f(a)}{b-a}(b-a) = f(b) - \bigl(f(b)-f(a)\bigr) = f(a).
+\end{align*}
+Die Funktionswerte an den Intervallenden sind also gleich,
+nach dem Satz~\ref{buch:satz:rolle} von Rolle hat also
+die Ableitung $g'$ eine Nullstelle $\xi\in[a,b]$:
+\[
+g'(\xi) = f'(\xi) - \frac{f(b)-f(a)}{b-a} = 0
+\quad
+\Rightarrow
+\qquad
+f'(\xi) = \frac{f(b)-f(a)}{b-a}.
+\qedhere
+\]
+\end{proof}
+
+Die von Abbildung~\ref{buch:polynome:figure:mittelwertsatz} vermittelte
+Intuition lässt sich auch für beliebige parametrisierte Kurven
+$\gamma\colon[a,b]\to\mathbb R:\to\mapsto (x(t),y(t))$ in der Ebene
+verallgemeinern (Abbildung~\ref{buch:polynome:figure:mittelwertsatz} rechts).
+Sind die Punkte $A=(x(a),y(a))$ und $B=(y(a),y(b))$ verschieden,
+so dass die Richtung von $A$ nach $B$ wohldefiniert ist, dann erwarten
+wir einen Zwischenstelle $\xi$ mit einer Tangente mit derselben Richtung.
+
+\begin{satz}
+\label{buch:satz:mittelwertsatz2d}
+Sei $\gamma\colon[a,b]\to\mathbb R:t\mapsto (x(t),y(t))$ eine
+stetig differenzierbare ebene Kurve mit $|\dot{gamma}(t)|\ne 0$ für
+alle $t\in[a,b]$ und $A=\gamma(a)\ne\gamma(b)=B$.
+Dann gibt es ein $\xi\in[a,b]$ derart, dass $\dot{\gamma}(\xi)$ die gleiche
+Richtung hat wie $\overrightarrow{AB}$.
+\end{satz}
+
+\begin{proof}[Beweis]
+Zwei Vektoren haben die gleiche Richtung, wenn die Determinante
+mit den Vektoren als Spaltenvektoren verschwindet.
+Der Mittelpunkt der Strecke $AB$ ist
+$M=(x_M,y_M) = (\frac12(x(a)+x(b)),\frac12(y(a)+y(b)))$.
+Wir definieren die Funktion
+\[
+h(t)
+=
+\det(\overrightarrow{M\gamma(t)}, \overrightarrow{AB})
+=
+\biggl|
+\begin{matrix}
+x(t) - x_M & x(b)-x(a) \\
+y(t) - y_M & y(b)-y(a)
+\end{matrix}
+\biggr|
+\]
+Da die Strecken $AB$ und $MA$ bzw.~$MB$ gleich sind, ist an den
+Stellen $t=a$ und $t=b$ 
+\[
+h(a)
+=
+\det (\overrightarrow{MA},\overrightarrow{AB})
+= 0
+\qquad\text{and}\qquad
+h(b)
+=
+\det (\overrightarrow{MB},\overrightarrow{AB})
+=
+0.
+\]
+Nach dem Satz von Rolle muss es daher ein $\xi\in[a,b]$ geben mit
+\begin{equation}
+0
+=
+h'(\xi)
+=
+\det(
+\dot{\gamma}(\xi),
+\overrightarrow{AB}
+)
+=
+\biggl|
+\begin{matrix}
+x'(\xi) & x(b)-x(a) \\
+y'(\xi) & y(b)-y(a)
+\end{matrix}
+\biggr|,
+\label{buch:polynome:eqn:mittelwertsatz2d}
+\end{equation}
+was natürlich wieder bedeutet, dass die Tangente $\dot{\gamma}(\xi)$ 
+parallel ist zur Strecke $AB$.
+\end{proof}
+
+
+\begin{satz}[Verallgemeinerter Mittelwertsatz]
+\label{buch:satz:vmittelwertsatz}
+Sind $x(t)$ und $y(t)$ stetig differenzierbare Funktionen auf dem Interval
+$[a,b]$ derart, dass $x(a)\ne x(b)$ oder $y(a)\ne x(b)$ und ausserdem
+$y'(t)\ne 0$ für $t\in[a,b]$.
+Dann gibt es ein $\xi\in[a,b]$ mit
+\[
+\frac{y'(\xi)}{x'(\xi)}
+=
+\frac{y(b)-y(a)}{x(b)-x(a)}.
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+Die Bedingungen bedeuten, dass die die Kurve $\gamma(x(t),y(t))$
+den Voraussetzungen des Satzes~\ref{buch:satz:mittelwertsatz2d}
+genügt.
+Es gibt daher einen Punkten $\xi\in[a,b]$ wo die Tangente
+parallel zur Strecke $AB$ ist.
+Nach~\label{buch:polynome:eqn:mittelwertsatz2d} bedeutet dies
+\[
+y'(\xi) \cdot (x(b)-x(a))
+-
+x'(\xi) \cdot (y(b)-y(a))
+=0
+\qquad\Rightarrow\quad
+\frac{x'(\xi)}{y'(\xi)}
+=
+\frac{y(b)-y(a)}{x(b)-x(a)}.
+\qedhere
+\]
+\end{proof}
+
+Der Mittelwertsatz verspricht die Existenz eines Arguments $\xi\in[a,b]$,
+gibt aber keinerlei Hinweise darauf, wie $\xi$ berechnet werden könnte. 
+Ausserdem ist lässt sich der Satz in dieser Form nicht auf höherdimensionale
+Situationen verallgemeinern.
+In vielen Anwendungen des Mittelwertsatzes ist der genaue Wert von $\xi$
+gar nicht nötig.
+Meistens wird nur verwendet, dass die Ableitung eine Abschätzung dafür
+gibt, wie gross der Unterschied zwischen $f(b)$ und $f(a)$ sein kann.
+Dies kann zum Beispiel wie im folgenden Satz formuliert werden.
+
+\begin{satz}
+Für eine in $[a,b]$ stetig differenzierbare Funktion
+$f\colon [a,b]\to\mathbb R^n$ gibt es ein $\xi\in[a,b]$ mit
+\[
+|f(b)-f(a)| \le |f'(\xi)|\cdot |b-a|.
+\]
+\end{satz}
+
+\begin{proof}[Beweis]
+\cite[(8.5.1)]{buch:dieudonne}
+\end{proof}
+
+Diese Form ist ausreichend, um zum Beispiel Fehlerabschätzungen in der
+Numerik durchzuführen.
+
+\subsubsection{Taylorreihe mit Lagrange-Restterm}
+Die Ableitung $f'(a)$ einer Funktion $f(x)$ an der Stelle $a$ ist definiert
+als die beste lineare Approximation
+\[
+f(x) = f(a) + f'(a)\cdot (x-a) + o(|x-a|).
+\]
+Der Mittelwertsatz besagt, dass
+\[
+f(x) = f(a) + f'(\xi) \cdot (x-a)
+\]
+für ein geeignetes $\xi\in[a,x]$.
+Man kann also sagen, dass $f(a)$ eine Approximation für $f(x)$ mit einem
+Fehler der Form $f'(\xi)\cdot(x-a)$ für ein geeignetes $\xi\in[a,x]$ ist.
+Das Taylor-Polynom verallgemeinert diese Beobachtung auf eine Approximation
+höherer Ordnung.
+
+\begin{satz}
+Sei $f(x)$ eine $n+1$-mal stetig differenzierbare Funktion in einer
+Umgebung von $a$.
+Dann ist das {\em Taylor-Polynom}
+\begin{align*}
+T_{a,n}f(x)
+&=
+f(a) + f'(a)\cdot (x-a) + f''(x)\frac{(x-a)^2}{2!} + f'''(x)\frac{(x-a)^3}{3!}
++\dots+f^{(n)}(a)\frac{(x-a)^n}{n!}
+\\
+&=
+\sum_{k=0}^n
+f^{(k)}(a) \frac{(x-a)^k}{k!}
+\end{align*}
+eine Approximation von $f(x)$ derart, dass
+\[
+f(a)=T_{a,n}f(a),\quad
+f'(a)=T_{a,n}f'(a),\quad
+f''(a)=T_{a,n}f''(a),\quad
+\dots,\quad
+f^{(n)}(a)=T_{a,n}f^{(n)}(a).
+\]
+Ausserdem gibt es einen Wert $\xi\in[a,x]$ derart, dass der Fehler
+\[
+R_{n,a}f(x)
+=
+f(x) - T_{n,a}f(x)
+=
+f^{(n+1)}(\xi)\frac{(x-a)^{n+1}}{(n+1)!}
+\]
+ist.
+\end{satz}
+\index{Taylor-Polynom}
+$R_{n,a}f(x)$ heisst das {\em Lagrange-Restglied} des Taylor-Polynoms.
+
+\begin{proof}[Beweis]
+Zunächst kann die Behauptung über die Ableitungen von $T_{n,a}f(x)$ durch
+die Rechnung
+\begin{align*}
+T_{n,a}f'(x)
+&=
+f'(a) + f''(a) \cdot (x-a) + f'''(a)\frac{(x-a)^2}{2!} + \dots
+&&\Rightarrow&
+T_{n,a}f'(a) 
+&=
+f'(a)
+\\
+T_{n,a}f''(x)
+&=
+f''(a) + f'''(a) \cdot (x-a) + \dots
+&&\Rightarrow&
+T_{n,a}f''(a) 
+&=
+f''(a)
+\\
+&\;\vdots&&&&\;\vdots
+\\
+T_{n,a}f^{(n)}(x)
+&=
+f^{(n)}(a)
+&&\Rightarrow&
+T_{n,a}f^{(n)}(a)
+&=
+f^{(n)}(a)
+\end{align*}
+direkt bestätigt werden.
+Daraus folgt, dass die Funktion $g(x) = f(x) - T_{n,a}f(x)$ die Eigenschaft
+\begin{equation}
+g(a) = g'(a) = g''(a) = \dots = g^{(n)}(a)=0
+\label{buch:taylor:gabl}
+\end{equation}
+hat.
+Es muss als nur gezeigt werden, dass es unter den Voraussetzungen
+\eqref{buch:taylor:gabl} eine Zahl $\xi$ gibt derart, dass
+\[
+g(x) = g^{(n+1)}(\xi)\frac{(x-a)^{n+1}}{(n+1)!}
+\]
+gilt.
+Der Fall $n=0$ ist der Mittelwertsatz~\ref{buch:satz:mittelwertsatz}.
+
+Für $n>0$ kann die Behauptung mit vollständiger Induktion bewiesen werden.
+Sei also bereits bewiesen, dass für eine Funktion, deren Ableitungen bis
+zur Ordnung $n-1$ an der Stelle $a$ verschwinden, eine Zahl $\xi\in[a,x]$
+existiert mit
+\[
+g(x) = g^{(n)}(\xi)\frac{(x-a)^n}{n!}
+\]
+und müssen jetzt zeigen, dass dies auch für $n+1$ gilt.
+
+Wir müssen $g(x)$ mit $(x-a)^{n+1}$ vergleichen und untersuchen
+dazu den Quotienten
+\[
+\frac{g(x)}{(x-a)^{n+1}}.
+\]
+Zur Abkürzung schreiben wir $h(x) = (x-a)^{n+1}$, es ist also der
+Quotient 
+\[
+\frac{g(x)}{h(x)}
+=
+\frac{g(x)-g(a)}{h(x)-h(a)}
+\]
+zu berechnen.
+Nach dem verallgemeinerten Mittelwertsatz~\ref{buch:satz:vmittelwertsatz}
+gibt es $\xi_1\in[a,x]$ mit
+\[
+\frac{g'(\xi_1)}{h'(\xi_1)}
+=
+\frac{g(x)-g(a)}{h(x)-h(a)}.
+\]
+Da die Ableitung $h'(x)=(n+1)(x-a)^n$ ist, folgt
+\begin{equation}
+\frac{g'(\xi_1)}{h'(\xi_1)}
+=
+\frac{g'(\xi_1)}{(n+1) (\xi_1-a)^n}
+=
+\frac{g(x)-g(a)}{h(x)-h(a)}
+=
+\frac{g(x)}{(x-a)^{n+1}}.
+\label{buch:taylor:eqn1}
+\end{equation}
+Die Ableitungen der Ordnung $\le n-1$ der Funktion $g'(x)$ verschwinden
+im Punkt $a$, nach Induktionsvoraussetzung gibt es also ein $\xi$ derart,
+dass
+\[
+g'(\xi_1)
+=
+(g')^{(n)}(\xi) \frac{(\xi_1-a)^{n}}{n!}
+=
+g^{(n+1)}(\xi)\frac{(\xi_1-a)^n}{n!}
+\]
+gilt.
+Setzt man dies in \eqref{buch:taylor:eqn1} ein, erhält man
+\[
+\frac{g(x)}{(x-a)^{n+1}}
+=
+\frac{g'(\xi_1)}{(n+1)(\xi_1-a)^n}
+=
+g^{(n+1)}(\xi)\frac{(\xi_1-a)^n}{n!} \frac{1}{(n+1)(\xi_1-a)^n}
+=
+g^{(n+1)}(\xi)\frac{1}{(n+1)!}.
+\]
+Durch Multiplikation mit $(x-a)^{n+1}$ erhalten wir
+\[
+g(x) = g^{(n+1)}(\xi)\frac{(x-a)^{n+1}}{(n+1)!}.
+\]
+Damit ist der Induktionsschritt vollzogen und die Restwertformel bewiesen.
+\end{proof}
+
+\begin{beispiel}
+Die Funktion $f(x)=x^N$ hat an der Stelle $a=0$ verschwindende
+Ableitungen bis zur Ordnung $N-1$.
+Das Taylor-Polynom $T_{0,n}f(x)$ der Ordnung $n$ dieser Funktion
+verschwindet daher für $n<N$.
+Nach der Restformel des Taylor gibt es Zahlen $\xi_n$ derart
+\begin{align*}
+R_{n,0}f(x)
+=
+f(x)
+&=
+x^N
+= 
+f^{(n+1)}(\xi_n) \frac{x^{n+1}}{(n+1)!}
+\\
+&=
+\frac{
+N\cdot(N-1)\cdot(N-2)\cdot\dots\cdot(N-n)
+}{
+1\cdot 2 \cdot 3 \cdot\dots \cdot (n+1)
+}
+\xi_n^{N-n-1} 
+=
+\binom{N}{n+1} \xi_n^{N-n-1}
+\\
+\Rightarrow\qquad
+\xi_n
+&=
+\binom{N}{n+1}^{\frac{-1}{N-n-1}} x^{\frac{N}{N-n-1}}.
+\qedhere
+\end{align*}
+\end{beispiel}
+
+Im Hinblick auf die nachfolgende Diskussion des Fehlers des
+Interpolationspolynoms formulieren wir dies noch als eine
+Fehlerabschätzung.
+Das Taylor-Polynom approximiert die Funktion $f(x)$ durch ein
+Polynom vom Grad $n$.
+Der Fehler des Taylor-Polynoms ist
+\[
+|f(x) - T_{n,a}f(x)|
+=
+\biggl|
+f^{(n+1)}(\xi)
+\frac{(x-a)^{n+1}}{(n+1)!}
+\biggr|
+=
+|f^{(n+1)}(\xi)|\cdot
+\biggl|
+\frac{(x-a)^{n+1}}{(n+1)!}
+\biggr|
+\le
+\max_{\xi\in [a,x]} |f^{(n+1)}(\xi)|
+\biggl|
+\frac{(x-a)^{n+1}}{(n+1)!}
+\biggr|,
+\]
+er ist also beschränkt einerseits durch ein Polynom mit Grad $n+1$
+und den grössten Wert der $(n+1)$-te Ableitung im Intervall $[a,x]$.
+Die Fehlerformel für das Interpolationspolynom wird von der genau
+gleichen Art sein.
 
 \subsubsection{Fehler des Lagrange-Interpolationspolynoms}
-Der folgende satz gibt vollständige Auskunft über den Fehler des
+Der folgende Satz gibt vollständige Auskunft über den Fehler des
 Interpolationspolynoms.
 
 \begin{satz}
@@ -314,7 +721,7 @@ a = x_0 < x_1 < x_2 < \dots  < x_{n-1} < x_n=b
 übereinstimmt.
 Dann gibt es für jedes $x\in[a,b]$ ein $\xi_x\in [a,b]$ mit
 \begin{equation}
-f(x) - p(x) = \frac{f^{(n+1)}(\xi_x)}{(n+1)!} l(x)
+f(x) - p(x) = \frac{f^{(n+1)}(\xi_x)}{(n+1)!} l(x).
 \label{buch:equation:polyfehler}
 \end{equation}
 \end{satz}
@@ -377,6 +784,10 @@ ist
 |f(x)-p(x)| \le \frac{\|f^{(n+1)}\|}{(n+1)!} |l(x)|.
 \]
 \end{korollar}
+
+Der Fehler des Interpolationspolynoms vom Grad $n$ ist also beschränkt
+durch das Polynom $l(x)$ vom Grad $n+1$ und den grössten Wert der
+$(n+1)$-ten Ableitung von $f(x)$.
 
 \begin{beispiel}
 \begin{figure}

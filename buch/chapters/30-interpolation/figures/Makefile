@@ -5,7 +5,8 @@
 #
 all:	h.pdf rolle.pdf nullstellen.pdf sin.pdf l.pdf norm.pdf tscheb.pdf \
 	basis.pdf tschebasis.pdf polygon.pdf vergleich.pdf integral.pdf \
-	bezier.pdf bezierberechnung.pdf beziern.pdf bezierhermite.pdf
+	bezier.pdf bezierberechnung.pdf beziern.pdf bezierhermite.pdf \
+	mittelwertsatz.pdf
 
 %.pdf:	%.tex
 	pdflatex $<
@@ -52,4 +53,8 @@ beziern.pdf:	beziern.tex
 
 bezierhermite.pdf:	bezierhermite.tex
 	pdflatex bezierhermite.tex
+
+mittelwertsatz.pdf:	mittelwertsatz.tex
+	pdflatex mittelwertsatz.tex
+
 
