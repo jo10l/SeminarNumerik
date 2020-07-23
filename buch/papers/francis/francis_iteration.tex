@@ -3,9 +3,9 @@
 
 Nun wollen wir uns mit dem eigentlichen Francis Algorithmus \cite{francis:watkins_book} befassen.
 Die Ausgangssituation für den Algorithmus ist eine Matrix, welche sich in oberer Hessenberg Form oder sogar tridiagonaler Form befindet.
-Es handelt sich dabei um ein iteratives Verfahren und lässt sich daher am besten durch die Analyse einer Iteration bescheiben.
+Es handelt sich dabei um ein iteratives Verfahren und lässt sich daher am besten durch die Analyse einer Iteration beschreiben.
 
-Der Algorithmus beginnt mit der Wahl eines Shifts $\rho_{1}$ und der Berechnung der ersten Kolonne von $A-\rho I$. 
+Der Algorithmus beginnt mit der Wahl eines Shifts $\rho_{1}$ und der Berechnung der ersten Spalte von $A-\rho I$. 
 Diese hat die Form:
 
 \begin{equation}
@@ -33,16 +33,16 @@ Anschliessend muss eine Matrix $Q_{0}$ gefunden werden, welche auf den Achsen 1 
 \end{equation}
 
 Danach muss mit $Q_{0}$ A zu  $Q_{0}^{-1}AQ_{0}$ transformiert werden.
-Die Transformation von A nach $Q_{0}^{-1}A$ kombiniert lediglich die Zeilen 1 und 2, die Matrix behält aber seine Hessenberg Form.
-Die anschliessende Transformation von $Q_{0}^{-1}A$ nach $Q_{0}^{-1}AQ_{0}$ kombiniert die Spalten 1 und 2 wodurch die Hessenberg Form zerstört wird.
+Die Transformation von A nach $Q_{0}^{-1}A$ kombiniert lediglich die Zeilen 1 und 2, die Matrix behält aber ihre Hessenberg Form.
+Die anschliessende Transformation von $Q_{0}^{-1}A$ nach $Q_{0}^{-1}AQ_{0}$ kombiniert die Spalten 1 und 2, wodurch die Hessenberg Form zerstört wird.
 Es entsteht an der Stelle (3,1) eine "Ausbuchtung".
-Der Rest der Iteration beschäftigt sich damit, die Matrix wieder in seine Hessenberg Form zu bringen.
+Der Rest der Iteration beschäftigt sich damit, die Matrix wieder in ihre Hessenberg Form zu bringen.
 Dafür wählen wir eine Matrix welche auf den Achsen 2 und 3 arbeitet und den Wert von $a_{31}$ eliminiert.
 So wird die Ausbuchtung nach unten verschoben.
 Dieses Prozedere wird wiederholt, bis die Ausbuchtung schlussendlich unten aus der Matrix hinausgeschoben wird.
 Die Hessenberg Form ist wiederhergestellt.
 
-Bei einer 5x5 Matrix als Beispiel sieht eine Iteration also wie folgt aus:
+Bei einer $5x5$ Matrix sieht eine Iteration also wie folgt aus:
 
 \begin{equation}
 	\begin{bmatrix}
@@ -51,21 +51,21 @@ Bei einer 5x5 Matrix als Beispiel sieht eine Iteration also wie folgt aus:
 	+ & * & * & * & *\\
 	&   & * & * & * \\
 	&   &   & * & * 
-	\end{bmatrix}
+	\end{bmatrix} \rightarrow
 	\begin{bmatrix}
 	* & * & * & * & *  \\
 	* & * & *  & * & *  \\
 	& * & * & * & *\\
 	&  + & * & * & * \\
 	&   &   & * & * 
-	\end{bmatrix}
+	\end{bmatrix} \rightarrow
 	\begin{bmatrix}
 	* & * & * & * & *  \\
 	* & * & *  & * & *  \\
 	& * & * & * & *\\
 	&   & * & * & * \\
 	&   &  + & * & * 
-	\end{bmatrix}
+	\end{bmatrix} \rightarrow
 	\begin{bmatrix}
 	* & * & * & * & *  \\
 	* & * & *  & * & *  \\
@@ -84,7 +84,52 @@ Mit jeder Iteration konvergieren die Elemente unter der Diagonalen gegen null un
 Die Shifts werden zur Konvergenzbeschleunigung gebraucht.
 Die Wahl eines guten Shifts kann den Algorithmus drastisch beschleunigen. 
 Ein guter Shift ist dabei einer, welcher einen Eigenwert der Matrix gut approximiert.
-Oft wird als Shift das Matrixelement unten rechts der aktuellen Iteration gewählt.
-Dieser Shift ist als Rayleigh-Quotienten-Shift bekannt.
-Eine andere Shift-Strategie ist der nach James Hardy Wilkinson benannte Wilkonson-Shift.
+
+Unser Algorithmus verkleinert bei jeder Iteration die Elemente auf der Subdiagonalen.
+Die Diagonalelemente werden daher eine immer bessere Approximationen der Eigenwerte.
+Daher wird oft ein Eigenwert auf der Diagonalen als Shift für die nächste Iteration verwendet.
+Zu Beginn mag dies noch eine schlechte Approximation sein, sie verbessert sich aber sehr schnell.
+
+Wird das unterste Diagonalelement verwendet spricht man von einem Rayleigh-Quotienten-Shift.
+Eine andere, ähnliche Shift-Strategie ist der nach James Hardy Wilkinson benannte Wilkonson-Shift.
 Für diesen wird der näher am letzten Matrixelement liegende Eigenwert der untersten \glqq 2x2 Matrix \grqq als Shift benutzt.
+
+\begin{beispiel}
+	Gegeben sei eine Matrix $A$, welche sich bereits in Hessenberg Form befindet
+	
+	\begin{equation}
+	A=
+	\begin{bmatrix}
+	17 & -28.941 & 1.847 & -4.46 & 2.257\\
+	-27.677 & 33.94 & 26.188 & -2.228 & 1.268\\
+	0 & 25.096 & 20.687 & -6.606 & -0.197\\
+	0 & 0 & -5.963 & -16.816 & -12.445\\
+	0 & 0 & 0 & -9.01 & 10.189\\
+	\end{bmatrix} \text{mit }
+	eig(A)=
+	\begin{bmatrix}
+	65 & \\
+	-21.277 & \\
+	-13.126 & \\
+	21.277 & \\
+	13.126 & \\
+	\end{bmatrix}
+	\end{equation}
+	
+	Für die den Rayleigh-Quotienten-Shift-Strategie würde man also $10.189$ als ersten Shift verwenden.
+	Verfolgt man die Wilkinson-Shift-Strategie, würde man die Eigenwerte der Matrix
+
+	\begin{equation}
+	\begin{bmatrix}
+	 -16.816 & -12.445\\
+	 -9.01 & 10.189\\
+	\end{bmatrix}
+	\end{equation}
+	
+	berechnen.
+	Dabei findet man $-21.279$ und $13.126$.
+	Da $13.126$ näher als $-21.279$ am untersten Diagonalelement liegt, wird dies als erster Shift verwendet.
+	Dabei handelt es sich schon um eine gute Annäherung für einen Eigenwert der Matrix $A$.	
+\end{beispiel}
+
+

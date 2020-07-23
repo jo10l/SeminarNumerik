@@ -29,15 +29,17 @@ Der Algorithmus bzw. verschiedene Versionen davon werden bis heute von diversen 
 
 Wieso wird zur Berechnung der Eigenvektoren ein numerisches Verfahren benötigt?
 Zur Berechnung der Eigenwerte einer 3x3 Matrix kann man das charakteristische Polynom bilden und dessen Nullstellen finden, diese entsprechen den Eigenwerten der Matrix.
-Das Grundlegende Problem ist also die Suche nach den Nullstellen eines Polynoms.
+Das grundlegende Problem ist also die Suche nach den Nullstellen eines Polynoms.
 Anfangs des 19. Jahrhunderts wurde von Niels Henrik Abel bewiesen, dass es keine Formel zur Berechnung der Nullstellen eines Polynoms der 5. Ordnung gibt.
 Folglich ist auch eine direkte Berechnung der Eigenwerte einer Matrix nicht möglich und die numerische Berechnung mit einem iterativen Verfahren der einzige Weg.
+Der Algorithmus fokussiert sich auf die Berechnung der Eigenwerte.
+Sind die Eigenwerte gefunden, können auch die dazugehörigen Eigenvektoren einfach berechnet werden.
 
 \input{papers/francis/grundlagen.tex}
 \input{papers/francis/vorbereitung.tex}
 \input{papers/francis/francis_iteration.tex}
 \input{papers/francis/francis_iteration_ordnung_n.tex}
-\input{papers/francis/wieso_es_funktioniert.tex}
+\input{papers/francis/nachweis.tex}
 
 \printbibliography[heading=subbibliography]
 \end{refsection}
