@@ -8,7 +8,6 @@ dependencies-vanderpol =						\
 	papers/vanderpol/main.tex					\
 	papers/vanderpol/references.bib				\
 	papers/vanderpol/einleitung.tex				\
-	papers/vanderpol/problemstellung.tex				\
 	papers/vanderpol/loesung.tex					\
 	papers/vanderpol/folgerungen.tex
 

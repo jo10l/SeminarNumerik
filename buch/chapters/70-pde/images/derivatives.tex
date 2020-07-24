@@ -1,0 +1,100 @@
+%
+% derivatives.tex -- template for standalon tikz images
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1.1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\begin{scope}[yshift=6cm]
+	\fill[color=red!10] (0,0) ellipse (2.5cm and 0.8cm);
+	\draw[line width=0.2pt] (-4.3,0)--(4.3,0);
+	\foreach \x in {-4,-2,2,4}{
+		\draw[line width=0.2pt] (\x,-1.1) -- (\x,1.1);
+	}
+	\draw[line width=0.2pt] (0,-1.1) -- (0,0.3);
+	\foreach \x in {-4,-2,...,4}{
+		\fill[color=white] (\x,0) circle[radius={0.1/\skala}];
+		\fill (\x,0) circle[radius={0.08/\skala}];
+	}
+	\fill[color=red] (-2,0) circle[radius={0.16/\skala}];
+	\fill[color=red] (2,0) circle[radius={0.16/\skala}];
+	\draw[color=red,line width=1.4pt] (-2,0)--(2,0);
+	\node at (0,0.2) [above]
+	{$\displaystyle\frac{\partial u}{\partial x}\simeq
+		\frac{u_{i+1,l}-u_{i-1,l}}{2h}$};
+	\node at (-4,0) [above left] {$l$};
+	\node at (-4.3,0.8) [left] {Symmetrische Differenz:};
+\end{scope}
+
+\begin{scope}[yshift=3cm]
+	\fill[color=red!10] (1,0) ellipse (1.25cm and 0.4cm);
+	\draw[line width=0.2pt] (-4.3,0)--(4.3,0);
+	\foreach \x in {-4,-2,4}{
+		\draw[line width=0.2pt] (\x,-1.1) -- (\x,1.1);
+	}
+	\draw[line width=0.2pt] (0,-1.1) -- (0,0.3);
+	\draw[line width=0.2pt] (2,-1.1) -- (2,0.3);
+	\foreach \x in {-4,-2,...,4}{
+		\fill[color=white] (\x,0) circle[radius={0.1/\skala}];
+		\fill (\x,0) circle[radius={0.08/\skala}];
+	}
+	\fill[color=red] (0,0) circle[radius={0.16/\skala}];
+	\fill[color=red] (2,0) circle[radius={0.16/\skala}];
+	\draw[color=red,line width=1.4pt] (0,0)--(2,0);
+	\node at (1,0.2) [above]
+	{$\displaystyle\frac{\partial u}{\partial x}\simeq
+		\frac{u_{i+1,k}-u_{i,k}}{h}$};
+	\node at (-4,0) [above left] {$k$};
+	\foreach \x in {-4,-2,...,4}{
+		\foreach \y in {-0.15,0.0,...,0.15}{
+			\fill (\x,{1.5+\y}) circle[radius=0.015];
+		}
+	}
+	\node at (-4.3,0.8) [left] {Vorwärtsdifferenz:};
+\end{scope}
+
+\begin{scope}
+	\fill[color=red!10] (-1,0) ellipse (1.25cm and 0.4cm);
+	\draw[line width=0.2pt] (-4.3,0)--(4.3,0);
+	\foreach \x in {-4,2,4}{
+		\draw[line width=0.2pt] (\x,-1.1) -- (\x,1.1);
+	}
+	\draw[line width=0.2pt] (0,-1.1) -- (0,0.3);
+	\draw[line width=0.2pt] (-2,-1.1) -- (-2,0.3);
+	\foreach \x in {-4,-2,...,4}{
+		\fill[color=white] (\x,0) circle[radius={0.1/\skala}];
+		\fill (\x,0) circle[radius={0.08/\skala}];
+	}
+
+	\fill[color=red] (-2,0) circle[radius={0.16/\skala}];
+	\fill[color=red] (0,0) circle[radius={0.16/\skala}];
+	\draw[color=red,line width=1.4pt] (0,0)--(-2,0);
+	\node at (-1,0.2) [above]
+	{$\displaystyle\frac{\partial u}{\partial x}\simeq
+		\frac{u_{ij}-u_{i-1,j}}{h}$};
+	\node at (-4,0) [above left] {$j$};
+	\node at (-4,-0.8) [below right] {$i-2$};
+	\node at (-2,-0.8) [below right] {$i-1$};
+	\node at (0,-0.8) [below right] {$i$};
+	\node at (2,-0.8) [below right] {$i+1$};
+	\node at (4,-0.8) [below right] {$i+2$};
+	\foreach \x in {-4,-2,...,4}{
+		\foreach \y in {-0.15,0.0,...,0.15}{
+			\fill (\x,{1.5+\y}) circle[radius=0.015];
+		}
+	}
+	\node at (-4.3,0.8) [left] {Rückwärtsdifferenz:};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
+

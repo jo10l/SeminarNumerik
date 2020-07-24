@@ -1,0 +1,19 @@
+\section{Algorithmus\label{cg:section:voraussetzungen}}
+\rhead{Algorithmus}
+
+In diesem Abschnitt wird der ganze Algorithmus noch einmal formell aufgeschrieben.
+Diese Formulierung des Algorithmus bildet die Grundlage für eine erfolgreiche Implementation.
+Die Resultate einer solchen (einfachen) Implementation folgen im nächsten Abschnitt.
+
+\begin{enumerate}
+	\item Wähle initiales $x_1$ zufällig
+	\item Berechne die erste Abstiegsrichtung als $d_1 = r_1 =  b-Ax_1$
+	\item Berechne die optimale Schrittlänge  $ \alpha	= 	\displaystyle  = \frac{\langle d_k , r_k \rangle}{\langle d_k , d_k \rangle_A} 
+																			= \frac{d_k^T  r_k}{d_k^T A d_k }$
+	\item Führe den Schritt aus $x_{k+1} = x_k + \alpha d_k$
+	\item Berechne das neue Residuum $r_{k+1} = b-Ax_{k+1}$
+	\item Falls $r_{k+1} = 0$: Beende den Algorithmus
+	\item Berechne neue Abstiegsrichtung $d_{k+1} = d_{k+1}	= 	r_{k+1} - \displaystyle \frac{\langle d_k , r_{k+1} \rangle_A}{\langle d_k , d_k \rangle_A} d_k 
+															= r_{k+1} - \displaystyle \frac{d_k^T A r_{k+1}}{d_k^T A d_k} d_k $
+	\item Wiederhole ab Punkt 3.
+\end{enumerate}

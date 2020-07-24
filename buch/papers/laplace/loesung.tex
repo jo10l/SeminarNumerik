@@ -3,38 +3,69 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Lösung
-\label{laplace:section:loesung}}
-\rhead{Lösung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit, sed quia non numquam eius modi tempora incidunt ut labore
-et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
-veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-pariatur?
 
-\subsection{De finibus bonorum et malorum
-\label{laplace:subsection:bonorum}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-est et expedita distinctio. Nam libero tempore, cum soluta nobis
-est eligendi optio cumque nihil impedit quo minus id quod maxime
-placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-rerum necessitatibus saepe eveniet ut et voluptates repudiandae
-sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
-sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-consequatur aut perferendis doloribus asperiores repellat.
 
+\section{Lösung}
+\label{laplace:section:Methode nach Talbot}
+Mit der Riemmann inversions Formel ergibt sich $f(t)$ aus $F(s)$
+\[
+f(t) = \frac{1}{2\pi i} \oint_{B} e^{st}F(s)\,ds,~~t>0,~~i=\sqrt{-1}
+\]
+wobei $B$ die Bromwich Kontur von $\gamma-i\infty$ bis $\gamma+i\infty$, mit $\gamma>\gamma_{0}$, parallel zur imaginären Achse ist.
+Diese Kontur befindet sich zur rechten aller Singularitäten von $F(s)$.
+Falls $f(t)$ durch numerische quadratur berechnet wird.
+Im Allgemeinen möchte man die Kontur zur linken Seite platzieren, sodass der Betrag des Faktors $e^{st}$ im Integrand kleiner wird. Die Kontur sollte jedoch nicht zu nahe an Singularitäten von $F(s)$ angenähert werden, dies würde Spitzen der Integeralfunktion zur Folge haben.
+Eine Bedingung um eine passende Kontur zu finden, wurde von Talbot gefunden.
+Diese fordert, dass die Singularitäten von $F(s)$ bekannt sind, sowie folgendes gilt für $F(s)$
+
+(a) $|F(s)|\rightarrow$ 0 mit $|s|\rightarrow$ $\infty$ in $Re(s)<\gamma_{0}$
+
+(b) für alle Singularitäten $s_{j},~~|Im(s_{j})|<K$, wobei der Wert von K bekannt ist.
+
+Die Talbots Kontur ist gegeben durch
+
+\[
+s(z) = \sigma+\lambda s_{\nu}(z),~~ z\in (-2\pi i,~~2\pi i)
+\]
+wobei
+
+\[
+s_{\nu}(z)=\frac{z}{1-e^{-z}}+\frac{z(\nu-1)}{2}
+\]
+In der Gleichung oben folgt mit $z=2i\theta$ die Parametrisierung
+\[
+s(\theta) = \sigma+\lambda s_{\nu}(\theta),~~ \theta\in (-\pi ,~~\pi)
+\]
+wobei
+
+\[
+s_{\nu}(\theta)=\theta \cot\theta+i\nu\theta,
+\]
+und das Riemannsche inversions Integral nimmt die folgende Form an
+\[
+f(t)=\frac{\lambda e^{\sigma}}{2\pi i}\int_{-\pi}^{\pi} e^{-\lambda ts_{\nu}(\theta)}F[\sigma + \lambda s_{\nu}(\theta)]s'_{\nu}(\theta)\,d\theta
+\]
+wobei
+\[
+s'_{\nu}(\theta) = i \Biggl\{\nu + \frac{\theta-\cos(\theta)\sin(\theta)}{\sin^{2}(\theta)}  \Biggr\}
+\]
+Unter berücksichtigung der Symmetrie, sowie der Trapez Approximationsregel erhält man
+\[
+\tilde{f}(t) = \frac{\lambda e^{\sigma t}}{n}~T_{n}(t)
+\]
+wobei 
+\[
+T_{n}(t)=\sum_{j=0}^n " e^{\lambda s_{\nu}(\theta_{j})} F[\sigma + \lambda s_{\nu}(\theta_{j})] \frac{1}{i} s'_{\nu}(\theta_{j})
+\]
+
+\[
+\theta_{j} = j \frac{\pi}{n}.
+\]
+Die Notation $\sum_{j=0}^n "$ besagt, dass der Erste und Letzte Term der Summe halbiert werden. In diesem Falle wird der Term $j=n$ gleich 0 und der $j=0$ Term wird zu
+\[
+\frac{\nu}{2}e^{\lambda t}F(\sigma + \lambda).
+\]
+
+Die obige beschriebene Methode wurde in Python implementiert.
+Der Code ist auf Anfrage erhätlich.
 

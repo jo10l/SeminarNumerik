@@ -318,10 +318,6 @@ m_{\text{neu}} = m - \frac{f(m) - y_2}{f'(m)}
 \]
 für den korrekten Wert $m$ finden.
 Sie kann leicht in Octave implementiert werden, wie Listing~\ref{numerik:ketteprog} zeigt.
-%\lstinputlisting[style=Octave]{chapters/examples/kette.m}
-%\begin{lstlisting}[style=Octave,caption={Octave-Programm zur Bestimmung der Anfangssteigung $m$ im Kettenlinien-Problem}]
-%\begin{lstlisting}[style=Octave, caption={Octave-Programm}, captionpos={b}, label={numerik:ketteprog}]
-%\verbatiminput{chapters/examples/kette.m}
 
 In Tabelle~\ref{numerik:kette-newton} ist der Gang der Berechnung
 für den Fall $x_1=-1$, $x_2=2$, $y_1=1$ und $y_2=2$  mit dem
@@ -353,14 +349,13 @@ mit Randbedingungen $x_1=-1$, $x_2=2$, $y(x_1)=y_1$ und $y(x_2)=y_2$.
 \end{table}
 \begin{figure}
 \centering
-%\includegraphics[width=\hsize]{chapters/images/numerik-6.pdf}
 \includegraphics{chapters/50-ode/figures/kettenloesung.pdf}
 \caption{Iterative Bestimmung der Kettenlinie zwischen
 den Punkten $(-1,2)$ und $(2,2)$ mit Hilfe des Newton-Algorithmus.
 \label{numerik:kette-newton-graph}}
 \end{figure}
 \end{loesung}
-\begin{lstlisting}[style=Octave,caption={Octave-Programm zur Bestimmung der Anfangssteigung $m$ im Kettenlinien-Problem}, captionpos={t}, label={numerik:ketteprog}]
+\begin{lstlisting}[style=Octave,float,caption={Octave-Programm zur Bestimmung der Anfangssteigung $m$ im Kettenlinien-Problem},label={numerik:ketteprog}]
 global x1 = -1
 global x2 =  2
 global y1 =  1

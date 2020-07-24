@@ -349,8 +349,10 @@ Wir addieren daher $\bar a_{n+1} = a_{n+1}-c_n$ anstelle von $a_{n+1}$
 und erhalten die Summe $s_{n+1} = s_n + \bar{a}_{n+1}$.
 Natürlich können wir auch hier wieder den Fehler als
 $c_{n+1} = (s_{n+1} - s_{n}) - \bar{a}_{n+1}$ berechnen.
-Damit erhalten wir den folgenden Algorithmus.
-\lstinputlisting[style=C]{chapters/10-arithmetik/kahan.c}
+Damit erhalten wir den Algorithmus in
+Abbildung~\ref{buch:list:kahan-algorithmus}.
+\lstinputlisting[style=C,float,caption={Kahan-Summations-Algorithmus zur
+Vermeidung sich akkumulierender Runungsfehler.},label={buch:listing:kahan-algorithms}]{chapters/10-arithmetik/kahan.c}
 Er verwendet die Funktion \texttt{a(i)}, welche den Term mit Index $i$
 der Summe berechnet.
 Die Kahan-Summation vervierfacht die Anzahl der Additionen hat aber das
