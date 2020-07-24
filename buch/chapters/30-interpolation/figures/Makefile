@@ -6,7 +6,7 @@
 all:	h.pdf rolle.pdf nullstellen.pdf sin.pdf l.pdf norm.pdf tscheb.pdf \
 	basis.pdf tschebasis.pdf polygon.pdf vergleich.pdf integral.pdf \
 	bezier.pdf bezierberechnung.pdf beziern.pdf bezierhermite.pdf \
-	mittelwertsatz.pdf
+	mittelwertsatz.pdf lissajous.pdf lissajous-chebyshef.pdf
 
 %.pdf:	%.tex
 	pdflatex $<
@@ -57,4 +57,8 @@ bezierhermite.pdf:	bezierhermite.tex
 mittelwertsatz.pdf:	mittelwertsatz.tex
 	pdflatex mittelwertsatz.tex
 
+lissajous.pdf:	lissajous.tex lissajous.jpg
+	pdflatex lissajous.tex
 
+lissajous-chebyshef.pdf:	lissajous-chebyshef.tex lissajous.jpg
+	pdflatex lissajous-chebyshef.tex
