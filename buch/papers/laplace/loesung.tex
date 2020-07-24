@@ -4,18 +4,6 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 
-\documentclass{scrartcl}
-
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage[ngerman]{babel}
-\usepackage{amsmath}
-\usepackage{physics}
-\usepackage{mathrsfs}
-
-\begin{document}
-
 
 \section{Lösung}
 \label{laplace:section:Methode nach Talbot}
@@ -74,11 +62,10 @@ T_{n}(t)=\sum_{j=0}^n " \mathrm{e}^{\lambda s_{\nu}(\theta_{j})} F[\sigma + \lam
 \theta_{j} = j \frac{\pi}{n}.
 \]
 Die Notation $\sum_{j=0}^n "$ besagt, dass der Erste und Letzte Term der Summe halbiert werden. In diesem Falle wird der Term $j=n$ gleich 0 und der $j=0$ Term wird zu
-
-\begin{center}$\frac{\nu}{2}\mathrm{e}^{\lambda t}F(\sigma + \lambda).$
-\end{center}
+\[
+\frac{\nu}{2}\mathrm{e}^{\lambda t}F(\sigma + \lambda).
+\]
 
 Die obige beschriebene Methode wurde in Python implementiert.
 Der Code ist auf Anfrage erhätlich.
 
-\end{document}
