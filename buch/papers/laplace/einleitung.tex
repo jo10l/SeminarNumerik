@@ -3,20 +3,30 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Einleitung\label{laplace:section:einleitung}}
-\rhead{Einleitung}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{laplace:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
+\documentclass{scrartcl}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
 
+\begin{document}
+Die Laplacetransformation ist eine Funktion $f(t)$, definiert auf dem Intervall von $[0, \infty)$ und absolut integrierbar auf jedem endlichen Intervall $[0, a)$. 
+Die Laplacetransformation ist wie folgt definiert
+\[
+F(s) = \int_0^\infty \mathrm{e}^{-st}f(t)\,\mathrm{d}t,~~Re(s)>\gamma_{0}
+\]
+wobei $\gamma_{0}$ die Abzisse der Konvergenz der Laplacetransformation ist. 
+Das inverse Laplaceproblem ist es Funktionen $f(t)$ im Zeitbereich aus jenen bekannten Funktionen $F(s)$ im Frequenzbereich zu rekonstruieren.
+
+Mit der Riemmann inversions Formel ergibt sich $f(t)$ aus $F(s)$
+\[
+f(t) = \frac{1}{2\pi i} \oint_{B} \mathrm{e}^{st}F(s)\,\mathrm{d}s,~~t>0,~~i=\sqrt{-1}
+\]
+wobei $B$ die Bromwich Kontur von $\gamma-i\infty$ bis $\gamma+i\infty$, mit $\gamma>\gamma_{0}$, parallel zur imaginären Achse.
+Diese Kontur befindet sich zur rechten aller Singularitäten von $F(s)$, falls $f(t)$ durch numerische quadratur berechnet wird.
+Im Allgemeinen möchte man die Kontur zur linken Seite platzieren, sodass der Betrag des Faktors $\mathrm{e}^{st}$ im Integrand kleiner wird.
+Die Kontur sollte jedoch nicht zu nahe an Singularitäten von $F(s)$ angenähert werden, dies würde Spitzen der Integeralfunktion zur Folge haben.
+\end{document}
 

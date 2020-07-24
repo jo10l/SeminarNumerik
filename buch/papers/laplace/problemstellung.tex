@@ -3,53 +3,40 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
+
+\documentclass{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{mathrsfs}
+
+\begin{document}
 \section{Problemstellung
 \label{laplace:section:problemstellung}}
-\rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
-\begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{laplace:equation1}
-\end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+\subsection{Beispiel: Lösung einer linearen DGL mittels Laplacetransformation}
+Wir wollen eine Lösung $f(t)$ aus $F(s)$ der linearen Differentialgleichung 
+\[
+\dv{f}{t} + \lambda f(t) = 0
+\]
+Mit der Laplactransformation folgt
+\[
+(sF(s) - f_{0}) + \lambda F(s) = 0
+\]
+Die obige Gleichung im Frequenzbereich kann nach F(s) aufgelöst werden.
+Es folgt somit
+\[
+F(s) = \frac{f_{0}}{s + \lambda}
+\]
+Um die Inverse von $F(s)$ zu finden existieren für gewisse Funktionstypen tabellierte zugehörige Rücktransformationen.
+Für die obige Funktion $F(s)$ ergibt sich nämlich
+\[
+\mathscr{L}^{-1}\{F(s)\}=\mathscr{L}^{-1}\{\frac{f_{0}}{s+\lambda}\} = f_{0}\mathrm{e}^{-\lambda t}
+\]
+Eine solche Tabelle ist jeweils in Literatur zu finden, welche sich mit der Laplacetransformation beschäftigt.
+Wenn für die gesuchte Funktion $F(s)$ keine zugehörige Funktion tabelliert ist, muss das Integral wie in der Einleitung beschrieben gelöst werden.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
-
-\subsection{De finibus bonorum et malorum
-\label{laplace:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{000tempmlate:equation1}.
-
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{laplace:section:loesung}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{laplace:section:folgerung}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
-
-
+\end{document}
