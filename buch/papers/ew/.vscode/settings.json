@@ -19,6 +19,13 @@
             ]
         },
         {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "buch1-blx"
+            ]
+        },
+        {
             "name": "pdflatex",
             "command": "pdflatex",
             "args": [
@@ -72,6 +79,12 @@
             "name": "biber",
             "tools": [
                 "biber"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "tools": [
+                "bibtex"
             ]
         },
         {

@@ -7,7 +7,7 @@
 \label{ew:section:problemstellung}}
 \rhead{Problemstellung}
 
-Das Eigenwertproblem sucht die Vektoren $v_i \in \mathbb {R}^{n} $, die angewendet mit einer Matrix $\bm H$ nicht die Richtung ändern und sich dabei nur mit $\lambda_i \in \mathbb R$ skalieren:
+Das Eigenwertproblem sucht die Vektoren $v_i \in \mathbb{R}^{n} $, die angewendet mit einer Matrix $\bm H$ nicht die Richtung ändern und sich dabei nur mit $\lambda_i \in \mathbb{R}$ skalieren:
 \begin{equation} 
     \bm H \bm v_i = \lambda_i \bm v_i \label{ew:eq:eig}
 \end{equation}
@@ -73,7 +73,11 @@ Nach einsetzen der gekürzten Taylorreihen in Gleichung \ref{ew:eq:eig} erhalten
 wobei alle Variablen bekannt sind, ausser $\lambda_{1i}$ und $\bm v_{1i})$.
 Die Gleichung soll nun umgeformt werden, um diese variablen zu bestimmen.
 
-%TODO elaborate algebra
+\section{Herleitung}
+
+Die hier verwendete Herleitung basiert auf \cite{ew:seminar_quantenmechanik} mit ergänzungen.
+Des weiteren wurde auf die in der Quantenmechanik übliche Bra-Ket-Notation verzichtet.
+
 Als erstes wird die Gleichung ausmultipliziert und alle Terme mit $\varepsilon$ höhere Ordnung als zwei (rot markiert) werden weggelassen.
 \begin{equation}
     \GN{\bm H_0 \bm v_{0i}} + 
@@ -158,7 +162,6 @@ und ein wenig umgeformt
     ( \lambda_{0i} - \lambda_{0j} )
     \bm v_{0j}^T  \bm v_{0i} .
 \end{equation} \label{ew:eq:f}
-
 Aus dieser Gleichung können mittels Koeffizientenvergleich zwei nützliche Formeln extrahiert werden:
 \begin{alignat}{3}
     i = j \quad & \rightarrow  \quad && \lambda_{1i}&& = \bm v_{0i}^T \bm H_1 \bm v_{0i} \\
@@ -175,9 +178,6 @@ Die Eigenwerte $\lambda_{1i}$ können einfach in \ref{ew:eq:eigval} eingesetzt w
 \end{align*}
 
 Die Berechnung der Eigenvektoren ist etwas aufwendiger.
-
-%TODO elaborate
-
 Die Kernidee dabei ist, dass $\bm v_{1i}$ als Summe von abbildungen auf $\bm v_{0j}$ geschrieben werden kann
 Die Eigenvektoren $\bm v_{1i}$ werden dabei in die Eigenbasis $\bm v_{0j}$ konvertiert. %TODO is that true
 \begin{align*}
@@ -193,12 +193,14 @@ Diese Umwandlung ist in Abbildung \ref{ew:fig:scalar_prod} illustriert.
     \begin{center}
         \input{papers/ew/tikz/eigenvektor_abbliden.tikz.tex}
     \end{center}
-    \label{ew:fig:scalar_prod}
-    \caption{Darstellung eines Vektors mit Abbildungen auf andere Basis}
+    \caption[Eigenräume]{
+        Beispiel einer Darstellung eines Vektors mit Abbildungen auf andere Basis.
+        $v_{10}$ ist gleich der Summe der Abbildungen markiert mit rot und blau.
+    } \label{ew:fig:scalar_prod}
 \end{figure}
 
 Leider stimmt formel \ref{ew:eq:f2} nur für $i \neq j$. Damit diese Formel eingesetzt werden kann, muss der fall $i = j$ separat erwähnt werden
-\begin{align*}
+\begin{align}
     \bm v_i(\varepsilon)
     &=
     \bm v_{0i} + \varepsilon ( \bm v_{0i}^T \bm v_{1i}) \bm v_{0i} + \varepsilon \sum_{j \neq i} (\bm v_{0j}^T \bm v_{1i}) \, \bm v_{0j} \\
@@ -212,7 +214,8 @@ Leider stimmt formel \ref{ew:eq:f2} nur für $i \neq j$. Damit diese Formel eing
     \, \bm v_{0j}
     \quad
     \QED
-\end{align*}
+    \label{ew:eq:explicit_eigvecs}
+\end{align}
 
 
 Zusammenfassend, 
@@ -284,7 +287,7 @@ Als Beispiel, wenn $\varepsilon = 1$,
         0 & 0 & 2
     \end{pmatrix},
     \quad
-    \lambda_0 = \{1, 2, 3\},
+    \lambda_0 = \{1, 2, 2\},
     \quad
     \bm v_0 = \{
     \begin{pmatrix}
@@ -330,9 +333,17 @@ Als Beispiel, wenn $\varepsilon = 1$,
         1
     \end{pmatrix}
     \}.
-\end{align}
-Die Dimensionen der Eigenvektoren, die einen Eigenraum bilden sind mit $?$ gekennzeichnet. %TODO illustrate
+\end{align} \label{ew:eq:entartung_bsp}
+Die Dimensionen der Eigenvektoren, die einen Eigenraum bilden sind mit Fragezeichen gekennzeichnet.
+Die Eigenräume der Matrixen sind in Abbildung \ref{ew:fig:entartung} illustriert.
 
+\begin{figure}
+    \begin{center}
+        \input{papers/ew/tikz/entartung.tikz.tex}
+    \end{center}
+    \caption{Eigenräume der Beispielmatrizen von \ref{ew:eq:entartung_bsp}. }
+    \label{ew:fig:entartung}
+\end{figure}
 
 Um das Problem mit der Division durch Null in formel \ref{ew:eq:f2} in den Griff zu kriegen, müssen wir nochmals eine Formel zurück und Formel \label{ew:eq:f} für $i \neq j$ und $\lambda_{0i} = \lambda_{0j}$ anschauen:
 Dabei erhalten wir
@@ -350,7 +361,7 @@ Dabei erhalten wir
     \bm v_{0j}^T  \bm v_{0i}
     = 0.
 \end{align}
-Falls $i, j$ entartet sind, geht die Gleichung auf. Wir können also Formel ? auch für entartete Eigenwerte brauchen, falls %TODO ref
+Falls $i, j$ entartet sind, geht die Gleichung auf. Wir können also Formel \ref{ew:eq:explicit_eigvecs} auch für entartete Eigenwerte brauchen, falls %TODO ref
 \begin{equation}
     \bm v_{0j}^T \bm H_1 \bm v_{0i} = 0 \quad \forall \quad i,j \quad entartet.
 \end{equation} \label{ew:eq:condition-degenerated}
