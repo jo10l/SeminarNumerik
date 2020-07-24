@@ -9,12 +9,12 @@
 \label{laplace:section:Methode nach Talbot}
 Mit der Riemmann inversions Formel ergibt sich $f(t)$ aus $F(s)$
 \[
-f(t) = \frac{1}{2\pi i} \oint_{B} \mathrm{e}^{st}F(s)\,\mathrm{d}s,~~t>0,~~i=\sqrt{-1}
+f(t) = \frac{1}{2\pi i} \oint_{B} e^{st}F(s)\,ds,~~t>0,~~i=\sqrt{-1}
 \]
 wobei $B$ die Bromwich Kontur von $\gamma-i\infty$ bis $\gamma+i\infty$, mit $\gamma>\gamma_{0}$, parallel zur imaginären Achse ist.
 Diese Kontur befindet sich zur rechten aller Singularitäten von $F(s)$.
 Falls $f(t)$ durch numerische quadratur berechnet wird.
-Im Allgemeinen möchte man die Kontur zur linken Seite platzieren, sodass der Betrag des Faktors $\mathrm{e}^{st}$ im Integrand kleiner wird. Die Kontur sollte jedoch nicht zu nahe an Singularitäten von $F(s)$ angenähert werden, dies würde Spitzen der Integeralfunktion zur Folge haben.
+Im Allgemeinen möchte man die Kontur zur linken Seite platzieren, sodass der Betrag des Faktors $e^{st}$ im Integrand kleiner wird. Die Kontur sollte jedoch nicht zu nahe an Singularitäten von $F(s)$ angenähert werden, dies würde Spitzen der Integeralfunktion zur Folge haben.
 Eine Bedingung um eine passende Kontur zu finden, wurde von Talbot gefunden.
 Diese fordert, dass die Singularitäten von $F(s)$ bekannt sind, sowie folgendes gilt für $F(s)$
 
@@ -43,7 +43,7 @@ s_{\nu}(\theta)=\theta \cot\theta+i\nu\theta,
 \]
 und das Riemannsche inversions Integral nimmt die folgende Form an
 \[
-f(t)=\frac{\lambda e^{\sigma}}{2\pi i}\int_{-\pi}^{\pi} \mathrm{e}^{-\lambda ts_{\nu}(\theta)}F[\sigma + \lambda s_{\nu}(\theta)]s'_{\nu}(\theta)\,\mathrm{d}\theta
+f(t)=\frac{\lambda e^{\sigma}}{2\pi i}\int_{-\pi}^{\pi} e^{-\lambda ts_{\nu}(\theta)}F[\sigma + \lambda s_{\nu}(\theta)]s'_{\nu}(\theta)\,d\theta
 \]
 wobei
 \[
@@ -51,11 +51,11 @@ s'_{\nu}(\theta) = i \Biggl\{\nu + \frac{\theta-\cos(\theta)\sin(\theta)}{\sin^{
 \]
 Unter berücksichtigung der Symmetrie, sowie der Trapez Approximationsregel erhält man
 \[
-\tilde{f}(t) = \frac{\lambda\mathrm{e}^{\sigma t}}{n}~T_{n}(t)
+\tilde{f}(t) = \frac{\lambda e^{\sigma t}}{n}~T_{n}(t)
 \]
 wobei 
 \[
-T_{n}(t)=\sum_{j=0}^n " \mathrm{e}^{\lambda s_{\nu}(\theta_{j})} F[\sigma + \lambda s_{\nu}(\theta_{j})] \frac{1}{i} s'_{\nu}(\theta_{j})
+T_{n}(t)=\sum_{j=0}^n " e^{\lambda s_{\nu}(\theta_{j})} F[\sigma + \lambda s_{\nu}(\theta_{j})] \frac{1}{i} s'_{\nu}(\theta_{j})
 \]
 
 \[
@@ -63,7 +63,7 @@ T_{n}(t)=\sum_{j=0}^n " \mathrm{e}^{\lambda s_{\nu}(\theta_{j})} F[\sigma + \lam
 \]
 Die Notation $\sum_{j=0}^n "$ besagt, dass der Erste und Letzte Term der Summe halbiert werden. In diesem Falle wird der Term $j=n$ gleich 0 und der $j=0$ Term wird zu
 \[
-\frac{\nu}{2}\mathrm{e}^{\lambda t}F(\sigma + \lambda).
+\frac{\nu}{2}e^{\lambda t}F(\sigma + \lambda).
 \]
 
 Die obige beschriebene Methode wurde in Python implementiert.
