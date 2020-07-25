@@ -1,0 +1,15 @@
+*.pyc
+.vscode
+*.aux
+*.gz
+*.log
+*.pdf
+!img//*.pdf
+*.bbl
+*.bcf
+*.blg
+*.out
+*.run*
+*.nav
+*.snm
+*.toc
