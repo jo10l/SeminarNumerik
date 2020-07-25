@@ -191,7 +191,7 @@ Die Matrix $A$ wird gebildet durch die Teilmatrizen eines jeden Flächenelements
 was dann zu der entsrechenden Teilmatrix eines Dreiecks führt
 
 \begin{equation}
-	\left( \begin{array}{cc}
+	A_{\triangle} = \left( \begin{array}{cc}
 	c_2^2 \int_{\Omega} 1 dx \, dy & 0  \\ 
 	0 & c_3^2 \int_{\Omega} 1 dx \, dy  \\
 	\end{array}\right)
@@ -209,6 +209,18 @@ und wird dann in die Matrix $A $eingefügt bzw. zusammengefasst, dass  somti sä
 	\end{pmatrix}
 	\label{fem:MatrixA}
 \end{equation}
+Etwas anders zusammengefasst dargestellt wie die Matrix $A$ aus den Teilmatrizen $A_{\triangle}$ besteht.
+
+\begin{equation}
+ A =	\begin{pmatrix}
+	A_{\triangle_1} & 0 & \cdots & \cdots & 0 \\
+	0 & \ddots & \vdots & 0 & \vdots \\
+	\vdots & \vdots & \ddots & 0 & \vdots \\
+	\vdots & \vdots & 0 & A_{\triangle_i} & \vdots \\
+	0 & \cdots & \cdots & 0 &  \ddots \\
+	\end{pmatrix}
+\end{equation}
+
 Die Matrix $A$ ist nun bekannt. Es fehlt jedoch noch die Matrix $B$, um das Gleichungs-System zu komplettieren. Die Matrix $B$ wird nun wie folgt definiert. Um die folgende Form zu erhalten muss lediglich der rechte Term von \ref{fem:Minimal2D2Term} für die einzelne Koeffizienten berechnet werden was dann den folgenden Ausdruck ergibt
 
 \begin{equation}
@@ -218,7 +230,7 @@ Die Matrix $A$ ist nun bekannt. Es fehlt jedoch noch die Matrix $B$, um das Glei
 Nun soll dies wieder in die Matrix- Schreibweise übertragen werden was dann eine Teilmatrix $B$ eines Dreickes entspricht
 
 \begin{equation}
- B = \left( \begin{array}{ccc}
+ B_{\triangle} = \left( \begin{array}{ccc}
 	\textcolor{cyan}{- \lambda \int_{\Omega} 1} &  \textcolor{green}{- \lambda \int_{\Omega} x} & \textcolor{orange}{- \lambda \int_{\Omega} y}  \\
 	\textcolor{green}{- \lambda \int_{\Omega}x} & \textcolor{blue}{- \lambda \int_{\Omega} x^2} &  \textcolor{purple}{- \lambda \int_{\Omega} xy} \\
 	\textcolor{orange}{- \lambda \int_{\Omega} y} & \textcolor{purple}{- \lambda \int_{\Omega} xy} & \textcolor{red}{ - \lambda \int_{\Omega} y^2} \\
@@ -226,6 +238,16 @@ Nun soll dies wieder in die Matrix- Schreibweise übertragen werden was dann ein
 	\label{fem:MatrixB}
 \end{equation}
 Diese Teilmatrix $B$ eines jeden Flächenelements wird dann wieder analog der Matrix $A$ in eine Matrix $B$ eingesetzt, so dass diese dann alle Teilmatrizen aller Dreieck-  Flächenstücke enthält.
+
+\begin{equation}
+B =	\begin{pmatrix}
+	B_{\triangle_1} & 0 & \cdots & \cdots & 0 \\
+	0 & \ddots & \vdots & 0 & \vdots \\
+	\vdots & \vdots & \ddots & 0 & \vdots \\
+	\vdots & \vdots & 0 & B_{\triangle_i} & \vdots \\
+	0 & \cdots & \cdots & 0 &  \ddots \\
+	\end{pmatrix}
+\end{equation}
 
 
 \subsection{Schritt 3 Minimalprinizip anwenden auf Approximation}
