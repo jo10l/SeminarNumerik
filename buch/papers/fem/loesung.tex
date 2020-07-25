@@ -6,8 +6,7 @@
 \section{Lösung
 \label{fem:section:loesung}}
 \rhead{Lösung}
-Um eine gute Lösung für die DGL in der Ebene zu finden wird das gesamte Gebiet in Teilgebiet unterteilt und auf jedes Teilgebiet wird eine Approximationsfunktion mit der sogennanten Ansatzfunktion angewendet (siehe Bild \ref{fem:Approx}).\\
-In diesem Kapitel wird der Begriff Ansatzfunktion verwendet, der bis anhin nicht verwendet wurde. Unter Ansatzfunktion wird eine Funktion verstanden, die frei wählbar ist und unbekannte Koeffizienten enthalten, welche berechnet werden sollen. Diese gewählte Ansatzfunktion gibt somit den Freiheitsgrad vor. Nicht jede Funktion kann verwendet werden, dass es auch hier Randbedingungen gibt, die beachtet und erfüllt werden müssen. Je höher die Ordnung der Ansatzfunktion desto besser soll die Approximation an den rändern sein. So die Hoffnung. Allerdings hat dies auch Konsequenzen, die im Verlauf dieses Kapitels beschrieben werden. \\
+Das gesamte Gebiet wird in Teilgebiet unterteilt und auf jedes Teilgebiet wird die Ansatzfunktion angewendet (siehe Bild \ref{fem:Approx}).\\
 
 \begin{figure}[h!]
 	\centering
@@ -21,8 +20,7 @@ Die Ansatzfunktion hat folgende Eigenschaften:
 	\item Eine einfache Foremel gibt es nur auf einem kleinen Teilgebiete
 	\item In dem Teilgebiet ist die Formel sehr einfach zu berechnen wie z.B. eine lineare Funktion die durch Koeffizienten bestimmt wird.
 \end{itemize}
-
-Als Ansatzfunktionen stehen diverse Standard- Funktionen in der Ebene zur Verfügung. Sie reichen von einfacheren linearen Termen bishinzu quadratischen oder noch höheren Funktions- Ordnungen. Als Standardverfahren in der Ebene haben sich Flächenelement wie Dreicecken oder Parallelogramme bewährt. Die Wahl der  der Flächen- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
+Als Standardverfahren in der Ebene haben sich Flächenelement wie Dreicecken oder Parallelogramme bewährt. Die Wahl der  der Flächen- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
 
 Um möglichst einfach darzustellen, wie das Verfahren der Finiten Elemente vonstatten geht, wurde auf eine einfache Approximation mit Einheitsdreiecken und einem linearen Ansatz gewählt. 
 
