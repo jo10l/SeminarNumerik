@@ -7,27 +7,28 @@
 \label{fem:section:problemstellung}}
 \rhead{Problemstellung}
 
-Um eine Lösung für das Problem zu finden in der Ebene
+\subsection{Was sind Ansatzfunktionen?}
+Um eine gesuchte Funktion als Lösung für das Differentialgleichung (DGL) Problem in der Ebene zu finden, wird diese mit einfacheren Funktionen approximiert. Diese einfacheren Approximations- Funktionen werden in diesem Kapitel als Ansatzfunktion bezeichnet. 
 
-In diesem Kapitel wird der Begriff Ansatzfunktion verwendet, der bis anhin nicht verwendet wurde. Unter Ansatzfunktion wird eine Funktion verstanden, die frei wählbar ist und unbekannte Koeffizienten enthalten, welche berechnet werden sollen. Diese gewählte Ansatzfunktion gibt somit den Freiheitsgrad vor. Je höher die Ordnung der Ansatzfunktion desto besser soll die Approximation werden. So die Hoffnung. Allerdings hat dies auch Konsequenzen, die im Verlauf dieses Kapitels beschrieben werden. Nicht jede Funktion kann verwendet werden, dass es auch hier Randbedingungen gibt, die Beachtet und erfüllt werden müssen.
+Die Ansatzfunktion ist frei wählbar und gibt auch den Freiheitsgrad vor. Je höher die Ordnung der Ansatzfunktion desto besser soll die Approximation werden. So die Hoffnung. Allerdings hat dies auch Konsequenzen, die im Verlauf dieses Kapitels beschrieben werden. 
 
-Wie bereits beschrieben im Kapitel xXx kann eine Differentialgleichung (DGL) in ein äquvalentes Minimalproblem übersetzt werden. Die DGL in der Ebene hat allerdings zu der DGL im eindimensionalen Raum die Form:
+
+\subsection{Herausforderung FEM in der Ebene}
+Wie bereits beschrieben und bewiesen im Kapitel xXx kann eine DGL in ein äquvalentes Minimalproblem übersetzt werden. Das Minimalproblem muss Element- bzw. Stückweise mit den Ansatzfunktionen formuliert werden. Die DGL in der Ebene hat allerdings zu der DGL im eindimensionalen Raum die Form:
 
 \begin{equation}
 	\Delta u = \lambda u
 	\label{fem:DGL2D}
 \end{equation} 
-während der Laplace Operato die 2. Ableitungen nach den beiden Variablen darstellt.
+während der Laplace Operator die 2. Ableitungen nach den beiden Variablen darstellt.
 
 \begin{equation}
 	\Delta = \frac{\partial ^2}{\partial x^2} + \frac{\partial ^2}{\partial y^2}
 \end{equation} 
-Daraus lässt sich erkennen, dass sich die Vorgehensweise angepasst werden muss, da zweifache Differenzierbarkeit gefordert ist. Der Vorteil liegt jedoch auch darin, dass sobald die Erkenntnis für die zusätzliche Dimension gewonnen wurde, analog für weitere Dimensionen einsetzen lässt.
-
-Hinzu kommt noch die Randbedingungen der DGL erfüllt sein müssen die da lauten:
+Daraus lässt sich erkennen, dass sich die Vorgehensweise angepasst werden muss, da zweifache Differenzierbarkeit gefordert ist. Zudem muss die Ansatzfunktion die Approximation genügen genau beschreiben. Die Randbedingungen der DGL die erfüllt werden müssen lauten:
 \begin{itemize}
-	\item 1. stetig differenzierbar in den Stützstellen (Steigung)
-	\item 2. stetig differenzierbar an den übergängen der Elementen (Krümmung)
+	\item 1. stetig differenzierbar in den Stützstellen (Steigung) wie z.B: im Dreieck in den Ecken.
+	\item 2. stetig differenzierbar an den Übergängen an den Rändern eines Elements zum anliegenden Rand eines benachbarten Elements. (Krümmung)
 \end{itemize}
 %Poisson-Gleichung:
 
@@ -69,25 +70,25 @@ Hinzu kommt noch die Randbedingungen der DGL erfüllt sein müssen die da lauten
 %\iint_{\!\!\!\!\!\!\!\Omega} \limits u  \,dx dy
 %\label{fem:equation3}
 %\end{equation}
-Die Methoder der Finiten Elemente in der Ebene haben zum einen die Herausforderung, dass die Ansatzfunktion mit den enthaltenen Koeffizienten so zu wählen ist, dass dies Ranbedingungen erfüllt werden.  Und daraus müsste dann die Lösung gefunden werden um die Koeffizienten der folgenden Gleichung zu finden.
+Daraus müsste dann die Lösung gefunden werden um die Koeffizienten der folgenden Gleichung zu finden.
 
 \begin{equation}
 \int g(x) \space dx = f_i \int h_0 \space dx+ f_{i+1}\int h_1 \space dx + s_i\int h_0^1 dx + s_{i+1}\int h_1^1 dx
 \label{fem:equation5}
 \end{equation}
-Die zweite Herausforderunge besteht darin, dass in der Ebene die Wahl des Flächenelements gegeben ist, um die gewünschte Fläche zu approximieren. Jenach dem kann mit einem Dreieck oder einem Parallelogramm die Fläche approximiert werden. Ein Kreis wäre auch denkbar, allerdings ist der Gewinn im Verhältniss zum Rechenaufwand nicht gerechtfertig. Da es verschiedene Dreieck- Arten gibt sowie auch Parallelogramme, wird in xXx auch eine Lösung aufgezeigt wie mit Hilfe einer Transformation des Flächenelements in ein weniger aufwändigere berechenbare Flächenelement überführt werden kann.
+Die gewählte Ansatzfunktion muss dann noch auf die gewählte Form z.B. ein Dreieck angewendet werden. Die Interpolation des Gebiet kann mit unterschiedlichen Formen vorgenommen werden. Jenach dem kann mit einem Dreieck oder einem Parallelogramm das Gebiet approximiert werden. Ein Kreis wäre auch denkbar, allerdings ist der Gewinn im Verhältniss zum Rechenaufwand nicht gerechtfertig. Da es verschiedene Dreieck- Arten gibt sowie auch verschiedene Parallelogramme, wird in xXx auch eine Lösung aufgezeigt wie mit Hilfe einer Transformation das Dreieck Flächenelements in ein weniger aufwändigere berechenbare Flächenelement überführt werden kann.
 
-\subsection{De finibus bonorum et malorum
-\label{fem:subsection:finibus}}
+%\subsection{De finibus bonorum et malorum
+%\label{fem:subsection:finibus}}
 
-\begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{fem:equation1}
-\end{equation}
+%\begin{equation}
+%\int_a^b x^2\, dx
+%=
+%\left[ \frac13 x^3 \right]_a^b
+%=
+%\frac{b^3-a^3}3.
+%\label{fem:equation1}
+%\end{equation}
 
 
 

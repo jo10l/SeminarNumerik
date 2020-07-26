@@ -408,7 +408,7 @@ besteht aus zwei fast gleichen Zeilen, sie ist als fast singulär,
 die Determinante muss sehr klein sein.
 Andererseits sind alle Einträge von der Grössenordnung $10^3$, man erwartet
 also einen Spektralradius in der selben Grössenordnung.
-Man erwartet daher eine Konditionszahl von weit über $10^3$.
+Die Konditionszahl dürfte daher weit grösser als $10^3$ sein.
 Die numerische Rechnung ergibt für die Eigenwerte
 \[
 \lambda_1 = 1998.00050050375,
@@ -419,7 +419,9 @@ was eine Konditionszahl von
 \[
 \kappa(A)
 \approx
--3992006
+3992006
+\approx
+4\cdot 10^6
 \]
 ergibt.
 Diese einfache Matrix hat also sehr schlechte Kondition.
@@ -437,7 +439,7 @@ Damit kann man auch die Inverse algebraisch leicht angeben:
 A^{-1}
 =
 \frac{1}{\det(A)}
-\begin{pmatrix} 998 & -999\\ -999 1000 \end{pmatrix}.
+\begin{pmatrix} 998 & -999\\ -999 &1000 \end{pmatrix}.
 \]
 Die numerische Rechnung offenbart aber die Schwierigkeiten, die die 
 schlechte Kondition verursacht.

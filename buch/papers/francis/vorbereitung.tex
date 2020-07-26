@@ -13,7 +13,7 @@ Um den Francis Algorithmus effizient ausführen zu können, muss die Matrix zuer
 	*& * & * & * & * \\
 	*&  * & * & * & * \\
 	*&  * &  * & * & *
-	\end{bmatrix} zu
+	\end{bmatrix} \rightarrow
 	\begin{bmatrix}
 	* & * & * & * & * \\
 	* & * & * & * & * \\
@@ -23,13 +23,14 @@ Um den Francis Algorithmus effizient ausführen zu können, muss die Matrix zuer
 	\end{bmatrix}
 \end{equation}
 
-\emph{Theorem: Jede Matrix $ A subset \mathbb{R} ^{n x n} $ ist orthogonal ähnlich zu einer Matrix H in der oberen Hessenberg Form: $ H=Q^{-1}AQ $, wobei Q ein Produkt von n-2 Reflektoren ist.}
+\begin{satz}
+	\emph{Theorem: Jede Matrix $ A \subset \mathbb{R} ^{n x n} $ ist orthogonal ähnlich zu einer Matrix H in der oberen Hessenberg Form: $ H=Q^{-1}AQ $, wobei Q ein Produkt von n-2 Reflektoren ist.}
+\end{satz}
 
-Beispiel:
 Gegeben sei eine Matrix A mit einer Submatrix $\hat{A}$  und einer ersten Spalte $a_{11}$ und einem Vektor b.
 Ziel ist es, alle Einträge dieses Vektors, ausser den ersten auf null zu setzen.
-Dies kann mit einer Multiplikation mit einer geeigneten Matrix Q gemacht werden. $\hat{Q}$ muss so gewählt werden, dass bei einer Multiplikation mit b alle Werte bis auf den ersten verschwinden.
-Wobei man die Matrix so wählen soll, dass die Länge des neuen Vektors, bzw. dieser einzelne Eintrag, der Länge des Vektors b entspricht.
+Dies kann mit einer Multiplikation mit einer geeigneten Matrix $Q$ gemacht werden. $\hat{Q}$ muss so gewählt werden, dass bei einer Multiplikation mit $b$ alle Werte bis auf den ersten verschwinden.
+Die Matrix $Q$ soll so gewählt werden, dass die Länge des neuen Vektors, bzw. dieser einzelne Eintrag, der Länge des Vektors $b$ entspricht.
 \begin{equation}
 	A=
 	\begin{bmatrix}
@@ -41,7 +42,7 @@ Wobei man die Matrix so wählen soll, dass die Länge des neuen Vektors, bzw. di
 	1 & 0\\
 	0 & \hat{Q_1}
 	\end{bmatrix},
-	mit \hat{Q_1}b=
+	\text{mit } \hat{Q_1}b=
 	\begin{bmatrix}
 	-y\\
 	0\\
@@ -56,7 +57,7 @@ Wird $\hat{Q}$ richtig gewählt entsteht bei einer Multiplikation von links mit 
 $\hat{Q}$ kann dabei zum Beispiel mit Givens Rotationsmatrizen \ref{francis:section:grundlagen:givens} oder einer Householder-Transformationsmatrix \ref{francis:section:grundlagen:householder} gebildet werden.
 
 \begin{equation}
-	A_{Half}=Q_{1}A=
+	A_{\text{Half}}=Q_{1}A=
 	\begin{bmatrix}
 	a_{11} & * & ... & *\\
 	-y & \\
@@ -67,12 +68,12 @@ $\hat{Q}$ kann dabei zum Beispiel mit Givens Rotationsmatrizen \ref{francis:sect
 	\end{bmatrix}
 \end{equation}
 
-Damit wir aber die Eigenwerte unserer Matrix nicht verändern, müssen wir die Q Matrix nun auch von der rechten Seite hinzu multiplizieren.
-Da unsere erste Spalte von Q nur eine 1 und nullen hat, wird dabei die vorher erzeugte Spalte nicht beeinflusst.
+Damit wir aber die Eigenwerte unserer Matrix nicht verändern, müssen wir die $Q$ Matrix nun auch von der rechten Seite hinzu multiplizieren.
+Da unsere erste Spalte von $Q$ nur eine 1 und nullen hat, wird dabei die vorher erzeugte Spalte nicht beeinflusst.
 Das Resultat ist also eine ähnliche Matrix, welche an den gewünschten Stellen in der ersten Spalte nullen hat.
 
 \begin{equation}
-	A_{1}=A_{Half}Q_{1}=
+	A_{1}=A_{\text{Half}}Q_{1}=
 	\begin{bmatrix}
 	a_{11} & * & ... & *\\
 	-y & \\
@@ -92,7 +93,7 @@ Das Resultat ist also eine ähnliche Matrix, welche an den gewünschten Stellen 
 	\end{bmatrix}
 \end{equation}	
 
-Das Gleiche Prinzip wird wieder angewendet.
+Das gleiche Prinzip wird wieder angewendet.
 Durch den zweiten Reflektor entstehen Nullen in der zweiten Spalte.
 Mit einem weiteren Schritt ebenfalls in der dritten Spalte usw.
 
@@ -119,8 +120,8 @@ Mit einem weiteren Schritt ebenfalls in der dritten Spalte usw.
 	\end{bmatrix}
 \end{equation}
 
-Das Resultat ist eine Matrix in der Hessenberg Form, welche ähnlich zu A ist.
-Das heisst für uns, sie besitzt dieselben Eigenwerte wie die Matrix A.
+Das Resultat ist eine Matrix in der Hessenberg Form, welche ähnlich zu $A$ ist.
+Das heisst für uns, sie besitzt dieselben Eigenwerte wie die Matrix $A$.
 Die ganzen Multiplikation der Reflektoren kann zusammengefasst werden, sodass sich eine einzige Ähnlichkeitstransformation ergibt.
 
 \begin{equation}
@@ -138,5 +139,5 @@ erhalten wir
 H=Q^{-1}AQ
 \end{equation}
 
-Im Falle einer symmetrischen Matrix A, werden durch die Multiplikation von rechts dieselben Elemente im oberen Teil der Matrix eliminiert und das Ergebnis der Transformation tridiagonal.
+Im Falle einer symmetrischen Matrix $A$, werden durch die Multiplikation von rechts dieselben Elemente im oberen Teil der Matrix eliminiert und das Ergebnis der Transformation tridiagonal.
 Durch die Reduzierung werden die Kosten des anschliessenden Algorithmus stark reduziert.

@@ -1,0 +1,87 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        view={135}{20},%colormap/blackwhite,
+        axis lines=center, axis on top,
+        yticklabels=\empty,
+        zticklabels=\empty,
+        ytick=\empty,
+        ztick=\empty,
+        xtick={1},
+        xticklabels={$1$},
+        set layers=default,axis equal,
+        xlabel={$x$}, ylabel={$y$}, zlabel={$z$},
+        xlabel style={anchor=south east},
+        ylabel style={anchor=south west},
+        zlabel style={anchor=south west},
+        enlargelimits,
+        tick align=inside,
+        samples = 100,
+        samples y = 0,
+        title style={at={(0.5,0)},anchor=north,yshift=0.5cm},
+        title = $\bm H_0$
+        ]
+    \addplot3 [very thick, domain=0:360]
+        ( {sin(x)}, {cos(x)}, {0});
+    \addplot3 [<->, >=stealth', very thick, domain=-1:1]
+        ( {0}, {0}, {2*x});
+    \end{axis}
+
+    \begin{axis}[at={(5cm,0)},
+        view={135}{20},%colormap/blackwhite,
+        axis lines=center, axis on top,%ticks=none,
+        yticklabels=\empty,
+        zticklabels=\empty,
+        ytick=\empty,
+        ztick=\empty,
+        xtick={1},
+        xticklabels={$1$},
+        xtick={1},
+        xticklabels={$1$},
+        set layers=default,axis equal,
+        xlabel={$x$}, ylabel={$y$}, zlabel={$z$},
+        xlabel style={anchor=south east},
+        ylabel style={anchor=south west},
+        zlabel style={anchor=south west},
+        enlargelimits,
+        tick align=inside,
+        samples = 100,
+        samples y = 0,
+        title style={at={(0.5,0)},anchor=north,yshift=0.5cm},
+        title = $\bm H_1$
+        ]
+    \addplot3 [very thick, domain=0:360]
+        ( {0}, {2*sin(x)}, {2*cos(x)} );
+    \addplot3 [<->, >=stealth', very thick, domain=-1:1]
+        ( {1*x}, {0}, {0});
+    \end{axis}
+
+    \begin{axis}[at={(10cm,0)},
+        view={135}{20},%colormap/blackwhite,
+        axis lines=center, axis on top,%ticks=none,
+        yticklabels=\empty,
+        zticklabels=\empty,
+        ytick=\empty,
+        ztick=\empty,
+        xtick={1},
+        xticklabels={$1$},
+        set layers=default,axis equal,
+        xlabel={$x$}, ylabel={$y$}, zlabel={$z$},
+        xlabel style={anchor=south east},
+        ylabel style={anchor=south west},
+        zlabel style={anchor=south west},
+        enlargelimits,
+        tick align=inside,
+        samples = 100,
+        samples y = 0,
+        title style={at={(0.5,0)},anchor=north,yshift=0.5cm},
+        title = $\bm H(\epsilon)$
+        ]
+    \addplot3 [<->, >=stealth', very thick, domain=-1:1]
+        ( {2*x}, {0}, {0});
+    \addplot3 [<->, >=stealth', very thick, domain=-1:1]
+        ( {0}, {3*x}, {0});
+    \addplot3 [<->, >=stealth', very thick, domain=-1:1]
+        ( {0}, {0}, {4*x});
+    \end{axis}
+
+\end{tikzpicture}
