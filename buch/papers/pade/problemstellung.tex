@@ -3,32 +3,112 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Potenzreihen
-\label{pade:section:Potenzreihen}}
+
+\section{Problemstellung
+\label{pade:section:Problemstellung}}
+Eine Padé-Approximation ist ein Bruch welcher aus zwei Polynomen, welche aus den Koeffizienten der Taylorreihe einer Funktion gewonnen werden, gebildet wird. 
+Das Ziel dieses Kapitels ist es dem Leser den Nutzen der Padé-Approximation näher zu bringen und zu zeigen wie man aus einer analytischen Funktion eine solche Approximation bilden kann.
+Des weiteren wird auf mehrere praktische Beispiele eingegangen und mögliche Fehlerquellen aufgezeigt. 
+
+
+
+\subsection{Potenzreihen
+\label{pade:subsection:Potenzreihen}}
 \rhead{Potenzreihen}
+Die Koeffizienten einer Potenzreihe können verwendet werden um die Koeffizienten einer Padé-Approximation zu gewinnen. 
+In diesem Kapitel soll kurz aufgezeigt werden wie man die Potenzreihe einer Funktion erhalten kann. 
+
 In der Analysis kann eine Funktion mit einer Taylorreihe um eine Stelle $x_{0}$ durch eine Potenzreihe dargestellt werden. 
 Diese Potenzreihen werden um einen vorgegebene Stelle $x_{0}$ als eine unendliche Summe 
 \begin{equation}
 f(x)=\sum_{n=0}^{\infty} a_{n} (x-x_{0})^{n} 
+\label{pade:expofunk}
 \end{equation}
 gebildet.
 Für viele Funktionen sind die dazugehörigen Potenzreihen schon bekannt. 
-Funktionen welche durch eine Potenzreihe dargestellt werden können auch analytische Funktionen genannt werden.
+Funktionen welche durch eine Potenzreihe dargestellt werden können, werden auch analytische Funktionen genannt.
 Es gibt verschiedene Methoden um eine Potenzreihe einer Funktion zu erhalten. 
-Bei analytischen Funktionen sind die Potenzreihen schon bekannt und können etwa durch Differentialgleichungen oder eine andere Reihenentwicklungsmethode hergeleitet werden.
-Wie die Herleitung mit einer Potenzreihe mit einer Differentialgleichung wird in dem Abschnitt \ref{pade:section:Bsp_Potenzreihen} gezeigt.
+Bei analytischen Funktionen sind die Potenzreihen schon bekannt und können etwa durch Differentialgleichungen oder eine andere Reihenentwicklungsmethoden hergeleitet werden.
+Wie die Herleitung mit einer Potenzreihe mit einer Differentialgleichung funktioniert wird in dem Abschnitt \ref{pade:section:Bsp_Potenzreihen} gezeigt.
 
-\subsection{Beispiel Potenzreihen
+\subsubsection{Beispiel Potenzreihen
 \label{pade:section:Bsp_Potenzreihen}}
-Aus der Exponentialfunktion
+In diesem Beispiel möchten wir die Potenzreihe der Exponentialfunktion erhalten welche an der Stelle $x_0 = 0$ entwickelt wird. 
+Wir wissen welche Eigenschaften die Exponentialfunktion hat und nutzen genau diese um Gleichungen aufzustellen. 
+Gesucht ist eine Potenzreihe welche das Verhalten 
 \begin{equation*}
+	f^{\prime}(x) = f(x) , \text{ für alle } x \in \mathbb{R} 
+\end{equation*}
+aufweist.
+
+Die Form der Potenzreihe ist gegeben durch die schon gezeigte Summe \ref{pade:expofunk}.
+Weiter wissen wir das die Exponentialfunktion 
+\begin{equation*}
+f(0) = 1
+\end{equation*}
+erfüllen muss.
+Aus dem können wir schliessen, dass
+\begin{equation*}
+f(x)=\sum_{n=0}^{\infty} a_{n} \cdot x^{n}
+\qquad\Rightarrow\qquad
+\sum_{n=0}^{\infty} a_{n} \cdot 0^{n} 
+=
+a_{0} \cdot 0^{0} + a_{1} \cdot 0^{1} + a_{2} \cdot 0^{2} \dots = 1
+\qquad\Rightarrow\qquad
+a_{0} = 1
+\end{equation*}
+und somit ist der erste Koeffizient $a_0$ schon gefunden.
+Anschliessend wird das Polynom abgeleitet
+
+\begin{equation*}
+f^{\prime}(x)
+=
+\sum_{n=0}^{\infty}(n+1) \cdot a_{n+1} \cdot x^{n}
+\end{equation*}
+um die weiteren Koeffizienten $a_n$ zu erhalten.
+Da immer noch die Anforderung $f(x) = f^{\prime}(x)$ gilt, wissen wir das die Koeffizienten vor $x^n$ 
+\begin{equation*}
+(n+1) \cdot a_{n+1} 
+= 
+a_{n} , \text{ für alle } n \in \mathbb{R}
+\end{equation*}
+sein müssen. 
+Mit dem schon bekannten $a_0 = 1$ folgt rekursiv
+\begin{equation*}
+a_{n+1} 
+= 
+\frac{1}{(n+1)!}
+\qquad\Rightarrow\qquad
+a_{n} 
+= 
+\frac{1}{n!}
+\end{equation*}
+und damit sind die Koeffizienten des Polynoms der Exponentialfunktion schon ermittelt.
+Ausgeschrieben 
+
+
+\begin{equation}
 e^{x}
 =
 \sum_{n=0}^{\infty} \frac{x^{n}}{n !}
 =
 \frac{x^{0}}{0 !}+\frac{x^{1}}{1 !}+\frac{x^{2}}{2 !}+\frac{x^{3}}{3 !}+\cdots 
+\label{pade:potenzexp}
+\end{equation}
+Aus der bekannten Potenzreihe der Exponentialfunktion \ref{pade:potenzexp} können nun auch andere Potenzreihen gewonnen werden.
+Für die Potenzreihen gilt alle $x \in \mathbb{R}$ d.h., der Konvergenzradius der Potenzreihe ist unendlich. 
+Aus der Exponentialfunktion kann sogleich die Potenzreihe für den Sinus und Kosinus ermittelt werden.
+Um dies zu erreichen wird zuerst die Reihe Komplex erweitert
+\begin{equation*}
+e^{x}
+=
+\sum_{n=0}^{\infty} \frac{x^{n}}{n !}
+\qquad\Rightarrow\qquad
+e^{ix}
+=
+\sum_{n=0}^{\infty} \frac{ix^{n}}{n !}.
 \end{equation*}
-für alle $x \in \mathbb{R}$ d.h., der Konvergenzradius der Potenzreihe ist unendlich, kann durch Gebrauch von Euler sogleich die Potenzreihe für den Sinus und Kosinus ermittelt werden
+Die komplexe Reihe bringen wir dann in eine sehr bekannte Form durch den Gebrauch von Euler 
 \begin{align*}
 e^{ix}
 &=
@@ -42,6 +122,8 @@ e^{ix}
 &=
 \cos(x)+i\cdot \sin(x).
 \end{align*}
+Man sieht gleich das die komplexen Zahlen bei den geraden Exponenten verschwinden und bei denn ungeraden Exponenten noch bestehen bleiben. 
+Sortiert man nun das Polynom nach komplex und reellen werten erkennt man die $cis$ Form und kann diese beide Teile als Sinus und Kosinus aufschreiben.
 Wobei die Sinusfunktion 
 \begin{equation*}
 \sin (x)=\sum_{n=0}^{\infty}(-1)^{n} \frac{x^{2 n+1}}{(2 n+1) !}=\frac{x}{1 !}-\frac{x^{3}}{3 !}+\frac{x^{5}}{5 !} \mp \cdots
@@ -50,37 +132,22 @@ und die Kosinusfunktion
 \begin{equation*}
 \cos (x)=\sum_{n=0}^{\infty}(-1)^{n} \frac{x^{2 n}}{(2 n) !}=\frac{x^{0}}{0 !}-\frac{x^{2}}{2 !}+\frac{x^{4}}{4 !} \mp \cdots
 \end{equation*}
+beide als einzelne Summen ausgeschrieben werden können.
 
 
 
-\section{Das Taylorreihen Problem
-\label{pade:Taylorfehler}}
-Für praktischen Berechnungen von Modellen in der Physik, Ingenieurwissenschaften und weiteren Feldern wird die Taylorreihe schon früh im Studium als ein nützliches Hilfsmittel gelehrt.
-Die klassische Antwort auf eine Taylorreihe welche konvergiert ist, dass sie den Wert einer Funktion welche beliebig oft Abgeleitet werden kann definiert. 
-In der Praxis wird die Funktion jedoch nur mit immer längeren Polynomen approximiert.
-Diese Methode kann bei praktischen Problemen auch einen sehr unerwünschte und limitierenden Effekt haben. 
-Schauen wir das Beispiel 
-\begin{equation*}
-f(x)
+\subsection{Padé-Approximation erstellen
+	\label{pade:subsection:Pade_erstellen}}
+
+Die Padé-Approximation 
+\begin{equation}
+[L/M] = 
 =
-(\frac{1+2x}{1+x})^{\frac{1}{2}}
-\approx
-1+\frac{1}{2}x - \frac{5}{8}x^2+\frac{13}{16}x^3 -\frac{141}{128}x^4 +\frac{399}{256}x^5 - \frac{2353}{1024}x^6 + \frac{7205}{2048}x^7 \mp \cdots
-\end{equation*}
-an. 
-Die originale Funktion $f(x)$ ist eine zwische $0<x<\infty$ einfache und stetige Funktion welche sich von $1$ zu $\sqrt{2}$ bewegt.
-Die Dazugehörige Taylorreihe ist jedoch nicht in der Lage bei einem Wert von $x>\frac{1}{2}$ zu konvergieren. 
-Das verhalten der original Funktion und dessen Taylorreihe ist in dem Graphen \ref{pade:prob1} ersichtlich. 
+\frac{a_0 + a_1 x + \dots + a_L x^L}{den}
+\end{equation}
 
 
-\begin{figure}[ht]
-	\centering
-	\subfigure[Plot von $f(x)$ und Taylorreihe 7. Ordnung\label{pade:prob1}]{\includegraphics[width=0.45\linewidth]{./papers/pade/python/bilder/taylorProb1.pdf}}
-	\subfigure[Fehler zwischen der Funktion und der Approximation\label{pade:prob2}]{\includegraphics[width=0.45\linewidth]{./papers/pade/python/bilder/taylorProb3.pdf}}
-	\subfigure[Plot von $f(x)$ und Padeapproximation 3. Ordnung\label{pade:prob3}]{\includegraphics[width=0.45\linewidth]{./papers/pade/python/bilder/taylorProb2.pdf}}
-	\subfigure[Fehler zwischen der Funktion und der  Padeapproximation\label{pade:prob4}]{\includegraphics[width=0.45\linewidth]{./papers/pade/python/bilder/taylorProb4.pdf}}
-	\caption{Visualisierung von der Funktion $f(x)$ und dessen Approximation\label{pade:prob}}
-\end{figure}
+
 
 
 
