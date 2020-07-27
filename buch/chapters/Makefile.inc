@@ -46,6 +46,7 @@ CHAPTERFILES =								\
 	chapters/60-linsys/chapter.tex					\
 	chapters/60-linsys/thomas.tex					\
 	chapters/60-linsys/gaussseidel.tex				\
+	chapters/60-linsys/kondition.tex				\
 	chapters/60-linsys/qr.tex					\
 	chapters/60-linsys/jacobi.tex					\
 	chapters/60-linsys/uebungsaufgaben/6002.tex			\

@@ -3,53 +3,152 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
+
 \section{Problemstellung
-\label{pade:section:problemstellung}}
-\rhead{Problemstellung}
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-quae ab illo inventore veritatis et quasi architecto beatae vitae
-dicta sunt explicabo.
-Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-aut fugit, sed quia consequuntur magni dolores eos qui ratione
-voluptatem sequi nesciunt
+\label{pade:section:Problemstellung}}
+Eine Padé-Approximation ist ein Bruch welcher aus zwei Polynomen, welche aus den Koeffizienten der Taylorreihe einer Funktion gewonnen werden, gebildet wird. 
+Das Ziel dieses Kapitels ist es dem Leser den Nutzen der Padé-Approximation näher zu bringen und zu zeigen wie man aus einer analytischen Funktion eine solche Approximation bilden kann.
+Des weiteren wird auf mehrere praktische Beispiele eingegangen und mögliche Fehlerquellen aufgezeigt. 
+
+
+
+\subsection{Potenzreihen
+\label{pade:subsection:Potenzreihen}}
+\rhead{Potenzreihen}
+Die Koeffizienten einer Potenzreihe können verwendet werden um die Koeffizienten einer Padé-Approximation zu gewinnen. 
+In diesem Kapitel soll kurz aufgezeigt werden wie man die Potenzreihe einer Funktion erhalten kann. 
+
+In der Analysis kann eine Funktion mit einer Taylorreihe um eine Stelle $x_{0}$ durch eine Potenzreihe dargestellt werden. 
+Diese Potenzreihen werden um einen vorgegebene Stelle $x_{0}$ als eine unendliche Summe 
 \begin{equation}
-\int_a^b x^2\, dx
-=
-\left[ \frac13 x^3 \right]_a^b
-=
-\frac{b^3-a^3}3.
-\label{pade:equation1}
+f(x)=\sum_{n=0}^{\infty} a_{n} (x-x_{0})^{n} 
+\label{pade:expofunk}
 \end{equation}
-Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-consectetur, adipisci velit, sed quia non numquam eius modi tempora
-incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+gebildet.
+Für viele Funktionen sind die dazugehörigen Potenzreihen schon bekannt. 
+Funktionen welche durch eine Potenzreihe dargestellt werden können, werden auch analytische Funktionen genannt.
+Es gibt verschiedene Methoden um eine Potenzreihe einer Funktion zu erhalten. 
+Bei analytischen Funktionen sind die Potenzreihen schon bekannt und können etwa durch Differentialgleichungen oder eine andere Reihenentwicklungsmethoden hergeleitet werden.
+Wie die Herleitung mit einer Potenzreihe mit einer Differentialgleichung funktioniert wird in dem Abschnitt \ref{pade:section:Bsp_Potenzreihen} gezeigt.
 
-Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-fugiat quo voluptas nulla pariatur?
+\subsubsection{Beispiel Potenzreihen
+\label{pade:section:Bsp_Potenzreihen}}
+In diesem Beispiel möchten wir die Potenzreihe der Exponentialfunktion erhalten welche an der Stelle $x_0 = 0$ entwickelt wird. 
+Wir wissen welche Eigenschaften die Exponentialfunktion hat und nutzen genau diese um Gleichungen aufzustellen. 
+Gesucht ist eine Potenzreihe welche das Verhalten 
+\begin{equation*}
+	f^{\prime}(x) = f(x) , \text{ für alle } x \in \mathbb{R} 
+\end{equation*}
+aufweist.
 
-\subsection{De finibus bonorum et malorum
-\label{pade:subsection:finibus}}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui
-blanditiis praesentium voluptatum deleniti atque corrupti quos
-dolores et quas molestias excepturi sint occaecati cupiditate non
-provident, similique sunt in culpa qui officia deserunt mollitia
-animi, id est laborum et dolorum fuga \eqref{000tempmlate:equation1}.
+Die Form der Potenzreihe ist gegeben durch die schon gezeigte Summe \ref{pade:expofunk}.
+Weiter wissen wir das die Exponentialfunktion 
+\begin{equation*}
+f(0) = 1
+\end{equation*}
+erfüllen muss.
+Aus dem können wir schliessen, dass
+\begin{equation*}
+f(x)=\sum_{n=0}^{\infty} a_{n} \cdot x^{n}
+\qquad\Rightarrow\qquad
+\sum_{n=0}^{\infty} a_{n} \cdot 0^{n} 
+=
+a_{0} \cdot 0^{0} + a_{1} \cdot 0^{1} + a_{2} \cdot 0^{2} \dots = 1
+\qquad\Rightarrow\qquad
+a_{0} = 1
+\end{equation*}
+und somit ist der erste Koeffizient $a_0$ schon gefunden.
+Anschliessend wird das Polynom abgeleitet
 
-Et harum quidem rerum facilis est et expedita distinctio
-\ref{pade:section:loesung}.
-Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-impedit quo minus id quod maxime placeat facere possimus, omnis
-voluptas assumenda est, omnis dolor repellendus
-\ref{pade:section:folgerung}.
-Temporibus autem quibusdam et aut officiis debitis aut rerum
-necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-molestiae non recusandae.
-Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
-voluptatibus maiores alias consequatur aut perferendis doloribus
-asperiores repellat.
+\begin{equation*}
+f^{\prime}(x)
+=
+\sum_{n=0}^{\infty}(n+1) \cdot a_{n+1} \cdot x^{n}
+\end{equation*}
+um die weiteren Koeffizienten $a_n$ zu erhalten.
+Da immer noch die Anforderung $f(x) = f^{\prime}(x)$ gilt, wissen wir das die Koeffizienten vor $x^n$ 
+\begin{equation*}
+(n+1) \cdot a_{n+1} 
+= 
+a_{n} , \text{ für alle } n \in \mathbb{R}
+\end{equation*}
+sein müssen. 
+Mit dem schon bekannten $a_0 = 1$ folgt rekursiv
+\begin{equation*}
+a_{n+1} 
+= 
+\frac{1}{(n+1)!}
+\qquad\Rightarrow\qquad
+a_{n} 
+= 
+\frac{1}{n!}
+\end{equation*}
+und damit sind die Koeffizienten des Polynoms der Exponentialfunktion schon ermittelt.
+Ausgeschrieben 
+
+
+\begin{equation}
+e^{x}
+=
+\sum_{n=0}^{\infty} \frac{x^{n}}{n !}
+=
+\frac{x^{0}}{0 !}+\frac{x^{1}}{1 !}+\frac{x^{2}}{2 !}+\frac{x^{3}}{3 !}+\cdots 
+\label{pade:potenzexp}
+\end{equation}
+Aus der bekannten Potenzreihe der Exponentialfunktion \ref{pade:potenzexp} können nun auch andere Potenzreihen gewonnen werden.
+Für die Potenzreihen gilt alle $x \in \mathbb{R}$ d.h., der Konvergenzradius der Potenzreihe ist unendlich. 
+Aus der Exponentialfunktion kann sogleich die Potenzreihe für den Sinus und Kosinus ermittelt werden.
+Um dies zu erreichen wird zuerst die Reihe Komplex erweitert
+\begin{equation*}
+e^{x}
+=
+\sum_{n=0}^{\infty} \frac{x^{n}}{n !}
+\qquad\Rightarrow\qquad
+e^{ix}
+=
+\sum_{n=0}^{\infty} \frac{ix^{n}}{n !}.
+\end{equation*}
+Die komplexe Reihe bringen wir dann in eine sehr bekannte Form durch den Gebrauch von Euler 
+\begin{align*}
+e^{ix}
+&=
+\sum_{n=0}^{\infty} \frac{(ix)^{n}}{n !}
+=
+\frac{(ix)^{0}}{0 !}+\frac{(ix)^{1}}{1 !}+\frac{(ix)^{2}}{2 !}+\frac{(ix)^{3}}{3 !}+\cdots
+\\
+&=
+\left(1-\frac{x^{2}}{2 !}+\frac{x^{4}}{4 !}-\ldots\right)+\mathrm{i} \cdot\left(x-\frac{x^{3}}{3 !}+\frac{x^{5}}{5 !}-\ldots\right)
+\\
+&=
+\cos(x)+i\cdot \sin(x).
+\end{align*}
+Man sieht gleich das die komplexen Zahlen bei den geraden Exponenten verschwinden und bei denn ungeraden Exponenten noch bestehen bleiben. 
+Sortiert man nun das Polynom nach komplex und reellen werten erkennt man die $cis$ Form und kann diese beide Teile als Sinus und Kosinus aufschreiben.
+Wobei die Sinusfunktion 
+\begin{equation*}
+\sin (x)=\sum_{n=0}^{\infty}(-1)^{n} \frac{x^{2 n+1}}{(2 n+1) !}=\frac{x}{1 !}-\frac{x^{3}}{3 !}+\frac{x^{5}}{5 !} \mp \cdots
+\end{equation*}
+und die Kosinusfunktion 
+\begin{equation*}
+\cos (x)=\sum_{n=0}^{\infty}(-1)^{n} \frac{x^{2 n}}{(2 n) !}=\frac{x^{0}}{0 !}-\frac{x^{2}}{2 !}+\frac{x^{4}}{4 !} \mp \cdots
+\end{equation*}
+beide als einzelne Summen ausgeschrieben werden können.
+
+
+
+\subsection{Padé-Approximation erstellen
+	\label{pade:subsection:Pade_erstellen}}
+
+Die Padé-Approximation 
+\begin{equation}
+[L/M]
+=
+\frac{a_0 + a_1 z + \dots + a_L z^L}{b_0 + b_1 z + \dots + b_M z^M}
++O(z^{L+M+1})
+\end{equation}
+
+
+
+
 
 

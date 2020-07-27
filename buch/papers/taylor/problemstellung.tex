@@ -8,16 +8,13 @@
 Um die numerische Approximation an einem konkreten Beispiel zeigen zu können wird hier die logistische Differentialgleichung \eqref{taylor:section:logistifunction} analysiert.
 Es handelt sich hierbei um eine begrenze Wachstumsfunktion. 
 Mit dieser Differentialgleichung können zum Beispiel der Verlauf einer Krankheit, der Lebenszyklus eines Produktes oder auch Zerfallsprozesse beschrieben werden. Die Parameter der logistischen Funktion
-
-\begin{equation}
-	y'
-	=
-	k\cdot y(L-y)
+\begin{align*}
+	&y' = k\cdot y(L-y) 
+	&y(0) = 0.5
 	\label{taylor:section:logistifunction}
-\end{equation}
-
-sind: $L$ = Endwert und $k$ = Wachstumsrate.
-Wir normieren den Endwert $L$ auf 1. Als Anfangswert der Differentialgleichung verwenden wir $y(0)=0.5$.
+\end{align*}
+haben die Bedeutung: $L$ = Endwert und $k$ = Wachstumsrate.
+Wir normieren den Endwert $L$ auf 1.
 Der Endwert entspricht zum Beispiel der Anzahl Infizierten am Ende einer Epidemie.
 In der Abbildung ~\ref{taylor:section:fig:DGLDarstellung} ist zu erkennen, dass der Wachstumsfaktor $k$ bestimmt, wie steil die Funktion wird.
 Somit haben wir nun ein Feld gegeben, indem wir in jedem möglichen Punkt der Funktion eine genau definierte Steigung, bzw. ein genau definiertes $k$ haben.
@@ -56,29 +53,27 @@ Die allgemeine Formel der Einschritttheorie sieht so aus:
 \begin{equation}
 y(x+h) = y(x) + h\cdot f(x,y)
 \end{equation}
-wobei die Funktin f(x,y) der Approximationsfunktion entspricht mit welcher der nächste Punkt berechnet wird.
+wobei die Funktin $f(x,y)$ der Approximationsfunktion entspricht mit welcher der nächste Punkt berechnet wird.
 
 Beim Taylor Verfahren soll nun also mit kleinen Schritten der Verlauf der Funktion ausgehend von einem Anfangswert ermittelt werden.
 Die Taylor-Reihe
 \begin{equation}
 f_{T}(x,a)
 =
-\sum_{n=0}^{\infty}{\frac{f^{(n)}\cdot a}{n!}}\cdot (x-a)^{n}
+\sum_{n=0}^{\infty}{\frac{f^{(n)}(a)}{n!}}\cdot (x-a)^{n}
 \label{taylor:section:taylor}
 \end{equation}
 %$f_{T}(x,a)$ = Taylor Funktion
 setzt sich zusammen aus der korrekten Gewichtung der Ableitungen bis zur gewünschten Ordnung.
-Je höher der Grad der Auswertung, desto grösser ist der Bereich um den Auswertungspunkt in welchem die Taylor Approximation mit der tatsächlichen Funktion übereinstimmt.
+Je höher der Grad der Auswertung, desto grösser ist der Bereich um den Auswertungspunkt $a$ in welchem die Taylor Approximation mit der tatsächlichen Funktion übereinstimmt.
 Am Auswertungspunkt wird nun die Taylorfunktion genommen als Approximation der Differentialgleichung um zum nächsten Punkt zu gelangen.
 Dieses Verfahren
-
 \begin{equation}
 y(x+h)
 =
-\sum_{n=0}^{g}{\frac{f^{(n)}\cdot h}{n!}}\cdot (x-h)^{n}
+\sum_{n=0}^{g}{\frac{f^{(n)}(x+h)}{n!}}\cdot h^{n}
 \label{taylor:section:taylorapproximation}
 \end{equation}
-
 nennt man nun das Taylor Approximationsverfahren.
 Dort werden erneut die Ableitungen ausgerechnet und eine weitere Approximationsfunktion aufgestellt, mit der dann der darauf folgende Punkt bestimmen wird.
 Je kleiner nun die Schrittweite gewählt wird, desto weniger spielen höhere Ableitungen, beziehungsweise höhere Frequenzanteile, eine Rolle.
@@ -97,17 +92,17 @@ In der Abbildung~\ref{taylor:section:fig:LogisticFunctionApproximation} sieht ma
 	\hline
 	Runge-Kutta & $k = 1$ & $k = 2$ & $k = 3$ & $k = 4$ & $k = 5$\\
 	\hline
-	$n = 1$ & 0.45519 & 0.31990 & 0.11077 & 4.68470e-2 & 6.19930e-2\\
+	$n = 1$ & $0.45519$ & $0.31990$ & $0.11077$ & $4.68470e-2$ & $6.19930e-2$\\
 	\hline
-	$n = 2$ & 0.38755 & 3.85299e-2 & 5.97521e-2 & 1.05400e-2 & 4.07133e-2\\
+	$n = 2$ & $0.38755$ & $3.85299\cdot 10^{-2}$ & $5.97521\cdot 10^{-2}$ & $1.05400\cdot 10^{-2}$ & $4.07133\cdot 10^{-2}$\\
 	\hline
-	$n = 5$ & 0.14751 & 2.39004e-2 & 2.59349e-2 & 1.33486e-2 & 1.88327e-2\\
+	$n = 5$ & $0.14751$ & $2.39004\cdot 10^{-2}$ & $2.59349\cdot 10^{-2}$ & $1.33486\cdot 10^{-2}$ & $1.88327\cdot 10^{-2}$\\
 	\hline
-	$n = 10$ & 6.88690e-2 & 4.37589e-3 & 4.37432e-3 & 2.58736e-3 & 3.50711e-3\\
+	$n = 10$ & $6.88690\cdot 10^{-2}$ & $4.37589\cdot 10^{-3}$ & $4.37432\cdot 10^{-3}$ & $2.58736\cdot 10^{-3}$ & $3.50711\cdot 10^{-3}$\\
 	\hline
-	$n = 1000$ & 6.19312e-4 & 5.23506e-7 & 1.84704e-07 & 1.85763e-7 & 1.85765e-07\\
+	$n = 1000$ & $6.19312\cdot 10^{-4}$ & $5.23506\cdot 10^{-7}$ & $1.84704\cdot 10^{-7}$ & $1.85763\cdot 10^{-7}$ & $1.85765\cdot 10^{-7}$\\
 	\hline
-	$n = 100000$ & 6.18453e-6 & $5.13468\cdot 10^{-11}$ & $1.96497\cdot 10^{-11}$ & $1.96507\cdot 10^{-11}$ & $1.96507\cdot 10^{-11}$\\
+	$n = 100000$ & $6.18453e-6$ & $5.13468\cdot 10^{-11}$ & $1.96497\cdot 10^{-11}$ & $1.96507\cdot 10^{-11}$ & $1.96507\cdot 10^{-11}$\\
 	\hline
 \end{tabular}
 
@@ -119,17 +114,17 @@ In der Abbildung~\ref{taylor:section:fig:LogisticFunctionApproximation} sieht ma
 	\hline
 	Taylor & $k = 1$ & $k = 2$ & $k = 3$ & $k = 4$ & $k = 5$\\
 	\hline
-	$n = 1$ & 0.45519 & 0.27840 & 0.27948 & 0.29078 & 0.29515\\
+	$n = 1$ & $0.45519$ & $0.27840$ & $0.27948$ & $0.29078$ & $0.29515$\\
 	\hline
-	$n = 2$ & 0.38755 & 0.20040 & 0.19400 & 0.19579 & 0.19663\\
+	$n = 2$ & $0.38755$ & $0.20040$ & $0.19400$ & $0.19579$ & $0.19663$\\
 	\hline
-	$n = 5$ & 0.14751 & 5.30816e-2 & 4.80256e-2 & 4.79241e-2 & 4.79851e-2\\
+	$n = 5$ & $0.14751$ & $5.30816\cdot 10^{-2}$ & $4.80256\cdot 10^{-2}$ & $4.79241\cdot 10^{-2}$ & $4.79851\cdot 10^{-2}$\\
 	\hline
-	$n = 10$ & 6.88690e-2 & 1.60657e-2 & 1.38830e-2 & 1.38673e-2 & 1.38751e-2\\
+	$n = 10$ & $6.88690\cdot 10^{-2}$ & $1.60657\cdot 10^{-2}$ & $1.38830\cdot 10^{-2}$ & $1.38673\cdot 10^{-2}$ & $1.38751\cdot 10^{-2}$\\
 	\hline
-	$n = 1000$ & 6.19312e-4 & 2.11126e-6 & 1.90164e-6 & 1.90183e-6 & 1.90183e-6\\
+	$n = 1000$ & $6.19312\cdot 10^{-4}$ & $2.11126\cdot 10^{-6}$ & $1.90164\cdot 10^{-6}$ & $1.90183\cdot 10^{-6}$ & $1.90183\cdot 10^{-6}$\\
 	\hline
-	$n = 100000$ & 6.18453e-6 & 2.10965e-10 & 1.90226e-10 & 1.90226e-10 & 1.90226e-10\\
+	$n = 100000$ & $6.18453\cdot 10^{-6}$ & $2.10965\cdot 10^{-10}$ & $1.90226\cdot 10^{-10}$ & $1.90226\cdot 10^{-10}$ & $1.90226\cdot 10^{-10}$\\
 	\hline
 \end{tabular}
 
@@ -149,7 +144,7 @@ Die ersten Spalten der beiden Verfahren sehen gleich aus, weil die Approximation
 
 Beim Punkt $n=1$ und $k=2$ ist die Taylor Approximation besser als Runge-Kutta.
 Eine Approximation mit dem Grad 2 und einem Schritt über eine sich so stark verändernde Kurve ist aber eher ein Glückstreffer als ein mathematischer Erfolg.
-Im Allgemeinen kann gesagt werden dass das Runge-Kutta Verfahren in diesem Fall ein kleineren Fehler aufweist. Dies ist auch in der Abbildung \ref{taylor:section:fig:FehlerRungeTaylor} zu sehen.
+Es kann gesagt werden, dass das Runge-Kutta Verfahren in diesem Fall ein kleineren Fehler aufweist. Dies ist auch in der Abbildung \ref{taylor:section:fig:FehlerRungeTaylor} zu sehen.
 
 \section{Probleme mit der Logistischen Funktion}
 \label{taylor:subsection:Probleme}
@@ -160,18 +155,19 @@ Dabei traten allerdings folgende zwei Probleme auf.
 \label{taylor:subsection:Konvergenz}
 Wie in Abbildung 
 \ref{taylor:section:fig:DGLDarstellung}
-ersichtlich ist, läuft die Differentialgleichung im Punkt 0 gegen 0.5 und bei $\infty$ gegen 1.
+ersichtlich ist, läuft die Lösung der Differentialgleichung im Punkt 0 gegen 0.5 und bei $\infty$ gegen 1.
 Wird nun also diese Differentialgleichung approximiert, dann ist sowieso klar auf welchem Wert wir ungefähr landen werden.
-Um eine aussagekräftige Antwort auf die Frage der Qualität geben zu können wurden die Fehler über den ganzen Verlauf der Approximation verglichen. Siehe dazu Abbildung \ref{taylor:section:fig:FehlerRungeTaylor}.
+Um eine aussagekräftige Antwort auf die Frage der Qualität geben zu können wurden in Abbildung \ref{taylor:section:fig:FehlerRungeTaylor} die Fehler über den ganzen Verlauf der Approximation verglichen.
 
 \subsection{Gefähliche Umgebung des 0-Punktes}
 \label{taylor:subsection:0Punkt}
 Wie in Abbildung 
 \ref{taylor:section:fig:DGLDarstellung}
-klar dargestellt ist, ist die Ableitung in direkter Umgebung vom Punkt (0, 0.5) zwischen 0 und $\infty$.
-Wenn also eine Approximation der Differentialgleichung durch diesen Punkt geht, wird sie durch einen auch noch so kleinen Fehler eine ganz andere Ableitung berechnen und somit völlig anders verlaufen.
+klar dargestellt ist, ist die Ableitung in direkter Umgebung vom Punkt (0, 0.5) zwischen 0 und $\infty$ weil der Punkt eine Polstelle ist.
+Wenn also eine Approximation der Differentialgleichung durch diesen Punkt verläuft, oder auch nur in seine unmittelbare Umgebung kommt kann die Approximation komplett anders verlaufen als man erwarten würde.
+Dies liegt daran, dass selbs kleine Fehler welche eine Approximation zwangsweise haben muss sich in der nähe des Punktes sehr stark auf den weiteren Verlauf auswirken.
 Um dies zu umgehen wurde einfach nicht durch diesen Wendepunkt gegangen, sondern nur bis 0.02 davor.
-Man könnte nun aber die erhaltenen linke Kurve an dem Wendepunkt punktspiegeln und hätte so die zweite Hälfte ebenfalls, welche somit sowieso redundant und für uns nicht intressant ist.
+Man könnte nun aber die erhaltenen linke Kurve an dem Wendepunkt punktspiegeln und hätte so die zweite Hälfte ebenfalls, welche durch die Spiegelung sowieso redundant und für uns deshalb nicht intressant ist.
 
 %\nameref
 %\pageref{}
