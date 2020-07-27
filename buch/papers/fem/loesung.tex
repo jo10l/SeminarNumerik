@@ -105,13 +105,13 @@ Analog nach der partiellen Ableitung nach $y$ erhält man
 
 \subsection{Schritt 1 Minimalproblem bilden}
 
-Analog bei den Finiten Elementen im 1 dimensionale Raum, muss auch die DGL in der Ebene zuerst in ein äquivalentes Minimalproblem übersetzt werden. Das Minimalproblem für FEM in einer Dimension hatte die Form
+Analog zum Kapitel 7.4.1 muss auch die DGL in der Ebene zuerst in ein äquivalentes Minimalproblem übersetzt werden. Das Minimalproblem für FEM in einer Dimension hatte die Form
 
 \begin{equation}
 			\int_0^1 u \textcolor{red}{'} (x)^2 - \lambda \, u(x)^2 dx \,dy
 			\label{fem:Minimal1D}
 \end{equation}
-Im Unterschied zu den mehrdimensionale Form wird anstatt der einfachen Ableitungt der Laplace Operator verwendet der zugleich zweifache Differenziebarkeit von der Ansatzfunktion $u(x)$ fordert. Zudem wird nicht mehr über eine Strecke integriert sondern nun über ein Gebiet $\Omega$ was gleichbedeutend für eine Integration über eine Fläche steht.
+Im Unterschied zu den mehrdimensionale Form wird anstatt der einfachen Ableitungt der Laplace Operator verwendet der zugleich zweifache Differenziebarkeit von der Ansatzfunktion $u(x)$ fordert. Zudem wird nicht mehr über eine Strecke integriert sondern nun über ein Gebiet $\Omega$ was gleichbedeutend für eine Integration über eine Teilgebiet steht.
 
 \begin{equation}
 			\int_{\Omega} (\textcolor{red}{\nabla} u)^2 - \lambda u^2 dx \, dy
@@ -123,9 +123,9 @@ Der Integrationsterm \ref{fem:Minimal2D} wird gemäss der Summenregel in 2 Terme
 			\int_{\Omega} (\nabla u)^2 \, dx \, dy - \lambda \int_{\Omega} u^2 dx \, dy
 			\label{fem:Minimal2D2Term}
 \end{equation}
-Nun ist die Bildung des Minimalproblems abgeschlossen. In einem nächsten Schritt sollen je nach Ausgangslage, gewisse Vorbereitungen getroffen werden die in dem folgenden Abschnitt erläutert werden.
+Nun ist die Bildung des Minimalproblems abgeschlossen. In einem nächsten Schritt wird das Minimalproblem auf das Element formuliert. Dies wird in dem folgenden Abschnitt erläutert.
 
-\subsection{ 2. Ansatzfunktionen auf Lösung approximieren}
+\subsection{Schritt 2 Ansatzfunktionen auf Lösung approximieren}
 
 %Als Ansatzfunktionen stehen diverse Standard- Funktionen in der Ebene zur Verfügung. Sie reichen von einfacheren linearen Termen bishinzu quadratischen oder noch höheren Funktions- Ordnungen. Als Standardverfahren in der Ebene haben sich Flächenelement wie Dreicecken oder Parallelogrammebewährt. Die Wahl der  der Flächen- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
 
@@ -142,7 +142,7 @@ u(x,y) = c_1 + c_2x + c_3y
 \end{equation}
 Die Ansatzfunktion \ref{fem:equationSchwarzLinear} kann somit direkt in das Minimalproblem \ref{fem:Minimal2D} eingesetzt werden. Ziel ist es, dass die unbekannten Koeffizienten $c_1, c_2 \, $und$ \, c_3$ anhand dieses Verfahrens bestimmt werden.
 
-Das Minimalproblem beinhaltet jedoch noch nicht die Formfunktion des Flächenelements. Diese wird in das Gebietsintegral des Minimalproblem eingesetzt sprich $\int_{\Omega}$ wird durch das folgende Flächenelement bzw. Flächenintegral ersetzt. Wie bereits ankeündigt wird das Einheitsdreieck für dieses Beispiel verwendet.
+Das Minimalproblem muss noch auf das entsprechende Gebietsintegral angewendet werden. Um diesen Schritt umzusetzen wird ddas Minimalproblem in das Gebietsintegral eingesetzt sprich $\int_{\Omega}$ wird durch das folgende Flächenelement bzw. Flächenintegral des angekündeten Einheitsdreieck ersetzt. 
 
 \begin{equation}
 \int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} f(x,y) \, dx\,dy
@@ -154,7 +154,7 @@ Schlussendlich ergibt das Einsatzen der Ansatzfunktion und des Flächenintegrals
 \int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} c_1 + c_2x + c_3y \, dx \, dy
 \label{fem:MinimalproblemElement}
 \end{equation}
-Wichtig zu verstehen ist, dass dieses Minimalproblem bzw. der Ausdruck \ref{fem:MinimalproblemElement} auf jedes Flächenelement angewendet wird. Sprich jedes Element hat einn zugehöriges Minimalproblems. Als Beispiel kann vorgestellt werden, dass wenn ein Rechteck mit zwei Dreiecken approximiert wird, das Minimalproblem \ref{fem:MinimalproblemElement} auf jedes der beiden Dreiecke angewendet wird. Je feiner die Auflösung, desto grösser das Gleichungs- System das Schluss endlich gelöst werden muss.
+Wichtig zu verstehen ist, dass dieses Minimalproblem bzw. der Ausdruck \ref{fem:MinimalproblemElement} auf jedes Flächenelement bzw. Teilgebiet angewendet wird. Sprich jedes Element hat eine Ansatzfunktion in Form eines Minimalproblems. Als Beispiel kann vorgestellt werden, dass wenn ein Rechteck mit zwei Dreiecken approximiert wird, das Minimalproblem \ref{fem:MinimalproblemElement} auf jedes der beiden Dreiecke angewendet wird. Je feiner die Auflösung, desto grösser das Gleichungs- System das Schluss endlich gelöst werden muss.
 
 \begin{figure}[h!]
 	\centering
