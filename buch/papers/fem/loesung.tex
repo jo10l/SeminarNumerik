@@ -6,8 +6,8 @@
 \section{Lösung
 \label{fem:section:loesung}}
 \rhead{Lösung}
-Um eine gute Lösung für die DGL in der Ebene zu finden wird das Gesamte Gebiet in Teilgebiet unterteilt und auf jedes Teilgebiet wird eine Approximationsfunktion mit der sogennanten Ansatzfunktion angewendet (siehe Bild \ref{fem:Approx}).\\
-In diesem Kapitel wird der Begriff Ansatzfunktion verwendet, der bis anhin nicht verwendet wurde. Unter Ansatzfunktion wird eine Funktion verstanden, die frei wählbar ist und unbekannte Koeffizienten enthalten, welche berechnet werden sollen. Diese gewählte Ansatzfunktion gibt somit den Freiheitsgrad vor. Nicht jede Funktion kann verwendet werden, dass es auch hier Randbedingungen gibt, die Beachtet und erfüllt werden müssen. Je höher die Ordnung der Ansatzfunktion desto besser soll die Approximation an den rändern sein. So die Hoffnung. Allerdings hat dies auch Konsequenzen, die im Verlauf dieses Kapitels beschrieben werden. \\
+Das gesamte Gebiet wird in Teilgebiet unterteilt und auf jedes Teilgebiet wird die Ansatzfunktion angewendet wie z.B. ein Dreieck. Wird z.B: eine lineare Ansatzfunktion gewählt sowie ein Dreieck als Teilgebiet, so hat die Ansatzfunktion die Form $u(x) = c_1 + c_2x + c_3y$. Diese Zusammensetzung ergibt sich, da der lineare Ansatz durch die Funktionswerte in den Ecken des Dreiecks bestimmt wird. In anderen Worten ausgedrückt sind die Funktionswerte in den Ecken des Teilgebiets, hier im Dreieck, die Unbekannten, die bestimmt werden müssen.
+(siehe Bild \ref{fem:Approx}).\\
 
 \begin{figure}[h!]
 	\centering
@@ -15,30 +15,29 @@ In diesem Kapitel wird der Begriff Ansatzfunktion verwendet, der bis anhin nicht
 	\caption{Flächen- Approximation mit Dreiecks- Flächenelemente}
 	\label{fem:Approx}
 \end{figure}
-
-Die Ansatzfunktion hat folgende Eigenschaften:
+Nochmals zur Verdeutlichung warum Ansatzfunktionen verwendet werden:
 \begin{itemize}
-	\item Eine einfache Foremel gibt es nur auf einem kleinen Teilgebiete
+	\item Eine einfache Formel gibt es nur auf einem kleinen Teilgebiete
 	\item In dem Teilgebiet ist die Formel sehr einfach zu berechnen wie z.B. eine lineare Funktion die durch Koeffizienten bestimmt wird.
 \end{itemize}
-
-Als Ansatzfunktionen stehen diverse Standard- Funktionen in der Ebene zur Verfügung. Sie reichen von einfacheren linearen Termen bishinzu quadratischen oder noch höheren Funktions- Ordnungen. Als Standardverfahren in der Ebene haben sich Flächenelement wie Dreicecken oder Parallelogramme bewährt. Die Wahl der  der Flächen- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
+Als Standardverfahren in der Ebene haben sich Flächenelement wie Dreiecken oder Parallelogramme bewährt. Die Wahl der  der Flächen- bzw. Gebiet- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
 
 Um möglichst einfach darzustellen, wie das Verfahren der Finiten Elemente vonstatten geht, wurde auf eine einfache Approximation mit Einheitsdreiecken und einem linearen Ansatz gewählt. 
 
 \subsection{Vorbereitung}
 
-Damit die Integration über das gewählte Flächenelement Dreieck oder Parallelogramm einfacher fällt, wird als Vorbereitung im entsprechenden Fall das gewählte Flächenelement in ein Einheitsdreieck oder in ein Eineheitsparallelogramm transformiert. Dies bringt auch den Vorteil, dass die gewählten Formfunktionen gleich behandelt werden können. \\
-Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $ P_2(x_2, y_2)$ und $P3(x_3,y_3)$ kann mit Hilfe der linearen Transformation \ref{fem:linTransformation} 
+Damit die Integration über das gewählte Teilgebiet bzw. Flächenelement einfacher fällt, wird als Vorbereitung im entsprechenden Fall das gewählte Flächenelement in ein Einheitsdreieck oder in ein Eineheitsparallelogramm transformiert. Ein Dreieck oder Parallelogramm stellt eine Formfunktion dar, über die die gewählte Fläche bzw. Teilgebiet berechnet werden kann. Die gewählte Formfunktion eines Teilgebietes z.B. integrieren des Gebietes über ein Dreieck oder Pallelogramm,  bringt auch den Vorteil, dass die gewählten Formfunktionen gleich behandelt werden können. \\
+Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $ P_2(x_2, y_2)$ und $P3(x_3,y_3)$ kann mit Hilfe der linearen Transformation \eqref{fem:linTransformation}
 
 \begin{equation}
-			\begin{aligned}
-			x = x_1 + (x_2 - x_1)\xi + (x_3 - X_1)\eta \\
-			y = y_1 + (y_2 - y_1)\xi + (y_3 - y_1)\eta
-			 \end{aligned}
-			\label{fem:linTransformation}
+	\begin{split}
+		x = x_1 + (x_2 - x_1)\xi + (x_3 - X_1)\eta \\
+		y = y_1 + (y_2 - y_1)\xi + (y_3 - y_1)\eta
+		\label{fem:linTransformation}
+	\end{split}
 \end{equation}
-in das einfachere Gebietsintegral nämlich dem gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 überführt werden.
+in das einfachere Gebiet nämlich dem gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 überführt werden.
+
 
 \begin{figure}[h!]
 	\centering
@@ -46,35 +45,51 @@ in das einfachere Gebietsintegral nämlich dem gleichschenklig rechtwinklige Ein
 	\caption{Transformation in ein Einheitsdreieck}
 	\label{fig:schemNMR_vorlage}
 \end{figure}
-Die Transformation soll untern den elementaren Regeln der Analysis vorgenommen werden. Nun ist das Flächenelement $dx \, dy$ mit Hilfe der Jacobi Determinante \ref{fem:JocobiDeterminante} der Transformation zu ersetzen durch \ref{fem:newTransformation}.
+Die Transformation soll untern den elementaren Regeln der Analysis vorgenommen werden. Nun ist das Flächenelement $dx \, dy$ mit Hilfe der Jacobi Determinante \eqref{fem:JocobiDeterminante} der Transformation zu ersetzen durch \eqref{fem:newTransformation}.
 
 \begin{equation}
-			J = \left[ \begin{array}{rr}
-\frac{\partial x}{\partial \xi} & \frac{\partial y}{\partial \xi}  \\
-\frac{\partial x}{\partial \eta} & \frac{\partial y}{\partial \eta}  \\
-\end{array}\right] 
-			\label{fem:JocobiDeterminante}
+J % 
+=
+\begin{bmatrix}
+    \frac{\partial x}{\partial \xi} &  \frac{\partial x}{\partial \eta}     \\
+   \frac{\partial y}{\partial \xi}  &  \frac{\partial y}{\partial \eta}     
+\end{bmatrix}
+= 
+\begin{bmatrix}
+    x_2 - x_1  &  x_3 -x_1      \\
+    y_2 - y_1  &  y_3 - y_1      
+\end{bmatrix} 
+	\label{fem:JocobiDeterminante}
 \end{equation}
-
+Die Determinante dieser Jacobi- Matrix ergibt
 \begin{equation}
-			dy \, dy = J \, d\xi \, d\eta
+	det(J) = x_1 \cdot y_2 - 2 \cdot x_1 \cdot y_1 + x_2 \cdot y_1 + x_1\cdot y_3 + x_3 \cdot y_1 - x_2 \cdot y_3 - x_3 \cdot y_2
+	\label{fem:JocobiDetBerechnet}
+\end{equation}
+\begin{equation}
+			dy \, dy = det(J) \, d\xi \, d\eta
 			\label{fem:newTransformation}
 \end{equation}
 Die Jacobi- Determinante entspricht der doppelten Fläche des Dreiecks. Die partiellen Ableitungen werden gemäss der Kettenregel zu 
-
+%\begin{equation}
+%			\begin{aligned}
+%			u_x = u_{\xi} \xi_x + u_{\eta} \eta_x \\
+%			u_y = u_{\xi} \xi_y + u_{\eta} \eta_y 
+% 			\end{aligned}
+%			\label{fem:newKoordinate}
+%\end{equation}
 \begin{equation}
-			\begin{aligned}
-			u_x = u_{\xi} \xi_x + u_{\eta} \eta_x \\
-			u_y = u_{\xi} \xi_y + u_{\eta} \eta_y 
-			\end{aligned}
-			\label{fem:newKoordinate}
+\begin{split}
+	\frac{\partial u}{\partial x} = \frac{\partial u}{\partial \xi} \, \frac{\partial \xi}{\partial x} + \frac{\partial u}{\partial \eta} \, \frac{\partial \eta}{\partial x} \\
+	\frac{\partial u}{\partial y} = \frac{\partial u}{\partial \xi} \, \frac{\partial \xi}{\partial y} + \frac{\partial u}{\partial \eta} \, \frac{\partial \eta}{\partial y}
+	\end{split}
 \end{equation}
-Auf Grund der linearen Transformation \ref{fem:linTransformation} ergeben sich nach der partieller Differentiation der Beiden Beziehungen nach $x$ zu nächst
+Auf Grund der linearen Transformation \eqref{fem:linTransformation} ergeben sich nach der partieller Differentiation der beiden Beziehungen nach $x$ zunächst
 
 \begin{equation}
 			\begin{aligned}
-			1  = (x_2 -x_1) \eta_x + (x_3 -x_1) \eta_x \\
-			0 = (y_2 -y_1) \eta_x + (y_3 -y_1) \eta_x \\
+			1  = (x_2 -x_1) \, \eta_x + (x_3 -x_1) \, \eta_x \\
+			0 = (y_2 -y_1) \, \eta_x + (y_3 -y_1) \, \eta_x \\
 			 \end{aligned}
 \end{equation}
 Nach Auflösung  der beiden Gleichungen nach $\xi_x$ und $\eta_x$ ergibt sich
@@ -85,7 +100,7 @@ Nach Auflösung  der beiden Gleichungen nach $\xi_x$ und $\eta_x$ ergibt sich
 Analog nach der partiellen Ableitung nach $y$ erhält man
 
 \begin{equation}
-			\xi_x = \frac{x_3 - x_1}{J} \quad \eta_x = -\frac{x_2 - x_1}{J}
+			\xi_y = \frac{x_3 - x_1}{J} \quad \eta_y = -\frac{x_2 - x_1}{J}
 \end{equation}
 
 \subsection{Schritt 1 Minimalproblem bilden}
@@ -141,6 +156,13 @@ Schlussendlich ergibt das Einsatzen der Ansatzfunktion und des Flächenintegrals
 \end{equation}
 Wichtig zu verstehen ist, dass dieses Minimalproblem bzw. der Ausdruck \ref{fem:MinimalproblemElement} auf jedes Flächenelement angewendet wird. Sprich jedes Element hat einn zugehöriges Minimalproblems. Als Beispiel kann vorgestellt werden, dass wenn ein Rechteck mit zwei Dreiecken approximiert wird, das Minimalproblem \ref{fem:MinimalproblemElement} auf jedes der beiden Dreiecke angewendet wird. Je feiner die Auflösung, desto grösser das Gleichungs- System das Schluss endlich gelöst werden muss.
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.8]{papers/fem/Images/FoTeilgebiet.jpeg}
+	\caption{Anwenden des Minimalprinzipes auf jedes Teilgebiet}
+	\label{fig:schemNMR_vorlage}
+\end{figure}
+
 Nun kann der erste Teil der Berechnung beginnen. Die partielle Ableitung nach dergewählten linearen Funktion $f(u)$ erigbt das Resultat
 
 \begin{equation}
@@ -176,7 +198,7 @@ Die Matrix $A$ wird gebildet durch die Teilmatrizen eines jeden Flächenelements
 was dann zu der entsrechenden Teilmatrix eines Dreiecks führt
 
 \begin{equation}
-	\left( \begin{array}{cc}
+	A_{\triangle} = \left( \begin{array}{cc}
 	c_2^2 \int_{\Omega} 1 dx \, dy & 0  \\ 
 	0 & c_3^2 \int_{\Omega} 1 dx \, dy  \\
 	\end{array}\right)
@@ -194,6 +216,18 @@ und wird dann in die Matrix $A $eingefügt bzw. zusammengefasst, dass  somti sä
 	\end{pmatrix}
 	\label{fem:MatrixA}
 \end{equation}
+Etwas anders zusammengefasst dargestellt wie die Matrix $A$ aus den Teilmatrizen $A_{\triangle}$ besteht.
+
+\begin{equation}
+ A =	\begin{pmatrix}
+	A_{\triangle_1} & 0 & \cdots & \cdots & 0 \\
+	0 & \ddots & \vdots & 0 & \vdots \\
+	\vdots & \vdots & \ddots & 0 & \vdots \\
+	\vdots & \vdots & 0 & A_{\triangle_i} & \vdots \\
+	0 & \cdots & \cdots & 0 &  \ddots \\
+	\end{pmatrix}
+\end{equation}
+
 Die Matrix $A$ ist nun bekannt. Es fehlt jedoch noch die Matrix $B$, um das Gleichungs-System zu komplettieren. Die Matrix $B$ wird nun wie folgt definiert. Um die folgende Form zu erhalten muss lediglich der rechte Term von \ref{fem:Minimal2D2Term} für die einzelne Koeffizienten berechnet werden was dann den folgenden Ausdruck ergibt
 
 \begin{equation}
@@ -203,7 +237,7 @@ Die Matrix $A$ ist nun bekannt. Es fehlt jedoch noch die Matrix $B$, um das Glei
 Nun soll dies wieder in die Matrix- Schreibweise übertragen werden was dann eine Teilmatrix $B$ eines Dreickes entspricht
 
 \begin{equation}
- B = \left( \begin{array}{ccc}
+ B_{\triangle} = \left( \begin{array}{ccc}
 	\textcolor{cyan}{- \lambda \int_{\Omega} 1} &  \textcolor{green}{- \lambda \int_{\Omega} x} & \textcolor{orange}{- \lambda \int_{\Omega} y}  \\
 	\textcolor{green}{- \lambda \int_{\Omega}x} & \textcolor{blue}{- \lambda \int_{\Omega} x^2} &  \textcolor{purple}{- \lambda \int_{\Omega} xy} \\
 	\textcolor{orange}{- \lambda \int_{\Omega} y} & \textcolor{purple}{- \lambda \int_{\Omega} xy} & \textcolor{red}{ - \lambda \int_{\Omega} y^2} \\
@@ -211,6 +245,16 @@ Nun soll dies wieder in die Matrix- Schreibweise übertragen werden was dann ein
 	\label{fem:MatrixB}
 \end{equation}
 Diese Teilmatrix $B$ eines jeden Flächenelements wird dann wieder analog der Matrix $A$ in eine Matrix $B$ eingesetzt, so dass diese dann alle Teilmatrizen aller Dreieck-  Flächenstücke enthält.
+
+\begin{equation}
+B =	\begin{pmatrix}
+	B_{\triangle_1} & 0 & \cdots & \cdots & 0 \\
+	0 & \ddots & \vdots & 0 & \vdots \\
+	\vdots & \vdots & \ddots & 0 & \vdots \\
+	\vdots & \vdots & 0 & B_{\triangle_i} & \vdots \\
+	0 & \cdots & \cdots & 0 &  \ddots \\
+	\end{pmatrix}
+\end{equation}
 
 
 \subsection{Schritt 3 Minimalprinizip anwenden auf Approximation}
