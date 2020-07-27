@@ -641,6 +641,12 @@ In den bisherigen Beispielen wurde die Gauss-Legendre Formel verwendet.
 Interessant ist bei der Gauss-Chebyshev Formel, 
 dass für die Berechnung des Integrals keine Gewichte berechnet werden müssen,
 sondern dass für jedes $x_{i}$ das selbe Gewicht $\frac{\pi}{n+1}$ verwendet werden kann.
+Ausserdem lassen sich die Stützstellen $x_{i}$ mit der Formel
+\begin{equation}
+    x_{i} = \cos \frac{(2i+1)\pi}{2n+2}
+\end{equation}
+\noindent
+berechnen und sind symetrisch um $x = 0$ verteilt
 
 \noindent
 Möchte man nun ein beliebiges Integral mittels der Gaussquadratur berechnen,
@@ -650,8 +656,8 @@ abgesehen von weiteren hier nicht genannten Formen,
 muss man die Grenzwerte $(a, b)$ gemäss dem Folgenden Beispiel
 auf den Bereich $(-1, 1)$ abbilden.
 
+\subsubsection{Vorgehen bei Integralgrenzen, die nicht durch die Tabelle abgedeckt werden}
 
-\noindent
 Angenommen man hat ein Integral
 \begin{equation}
     \int_{a}^{b}f(\xi)\,d\xi
@@ -677,7 +683,197 @@ wird $d\xi = dx(b - a)/2$, und die Quadraturformel wird
 
 \subsection{Fehler der Gauss-Quadratur
 \label{quadratur:subsection:gaussfehler}}
+Wie im Abschnitt~\ref{quadratur:subsection:stützstellenberechnung} erklärt,
+lassen sich Polynome mit der Gauss-Quadratur exakt berechnen. 
+Der Fehler für die Annäherung eines Integrals mittels eines Polynoms liegt
+also in der Wahl des Annäherungspolynoms und nicht in der Quadratur des Polynoms.
+Diesen Fehler können wir mit den im Abschnitt~\ref{buch:section:interpolation:fehler}
+hergeleiteten Methoden ermitteln.
+\newline
 
+\noindent
+Weiterhin gibt es in der Gaussquadratur eigene Methoden, 
+um den Fehler der Quadratur zu ermittel. 
+Die einfachere Methode ist, für eine Quadratur mit $n$ Stützstellen eine weitere
+Quadratur mit $n+1$ Stützstellen durchzuführen und von der ersten Quadratur zu
+subtrahieren. Die komplexere Methode ist, 
+die Fehlerformel für die Gauss-Quadraturformel anzuwenden. 
+
+\subsubsection{Fehlerrechnung mittels Quadratur höherer Ordung}
+
+In der Praxis ist diese Methode für die Berechnung des Fehlers der Gaussquadratur
+simpler und schneller in der Anwendung, da die Fehlerformel der Gaussquadratur
+von der jeweiligen Methode der Gaussquadratur (Legendre, Laguerre, etc.) abhängt.
+\newline
+
+\noindent
+Für eine Gauss-Legendre-Quadratur 
+\begin{equation}
+    I 
+    = 
+    \int_{-1}^{1}f(x)\,dx 
+    \approx 
+    \sum_{i=1}^{n}A_{i}f(x_{i})
+\end{equation}
+\noindent
+kann der Fehler mit der Formel
+\begin{equation}
+    E 
+    \approx 
+    \sum_{i=1}^{n}A_{i}f(x_{i})
+    -
+    \sum_{i=1}^{n+1}A_{i}f(x_{i})
+\end{equation}
+\noindent
+approximiert werden. Für $n = 4$ wird die Fehlerrechnung 
+\begin{gather*}
+    E
+    \approx
+    \sum_{i=1}^{5}A_{i}f(x_{i})
+    -
+    \sum_{j=1}^{4}A_{j}f(x_{j}) \\
+    =
+    A_{i1}f(x_{i1})+A_{i2}f(x_{i2})+A_{i3}f(x_{i3})+A_{i4}f(x_{i4})+A_{i5}f(x_{i5}) \\
+    -\;
+    A_{j1}f(x_{j1})+A_{j2}f(x_{j2})+A_{j3}f(x_{j3})+A_{j4}f(x_{j4})
+\end{gather*}
+\newpage
+
+\subsubsection{Fehlerrechnung mit der Fehlerformel}
+Die Fehlerformel
+\begin{equation}
+    E = \int_{a}^{b} w(x) f(x) \, dx - \sum_{i=1}^{n}A_{i}f(x_{i})    
+\end{equation} 
+\noindent
+hat die generelle Form
+\begin{equation}
+    E = K(n)f^{2n+2}(c)
+\end{equation}
+\noindent
+wobei $a<c<b$ und $K(n)$ von der jeweiligen Form der Quadratur abhängt.
+\newline
+
+\noindent
+Die Funktion $f(x)$ muss dabei $2n+2$ mal abgeleitet werden
+\noindent
+Für die Gauss-Legendre-Quadraturformel ist $K(n)$:
+\begin{equation}
+    E = \frac{(b-a)^{2n+3}[(n+1)!]^{4}}{(2n+3)[(2n+2)!]^{3}}f^{2n+2}(c)
+\end{equation}
+\noindent
+in der generellen Form oder für $a=-1, b=1$:
+\begin{equation}
+    E = \frac{2^{2n+3}[(n+1)!]^{4}}{(2n+3)[(2n+2)!]^{3}}f^{2n+2}(c)
+\end{equation}
+\noindent
+Die generelle Form wird dann benötigt, falls ein Integral der Form 
+\begin{equation}
+    I = \int_{a}^{b} f(\xi) \,d\xi
+\end{equation}
+\noindent
+in die Form
+\begin{equation}
+    I = \frac{b-a}{2} \int_{-1}^{1} f\bigg(\frac{b-a}{2}x + \frac{b+a}{2}\bigg) \,dx
+\end{equation}
+\noindent
+gebracht wird.
+\newline
+
+\noindent
+Die Variable $c$ ist dabei keine vorgegebene Zahl, 
+sondern muss im Intervall $(a, b)$ gefunden werden und ist von der jeweiligen Funktion $f(x)$ abhängig.
+\newline
+
+\noindent
+Die Tabelle~\ref{buch:table:fehlerformeln} zeigt für die verschiedenen Formen
+der Gaussquadratur die Fehlerformeln und deren Grenzen für $c$.
+
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|>{$}c<{$}|>{$}c<{$}|}
+        \hline
+        \text{Name} &  \text{Fehlerformel} & \text{Intervall für }c  \\
+        \hline  
+        \text{Legendre} & E =\displaystyle \frac{2^{2n+3}[(n+1)!]^{4}}{(2n+3)[(2n+2)!]^{3}}f^{2n+2}(c)  & -1 < c < 1 \\
+        \text{Chebyshev} & E =\displaystyle \frac{2\pi}{2^{2n+2}(2n+2!)}f^{2n+2}(c) & -1 < c < 1 \\
+        \text{Laguerre} & E = \displaystyle \frac{[(n+1)!]^{2}}{(2n+2)!}f^{2n+2}(c)  & 0 < c < \infty \\
+        \text{Hermite} & E = \displaystyle \frac{\sqrt{\pi}(n+1)!}{2^{2}(2n+2)!}f^{2n+2}(c) & 0 < c < \infty\\
+        \hline
+    \end{tabular}
+    \caption{Fehlerformeln der Gauss-Quadratur
+    \label{buch:table:fehlerformeln}}   
+\end{table}
+\newpage
+
+\subsubsection{Beispiel: Fehlerrechnung für $I = \int_{2}^{4}x^{-1}\,dx$ mit zwei Stützstellen}
+Zuerst wird das Intervall [2,4] mit der Linearen Transformation in das Intervall [-1,1] überführt:
+\begin{equation}
+    \int_{a}^{b} f(\xi)\,d\xi = \frac{b-a}{2}\int_{-1}^{1} f \bigg( \frac{b-a}{2} x + \frac{b+a}{2} \bigg) \,dx
+\end{equation}
+\noindent
+Für die Zwei-Punkt-Gaussquadratur sind die Stützstellen 
+$x_{0}= -\frac{1}{\sqrt{3}}$, $x_{1} = \frac{1}{\sqrt{3}}$ 
+und die Gewichte $A_{0} = A_{1} = 1$. Mit $f(x) := x^{-1}$ 
+erhalten wir die Formel:
+\begin{equation*}
+    I = \frac{4-2}{2} \int_{-1}^{1} f \bigg( \frac{4-2}{2} x + \frac{4+2}{2} \bigg) \,dx
+\end{equation*}
+\begin{equation*}
+    = \int_{-1}^{1} f (x + 3)\,dx 
+\end{equation*}
+\begin{equation*}
+    \approx \sum_{i=0}^{1} A_{i} f(x_{i} + 3)
+\end{equation*}
+\begin{equation*}
+    = f(-\frac{1}{\sqrt{3}}+3)-f(\frac{1}{\sqrt{3}}+3)
+\end{equation*}
+\begin{equation}
+    (-\frac{1}{\sqrt{3}}+3)^{-1} - (\frac{1}{\sqrt{3}}+3)^{-1}
+\end{equation}
+\begin{equation*}
+    \approx 0.41277118\dots + 0.27953651\dots
+\end{equation*}
+\begin{equation}
+    \approx 0.69230769\dots
+\end{equation}
+\noindent
+Um den Fehler zu berechnen, benötigen wir nun die Fehlerformel
+\begin{equation}
+    E = \frac{(b-a)^{2n+3}[(n+1)!]^{4}}{(2n+3)[(2n+2)!]^{3}}f^{2n+2}(c)
+\end{equation}
+\noindent
+bei der wir die Werte $a = 2, b = 4$ und $n = 1$ einsetzen
+\begin{equation*}
+    E = \frac{(4-2)^{2+3}[(2)!]^{4}}{(2+3)[(2+2)!]^{3}}f^{2+2}(c)
+\end{equation*}
+\begin{equation*}
+    = \frac{(2)^{5}[5]^{4}}{(5)[(4)!]^{3}}f^{4}(c)
+\end{equation*}
+\begin{equation*}
+    = \frac{32 \cdot 625}{5 \cdot (24)^{3}}f^{4}(c)
+\end{equation*}
+\begin{equation*}
+    = \frac{20000}{69120}f^{4}(c)
+\end{equation*}
+\begin{equation}
+    = \frac{125}{432}f^{4}(c)
+\end{equation}
+\newpage
+
+\noindent
+Möchte man nun $c$ für $f^{4}(c)$ herausfinden, benötigt man die 
+vierte Ableitung von $f(x)$ und berechtet dasjenige $c$ im Intervall $[2, 4]$ 
+welches den höchsten Wert für $f^{4}(c)$ ergibt.
+\newline
+
+\noindent
+Für $f(x) = 1/x$ ist die vierte Ableitung $f^{4}(x) = 24/x^{5}$. 
+Der Wert von $f^{4}(c)$ wird somit grösser, je kleiner $c$ ist.
+Im Inzervall $[2,4]$ ist $2$ die kleinste Zahl und wird in die Fehlerformel eingesetzt.
+\begin{equation}
+    E = \frac{125}{432}f^{4}(c) = \frac{125}{432} \cdot \frac{24}{2^{5}} = \frac{125}{432}\frac{3}{4} \approx 0.21701389\dots
+\end{equation}
 
 
 \textcolor{red}{
@@ -688,6 +884,7 @@ wird $d\xi = dx(b - a)/2$, und die Quadraturformel wird
         \item Berechnung der Position der Stützstellen (Done)
         \item Berechnung der Gewichtung (Done)
         \item Erklären der verschiedenen Formen der Gauss-Quadratur und ihrer Anwendungen (Done)
-        \item Fehler der Gauss-Quadratur
+        \item Fehler der Gauss-Quadratur (Fix Beispiel: Fehler sollte ca 0.0008 sein)
+        \item FEHLERKORREKTUR bei 2 Stützstellen ist n = 1. 
     \end{itemize}
 }
