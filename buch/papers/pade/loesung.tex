@@ -7,7 +7,7 @@
 \label{pade:section:Anwendungen}}
 \rhead{Anwendungen}
 
-In diesem Kapitel werden ein paar Anwendungsmöglichkeiten für die Verwendung der Padé-Approximation gezeigt.
+In diesem Kapitel werden ein paar Anwendungsmöglichkeiten der Padé-Approximation gezeigt.
 
 
 
@@ -34,7 +34,7 @@ Eine Lösung dafür könnte nun sein $e^{-sT}$ zu approximieren und die Approxim
 Die Padé-Approximation der Exponentialfunktion ist glücklicherweise schon sehr gut bekannt \cite{pade:moler}
 
 \begin{equation}
-R_{p, q}(x)
+R_{L, M}(x)
 =
 \frac{P_{L, M}(x)}{Q_{L, M}(x)} \approx e^{-x}
 \end{equation}
@@ -75,25 +75,132 @@ Wobei mit steigendem Grad eine stetige Verbesserung zugrunde liegt.
 	\caption{Aufzeigen der Padé-Approximationen der Exponentialfunktion im Vergleich zu der Originalfunktion \label{pade:totzeitexp}}
 \end{figure}
 
-Nehmen wir nun diese Polynome und welche noch im Bildbereich sind und transformieren diese wieder zurück in den Zeitbereich erhalten wir die in der Grafik \ref{pade:totzeitexp2} Kurven.
+Nehmen wir nun diese Polynome und welche sich noch im Bildbereich befinden und transformieren diese wieder zurück in den Zeitbereich, erhalten wir die in der Grafik \ref{pade:totzeitexp2} Kurven.
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./papers/pade/python/bilder/padelow33.pdf}
-	\caption{In den Zeitbereich zurück transformierte Polynome \label{pade:totzeitexp2}}
+	\caption{In den Zeitbereich zurück transformierte Polynome tieferer Ordnung\label{pade:totzeitexp2}.}
 \end{figure}
 
 Die Polynome unterer Ordnung sind dabei noch weit von einem brauchbaren Ergebnis entfernt.
+Man kann nun die Ordnung der Polynome weiter erhöhen bis man eine zufriedenstellende Approximation erhält.
+Dabei muss man jedoch aufpassen welche Funktion für die Rücktransformation verwendet wird, da nicht alle Implementationen nummerisch stabil sind bei Polynomen grosser Ordnung.
+\todo{Polstellen und Nullstellen erklären mit unstabilität}
 
-Wenn 
+\begin{figure}
+	\centering
+	\subfigure[Pole und Nullstellen im Bildbereich geplottet wenn $L=M$ ist.\label{pade:poles1}]{\includegraphics[width=0.50\linewidth]{./papers/pade/python/bilder/poles1.pdf}}
+	\subfigure[Pole und Nullstellen im Bildbereich geplottet wenn $L>M$ ist.\label{pade:poles2}]{\includegraphics[width=0.45\linewidth]{./papers/pade/python/bilder/poles2.pdf}}
+	\subfigure[Pole und Nullstellen im Bildbereich geplottet wenn $L<M$ ist.\label{pade:poles3}]{\includegraphics[width=0.45\linewidth]{./papers/pade/python/bilder/poles3.pdf}}
+	\caption{Visualisierung der Stabilität der Padé-Polynome bei ungleicher $[L/M]$ Ordnung. \label{pade:prole}}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./papers/pade/python/bilder/padehigh1.pdf}
+	\caption{In den Zeitbereich zurück transformierte Polynome höherer Ordnungen \label{pade:totzeit}.}
+\end{figure}
+\todo{Abschluss welche Methoden bei der Rücktransformation nicht funktionieren und wie man das umgehen kann}
 
 
+\subsection{Signal Modellierung
+	\label{pade:subsection:SignalMod}}
+
+Das Ziel einer Signal Modellierung ist dass eine parametrische Beschreibung eines Signales gefunden wird.
+Dies kann für die Filterentwicklung, Interpolation, Extrapolation oder Kompression verwendet werden.
+Dabei kann man immer das gleiche Modell verwenden, welches der Ausgang eines linear verschiebungs invarianten Filters zu einem Eingang $v(n)$ darstellt. 
+\begin{figure}
+	\centering
+	\tikzset{>=latex}
+\begin{tikzpicture}
+\node at (-1,1.2)  {$v(n)$}; 
+\draw[thick,->] (-2,1)--(0,1);
+\draw[thick] (0,0) rectangle (3,2) node[pos=.5] {$H(z)=\frac{B_q (z)}{A_p (z)}$};
+\draw[thick,->] (3,1)--(5,1);
+\node at (4,1.2)  {$\widehat{x}(n)$}; 
+\end{tikzpicture}
+\end{figure}
+Dieses Modell wird mit
+
+\begin{equation}
+H(z)
+=
+\frac{B_{q}(z)}{A_{p}(z)}
+=
+\frac{\sum_{k=0}^{q} b_{q}(k) z^{-k}}{1+\sum_{k=1}^{p} a_{p}(k) z^{-k}}
+\end{equation}
+als eine rationale Funktion beschrieben.
+Das Eingangssignal welches auf den Filter wirkt ist meist ein diskreter Impuls $\delta(n)$.
+Der Modellierungsfehler setzt sich dabei aus der Einheitssprungantwort $h(n)$ und dem diskreten Signal $x(n)$ zusammen.
+Dabei ist das Ziel den quadratischen Fehler (Least Squares Method)
+\begin{equation}
+\mathcal{E}_{L S}
+=
+\sum_{n=0}^{\infty}\left|e^{\prime}(n)\right|^{2}
+\end{equation}
+des Systems zu minimieren.
+Um dies zu erreichen   
+\begin{equation}\begin{array}{ll}
+\frac{\partial \mathcal{E}_{L S}}{\partial a_{p}^{*}(k)}
+=
+0 
+& 
+; k=1,2, \ldots, p \\
+\frac{\partial \mathcal{E}_{L S}}{\partial b_{q}^{*}(k)}
+=
+0 ; 
+&
+ k=0,1, \ldots, q
+\end{array}\end{equation}
+werden die Ableitungen gleich 0 gesetzt.
+Aus diesen Bedienungen resultiert eine Menge von nichtlinearen Gleichungen 
+
+\begin{equation}
+\frac{\partial \mathcal{E}_{L S}}{\partial a_{p}^{*}(k)}
+=
+\frac{1}{2 \pi} 
+\int_{-\pi}^{\pi}
+\left[X\left(e^{j \omega}\right)-\frac{B_{q}\left(e^{j \omega}\right)}{A_{p}\left(e^{j \omega}\right)}\right] 
+\frac{B_{q}^{*}\left(e^{j \omega}\right)}{\left[A_{p}^{*}\left(e^{j \omega}\right)\right]^{2}} 
+e^{j k \omega} d \omega
+=
+0
+\end{equation}
+\begin{equation}
+\frac{\partial \mathcal{E}_{L S}}{\partial b_{q}^{*}(k)}
+=
+-\frac{1}{2 \pi} 
+\int_{-\pi}^{\pi}
+\left[X\left(e^{j \omega}\right)-\frac{B_{q}\left(e^{j \omega}\right)}{A_{p}\left(e^{j \omega}\right)}\right] 
+\frac{e^{j k \omega}}{A_{p}^{*}\left(e^{j \omega}\right)} d \omega
+=
+0
+\end{equation}
+\todo{Zitieren}
+welche möglicherweise sehr schwierig lösbar sind.
+Aus diesem Grund wird in der Praxis der Ansatz des kleinsten quadratischen Fehlers vermieden. 
 
 
+\begin{figure}
+	\centering
+	\tikzset{>=latex}
+	\begin{tikzpicture}
+	\node at (-1,1.2)  {$\delta(z)$}; 
+	\draw[thick,->] (-2,1)--(0,1);
+	\draw[thick] (0,0) rectangle (3,2) node[pos=.5] {$H(z)=\frac{B_q (z)}{A_p (z)}$};
+	\draw[thick,->] (3,1)--(5,1);
+	\node [circle, draw, thick] at (5.35,1){+};
+	\draw[thick,->] (5.35,3.5)--(5.35,1.35);
+	\draw[thick,->] (5.7,1)--(7.7,1);
+	\node at (4,1.2)  {$h(n)$}; 
+	\node at (5.8,2.5)  {$x(n)$}; 
+	\node at (6.5,1.2)  {$e^{\prime}(n)$}; 
+	\end{tikzpicture}
+\end{figure}
 
+\todo{Beispiel Signal Modellierung mit Padé-Approximation Zeigen}
 
-
-
-
+\todo{Folgerung schreiben}
 
 
 
