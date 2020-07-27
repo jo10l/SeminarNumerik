@@ -3,7 +3,7 @@
 \rhead{Herleitung des Algorithmus}
 
 \subsection{Intuition}
-Die Idee des CG-Algorithmus ist, die Schwächen von Gradient Descent auszubessern.
+Die Idee des CG-Algorithmus ist es, die Schwächen von Gradient Descent auszubessern.
 Dies geschieht, indem pro Dimension des Minimierungsproblems nur ein Schritt benötigt wird.
 Intuitiv kann man sich dies als Abstieg entlang der Koordinatenachsen vorstellen, wie in Abbildung \ref{cg:abb:koordabstieg} gezeigt.
 Ein solches Verfahren findet immer in $N$ Schritten die exakte Lösung.
@@ -57,7 +57,7 @@ Dabei wollen wir orthogonal in Bezug auf $A$ sein, weshalb das verallgemeinerte 
 Diese vielen $A$-Skalarprodukte sind rechenintensiv und würden die Performance des CG-Algorithmus beeinträchtigen.
 Im nächsten Abschnitt wird gezeigt, dass es genügt das Orthogonalisierungsverfahren auf der letzten Abstiegsrichtung durchzuführen.
 Die neue Richtung ist dann automatisch auch auf allen vorherigen Richtungen orthogonal.
-In der Summe von \ref{cg:eq:gramram} wird daher nur der letzte Term benötigt.
+In der Summe von \ref{cg:eq:gram} wird daher nur der letzte Term benötigt.
 Dies führt zur folgenden, vereinfachten Berechnung
 \begin{equation} 
 	d_{k+1}
@@ -143,7 +143,7 @@ Wir beginnen damit den Algorithmus für die Berechnungen von $d_k$ aufzuschreibe
 	&\shortvdotswithin{=} \nonumber
 	d_k &= r_k - \sum_{i=1}^{k-1} a_{ki} d_i.
 \end{align}
-Durch Umstellen nach $r_k$, sieht man dass $r_k$ aus $\langle d1, d2, \dots, d_k \rangle$ linear kombiniert werden kann.
+Durch Umstellen nach $r_k$, sieht man dass $r_k$ aus $\langle d_1, d_2, \dots, d_k \rangle$ linear kombiniert werden kann.
 Dasselbe macht man für $d_k$, wobei $d_i$ mit $i<k$ aufgelöst wird bis $d_1 = r_1$.
 Daraus folgt dass auch $d_k$ aus $\langle r_1, r_2, \dots, r_k \rangle$ linear kombiniert werden kann.
 Somit ist $\langle r_1, \dots ,r_{k-1} \rangle = \langle d_1, \dots ,d_{k-1} \rangle$ bewiesen.

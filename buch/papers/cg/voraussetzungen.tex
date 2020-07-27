@@ -11,5 +11,6 @@ Wir definieren folgende Voraussetzungen für die $N\times N$ Matrix $A$:
 	\item $A$ ist symmetrisch, d.h. $x^T A y = y^T A^T x = y^T A x$
 	\item $A$ ist positiv definit, d.h. $x^T A x > 0$
 \end{itemize}
-Diese Voraussetzungen sind die Bedingung, damit das CG-Verfahren erfolgreich verläuft.
-Für eine schnelle Konvergenz sind ausserdem gut konditionierte Matrizen von Vorteil, mit wenigen Einträgen abseits der Diagonalen.
+Diese Voraussetzungen sind die Bedingung, damit das CG-Verfahren erfolgreich funktionieren kann.
+Um eine schnelle Konvergenz zu erreichen, sind zudem gut konditionierte Matrizen von Vorteil.
+Dies sind zum Beispiel dünn besetzte Matrizen mit wenigen Einträgen abseits der Diagonalen, wie sie häufig bei der Lösung von partiellen Differentialgleichung vorkommen.
