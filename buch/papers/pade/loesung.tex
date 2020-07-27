@@ -85,6 +85,7 @@ Nehmen wir nun diese Polynome und welche sich noch im Bildbereich befinden und t
 Die Polynome unterer Ordnung sind dabei noch weit von einem brauchbaren Ergebnis entfernt.
 Man kann nun die Ordnung der Polynome weiter erhöhen bis man eine zufriedenstellende Approximation erhält.
 Dabei muss man jedoch aufpassen welche Funktion für die Rücktransformation verwendet wird, da nicht alle Implementationen nummerisch stabil sind bei Polynomen grosser Ordnung.
+
 \todo{Polstellen und Nullstellen erklären mit unstabilität}
 
 \begin{figure}
@@ -100,15 +101,16 @@ Dabei muss man jedoch aufpassen welche Funktion für die Rücktransformation ver
 	\includegraphics[width=1\linewidth]{./papers/pade/python/bilder/padehigh1.pdf}
 	\caption{In den Zeitbereich zurück transformierte Polynome höherer Ordnungen \label{pade:totzeit}.}
 \end{figure}
+
 \todo{Abschluss welche Methoden bei der Rücktransformation nicht funktionieren und wie man das umgehen kann}
 
 
 \subsection{Signal Modellierung
 	\label{pade:subsection:SignalMod}}
 
-Das Ziel einer Signal Modellierung ist dass eine parametrische Beschreibung eines Signales gefunden wird.
+Das Ziel einer Signalmodellierung ist dass eine parametrische Beschreibung eines Signales gefunden wird.
 Dies kann für die Filterentwicklung, Interpolation, Extrapolation oder Kompression verwendet werden.
-Dabei kann man immer das gleiche Modell verwenden, welches der Ausgang eines linear verschiebungs invarianten Filters zu einem Eingang $v(n)$ darstellt. 
+Dabei kann man immer das gleiche Modell verwenden, welches der Ausgang eines linearen verschiebungsinvarianten Filters zu einem Eingang $v(n)$ darstellt. 
 \begin{figure}
 	\centering
 	\tikzset{>=latex}
@@ -176,7 +178,9 @@ e^{j k \omega} d \omega
 =
 0
 \end{equation}
+
 \todo{Zitieren}
+
 welche möglicherweise sehr schwierig lösbar sind.
 Aus diesem Grund wird in der Praxis der Ansatz des kleinsten quadratischen Fehlers vermieden. 
 
