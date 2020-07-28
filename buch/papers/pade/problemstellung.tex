@@ -6,18 +6,16 @@
 
 \section{Problemstellung
 \label{pade:section:Problemstellung}}
-Eine Padé-Approximation ist ein Bruch welcher aus zwei Polynomen, welche aus den Koeffizienten der Taylorreihe einer Funktion gewonnen werden, gebildet wird. 
-Das Ziel dieses Kapitels ist es dem Leser den Nutzen der Padé-Approximation näher zu bringen und zu zeigen wie man aus einer analytischen Funktion eine solche Approximation bilden kann.
-Des weiteren wird auf mehrere praktische Beispiele eingegangen und mögliche Fehlerquellen aufgezeigt. 
+Eine Padé-Approximation ist ein Bruch, welcher aus zwei Polynomen, welche aus den Koeffizienten der Taylorreihe einer Funktion gewonnen werden, gebildet wird. 
+Ziel dieses Kapitels ist es dem Leser den Nutzen der Padé-Approximation näher zu bringen und zu zeigen wie man aus einer analytischen Funktion eine solche Approximation bildet.
+Des Weiteren wird auf mehrere praktische Beispiele eingegangen und mögliche Fehlerquellen aufgezeigt. 
 
 
 
 \subsection{Potenzreihen
 \label{pade:subsection:Potenzreihen}}
 \rhead{Potenzreihen}
-Die Koeffizienten einer Potenzreihe können verwendet werden um die Koeffizienten einer Padé-Approximation zu gewinnen. 
-In diesem Kapitel soll kurz aufgezeigt werden wie man die Potenzreihe einer Funktion erhalten kann. 
-
+Die Koeffizienten einer Potenzreihe können verwendet werden, um die Koeffizienten einer Padé-Approximation zu gewinnen. 
 In der Analysis kann eine Funktion mit einer Taylorreihe um eine Stelle $x_{0}$ durch eine Potenzreihe dargestellt werden. 
 Diese Potenzreihen werden um einen vorgegebene Stelle $x_{0}$ als eine unendliche Summe 
 \begin{equation}
@@ -27,27 +25,26 @@ f(x)=\sum_{n=0}^{\infty} a_{n} (x-x_{0})^{n}
 gebildet.
 Für viele Funktionen sind die dazugehörigen Potenzreihen schon bekannt. 
 Funktionen welche durch eine Potenzreihe dargestellt werden können, werden auch analytische Funktionen genannt.
-Es gibt verschiedene Methoden um eine Potenzreihe einer Funktion zu erhalten. 
-Bei analytischen Funktionen sind die Potenzreihen schon bekannt und können etwa durch Differentialgleichungen oder eine andere Reihenentwicklungsmethoden hergeleitet werden.
-Wie die Herleitung mit einer Potenzreihe mit einer Differentialgleichung funktioniert wird in dem Abschnitt \ref{pade:section:Bsp_Potenzreihen} gezeigt.
+Es gibt verschiedene Methoden, um eine Potenzreihe einer Funktion zu erhalten. 
+Bei analytischen Funktionen sind die Potenzreihen schon bekannt und können durch Differentialgleichungen oder eine andere Reihenentwicklungsmethoden hergeleitet werden.
 
 \subsubsection{Beispiel Potenzreihen
 \label{pade:section:Bsp_Potenzreihen}}
-In diesem Beispiel möchten wir die Potenzreihe der Exponentialfunktion erhalten welche an der Stelle $x_0 = 0$ entwickelt wird. 
-Wir wissen welche Eigenschaften die Exponentialfunktion hat und nutzen genau diese um Gleichungen aufzustellen. 
-Gesucht ist eine Potenzreihe welche das Verhalten 
+In diesem Beispiel möchten wir die Potenzreihe der Exponentialfunktion erhalten, welche an der Stelle $x_0 = 0$ entwickelt wird. 
+Wir wissen welche Eigenschaften die Exponentialfunktion hat und nutzen diese, um Gleichungen aufzustellen. 
+Gesucht ist eine Potenzreihe, welche das Verhalten 
 \begin{equation*}
 	f^{\prime}(x) = f(x) , \text{ für alle } x \in \mathbb{R} 
 \end{equation*}
 aufweist.
 
 Die Form der Potenzreihe ist gegeben durch die schon gezeigte Summe \ref{pade:expofunk}.
-Weiter wissen wir das die Exponentialfunktion 
+Weiter wissen wir, dass die Exponentialfunktion 
 \begin{equation*}
 f(0) = 1
 \end{equation*}
 erfüllen muss.
-Aus dem können wir schliessen, dass
+Daraus schliessen wir, dass
 \begin{equation*}
 f(x)=\sum_{n=0}^{\infty} a_{n} \cdot x^{n}
 \qquad\Rightarrow\qquad
@@ -57,23 +54,23 @@ a_{0} \cdot 0^{0} + a_{1} \cdot 0^{1} + a_{2} \cdot 0^{2} \dots = 1
 \qquad\Rightarrow\qquad
 a_{0} = 1
 \end{equation*}
-und somit ist der erste Koeffizient $a_0$ schon gefunden.
+und somit ist der erste Koeffizient $a_0$ gefunden.
 Anschliessend wird das Polynom abgeleitet
 
 \begin{equation*}
 f^{\prime}(x)
 =
-\sum_{n=0}^{\infty}(n+1) \cdot a_{n+1} \cdot x^{n}
+\sum_{n=0}^{\infty}(n+1) \cdot a_{n+1} \cdot x^{n},
 \end{equation*}
 um die weiteren Koeffizienten $a_n$ zu erhalten.
-Da immer noch die Anforderung $f(x) = f^{\prime}(x)$ gilt, wissen wir das die Koeffizienten vor $x^n$ 
+Da immer noch die Anforderung $f(x) = f^{\prime}(x)$ gilt, wissen wir, dass die Koeffizienten vor $x^n$  von der Form
 \begin{equation*}
 (n+1) \cdot a_{n+1} 
 = 
 a_{n} , \text{ für alle } n \in \mathbb{R}
 \end{equation*}
 sein müssen. 
-Mit dem schon bekannten $a_0 = 1$ folgt rekursiv
+Mit dem bereits bekannten $a_0 = 1$ folgt rekursiv
 \begin{equation*}
 a_{n+1} 
 = 
@@ -83,7 +80,7 @@ a_{n}
 = 
 \frac{1}{n!}
 \end{equation*}
-und damit sind die Koeffizienten des Polynoms der Exponentialfunktion schon ermittelt.
+und damit sind die Koeffizienten des Polynoms der Exponentialfunktion ermittelt.
 Ausgeschrieben 
 
 
@@ -98,7 +95,7 @@ e^{x}
 Aus der bekannten Potenzreihe der Exponentialfunktion \ref{pade:potenzexp} können nun auch andere Potenzreihen gewonnen werden.
 Für die Potenzreihen gilt alle $x \in \mathbb{R}$ d.h., der Konvergenzradius der Potenzreihe ist unendlich. 
 Aus der Exponentialfunktion kann sogleich die Potenzreihe für den Sinus und Kosinus ermittelt werden.
-Um dies zu erreichen wird zuerst die Reihe Komplex erweitert
+Um dies zu erreichen wird, zuerst die Reihe komplex erweitert
 \begin{equation*}
 e^{x}
 =
@@ -108,29 +105,41 @@ e^{ix}
 =
 \sum_{n=0}^{\infty} \frac{ix^{n}}{n !}.
 \end{equation*}
-Die komplexe Reihe bringen wir dann in eine sehr bekannte Form durch den Gebrauch von Euler 
-\begin{align*}
+Die komplexe Reihe bringen wir durch den Gebrauch von Euler in eine sehr bekannte Form  
+\begin{equation}
 e^{ix}
-&=
+=
 \sum_{n=0}^{\infty} \frac{(ix)^{n}}{n !}
 =
 \frac{(ix)^{0}}{0 !}+\frac{(ix)^{1}}{1 !}+\frac{(ix)^{2}}{2 !}+\frac{(ix)^{3}}{3 !}+\cdots
-\\
+\end{equation}
+
+Man sieht gleich, dass die komplexen Zahlen bei den geraden Exponenten verschwinden und bei denn ungeraden Exponenten bestehen bleiben. 
+Sortiert man nun das Polynom nach komplexen und reellen Werten erkennt man die $cis$-Form 
+\begin{align*}
+e^{ix}
 &=
 \left(1-\frac{x^{2}}{2 !}+\frac{x^{4}}{4 !}-\ldots\right)+\mathrm{i} \cdot\left(x-\frac{x^{3}}{3 !}+\frac{x^{5}}{5 !}-\ldots\right)
 \\
 &=
 \cos(x)+i\cdot \sin(x).
 \end{align*}
-Man sieht gleich das die komplexen Zahlen bei den geraden Exponenten verschwinden und bei denn ungeraden Exponenten noch bestehen bleiben. 
-Sortiert man nun das Polynom nach komplex und reellen werten erkennt man die $cis$ Form und kann diese beide Teile als Sinus und Kosinus aufschreiben.
+und kann diese beiden Teile als Sinus und Kosinus aufschreiben.
 Wobei die Sinusfunktion 
 \begin{equation*}
-\sin (x)=\sum_{n=0}^{\infty}(-1)^{n} \frac{x^{2 n+1}}{(2 n+1) !}=\frac{x}{1 !}-\frac{x^{3}}{3 !}+\frac{x^{5}}{5 !} \mp \cdots
+\sin (x)
+=
+\frac{x}{1 !}-\frac{x^{3}}{3 !}+\frac{x^{5}}{5 !} \mp \cdots
+=
+\sum_{n=0}^{\infty}(-1)^{n} \frac{x^{2 n+1}}{(2 n+1) !}
 \end{equation*}
 und die Kosinusfunktion 
 \begin{equation*}
-\cos (x)=\sum_{n=0}^{\infty}(-1)^{n} \frac{x^{2 n}}{(2 n) !}=\frac{x^{0}}{0 !}-\frac{x^{2}}{2 !}+\frac{x^{4}}{4 !} \mp \cdots
+\cos (x)
+=
+\frac{x^{0}}{0 !}-\frac{x^{2}}{2 !}+\frac{x^{4}}{4 !} \mp \cdots
+=
+\sum_{n=0}^{\infty}(-1)^{n} \frac{x^{2 n}}{(2 n) !}
 \end{equation*}
 beide als einzelne Summen ausgeschrieben werden können.
 
@@ -140,6 +149,11 @@ beide als einzelne Summen ausgeschrieben werden können.
 	\label{pade:subsection:Pade_erstellen}}
 
 Die Padé-Approximation 
+
+\todo{Erklärung wie man Gleichungsystem aufstellt und was ein Padé-Table ist}
+
+\todo{Einfaches Beispiel durchrechnen}
+
 \begin{equation}
 [L/M]
 =
