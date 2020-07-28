@@ -11,8 +11,7 @@
 Bei der Integration mit der Trapez-/Mittelpunktregel kann man die Genauigkeit
 der Annäherung verbessern, indem man mehr Teilintervalle berechnet.
 Dabei werden mehr Stützstellen auf der $x$-Achse benötigt und mehr Funktionsauswertungen
-müssen berechnet werden.
-
+müssen berechnet werden. 
 Die Wahl der Position und Anzahl Stützstellen stellt hierbei einer der beiden Freiheitsgrade
 in der Berechnung des Integrals dar.
 Der zweite Freiheitsgrad ist die Verwendung einer Gewichtung für eine spezifische Stützstelle.
@@ -24,15 +23,12 @@ diese Abweichung zu minimieren.
 \subsubsection{Beispiel: Integration einer Funktion mit der Trapezregel}
 Das folgende Beispiel illustriert die Integration für eine Funktion mit der Trapezregel und
 zeigt die Verbesserung der Genauigkeit unter Verwendung von mehr Stützstellen oder einer Gewichtung.
-
 \begin{figure}
     \centering
     \includegraphics[scale=0.7]{papers/quadratur/figures/GaussTrapez1}
     \caption{Integration mit der Trapezregel mit drei Stützstellen
     \label{quadratur:figure:trapez1}} 
 \end{figure}
-
-
 In der Grafik~\ref{quadratur:figure:trapez1} sieht man die Integration  $I$ der Funktion $f(x) = \sqrt{1-x^{2}}$
 mit der Trapezregel mit drei Stützstellen an den Punkten $x=-1, x=0, x=1$.
 Die Funktion $f(x)$ beschreibt hierbei einen Halbkreis um das Zentrum $x=0$, 
@@ -48,14 +44,12 @@ $a=1, b=1.2$ berechnen.
 Man erhält die Fläche $1.2$ welche bereits etwas näher am tatsächlichen Resultat $\frac{\pi}{2} \approx 1.570796$ ist.
 
 \subsubsection{Beispiel: Erhöhung der Anzahl Stützstellen}
-
 \begin{figure}
     \centering
     \includegraphics[scale=0.7]{papers/quadratur/figures/GaussTrapez2}
     \caption{Integration mit der Trapezregel mit vier Stützstellen
     \label{quadratur:figure:trapez2}}  
 \end{figure}
-
 In der Grafik~\ref{quadratur:figure:trapez2} werden vier Stützstellen verwendet und man erhält zwei Teilintervalle mit 
 rechtwinkligen Dreiecken mit den Seitenlängen $l_{x}=0.6666, l_{y}=0.94281$ und einem Rechteck mit den Seitenlängen
 $l_{x}=0.6666, l_{y}=0.94281$. 
@@ -67,7 +61,6 @@ Die Gauss-Quadratur basiert auf der Idee, dass die Stützstellen und deren Gewic
 dass das Resultat optimiert wird und möglichst genau berechnet werden kann.
 Dieses Verfahren erlaubt es, das Integral eines Polynoms vom Grad $n$ mit nur $\frac{n-1}{2}$
 Funktionsauswertungen exakt zu berechnen.
-
 Die Bedeutung dieser Eigenschaft wird im Abschnitt~\ref{quadratur:subsection:stützstellenberechnung} genauer beschrieben.
 
 \subsection{Anwendungsbereiche der numerischen Integration \label{quadratur:subsection:anwendungsbereiche}}
@@ -80,32 +73,26 @@ Ein bekanntes Beispiel dafür ist die Verteilungsfunktion
     \frac{1}{\sqrt{2\pi}}
     \int_{-\infty}^x e^{-t^2/2}\,dt
 \end{equation}
-
 der Standardnormalverteilung
 \begin{equation}
     f(x)
     = 
     \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x-\mu}{\sigma}^{2})}
 \end{equation}
- 
 oder auch Gauss'sche Glockenkurve, wie in der Grafik~\ref{quadratur:figure:gaussdistribution} dargestellt. 
-
 \begin{figure}
     \centering
     \includegraphics[scale=0.7]{papers/quadratur/figures/GaussDistribution1}
     \caption{Darstellung der Normalverteilung mit $\sigma=0.25$ und $\mu=0$
     \label{quadratur:figure:gaussdistribution}}
 \end{figure}
-
-
 Weitere Beispiele mathematischer Funktionen ohne elementare Stammfunktionen sind:
-
 \[
-    \frac{\sin(x)}{x},  
-    \frac{x}{\sin(x)},  
-    \frac{e^{x}}{x},  
-    \frac{1}{\operatorname{ln}(x)},  
-    \frac{x}{\operatorname{ln}(x)},  
-    \operatorname{ln}(\sin(x)),  
-    e^{x}\cdot\operatorname{ln}(x)
+    \frac{\sin(x)}{x}, \, 
+    \frac{x}{\sin(x)}, \, 
+    \frac{e^{x}}{x},  \,
+    \frac{1}{\operatorname{ln}(x)}, \, 
+    \frac{x}{\operatorname{ln}(x)},  \,
+    \operatorname{ln}(\sin(x)),  \,
+    e^{x}\cdot\operatorname{ln}(x).
 \]
