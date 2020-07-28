@@ -8,18 +8,17 @@
 \rhead{Lösung}
 \subsection{Anwendung der Gauss-Legendre-Formel
 \label{quadratur:subsection:gausslegendreanwendung}}
-In dieser Subsektion versuchen wir, die Verwendung der Gauss-Legendre-Formel in einem
+In diesem Unterabschnitt versuchen wir, die Verwendung der Gauss-Legendre-Formel in einem
 einfachen Beispiel herzuleiten, hierzu wird wieder die Funktion  
-$I = \int_{-1}^{1}\sqrt{(1-x^2)}\,dx$ verwendet und 
-wir berechnen die Formel mit vier Stützstellen.
-\newline
+$f(x) = \sqrt{(1-x^2)}\,dx$ verwendet und 
+wir berechnen das Integral mit vier Stützstellen.
 
 Zudem werden in der Tabelle~\ref{buch:table:gaussbeispielwerte} die Werte der 
 Stützstellen und der Gewichte angegeben. Die Berechnung der Stützstellen, der Gewichte
-und die verschiedenen Formen der Gauss-Quadratur werden in den folgenden Sektionen 
+und die verschiedenen Formen der Gauss-Quadratur werden in den folgenden Abschnitten 
 hergeleitet.
 
-\begin{table}[h!]
+\begin{table}
     \centering
     \begin{tabular}{|c|c|}
         \hline
@@ -35,20 +34,18 @@ hergeleitet.
     \label{buch:table:gaussbeispielwerte}}    
 \end{table}
 
-\noindent
+
 In der Abbildung~\ref{quadratur:figure:gausslegendre1} sind die vier Stützstellen 
 ersichtlich.
 
-\begin{figure}[!h]
+\begin{figure}
     \centering
     \includegraphics[scale=0.7]{papers/quadratur/figures/GaussLegendre1.png}
     \caption{ Position der Stützstellen
     \label{quadratur:figure:gausslegendre1}}
 \end{figure}
 
-\newpage
-\noindent
-Die Fläche unter dem Integral lässt sich nun mit der Formel 
+Die Fläche unter dem Graphen lässt sich nun mit der Formel 
 
 \begin{equation}
     I 
@@ -57,10 +54,11 @@ Die Fläche unter dem Integral lässt sich nun mit der Formel
     \approx
     \sum_{i=0}^{n} A_{i} f(x_{i})
 \end{equation}
-\noindent 
+ 
 berechnen, indem man die Stützstellen $x_{i}$ und die Gewichte $A_{i}$ einsetzt.
 
     \begin{align}
+        \centering
         I 
         &\approx 
         0.347855 \cdot \sqrt{1-(-0.861136)^{2}} 
@@ -78,8 +76,6 @@ berechnen, indem man die Stützstellen $x_{i}$ und die Gewichte $A_{i}$ einsetzt
         0.347855 \cdot \sqrt{1-(0.861136)^{2}} 
         \notag
         \\
-        \notag
-        \\
         &\approx 2 \cdot 0.652145 \cdot \sqrt{1-(0.339981)^{2}} + 2 \cdot 0.347855 \cdot \sqrt{1-(0.861136)^{2}} 
         \notag
         \\
@@ -89,19 +85,19 @@ berechnen, indem man die Stützstellen $x_{i}$ und die Gewichte $A_{i}$ einsetzt
         &\approx 1.580278
     \end{align}
 
-\noindent
-Das Resultat $1.580278$ ist bereits deutlich besser an der tatsächlichen Fläche $1.570796$ 
-angenähert, als die Resultate der Trapezformel. 
+
+Das Resultat $1.580278$ ist eine genauere Annäherung an die tatsächliche Fläche $1.570796$ 
+, als die Resultate der Trapezformel. 
 
 \subsection{Berechnung der Position der Stützstellen
 \label{quadratur:subsection:stützstellenberechnung}}
 Um die Position der Stützstellen zu bestimmen, benötigt man zuerst die Anzahl Stützstellen, 
 die für die Quadratur einer Funktion benötig werden.
-\noindent
+
 Wie im Abschnitt~\ref{quadratur:section:problemstellung} erwähnt, 
 kann man mit $n$ Stützstellen das Integral eines Polynoms vom Grad $2n-1$ exakt berechnen.
 Anders ausgedrückt: Hat man ein Polynom vom Grad $g$, 
-benötigt man für eine exatkte Berechnung des Integrals $\frac{g+1}{2}$ Stützstellen.
+benötigt man für eine exakte Berechnung des Integrals $\frac{g+1}{2}$ Stützstellen.
 Hat man eine Funktion, die sich nicht als Polynom darstellen lässt, 
 kann man die Funktion durch ein Polynom annähern, 
 oder die Anzahl benötigter Stützstellen schätzen.
@@ -118,81 +114,81 @@ Für ein Polynom vom Grad $7$ werden $\frac{7+1}{2} = 4$ Stützstellen benötigt
 In der Abbildung~\ref{quadratur:figure:polynom} ist die Funktion mit den vier 
 Stützstellen ersichtlich.
 
-\begin{figure}[!h]
+\begin{figure}
     \centering
     \includegraphics[scale=0.7]{papers/quadratur/figures/polynom.png}
     \caption{ Funktion des Polynom mit vier Stützstellen
     \label{quadratur:figure:polynom}}
 \end{figure}
-\newpage
-\noindent
-Mit dem selben Beispiel lässt sich auch erklären, warum für ein Polynom vom Grad $n$ 
-weniger als $n$ Stützstellen benötigt werden.
-\noindent
-Berechnet man das Integral eines ungeraden Terms
+
+\subsubsection{Annäherung von Funktionen durch Polynome}
+Im Kapitel~\ref{chapter:interpolation} wurde bereits gezeigt, 
+wie man eine Funktion $f(x)$ durch ein Polynom 
 \begin{equation}
-    \int_{-1}^{1}x^{2k-1}\,dx 
+    p(x) = a_{0} + a_{1}x + a_{2}x^{2} + ... + a_{n}x^{n}
+\end{equation}
+
+annähern kann. Möchte man nun das Integral $\int_{-1}^{1} f(x) \, dx$ annähern, 
+muss man dazu die Integrale 
+
+\begin{equation}
+    \int_{-1}^{1} p(x)\,dx 
     =
-     \frac{1}{2k} \cdot x^{2k} \bigg|_{-1}^{\phantom{-}1}
+    a_{0} \int_{-1}^{1} 1\,dx
+    +
+    a_{1}\int_{-1}^{1} x\,dx 
+    + 
+    a_{2}\int_{-1}^{1} x^{2} \,dx  
+    +
+    ... 
+    +
+    a_{n}\int_{-1}^{1} x^{n}\,dx 
+\end{equation}
+
+berechnen können. Diese Berechnungen kann man durch die allgemeine Formel
+\begin{equation}
+    \int_{-1}^{1} x^{k}\,dx 
     = 
+    \bigg[\frac{1}{k+1} x^{k+1}\bigg]_{-1}^{1}
+    =
+    \frac{1^{k+1} - (-1)^{k+1}}{k+1}  
+\end{equation}
+
+dargestellt werden. Man kann hier erkennen, dass:
+
+\begin{equation}
+    \int_{-1}^{1} x^{k}\,dx 
+    =
+    \begin{cases}
+        0&\qquad k \; \text{ungerade}\\
+        \frac{2}{k+1}&\qquad k \; \text{gerade}
+        \end{cases}  
+\end{equation}
+
+Die Erkennntniss, dass ungerade Terme in der Berechnung 
+des Integrals eines Polynoms verschwinden, 
+erklärt, warum für die Quadratur eines Polynoms nur $\frac{n+1}{2}$ 
+Stützstellen benötigt werden. Es müssen nur die geraden Terme evaluiert werden,
+da:
+\begin{equation}
+    \int_{-1}^{1} p(x)\,dx 
+    =
+    a_{0} \int_{-1}^{1} 1\,dx
+    +
     0
-\end{equation} 
-sieht man, dass ungerade Koeffizienten verschwinden. 
-Für die Berechnung der Anzahl Stützstellen werden somit 
-nur die Anzahl der geraden Koeffizienten benötigt.
-\newline
-\subsubsection{Beweis}
-\begin{equation}
-    \int_{-1}^{1}x^{2}
-    =
-    \frac{x^{3}}{3} \bigg|_{-1}^{1}
-    = 
-    \bigg(\frac{1^{3}}{3}\bigg) - \bigg(\frac{(-1)^{3}}{3}\bigg)
-    = 
-    \frac{1}{3} - \frac{-1}{3}
-    =
-    \frac{2}{3}
-\end{equation}
-\begin{equation}
-    \int_{-1}^{1}x^{3}
-    =
-    \frac{x^{4}}{4} \bigg|_{-1}^{1}
-    = 
-    \bigg(\frac{1^{4}}{4}\bigg) - \bigg(\frac{(-1)^{4}}{4}\bigg)
-    = 
-    \frac{1}{4} - \frac{1}{4}
-    =
+    + 
+    a_{2}\int_{-1}^{1} x^{2} \,dx  
+    +
     0
+    +
+    ... 
+    +
+    a_{n}\int_{-1}^{1} x^{n}\,dx
 \end{equation}
-\begin{equation}
-    \int_{-1}^{1}x^{4}
-    =
-    \frac{x^{5}}{5} \bigg|_{-1}^{1}
-    = 
-    \bigg(\frac{1^{5}}{5}\bigg) - \bigg(\frac{(-1)^{5}}{5}\bigg)
-    = 
-    \frac{1}{5} - \frac{-1}{5}
-    =
-    \frac{2}{5}
-\end{equation}
-\begin{equation}
-    \int_{-1}^{1}x^{5}
-    =
-    \frac{x^{6}}{6} \bigg|_{-1}^{1}
-    = 
-    \bigg(\frac{1^{6}}{6}\bigg) - \bigg(\frac{(-1)^{6}}{6}\bigg)
-    = 
-    \frac{1}{6} - \frac{1}{6}
-    =
-    0
-\end{equation}
-\newline
-\noindent
+
 Weiss man, wieviele Stützstellen $n$ man für die Berechnung der Quadratur verwenden möchte,
 kann man die Position der Stützstellen berechnen. 
 Dafür hat man zwei Möglichkeiten, welche nachfolgend erklärt werden.
-
-\newpage
 
 \subsubsection{Werte in der Tabelle nachschlagen}
 Für die gängigsten Formen der Gauss-Quadratur existieren Tabellen mit vorberechneten Werten für die
@@ -200,29 +196,29 @@ Position der Stützstellen und deren Gewichte.
 Es ist möglich, dass für grosse $n$ keine Tabellenwerte gefunden werden und die Berechnung 
 selber durchgeführt werden muss.
 
-In der Tabelle~\ref{buch:table:gaussabscissenwerte} sind die Werte für $n \leq 6$ beschrieben.
+In der Tabelle~\ref{buch:table:gaussabscissenwerte} sind die Werte für $n \leq 5$ beschrieben.
 
-\begin{table}[h!]
+\begin{table}
     \centering
     \begin{tabular}{|c|c|}
         \hline
         $n$ & Stützstellen $x_{i}$ für $n$ \\
         \hline
-        $1$ & $ \phantom{-} 0.00000 $ \\
+        $0$ & $ \phantom{-} 0.00000 $ \\
         \hline
-        $2$ & $ \pm 0.57735 $ \\
+        $1$ & $ \pm 0.57735 $ \\
         \hline
-        $3$ & $ \pm 0.77460 $ \\
+        $2$ & $ \pm 0.77460 $ \\
             & $ \phantom{-} 0.00000 $ \\
         \hline
-        $4$ & $ \pm 0.86114 $ \\
+        $3$ & $ \pm 0.86114 $ \\
             & $ \pm 0.33998 $ \\
         \hline
-        $5$ & $ \pm 0.90618 $ \\
+        $4$ & $ \pm 0.90618 $ \\
             & $ \pm 0.53847 $ \\
             & $ \phantom{-} 0.00000 $ \\
         \hline
-        $6$ & $ \pm 0.93247 $ \\
+        $5$ & $ \pm 0.93247 $ \\
             & $ \pm 0.66121 $ \\
             & $ \pm 0.23862 $ \\
         \hline
@@ -238,25 +234,19 @@ Die Position der Stützstellen lässt sich mit der Formel
     \int_{-1}^{1} P(x) \cdot x^{j} \, dx = 0
 \end{equation*}
 
-\noindent
 mit
 
 \begin{equation*}
     j = 0, 1, 2, ... n - 1
 \end{equation*}
 
-\noindent
 und 
 
 \begin{equation}
     P(x) = (x - x_{1})(x - x_{2}) ... (x - x_{n})
 \end{equation}
-\noindent
-berechnen.
-\newline
 
-\noindent
-Um die Formel zu verstehen, werden einige Grundkenntnisse für 
+berechnen. Um die Formel zu verstehen, werden einige Grundkenntnisse für 
 orthogonale Polynome und deren beziehung zur Gauss-Quadratur vorausgesetzt.
 Da aber für die häufigsten Formen der Gauss-Quadratur 
 (Siehe Abschnitt ~\ref{quadratur:subsection:gaussformen}) bereits vorberechnete
@@ -264,34 +254,88 @@ Tabellen für die Stützstellen und Gewichte existieren muss man die Theorie
 für die Anwendung der Formeln nicht verstehen. Für interessierte Leser sind 
 die wichtigsten Eigenschaften von orthogonalen Polynomen im nächsten 
 Abschnitt genäuer erläutert.
-\newpage
 
-\subsubsection{Orthogonale Polynome}
+\subsubsection{Beispiel: Berechnung für zwei Stützstellen}
+Möchte man die Position für zwei Stützstellen berechnen, sieht die Formel folgendermassen aus:
+
+\begin{equation}
+    P(x) = (x - x_{1})(x - x_{2})
+\end{equation}
+
+und man erhält für $j = 0,1$ die beiden Gleichungen
+
+\begin{equation*}
+    j = 0: 
+    \int_{-1}^{1}P(x)\,dx 
+    = 
+    \int_{-1}^{1}(x - x_{1})(x - x_{2}) \; dx = 0
+\end{equation*}
+
+\begin{equation*}
+    j = 1: 
+    \int_{-1}^{1}P(x)\,dx 
+    = 
+    \int_{-1}^{1}(x - x_{1})(x - x_{2})x \; dx = 0
+\end{equation*}
+
+Löst man das Integral, erhält man:
+
+\begin{equation*}
+    j=0:
+    \frac{1}{3} + x_{1}x_{2} = 0
+\end{equation*}
+
+\begin{equation}
+    j=1: 
+    \frac{2}{3}(x_{1}+x_{2}) = 0
+\end{equation}
+
+Umgeformt erhält man:
+
+\begin{equation}
+    x_{1}x_{2} = -\frac{1}{3}
+    \;
+    \text{und}
+    \;
+    x_{1}+x_{2} = 0
+\end{equation}
+
+Somit sind $ x_{1} $ und $ x_{2} $:
+
+\begin{equation*}
+    x_{1} = -\frac{1}{\sqrt{3}} \approx -0.55735
+\end{equation*}
+
+\begin{equation}
+    x_{2} = \phantom{-} \frac{1}{\sqrt{3}} \approx \phantom{-}0.55735
+\end{equation}
+
+\subsection{Orthogonale Polynome
+\label{quadratur:subsection:orthogonalepolynome}}
+
+\subsubsection{Grundlagen orthogonale Polynome}
 Orthogonale Polynome werden in der mathematischen und 
 numerischen Analysis oft verwendet.
 In der numerischen Integration werden Eigenschaften dieser Polynome für
 die Berechnung der Stützstellen und Gewichte benötigt.
-\newline
-
-\noindent
 Zwei Polynome $\phi_{m}(x)$ und $\phi_{n}(x)$ 
 ($n$ und $m$ ist hierbei der Grad des Polynoms) formen ein 
-orthogonales Paar im intervall $(a, b)$ im Bezug auf die Gewichtungsfunktion
+orthogonales Paar im Intervall $(a, b)$ im Bezug auf die Gewichtungsfunktion
 $w(x)$ falls:
 \begin{equation}
     \int_{a}^{b} w(x) \phi_{m}(x) \phi_{n}(x)\,dx = 0 \, , m \neq n
 \end{equation}
 
-\noindent
-Orthogonalpolynome sind abgesehen vom konstanten Faktor, über die Wahl der
-Gewichtungsfunktion und der Grenzen des Integrals $a, b$, festgelegt.
+Orthogonalpolynome sind abgesehen von einem konstanten Faktor, 
+der über die Normierung der Polynome ermittelt wird,
+über die Wahl der Gewichtungsfunktion und der Grenzen des Integrals $a, b$, festgelegt.
 Klassische Orthogonalpolynome sind nach bekannten Mathematikern 
 benannt und in der Tabelle~\ref{buch:table:orthogonalpolynomials} mit ihren
 Eigenschaften beschrieben.
 
-\begin{table}[h!]
+\begin{table}
     \centering
-    \begin{tabular}{|c|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
+    \begin{tabular}{|l|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
         \hline
         Name & \text{Symbol} & a & b & w(x) \\
         \hline
@@ -305,22 +349,19 @@ Eigenschaften beschrieben.
     \label{buch:table:orthogonalpolynomials}}    
 \end{table}
 
-
-\noindent
-Weiterhin haben Orthogonale Polynome rekursive Beziehungen zueinander, das heisst,
+Weiterhin haben orthogonale Polynome rekursive Beziehungen zueinander, das heisst,
 dass mit der Formel
 \begin{equation}
     a_{n}\phi_{n+1}(x) = (b_{n} + c_{n}x)\phi_{n}(x) - d_{n}\phi_{n-1}(x)
 \end{equation}
 
-\noindent
-mit den ersten beiden Orthogonalpolynomen die restliche Menge der Polynome berechnet werden kann,
-die zueinander orthogonal sind. Die Koeffizienten für die Formel finden sich in der 
+mit den ersten beiden Orthogonalpolynomen weitere Polynome berechnet werden können. 
+Die Koeffizienten für die Rekursionsformel finden sich in der 
 Tabelle~\ref{buch:table:orthogonalcoefficients}
 
-\begin{table}[h!]
+\begin{table}
     \centering
-    \begin{tabular}{|c|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
+    \begin{tabular}{|l|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
         \hline
         Name & \phi_{0}(x) & \phi_{1}(x) & a_{n} & b_{n} & c_{n} & d_{n} \\
         \hline
@@ -334,72 +375,37 @@ Tabelle~\ref{buch:table:orthogonalcoefficients}
     \label{buch:table:orthogonalcoefficients}}    
 \end{table}
 
-Weitere für die Gaussquadratur relevante Eigenschaften von Orthogonalpolynomen:
-\begin{itemize}
-    \item Ein Polynom $\phi_{n}(x)$ vom Grad $n$ hat $n$ reelle, unterschiedliche Nullstellen im Intervall $(a, b)$.
-    \item Nullstellen des Polynoms $\phi_{n}(x)$ liegen zwischen den Nullstellen des Polynoms $\phi_{n+1}(x)$.
-    \item Ein beliebiges Polynom $P_{n}(x)$ kann in der Form 
-    $P_{n}(x) = \sum_{i=0}^{n} c_{i}\phi_{i}(x)$
-    ausgedrückt werden
-    \item Daraus, und aus den Orthogonalitätseigenschaften folgt die folgende Formel:
-    \begin{equation}
-        \int_{a}^{b} w(x) P_{n}(x)\phi_{n+m}(x)\, dx = 0, \, m\ge0 
-    \end{equation}
-\end{itemize}
-\newpage
+\subsubsection{Für die Gaussquadratur relevante Eigenschaften}
 
-\subsubsection{Beispiel: Berechnung für zwei Stützstellen}
-Möchte man die Position für zwei Stützstellen berechnen, sieht die Formel folgendermassen aus:
+Ein orthogonales Polynom $\phi_{n}(x)$ vom Grad $n$ hat $n$ reelle, 
+unterschiedliche Nullstellen im Intervall $(a, b)$.
+Diese Eigenschaft ist für die Gaussquadratur relevant, 
+da für eine Gauss-Quadraturformel vom Grad $n$ für die exakte Berechnung 
+des Integrals diejenigen Abszissenwerte $x_{i}$ benötigt werden, 
+welche den Nullstellen des $n-$ten orthogonalen Polynoms $P_{n}$ entsprechen.
+Weiterhin liegen die Nullstellen Polynoms $\phi_{n}(x)$ zwischen den Nullstellen des Polynoms $\phi_{n+1}(x)$.
+Diese Eigenschaft erlaubt es, den Grad $n$ des Polynoms zu erhöhen und man erhält dadurch 
+mehr Nullstellen, welche den Stützstellen $x_{i}$ der Gauss-Quadraturformel entsprechen.
 
-\begin{equation}
-    P(x) = (x - x_{1})(x - x_{2})
-\end{equation}
+Ein beliebiges Polynom $P_{n}(x)$ kann in der Form 
+$P_{n}(x) = \sum_{i=0}^{n} c_{i}\phi_{i}(x)$ ausgedrückt werden.
+Anders ausgedrückt, lässt sich durch diese Eigenschaft ein beliebiges Polynom als
+Linearkombination von Orthogonalpolynomen darstellen. 
+Somit lässt sich das Integral für jegliche Polynome mit der Gaussquadratur berechnen.
 
-\noindent
-und man erhält für $j = 0,1$ die beiden Gleichungen
+In der Abbildung~\ref{quadratur:figure:legendrepolynomial} sind die ersten vier
+Legendre-Polynome abbgebildet. Man kann darin sehr gut sehen, 
+dass die Positionen der Nullstellen den in der 
+Tabelle~\ref{buch:table:gaussabscissenwerte} genannten Stützstellen $x_{i}$ 
+entsprechen und dass die Nullstellen eines Polynoms $P_{n}$ zwischen denen 
+eines Polynoms $P_{n+1}$ liegen.
 
-\begin{equation*}
-    \int_{-1}^{1}(x - x_{1})(x - x_{2}) \; dx = 0
-\end{equation*}
-
-\begin{equation*}
-    \int_{-1}^{1}(x - x_{1})(x - x_{2})x \; dx = 0
-\end{equation*}
-
-\noindent
-Löst man das Integral, erhält man:
-
-\begin{equation*}
-    \frac{1}{3} + x_{1}x_{2} = 0
-\end{equation*}
-
-\begin{equation}
-    \frac{2}{3}(x_{1}+x_{2}) = 0
-\end{equation}
-
-\noindent
-Umgeformt erhält man:
-
-\begin{equation}
-    x_{1}x_{2} = -\frac{1}{3}
-    \;
-    \text{und}
-    \;
-    x_{1}+x_{2} = 0
-\end{equation}
-
-\noindent
-Somit sind $ x_{1} $ und $ x_{2} $:
-
-\begin{equation*}
-    x_{1} = -\frac{1}{\sqrt{3}} \approx -0.55735
-\end{equation*}
-
-\begin{equation}
-    x_{2} = \phantom{-} \frac{1}{\sqrt{3}} \approx \phantom{-}0.55735
-\end{equation}
-
-\newpage
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.7]{papers/quadratur/figures/Legendrepolynomial.png}
+    \caption{ Die Ersten vier Legendre-Polynome
+    \label{quadratur:figure:legendrepolynomial}}
+\end{figure}
 
 \subsection{Berechnung der Gewichte an den Stützstellen
 \label{quadratur:subsection:gewichtsberechnung}}
@@ -407,30 +413,30 @@ Auch für die Bestimmung der Gewichte an den berechneten Stützstellen kann man 
 in einer vorberechneten Tabelle die Werte nachschlagen, oder die Gewichte selber berechnen.
 
 \subsubsection{Tabelle für die Gewichte}
-In der Tabelle~\ref{buch:table:gaussgewichtwerte} sind für $ n \leq 6 $ die Gewichte $A_{i}$
+In der Tabelle~\ref{buch:table:gaussgewichtwerte} sind für $ n \leq 5 $ die Gewichte $A_{i}$
 an den Stützstellen $x_{i} $ angegeben.
 
-\begin{table}[h!]
+\begin{table}
     \centering
     \begin{tabular}{|c|c|c|}
         \hline
         $n$ & Stützstellen $x_{i}$ für $n$ & Gewichte $A_{i}$\\
         \hline
-        $1$ & $ \phantom{-} 0.00000 $ & $ 2.00000 $ \\
+        $0$ & $ \phantom{-} 0.00000 $ & $ 2.00000 $ \\
         \hline
-        $2$ & $ \pm 0.57735 $ & $ 1.00000 $ \\
+        $1$ & $ \pm 0.57735 $ & $ 1.00000 $ \\
         \hline
-        $3$ & $ \pm 0.77460 $ & $ 0.55556 $ \\
+        $2$ & $ \pm 0.77460 $ & $ 0.55556 $ \\
             & $ \phantom{-} 0.00000 $ & $ 0.88889 $ \\
         \hline
-        $4$ & $ \pm 0.86114 $ & $ 0.34785 $ \\
+        $3$ & $ \pm 0.86114 $ & $ 0.34785 $ \\
             & $ \pm 0.33998 $ & $ 0.65215 $ \\
         \hline
-        $5$ & $ \pm 0.90618 $ & $ 0.23693 $ \\
+        $4$ & $ \pm 0.90618 $ & $ 0.23693 $ \\
             & $ \pm 0.53847 $ & $ 0.47863 $ \\
             & $ \phantom{-} 0.00000 $ & $ 0.56889 $ \\
         \hline
-        $6$ & $ \pm 0.93247 $ & $ 0.17132 $ \\
+        $5$ & $ \pm 0.93247 $ & $ 0.17132 $ \\
             & $ \pm 0.66121 $ & $ 0.36076 $ \\
             & $ \pm 0.23862 $ & $ 0.46791 $ \\
         \hline
@@ -446,46 +452,37 @@ Die Gewichte an den Stützstellen lässt sich mit der Formel
     A_{j} = \int_{-1}^{1} l_j(x) \, dx
 \end{equation*}
 
-\noindent
 mit
 
 \begin{equation*}
     j = 1, 2, ... , n
 \end{equation*}
 
-\noindent
 und 
 
 \begin{equation}
     l_{j}(x) := \prod_{0 \leq m \leq k, \, m \neq j} \frac{x - x_{m}}{x_{j} - x_{m}}
 \end{equation}
 
-\noindent
 berechnen.
 
-\newpage
-
 \subsubsection{Beispiel: Berechnung der Gewichte für zwei Stützstellen}
-In der Beispielberechnung der Stützstellen in der 
-Sektion~\ref{quadratur:subsection:stützstellenberechnung} sieht man, dass sich die 
+In der Beispielberechnung der Stützstellen im
+Abschnitt~\ref{quadratur:subsection:stützstellenberechnung} sieht man, dass sich die 
 Stützstellen an den Punkten $x_{1} = -\frac{1}{\sqrt{3}} $ und $x_{2} = \frac{1}{\sqrt{3}} $ befinden.
 
-\noindent
 Die Formeln für die Berechnung der Gewichte $A_{1}$ und $A_{2}$ sind:
 
 \begin{equation*}
     A_{1} = \int_{-1}^{1} \frac{x - x_{2}}{x_{1} - x_{2}} \, dx
 \end{equation*}
 
-\noindent
 und
 
 \begin{equation}
     A_{2} = \int_{-1}^{1} \frac{x - x_{1}}{x_{2} - x_{1}} \, dx
 \end{equation}
 
-
-\noindent
 setzt man die Werte für $x_{1}$ und $x_{2}$ in die Formeln ein, erhält man:
 
 \begin{equation*}
@@ -496,7 +493,6 @@ setzt man die Werte für $x_{1}$ und $x_{2}$ in die Formeln ein, erhält man:
     A_{2} = \int_{-1}^{1} \frac{x - \frac{-1}{\sqrt{3}}}{\frac{1}{\sqrt{3}} - \frac{-1}{\sqrt{3}}} \, dx
 \end{equation}
 
-\noindent
 vereinfacht man die Terme, erhält man:
 
 \begin{equation*}
@@ -533,7 +529,6 @@ vereinfacht man die Terme, erhält man:
     \bigg)
 \end{equation}
 
-\noindent
 $\int_{-1}^{1}x\,dx$ ist $0$ und $\int_{-1}^{1}1\,dx$ ist $2$, somit:
 
 \begin{equation*}
@@ -564,20 +559,31 @@ $\int_{-1}^{1}x\,dx$ ist $0$ und $\int_{-1}^{1}1\,dx$ ist $2$, somit:
     1
 \end{equation}
 
-\newpage
+es folgt somit, dass
 
+\begin{equation}
+    I 
+    \approx 
+    f(x_{1})+f(x{2}) 
+    = 
+    f(-\frac{1}{\sqrt{3}})
+    +
+    f(\frac{1}{\sqrt{3}})
+\end{equation}
+
+die Gauss-Quadratur für zwei Stützstellen ist
 
 \subsection{Formen der Gauss-Quadratur
 \label{quadratur:subsection:gaussformen}}
 Wie im Abschnitt~\ref{quadratur:subsection:stützstellenberechnung}, 
-Orthogonale Polynome bereits angedeutet, 
+Orthogonale Polynome, bereits angedeutet, 
 gibt es verschiedene Ausprägungen der Gauss-Integration.
 Für verschiedene Folgen von Orthogonalpolynomen gibt es eine dazugehörige
 Form der Gaussquadratur mit eigenen Grenzwerten und Berechnungsformeln.
 Die vier häufigsten Formen sind in der Tabelle~\ref{buch:table:gaussformen} abgebildet.
 
-\begin{table}[h!]
-    \begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
+\begin{table}
+    \begin{tabular}{|l|>{$}c<{$}|>{$}c<{$}|>{$}l<{$}|}
         \hline
         \text{Name} &  \text{Untere Grenze} & \text{Obere Grenze} & \text{Formel} \\
         \hline  
@@ -591,13 +597,19 @@ Die vier häufigsten Formen sind in der Tabelle~\ref{buch:table:gaussformen} abg
     \label{buch:table:gaussformen}}   
 \end{table}
 
-\noindent
-In den bisherigen Beispielen wurde die Gauss-Legendre Formel verwendet.
+In den bisherigen Beispielen wurde die Gaussformel mit der Legendre Form, auch Gauss-Legendre-Formel genannt, verwendet.
 Interessant ist bei der Gauss-Chebyshev Formel, 
 dass für die Berechnung des Integrals keine Gewichte berechnet werden müssen,
 sondern dass für jedes $x_{i}$ das selbe Gewicht $\frac{\pi}{n+1}$ verwendet werden kann.
+Ausserdem lassen sich die Stützstellen $x_{i}$ mit der Formel
+\begin{equation}
+    x_{i} = \cos \frac{(2i+1)\pi}{2n+2}
+\end{equation}
 
-\noindent
+berechnen und sind symetrisch um $x = 0$ verteilt.
+Die Gauss-Laguerre Formel verwendet für die Bestimmung der Stützstellen die Laguerre-Polynome.
+Diese Stützstellen liegen alle auf dem Intervall $[0, \infty]$
+
 Möchte man nun ein beliebiges Integral mittels der Gaussquadratur berechnen,
 deren Grenzwerte nicht zu den in der Tabelle~\ref{buch:table:gaussformen} 
 dargestellten Formeln passt, 
@@ -605,30 +617,197 @@ abgesehen von weiteren hier nicht genannten Formen,
 muss man die Grenzwerte $(a, b)$ gemäss dem Folgenden Beispiel
 auf den Bereich $(-1, 1)$ abbilden.
 
+\subsubsection{Vorgehen bei Integralgrenzen, die nicht durch die Tabelle abgedeckt werden}
 
-\noindent
 Angenommen man hat ein Integral
 \begin{equation}
-    \int_{a}^{b}f(x)\,dx
+    \int_{a}^{b}f(\xi)\,d\xi
 \end{equation}
 
-\noindent
 Mit der Transformation
 \begin{equation}
-    x = \frac{b + a}{2} + \frac{b - a}{2}\xi    
+    \xi = \frac{b + a}{2} + \frac{b - a}{2} x    
 \end{equation}
 
-\noindent
-wird $dx = d\xi(b - a)/2$, und die Quadraturformel wird
+wird $d\xi = dx(b - a)/2$, und die Quadraturformel wird
 \begin{equation}
-    \int_{a}^{b}f(x)\,dx = \frac{b - a}{2} \int_{-1}^{1}f(\frac{b - a}{2}\xi + \frac{b + a}{2})\, d\xi \approx \frac{b - a}{2} \sum_{i=1}^{n} A_{i}f(x_{i})
+    \int_{a}^{b}f(\xi)\,d\xi 
+    =
+    \frac{b - a}{2} \int_{-1}^{1}f\bigg(\frac{b - a}{2}x + \frac{b + a}{2}\bigg)\, dx 
+    \approx
+     \frac{b - a}{2} \sum_{i=1}^{n} A_{i}f\bigg(\frac{b - a}{2}x_{i} + \frac{b + a}{2}\bigg)
 \end{equation}
-    
-\newpage
 
 \subsection{Fehler der Gauss-Quadratur
 \label{quadratur:subsection:gaussfehler}}
+Wie im Abschnitt~\ref{quadratur:subsection:stützstellenberechnung} erklärt,
+lassen sich Polynome mit der Gauss-Quadratur exakt berechnen. 
+Der Fehler für die Annäherung eines Integrals mittels eines Polynoms liegt
+also in der Wahl des Annäherungspolynoms und ein Fehler in der Berechnung des Integrals.
+Diesen Fehler können wir mit den im Abschnitt~\ref{buch:section:interpolation:fehler}
+hergeleiteten Methoden ermitteln.
+Weiterhin gibt es in der Gaussquadratur eigene Methoden, 
+um den Fehler der Quadratur zu ermitteln. 
+Die einfachere Methode ist, für eine Quadratur mit $n$ Stützstellen eine weitere
+Quadratur mit $n+1$ Stützstellen durchzuführen und von der ersten Quadratur zu
+subtrahieren. Die komplexere Methode ist, 
+die Fehlerformel für die Gauss-Quadraturformel anzuwenden. 
 
+\subsubsection{Fehlerrechnung mittels Quadratur höherer Ordung}
+
+In der Praxis ist diese Methode für die Berechnung des Fehlers der Gaussquadratur
+simpler und schneller in der Anwendung, da die Fehlerformel der Gaussquadratur
+von der jeweiligen Methode der Gaussquadratur (Legendre, Laguerre, etc.) abhängt.
+Für eine Gauss-Legendre-Quadratur 
+\begin{equation}
+    I 
+    = 
+    \int_{-1}^{1}f(x)\,dx 
+    \approx 
+    \sum_{i=1}^{n}A_{i}f(x_{i})
+\end{equation}
+
+kann der Fehler mit der Formel
+\begin{equation}
+    E 
+    \approx 
+    \sum_{i=1}^{n}A_{i}f(x_{i})
+    -
+    \sum_{i=1}^{n+1}A_{i}f(x_{i})
+\end{equation}
+
+approximiert werden. Für $n = 4$ wird die Fehlerrechnung 
+\begin{gather*}
+    E
+    \approx
+    \sum_{i=1}^{5}A_{i}f(x_{i})
+    -
+    \sum_{j=1}^{4}A_{j}f(x_{j}) \\
+    =
+    A_{i1}f(x_{i1})+A_{i2}f(x_{i2})+A_{i3}f(x_{i3})+A_{i4}f(x_{i4})+A_{i5}f(x_{i5}) \\
+    -\;
+    A_{j1}f(x_{j1})+A_{j2}f(x_{j2})+A_{j3}f(x_{j3})+A_{j4}f(x_{j4})
+\end{gather*}
+
+\subsubsection{Fehlerrechnung mit der Fehlerformel}
+Die Fehlerformel
+\begin{equation}
+    E = \int_{a}^{b} w(x) f(x) \, dx - \sum_{i=1}^{n}A_{i}f(x_{i})    
+\end{equation} 
+
+hat die allgemeine Form
+\begin{equation}
+    E = K(n)f^{(2n+2)}(c)
+\end{equation}
+
+wobei $a<c<b$ und $K(n)$ von der jeweiligen Form der Quadratur abhängt.
+
+Die Funktion $f(x)$ muss dabei $2n+2$ mal abgeleitet werden,
+
+Für die Gauss-Legendre-Quadraturformel ist $K(n)$:
+\begin{equation}
+    \label{quadratur:equation:errorformula}
+    E = \frac{(b-a)^{2n+3}[(n+1)!]^{4}}{(2n+3)[(2n+2)!]^{3}}f^{(2n+2)}(c)
+\end{equation}
+
+in der allgemeinen Form oder für $a=-1, b=1$:
+\begin{equation}
+    E = \frac{2^{2n+3}[(n+1)!]^{4}}{(2n+3)[(2n+2)!]^{3}}f^{(2n+2)}(c)
+\end{equation}
+
+Die allgemeine Form wird dann benötigt, falls ein Integral der Form 
+\begin{equation}
+    I = \int_{a}^{b} f(\xi) \,d\xi
+\end{equation}
+
+in die Form
+\begin{equation}
+    I = \frac{b-a}{2} \int_{-1}^{1} f\bigg(\frac{b-a}{2}x + \frac{b+a}{2}\bigg) \,dx
+\end{equation}
+
+gebracht wird.
+Die Variable $c$ ist dabei keine vorgegebene Zahl, 
+sondern muss im Intervall $(a, b)$ gefunden werden und ist von der jeweiligen Funktion $f(x)$ abhängig.
+Die Tabelle~\ref{buch:table:fehlerformeln} zeigt für die verschiedenen Formen
+der Gaussquadratur die Fehlerformeln und deren Grenzen für $c$.
+
+
+\begin{table}
+    \centering
+    \begin{tabular}{|l|>{$}c<{$}|>{$}c<{$}|}
+        \hline
+        \text{Name} &  \text{Fehlerformel} & \text{Intervall für }c  \\
+        \hline  
+        \text{Legendre} & E =\displaystyle \frac{2^{2n+3}[(n+1)!]^{4}}{(2n+3)[(2n+2)!]^{3}}f^{(2n+2)}(c)  & -1 < c < 1 \\
+        \text{Chebyshev} & E =\displaystyle \frac{2\pi}{2^{2n+2}(2n+2!)}f^{(2n+2)}(c) & -1 < c < 1 \\
+        \text{Laguerre} & E = \displaystyle \frac{[(n+1)!]^{2}}{(2n+2)!}f^{(2n+2)}(c)  & 0 < c < \infty \\
+        \text{Hermite} & E = \displaystyle \frac{\sqrt{\pi}(n+1)!}{2^{2}(2n+2)!}f^{(2n+2)}(c) & 0 < c < \infty\\
+        \hline
+    \end{tabular}
+    \caption{Fehlerformeln der Gauss-Quadratur
+    \label{buch:table:fehlerformeln}}   
+\end{table}
+
+\subsubsection{Beispiel: Fehlerrechnung für $I = \int_{2}^{4}x^{-1}\,dx$ mit zwei Stützstellen}
+Zuerst wird das Intervall [2,4] mit der Linearen Transformation in das Intervall [-1,1] überführt:
+\begin{equation}
+    \int_{a}^{b} f(\xi)\,d\xi = \frac{b-a}{2}\int_{-1}^{1} f \bigg( \frac{b-a}{2} x + \frac{b+a}{2} \bigg) \,dx
+\end{equation}
+
+Für die Zwei-Punkt-Gaussquadratur sind die Stützstellen 
+$x_{0}= -\frac{1}{\sqrt{3}}$, $x_{1} = \frac{1}{\sqrt{3}}$ 
+und die Gewichte $A_{0} = A_{1} = 1$. Mit $f(x) := x^{-1}$ 
+erhalten wir die Formel:
+\begin{equation*}
+    I = \frac{4-2}{2} \int_{-1}^{1} f \bigg( \frac{4-2}{2} x + \frac{4+2}{2} \bigg) \,dx
+\end{equation*}
+\begin{equation*}
+    = \int_{-1}^{1} f (x + 3)\,dx 
+\end{equation*}
+\begin{equation*}
+    \approx \sum_{i=0}^{1} A_{i} f(x_{i} + 3)
+\end{equation*}
+\begin{equation*}
+    = f(-\frac{1}{\sqrt{3}}+3)-f(\frac{1}{\sqrt{3}}+3)
+\end{equation*}
+\begin{equation}
+    (-\frac{1}{\sqrt{3}}+3)^{-1} - (\frac{1}{\sqrt{3}}+3)^{-1}
+\end{equation}
+\begin{equation*}
+    \approx 0.41277118\dots + 0.27953651\dots
+\end{equation*}
+\begin{equation}
+    \approx 0.69230769\dots
+\end{equation}
+
+Um den Fehler zu berechnen, verwnden wir nun die Fehlerformel \ref{quadratur:equation:errorformula}
+bei der wir die Werte $a = 2, b = 4$ und $n = 1$ einsetzen
+\begin{equation*}
+    E = \frac{(4-2)^{2+3}[(2)!]^{4}}{(2+3)[(2+2)!]^{3}}f^{(2+2)}(c)
+\end{equation*}
+\begin{equation*}
+    = \frac{(2)^{5}[5]^{4}}{(5)[(4)!]^{3}}f^{(4)}(c)
+\end{equation*}
+\begin{equation*}
+    = \frac{32 \cdot 625}{5 \cdot (24)^{3}}f^{(4)}(c)
+\end{equation*}
+\begin{equation*}
+    = \frac{20000}{69120}f^{(4)}(c)
+\end{equation*}
+\begin{equation}
+    = \frac{125}{432}f^{(4)}(c)
+\end{equation}
+
+Möchte man nun $c$ für $f^{(4)}(c)$ herausfinden, benötigt man die 
+vierte Ableitung von $f(x)$ und berechnet dasjenige $c$ im Intervall $[2, 4]$ 
+welches den höchsten Wert für $f^{4}(c)$ ergibt.
+
+Für $f(x) = 1/x$ ist die vierte Ableitung $f^{(4)}(x) = 24/x^{5}$. 
+Der Wert von $f^{4}(c)$ wird somit grösser, je kleiner $c$ ist.
+Im Inzervall $[2,4]$ ist $2$ die kleinste Zahl und wird in die Fehlerformel eingesetzt.
+\begin{equation}
+    E = \frac{125}{432}f^{4}(c) = \frac{125}{432} \cdot \frac{24}{2^{5}} = \frac{125}{432}\frac{3}{4} \approx 0.21701389\dots
+\end{equation}
 
 
 \textcolor{red}{
@@ -639,6 +818,7 @@ wird $dx = d\xi(b - a)/2$, und die Quadraturformel wird
         \item Berechnung der Position der Stützstellen (Done)
         \item Berechnung der Gewichtung (Done)
         \item Erklären der verschiedenen Formen der Gauss-Quadratur und ihrer Anwendungen (Done)
-        \item Fehler der Gauss-Quadratur
+        \item Fehler der Gauss-Quadratur (Fix Beispiel: Fehler sollte ca 0.0008 sein)
+        \item FEHLERKORREKTUR bei 2 Stützstellen ist n = 1. 
     \end{itemize}
 }

@@ -1,0 +1,1049 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.7.15)  18 JUL 2020 11:49
+entering extended mode
+**./main.tex
+(main.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-06-18>
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo
+File: size11.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count167
+\c@section=\count168
+\c@subsection=\count169
+\c@subsubsection=\count170
+\c@paragraph=\count171
+\c@subparagraph=\count172
+\c@figure=\count173
+\c@table=\count174
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
+) (C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/epic\epic.sty
+Enhancements to Picture Environment. Version 1.2 - Released June 1, 1986
+\@@multicnt=\count175
+\d@lta=\count176
+\@delta=\dimen135
+\@@delta=\dimen136
+\@gridcnt=\count177
+\@joinkind=\count178
+\@dotgap=\dimen137
+\@ddotgap=\dimen138
+\@x@diff=\count179
+\@y@diff=\count180
+\x@diff=\dimen139
+\y@diff=\dimen140
+\@dotbox=\box45
+\num@segments=\count181
+\num@segmentsi=\count182
+\@datafile=\read2
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.st
+y
+Package: color 2019/11/23 v1.2a Standard LaTeX Color (DPC)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\colo
+r.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdft
+ex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen141
+\ar@mcellbox=\box46
+\extrarowheight=\dimen142
+\NC@list=\toks17
+\extratabsurround=\skip49
+\backup@length=\skip50
+\ar@cellbox=\box47
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty
+Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.s
+ty
+Package: amsmath 2020/01/20 v2.17e AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.s
+ty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.st
+y
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen143
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.st
+y
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen144
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.st
+y
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count183
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count184
+\leftroot@=\count185
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count186
+\DOTSCASE@=\count187
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box48
+\strutbox@=\box49
+\big@size=\dimen145
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
+\macc@depth=\count188
+\c@MaxMatrixCols=\count189
+\dotsspace@=\muskip16
+\c@parentequation=\count190
+\dspbrk@lvl=\count191
+\tag@help=\toks19
+\row@=\count192
+\column@=\count193
+\maxfields@=\count194
+\andhelp@=\toks20
+\eqnshift@=\dimen146
+\alignsep@=\dimen147
+\tagshift@=\dimen148
+\tagwidth@=\dimen149
+\totwidth@=\dimen150
+\lineht@=\dimen151
+\@envbody=\toks21
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2859.
+LaTeX Info: Redefining \] on input line 2860.
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjustb
+ox.sty
+Package: adjustbox 2019/01/04 v1.2 Adjusting TeX boxes (trim, clip, ...)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.s
+ty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval
+.tex
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutil
+s.tex
+\XKV@toks=\toks23
+\XKV@tempa@toks=\toks24
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\keyval.
+tex))
+\XKV@depth=\count195
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjcalc
+.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\trimcli
+p.sty
+Package: trimclip 2018/04/08 v1.1 Trim and clip general TeX material
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx
+.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics
+.sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\grap
+hics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+)
+\Gin@req@height=\dimen152
+\Gin@req@width=\dimen153
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/collectbox\collec
+tbox.sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box50
+)
+\tc@llx=\dimen154
+\tc@lly=\dimen155
+\tc@urx=\dimen156
+\tc@ury=\dimen157
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\tc-pdft
+ex.def
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen158
+\adjbox@Height=\dimen159
+\adjbox@Depth=\dimen160
+\adjbox@Totalheight=\dimen161
+\adjbox@pwidth=\dimen162
+\adjbox@pheight=\dimen163
+\adjbox@pdepth=\dimen164
+\adjbox@ptotalheight=\dimen165
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/ifoddpage\ifoddpa
+ge.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count196
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/varwidth\varwidth
+.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box51
+\sift@deathcycles=\count197
+\@vwid@loff=\dimen166
+\@vwid@roff=\dimen167
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/beamer\multimedia
+.sty
+Package: multimedia 2012/05/02 ver 0.02
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifpdf.sty
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+\mm@movie=\count198
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.st
+y
+Package: verbatim 2019/11/10 v1.5r LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks25
+\verbatim@line=\toks26
+\verbatim@in@stream=\read3
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer
+\tikz.sty
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pg
+f.sty
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgf
+rcs.sty
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\p
+gfutil-common.tex
+\pgfutil@everybye=\toks27
+\pgfutil@tempdima=\dimen168
+\pgfutil@tempdimb=\dimen169
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\p
+gfutil-common-lists.tex))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\p
+gfutil-latex.def
+\pgfutil@abb=\box52
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/ms\everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\p
+gfrcs.code.tex
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revisio
+n.tex)
+Package: pgfrcs 2020/01/08 v3.1.5b (3.1.5b)
+))
+Package: pgf 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pg
+fcore.sty
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\p
+gfsys.sty
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer
+\pgfsys.code.tex
+Package: pgfsys 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\p
+gfkeys.code.tex
+\pgfkeys@pathtoks=\toks28
+\pgfkeys@temptoks=\toks29
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\p
+gfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks30
+))
+\pgf@x=\dimen170
+\pgf@y=\dimen171
+\pgf@xa=\dimen172
+\pgf@ya=\dimen173
+\pgf@xb=\dimen174
+\pgf@yb=\dimen175
+\pgf@xc=\dimen176
+\pgf@yc=\dimen177
+\pgf@xd=\dimen178
+\pgf@yd=\dimen179
+\w@pgf@writea=\write3
+\r@pgf@reada=\read4
+\c@pgf@counta=\count199
+\c@pgf@countb=\count266
+\c@pgf@countc=\count267
+\c@pgf@countd=\count268
+\t@pgf@toka=\toks31
+\t@pgf@tokb=\toks32
+\t@pgf@tokc=\toks33
+\pgf@sys@id@count=\count269
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer
+\pgf.cfg
+File: pgf.cfg 2020/01/08 v3.1.5b (3.1.5b)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer
+\pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer
+\pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2020/01/08 v3.1.5b (3.1.5b)
+)))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer
+\pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfsyssoftpath@smallbuffer@items=\count270
+\pgfsyssoftpath@bigbuffer@items=\count271
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer
+\pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\colo
+r.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 709.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcore.code.tex
+Package: pgfcore 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+h.code.tex
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+hcalc.code.tex
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+hutil.code.tex)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+hparser.code.tex
+\pgfmath@dimen=\dimen180
+\pgfmath@count=\count272
+\pgfmath@box=\box53
+\pgfmath@toks=\toks34
+\pgfmath@stack@operand=\toks35
+\pgfmath@stack@operation=\toks36
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+hfunctions.code.tex
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+hfunctions.basic.code.tex)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+hfunctions.trigonometric.code.tex)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+hfunctions.random.code.tex)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+hfunctions.comparison.code.tex)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+hfunctions.base.code.tex)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+hfunctions.round.code.tex)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+hfunctions.misc.code.tex)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+hfunctions.integerarithmetics.code.tex)))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+hfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count273
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint
+.code.tex)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@picminx=\dimen181
+\pgf@picmaxx=\dimen182
+\pgf@picminy=\dimen183
+\pgf@picmaxy=\dimen184
+\pgf@pathminx=\dimen185
+\pgf@pathmaxx=\dimen186
+\pgf@pathminy=\dimen187
+\pgf@pathmaxy=\dimen188
+\pgf@xx=\dimen189
+\pgf@xy=\dimen190
+\pgf@yx=\dimen191
+\pgf@yy=\dimen192
+\pgf@zx=\dimen193
+\pgf@zy=\dimen194
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@path@lastx=\dimen195
+\pgf@path@lasty=\dimen196
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@shorten@end@additional=\dimen197
+\pgf@shorten@start@additional=\dimen198
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfpic=\box54
+\pgf@hbox=\box55
+\pgf@layerbox@main=\box56
+\pgf@picture@serial@count=\count274
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgflinewidth=\dimen199
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@pt@x=\dimen256
+\pgf@pt@y=\dimen257
+\pgf@pt@temp=\dimen258
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfarrowsep=\dimen259
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@max=\dimen260
+\pgf@sys@shading@range@num=\count275
+\pgf@shadingcount=\count276
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfexternal@startupbox=\box57
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\
+pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgf
+moduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfnodeparttextbox=\box58
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgf
+moduleplot.code.tex
+File: pgfmoduleplot.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility
+\pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@nodesepstart=\dimen261
+\pgf@nodesepend=\dimen262
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility
+\pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2020/01/08 v3.1.5b (3.1.5b)
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgf
+for.sty
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgf
+keys.sty
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\p
+gfkeys.code.tex))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.
+sty
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+h.code.tex))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\p
+gffor.code.tex
+Package: pgffor 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmat
+h.code.tex)
+\pgffor@iter=\dimen263
+\pgffor@skip=\dimen264
+\pgffor@stack=\toks37
+\pgffor@toks=\toks38
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz\tikz.code.tex
+Package: tikz 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\p
+gflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@plot@mark@count=\count277
+\pgfplotmarksize=\dimen265
+)
+\tikz@lastx=\dimen266
+\tikz@lasty=\dimen267
+\tikz@lastxsaved=\dimen268
+\tikz@lastysaved=\dimen269
+\tikz@lastmovetox=\dimen270
+\tikz@lastmovetoy=\dimen271
+\tikzleveldistance=\dimen272
+\tikzsiblingdistance=\dimen273
+\tikz@figbox=\box59
+\tikz@figbox@bg=\box60
+\tikz@tempbox=\box61
+\tikz@tempbox@bg=\box62
+\tikztreelevel=\count278
+\tikznumberofchildren=\count279
+\tikznumberofcurrentchild=\count280
+\tikz@fig@count=\count281
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgf
+modulematrix.code.tex
+File: pgfmodulematrix.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfmatrixcurrentrow=\count282
+\pgfmatrixcurrentcolumn=\count283
+\pgf@matrix@numberofcolumns=\count284
+)
+\tikz@expandcount=\count285
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/s
+hapes\pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibrarydecorations.pathreplacing.code.tex
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibrarydecorations.code.tex
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgf
+moduledecorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen274
+\pgfdecoratedremainingdistance=\dimen275
+\pgfdecoratedinputsegmentcompleteddistance=\dimen276
+\pgfdecoratedinputsegmentremainingdistance=\dimen277
+\pgf@decorate@distancetomove=\dimen278
+\pgf@decorate@repeatstate=\count286
+\pgfdecorationsegmentamplitude=\dimen279
+\pgfdecorationsegmentlength=\dimen280
+)
+\tikz@lib@dec@box=\box63
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/d
+ecorations\pgflibrarydecorations.pathreplacing.code.tex))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\p
+gflibraryarrows.code.tex
+File: pgflibraryarrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\arrowsize=\dimen281
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibrary3d.code.tex
+File: tikzlibrary3d.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibraryshapes.code.tex
+File: tikzlibraryshapes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibraryshapes.misc.code.tex
+File: tikzlibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/s
+hapes\pgflibraryshapes.misc.code.tex
+File: pgflibraryshapes.misc.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibraryshapes.symbols.code.tex
+File: tikzlibraryshapes.symbols.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/s
+hapes\pgflibraryshapes.symbols.code.tex
+File: pgflibraryshapes.symbols.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibraryshapes.arrows.code.tex
+File: tikzlibraryshapes.arrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/s
+hapes\pgflibraryshapes.arrows.code.tex
+File: pgflibraryshapes.arrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibraryshapes.callouts.code.tex
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/s
+hapes\pgflibraryshapes.callouts.code.tex))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibraryshapes.multipart.code.tex
+File: tikzlibraryshapes.multipart.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/s
+hapes\pgflibraryshapes.multipart.code.tex
+File: pgflibraryshapes.multipart.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfnodepartlowerbox=\box64
+\pgfnodeparttwobox=\box65
+\pgfnodepartthreebox=\box66
+\pgfnodepartfourbox=\box67
+\pgfnodeparttwentybox=\box68
+\pgfnodepartnineteenbox=\box69
+\pgfnodeparteighteenbox=\box70
+\pgfnodepartseventeenbox=\box71
+\pgfnodepartsixteenbox=\box72
+\pgfnodepartfifteenbox=\box73
+\pgfnodepartfourteenbox=\box74
+\pgfnodepartthirteenbox=\box75
+\pgfnodeparttwelvebox=\box76
+\pgfnodepartelevenbox=\box77
+\pgfnodeparttenbox=\box78
+\pgfnodepartninebox=\box79
+\pgfnodeparteightbox=\box80
+\pgfnodepartsevenbox=\box81
+\pgfnodepartsixbox=\box82
+\pgfnodepartfivebox=\box83
+)))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibrarymath.code.tex
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibraryfpu.code.tex
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\p
+gflibraryfpu.code.tex))
+\tikz@math@for@depth=\count287
+\tikz@math@dimen=\dimen282
+\tikz@math@toks=\toks39
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibrarydecorations.text.code.tex
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/d
+ecorations\pgflibrarydecorations.text.code.tex
+\pgf@lib@dec@text@box=\box84
+)
+\tikz@lib@dec@te@box=\box85
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibraryautomata.code.tex
+File: tikzlibraryautomata.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\pifont.sty
+Package: pifont 2020/03/25 PSNFSS-v9.3 Pi font support (SPQR) 
+LaTeX Font Info:    Trying to load font information for U+pzd on input line 63.
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Trying to load font information for U+psy on input line 64.
+
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xy.sty
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xy.tex
+Bootstrap'ing: catcodes, docmode,
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xyrecat.t
+ex)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xyidioms.
+tex)
+
+ Xy-pic version 3.8.9 <2013/10/06>
+ Copyright (c) 1991-2013 by Kristoffer H. Rose <krisrose@tug.org> and others
+ Xy-pic is free software: see the User's Guide for details.
+
+Loading kernel: messages; fonts; allocations: state,
+\X@c=\dimen283
+\Y@c=\dimen284
+\U@c=\dimen285
+\D@c=\dimen286
+\L@c=\dimen287
+\R@c=\dimen288
+\Edge@c=\toks40
+\X@p=\dimen289
+\Y@p=\dimen290
+\U@p=\dimen291
+\D@p=\dimen292
+\L@p=\dimen293
+\R@p=\dimen294
+\Edge@p=\toks41
+\X@origin=\dimen295
+\Y@origin=\dimen296
+\X@xbase=\dimen297
+\Y@xbase=\dimen298
+\X@ybase=\dimen299
+\Y@ybase=\dimen300
+\X@min=\dimen301
+\Y@min=\dimen302
+\X@max=\dimen303
+\Y@max=\dimen304
+\lastobjectbox@=\box86
+\zerodotbox@=\box87
+\almostz@=\dimen305
+ direction,
+\d@X=\dimen306
+\d@Y=\dimen307
+\K@=\count288
+\KK@=\count289
+\Direction=\count290
+\K@dXdY=\dimen308
+\K@dYdX=\dimen309
+\xyread@=\read5
+\xywrite@=\write4
+\csp@=\count291
+\quotPTK@=\dimen310
+
+utility macros; pictures: \xy, positions,
+\swaptoks@@=\toks42
+\connectobjectbox@@=\box88
+ objects,
+\styletoks@=\toks43
+ decorations;
+kernel objects: directionals, circles, text; options; algorithms: directions,
+edges, connections;  Xy-pic loaded)
+Package: xy 2013/10/06 Xy-pic version 3.8.9
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xyall.tex
+ Xy-pic option: All features v.3.8
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xycurve.t
+ex  Xy-pic option: Curve and Spline extension v.3.12 curve,
+\crv@cnt@=\count292
+\crvpts@=\toks44
+\splinebox@=\box89
+\splineval@=\dimen311
+\splinedepth@=\dimen312
+\splinetol@=\dimen313
+\splinelength@=\dimen314
+ circles,
+\L@=\dimen315
+ loaded)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xyframe.t
+ex  Xy-pic option: Frame and Bracket extension v.3.14 loaded)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xycmtip.t
+ex  Xy-pic option: Computer Modern tip extension v.3.7
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xytips.te
+x  Xy-pic option: More Tips extension v.3.11 loaded) loaded)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xyline.te
+x  Xy-pic option: Line styles extension v.3.10
+\xylinethick@=\dimen316
+ loaded)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xyrotate.
+tex  Xy-pic option: Rotate and Scale extension v.3.8 loaded)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xycolor.t
+ex  Xy-pic option: Colour extension v.3.11 loaded)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xymatrix.
+tex  Xy-pic option: Matrix feature v.3.14
+\Row=\count293
+\Col=\count294
+\queue@=\toks45
+\queue@@=\toks46
+\qcount@=\count295
+\qcount@@=\count296
+\matrixsize@=\count297
+ loaded)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xyarrow.t
+ex  Xy-pic option: Arrow and Path feature v.3.9 path, \ar, loaded)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xygraph.t
+ex  Xy-pic option: Graph feature v.3.11 loaded) loaded)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xypdf.tex
+ Xy-pic option: PDF driver v.1.7 Xy-pic pdf driver: `color' extension support
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xypdf-co.
+tex loaded) Xy-pic pdf driver: `curve' extension support
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xypdf-cu.
+tex loaded) Xy-pic pdf driver: `frame' extension support
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xypdf-fr.
+tex loaded) Xy-pic pdf driver: `line' extension support
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xypdf-li.
+tex loaded) Xy-pic pdf driver: `rotate' extension support
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/xypic\xypdf-ro.
+tex loaded) loaded))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backe
+nd-pdfmode.def
+File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count298
+\l__pdf_internal_box=\box90
+)
+No file main.aux.
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 28
+.
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-
+pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count299
+\scratchdimen=\dimen317
+\scratchbox=\box91
+\nofMPsegments=\count300
+\nofMParguments=\count301
+\everyMPshowfont=\toks47
+\MPscratchCnt=\count302
+\MPscratchDim=\dimen318
+\MPnumerator=\count303
+\makeMPintoPDFobject=\count304
+\everyMPtoPDFconversion=\toks48
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epst
+opdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwa
+rerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kv
+definekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptio
+ns.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds
+.sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/kvsetkeys\kvset
+keys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdft
+excmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
+) ABD: EveryShipout initializing macros
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
+8.
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
+8.
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
+28.
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
+28.
+
+(C:\Users\tobias.grab\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 28.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 28.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 28.
+Package xypdf Info: Line width: 0.39998pt on input line 28.
+
+! Undefined control sequence.
+l.30 \chapter
+             {Francis-Algorithmus\label{chapter:francis}}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.31 \lhead
+           {Francis-Algorithmus}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Environment refsection undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.32 \begin{refsection}
+                       
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.33 \chapterauthor
+                   {Tobias Grab}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: File `papers/francis/einleitung.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.38 \input{papers/francis/einleitung.tex}
+                                          
+*** (cannot \read from terminal in nonstop modes)
+
+ 
+Here is how much of TeX's memory you used:
+ 20735 strings out of 480790
+ 432369 string characters out of 2894487
+ 695405 words of memory out of 3000000
+ 36275 multiletter control sequences out of 15000+200000
+ 549557 words of font info for 48 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 60i,3n,72p,3217b,88s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!

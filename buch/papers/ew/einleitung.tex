@@ -5,18 +5,25 @@
 %
 \section{Einleitung\label{ew:section:einleitung}}
 \rhead{Einleitung}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{ew:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
+Das Lösen des Eigenwertproblems ist  weit verbreitet mit vielen Anwendungsgebieten.
+Umso wichtiger ist es, Eigenwerte und Eigenvektoren auch von grösseren Matrizen in kurzer Zeit zu berechnen.
+Dazu gibt es diverse numerische Verfahren, die alle ihre Vor- und Nachteile haben.
 
+Das klassische Verfahren für kleine Matrizen ist das Finden der Nullstellen des charakteristischen Polynoms.
+Durch die Nullstellen können die Eigenwerte berechnet werden und anschliessend, durch Lösen eines Gleichungssystems auch die dazugehörigen Eigenvektoren.
+Diese Methode, kann jedoch nur bis und mit Ordnung vier explizit gelöst werden, da alle Nullstellen nur bis zu dieser Ordnung explizit berechnet werden können.
+Des Weiteren stellt sich heraus, dass der Weg über die Eigenwerte nummerisch impraktikabel für Floatingpoint berechnungen ist. 
 
+Viel attraktiver ist das Anwenden von iterativen Methoden, welche auch für grössere Matrizen geeignet sind.
+Einer der einfachsten Algorithmen ist die Potenzmethode.
+Dabei wird ein zufällig gewählter Vektor mehrmals mit der Matrix multipliziert und normalisiert, bis er zu einem Eigenvektor konvergiert.
+Diese Methode funktioniert generell für eine beliebige Matrix, doch sie liefert nur ein Eigenvektor auf einmal.
+
+Falls man das Problem durch bestimmte Eigenschaften der Matrizen einschränken kann, können zum Teil schnellere Algorithmen angewendet werden.
+Für reelle und symetrische Matrizen zum Beispiel, kann der Jacobi-Algorithmus angewendet werden. %TODO cite script???
+
+Trotz vielen Methoden bleibt das Berechnen der Eigenwerte und Eigenvektoren sehr teuer.
+Für manche Anwendungen genügen jedoch auch approximationen, wenn dadurch massenhaft Rechenleistung und dadurch auch Zeit gespart werden kann.
+Die Störungstheorie, english \textit{perturbation}, befasst sich mit der approximation von Lösungen auf wenig abgeänderte, gestörte Probleme.
+Auch für das Eigenwertproblem kann ein solches Verfahren entwickelt werden, welches angewendet werden kann, wenn Eigenwerte und Eigenvektoren von einer ähnlichen Matrix schon bekannt sind.

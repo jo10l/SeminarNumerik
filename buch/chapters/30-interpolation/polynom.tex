@@ -860,12 +860,24 @@ Intervalls werden.
 
 \begin{figure}
 \centering
-\includegraphics[width=\hsize]{chapters/30-interpolation/figures/lissajous.jpg}
+\includegraphics[width=\hsize]{chapters/30-interpolation/figures/lissajous.pdf}
 \caption{Diese Lissajous-Figur suggeriert eine mögliche Lösung für eine 
 Interpolationspolynom mit besonders kleinem Fehler.
 Wenn sich diese Kurve als Polynom ausdrücken lässt, bleibt der Fehler über
 das ganze Definitionsinterval gleichmässig beschränkt.
 \label{buch:figure:lissajous}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\hsize]{chapters/30-interpolation/figures/lissajous-chebyshef.pdf}
+\caption{Lissajous-Figur von Abbildung~\ref{buch:figure:lissajous}
+mit eingezeichnetem Tschebyscheff-Polynom und Nullstellen
+desselben.
+Das Maximum des Betrags des Tschebyscheff-Polynoms ist 1 und liefert 
+damit eine obere Schranke für den Fehler des zugehörigen
+Interpolationspolynoms.
+\label{buch:figure:lissajous-chebyshef}}
 \end{figure}
 
 Die beste Approximation durch ein Interpolationspolynom kann man also
@@ -876,16 +888,20 @@ Extremewerte $\pm 1$ haben, würde dieses Kriterium erfüllen, aber
 $\sin x$ und $\cos x$ sind keine Polynome.
 Sie sind auch auf auf einem viel grösseren Interval als nötig definiert,
 nämlich ganz $\mathbb R$.
-Ein verwandtes Beispiel sind Lissajous-Figuren,
+Ein verwandtes Beispiel sind Lissajous-Figuren.
 Abbildung~\ref{buch:figure:lissajous} suggeriert, dass eine geeignete
 Lissajous-Figur als Graph für ein Interpolationspolynom mit sehr
 geringem Fehler dienen könnte, wenn man sie als Polynom darstellen kann.
 Eine solche Lissajous-Figur entsteht als Kurve
 $t\mapsto (\cos t, \cos nt)$ oder eine anderes trigonometrisches
 Polynom als zweite Komponente.
+Die Abbildung~\ref{buch:figure:lissajous-chebyshef} zeigt die Kurve
+für den Fall $n=13$ der Lissajous-Figure von
+Abbildung~\ref{buch:figure:lissajous} überlagert.
+Die gute Übereinstimmung bestätigt die obige Beobachtung.
+
 Es stellt sich also die Frage, ob $\cos nt$ als Polynom in $z=\cos t$
 ausgedrückt werden kann.
-
 Sei also
 \[
 T_n(z)
@@ -907,6 +923,14 @@ T_3(z) &= \cos 3t = 4\cos^3 t - 3\cos t = 4z^3-3z.
 \end{aligned}
 \label{buch:tschebyscheff:erste}
 \end{equation}
+Für kleine Werte von $n$ ist also direkt nachprüfbar, dass $T_n(z)$
+ein Polynom ist.
+
+Wir benötigen eine Formel, mit der sich Werte der Polynome $T_n(z)$
+effizient berechnen lassen, ohne dass das Polynom in expliziter
+Form ermittelt werden muss.
+Im Folgenden soll dazu eine Rekursionsformel hergeleitet werden.
+
 Aus den Additionstheoremen für den Kosinus folgt die Formel für die
 Summe von zwei Konsinus-Funktionen
 \begin{align}
