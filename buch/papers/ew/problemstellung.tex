@@ -7,8 +7,9 @@
 \label{ew:section:problemstellung}}
 \rhead{Problemstellung}
 
+
 Das Eigenwertproblem sucht diejenigen Vektoren $v_i \in \mathbb{R}^{n} $, die angewendet mit einer Matrix $\bm H$ nicht die Richtung ändern und dabei nur mit $\lambda_i \in \mathbb{R}$ skaliert werden:
-\begin{equation} 
+\begin{equation}
     \bm H \bm v_i = \lambda_i \bm v_i \label{ew:eq:eig}
 \end{equation}
 
@@ -18,15 +19,26 @@ Dies lässt sich mit der Summe
     \bm H(\varepsilon) = \bm H_0 + \varepsilon \bm H_1
 \end{equation}
 schreiben, wobei $\varepsilon \ll 1 $ ausdrücken soll, dass der zweite Term der Summe viel kleiner ist als $\bm H_0$.
+
+
+
+
 Die Eigenwertperturbation erlaubt es, die Eigenwerte $\lambda_i(\varepsilon)$ und Eigenvektoren  $v_i(\varepsilon)$ von $\bm H$ zu approximieren.
 Das Verfahren hat jedoch die Limitierung, dass die Eigenvektoren von $H_0$ zueinander othogonal sind, was für alle symetrischen $\bm H_0$ zutrifft.
-Somit fassen wir zusammen,
-\begin{gather*}
-    \bm H(\varepsilon) = \bm H_0 + \varepsilon \bm H_1 \\
-    \varepsilon \in \mathbb{R^+} \ll 1 \\
-    \lambda^{(0)}, \bm v^{(0)} \quad \text{bekannt} \\
-    \bm H_0 \quad \text{symetrisch}
-\end{gather*} %TODO check if only H_0 must be symetric or selbstadjungiert
+Somit fassen wir zusammen:
+\begin{aufgabe}
+Finde für eine symetrische Matrix $\bm H_0$ mit bekannten Eigenwerten $\lambda_{0}$ und bekannten orthonormierten Eigenvektoren $\bm v_{0i}$ eine approximation erster Ordnung für
+\begin{equation*}
+    \bm H(\varepsilon) = \bm H_0 + \varepsilon \bm H_1,
+\end{equation*}
+wobei $\varepsilon \in \mathbb{R^+} \ll 1$.
+% \begin{gather*}
+%     \bm H(\varepsilon) = \bm H_0 + \varepsilon \bm H_1 \\
+%     \varepsilon \in \mathbb{R^+} \ll 1 \\
+%     \lambda_{0}, \bm v_{0i} \quad \text{bekannt} \\
+%     \bm H_0 \quad \text{symetrisch}
+% \end{gather*} %TODO check if only H_0 must be symetric or selbstadjungiert
+\end{aufgabe}
 
 \section{Anwendungen}
 
@@ -35,12 +47,12 @@ Wie zum Beispiel das Berechnen der Umlaufbahnen von Planeten unter Einfluss von 
 Ein weiteres Beispiel ist das Berechnen einer Trajektorie unter Berücksichtigung des Luftfwiderstands, wie es in Kapitel \ref{chapter:perturbation} behandelt wird.
 
 Eines der grössten Anwendungsgebiet der Störungstheorie von Eigenwerten ist das Lösen der der Schrödingergleichung in der Quantenmechanik.
-Dabei werden die Eigenfunktionen des Hamilton-Operators gesucht um zum Beispiel Spektrallinien von Atomen zu berechen.
+Dabei werden die Eigenfunktionen des Hamilton-Operators gesucht um zum Beispiel Spektrallinien von Atomen zu berechnen.
 Aus diesem Anwendungsgebiet hat die Theorie auch ihren Ursprung. %TODO check this
 
 \section{Idee}
 
-Die Schreibweise als Funktion von $\varepsilon$ deutet auf eine Taylorreihe hin. 
+Die Schreibweise als Funktion von $\varepsilon$ deutet auf eine Taylorreihe hin.
 $\bm H(\varepsilon)$ kann als Taylorreihe geschrieben werden.
 
 \begin{equation*}
@@ -56,7 +68,7 @@ Somit können alle Terme mit $\varepsilon^2$ und höher weggelassen werden.
 Falls eine höhere Genauigkeit gewünscht wird, kann auch eine Methode mit einer Approximation zweiter Ordnung gewählt werden.
 Diese ist jedoch aufwendiger herzuleiten und wird in diesem Paper nicht angeschaut.
 
-Nach einsetzen der gekürzten Taylorreihen in Gleichung \ref{ew:eq:eig} erhalten wir 
+Nach einsetzen der gekürzten Taylorreihen in Gleichung \refeq{ew:eq:eig} erhalten wir
 \begin{align}
     \bm H(\varepsilon) \bm v_i(\varepsilon)
     &=
@@ -77,9 +89,9 @@ Dabei wurde auf die in der Quantenmechanik übliche Bra-Ket-Notation verzichtet.
 
 Als erstes wird die Gleichung ausmultipliziert und alle Terme mit $\varepsilon$ höherer Ordnung als zwei (rot markiert) werden weggelassen.
 \begin{equation}
-    \GN{\bm H_0 \bm v_{0i}} + 
-    \varepsilon \bm H_0 \bm v_{1i} + 
-    \varepsilon \bm H_1 \bm v_{0i} + 
+    \GN{\bm H_0 \bm v_{0i}} +
+    \varepsilon \bm H_0 \bm v_{1i} +
+    \varepsilon \bm H_1 \bm v_{0i} +
     \RD{\varepsilon^2 \bm H_1 \bm v_{1i}}
     =
     \GN{\lambda_{0i} \bm v_{0i}} +
@@ -87,15 +99,15 @@ Als erstes wird die Gleichung ausmultipliziert und alle Terme mit $\varepsilon$ 
     \varepsilon \lambda_{1i} \bm v_{0i} +
     \RD{\varepsilon^2 \lambda_{1i} \bm v_{1i}}
 \end{equation}
-Die grün markierten Terme entsprechen genau dem Eigenwertproblem \ref{ew:eq:eig} und können daher subtrahiert werden. Daraus erhalten wir
+Die grün markierten Terme entsprechen genau dem Eigenwertproblem \refeq{ew:eq:eig} und können daher subtrahiert werden. Daraus erhalten wir
 \begin{align}
-    \varepsilon \bm H_0 \bm v_{1i} + 
+    \varepsilon \bm H_0 \bm v_{1i} +
     \varepsilon \bm H_1 \bm v_{0i}
     &=
     \varepsilon \lambda_{0i} \bm v_{1i} +
     \varepsilon \lambda_{1i} \bm v_{0i}
     \\
-    \bm H_0 \bm v_{1i} + 
+    \bm H_0 \bm v_{1i} +
     \bm H_1 \bm v_{0i}
     &=
     \lambda_{0i} \bm v_{1i} +
@@ -103,7 +115,7 @@ Die grün markierten Terme entsprechen genau dem Eigenwertproblem \ref{ew:eq:eig
 \end{align}
 Durch das Linksmultiplizieren mit $\bm v_{0j}^T$ können anschliessend weitere vereinfachungen gemacht werden.
 \begin{equation}
-    \bm v_{0j}^T \bm H_0 \bm v_{1i} + 
+    \bm v_{0j}^T \bm H_0 \bm v_{1i} +
     \bm v_{0j}^T \bm H_1 \bm v_{0i}
     =
     \lambda_{0i} \bm v_{0j}^T \bm v_{1i} +
@@ -144,7 +156,7 @@ Mithilfe der Eigenwertproblemgleichung können wir dadurch auch den ersten Term 
 \end{equation}
 Daher erhalten wir
 \begin{equation}
-    \lambda_{0j} \bm v_{0j}^T \bm v_{1i} + 
+    \lambda_{0j} \bm v_{0j}^T \bm v_{1i} +
     \bm v_{0j}^T \bm H_1 \bm v_{0i}
     =
     \lambda_{0i} \bm v_{0j}^T \bm v_{1i} +
@@ -154,9 +166,9 @@ und noch ein wenig umgeformt
 \begin{equation}
     \bm v_{0j}^T \bm H_1 \bm v_{0i}
     =
-    \delta_{ij} \lambda_{1i} + 
+    \delta_{ij} \lambda_{1i} +
     ( \lambda_{0i} - \lambda_{0j} )
-    \bm v_{0j}^T  \bm v_{0i} .
+    \bm v_{0j}^T  \bm v_{1i} .
 \end{equation} \label{ew:eq:f}
 Aus dieser Gleichung können mittels Koeffizientenvergleich zwei nützliche Formeln extrahiert werden:
 \begin{alignat}{3}
@@ -166,7 +178,7 @@ Aus dieser Gleichung können mittels Koeffizientenvergleich zwei nützliche Form
 
 \subsection{Nicht entarteter Fall}
 
-Die Eigenwerte $\lambda_{1i}$ können einfach in \ref{ew:eq:eigval} eingesetzt werden und liefern bereits eine fertige Formel für   
+Die Eigenwerte $\lambda_{1i}$ können einfach in \refeq{ew:eq:eigval} eingesetzt werden und liefern bereits eine fertige Formel für
 \begin{align*}
     \lambda_i(\varepsilon)
     &=
@@ -195,7 +207,7 @@ Ein graphisches Beispiel dieser Umwandlung ist in Abbildung \ref{ew:fig:scalar_p
         $v_{10}$ ist gleich der Summe der Abbildungen markiert mit rot und blau.
     } \label{ew:fig:scalar_prod}
 \end{figure}
-Leider stimmt Formel \ref{ew:eq:f2} nur für $i \neq j$. Damit diese Formel eingesetzt werden kann, muss der Fall $i = j$ aus der Summe genommen werden
+Leider stimmt Formel \refeq{ew:eq:f2} nur für $i \neq j$. Damit diese Formel eingesetzt werden kann, muss der Fall $i = j$ aus der Summe genommen werden
 \begin{align}
     \bm v_i(\varepsilon)
     &=
@@ -217,7 +229,7 @@ Leider stimmt Formel \ref{ew:eq:f2} nur für $i \neq j$. Damit diese Formel eing
     \label{ew:eq:explicit_eigvecs}
 \end{equation}
 
-% Zusammenfassend, 
+% Zusammenfassend,
 % \begin{align*}
 %     \lambda_i(\varepsilon)
 %     &=
@@ -233,7 +245,7 @@ Leider stimmt Formel \ref{ew:eq:f2} nur für $i \neq j$. Damit diese Formel eing
 
 \section{Entartung}
 
-Die ebenso hergeleitete Formel \ref{ew:eq:explicit_eigvecs} für die Eigenvektoren ist nicht definiert für einen Spezialfall.
+Die ebenso hergeleitete Formel \refeq{ew:eq:explicit_eigvecs} für die Eigenvektoren ist nicht definiert für einen Spezialfall.
 Wenn zwei Eigenwerte von $\bm H_0$ gleich sind, entsteht eine Division durch Null, wie rot hervorgehoben:
 \begin{equation*} %TODO maybe ref to equation
     \bm v_i(\varepsilon)
@@ -247,12 +259,12 @@ Sie können irgendwo orthogonal auf einer Hyperebene liegen.
 Es liegt also kein Eigenvektor mehr vor sondern ein Eigenraum.
 Mehrfache Eigenwerte werden auch entartet genannt.
 Durch die Störung einer Matrix $\bm H_0$, also durch Addition einer geeigneten Matrix $\varepsilon \bm H_1$, können Eigenwerte gespalten werden werden.
-Als Beispiel, wenn $\varepsilon = 1$, 
+Als Beispiel, wenn $\varepsilon = 0.01$,
 \begin{align}
-    \bm H_0 &= 
+    \bm H_0 &=
     \begin{pmatrix}
         1 & 0 & 0\\
-        0 & 1 & 0\\
+        0 & 2 & 0\\
         0 & 0 & 2
     \end{pmatrix},
     \quad
@@ -276,14 +288,14 @@ Als Beispiel, wenn $\varepsilon = 1$,
     \end{pmatrix}
     \}
     \\
-    \bm H_1 &= 
+    \bm H_1 &=
     \begin{pmatrix}
         1 & 0 & 0\\
-        0 & 2 & 0\\
+        0 & 1 & 0\\
         0 & 0 & 2
     \end{pmatrix},
     \quad
-    \lambda_0 = \{1, 2, 2\},
+    \lambda_0 = \{1, 1, 2\},
     \quad
     \bm v_0 = \{
     \begin{pmatrix}
@@ -303,14 +315,14 @@ Als Beispiel, wenn $\varepsilon = 1$,
     \end{pmatrix}
     \}
     \\
-    \bm H(\varepsilon) &= 
+    \bm H(\varepsilon) &=
     \begin{pmatrix}
-        2 & 0 & 0\\
-        0 & 3 & 0\\
-        0 & 0 & 4
+        1.01 & 0 & 0\\
+        0 & 1.02 & 0\\
+        0 & 0 & 2.02
     \end{pmatrix},
     \quad
-    \lambda_0 = \{2, 3, 4\},
+    \lambda_0 = \{1.01, 1.02, 2.02\},
     \quad
     \bm v_0 = \{
     \begin{pmatrix}
@@ -332,23 +344,29 @@ Als Beispiel, wenn $\varepsilon = 1$,
 \end{align} \label{ew:eq:entartung_bsp}
 Die Dimensionen der Eigenvektoren, die einen Eigenraum bilden sind mit Fragezeichen gekennzeichnet.
 Die Eigenräume der Matrizen sind in Abbildung \ref{ew:fig:entartung} illustriert.
+
 \begin{figure}
     \begin{center}
         \input{papers/ew/tikz/entartung.tikz.tex}
     \end{center}
-    \caption{Eigenräume der Beispielmatrizen von \ref{ew:eq:entartung_bsp}. }
+    \caption{
+        Eigenräume der Beispielmatrizen von \refeq{ew:eq:entartung_bsp}.
+        Die mehrdimensionalen Eigenräume sind als Kreise dargestellt, wobei alle orthogonale Vektoren auf der Kreisfläche gültige Eigenvektoren sind.
+        Die roten Eigenvektoren ändern schlagartig die richtung, wobei die grünen richtig gewält wurden um die Entartungsrechnung durchzuführen. 
+        }
     \label{ew:fig:entartung}
 \end{figure}
+Die Eigenvektoren ädern sich also schon schlagartig für ganz kleine $\varepsilon = 0.01$.
 
 Bei einer numerischen Berechnung der Eigenvektoren von entarteten Eigenwerten, wie es zum Beispiel MATLAB oder NumPy macht, wird ein Eigenvektor in diesem Eigenraum einfach gewählt.
 Dies ist sehr unpraktikabel.
-Damit die Störungstheorie auch für entartete Eigenwerte funktioniert, muss das Problem mit der Division durch Null in Formel \ref{ew:eq:f2} beseitigt werden.
-Um dies in den Griff zu kriegen, müssen wir die Formel und Formel \label{ew:eq:f} für $i \neq j$ und $\lambda_{0i} = \lambda_{0j}$ anschauen, welche zu dieser Division durch Null geführt hatte.
+Damit die Störungstheorie auch für entartete Eigenwerte funktioniert, muss das Problem mit der Division durch Null in Formel \refeq{ew:eq:f2} beseitigt werden.
+Um dies in den Griff zu kriegen, müssen wir die Formel und Formel \refeq{ew:eq:f} für $i \neq j$ und $\lambda_{0i} = \lambda_{0j}$ anschauen, welche zu dieser Division durch Null geführt hatte.
 Dabei erhalten wir
 \begin{align}
     \bm v_{0j}^T \bm H_1 \bm v_{0i}
     &=
-    \delta_{ij} \lambda_{1i} + 
+    \delta_{ij} \lambda_{1i} +
     ( \lambda_{0i} - \lambda_{0j} )
     \bm v_{0j}^T  \bm v_{0i}
     \\
@@ -360,41 +378,43 @@ Dabei erhalten wir
     = 0.
 \end{align}
 Falls $i, j$ entartet sind, geht die Gleichung auf.
-Wir können also Formel \ref{ew:eq:explicit_eigvecs} auch für entartete Eigenwerte brauchen, falls
+Wir können also Formel \refeq{ew:eq:explicit_eigvecs} auch für entartete Eigenwerte brauchen, falls
 \begin{equation}
-    \bm v_{0j}^T \bm H_1 \bm v_{0i} = 0 \quad \forall \quad i,j \quad entartet.
+    \bm v_{0j}^T \bm H_1 \bm v_{0i} = 0 \quad \forall \quad i,j \quad \text{entartet}.
 \end{equation} \label{ew:eq:condition-degenerated}
 Im Bruch mit division durch Null haben wir nun $\frac{0}{0}$.
 Damit dies stimmt, müssen die entarteten Eigenvektoren $\bm v_{0i}$ so gewählt werden, dass sie in der Eigenbasis von $\bm H_1$ stehen. %TODO elaborate section
 Dazu bilden wir $\bm H_1$ auf die Basis von entarteten, zufällig gewählten Eigenvektoren ab
 \begin{equation*}
-    \bm H^\prime = \bm v_{0i}^T \bm H_1 \bm v_{0i} \quad \forall \quad i \quad entartet
+    \bm H^\prime = \bm v_{0i}^T \bm H_1 \bm v_{0i} \quad \forall \quad i \quad \text{entartet}
 \end{equation*}
 Dadurch erhalten wir eine kleinere Matrix $\bm H^\prime$, welche nur die dimensionen des Eigenraums hat.
 Von dieser müssen wir nun die Eigenvektoren finden, died das Eigenwertproblem
 \begin{equation*}
-    \bm H^\prime \bm v_{i}^\prime = \lambda_{i} \bm v_i^\prime \quad \forall \quad i \quad entartet
+    \bm H^\prime \bm v_{i}^\prime = \lambda_{i} \bm v_i^\prime \quad \forall \quad i \quad \text{entartet}
 \end{equation*}
 bilden.
 Allerdings ist dieses Problem einiges einfacher als das ursprüngliche Eigenwertproblem, da die Matrix nur die Entartungen enthält und dadurch viel kleiner ist und die Eigenwerte $\lambda_i$ noch bekannt sind.
 Die gefundenen Eigenvektoren müssen nun zurücktransformiert werden und anstelle der ursprünglichen, zufälligen Vektoren verwendet werden.
 \begin{equation*}
-    \bm v_{0i} \gets \bm v_{0i} \bm v_{i}^\prime \quad \forall \quad i \quad entartet
+    \bm v_{0i} \gets \bm v_{0i} \bm v_{i}^\prime \quad \forall \quad i \quad \text{entartet}
 \end{equation*}
 
 %TODO wieso genau kann summand weggelassen werden?
 
-Zusammengefasst, auch für entartete $\lambda_0$ gilt somit
+Zusammengefasst, auch für entartete $\lambda_0$ gilt somit:
+% \begin{aufloesung}
 \begin{align*}
     \lambda_i(\varepsilon)
     & \gets
     \lambda_{0i} + \varepsilon \bm v_{0i}^T \bm H_1 \bm v_{0i}\\
-    \bm H^\prime & \gets \bm v_{0i}^T \bm H_1 \bm v_{0i} \quad \forall \quad i \quad entartet \\
+    \bm H^\prime & \gets \bm v_{0i}^T \bm H_1 \bm v_{0i} \quad \forall \quad i \quad \text{entartet} \\
     \bm v^\prime & \gets \mathrm{Eig} \Big( \bm H^\prime \Big) \\
-    \bm v_{0i} & \gets \bm v_{0i} \bm v^\prime  \quad \forall \quad i \quad entartet \\
+    \bm v_{0i} & \gets \bm v_{0i} \bm v^\prime  \quad \forall \quad i \quad \text{entartet} \\
     \bm v_i(\varepsilon)
     & \gets
-        \bm v_{0i} ( 1 + \mathrm{Im}(\varepsilon \gamma) ) + \varepsilon \sum_{j \neq i, \,nicht\,entartet}
+        \bm v_{0i} ( 1 + \mathrm{Im}(\varepsilon \gamma) ) + \varepsilon \sum_{j \neq i, \text{nicht entartet}}
         \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
         \, \bm v_{0j}.
 \end{align*}
+% \end{aufloesung}

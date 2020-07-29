@@ -22,6 +22,16 @@
         ]
     \addplot3 [very thick, domain=0:360]
         ( {sin(x)}, {cos(x)}, {0});
+
+    \addplot3 [red, <->, >=stealth', very thick, domain=-1:1]
+        ( {x*sin(30)}, {x*cos(30)}, {0});
+    \addplot3 [red, <->, >=stealth', very thick, domain=-1:1]
+        ( {x*sin(30+90)}, {x*cos(30+90)}, {0});
+    \addplot3 [green, <->, >=stealth', very thick, domain=-1:1]
+        ( {x*sin(0)}, {x*cos(0)}, {0});
+    \addplot3 [green, <->, >=stealth', very thick, domain=-1:1]
+        ( {x*sin(0+90)}, {x*cos(0+90)}, {0});
+
     \addplot3 [<->, >=stealth', very thick, domain=-1:1]
         ( {0}, {0}, {2*x});
     \end{axis}
@@ -51,6 +61,14 @@
         ]
     \addplot3 [very thick, domain=0:360]
         ( {0}, {2*sin(x)}, {2*cos(x)} );
+    \addplot3 [red, <->, >=stealth', very thick, domain=-1:1]
+        ( {0}, {2*x*sin(30)}, {2*x*cos(30)});
+    \addplot3 [red, <->, >=stealth', very thick, domain=-1:1]
+        ( {0}, {2*x*sin(30+90)}, {2*x*cos(30+90)});
+    \addplot3 [green, <->, >=stealth', very thick, domain=-1:1]
+        ( {0}, {2*x*sin(0)}, {2*x*cos(0)});
+    \addplot3 [green, <->, >=stealth', very thick, domain=-1:1]
+        ( {0}, {2*x*sin(0+90)}, {2*x*cos(0+90)});
     \addplot3 [<->, >=stealth', very thick, domain=-1:1]
         ( {1*x}, {0}, {0});
     \end{axis}
@@ -77,11 +95,11 @@
         title = $\bm H(\epsilon)$
         ]
     \addplot3 [<->, >=stealth', very thick, domain=-1:1]
-        ( {2*x}, {0}, {0});
+        ( {1.01*x}, {0}, {0});
     \addplot3 [<->, >=stealth', very thick, domain=-1:1]
-        ( {0}, {3*x}, {0});
+        ( {0}, {2.01*x}, {0});
     \addplot3 [<->, >=stealth', very thick, domain=-1:1]
-        ( {0}, {0}, {4*x});
+        ( {0}, {0}, {2.02*x});
     \end{axis}
 
 \end{tikzpicture}
