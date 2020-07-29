@@ -174,15 +174,51 @@ kann man die Position der Stützstellen berechnen.
 Dafür hat man drei Möglichkeiten, welche nachfolgend erklärt werden.
 
 \subsubsection{Substitution der Polynome}
-Eine Möglichkeit für die Berechnung der Stützstellen ist, in der Formel
+Eine Möglichkeit für die Berechnung der Stützstellen (und Gewichte) ist, in der Formel
 \begin{equation}
-    \int_{a}^{b}w(x)P_{m}(x) \textcolor{red}{TODO: Finish formula acc. to example in book}
+    \int_{a}^{b}w(x)P_{m}(x)\, dx = \sum_{i=0}^{n}A_{i}P_{m}(x_{i}), \; m \leq 2n + 1
 \end{equation}
+die Polynome $P_{m}$ durch
+\begin{equation}
+     P_{0}(x) = 1, P_{1}(x) = x, \dots , P_{2n+1}(x) = x^{2n+1}
+\end{equation}
+zu ersetzen und die resultierenden $2n+2$ Gleichungen 
+\begin{equation}
+    \int_{a}^{b}w(x)x^{j}\,dx = \sum_{i=0}^{n} A_{i}x_{i}^{j}, j = 0, 1, \dots , 2 n + 1
+\end{equation}
+für die Unbekannten $x_{i}$ und $A_{i}$ zu lösen.
+
+Nimmt man beispielsweise an, dass $w(x) = x, a = -1, b = 1$ und $n = 1$, 
+dann ist das resultierende Gleichungssystem:
+\begin{align}
+    \int_{-1}^{1} x \phantom{x^{0}} \, dx &= A_{0}\phantom{x^{0}} + A_{1}\phantom{x^{0}} \\
+    \int_{-1}^{1} x x \, dx &= A_{0}x_{0} + A_{1}x_{1} \\
+    \int_{-1}^{1} x x^{2} \, dx &= A_{0}x_{0}^{2} + A_{1}x_{1}^{2} \\
+    \int_{-1}^{1} x x^{3} \, dx &= A_{0}x_{0}^{3} + A_{1}x_{1}^{3} 
+\end{align}
+Löst man die Integrale, erhält man
+\begin{align}
+    A_{0}\phantom{x^{0}} + A{1}\phantom{x^{0}} &= 0 \\
+    A_{0}x_{0} + A{1}x_{1} &= \frac{2}{3} \approx 0.66667 \\
+    A_{0}x_{0}^{2} + A{1}x_{1}^{2} &= 0 \\
+    A_{0}x_{0}^{3} + A{1}x_{1}^{3} &= \frac{2}{5} = 0.4
+\end{align}
+daraus ergibt sich die Lösung
+\begin{align}
+    A_{0} &= \phantom{-}\frac{\sqrt{\frac{5}{3}}}{3} & x_{0} &= \phantom{-}\sqrt{\frac{3}{5}} & \\
+    A_{1} &= -\frac{\sqrt{\frac{5}{3}}}{3} & x_{1} &= -\sqrt{\frac{3}{5}} &
+\end{align}
+Man kann sehen, dass diese Methode für die Berechnung der Stützstellen 
+für grosse $n$ sehr schnell viel Zeit beansprucht.
+Die anderen Methoden für die Bestimmung der Stützstellen 
+und Gewichte sind effektiver und in der Anwendung einfacher.
+
 \subsubsection{Werte in der Tabelle nachschlagen}
 Für die gängigsten Formen der Gauss-Quadratur existieren Tabellen mit vorberechneten Werten für die
 Position der Stützstellen und deren Gewichte. 
-Es ist möglich, dass für grosse $n$ keine Tabellenwerte gefunden werden und die Berechnung 
-selber durchgeführt werden muss.
+Die Tabellen sind sehr präzise und für die ersten hundert $n$ vorgerechnet.
+Ausserdem gibt es Programme, welche für beliebige $n$ die dazugehörigen 
+Stützstellen und Gewichte berechnen. 
 In der Tabelle~\ref{buch:table:gaussabscissenwerte} sind die Werte für $n \leq 5$ beschrieben.
 \begin{table}
     \centering
@@ -627,11 +663,11 @@ Die Funktion $f(x)$ muss dabei $2n+2$ mal abgeleitet werden.
 Für die Gauss-Legendre-Quadraturformel ist $K(n)$:
 \begin{equation}
     \label{quadratur:equation:errorformula}
-    E = \frac{(b-a)^{2n+3}[(n+1)!]^{4}}{(2n+3)[(2n+2)!]^{3}}f^{(2n+2)}(c)
+    E = \frac{(b-a)^{2n+1}(n!)^{4}}{(2n+1)[(2n)!]^{3}}f^{(2n)}(c)
 \end{equation}
 in der allgemeinen Form oder für $a=-1, b=1$:
 \begin{equation}
-    E = \frac{2^{2n+3}[(n+1)!]^{4}}{(2n+3)[(2n+2)!]^{3}}f^{(2n+2)}(c)
+    E = \frac{2^{2n+1}[(n)!]^{4}}{(2n+1)[(2n)!]^{3}}f^{(2n)}(c)
 \end{equation}
 Die allgemeine Form wird dann benötigt, falls ein Integral der Form 
 \begin{equation}
@@ -655,7 +691,7 @@ der Gaussquadratur die Fehlerformeln und deren Grenzen für $c$.
         \hline
         \text{Name} &  \text{Fehlerformel} & \text{Intervall für }c  \\
         \hline  
-        \text{Legendre} & E =\displaystyle \frac{2^{2n+3}[(n+1)!]^{4}}{(2n+3)[(2n+2)!]^{3}}f^{(2n+2)}(c)  & -1 < c < 1 \\
+        \text{Legendre} & E =\displaystyle \frac{2^{2n+1}(n)!^{4}}{(2n+1)[(2n)!]^{3}}f^{(2n+2)}(c)  & -1 < c < 1 \\
         \text{Chebyshev} & E =\displaystyle \frac{2\pi}{2^{2n+2}(2n+2!)}f^{(2n+2)}(c) & -1 < c < 1 \\
         \text{Laguerre} & E = \displaystyle \frac{[(n+1)!]^{2}}{(2n+2)!}f^{(2n+2)}(c)  & 0 < c < \infty \\
         \text{Hermite} & E = \displaystyle \frac{\sqrt{\pi}(n+1)!}{2^{2}(2n+2)!}f^{(2n+2)}(c) & 0 < c < \infty\\
@@ -696,21 +732,21 @@ erhalten wir die Formel:
     \approx 0.69230769\dots
 \end{equation}
 Um den Fehler zu berechnen, verwenden wir nun die Fehlerformel \ref{quadratur:equation:errorformula}
-bei der wir die Werte $a = 2, b = 4$ und $n = 1$ einsetzen
+bei der wir die Werte $a = 2, b = 4$ und $n = 2$ einsetzen
 \begin{equation*}
-    E = \frac{(4-2)^{2+3}[(2)!]^{4}}{(2+3)[(2+2)!]^{3}}f^{(2+2)}(c)
+    E = \frac{(4-2)^{4+1}[(2)!]^{4}}{(4+1)[(4)!]^{3}}f^{(4)}(c)
 \end{equation*}
 \begin{equation*}
-    = \frac{(2)^{5}[5]^{4}}{(5)[(4)!]^{3}}f^{(4)}(c)
+    = \frac{(2)^{5}[2]^{4}}{(5)[24]^{3}}f^{(4)}(c)
 \end{equation*}
 \begin{equation*}
-    = \frac{32 \cdot 625}{5 \cdot (24)^{3}}f^{(4)}(c)
+    = \frac{2^{5} \cdot 2^{4}}{5 \cdot 24^{3}}f^{(4)}(c)
 \end{equation*}
 \begin{equation*}
-    = \frac{20000}{69120}f^{(4)}(c)
+    = \frac{2^{9} }{5 \cdot 13824}f^{(4)}(c)
 \end{equation*}
 \begin{equation}
-    = \frac{125}{432}f^{(4)}(c)
+    = \frac{512}{69120}f^{(4)}(c)
 \end{equation}
 Möchte man nun $c$ für $f^{(4)}(c)$ herausfinden, benötigt man die 
 vierte Ableitung von $f(x)$ und berechnet dasjenige $c$ im Intervall $[2, 4]$ 
@@ -720,7 +756,7 @@ Für $f(x) = 1/x$ ist die vierte Ableitung $f^{(4)}(x) = 24/x^{5}$.
 Der Wert von $f^{4}(c)$ wird somit grösser, je kleiner $c$ ist.
 Im Inzervall $[2,4]$ ist $2$ die kleinste Zahl und wird in die Fehlerformel eingesetzt.
 \begin{equation}
-    E = \frac{125}{432}f^{4}(c) = \frac{125}{432} \cdot \frac{24}{2^{5}} = \frac{125}{432}\frac{3}{4} \approx 0.21701389\dots
+    E = \frac{512}{69120}f^{4}(c) = \frac{512}{69120} \cdot \frac{24}{2^{5}} = \frac{512 \cdot 24}{69120 \cdot 32} = \frac{12288}{2.211.840}\approx 0.00555\dots
 \end{equation}
 
 
@@ -732,7 +768,7 @@ Im Inzervall $[2,4]$ ist $2$ die kleinste Zahl und wird in die Fehlerformel eing
         \item Berechnung der Position der Stützstellen (Done)
         \item Berechnung der Gewichtung (Done)
         \item Erklären der verschiedenen Formen der Gauss-Quadratur und ihrer Anwendungen (Done)
-        \item Fehler der Gauss-Quadratur (Fix Beispiel: Fehler sollte ca 0.0008 sein)
-        \item FEHLERKORREKTUR bei 2 Stützstellen ist der Grad der Quadratur n = 1. 
+        \item Fehler der Gauss-Quadratur (Beispiel: Fehler nochmals durchrechnen. Referenzbeispiel hatte 0.008)
+        \item Korrekturlesen mit zwei weiteren quellen
     \end{itemize}
 }
