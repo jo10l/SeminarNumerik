@@ -8,24 +8,71 @@
 \rhead{Lösung}
 Wie im vorherigen Kapitel erwähnt sind Herausforderungen bzw. Ansprüche an die Ansatzfunktionen zu beachten. Nun stellt sich die Frage, wie die Ansatzfunktion gewählt werden müssen, so das entlang eines Randes nur "Knicke" entstehen und keine Sprünge. Und wie ist gewährleistet das in der gleichen Stützstelle alle Elemente den gleichen Wert haben?  Als Lösungs für das Dreieck bietet sich der lineare Term $u(x) = c_1 + c_2x + c_3y$ an. Diese Zusammensetzung ergibt sich, da der lineare Ansatz durch die Funktionswerte in den Ecken des Dreiecks bestimmt wird. In anderen Worten ausgedrückt sind die Funktionswerte in den Ecken des Teilgebiets, hier im Dreieck, die Unbekannten, die bestimmt werden müssen.
 (siehe Bild \ref{fem:Approx}).\\
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.8]{papers/fem/Images/Approx.jpeg}
-	\caption{Flächen- Approximation mit Dreiecks- Flächenelemente}
-	\label{fem:Approx}
-\end{figure}
+%\begin{figure}[h!]
+%	\centering
+%	\includegraphics[scale=0.8]{papers/fem/Images/Approx.jpeg}
+%	\caption{Flächen- Approximation mit Dreiecks- Flächenelemente}
+%	\label{fem:Approx}
+%\end{figure}
 Nochmals zur Verdeutlichung warum ein linearer Ansatzfunktion verwendet wird:
 \begin{itemize}
 	\item eine einfache Formel gibt es nur auf einem kleinen Teilgebiet
 	\item in dem Teilgebiet ist die Formel sehr einfach zu berechnen wie z.B. eine lineare Funktion die durch Koeffizienten bestimmt wird.
 \end{itemize}
-A%ls Standardverfahren in der Ebene haben sich Flächenelement wie Dreiecken oder Parallelogramme bewährt. Die Wahl der  der Flächen- bzw. Gebiet- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
+%ls Standardverfahren in der Ebene haben sich Flächenelement wie Dreiecken oder Parallelogramme bewährt. Die Wahl der  der Flächen- bzw. Gebiet- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
+Bekannt ist nun wie die Formeln für die einzelne Elemente aussehen. Allerdings stellt sich dann die Frage, wie die das alles in eine Matrix zusammengefasst werden soll, da sich auch quadratische Koeffizienten aus der Ansatzfunktion ergeben $\int_{\Omega u^2 \, dx \, dy}$. Inn der Abbildung \ref{fem:Stuestellen} sind von 2 Dreiecken die Eckpunkt bzw. Stützstellen aufgezeichnet. Es lässt sich erkennen das in 2 Eckpunkten die Stützstellen gleich sind.
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.8]{papers/fem/Images/Stuezstellen.jpeg}
+	\caption{Stuezstellen der Elemente $\int_{\Omega_1}$ und $\int_{\Omega_2}$ }
+	\label{fem:Stuestellen}
+\end{figure}
 
-
+Nach der Formel \eqref{fem:equationSummGebiete} werden die beiden Gebite aufsummiert zu
+\begin{equation}
+	\int u = \int_{\Omega_1} u + \int_{\Omega_2} u 
+\end{equation}
+Der Koeffizienten des Dreiecks $\Omega_1$ kann wie in \eqref{fem:DreiVektor} notiert werden.
+\begin{equation}
+	\left( \begin{array}{c} c_0^1 \\\ c_1^1 \\\ c_2^1 \\\ \end{array}\right)
+	\label{fem:DreiVektor}
+\end{equation}
+Um nun quadratische Koeffizienten in der Matrixschreibweise zu erhalten wird diese wie folgt Notiert.
+\begin{equation}
+\begin{bmatrix}
+c_0^1 &  c_1^1 &  c_2^1    \\   
+\end{bmatrix}
+\begin{bmatrix}
+\ddots & \dots &  \dots    \\
+\vdots & \ddots &   \\
+\vdots &  & \ddots
+\end{bmatrix}
+\begin{bmatrix}
+c_0^1  \\
+c_1^1 \\
+c_2^1
+\end{bmatrix}
++
+\begin{bmatrix}
+c_0^2 &  c_1^2 &  c_2^2    \\   
+\end{bmatrix}
+\begin{bmatrix}
+\ddots & \dots &  \dots    \\
+\vdots & \ddots &   \\
+\vdots &  & \ddots
+\end{bmatrix}
+\begin{bmatrix}
+c_0^2  \\
+c_1^2 \\
+c_2^2
+\end{bmatrix}
+	\label{fem:MatrixKoeffizient}
+\end{equation}
+Die ist auch die Begründung für die später verwendete Formel \eqref{fem:Minimal2LinAlg}.
 Um möglichst einfach darzustellen, wie das Verfahren der Finiten Elemente vonstatten geht, wurde auf eine einfache Approximation mit Einheitsdreiecken und einem linearen Ansatz gewählt. 
 
-\subsection{Vorbereitung}
+\subsection{Vorbereitung
+\label{fem:section:loesungTrans}}
 
 Damit die Integration über das gewählte Teilgebiet bzw. Flächenelement einfacher fällt, wird als Vorbereitung im entsprechenden Fall das gewählte Flächenelement in ein Einheitsdreieck oder in ein Eineheitsparallelogramm transformiert. Ein Dreieck oder Parallelogramm stellt eine Formfunktion dar, über die die gewählte Fläche bzw. Teilgebiet berechnet werden kann. Die gewählte Formfunktion eines Teilgebietes z.B. integrieren des Gebietes über ein Dreieck oder Pallelogramm,  bringt auch den Vorteil, dass die gewählten Formfunktionen gleich behandelt werden können. \\
 Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $ P_2(x_2, y_2)$ und $P3(x_3,y_3)$ kann mit Hilfe der linearen Transformation \eqref{fem:linTransformation}

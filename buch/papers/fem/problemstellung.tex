@@ -17,10 +17,10 @@ Als einfachere Funktionen bieten sich Polynome mit niedrigem Grad an. Diese sind
 \subsection{Herausforderung FEM in der Ebene}
 Wie auch in der Dimension 1 wird das gesamte Gebiet $\Omega$ bzw. Ebene in Teilgebiete unterteilt. Auf diese Teilgebiete werden dann die einfachen Ansatzfunktionen angewendet und dann aufsummiert nach \eqref{fem:equationSummGebiete}.
 \begin{equation}
-\int_{\Omega} (\nabla u)^2 \, dx \, dy = \sum \limits_{i=1}^n \int_{\Omega_i} (\nabla u)^2 \, dx \, dy 
+\int_{\Omega} (u)^2 \, dx \, dy = \sum \limits_{i=1}^n \int_{\Omega_i} (u)^2 \, dx \, dy 
 \label{fem:equationSummGebiete}
 \end{equation}
-Eine Approximation eines gebietes kann Beispielsweise mit Dreiecken, Rechtecken oder Parallelogrammen vorgenommen werden. Aus dieser Approximation resultieren zwei wesentliche Herausforderungen die da wären:
+Sollte die Frage aufteuchen warum ein Integral mit quadratischen Ausdrücken verwendet wird, so wird auf das Kapitel 7.4.1 verwiesen. Eine Approximation eines gebietes kann Beispielsweise mit Dreiecken, Rechtecken oder Parallelogrammen vorgenommen werden. Aus dieser Approximation resultieren zwei wesentliche Herausforderungen die da wären:
 \begin{itemize}
 	\item 1. stetig differenzierbar in den Stützstellen (Steigung) wie z.B: im Dreieck in den Ecken.
 	\item 2. stetig differenzierbar an den Übergängen entlang den Rändern eines Elements zum anliegenden Rand eines benachbarten Elements. (Krümmung)
@@ -89,7 +89,7 @@ Aus den Integralen der Teilgebiete muss dann die Lösung gefunden werden um die 
 \int g(x) \space dx = f_i \int h_0 \space dx+ f_{i+1}\int h_1 \space dx + s_i\int h_0^1 dx + s_{i+1}\int h_1^1 dx
 \label{fem:equation5}
 \end{equation}
-Da es verschiedene Dreieck- Arten gibt sowie auch verschiedene Parallelogramme, wird in xXx auch eine Lösung aufgezeigt wie mit Hilfe einer Transformation das Dreieck Flächenelements in ein weniger aufwändigere berechenbare Flächenelement überführt werden kann.
+Da es verschiedene Dreieck- Arten gibt sowie auch verschiedene Parallelogramme, wird in \ref{fem:section:loesung} auch eine Lösung aufgezeigt wie mit Hilfe einer Transformation das Dreieck Flächenelements in ein weniger aufwändigere berechenbare Flächenelement überführt werden kann.
 Nochmals kurz zusammengefasst was bis hier hin aufgezeigt wurde.
 \begin{itemize}
 	\item Ebene wird in Teilgebiete unterteilt
