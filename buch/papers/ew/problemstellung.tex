@@ -1,8 +1,6 @@
 %
 % problemstellung.tex -- Beispiel-File für die Beschreibung des Problems
 %
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
-%
 \section{Problemstellung
 \label{ew:section:problemstellung}}
 \rhead{Problemstellung}
@@ -28,12 +26,6 @@ Finde für eine symetrische Matrix $\bm H_0$ mit bekannten Eigenwerten $\lambda_
     \bm H(\varepsilon) = \bm H_0 + \varepsilon \bm H_1,
 \end{equation*}
 wobei $\varepsilon \in \mathbb{R^+} \ll 1$.
-% \begin{gather*}
-%     \bm H(\varepsilon) = \bm H_0 + \varepsilon \bm H_1 \\
-%     \varepsilon \in \mathbb{R^+} \ll 1 \\
-%     \lambda_{0}, \bm v_{0i} \quad \text{bekannt} \\
-%     \bm H_0 \quad \text{symetrisch}
-% \end{gather*} %TODO check if only H_0 must be symetric or selbstadjungiert
 \end{aufgabe}
 
 \section{Anwendungen}
@@ -128,18 +120,8 @@ Da in den Voraussetzungen orthogonale Eigenvektoren $\bm v_{0i}$ gefordert sind,
         1 \quad (i = j)
     \end{cases}.
 \end{equation}
-%TODO wieso kann selbstadjungiert Trick angewendet werden?
 Zusätzlich ist vorausgesetzt, dass $\bm H_0$ symetrisch ist.
 Dies macht die Matrix auch selbst adjungiert, was bedeutet $ a^T \bm H_0 b =  b^T \bm H_0 a$.
-% \begin{equation}
-%     \bm v_{0j}^T \bm H_0 \bm v_{1i}
-%     =
-%     \left( \bm v_{0j}^T \bm H_0 \right) \bm v_{1i}
-%     =
-%     \bm v_{0j}^T \lambda_{0j} \bm v_{1i}
-%     =
-%     \lambda_{0j} \bm v_{0j}^T \bm v_{1i}
-% \end{equation}
 Mithilfe der Eigenwertproblemgleichung können wir dadurch auch den ersten Term auf der linken Seite umformen:
 \begin{equation}
     \bm v_{0j}^T \bm H_0 \bm v_{1i}
@@ -218,17 +200,18 @@ Das Eigenwertproblem ist aber relativ schlecht gestellt.
 Ein Eigenvektor kann mit einem beliebigen reellen skalar multipliziert werden und bleibt ein Eigenvektor.
 Für eine einheitliche lösung wünschen wir orthonormierte Eigenvektoren, also die Länge ist auf $1$ gesetzt.
 Nun können die Eigenvektoren aber noch mit einem Wert mit betrag $1$ multipliziert werden und sie erfüllen immernoch das Eigenwertproblem.
-Der offensichtliche Fall ist das Multiplizieren mit $-1$ aber auch jede Komplexe zahl $e^(i*\gamma)$ ist möglich.
+Der offensichtliche Fall ist das Multiplizieren mit $-1$, aber auch jede Komplexe Zahl auf dem Einheitskreis $e^{i\gamma}$ ist möglich.
 Der unbekannte Term $\bm v_{1i})$ ist also derjenige freiheitsgrad, welcher die Eigenwerte richtig skaliert.
 Aus diesem Grund kann man definieren:
 \begin{equation}
-    ( 1 + (\bm v_{0i}^T \bm v_{1i}) ) = e^(i*\gamma)
+    ( 1 + (\bm v_{0i}^T \bm v_{1i}) ) = e^{i\gamma}
 \end{equation}
-und für kleine $\varepsilon$, approximiert in erster Ordnung
+und für kleine $\varepsilon$ kann dies noch weiter vereinfacht werden, indem wir die Aapproximation erster Ordnung
 \begin{equation}
-     e^(i*\gamma) \approx 1 + i \varepsilon \gamma.
+    e^{i\gamma} \approx 1 + i \varepsilon \gamma
 \end{equation}
-Eingesetzt in Gleichung \eqref{ew:ew:calc_eigv} erhalten wir das endresultat
+akzeptieren, auf welcher die ganze Herleitung schon beruht.
+Eingesetzt in Gleichung \eqref{ew:ew:calc_eigv} erhalten wir das Endresultat
 \begin{equation}
     \bm v_i(\varepsilon)
     =
@@ -355,7 +338,6 @@ Als Beispiel, wenn $\varepsilon = 0.01$,
 \end{align} \label{ew:eq:entartung_bsp}
 Die Dimensionen der Eigenvektoren, die einen Eigenraum bilden sind mit Fragezeichen gekennzeichnet.
 Die Eigenräume der Matrizen sind in Abbildung \ref{ew:fig:entartung} illustriert.
-
 \begin{figure}
     \begin{center}
         \input{papers/ew/tikz/entartung.tikz.tex}
@@ -363,16 +345,16 @@ Die Eigenräume der Matrizen sind in Abbildung \ref{ew:fig:entartung} illustrier
     \caption{
         Eigenräume der Beispielmatrizen von \refeq{ew:eq:entartung_bsp}.
         Die mehrdimensionalen Eigenräume sind als Kreise dargestellt, wobei alle orthogonale Vektoren auf der Kreisfläche gültige Eigenvektoren sind.
-        Die roten Eigenvektoren ändern schlagartig die richtung, wobei die grünen richtig gewält wurden um die Entartungsrechnung durchzuführen. 
+        Die roten Eigenvektoren ändern schlagartig die Richtung, wobei die grünen richtig gewält wurden um die Entartungsrechnung durchzuführen. 
         }
     \label{ew:fig:entartung}
 \end{figure}
-Die Eigenvektoren ädern sich also schon schlagartig für ganz kleine $\varepsilon = 0.01$.
+Die Eigenvektoren ändern sich also schon schlagartig für ganz kleine $\varepsilon = 0.01$.
 
 Bei einer numerischen Berechnung der Eigenvektoren von entarteten Eigenwerten, wie es zum Beispiel MATLAB oder NumPy macht, wird ein Eigenvektor in diesem Eigenraum einfach gewählt.
 Dies ist sehr unpraktikabel.
 Damit die Störungstheorie auch für entartete Eigenwerte funktioniert, muss das Problem mit der Division durch Null in Formel \refeq{ew:eq:f2} beseitigt werden.
-Um dies in den Griff zu kriegen, müssen wir die Formel und Formel \refeq{ew:eq:f} für $i \neq j$ und $\lambda_{0i} = \lambda_{0j}$ anschauen, welche zu dieser Division durch Null geführt hatte.
+Um dies in den Griff zu kriegen, müssen wir und Formel \refeq{ew:eq:f} für den Fall $i \neq j$ und $\lambda_{0i} = \lambda_{0j}$ anschauen, welcher zu dieser Division durch Null geführt hatte.
 Dabei erhalten wir
 \begin{align}
     \bm v_{0j}^T \bm H_1 \bm v_{0i}
@@ -415,17 +397,25 @@ Die gefundenen Eigenvektoren müssen nun zurücktransformiert werden und anstell
 
 Zusammengefasst, auch für entartete $\lambda_0$ gilt somit:
 \begin{aufloesung}
-\begin{align*}
+Berechne Eigenwerte
+\begin{equation*}
     \lambda_i(\varepsilon)
-    & \gets
-    \lambda_{0i} + \varepsilon \bm v_{0i}^T \bm H_1 \bm v_{0i}\\
-    \bm H^\prime & \gets \bm v_{0i}^T \bm H_1 \bm v_{0i} \quad \forall \quad i \quad \text{entartet} \\
-    \bm v^\prime & \gets \mathrm{Eig} \Big( \bm H^\prime \Big) \\
-    \bm v_{0i} & \gets \bm v_{0i} \bm v^\prime  \quad \forall \quad i \quad \text{entartet} \\
-    \bm v_i(\varepsilon)
-    & \gets
-        \bm v_{0i} ( 1 + \mathrm{Im}(\varepsilon \gamma) ) + \varepsilon \sum_{j \neq i, \text{nicht entartet}}
-        \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
-        \, \bm v_{0j}.
+    \gets
+    \lambda_{0i} + \varepsilon \bm v_{0i}^T \bm H_1 \bm v_{0i}.
+\end{equation*}
+Falls $\bm H_0$ entartet ist, berechne und benutze die neuen, korrigiere Ausrichtung der Eigenvektoren mit
+\begin{align*}
+    \bm H^\prime & = \bm v_{0i}^T \bm H_1 \bm v_{0i} \quad \forall \quad i \quad \text{entartet} \\
+    \bm v^\prime & = \mathrm{Eig} \Big( \bm H^\prime \Big) \\
+    \bm v_{0i} & \gets \bm v_{0i} \bm v^\prime  \quad \forall \quad i \quad \text{entartet},
 \end{align*}
+wobei für $\mathrm{Eig} \Big( \Big)$ ein beliebiger algorithmus für das Finden von Eigenvektoren verwendet werden kann.
+Schlussendlich, berechne die Eigenvektoren
+\begin{equation*}
+    \bm v_i(\varepsilon)
+    \gets
+    \bm v_{0i} ( 1 + \mathrm{Im}(\varepsilon \gamma) ) + \varepsilon \sum_{j \neq i, \text{nicht entartet}}
+    \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
+    \, \bm v_{0j}.
+\end{equation*}
 \end{aufloesung}
