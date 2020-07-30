@@ -175,7 +175,7 @@ Dafür hat man drei Möglichkeiten, welche nachfolgend erklärt werden.
 
 \subsubsection{Substitution der Polynome}
 Eine Möglichkeit für die Berechnung der Stützstellen (und Gewichte) ist, in der Formel
-\begin{equation}
+\begin{equation} \label{quadratur:equation:polynomsubstitution}
     \int_{a}^{b}w(x)P_{m}(x)\, dx = \sum_{i=0}^{n}A_{i}P_{m}(x_{i}), \; m \leq 2n + 1
 \end{equation}
 die Polynome $P_{m}$ durch
@@ -198,16 +198,20 @@ dann ist das resultierende Gleichungssystem:
 \end{align}
 Löst man die Integrale, erhält man
 \begin{align}
-    A_{0}\phantom{x^{0}} + A{1}\phantom{x^{0}} &= 0 \\
-    A_{0}x_{0} + A{1}x_{1} &= \frac{2}{3} \approx 0.66667 \\
-    A_{0}x_{0}^{2} + A{1}x_{1}^{2} &= 0 \\
-    A_{0}x_{0}^{3} + A{1}x_{1}^{3} &= \frac{2}{5} = 0.4
+    A_{0}\phantom{x^{0}} + A_{1}\phantom{x^{0}} &= 0 \\
+    A_{0}x_{0} + A_{1}x_{1} &= \frac{2}{3} \approx 0.66667 \\
+    A_{0}x_{0}^{2} + A_{1}x_{1}^{2} &= 0 \\
+    A_{0}x_{0}^{3} + A_{1}x_{1}^{3} &= \frac{2}{5} = 0.4
 \end{align}
 daraus ergibt sich die Lösung
 \begin{align}
-    A_{0} &= \phantom{-}\frac{\sqrt{\frac{5}{3}}}{3} & x_{0} &= \phantom{-}\sqrt{\frac{3}{5}} & \\
-    A_{1} &= -\frac{\sqrt{\frac{5}{3}}}{3} & x_{1} &= -\sqrt{\frac{3}{5}} &
+    A_{0} &= \phantom{-}\frac{\sqrt{\frac{5}{3}}}{3} & x_{0} &= -\sqrt{\frac{3}{5}} & \\
+    A_{1} &= -\frac{\sqrt{\frac{5}{3}}}{3} & x_{1} &= \phantom{-}\sqrt{\frac{3}{5}} &
 \end{align}
+Setzt man diese werte in die Integrationsformel ein, so wird die Formel
+\begin{equation}
+    \int_{-1}^{1}x \cdot f(x)\,dx \approx \frac{1}{3} \bigg[ (\sqrt{\frac{5}{3}})f(-\sqrt{\frac{3}{5}}) + (-\sqrt{\frac{5}{3}})f(\sqrt{\frac{3}{5}})\bigg]
+\end{equation}
 Man kann sehen, dass diese Methode für die Berechnung der Stützstellen 
 für grosse $n$ sehr schnell viel Zeit beansprucht.
 Die anderen Methoden für die Bestimmung der Stützstellen 
@@ -308,8 +312,8 @@ Somit sind $ x_{1} $ und $ x_{2} $:
 \subsubsection{Grundlagen orthogonale Polynome}
 Orthogonale Polynome werden in der mathematischen und 
 numerischen Analysis oft verwendet.
-In der numerischen Integration werden Eigenschaften dieser Polynome für
-die Berechnung der Stützstellen und Gewichte benötigt.
+In der numerischen Integration entsprechen die Nullstellen
+der Orthogonalen Polynome den Stützstellen der Gaussquadratur.
 Zwei Polynome $\phi_{m}(x)$ und $\phi_{n}(x)$ 
 ($n$ und $m$ ist hierbei der Grad des Polynoms) formen ein 
 orthogonales Paar im Intervall $(a, b)$ im Bezug auf die Gewichtungsfunktion
@@ -378,7 +382,7 @@ Ein beliebiges Polynom $P_{n}(x)$ kann in der Form
 $P_{n}(x) = \sum_{i=0}^{n} c_{i}\phi_{i}(x)$ ausgedrückt werden.
 Anders ausgedrückt, lässt sich durch diese Eigenschaft ein beliebiges Polynom als
 Linearkombination von Orthogonalpolynomen darstellen. 
-Somit lässt sich das Integral für jegliche Polynome mit der Gaussquadratur berechnen.
+Somit lässt sich das Integral für beliebige Polynome mit der Gaussquadratur exakt berechnen.
 
 In der Abbildung~\ref{quadratur:figure:legendrepolynomial} sind die ersten vier
 Legendre-Polynome abbgebildet. Man kann darin sehr gut sehen, 
@@ -446,6 +450,20 @@ und
     l_{j}(x) := \prod_{0 \leq m \leq k, \, m \neq j} \frac{x - x_{m}}{x_{j} - x_{m}}
 \end{equation}
 berechnen.
+
+Die Formel lässt sich mit der im Kapitel~\ref{chapter:interpolation} genannten 
+Interpolationspolynom herleiten.
+Für die Funktion $f(x)$ mit Stützstellen $x_{i}$ ist das Interpolationspolynom
+\begin{equation}
+    p(x) = \sum_{i=0}^{n} f(x_{i})l_{i}(x)
+\end{equation}
+und das Integral ist 
+\begin{align}
+    \int_{-1}^{1}f(x)\,dx &\approx \int_{-1}^{1}p(x)\,dx \\
+    &= \int_{-1}^{1} \sum_{i=0}^{n} f(x_{i}) l_{i}(x) \,dx \\
+    &= \sum_{i=0}^{n} f(x_{i}) \cdot \int_{-1}^{1}  l_{i}(x) \,dx
+\end{align}
+wobei $\int_{-1}^{1}  l_{i}(x) \,dx = A_{i}$.
 
 \subsubsection{Beispiel: Berechnung der Gewichte für zwei Stützstellen}
 In der Beispielberechnung der Stützstellen im
@@ -754,21 +772,10 @@ welches den höchsten Wert für $f^{4}(c)$ ergibt.
 
 Für $f(x) = 1/x$ ist die vierte Ableitung $f^{(4)}(x) = 24/x^{5}$. 
 Der Wert von $f^{4}(c)$ wird somit grösser, je kleiner $c$ ist.
-Im Inzervall $[2,4]$ ist $2$ die kleinste Zahl und wird in die Fehlerformel eingesetzt.
+Im Inzervall $[2,4]$ ist $2$ die kleinste Zahl und wird in die Fehlerformel eingesetzt:
 \begin{equation}
     E = \frac{512}{69120}f^{4}(c) = \frac{512}{69120} \cdot \frac{24}{2^{5}} = \frac{512 \cdot 24}{69120 \cdot 32} = \frac{12288}{2.211.840}\approx 0.00555\dots
 \end{equation}
 
 
-\textcolor{red}{
-    TODO
-    \begin{itemize}
-        \item Gauss Legendre Formel zeigen (Done)
-        \item Beispiel berechnen mit Formel (Done)
-        \item Berechnung der Position der Stützstellen (Done)
-        \item Berechnung der Gewichtung (Done)
-        \item Erklären der verschiedenen Formen der Gauss-Quadratur und ihrer Anwendungen (Done)
-        \item Fehler der Gauss-Quadratur (Beispiel: Fehler nochmals durchrechnen. Referenzbeispiel hatte 0.008)
-        \item Korrekturlesen mit zwei weiteren quellen
-    \end{itemize}
-}
+
