@@ -6,25 +6,73 @@
 \section{Lösung
 \label{fem:section:loesung}}
 \rhead{Lösung}
-Das gesamte Gebiet wird in Teilgebiet unterteilt und auf jedes Teilgebiet wird die Ansatzfunktion angewendet wie z.B. ein Dreieck. Wird z.B: eine lineare Ansatzfunktion gewählt sowie ein Dreieck als Teilgebiet, so hat die Ansatzfunktion die Form $u(x) = c_1 + c_2x + c_3y$. Diese Zusammensetzung ergibt sich, da der lineare Ansatz durch die Funktionswerte in den Ecken des Dreiecks bestimmt wird. In anderen Worten ausgedrückt sind die Funktionswerte in den Ecken des Teilgebiets, hier im Dreieck, die Unbekannten, die bestimmt werden müssen.
+Wie im vorherigen Kapitel erwähnt sind Herausforderungen bzw. Ansprüche an die Ansatzfunktionen zu beachten. Nun stellt sich die Frage, wie die Ansatzfunktion gewählt werden müssen, so das entlang eines Randes nur "Knicke" entstehen und keine Sprünge. Und wie ist gewährleistet das in der gleichen Stützstelle alle Elemente den gleichen Wert haben?  Als Lösungs für das Dreieck bietet sich der lineare Term $u(x) = c_1 + c_2x + c_3y$ an. Diese Zusammensetzung ergibt sich, da der lineare Ansatz durch die Funktionswerte in den Ecken des Dreiecks bestimmt wird. In anderen Worten ausgedrückt sind die Funktionswerte in den Ecken des Teilgebiets, hier im Dreieck, die Unbekannten, die bestimmt werden müssen.
 (siehe Bild \ref{fem:Approx}).\\
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.8]{papers/fem/Images/Approx.jpeg}
-	\caption{Flächen- Approximation mit Dreiecks- Flächenelemente}
-	\label{fem:Approx}
-\end{figure}
-Nochmals zur Verdeutlichung warum Ansatzfunktionen verwendet werden:
+%\begin{figure}[h!]
+%	\centering
+%	\includegraphics[scale=0.8]{papers/fem/Images/Approx.jpeg}
+%	\caption{Flächen- Approximation mit Dreiecks- Flächenelemente}
+%	\label{fem:Approx}
+%\end{figure}
+Nochmals zur Verdeutlichung warum ein linearer Ansatzfunktion verwendet wird:
 \begin{itemize}
-	\item Eine einfache Formel gibt es nur auf einem kleinen Teilgebiete
-	\item In dem Teilgebiet ist die Formel sehr einfach zu berechnen wie z.B. eine lineare Funktion die durch Koeffizienten bestimmt wird.
+	\item eine einfache Formel gibt es nur auf einem kleinen Teilgebiet
+	\item in dem Teilgebiet ist die Formel sehr einfach zu berechnen wie z.B. eine lineare Funktion die durch Koeffizienten bestimmt wird.
 \end{itemize}
-Als Standardverfahren in der Ebene haben sich Flächenelement wie Dreiecken oder Parallelogramme bewährt. Die Wahl der  der Flächen- bzw. Gebiet- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
+%ls Standardverfahren in der Ebene haben sich Flächenelement wie Dreiecken oder Parallelogramme bewährt. Die Wahl der  der Flächen- bzw. Gebiet- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
+Bekannt ist nun wie die Formeln für die einzelne Elemente aussehen. Allerdings stellt sich dann die Frage, wie die das alles in eine Matrix zusammengefasst werden soll, da sich auch quadratische Koeffizienten aus der Ansatzfunktion ergeben $\int_{\Omega u^2 \, dx \, dy}$. Inn der Abbildung \ref{fem:Stuestellen} sind von 2 Dreiecken die Eckpunkt bzw. Stützstellen aufgezeichnet. Es lässt sich erkennen das in 2 Eckpunkten die Stützstellen gleich sind.
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.8]{papers/fem/Images/Stuezstellen.jpeg}
+	\caption{Stuezstellen der Elemente $\int_{\Omega_1}$ und $\int_{\Omega_2}$ }
+	\label{fem:Stuestellen}
+\end{figure}
 
+Nach der Formel \eqref{fem:equationSummGebiete} werden die beiden Gebite aufsummiert zu
+\begin{equation}
+	\int u = \int_{\Omega_1} u + \int_{\Omega_2} u 
+\end{equation}
+Der Koeffizienten des Dreiecks $\Omega_1$ kann wie in \eqref{fem:DreiVektor} notiert werden.
+\begin{equation}
+	\left( \begin{array}{c} c_0^1 \\\ c_1^1 \\\ c_2^1 \\\ \end{array}\right)
+	\label{fem:DreiVektor}
+\end{equation}
+Um nun quadratische Koeffizienten in der Matrixschreibweise zu erhalten wird diese wie folgt Notiert.
+\begin{equation}
+\begin{bmatrix}
+c_0^1 &  c_1^1 &  c_2^1    \\   
+\end{bmatrix}
+\begin{bmatrix}
+\ddots & \dots &  \dots    \\
+\vdots & \ddots &   \\
+\vdots &  & \ddots
+\end{bmatrix}
+\begin{bmatrix}
+c_0^1  \\
+c_1^1 \\
+c_2^1
+\end{bmatrix}
++
+\begin{bmatrix}
+c_0^2 &  c_1^2 &  c_2^2    \\   
+\end{bmatrix}
+\begin{bmatrix}
+\ddots & \dots &  \dots    \\
+\vdots & \ddots &   \\
+\vdots &  & \ddots
+\end{bmatrix}
+\begin{bmatrix}
+c_0^2  \\
+c_1^2 \\
+c_2^2
+\end{bmatrix}
+	\label{fem:MatrixKoeffizient}
+\end{equation}
+Die ist auch die Begründung für die später verwendete Formel \eqref{fem:Minimal2LinAlg}.
 Um möglichst einfach darzustellen, wie das Verfahren der Finiten Elemente vonstatten geht, wurde auf eine einfache Approximation mit Einheitsdreiecken und einem linearen Ansatz gewählt. 
 
-\subsection{Vorbereitung}
+\subsection{Vorbereitung
+\label{fem:section:loesungTrans}}
 
 Damit die Integration über das gewählte Teilgebiet bzw. Flächenelement einfacher fällt, wird als Vorbereitung im entsprechenden Fall das gewählte Flächenelement in ein Einheitsdreieck oder in ein Eineheitsparallelogramm transformiert. Ein Dreieck oder Parallelogramm stellt eine Formfunktion dar, über die die gewählte Fläche bzw. Teilgebiet berechnet werden kann. Die gewählte Formfunktion eines Teilgebietes z.B. integrieren des Gebietes über ein Dreieck oder Pallelogramm,  bringt auch den Vorteil, dass die gewählten Formfunktionen gleich behandelt werden können. \\
 Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $ P_2(x_2, y_2)$ und $P3(x_3,y_3)$ kann mit Hilfe der linearen Transformation \eqref{fem:linTransformation}
@@ -105,13 +153,13 @@ Analog nach der partiellen Ableitung nach $y$ erhält man
 
 \subsection{Schritt 1 Minimalproblem bilden}
 
-Analog bei den Finiten Elementen im 1 dimensionale Raum, muss auch die DGL in der Ebene zuerst in ein äquivalentes Minimalproblem übersetzt werden. Das Minimalproblem für FEM in einer Dimension hatte die Form
+Analog zum Kapitel 7.4.1 muss auch die DGL in der Ebene zuerst in ein äquivalentes Minimalproblem übersetzt werden. Das Minimalproblem für FEM in einer Dimension hatte die Form
 
 \begin{equation}
 			\int_0^1 u \textcolor{red}{'} (x)^2 - \lambda \, u(x)^2 dx \,dy
 			\label{fem:Minimal1D}
 \end{equation}
-Im Unterschied zu den mehrdimensionale Form wird anstatt der einfachen Ableitungt der Laplace Operator verwendet der zugleich zweifache Differenziebarkeit von der Ansatzfunktion $u(x)$ fordert. Zudem wird nicht mehr über eine Strecke integriert sondern nun über ein Gebiet $\Omega$ was gleichbedeutend für eine Integration über eine Fläche steht.
+Im Unterschied zu den mehrdimensionale Form wird anstatt der einfachen Ableitungt der Laplace Operator verwendet der zugleich zweifache Differenziebarkeit von der Ansatzfunktion $u(x)$ fordert. Zudem wird nicht mehr über eine Strecke integriert sondern nun über ein Gebiet $\Omega$ was gleichbedeutend für eine Integration über eine Teilgebiet steht.
 
 \begin{equation}
 			\int_{\Omega} (\textcolor{red}{\nabla} u)^2 - \lambda u^2 dx \, dy
@@ -123,9 +171,9 @@ Der Integrationsterm \ref{fem:Minimal2D} wird gemäss der Summenregel in 2 Terme
 			\int_{\Omega} (\nabla u)^2 \, dx \, dy - \lambda \int_{\Omega} u^2 dx \, dy
 			\label{fem:Minimal2D2Term}
 \end{equation}
-Nun ist die Bildung des Minimalproblems abgeschlossen. In einem nächsten Schritt sollen je nach Ausgangslage, gewisse Vorbereitungen getroffen werden die in dem folgenden Abschnitt erläutert werden.
+Nun ist die Bildung des Minimalproblems abgeschlossen. In einem nächsten Schritt wird das Minimalproblem auf das Element formuliert. Dies wird in dem folgenden Abschnitt erläutert.
 
-\subsection{ 2. Ansatzfunktionen auf Lösung approximieren}
+\subsection{Schritt 2 Ansatzfunktionen auf Lösung approximieren}
 
 %Als Ansatzfunktionen stehen diverse Standard- Funktionen in der Ebene zur Verfügung. Sie reichen von einfacheren linearen Termen bishinzu quadratischen oder noch höheren Funktions- Ordnungen. Als Standardverfahren in der Ebene haben sich Flächenelement wie Dreicecken oder Parallelogrammebewährt. Die Wahl der  der Flächen- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
 
@@ -142,7 +190,7 @@ u(x,y) = c_1 + c_2x + c_3y
 \end{equation}
 Die Ansatzfunktion \ref{fem:equationSchwarzLinear} kann somit direkt in das Minimalproblem \ref{fem:Minimal2D} eingesetzt werden. Ziel ist es, dass die unbekannten Koeffizienten $c_1, c_2 \, $und$ \, c_3$ anhand dieses Verfahrens bestimmt werden.
 
-Das Minimalproblem beinhaltet jedoch noch nicht die Formfunktion des Flächenelements. Diese wird in das Gebietsintegral des Minimalproblem eingesetzt sprich $\int_{\Omega}$ wird durch das folgende Flächenelement bzw. Flächenintegral ersetzt. Wie bereits ankeündigt wird das Einheitsdreieck für dieses Beispiel verwendet.
+Das Minimalproblem muss noch auf das entsprechende Gebietsintegral angewendet werden. Um diesen Schritt umzusetzen wird ddas Minimalproblem in das Gebietsintegral eingesetzt sprich $\int_{\Omega}$ wird durch das folgende Flächenelement bzw. Flächenintegral des angekündeten Einheitsdreieck ersetzt. 
 
 \begin{equation}
 \int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} f(x,y) \, dx\,dy
@@ -154,7 +202,7 @@ Schlussendlich ergibt das Einsatzen der Ansatzfunktion und des Flächenintegrals
 \int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} c_1 + c_2x + c_3y \, dx \, dy
 \label{fem:MinimalproblemElement}
 \end{equation}
-Wichtig zu verstehen ist, dass dieses Minimalproblem bzw. der Ausdruck \ref{fem:MinimalproblemElement} auf jedes Flächenelement angewendet wird. Sprich jedes Element hat einn zugehöriges Minimalproblems. Als Beispiel kann vorgestellt werden, dass wenn ein Rechteck mit zwei Dreiecken approximiert wird, das Minimalproblem \ref{fem:MinimalproblemElement} auf jedes der beiden Dreiecke angewendet wird. Je feiner die Auflösung, desto grösser das Gleichungs- System das Schluss endlich gelöst werden muss.
+Wichtig zu verstehen ist, dass dieses Minimalproblem bzw. der Ausdruck \ref{fem:MinimalproblemElement} auf jedes Flächenelement bzw. Teilgebiet angewendet wird. Sprich jedes Element hat eine Ansatzfunktion in Form eines Minimalproblems. Als Beispiel kann vorgestellt werden, dass wenn ein Rechteck mit zwei Dreiecken approximiert wird, das Minimalproblem \ref{fem:MinimalproblemElement} auf jedes der beiden Dreiecke angewendet wird. Je feiner die Auflösung, desto grösser das Gleichungs- System das Schluss endlich gelöst werden muss.
 
 \begin{figure}[h!]
 	\centering
