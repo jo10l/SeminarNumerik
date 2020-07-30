@@ -7,7 +7,6 @@
 \label{ew:section:problemstellung}}
 \rhead{Problemstellung}
 
-
 Das Eigenwertproblem sucht diejenigen Vektoren $v_i \in \mathbb{R}^{n} $, die angewendet mit einer Matrix $\bm H$ nicht die Richtung ändern und dabei nur mit $\lambda_i \in \mathbb{R}$ skaliert werden:
 \begin{equation}
     \bm H \bm v_i = \lambda_i \bm v_i \label{ew:eq:eig}
@@ -19,9 +18,6 @@ Dies lässt sich mit der Summe
     \bm H(\varepsilon) = \bm H_0 + \varepsilon \bm H_1
 \end{equation}
 schreiben, wobei $\varepsilon \ll 1 $ ausdrücken soll, dass der zweite Term der Summe viel kleiner ist als $\bm H_0$.
-
-
-
 
 Die Eigenwertperturbation erlaubt es, die Eigenwerte $\lambda_i(\varepsilon)$ und Eigenvektoren  $v_i(\varepsilon)$ von $\bm H$ zu approximieren.
 Das Verfahren hat jedoch die Limitierung, dass die Eigenvektoren von $H_0$ zueinander othogonal sind, was für alle symetrischen $\bm H_0$ zutrifft.
@@ -43,8 +39,8 @@ wobei $\varepsilon \in \mathbb{R^+} \ll 1$.
 \section{Anwendungen}
 
 Die allgemeine Störungstheorie kann überall angewendet werden, wo ein lösbares Problem mit einer kleinen Wechselwirkung gestört wird.
-Wie zum Beispiel das Berechnen der Umlaufbahnen von Planeten unter Einfluss von der Anziehungskraft anderer Himmelskörpern, wobei das ungestörteungestörte Zweikörpermodell mit der Keppler-Gleichung gelöst werden kann.  
-Ein weiteres Beispiel ist das Berechnen einer Trajektorie unter Berücksichtigung des Luftfwiderstands, wie es in Kapitel \ref{chapter:perturbation} behandelt wird.
+Wie zum Beispiel das Berechnen der Umlaufbahnen von Planeten unter Einfluss von der Anziehungskraft anderer Himmelskörpern, wobei das ungestörteungestörte Zweikörpermodell mit der Kepler-Gleichung gelöst werden kann.  
+Ein weiteres Beispiel ist das Berechnen einer Trajektorie unter Berücksichtigung des Luftwiderstands, wie es in Kapitel \ref{chapter:perturbation} behandelt wird.
 
 Eines der grössten Anwendungsgebiet der Störungstheorie von Eigenwerten ist das Lösen der der Schrödingergleichung in der Quantenmechanik.
 Dabei werden die Eigenfunktionen des Hamilton-Operators gesucht um zum Beispiel Spektrallinien von Atomen zu berechnen.
@@ -133,7 +129,7 @@ Da in den Voraussetzungen orthogonale Eigenvektoren $\bm v_{0i}$ gefordert sind,
     \end{cases}.
 \end{equation}
 %TODO wieso kann selbstadjungiert Trick angewendet werden?
-Zusätzlich ist vorausgesetzt, dass $\bm H_0$ symetisch ist.
+Zusätzlich ist vorausgesetzt, dass $\bm H_0$ symetrisch ist.
 Dies macht die Matrix auch selbst adjungiert, was bedeutet $ a^T \bm H_0 b =  b^T \bm H_0 a$.
 % \begin{equation}
 %     \bm v_{0j}^T \bm H_0 \bm v_{1i}
@@ -178,7 +174,7 @@ Aus dieser Gleichung können mittels Koeffizientenvergleich zwei nützliche Form
 
 \subsection{Nicht entarteter Fall}
 
-Die Eigenwerte $\lambda_{1i}$ können einfach in \refeq{ew:eq:eigval} eingesetzt werden und liefern bereits eine fertige Formel für
+Die Eigenwerte $\lambda_{1i}$ können einfach in \refeq{ew:eq:eigval} eingesetzt werden und liefern bereits eine fertige Formel für das gesuchte
 \begin{align*}
     \lambda_i(\varepsilon)
     &=
@@ -215,9 +211,24 @@ Leider stimmt Formel \refeq{ew:eq:f2} nur für $i \neq j$. Damit diese Formel ei
     &=
     \bm v_{0i} ( 1 + (\bm v_{0i}^T \bm v_{1i}) ) + \varepsilon \sum_{j \neq i}
     \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
-    \, \bm v_{0j}
+    \, \bm v_{0j} \label{ew:ew:calc_eigv}
 \end{align}
-\RD{TODO: elaborate $ \mathrm{Im}(\varepsilon \gamma)$}
+Von dieser Gleichung sind alle Terme bekannt, ausser $\bm v_{1i})$.
+Das Eigenwertproblem ist aber relativ schlecht gestellt.
+Ein Eigenvektor kann mit einem beliebigen reellen skalar multipliziert werden und bleibt ein Eigenvektor.
+Für eine einheitliche lösung wünschen wir orthonormierte Eigenvektoren, also die Länge ist auf $1$ gesetzt.
+Nun können die Eigenvektoren aber noch mit einem Wert mit betrag $1$ multipliziert werden und sie erfüllen immernoch das Eigenwertproblem.
+Der offensichtliche Fall ist das Multiplizieren mit $-1$ aber auch jede Komplexe zahl $e^(i*\gamma)$ ist möglich.
+Der unbekannte Term $\bm v_{1i})$ ist also derjenige freiheitsgrad, welcher die Eigenwerte richtig skaliert.
+Aus diesem Grund kann man definieren:
+\begin{equation}
+    ( 1 + (\bm v_{0i}^T \bm v_{1i}) ) = e^(i*\gamma)
+\end{equation}
+und für kleine $\varepsilon$, approximiert in erster Ordnung
+\begin{equation}
+     e^(i*\gamma) \approx 1 + i \varepsilon \gamma.
+\end{equation}
+Eingesetzt in Gleichung \eqref{ew:ew:calc_eigv} erhalten wir das endresultat
 \begin{equation}
     \bm v_i(\varepsilon)
     =
@@ -403,7 +414,7 @@ Die gefundenen Eigenvektoren müssen nun zurücktransformiert werden und anstell
 %TODO wieso genau kann summand weggelassen werden?
 
 Zusammengefasst, auch für entartete $\lambda_0$ gilt somit:
-% \begin{aufloesung}
+\begin{aufloesung}
 \begin{align*}
     \lambda_i(\varepsilon)
     & \gets
@@ -417,4 +428,4 @@ Zusammengefasst, auch für entartete $\lambda_0$ gilt somit:
         \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
         \, \bm v_{0j}.
 \end{align*}
-% \end{aufloesung}
+\end{aufloesung}
