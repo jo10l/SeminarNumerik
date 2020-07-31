@@ -6,21 +6,23 @@
 \section{Problemstellung
 \label{fem:section:problemstellung}}
 \rhead{Problemstellung}
-Die Partielle Differentialgleichung (DGL) in der Ebene hat die Form 
+Die partielle Differentialgleichung (DGL) in der Ebene hat die Form 
 \begin{equation}
 	\Delta x = \lambda x
 	\label{fem:equationPDE}
-\end{equation} 
+\end{equation}
+wenn diese auf ein Gebiet z.B. ein Einheitskreis oder Quadrat mit Randbedingungen angewnedet wird. Als triviale Randbedingung kann z.B. angenommen werden, dass die Werte am Rand $= 0$ erfüllen. Wie in Kapitel 7.4.1 besprochen, gibt es zu gewissen partiellen DGL ein äquivalentes Minimalproblemn dass in diesem Fall die Form $\Delta u = \lambda u$ hat.
 
 \subsection{Was sind Ansatzfunktionen?}
-Um eine gesuchte Funktion als Lösung für die Partielle DGL Problem in der Ebene zu finden, wird diese mit einfacheren Funktionen approximiert. Diese einfacheren Approximations- Funktionen werden in diesem Kapitel als Ansatzfunktion $u(x)$ bezeichnet. Die einzelne ANsatzfunktion ist jedoch keine globale Lösung.
+Um eine gesuchte Funktion $u(x,y)$ als Lösung für die partielle DGL Problem in der Ebene zu finden, wird diese mit einfacheren Funktionen approximiert. Diese einfacheren Approximations- Funktionen werden in diesem Kapitel als Ansatzfunktion $u(x,y)$ bezeichnet. %Die einzelne Ansatzfunktion ist jedoch keine globale Lösung.
 
-Als einfachere Funktionen bieten sich Polynome mit niedrigem Grad an. Diese sind einfach integrier- und differenzierbar. Der Polynomgrad 1 ist einfach anzuwenden bzw. zu berechnen. Polynomgrade 3 und 4 beispielsweis bieten dafür eine bessere Approximation an. Wie im Kapitel 7 ist auch hier das Ziel Gleichungen mit wenigen Koeffizienten zu erstellen. Ist es nun möglich ebenfalls in der Ebene Ansatzfunktionen zu finden mit wenigen Koeffizienten, obwohl über ein Gebiet integriet wird? Ja. Allerdings gibt es besondere Herausforderungen zu beachten, die in den nächsten Zeilen genauer beschrieben werden.
+Als einfachere Funktionen bieten sich Polynome mit niedrigem Grad an. Diese sind einfach integrier- und differenzierbar. Der Polynomgrad 1 ist einfach anzuwenden bzw. zu berechnen. Polynomgrade 3 und 4 beispielsweis bieten dafür eine bessere Approximation an. Wie im Kapitel 7 ist auch hier das Ziel Gleichungen mit wenigen Unbekannten aufzustellen. Ist es nun möglich ebenfalls in der Ebene Ansatzfunktionen zu finden mit wenigen Koeffizienten, obwohl über ein Gebiet integriet wird? Es ist möglich. Allerdings gibt es besondere Herausforderungen zu beachten, die in den nächsten Zeilen genauer beschrieben werden.
 %Die Ansatzfunktion ist frei wählbar und gibt auch den Freiheitsgrad vor. Je höher die Ordnung der Ansatzfunktion desto besser soll die Approximation werden. So die Hoffnung. Allerdings hat dies auch Konsequenzen, die im Verlauf dieses Kapitels beschrieben werden. 
 
 
 \subsection{Herausforderung FEM in der Ebene}
-Wie auch in der Dimension 1 wird das gesamte Gebiet $\Omega$ bzw. Ebene in Teilgebiete $\Omega_i$ unterteilt. Die Teilgebiete sind einfache geometrische Formen wie z.B. in Abbildung \ref{fig:Figuren}. Unterschiedliche geometrische Formen approximieren unterschiedlich gut die gewünschte Fläche. Als Lösung dienen äquivalente Minimalprobleme sprich anstatt Ableitungen werden Integrale verwendet gemäss Kapitel 7.
+Wie auch in der Dimension 1 wird das gesamte Gebiet $\Omega$ bzw. Ebene in Teilgebiete $\Omega_i$ unterteilt, damit einfache Formel entstehen können. Die einzelne Ansatzfunktion ist jedoch keine globale Lösung sondern alle Ansatzfunktionen zusammen stellen eine Lösung der Approximation dar. Die Teilgebiete sind einfache geometrische Formen wie z.B. in Abbildung \ref{fig:Figuren}. Unterschiedliche geometrische Formen approximieren unterschiedlich gut die gewünschte Fläche. Die Approximation mit Parallelogrammen z.B.  deckt im Unterschied zu den anderen Approximationen die Fläche weniger genau ab. Die Vierecke haben im Gegensatz zu den Dreiecken eine Unbekannte mehr bzw. einen Koeffzienten mehr der bestimmt werden  muss.
+%Als Lösung dienen äquivalente Minimalprobleme sprich anstatt Ableitungen werden Integrale verwendet gemäss Kapitel 7.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.6]{papers/fem/Images/Figuren.jpeg}
