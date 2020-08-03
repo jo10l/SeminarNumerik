@@ -44,7 +44,7 @@ Die Fläche unter dem Graphen lässt sich nun mit der Formel
 \begin{equation}
     I 
     =
-    \int_{-1}^{1} f(x) 
+    \int_{-1}^{1} f(x)\,dx 
     \approx
     \sum_{i=0}^{n} A_{i} f(x_{i})
 \end{equation}
@@ -154,9 +154,9 @@ des Integrals eines Polynoms verschwinden,
 erklärt, warum für die Quadratur eines Polynoms nur $\frac{n+1}{2}$ 
 Stützstellen benötigt werden. Es müssen nur die geraden Terme evaluiert werden,
 da:
-\begin{equation}
+\begin{align}
     \int_{-1}^{1} p(x)\,dx 
-    =
+    &=
     a_{0} \int_{-1}^{1} 1\,dx
     +
     0
@@ -168,23 +168,29 @@ da:
     ... 
     +
     a_{n}\int_{-1}^{1} x^{n}\,dx
-\end{equation}
+    \\
+    &= \sum_{i=0}^{\frac{n}{2}} a_{2i} \cdot \frac{2}{2i+1}.
+\end{align}
+    
+
+
 Weiss man, wieviele Stützstellen $n$ man für die Berechnung der Quadratur verwenden möchte,
 kann man die Position der Stützstellen berechnen. 
 Dafür hat man drei Möglichkeiten, welche nachfolgend erklärt werden.
 
 \subsubsection{Substitution der Polynome}
-Eine Möglichkeit für die Berechnung der Stützstellen (und Gewichte) ist, in der Formel
+Eine Möglichkeit für die Berechnung der Stützstellen 
+(und Gewichte, $w(x)$ ist dabei die Gewichtungsfunktion) ist, in der Formel
 \begin{equation} \label{quadratur:equation:polynomsubstitution}
     \int_{a}^{b}w(x)P_{m}(x)\, dx = \sum_{i=0}^{n}A_{i}P_{m}(x_{i}), \; m \leq 2n + 1
 \end{equation}
 die Polynome $P_{m}$ durch
 \begin{equation}
-     P_{0}(x) = 1, P_{1}(x) = x, \dots , P_{2n+1}(x) = x^{2n+1}
+     P_{0}(x) = 1,\; P_{1}(x) = x,\; \dots ,\; P_{2n+1}(x) = x^{2n+1}
 \end{equation}
 zu ersetzen und die resultierenden $2n+2$ Gleichungen 
 \begin{equation}
-    \int_{a}^{b}w(x)x^{j}\,dx = \sum_{i=0}^{n} A_{i}x_{i}^{j}, j = 0, 1, \dots , 2 n + 1
+    \int_{a}^{b}w(x)x^{j}\,dx = \sum_{i=0}^{n} A_{i}x_{i}^{j},\qquad j = 0, 1, \dots , 2 n + 1
 \end{equation}
 für die Unbekannten $x_{i}$ und $A_{i}$ zu lösen.
 
@@ -206,20 +212,30 @@ Löst man die Integrale, erhält man
 daraus ergibt sich die Lösung
 \begin{align}
     A_{0} &= \phantom{-}\frac{\sqrt{\frac{5}{3}}}{3} & x_{0} &= -\sqrt{\frac{3}{5}} & \\
-    A_{1} &= -\frac{\sqrt{\frac{5}{3}}}{3} & x_{1} &= \phantom{-}\sqrt{\frac{3}{5}} &
+    A_{1} &= -\frac{\sqrt{\frac{5}{3}}}{3} & x_{1} &= \phantom{-}\sqrt{\frac{3}{5}}. &
 \end{align}
-Setzt man diese werte in die Integrationsformel ein, so wird die Formel
+Setzt man diese Werte in die Integrationsformel ein, so wird die Formel
 \begin{equation}
-    \int_{-1}^{1}x \cdot f(x)\,dx \approx \frac{1}{3} \bigg[ (\sqrt{\frac{5}{3}})f(-\sqrt{\frac{3}{5}}) + (-\sqrt{\frac{5}{3}})f(\sqrt{\frac{3}{5}})\bigg]
+    \int_{-1}^{1}x \cdot f(x)\,dx 
+    \approx 
+    \frac{1}{3} 
+    \bigg[ 
+        \biggl(\sqrt{\frac{5}{3}}\biggr)
+        f\biggl(-\sqrt{\frac{3}{5}}\biggr) 
+        + 
+        \biggl(-\sqrt{\frac{5}{3}}\biggr)
+        f\biggl(\sqrt{\frac{3}{5}}\biggr)
+    \bigg]
 \end{equation}
 Man kann sehen, dass diese Methode für die Berechnung der Stützstellen 
-für grosse $n$ sehr schnell viel Zeit beansprucht.
+für grosse $n$ wegen der nichtlinearität der $x_{i}$ sehr schnell viel Zeit beansprucht.
 Die anderen Methoden für die Bestimmung der Stützstellen 
 und Gewichte sind effektiver und in der Anwendung einfacher.
 
 \subsubsection{Werte in der Tabelle nachschlagen}
 Für die gängigsten Formen der Gauss-Quadratur existieren Tabellen mit vorberechneten Werten für die
-Position der Stützstellen und deren Gewichte. 
+Position der Stützstellen und deren Gewichte.
+Diese Fälle setzen voraus, dass die Gewichtungsfunktion $w(x) = 1$ ist. 
 Die Tabellen sind sehr präzise und für die ersten hundert $n$ vorgerechnet.
 Ausserdem gibt es Programme, welche für beliebige $n$ die dazugehörigen 
 Stützstellen und Gewichte berechnen. 
@@ -263,20 +279,21 @@ mit
     j = 0, 1, 2, ... n - 1
 \end{equation*}
 und 
-\begin{equation}
+\begin{equation} \label{quadratur:equation:polynomialformula}
     P(x) = (x - x_{1})(x - x_{2}) ... (x - x_{n})
 \end{equation}
 berechnen. Um die Formel zu verstehen, werden einige Grundkenntnisse für 
 orthogonale Polynome und deren Beziehung zur Gauss-Quadratur vorausgesetzt.
 Da aber für die häufigsten Formen der Gauss-Quadratur 
 (Siehe Abschnitt ~\ref{quadratur:subsection:gaussformen}) bereits vorberechnete
-Tabellen für die Stützstellen und Gewichte existieren muss man die Theorie
+Tabellen für die Stützstellen und Gewichte existieren, muss man die Theorie
 für die Anwendung der Formeln nicht verstehen. Für interessierte Leser sind 
 die wichtigsten Eigenschaften von orthogonalen Polynomen im nächsten 
 Abschnitt genäuer erläutert.
 
 \subsubsection{Beispiel: Berechnung für zwei Stützstellen}
-Möchte man die Position für zwei Stützstellen berechnen, sieht die Formel folgendermassen aus:
+Möchte man die Position für zwei Stützstellen berechnen, 
+sieht die Formel\ref{quadratur:equation:polynomialformula} folgendermassen aus:
 \begin{equation}
     P(x) = (x - x_{1})(x - x_{2})
 \end{equation}
@@ -308,12 +325,37 @@ Somit sind $ x_{1} $ und $ x_{2} $:
 
 \subsection{Orthogonale Polynome
 \label{quadratur:subsection:orthogonalepolynome}}
+Dieser Abschnitt befasst sich mit den für die Gaussquadratur wichtigsten 
+Eigenschaften von orthogonalen Polynomen. 
+Aus der linearen Algebra kennt man orthogonale Vektoren als
+zwei deren Skalarprodukt im Raum $\mathbb{R}^{2}$ null ist,
+also wenn für die Vektoren $\vec{v}$ und $\vec{w}$ gilt:
+\begin{equation}
+    \langle \vec{v}, \vec{w} \rangle = 0
+\end{equation}
+Ebenso kann man Funktionenräume als Vektorräume beschreiben und somit
+die orthogonalität von zwei Funktionen $f$ und $g$ mit
+\begin{equation}
+    \langle f, g \rangle = 0
+\end{equation}
+beschreiben.
+Auch für Polynome gibt es solche orthogonalitätseigenschaften, 
+welche nachfolgend erklärt werden. 
+Da das gesamte Thema Orthogonalität aber den Rahmen dieses Kapitels 
+sprengen würde, 
+werden nur einige für die Gaussquadratur relevante Eigenschaften
+angesprochen. 
+Eine gute Übersicht über Orthogonalität findet sich auf ~\url{https://de.wikipedia.org/wiki/Orthogonalit%C3%A4t}.
+Weitere Informationen zu orthogonalen Polynomen kann man auf 
+~\url{https://mathworld.wolfram.com/OrthogonalPolynomials.html} 
+oder 
+~\url{https://de.wikipedia.org/wiki/Orthogonale_Polynome} finden.
 
 \subsubsection{Grundlagen orthogonale Polynome}
 Orthogonale Polynome werden in der mathematischen und 
 numerischen Analysis oft verwendet.
 In der numerischen Integration entsprechen die Nullstellen
-der Orthogonalen Polynome den Stützstellen der Gaussquadratur.
+der orthogonalen Polynome den Stützstellen der Gaussquadratur.
 Zwei Polynome $\phi_{m}(x)$ und $\phi_{n}(x)$ 
 ($n$ und $m$ ist hierbei der Grad des Polynoms) formen ein 
 orthogonales Paar im Intervall $(a, b)$ im Bezug auf die Gewichtungsfunktion
@@ -323,8 +365,8 @@ $w(x)$ falls:
 \end{equation}
 Orthogonalpolynome sind abgesehen von einem konstanten Faktor, 
 der über die Normierung der Polynome ermittelt wird,
-über die Wahl der Gewichtungsfunktion und der Grenzen des Integrals $a, b$, festgelegt.
-Klassische Orthogonalpolynome sind nach bekannten Mathematikern 
+über die Wahl der Gewichtungsfunktion und der Grenzen des Integrals $a, b$ eindeutig festgelegt.
+Klassische Orthogonalpolynome sind nach ihren Entdeckern 
 benannt und in der Tabelle~\ref{buch:table:orthogonalpolynomials} mit ihren
 Eigenschaften beschrieben.
 \begin{table}
@@ -374,7 +416,7 @@ Diese Eigenschaft ist für die Gaussquadratur relevant,
 da für eine Gauss-Quadraturformel vom Grad $n$ für die exakte Berechnung 
 des Integrals diejenigen Abszissenwerte $x_{i}$ benötigt werden, 
 welche den Nullstellen des $n-$ten orthogonalen Polynoms $P_{n}$ entsprechen.
-Weiterhin liegen die Nullstellen Polynoms $\phi_{n}(x)$ zwischen den Nullstellen des Polynoms $\phi_{n+1}(x)$.
+Weiterhin liegen die Nullstellen des Polynoms $\phi_{n}(x)$ zwischen den Nullstellen des Polynoms $\phi_{n+1}(x)$.
 Diese Eigenschaft erlaubt es, den Grad $n$ des Polynoms zu erhöhen und man erhält dadurch 
 mehr Nullstellen, welche den Stützstellen $x_{i}$ der Gauss-Quadraturformel entsprechen.
 
@@ -461,7 +503,8 @@ und das Integral ist
 \begin{align}
     \int_{-1}^{1}f(x)\,dx &\approx \int_{-1}^{1}p(x)\,dx \\
     &= \int_{-1}^{1} \sum_{i=0}^{n} f(x_{i}) l_{i}(x) \,dx \\
-    &= \sum_{i=0}^{n} f(x_{i}) \cdot \int_{-1}^{1}  l_{i}(x) \,dx
+    &= \sum_{i=0}^{n} f(x_{i}) \cdot \int_{-1}^{1}  l_{i}(x) \,dx \\
+    &= \sum_{i=0}^{n} A_{i} f(x_{i})
 \end{align}
 wobei $\int_{-1}^{1}  l_{i}(x) \,dx = A_{i}$.
 
@@ -551,9 +594,9 @@ es folgt somit, dass
     \approx 
     f(x_{1})+f(x_{2}) 
     = 
-    f(-\frac{1}{\sqrt{3}})
+    f\biggl(-\frac{1}{\sqrt{3}}\biggr)
     +
-    f(\frac{1}{\sqrt{3}})
+    f\biggl(\frac{1}{\sqrt{3}}\biggr)
 \end{equation}
 
 
@@ -564,7 +607,7 @@ Orthogonale Polynome, bereits angedeutet,
 gibt es verschiedene Ausprägungen der Gauss-Integration.
 Für verschiedene Folgen von Orthogonalpolynomen gibt es eine dazugehörige
 Form der Gaussquadratur mit eigenen Grenzwerten und Berechnungsformeln.
-Die vier häufigsten Formen sind in der Tabelle~\ref{buch:table:gaussformen} abgebildet.
+Die vier häufigsten Formen sind in der Tabelle~\ref{buch:table:gaussformen} zusammengestellt.
 \begin{table}
     \begin{tabular}{|l|>{$}c<{$}|>{$}c<{$}|>{$}l<{$}|}
         \hline
@@ -595,7 +638,7 @@ Möchte man nun ein beliebiges Integral mittels der Gaussquadratur berechnen,
 deren Grenzwerte nicht zu den in der Tabelle~\ref{buch:table:gaussformen} 
 dargestellten Formeln passt, 
 abgesehen von weiteren hier nicht genannten Formen, 
-muss man die Grenzwerte $(a, b)$ gemäss dem Folgenden Beispiel
+muss man die Grenzwerte $(a, b)$ gemäss dem folgenden Beispiel
 auf den Bereich $(-1, 1)$ abbilden.
 
 \subsubsection{Vorgehen bei Integralgrenzen, die nicht durch die Tabelle abgedeckt werden}
@@ -628,8 +671,9 @@ hergeleiteten Methoden ermitteln.
 Weiterhin gibt es in der Gaussquadratur eigene Methoden, 
 um den Fehler der Quadratur zu ermitteln. 
 Die einfachere Methode ist, für eine Quadratur mit $n$ Stützstellen eine weitere
-Quadratur mit $n+1$ Stützstellen durchzuführen und von der ersten Quadratur zu
-subtrahieren. Die komplexere Methode ist, 
+Quadratur mit $n+1$ Stützstellen durchzuführen und die absolute Differenz
+zwischen beiden Resultaten zu berechnen. 
+Die komplexere Methode ist, 
 die Fehlerformel für die Gauss-Quadraturformel anzuwenden. 
 
 \subsubsection{Fehlerrechnung mittels Quadratur höherer Ordung}
@@ -649,9 +693,9 @@ kann der Fehler mit der Formel
 \begin{equation}
     E 
     \approx 
-    \sum_{i=1}^{n}A_{i}f(x_{i})
+    \sum_{i=1}^{n}A_{i}^{n}f(x_{i})
     -
-    \sum_{i=1}^{n+1}A_{i}f(x_{i})
+    \sum_{k=1}^{n+1}A_{k}f(x_{k})
 \end{equation}
 approximiert werden. Für $n = 4$ wird die Fehlerrechnung 
 \begin{gather*}
@@ -659,11 +703,11 @@ approximiert werden. Für $n = 4$ wird die Fehlerrechnung
     \approx
     \sum_{i=1}^{5}A_{i}f(x_{i})
     -
-    \sum_{j=1}^{4}A_{j}f(x_{j}) \\
+    \sum_{k=1}^{4}A_{k}f(x_{k}) \\
     =
     A_{i1}f(x_{i1})+A_{i2}f(x_{i2})+A_{i3}f(x_{i3})+A_{i4}f(x_{i4})+A_{i5}f(x_{i5}) \\
     -\;
-    A_{j1}f(x_{j1})+A_{j2}f(x_{j2})+A_{j3}f(x_{j3})+A_{j4}f(x_{j4})
+    A_{k1}f(x_{k1})+A_{k2}f(x_{k2})+A_{k3}f(x_{k3})+A_{k4}f(x_{k4})
 \end{gather*}
 
 \subsubsection{Fehlerrechnung mit der Fehlerformel}
@@ -701,7 +745,8 @@ Die Variable $c$ ist dabei keine vorgegebene Zahl,
 sondern muss im Intervall $(a, b)$ gefunden werden und ist von der jeweiligen Funktion $f(x)$ abhängig.
 Die Tabelle~\ref{buch:table:fehlerformeln} zeigt für die verschiedenen Formen
 der Gaussquadratur die Fehlerformeln und deren Grenzen für $c$.
-
+Um $c$ zu finden, muss die Funktion $f(\xi)$ $2n+2$ mal abgeleitet werden und 
+man berechnet dasjenige $c$ im Intervall $[a, b]$ welches den höchsten Wert für $f^{(2n+2)}(c)$ ergibt.
 
 \begin{table}
     \centering
@@ -738,10 +783,14 @@ erhalten wir die Formel:
     \approx \sum_{i=0}^{1} A_{i} f(x_{i} + 3)
 \end{equation*}
 \begin{equation*}
-    = f(-\frac{1}{\sqrt{3}}+3)-f(\frac{1}{\sqrt{3}}+3)
+    = f\bigg(-\frac{1}{\sqrt{3}}+3\bigg)
+    -
+    f\bigg(\frac{1}{\sqrt{3}}+3\bigg)
 \end{equation*}
 \begin{equation}
-    (-\frac{1}{\sqrt{3}}+3)^{-1} - (\frac{1}{\sqrt{3}}+3)^{-1}
+    \bigg(-\frac{1}{\sqrt{3}}+3\bigg)^{-1} 
+    - 
+    \bigg(\frac{1}{\sqrt{3}}+3\bigg)^{-1}
 \end{equation}
 \begin{equation*}
     \approx 0.41277118\dots + 0.27953651\dots
