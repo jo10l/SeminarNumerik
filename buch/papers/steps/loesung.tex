@@ -10,8 +10,17 @@ Schrittweitensteuerungen lassen sich auf vielseitige Art und Weise realisieren,
 zwei Varianten davon werden nun näher vorgestellt.
 
 \subsection{Simple Schrittweitensteuerung mit konstanter Testschrittweite
-  \label{steps:subsection:simplestep}}
-Eine Möglichkeit zur Realisierung einer simplen Schrittweitensteuerung ist mittels einem konstannten Testschritt.
+\label{steps:subsection:simplestep}}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{papers/steps/img/simple_ssc_flowchart.tex}
+  \caption{Algorithmus für eine simple Schrittweitensteuerung
+    \label{buch:steps:flowchartSimple}}
+\end{figure}
+
+Eine Möglichkeit zur Realisierung einer simplen Schrittweitensteuerung ist mittels einem konstannten Testschritt,
+dargestellt in Abbildung~\ref{buch:steps:flowchartSimple}.
 Die Funktionsweise dieser Methode wird nun anhand der Wahrscheinlichkeitsfunktion der Standardnormalverteilung vorgeführt.
 Für die Wahrscheinlichkeitsfunktion existiert zwar keine analytische Lösung,
 doch sie lässt sich aus der Wahrscheinlichkeitdichtefunktion
@@ -29,7 +38,7 @@ wird die Integralfunktion in eine Differenzialgleichung umgewandelt:
 \]
 Im folgenden Beispiel zur Abbildung~\ref{buch:steps:examplessc}
 wurde für die numerische Annäherung $\tilde{F}(x)$ an $F(x)$ bei $x_0=-7$ mit Startwert $\tilde{F}(-7)=0$ begonnen.
-Dabei wird für den Schritt $n$ die Steigung ($\varphi$) am Punkt $x_{n-1}, \tilde{F}_{n-1}$ (in Abbildung~\ref{buch:steps:examplessc} oranger Punkt mit rotem Kreuz) berechnet.
+Dabei wird für den Schritt $n$ die Steigung ($\varphi$) am Punkt $x_{n}, \tilde{F}_{n}$ (in Abbildung~\ref{buch:steps:examplessc} oranger Punkt mit rotem Kreuz) berechnet.
 Damit wird ein Eulerschritt mit der Testschrittweite $h_\text{test}=2$ (In Abbildung~\ref{buch:steps:examplessc} als schwarzer Balken oberhalb der $x$-Achse) gemacht
 $\implies P_\text{test}=(x_n+h_\text{test}, \tilde{F}_n+\varphi(x_n, \tilde{F}_n)$.
 Nun wird auch an diesem Punkt (In Abbildung~\ref{buch:steps:examplessc} als einsames rotes Kreuz am oberen Ende der Grafik) die Steigung ermittelt.
@@ -39,9 +48,10 @@ Ist der Unterschied (Abbildung~\ref{buch:steps:examplessc},
 untere Grafik, Differenz zwischen \texttt{phi(start)}, \texttt{phi(test)}) etwas grösser,
 wird die Schrittweite (In Abbildung~\ref{buch:steps:examplessc} roter Balken innerhalb der Testschrittweite) etwas kleiner gewählt.
 Konkret berechnet sich in diesem Beispiel die zu wählende Schrittweite wie folgt:
-\[
+\begin{equation}
   h=\frac{h_{\text{test}}}{|\varphi(x_n, \tilde{F}_n)-\varphi(P_{\text{test}})|\cdot q_{\text{factor}}}\quad \text{mit} \quad q_{\text{factor}}=20.
-\]
+  \label{buch:steps:equationSimpleStepSize}
+\end{equation}
 Wobei die Schrittweite nach oben zusätzlich durch die Testschrittweite begrenzt wird,
 da der Verlauf der Kurve jenseits des Testpunktes noch nicht bekannt ist.
 Auch eine Division durch Null muss abgefangen werden, falls die Steigung in beiden Punkten identisch ist.
@@ -102,10 +112,22 @@ Mit dieser Fehlerschätzung lässt sich nun ein Algorithmus wie in Abbildung ~\r
 welcher die Schrittlänge kontrolliert. Falls die Schätzung des Fehlers $T(x_{j+1}, h_j)$ nun grösser ist als die erlaubte Toleranz $\varepsilon$,
 wird die Schrittweite halbiert und der Schritt wiederholt.
 Falls der Fehler viel kleiner ist als die erlaubte Toleranz, wird die Schrittweite für den nächsten Schritt verdoppelt.
+Im Beispiel in Abbildung~\ref{buch:steps:comparisonFixedVariableFehlberg} lässt sich somit die nötige Anzahl Schritte
+im Vergleich zu einer ähnlich genauen, fixen Schrittweite etwa halbieren.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.5\textwidth]{papers/steps/img/Fehlberg_Flowchart.pdf}
-  \caption{Algorithmus zur Schrittlängensteuerung
+  \caption{Algorithmus zur Schrittlängensteuerung mittels Fehlerschätzung nach Fehlberg
+  \cite{steps:Numerische-Mathematik}
     \label{buch:steps:flowchartfehlberg}}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\textwidth]{papers/steps/img/comparison_fehlberg_ssc.pdf}
+  \caption{Bahn eines Teilchens um ein Gravitationszentrum: Vergleich von unterschiedlichen fixen Schrittweiten
+  mit der variablen Schrittweite mittels Fehlerschätzung nach Fehlberg und Steueralgorithmus nach Abbildung~\ref{buch:steps:flowchartfehlberg},
+  wiederholte Schritte beim Verkleinern der Schrittweite mitberücksichtigt}
+  \label{buch:steps:comparisonFixedVariableFehlberg}
 \end{figure}

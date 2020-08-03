@@ -1,0 +1,42 @@
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{calc,shapes, positioning}
+\begin{document}
+
+\tikzset{
+  treenode/.style = {shape=rectangle,
+                     draw, anchor=center,
+                     text width=8em, align=center,
+                     top color=white, bottom color=white,
+                     inner sep=1ex},
+  decision/.style = {treenode, diamond, inner sep=0pt},
+  root/.style     = {treenode, font=\Large, bottom color=white},
+  env/.style      = {treenode, text width=18em, font=\ttfamily\normalsize},
+}
+\begin{tikzpicture}[-latex]
+\def\sx{16}
+\def\sy{8}
+\def\rowcount{5}
+
+\node [env] (A) at ({\sx/2}, {\sy/\rowcount*4}) {Eingabe von $x_0, u_0, h_\text{max};\quad n=0$};
+\node [env] (B) at ({\sx/2}, {\sy/\rowcount*3}) {Ein Testschritt (ausgehend von $P_\text{start}=(x_n, u_n)$) der L\"ange $h_{\text{max}}$ mit dem Eulerverfahren $\implies P_\text{test}$};
+\node [env] (C) at ({\sx/2}, {\sy/\rowcount*2}) {Berechnung der optimalen Schrittweite $h$ gem\"ass Formel~\ref{buch:steps:equationSimpleStepSize}};
+\node [env] (D) at ({\sx/2}, {\sy/\rowcount*1}) {falls berechnete Schrittweite $h > h_\text{max}: \implies h=h_\text{max}$};
+\node [env] (E) at ({\sx/2}, {\sy/\rowcount*0}) {Runge-Kutta Schritt mit $h$ von $P_\text{start}$ aus durchf\"uhren\\ $\implies x_{n+1}, u_{n+1}$};
+
+\draw[->] (A) -- (B);
+\draw[->] (B) -- (C);
+\draw[->] (C) -- (D);
+\draw[->] (D) -- (E);
+
+\draw[-] (E) |- ({0.27*\sx}, {-1});
+\draw[-] ({0.27*\sx}, {-1}) -- node[above, rotate=90] {$n \implies n+1$} ({0.27*\sx}, {\sy/\rowcount*3});
+\draw[->] ({0.27*\sx}, {\sy/\rowcount*3}) -- (B);
+
+\end{tikzpicture}
+\end{document}
+
