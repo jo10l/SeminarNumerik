@@ -160,12 +160,12 @@ ersichtlich ist, läuft die Lösung der Differentialgleichung im Punkt 0 gegen 0
 Wird nun also diese Differentialgleichung approximiert, dann ist sowieso klar auf welchem Wert wir ungefähr landen werden.
 Um eine aussagekräftige Antwort auf die Frage der Qualität geben zu können wurden in Abbildung \ref{taylor:section:fig:FehlerRungeTaylor} die Fehler über den ganzen Verlauf der Approximation verglichen.
 
-\subsection{Gefähliche Umgebung des 0-Punktes}
+\subsection{Gefähliche Umgebung der Anfangsbedingung}
 \label{taylor:subsection:0Punkt}
 Wie in Abbildung 
 \ref{taylor:section:fig:DGLDarstellung}
-klar dargestellt ist, ist die Ableitung in direkter Umgebung vom Punkt (0, 0.5) zwischen 0 und $\infty$ weil der Punkt eine Polstelle ist.
-Wenn also eine Approximation der Differentialgleichung durch diesen Punkt verläuft, oder auch nur in seine unmittelbare Umgebung kommt kann die Approximation komplett anders verlaufen als man erwarten würde.
+klar dargestellt ist, ist die Ableitung in direkter Umgebung von der gewählten Anfangsbedingung (0, 0.5) zwischen 0 und $\infty$ da der Punkt in der Lösung der Differentialgleichung mit der Anfangsbedingung (0, 0,5) einer Polstelle entspricht.
+Wenn also eine Approximation der Differentialgleichung durch diesen Punkt verläuft, oder auch nur in seine unmittelbare Umgebung kommt kann die Approximation komplett anders weiter verlaufen als man erwarten würde.
 Dies liegt daran, dass selbs kleine Fehler welche eine Approximation zwangsweise haben muss sich in der nähe des Punktes sehr stark auf den weiteren Verlauf auswirken.
 Um dies zu umgehen wurde einfach nicht durch diesen Wendepunkt gegangen, sondern nur bis 0.02 davor.
 Man könnte nun aber die erhaltenen linke Kurve an dem Wendepunkt punktspiegeln und hätte so die zweite Hälfte ebenfalls, welche durch die Spiegelung sowieso redundant und für uns deshalb nicht intressant ist.
