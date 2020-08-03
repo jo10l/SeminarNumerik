@@ -122,16 +122,21 @@ Da in den Voraussetzungen orthogonale Eigenvektoren $\bm v_{0i}$ gefordert sind,
     \end{cases}
 \end{equation}
 Zusätzlich ist vorausgesetzt, dass $\bm H_0$ symmetrisch ist.
-Dies macht die Matrix auch selbstadjungiert, was bedeutet $ a^T \bm H_0 b =  b^T \bm H_0 a$.
-Mithilfe der Eigenwertproblemgleichung können wir dadurch auch den ersten Term auf der linken Seite umformen:
+Dies macht die Matrix auch selbstadjungiert, also $H_0 = H_0^T$. Dementsprechend ist der erste Term auf der linken seite
 \begin{equation}
     \bm v_{0j}^T \bm H_0 \bm v_{1i}
     =
-    \bm v_{1i}^T \left(\bm H_0  \bm v_{0j} \right)
+    \bm v_{0j}^T \bm H_0^T \bm v_{1i}
     =
-    \bm v_{1i}^T \left(\lambda_{0j}  \bm v_{0j} \right)
+    \left( \bm H_0 \bm v_{0j} \right)^T \bm v_{1i}.
+\end{equation}
+Da $\bm H_0$ jetzt mit einem Eigenvektor multipliziert wird, können wir diesen mit dem entsprechenden Eigenwert ersetzen:
+\begin{equation}
+    \left( \bm H_0 \bm v_{0j} \right)^T \bm v_{1i}
     =
-    \lambda_{0j} \bm v_{0j}^T \bm v_{1i}
+    \left( \lambda_{0j} \bm v_{0j} \right)^T \bm v_{1i}
+    =
+    \lambda_{0j} \bm v_{0j}^T \bm v_{1i}.
 \end{equation}
 Daher erhalten wir für Gleichung \eqref{ew:eq:misc1} in gleicher Reihenfolge
 \begin{equation}
