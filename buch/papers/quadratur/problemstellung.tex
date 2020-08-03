@@ -14,10 +14,11 @@ Dabei werden mehr Stützstellen auf der $x$-Achse benötigt und mehr Funktionsau
 müssen berechnet werden. 
 Die Wahl der Position und Anzahl Stützstellen stellt hierbei einer der beiden Freiheitsgrade
 in der Berechnung des Integrals dar.
-Der zweite Freiheitsgrad ist die Verwendung einer Gewichtung für eine spezifische Stützstelle.
+Der zweite Freiheitsgrad ist die Verwendung einer Gewichtung (die Wahl der Gewichte in~\ref{quadratur:equation:quadraturapproxsumme}) 
+für eine spezifische Stützstelle.
 Das Hinzuziehen einer Gewichtung erlaubt es, in einem Teilintervall, 
 in dem die Annäherung stärkere Abweichungen zum Graphen in diesem Intervall hat, 
-diese Abweichung zu minimieren. 
+diese Abweichung zu minimieren.
 
 
 \subsubsection{Beispiel: Integration einer Funktion mit der Trapezregel}
@@ -68,7 +69,7 @@ Die numerische Integration kann, wie im Kapitel~\ref{chapter:integration} beschr
 werden, wenn keine Stammfunktion in analytischer Form für eine Funktion gefunden werden kann.
 Ein bekanntes Beispiel dafür ist die Verteilungsfunktion
 \begin{equation}
-    \phi(x) 
+    \Phi(x) 
     =
     \frac{1}{\sqrt{2\pi}}
     \int_{-\infty}^x e^{-t^2/2}\,dt
@@ -77,7 +78,7 @@ der Standardnormalverteilung
 \begin{equation}
     f(x)
     = 
-    \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{1}{2}(\frac{x-\mu}{\sigma}^{2})}
+    \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{1}{2}(x^{2})}
 \end{equation}
 oder auch Gauss'sche Glockenkurve, wie in der Grafik~\ref{quadratur:figure:gaussdistribution} dargestellt. 
 \begin{figure}
