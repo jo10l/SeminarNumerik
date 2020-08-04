@@ -6,31 +6,37 @@
 \section{Problemstellung
 \label{fem:section:problemstellung}}
 \rhead{Problemstellung}
-Für die Erklärung der Finiten Element Methode in der Ebene wird hier die folgende partielle Differentialgleichung (?Poisson- Gleichung?) mit dem Eigenwertproblem der Form 
+Für die Erklärung der Finiten Element Methode in der Ebene wird hier als Beispiel die folgende partielle Differentialgleichung (Poisson- Gleichung) mit dem Eigenwertproblem der Form 
 \begin{equation}
 	\Delta u = \lambda u
 	\label{fem:equationPDE}
 \end{equation}
-verwendet. Diese PDE muss nach dem Abschnitt 7.1.1 auf ein definiertes Gebiet z.B. ein Einheitskreis oder Quadrat mit Randbedingungen angewendet werden. Als Dirichlet- Randbedingung kann z.B. angenommen werden, dass die Werte am Rand $= 0$ erfüllen müssen. Andere Randbedingungen sind in Abschnitt 7.1.3 zusammengestellt. Wie im Unterkapitel 7.4 behandelt, gibt es zu gewissen partiellen DGL für ein Rechteck ein äquivalentes Minimalproblem, dass in diesem Fall das folgende Integral darstellt:
+verwendet. Diese PDE muss nach dem Abschnitt 7.1.1 auf ein definiertes Gebiet z.B. ein Einheitskreis oder Quadrat mit Randbedingungen betrachtet werden. Als Dirichletrandbedingung kann z.B. vorgegeben werden, dass die Werte am Rand $= 0$ erfüllen müssen. Andere mögliche Randbedingungen sind in Abschnitt 7.1.3 zusammengestellt. Wie im Unterkapitel 7.4 behandelt, gibt es zu gewissen partiellen DGL's für ein Rechteck ein äquivalentes Minimalproblem. Die Lösungsfunktion $u$ muss so gewählt werden, dass $I(u)$ minimal wird.
 \begin{equation}
 	I(u) = \int_a^b \int_c^d \nabla u(x)^2 + \lambda u(x)^2 dy \, dx
 	\label{fem:equationMinimalKapt7}
 \end{equation}
-Das Gebiet muss nicht zwinged ein Rechteck sein. Als vereinfachte Notation für ein Minimalproblem auf ein beliebiges Gebiet $\Omega$ für die PDA \eqref{fem:equationPDE} wird folgendes Integral aufgeschrieben:
+Das Gebiet muss nicht zwinged ein Rechteck sein. Für ein beliebiges Gebiet $\Omega \subset \mathbb{R}^2$ wird das zu minimirende Integral  %Als vereinfachte Notation für ein Minimalproblem auf ein beliebiges Gebiet $\Omega$ für die PDA \eqref{fem:equationPDE} wird folgendes Integral aufgeschrieben:
 \begin{equation}
 	I(u) = \int_{\Omega} \nabla u(x)^2 + \lambda u(x)^2 dy \, dx
 	\label{fem:equationMinimalKapt7}
 \end{equation}
-
+geschrieben.
 \subsection{Was sind Ansatzfunktionen?}
-Um eine gesuchte Funktion $u(x,y)$ als Lösung für die partielle DGL Problem in der Ebene zu finden, wird diese mit einfacheren Funktionen approximiert. Diese einfacheren Approximations- Funktionen werden in diesem Kapitel als Ansatzfunktion $u(x,y)$ bezeichnet. %Die einzelne Ansatzfunktion ist jedoch keine globale Lösung.
+Um eine gesuchte Funktion $u(x,y)$ als Lösung für die partielle DGL \eqref{fem:equationPDE} zu finden, wird diese mit einfacheren Funktionen approximiert. Diese einfacheren Approximationsfunktionen werden in diesem Kapitel als Ansatzfunktion $u(x,y)$ bezeichnet..
 
-Als einfachere Funktionen bieten sich Polynome mit niedrigem Grad an. Diese sind einfach integrier- und differenzierbar. Der Polynomgrad 1 ist einfach anzuwenden bzw. zu berechnen. Polynomgrade 3 und 4 beispielsweis bieten dafür eine bessere Approximation an. Wie im Kapitel 7 ist auch hier das Ziel Gleichungen mit wenigen Unbekannten aufzustellen. Ist es nun möglich ebenfalls in der Ebene Ansatzfunktionen zu finden mit wenigen Koeffizienten, obwohl über ein Gebiet integriet wird? Es ist möglich. Allerdings gibt es besondere Herausforderungen zu beachten, die in den nächsten Zeilen genauer beschrieben werden.
+Als einfachere Funktionen bieten sich Polynome mit niedrigem Grad an. Diese sind einfach integrier- und differenzierbar. Während der Polynomgrad 1 sehr leicht zu berechnen ist muss beim Polynomgrad 2 aufwändigere, aber nicht komplexere, Berechnungen durchgeführt werden, da quadratische Ausdrücke und davon Kominationen entstehen. Polynomgrade 3 und 4 sind noch mit mehr fleissarbeit verbunden, bieten dafür eine bessere Approximation an. Wie im Kapitel 7 ist auch hier das Ziel Gleichungen mit wenigen Unbekannten aufzustellen. Ist es möglich auch in der Ebene Ansatzfunktionen zu finden mit wenigen Koeffizienten, obwohl über ein Gebiet integriet wird? Es ist möglich, allerdings gibt es besondere Herausforderungen zu beachten, die in den nächsten Abschnitten genauer beschrieben werden.
 %Die Ansatzfunktion ist frei wählbar und gibt auch den Freiheitsgrad vor. Je höher die Ordnung der Ansatzfunktion desto besser soll die Approximation werden. So die Hoffnung. Allerdings hat dies auch Konsequenzen, die im Verlauf dieses Kapitels beschrieben werden. 
 
 
 \subsection{Herausforderung FEM in der Ebene}
-Wie auch in der Dimension 1 wird das gesamte Gebiet $\Omega$ bzw. Ebene in Teilgebiete $\Omega_i$ unterteilt, damit einfache Formel entstehen können. Die einzelne Ansatzfunktion ist jedoch keine globale Lösung sondern alle Ansatzfunktionen zusammen stellen eine Lösung der Approximation dar. Die Teilgebiete sind einfache geometrische Formen wie z.B. in Abbildung \ref{fig:Figuren}. Unterschiedliche geometrische Formen approximieren unterschiedlich gut die gewünschte Fläche. Die Approximation mit Parallelogrammen z.B.  deckt im Unterschied zu den anderen Approximationen die Fläche weniger genau ab. Die Vierecke haben im Gegensatz zu den Dreiecken eine Unbekannte mehr bzw. einen Koeffzienten mehr der bestimmt werden  muss.
+Die einzelne lineare Ansatzfunktion kann nicht die globale Lösung sein. Ansonsten würde gemäss der Formel \eqref{fem:equationSummGebiete}, die 2. differenzierbarkeit fordert, als einzige Lösung 0 zustande kommen, da lineare Terme als 2. Ableitung 0 afuweisen. Daher muss das Gebiet $\Omega$ in Teilgebiete $\Omega_i$ unterteilt werden. 
+\begin{equation}
+\int_{\Omega} (u)^2 \, dx \, dy = \sum \limits_{i=1}^n \int_{\Omega_i} (u)^2 \, dx \, dy 
+\label{fem:equationSummGebiete}
+\end{equation}
+Die Lösung verwendet das äuivalente Minimalproblem, also Integrale anstatt Ableitungen der Unbekannten.
+%Wie auch in der Dimension 1 wird das gesamte Gebiet $\Omega$ in Teilgebiete $\Omega_i$ unterteilt, damit einfache Formel entstehen können. Die einzelne Ansatzfunktion ist jedoch keine globale Lösung sondern alle Ansatzfunktionen zusammen stellen eine Lösung der Approximation dar. Die Teilgebiete sind einfache geometrische Formen wie z.B. in Abbildung \ref{fig:Figuren}. Unterschiedliche geometrische Formen approximieren unterschiedlich gut die gewünschte Fläche. Die Approximation mit Parallelogrammen z.B.  deckt im Unterschied zu den anderen Approximationen die Fläche weniger genau ab. Die Vierecke haben im Gegensatz zu den Dreiecken eine Unbekannte mehr bzw. einen Koeffzienten mehr der bestimmt werden  muss.
 %Als Lösung dienen äquivalente Minimalprobleme sprich anstatt Ableitungen werden Integrale verwendet gemäss Kapitel 7.
 \begin{figure}[h!]
 	\centering

@@ -26,25 +26,24 @@ Um möglichst einfach darzustellen, wie das Verfahren der Finiten Elemente vonst
 \label{fem:section:loesungTrans}}
 
 Damit die Integration über das gewählte Teilgebiet bzw. Flächenelement einfacher fällt, wird als Vorbereitung im entsprechenden Fall das gewählte Flächenelement in ein Einheitsdreieck oder in ein Eineheitsparallelogramm transformiert. Ein Dreieck oder Parallelogramm stellt eine Formfunktion dar, über die die gewählte Fläche bzw. Teilgebiet berechnet werden kann. Die gewählte Formfunktion eines Teilgebietes z.B. integrieren des Gebietes über ein Dreieck oder Pallelogramm,  bringt auch den Vorteil, dass die gewählten Formfunktionen gleich behandelt werden können. \\
-Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $ P_2(x_2, y_2)$ und $P3(x_3,y_3)$ kann mit Hilfe der linearen Transformation \eqref{fem:linTransformation}
-
+Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $ P_2(x_2, y_2)$ und $P_3(x_3,y_3)$ kann mit Hilfe der linearen Transformation
 \begin{equation}
 	\begin{split}
-		x = x_1 + (x_2 - x_1)\xi + (x_3 - X_1)\eta \\
+		x = x_1 + (x_2 - x_1)\xi + (x_3 - x_1)\eta \\
 		y = y_1 + (y_2 - y_1)\xi + (y_3 - y_1)\eta
 		\label{fem:linTransformation}
 	\end{split}
 \end{equation}
-in das einfachere Gebiet nämlich dem gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 überführt werden.
+in das einfachere Gebiet nämlich das gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 überführt werden wie in der Abbildung \ref{fig:TransformationEinheitsdreieckBild} dargestellt ist.
 
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.8]{papers/fem/Images/Dreiecke.jpeg}
 	\caption{Transformation in ein Einheitsdreieck}
-	\label{fig:schemNMR_vorlage}
+	\label{fig:TransformationEinheitsdreieckBild}
 \end{figure}
-Die Transformation soll untern den elementaren Regeln der Analysis vorgenommen werden. Nun ist das Flächenelement $dx \, dy$ mit Hilfe der Jacobi Determinante \eqref{fem:JocobiDeterminante} der Transformation zu ersetzen durch \eqref{fem:newTransformation}.
+Nun ist das Flächenelement $dx \, dy$ mit Hilfe der Jacobi Determinante \eqref{fem:JocobiDeterminante} der Transformation zu ersetzen durch \eqref{fem:newTransformation}.
 
 \begin{equation}
 J % 
@@ -62,11 +61,11 @@ J %
 \end{equation}
 Die Determinante dieser Jacobi- Matrix ergibt
 \begin{equation}
-	det(J) = x_1 \cdot y_2 - 2 \cdot x_1 \cdot y_1 + x_2 \cdot y_1 + x_1\cdot y_3 + x_3 \cdot y_1 - x_2 \cdot y_3 - x_3 \cdot y_2
+	\det(J) = x_1 \cdot y_2 - 2 \cdot x_1 \cdot y_1 + x_2 \cdot y_1 + x_1\cdot y_3 + x_3 \cdot y_1 - x_2 \cdot y_3 - x_3 \cdot y_2
 	\label{fem:JocobiDetBerechnet}
 \end{equation}
 \begin{equation}
-			dy \, dy = det(J) \, d\xi \, d\eta
+			dy \, dy = \det(J) \, d\xi \, d\eta
 			\label{fem:newTransformation}
 \end{equation}
 Die Jacobi- Determinante entspricht der doppelten Fläche des Dreiecks. Die partiellen Ableitungen werden gemäss der Kettenregel zu 
@@ -138,8 +137,8 @@ Die lineare Ansatzfunktion hat wie schon erwähnt die folgende Form
 \begin{equation}
 u(x,y) = c_1 + c_2x + c_3y
 \label{fem:equationSchwarzLinear}
-\end{equation}
-Die Ansatzfunktion \ref{fem:equationSchwarzLinear} kann somit direkt in das Minimalproblem \ref{fem:Minimal2D} eingesetzt werden. Ziel ist es, dass die unbekannten Koeffizienten $c_1, c_2 \, $und$ \, c_3$ anhand dieses Verfahrens bestimmt werden.
+\end{equation}.
+Die Ansatzfunktion \eqref{fem:equationSchwarzLinear} kann somit direkt in das Minimalproblem \eqref{fem:Minimal2D} eingesetzt werden. Ziel ist es, dass die unbekannten Koeffizienten $c_1, c_2 \, $und$ \, c_3$ anhand dieses Verfahrens bestimmt werden.
 
 Das Minimalproblem muss noch auf das entsprechende Gebietsintegral angewendet werden. Um diesen Schritt umzusetzen wird ddas Minimalproblem in das Gebietsintegral eingesetzt sprich $\int_{\Omega}$ wird durch das folgende Flächenelement bzw. Flächenintegral des angekündeten Einheitsdreieck ersetzt. 
 
