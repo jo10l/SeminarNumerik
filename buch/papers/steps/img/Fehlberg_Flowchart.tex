@@ -1,8 +1,9 @@
-
-
-\documentclass[border=5pt]{standalone}
-\usepackage{tikz}
-\usepackage[utf8]{inputenc}
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
 \usetikzlibrary{calc,shapes, matrix}
 \begin{document}
 
@@ -31,7 +32,7 @@
     ]
     { Eingabe von $x_0, u_0, h_0, \varepsilon_0$, setze $j$:=0\\
       Ein Schritt des Verfahrens: $u_j \to u_{j+1}$\\      
-      Berechnung der Fehlerschätzung $T(x_{j+1}, h_j)$\\
+      Berechnung der Fehlersch\"atzung $T(x_{j+1}, h_j)$\\
       $T(x_{j+1}, h_j)<\frac{\varepsilon}{20}$ & Schrittweite verdoppeln: $h_{j+1}:=2h_j$\\
       $T(x_{j+1}, h_j)<\varepsilon$\\
       Schrittweite halbieren: $h_j:=\frac{h_j}{2}$, Schritt wiederhohlen! & $x_{j+1}:=x_j+h_j,$ $j:=j+1$\\
