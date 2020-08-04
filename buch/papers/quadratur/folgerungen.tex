@@ -14,21 +14,22 @@ Dazu wird nochmals die Funktion $\sqrt{1-x^{2}}$ Integriert.
 Die Resultate sind in der Tabelle~\ref{buch:table:gaussvergleich} dargestellt.
 Als Referenz: Das analytische Resultat des Integrals ist $\frac{\pi}{2} \approx 1.5707963268$
 \begin{table}
+    \centering
     \begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
         \hline
         n & \text{Gaussquadratur} &  \text{Gaussquadratur} & \text{Trapezregel} & \text{Trapezregel} \\
          & \text{Resultat} &  \text{Fehler} & \text{Resultat} & \text{Fehler} \\
         \hline  
-        2 & 1.6329931619 & 0.3670068381 & 0 & 1.5707963268 \\
-        3 & 1.5916172578 & 0.0413759040 & 1.0 & 0.5707963268 \\
+        2 & 1.6329931619 & 0.3670068381 & 0.0000000000 & 1.5707963268 \\
+        3 & 1.5916172578 & 0.0413759040 & 1.0000000000 & 0.5707963268 \\
         4 & 1.5802775277 & 0.0113397301 & 1.2570787221 & 0.3137176047 \\
         5 & 1.5759063349 & 0.0043711928 & 1.3660254038 & 0.2047709230 \\
         7 & 1.5727819554 & 0.0010820282 & 1.4587766894 & 0.1120196374 \\
         10 & 1.5715139556 & 0.0002531675 & 1.5096159164 & 0.0611804104 \\
         20 & 1.5708921460 & 1.55366 \cdot e^{-05} & 1.5507798233 & 0.020016503 \\
         30 & 1.5708253858 & 3.05870 \cdot e^{-06} & 1.5601695280 & 0.010626799 \\
-        40 & 1.5708087326 & 9.66660 \cdot e-^{07} & 1.5639786384 & 0.006817688 \\
-        50 & 1.5708027245 & 3.9573. \cdot e-^{07} & 1.5659537235 & 0.004842603 \\
+        40 & 1.5708087326 & 9.66660 \cdot e^{-07} & 1.5639786384 & 0.006817688 \\
+        50 & 1.5708027245 & 3.9573. \cdot e^{-07} & 1.5659537235 & 0.004842603 \\
         100 & 1.5707971383 & 2.47153 \cdot e^{-08} & 1.5691090196 & 0.001687307 \\
         \hline
     \end{tabular}
@@ -38,9 +39,40 @@ Als Referenz: Das analytische Resultat des Integrals ist $\frac{\pi}{2} \approx 
 Man kann sehr schön sehen, dass die Resultate der Gaussquadratur mit nur wenigen Funktionsauswertungen
 schon sehr geringe Abweichungen vom analytischen Resultat haben, während bei der Trapezregel
 viel mehr Funktionsauswertungen benötigt werden, um die selbe Genauigkeit zu erreichen.
+Man sieht, dass die Genauigkeit der Trapezregel mit $n = 100$ bei der Gaussquadratur bereits mit $n = 7$
+erreicht wird.
+
 \subsection{Programm für Gaussquadratur in Pyhton}
-In Python lässt sich die Gaussquadratur in weniger als $30$ zeilen umsetzen.
-Dafür wird aus dem Modul "scipy" die Klasse "integrate" importiert. 
+In Python lässt sich die Gaussquadratur in gerade mal $25$ Zeilen Code umsetzen.
+Dafür wird aus dem Modul "'scipy"' die Klasse "'integrate"' importiert. 
+Ausserdem wird für die mathematischen Funktionen das Modul "'numpy"' verwendet
+\begin{lstlisting}[float, language=Python]
+    import numpy as np
+    from scipy import integrate
+
+    # Warnungen werden erzeugt, wenn mit der gewaehlten Anzahl
+    # Stuetzstellen die Toleranz  tol=1.49e-08 nicht erreicht werden kann
+
+    # Zu integrierende Funktion
+    func = lambda x: np.sqrt(1 - x ** 2)
+
+    # Anzahl Stuetzstellen in einem Array. 
+    nodes = [1, 2, 3, 4, 5, 7, 10, 20, 30, 40, 50, 100]
+
+    # Quadraturen mit node = Anzahl Stuetzstellen
+    for node in nodes:
+        x = np.linspace(-1, 1, node)
+        y = func(x)
+        print(f"Number of nodes: {node}")
+        # Berechnung mit Gauss-Quadratur
+        print(f"Gauss-Legendre : {integrate.quadrature(func, -1, 1, maxiter=node)}")
+        # Berechnung mit Trapezformel
+        trapez = integrate.trapz(y, x)
+        print(f"Trapezoidal Rule: {trapez}")
+        # Berechnung mit Simpsonscher Regel
+        print(f"Simpson's Rule : {integrate.simps(y, x)}")
+        print()
+\end{lstlisting}
 
 
 \subsection{Fazit}

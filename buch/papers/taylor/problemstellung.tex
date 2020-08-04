@@ -7,7 +7,7 @@
 \label{taylor:section:problemstellung}}
 Um die numerische Approximation an einem konkreten Beispiel zeigen zu können wird hier die logistische Differentialgleichung \eqref{taylor:section:logistifunction} analysiert.
 Es handelt sich hierbei um eine begrenze Wachstumsfunktion. 
-Mit dieser Differentialgleichung können zum Beispiel der Verlauf einer Krankheit, der Lebenszyklus eines Produktes oder auch Zerfallsprozesse beschrieben werden. Die Parameter der logistischen Funktion
+Mit dieser Differentialgleichung können zum Beispiel der Verlauf einer Krankheit, der Lebenszyklus eines Produktes oder auch Zerfallsprozesse beschrieben werden. Die Parameter der logistischen Differentialgleichung (mit Anfangsbedingung)
 \begin{align*}
 	&y' = k\cdot y(L-y) 
 	&y(0) = 0.5
@@ -17,7 +17,7 @@ haben die Bedeutung: $L$ = Endwert und $k$ = Wachstumsrate.
 Wir normieren den Endwert $L$ auf 1.
 Der Endwert entspricht zum Beispiel der Anzahl Infizierten am Ende einer Epidemie.
 In der Abbildung ~\ref{taylor:section:fig:DGLDarstellung} ist zu erkennen, dass der Wachstumsfaktor $k$ bestimmt, wie steil die Funktion wird.
-Somit haben wir nun ein Feld gegeben, indem wir in jedem möglichen Punkt der Funktion eine genau definierte Steigung, bzw. ein genau definiertes $k$ haben.
+Somit haben wir nun ein Richtungsfeld gegeben, indem wir in jedem möglichen Punkt der Ebene eine genau definierte Steigung, bzw. ein genau definiertes $k$ haben.
 Um aber das $k$ und damit die Lösung der Differentialgleichung bestimmen zu können müssten wir diese aufwendig ausrechnen.
 Deshalb macht es in einem solchen Fall Sinn die Funktion mit kleinen Schritten zu erarbeiten.
 
@@ -46,6 +46,7 @@ Wie in Abbildung \ref{taylor:section:fig:DGLDarstellung} nun ersichtlich ist, ka
 	k=\frac{-\ln{(\frac{1}{y}-1)}}{x}
 \end{equation}
 ist also sowohl von $y$ als auch von $x$ abhängig.
+Somit können wir nun also alle gewünschten Ableitungen von $y$ als eine Funktion von $y$ und $x$ ausdrüken.
 
 \section{Das Taylor Verfahren}
 \label{taylor:subsection:Vorgehen}
@@ -53,10 +54,10 @@ Die allgemeine Formel der Einschritttheorie sieht so aus:
 \begin{equation}
 y(x+h) = y(x) + h\cdot f(x,y)
 \end{equation}
-wobei die Funktin $f(x,y)$ der Approximationsfunktion entspricht mit welcher der nächste Punkt berechnet wird.
+wobei die Funktion $f(x,y)$ der Approximationsfunktion entspricht, mit welcher der nächste Punkt berechnet wird.
 
 Beim Taylor Verfahren soll nun also mit kleinen Schritten der Verlauf der Funktion ausgehend von einem Anfangswert ermittelt werden.
-Die Taylor-Reihe
+Die Taylor Reihe
 \begin{equation}
 f_{T}(x,a)
 =
@@ -65,9 +66,9 @@ f_{T}(x,a)
 \end{equation}
 %$f_{T}(x,a)$ = Taylor Funktion
 setzt sich zusammen aus der korrekten Gewichtung der Ableitungen bis zur gewünschten Ordnung.
-Je höher der Grad der Auswertung, desto grösser ist der Bereich um den Auswertungspunkt $a$ in welchem die Taylor Approximation mit der tatsächlichen Funktion übereinstimmt.
-Am Auswertungspunkt wird nun die Taylorfunktion genommen als Approximation der Differentialgleichung um zum nächsten Punkt zu gelangen.
-Dieses Verfahren
+Je höher der Grad der Auswertung der Teylorreihe gewählt wird, desto grösser ist der Bereich um den Auswertungspunkt $a$ in welchem die Approximation mit der logistischen Funktion übereinstimmt.
+Am Auswertungspunkt wird nun mit der beschriebenen Approximation der nächste Punkt berechnet.
+Dieses Verfahren mit der Inkrementfunktion
 \begin{equation}
 y(x+h)
 =
@@ -102,7 +103,7 @@ In der Abbildung~\ref{taylor:section:fig:LogisticFunctionApproximation} sieht ma
 	\hline
 	$n = 1000$ & $6.19312\cdot 10^{-4}$ & $5.23506\cdot 10^{-7}$ & $1.84704\cdot 10^{-7}$ & $1.85763\cdot 10^{-7}$ & $1.85765\cdot 10^{-7}$\\
 	\hline
-	$n = 100000$ & $6.18453e-6$ & $5.13468\cdot 10^{-11}$ & $1.96497\cdot 10^{-11}$ & $1.96507\cdot 10^{-11}$ & $1.96507\cdot 10^{-11}$\\
+	$n = 100000$ & $6.18453\cdot 10^{-6}$ & $5.13468\cdot 10^{-11}$ & $1.96497\cdot 10^{-11}$ & $1.96507\cdot 10^{-11}$ & $1.96507\cdot 10^{-11}$\\
 	\hline
 \end{tabular}
 
@@ -159,12 +160,12 @@ ersichtlich ist, läuft die Lösung der Differentialgleichung im Punkt 0 gegen 0
 Wird nun also diese Differentialgleichung approximiert, dann ist sowieso klar auf welchem Wert wir ungefähr landen werden.
 Um eine aussagekräftige Antwort auf die Frage der Qualität geben zu können wurden in Abbildung \ref{taylor:section:fig:FehlerRungeTaylor} die Fehler über den ganzen Verlauf der Approximation verglichen.
 
-\subsection{Gefähliche Umgebung des 0-Punktes}
+\subsection{Gefähliche Umgebung der Anfangsbedingung}
 \label{taylor:subsection:0Punkt}
 Wie in Abbildung 
 \ref{taylor:section:fig:DGLDarstellung}
-klar dargestellt ist, ist die Ableitung in direkter Umgebung vom Punkt (0, 0.5) zwischen 0 und $\infty$ weil der Punkt eine Polstelle ist.
-Wenn also eine Approximation der Differentialgleichung durch diesen Punkt verläuft, oder auch nur in seine unmittelbare Umgebung kommt kann die Approximation komplett anders verlaufen als man erwarten würde.
+klar dargestellt ist, ist die Ableitung in direkter Umgebung von der gewählten Anfangsbedingung (0, 0.5) zwischen 0 und $\infty$ da der Punkt in der Lösung der Differentialgleichung mit der Anfangsbedingung (0, 0,5) einer Polstelle entspricht.
+Wenn also eine Approximation der Differentialgleichung durch diesen Punkt verläuft, oder auch nur in seine unmittelbare Umgebung kommt kann die Approximation komplett anders weiter verlaufen als man erwarten würde.
 Dies liegt daran, dass selbs kleine Fehler welche eine Approximation zwangsweise haben muss sich in der nähe des Punktes sehr stark auf den weiteren Verlauf auswirken.
 Um dies zu umgehen wurde einfach nicht durch diesen Wendepunkt gegangen, sondern nur bis 0.02 davor.
 Man könnte nun aber die erhaltenen linke Kurve an dem Wendepunkt punktspiegeln und hätte so die zweite Hälfte ebenfalls, welche durch die Spiegelung sowieso redundant und für uns deshalb nicht intressant ist.
