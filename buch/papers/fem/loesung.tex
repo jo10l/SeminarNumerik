@@ -26,25 +26,24 @@ Um möglichst einfach darzustellen, wie das Verfahren der Finiten Elemente vonst
 \label{fem:section:loesungTrans}}
 
 Damit die Integration über das gewählte Teilgebiet bzw. Flächenelement einfacher fällt, wird als Vorbereitung im entsprechenden Fall das gewählte Flächenelement in ein Einheitsdreieck oder in ein Eineheitsparallelogramm transformiert. Ein Dreieck oder Parallelogramm stellt eine Formfunktion dar, über die die gewählte Fläche bzw. Teilgebiet berechnet werden kann. Die gewählte Formfunktion eines Teilgebietes z.B. integrieren des Gebietes über ein Dreieck oder Pallelogramm,  bringt auch den Vorteil, dass die gewählten Formfunktionen gleich behandelt werden können. \\
-Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $ P_2(x_2, y_2)$ und $P3(x_3,y_3)$ kann mit Hilfe der linearen Transformation \eqref{fem:linTransformation}
-
+Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $ P_2(x_2, y_2)$ und $P_3(x_3,y_3)$ kann mit Hilfe der linearen Transformation
 \begin{equation}
 	\begin{split}
-		x = x_1 + (x_2 - x_1)\xi + (x_3 - X_1)\eta \\
+		x = x_1 + (x_2 - x_1)\xi + (x_3 - x_1)\eta \\
 		y = y_1 + (y_2 - y_1)\xi + (y_3 - y_1)\eta
 		\label{fem:linTransformation}
 	\end{split}
 \end{equation}
-in das einfachere Gebiet nämlich dem gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 überführt werden.
+in das einfachere Gebiet nämlich das gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 überführt werden wie in der Abbildung \ref{fig:TransformationEinheitsdreieckBild} dargestellt ist.
 
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.8]{papers/fem/Images/Dreiecke.jpeg}
 	\caption{Transformation in ein Einheitsdreieck}
-	\label{fig:schemNMR_vorlage}
+	\label{fig:TransformationEinheitsdreieckBild}
 \end{figure}
-Die Transformation soll untern den elementaren Regeln der Analysis vorgenommen werden. Nun ist das Flächenelement $dx \, dy$ mit Hilfe der Jacobi Determinante \eqref{fem:JocobiDeterminante} der Transformation zu ersetzen durch \eqref{fem:newTransformation}.
+Nun ist das Flächenelement $dx \, dy$ mit Hilfe der Jacobi Determinante \eqref{fem:JocobiDeterminante} der Transformation zu ersetzen durch \eqref{fem:newTransformation}.
 
 \begin{equation}
 J % 
@@ -62,11 +61,11 @@ J %
 \end{equation}
 Die Determinante dieser Jacobi- Matrix ergibt
 \begin{equation}
-	det(J) = x_1 \cdot y_2 - 2 \cdot x_1 \cdot y_1 + x_2 \cdot y_1 + x_1\cdot y_3 + x_3 \cdot y_1 - x_2 \cdot y_3 - x_3 \cdot y_2
+	\det(J) = x_1 \cdot y_2 - 2 \cdot x_1 \cdot y_1 + x_2 \cdot y_1 + x_1\cdot y_3 + x_3 \cdot y_1 - x_2 \cdot y_3 - x_3 \cdot y_2
 	\label{fem:JocobiDetBerechnet}
 \end{equation}
 \begin{equation}
-			dy \, dy = det(J) \, d\xi \, d\eta
+			dy \, dy = \det(J) \, d\xi \, d\eta
 			\label{fem:newTransformation}
 \end{equation}
 Die Jacobi- Determinante entspricht der doppelten Fläche des Dreiecks. Die partiellen Ableitungen werden gemäss der Kettenregel zu 
@@ -101,6 +100,10 @@ Analog nach der partiellen Ableitung nach $y$ erhält man
 \begin{equation}
 			\xi_y = \frac{x_3 - x_1}{J} \quad \eta_y = -\frac{x_2 - x_1}{J}
 \end{equation}
+Somit vereinfacht sich die Integration über das Einheitsdreieck 
+\begin{equation}
+			\int_{\triangle} u \quad dy \, dx = \int_0^1 \int_0^{1 - \xi} \, ... \, d \eta \, d \xi
+\end{equation}
 
 \subsection{Schritt 1 Minimalproblem bilden}
 
@@ -126,33 +129,39 @@ Nun ist die Bildung des Minimalproblems abgeschlossen. In einem nächsten Schrit
 
 \subsection{Schritt 2 Ansatzfunktionen auf Lösung approximieren}
 
-%Als Ansatzfunktionen stehen diverse Standard- Funktionen in der Ebene zur Verfügung. Sie reichen von einfacheren linearen Termen bishinzu quadratischen oder noch höheren Funktions- Ordnungen. Als Standardverfahren in der Ebene haben sich Flächenelement wie Dreicecken oder Parallelogrammebewährt. Die Wahl der  der Flächen- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
-
-%Die Wahl der Art der Approximationsfunktion wie linear oder quadratisch wird in xXx behandelt.
-
-%Um möglichst einfach darzustellen, wie das Verfahren der Finiten Elemente vonstatten geht, wurde auf eine einfache Approximation mit Einheitsdreiecken und einem linearen Ansatz gewählt. 
-
-
 Die lineare Ansatzfunktion hat wie schon erwähnt die folgende Form
 
 \begin{equation}
 u(x,y) = c_1 + c_2x + c_3y
 \label{fem:equationSchwarzLinear}
-\end{equation}
-Die Ansatzfunktion \ref{fem:equationSchwarzLinear} kann somit direkt in das Minimalproblem \ref{fem:Minimal2D} eingesetzt werden. Ziel ist es, dass die unbekannten Koeffizienten $c_1, c_2 \, $und$ \, c_3$ anhand dieses Verfahrens bestimmt werden.
+\end{equation}.
+Die Ansatzfunktion \eqref{fem:equationSchwarzLinear} kann somit direkt in das Minimalproblem \eqref{fem:Minimal2D} eingesetzt werden. Ziel ist es, dass die unbekannten Koeffizienten $c_1, c_2 \, $und$ \, c_3$ anhand dieses Verfahrens bestimmt werden.
 
 Das Minimalproblem muss noch auf das entsprechende Gebietsintegral angewendet werden. Um diesen Schritt umzusetzen wird ddas Minimalproblem in das Gebietsintegral eingesetzt sprich $\int_{\Omega}$ wird durch das folgende Flächenelement bzw. Flächenintegral des angekündeten Einheitsdreieck ersetzt. 
 
 \begin{equation}
-\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} f(x,y) \, dx\,dy
+\int_0^1 \int_0^{1 - \xi} f(x,y) \, d \eta \, d \xi
 \label{fem:FlaecheDreieck}
 \end{equation}
 Schlussendlich ergibt das Einsatzen der Ansatzfunktion und des Flächenintegrals dann folgenden Ausdruck.
 
 \begin{equation}
-\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} c_1 + c_2x + c_3y \, dx \, dy
+\int_0^1 \int_0^{1 - \xi} c_1 + c_2x + c_3y \, d \eta \, d \xi
 \label{fem:MinimalproblemElement}
 \end{equation}
+@ Hr. Müller\\
+Wäre hier besser gedacht die folgende Formel
+\begin{equation}
+\int_0^1 \int_0^{1 - \xi} u_1 + (u_2 - u_1)\xi + (u_3 - u_1)\eta \, d \eta \, d \xi
+\label{fem:MinimalproblemElement2}
+\end{equation}
+was ich ja dann berechnen sollte und als Lösung das folgende hat
+\begin{equation}
+\frac{1}{6}(u_1 + u_2 + u_3)
+\label{fem:MinimalproblemElement3}
+\end{equation}
+bin hier nicht ganz sicher welche Formel das nun besser wäre
+@ Hr- Müller ende\\
 Wichtig zu verstehen ist, dass dieses Minimalproblem bzw. der Ausdruck \ref{fem:MinimalproblemElement} auf jedes Flächenelement bzw. Teilgebiet angewendet wird. Sprich jedes Element hat eine Ansatzfunktion in Form eines Minimalproblems. Als Beispiel kann vorgestellt werden, dass wenn ein Rechteck mit zwei Dreiecken approximiert wird, das Minimalproblem \ref{fem:MinimalproblemElement} auf jedes der beiden Dreiecke angewendet wird. Je feiner die Auflösung, desto grösser das Gleichungs- System das Schluss endlich gelöst werden muss.
 
 \begin{figure}[h!]
@@ -242,8 +251,8 @@ Die ist auch die Begründung für die später verwendete Formel \eqref{fem:Minim
 Die Matrix $A$ wird gebildet durch die Teilmatrizen eines jeden Flächenelements. Die Teilmatrix eines Flächenelements besteht  aus dem Integral des 1. Terms von \ref{fem:Minimal2TermLinAlg} 
 
 \begin{equation}
-			\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} \left( \begin{array}{c} c_2 \\ c_3\\	
-\end{array} \right)^2 dx \, dy
+			\int_0^1 \int_0^{1 - \xi} \left( \begin{array}{c} c_2 \\ c_3\\	
+\end{array} \right)^2 d\eta \, dxi
 			\label{fem:Minimal2LinAlgA}
 \end{equation}
 was dann zu der entsrechenden Teilmatrix eines Dreiecks führt
@@ -282,7 +291,7 @@ Etwas anders zusammengefasst dargestellt wie die Matrix $A$ aus den Teilmatrizen
 Die Matrix $A$ ist nun bekannt. Es fehlt jedoch noch die Matrix $B$, um das Gleichungs-System zu komplettieren. Die Matrix $B$ wird nun wie folgt definiert. Um die folgende Form zu erhalten muss lediglich der rechte Term von \ref{fem:Minimal2D2Term} für die einzelne Koeffizienten berechnet werden was dann den folgenden Ausdruck ergibt
 
 \begin{equation}
-			\int_a^b \int_c^{d-(d-c)(x-a)/(b-a)} \textcolor{cyan}{c_0^2} + \textcolor{blue}{c_1^2 x^2} + \textcolor{red}{c_2^2 y^2} + \textcolor{green}{2 c_0 c_1 x} + \textcolor{orange}{2 c_0 c_2 y} +\textcolor{purple}{ 2 c_1 c_2 xy} \, dx \, dy
+			\int_0^1 \int_0^{1 - \xi}  \textcolor{cyan}{c_0^2} + \textcolor{blue}{c_1^2 x^2} + \textcolor{red}{c_2^2 y^2} + \textcolor{green}{2 c_0 c_1 x} + \textcolor{orange}{2 c_0 c_2 y} +\textcolor{purple}{ 2 c_1 c_2 xy} \,  d\eta \, d \xi
 			\label{fem:Minimal2LinAlgB}
 \end{equation}
 Nun soll dies wieder in die Matrix- Schreibweise übertragen werden was dann eine Teilmatrix $B$ eines Dreickes entspricht
@@ -343,10 +352,10 @@ Zu erkennen ist, dass nach der Ableitung von $x$ die Produkt- Regel zum tragen k
 Dies kann vereinfacht werden anhand der folgenden Kürzungs- Berechnung:
 
 \begin{equation}
-	\sum_{j} a_{nj} x_j + \sum_{i,j} x_i a_{in} = \sum_{j} a_nj x_j + \sum_{\textcolor{red}{\not{j}} i} a_{n \textcolor{red}{\not{j}} i} x_{\textcolor{red}{\not{j}} i} = 2(Ax)_n
+	\sum_{j} a_{nj} x_j + \sum_{i,j} x_i a_{in} = \sum_{j} a_{nj} x_j + \sum_{\textcolor{red}{\not{j}} i} a_{n \textcolor{red}{\not{j}} i} x_{\textcolor{red}{\not{j}} i} = 2(Ax)_n
 \end{equation}
 
-\subsection{Schritt 5 Gleichungssystem aufstellen}
+\subsection{Schritt 4 Gleichungssystem aufstellen}
 Nun kann das Gleichungssystem aufgestellt werden.
 \begin{equation}
 	2Ac - 2\lambda Bc = 0 \Rightarrow (A-\lambda B)c = 0
