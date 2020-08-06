@@ -64,11 +64,12 @@ Festkommadarstellung.
 \sqrt{10}     & 0 10000000 10010100110001011000010&11.0010100110001011000010\\
 \pi           & 0 10000000 10010010000111111011011&11.0010010000111111011011\\
 \hline
-\sqrt{10}-\pi & 0 01111001 01010010111001110000000& 0.0000010101001011100111\\
+\sqrt{10}-\pi & 0 01111001 01010010111001110000000& 0.00000{\color{red}10101001011100111}\\
 \hline
 \end{tabular}
 \end{center}
-Man kann gut erkennen, dass die Differenz nur 17 signifkante Stellen hat.
+Man kann gut erkennen, dass die Differenz nur 17 signifkante Stellen (rot
+hervorgehoben) hat.
 Bei der nachfolgenden Darstellung als Gleitkommazahl werden 7 Nullen
 hinzugefügt, die aber nichts mit der tatsächlichen Differenz 
 $\sqrt{10}-\pi$ zu tun haben.
@@ -96,7 +97,9 @@ P(a\le X \le b)
 \Phi(b) - \Phi(a).
 \]
 Die Funktion $\Phi(x)$ wird in vielen Bibliotheken nicht direkt zur
-Verfügung gestellt, oft ist nur die sogenannte Fehlerfunktion
+Verfügung gestellt, oft ist nur die sogenannte {\em Fehlerfunktion}
+\index{Fehlerfunktion}%
+\index{$\operatorname{erf}(x)$}%
 \[
 \operatorname{erf}(x)
 =
@@ -118,12 +121,11 @@ $\Phi(x)$ den Ausdruck
 \\
 &= \frac12\biggl(1 + \operatorname{erf}\biggl(\frac{x}{\sqrt{2}}\biggr)\biggr),
 \end{align*}
-die Fehlerfunktion kann also zur Berechnung der gesuchten Wahrscheinlichkeit
-verwendet werden.
+die Fehlerfunktion $\operatorname{erf}(x)$ kann also zur Berechnung der
+gesuchten Wahrscheinlichkeit verwendet werden.
 
 In der C-Bibliothek stehen Funktionen zur Berechnung von $\sqrt{2}$ und
-$\operatorname{erf}(x)$ für alle zur Verfügung stehenden Datentypen zur
-Verfügung.
+$\operatorname{erf}(x)$ für alle zur Verfügung stehenden Datentypen bereit.
 Die Tabelle~\ref{buch:table:erfcancellation}
 zeigt die Resultate\footnote{Diese Resultate wurden
 mit dem Programm \texttt{normal.cpp} Im Verzeichnis
@@ -154,14 +156,17 @@ unbrauchbar.
 \label{buch:table:erfcancellation}}
 \end{table}
 
-Da die Werte von $\operatorname{erf}(\sqrt{2}b)$ und
+Da die Werte von $\operatorname{erf}(\sqrt{2}a)$ und
 $\operatorname{erf}(\sqrt{2}b)$ fast gleich gross sind, findet 
 starke Auslöschung statt.
 Beim Datentyp \texttt{float} ist überhaupt kein Unterschied mehr
 feststellbar.
 
 Um dieses Problem in den Griff zu bekommen, stellt die C-Bibliothek
-zusätzlich die sogenannte komplementäre Fehlerfunktion
+zusätzlich die sogenannte {\em komplementäre Fehlerfunktion}
+\index{Fehlerfunktion, komplementäre}%
+\index{komplementäre Fehlerfunktion}%
+\index{$\operatorname{erfc}(x)$}%
 \[
 \operatorname{erfc}(x) = 1-\operatorname{erf}(x)
 \qquad\Rightarrow\qquad
@@ -172,17 +177,17 @@ Damit kann die Wahrscheinlichkeit natürlich auch berechnet werden:
 \[
 P(a\le X \le b)
 =
-\operatorname{erf}(\sqrt{2}b)
+\operatorname{erf}(\!\sqrt{2}b)
 -
-\operatorname{erf}(\sqrt{2}a)
+\operatorname{erf}(\!\sqrt{2}a)
 =
-(1-\operatorname{erfc}(\sqrt{2}b))
+(1-\operatorname{erfc}(\!\sqrt{2}b))
 -
-(1-\operatorname{erfc}(\sqrt{2}a))
+(1-\operatorname{erfc}(\!\sqrt{2}a))
 =
-\operatorname{erfc}(\sqrt{2}a)
+\operatorname{erfc}(\!\sqrt{2}a)
 -
-\operatorname{erfc}(\sqrt{2}b).
+\operatorname{erfc}(\!\sqrt{2}b).
 \]
 Für grosse Werte von $x$ streben die Werte dieser Funktion gegen $0$,
 es kann also nicht mehr passieren, dass man einen kleinen Wert zu finden
@@ -256,23 +261,29 @@ Datentyp            & e^{-30} \\
 exakt               &  9.3576229688\cdot 10^{-14}\\
 \hline
 \end{tabular}
+\caption{Resultate der Summe der Taylorreihe ausgeführt mit verschiedenen
+Datentypen zeigt, dass die Genauigkeit der Resultate infolge Verschmierung
+vollständig ausgelöscht worden ist.
+\label{buch:effekte:taylorsumme}}
 \end{table}
 
-Für negative Exponenten alternieren die Terme, werden zwischenzeitlich
-sehr gross, das Resultat ist aber ein sehr kleiner Wert.
+
+Für negative Exponenten erwartet man ein sehr kleines Resultat.
+Die Terme der Taylor-Reihe haben alternierende Vorzeichen und werden
+zwischenzeitlich sehr gross.
 Im Laufe der Rechnung müssen sich also grosse Terme wieder wegheben.
 Dies ist in Abbildung~\ref{buch:figure:expversch} illustriert.
-Dort sind die Werte $e^{30}$ und $e^{-30}$ auf einer logarithmischen
+Dort sind die Werte $e^{30}$ und $e^{-30}=1/e^{30}$ auf einer logarithmischen
 Skala vertikal als {\color{red}rote} Linien eingezeichnet.
 Die einzelnen Summanden der Reihe sind in {\color{blue}blau} dargestellt.
 
 \bgroup
 \definecolor{darkgreen}{rgb}{0,0.6,0}
-Die {\color{darkgreen}grünen} Linien zeigen, welche Genauigkeit mit verschiedenen Datentypen
-überhaupt noch möglich ist.
+Die {\color{darkgreen}grünen} Linien zeigen, welche Genauigkeit mit
+verschiedenen Datentypen überhaupt noch möglich ist.
 Der \texttt{float}-Typ hat eine Mantisse von 24 bit, eine Zahl $m$ ist
 daher nur unterscheidbar von $m(1+\epsilon)$, wenn $\epsilon > 2^{-24}$.
-Dies entspricht $24*\log_{10}(2) = 7.22$ Dezimalstellen.
+Dies entspricht $24\cdot \log_{10}(2) = 7.22$ Dezimalstellen.
 Die {\color{darkgreen}grüne} Linie für den \texttt{float}-Typ ist daher
 $7.22$ unter dem Maximum der Terme Exponentialreihe eingetragen.
 
@@ -286,12 +297,21 @@ befinden sich ungefähr dort, wo die gefundenen Werte
 eingetragen werden müssten.
 \egroup
 
+In Tabelle~\ref{buch:effekte:taylorsumme} sind die Resultate der
+Summierung der Reihe mit verschiedenen Datentypen zusammengestellt.
+Alle Summen weichen um mehrere Grössenordnungen vom exakten Wert ab.
+
 \subsubsection{Summationsreihenfolge}
 Das Beispiel zur Exponentialfunktion hat gezeigt, wie Verschmierung
 die Präzision des Resultates vollständig ausgelöscht hat.
 Ein weniger dramatischer Genauigkeitsverlust kann schon bei wenigen
 Summanden stark unterschiedlicher Grössenordnung auftreten, wie das
 folgende Beispiel aus \cite{buch:kahan-summation} zeigt.
+
+Es soll die Summe $10^4 + \pi + e$ berechnet werden.
+Die Rundung kann entweder ganz am Schluss oder nach jeder einzelnen
+Addition erfolgen, so wie es der IEEE-754-Standard verlangt.
+Es ergibt sich:
 \begin{center}
 \begin{tabular}{>{$}r<{$}r>{$}r<{$}}
  \textrm{exakte Rechnung}      &\hspace*{2cm}&\textrm{nacheinander} \\[5pt]
@@ -307,7 +327,7 @@ folgende Beispiel aus \cite{buch:kahan-summation} zeigt.
 \end{center}
 Links ist die exakte Addition mit Rundung auf sechs signifikante
 Stellen am Schluss durchgeführt, rechts steht die Addition mit Rundung 
-nach jedem Term.
+nach jeder Operation.
 Bereits nach drei Termen zeigt sich ein Unterschied in der letzten Stelle,
 der Verschmierung zuzuschreiben ist.
 
@@ -330,6 +350,8 @@ grösserer Terme mit kleinerem $k$ verschwinden im neuen Rundungsfehler
 verschwinden.
 Dies geschieht allerdings nur, wenn die Beträge der Terme schneller 
 wachsen als die Rundungsfehler in den kleinen Termen.
+Trotzdem ist es eine gute Idee, eine grosse Summe beginnend bei den
+kleinsten Termen zu summieren.
 
 \subsubsection{Kahan-Summationsalgorithmus}
 Der Kahan-Summationsalgorithmus versucht, über die sich ansammelnden
@@ -338,7 +360,7 @@ Rundungsfehler in den niederwertigen Stellen in einer separaten
 Variable Buch zu führen.
 Um das Prinzip zu verstehen, sei also $s_{n-1}$ eine Teilsumme und $a_n$ der
 nächste Term der zur Summe hinzugefügt werden soll. 
-Die Summe $s_n=s_{n-1} + t_n$ wird natürlich gerundet.
+Die Summe $s_n=s_{n-1} + a_n$ wird natürlich gerundet.
 Die Differenz $c_n = (s_n - s_{n-1}) - a_n$, genau in der Reihenfolge
 der Klammern ausgewertet, enthält die durch Rundung verlorenen Stellen.
 
@@ -350,9 +372,9 @@ und erhalten die Summe $s_{n+1} = s_n + \bar{a}_{n+1}$.
 Natürlich können wir auch hier wieder den Fehler als
 $c_{n+1} = (s_{n+1} - s_{n}) - \bar{a}_{n+1}$ berechnen.
 Damit erhalten wir den Algorithmus in
-Abbildung~\ref{buch:list:kahan-algorithmus}.
+Listing~\ref{buch:list:kahan-algorithmus}.
 \lstinputlisting[style=C,float,caption={Kahan-Summations-Algorithmus zur
-Vermeidung sich akkumulierender Runungsfehler.},label={buch:listing:kahan-algorithms}]{chapters/10-arithmetik/kahan.c}
+Vermeidung sich akkumulierender Runungsfehler.},label={buch:listing:kahan-algorithmus}]{chapters/10-arithmetik/kahan.c}
 Er verwendet die Funktion \texttt{a(i)}, welche den Term mit Index $i$
 der Summe berechnet.
 Die Kahan-Summation vervierfacht die Anzahl der Additionen hat aber das
@@ -365,9 +387,15 @@ Die harmonische Reihe
 h_n
 =
 \sum_{k=1}^n \frac{1}{k}
-> \int_1^{n+1} \frac1x\,dx = \log(n+1)
 \]
-divergiert, aber sehr langsam.
+kann gegen unten abgeschätzt werden mit Hilfe des Integrals
+\[
+\sum_{k=1}^n \frac1k
+>
+\int_1^{n+1} \frac1x\,dx = \log(n+1),
+\]
+welches divergiert.
+Die Folge $h_n$ divergiert also, aber sehr langsam.
 Beim numerischen Aufsummieren gibt es ausgiebig Gelegenheit für 
 Genauigkeitsverlust.
 Am akutesten ist der Verlust, wenn man die Summe mit dem grössten
@@ -392,7 +420,7 @@ mit verschiedenen Methoden.
 
 Die Resultate der Berechnung von $h_{10^8}$ mit dem \texttt{float}
 Datentyp sind in Tabelle~\ref{buch:table:kahan} zusammengestellt.
-Die naheliegende Summe beginnend beim ersten Term führt auf ein
+Die naheliegende Summierung beginnend beim ersten Term führt auf ein
 unbrauchbares Resultat.
 Beginnt man mit dem kleinsten Term, könnten die Rundungsfehler durch
 die späteren grösseren Terme übertönt werden, leider divergiert die
