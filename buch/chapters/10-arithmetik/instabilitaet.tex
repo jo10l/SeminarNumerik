@@ -29,13 +29,13 @@ Aber
 \[
 f'(x) = \frac{3x^2}{a}
 \quad\Rightarrow\quad
-f'(\sqrt{a}) = \frac{3\sqrt{a}^2}{a}=3,
+f'(\!\sqrt{a}) = \frac{3\sqrt{a}^2}{a}=3,
 \]
 die Iterationsfolge wird also niemals konvergieren.
 Im Gegenteil, der Fehler wird in jeder Iteration um den Faktor $3$
 anwachsen.
 
-Der \texttt{float}-Gleitkommatyp verewendet eine Mantisse von 23 bit,
+Der \texttt{float}-Gleitkommatyp verwendet eine Mantisse von 23 bit,
 das niederwertigste Bit hat also die Wertigkeit $2^{-23}$.
 Eine Approximation von $\sqrt{a}$ wird daher, sofern sie nicht
 exakt ist, beim Speichern als \texttt{float}-Zahl einen Fehler
@@ -102,14 +102,14 @@ Dann bilden wir die nächsten Nachbarn, die sich nur in den letzten
 zwei Bits unterscheiden, die letzten fünf Bits der Mantisse dieser
 Zahlen sind in der obersten Kopfzeile der Tabelle gezeigt.
 In der zweiten Kopfzeile sieht man, dass diese Unterschiede so klein
-sind, dass sie nur Gerade die Rundung in der sechsten dezimalen
+sind, dass sie nur gerade die Rundung in der sechsten dezimalen
 Nachkommastelle beinflussen können.
 Der Unterschied dieser Startwerte zum Maschinen-Wert für $\sqrt{2}$
 ist in der dritten Kopfzeile dargestellt.
 
 Im unteren Teil der Tabelle wird dann ausgehend von jedem dieser Startwerte
 die Iterationsfolge mit der Funktion $f(x)=x^3/2$ gebildet.
-Spätestens nach der Iteration beginnen sich die Werte vom Fixpunkt zu
+Spätestens nach der zweiten Iteration beginnen sich die Werte vom Fixpunkt zu
 entfernen, nach 16 Iterationen sind die Abweichungen von der 
 Grössenordnung $1$ wie in der Überschlagsrechnung weiter oben
 vorhergesagt.
@@ -134,15 +134,16 @@ für festes $a>1$ und für ganze Zahlen $n$ mit $1\le n\le 15$ berechnet
 werden.
 Da im Interval $[0,1]$ gilt $x^{n+1}>x^n$ ist $I_n$ eine monoton
 abnehmende Folge.
-Es ist auch klar, dass $\lim_{n\to\infty}=0$.
+Es ist auch klar, dass $\lim_{n\to\infty}I_n=0$.
 
 Das Integral ist im Prinzip nicht schwierig zu berechnen, wenn man im
 Integranden die Polynom-Division ausführt:
-\begin{align*}
+\begin{align}
 \frac{x^n}{x+a}
 &=
 x^{n-1} -ax^{n-2}+a^2x^{n-3}-\dots +(-1)^n xa^{n-2} +(-1)^{n-1}a^{n-1}
 +(-1)^n\frac{a^n}{a+x}
+\notag
 \\
 \int_0^1 \frac{x^n}{x+a}\,dx
 &=
@@ -153,8 +154,9 @@ x^{n-1} -ax^{n-2}+a^2x^{n-3}-\dots +(-1)^n xa^{n-2} +(-1)^{n-1}a^{n-1}
 +(-1)^n\frac{a^{n-2}}{2}
 +(-1)^{n-1}a^{n-1}
 +\log(1+a)-\log a.
-\qedhere
-\end{align*}
+\label{buch:numerik:instabil:summe}
+\end{align}
+Jeder Term ist ein elementares Integral.
 \end{beispiel}
 
 \begin{table}
@@ -194,7 +196,8 @@ In der dritten Spalte die Resultate der stabilen Rückwärtsiteration.
 \label{buch:table:Iiteration}}
 \end{table}
 
-Wenn $n$ gross ist, ist dies eine ziemlich aufwendig Rechnung.
+Wenn $n$ gross ist, ist \eqref{buch:numerik:instabil:summe}
+eine ziemlich aufwendig Rechnung.
 Da man das Integral für alle $n$ haben will, bietet sich eine
 Rekursionsformel an.
 Es ist nämlich
@@ -212,16 +215,17 @@ I_n
 =
 \frac1{n+1} - a I_{n-1}.
 \end{align*}
-Wenn man also erst $I_0$ berechnet hat, kann man mit dieser 
+Wenn man also $I_0$ berechnet hat, dann kann man mit dieser 
 Rekursionsformel alle anderen $I_n$ berechnen.
 $I_0$ ist nicht schwierig zu berechnen, es ist
 \[
 I_0 = \int_0^1 \frac{1}{x+a}\,dx = \log(1+a) - \log a = \log\frac{1+a}a.
 \]
 
-Nehmen wir an, dass ausschliesslich bei der Berechnung von $I_0$ ein
-unvermeidlicher Rundungsfehler der Grösse $\epsilon$ passiert und dass
-alle anderen Operationen exakt ausgeführt werden können.
+Um die Empfindlichkeit der Rekursion auf Rundungsfehler zu untersuchen,
+nehmen wir vereinfachend an, dass ausschliesslich bei der Berechnung von
+$I_0$ ein unvermeidlicher Rundungsfehler der Grösse $\varepsilon$ passiert
+und dass alle folgenden Operationen exakt ausgeführt werden können.
 Da der Logarithmus eine transzendente Funktion ist, werden fast alle Werte
 des Logrithmus bei Speichern als Gleitkommazahl gerundet werden müssen.
 Wir müssen jetzt also die Rekursionsfolge $I^*_n$ ausgehend von
@@ -248,14 +252,16 @@ Für $a=10$ bedeutet dies, dass in jedem Schritt eine Dezimalstelle
 verloren geht.
 
 Die Instabilität rührt daher, dass der Fehler in jedem Schritt mit
-$a$ multipliziert wird.
+$a>1$ multipliziert wird.
+Wir könnten versuchen, die Rekursion umzukehren, so dass durch $a$ 
+dividiert wird, so könnte das Problem möglicherweise behoben werden.
 Indem wir nach $I_{n-1}$ auflösen, erhalten wir die Rekursionsformel
 \[
 I_{n-1} = \frac1{a} \biggl(
 \frac{1}{n+1} -I_n\biggr).
 \]
-In dieser Rekursion wird in jedem Schritt durch $a$ dividiert, man
-darf daher davon ausgehen, dass in jeder Iteration 
+In dieser Rekursion wird tatsächlich in jedem Schritt durch $a$ dividiert,
+man darf daher davon ausgehen, dass in jeder Iteration 
 $\log_2a$ Binärstellen Genauigkeit gewonnen werden.
 
 Allerdings muss man für diese Iteration einen der Werte $I_n$ bereits
