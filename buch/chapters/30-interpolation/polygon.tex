@@ -14,7 +14,7 @@ In diesem Abschnitt soll daher die folgende Aufgabe gelöst werden.
 
 \begin{aufgabe}
 \label{buch:aufgabe:basicinterpolation}
-Gegeben $n+1$ Stützstellen 
+Gegeben $n+1$ sogenannte {\em Stützstellen}
 \[
 a=x_0<x_1<x_2<\cdots<x_{n-1}<x_n=b
 \]
@@ -39,7 +39,8 @@ also das Problem mit nur zwei Stützstellen zu lösen.
 \label{buch:satz:lineareinterpolation}
 Die einzige auf dem Intervall $[x_i,x_{i+1}]$ definierte lineare Funktion 
 $f(x)$ mit Funktionswerten $f(x_i)=f_i$ und $f(x_{i+1}) = f_{i+1}$
-hat die Werte
+hat im Punkt $x\in[x_i,x_{i+1}]$
+den Wert
 \begin{equation}
 f(x)
 =
@@ -50,15 +51,15 @@ f(x)
 \frac{x_{i}-x}{x_i-x_{i+1}} f_{i+1}
 =
 f_il_i(x) + f_{i+1}l_{i+1}(x)
-\quad x\in[x_i,x_{i+1}]
 \label{buch:eqn:lineareinterpolation}
 \end{equation}
 mit den linearen Funktionen
-\[
+\begin{equation}
 l_i(x) = \frac{x-x_{i+1}}{x_i-x_{i+1}}
 \qquad\text{und}\qquad
 l_{i+1}(x) = \frac{x_i-x}{x_i-x_{i+1}}.
-\]
+\label{buch:eqn:linl0l1}
+\end{equation}
 \end{satz}
 
 \begin{proof}[Beweis von Satz~\ref{buch:satz:lineareinterpolation}]
@@ -108,15 +109,16 @@ auch durch den Punkt $(x_{i+1},f_{i+1})$.
 Funktion $f\colon[0,6]\to\mathbb R$ mit Stützstellen $0,1,\dots,6$
 \label{buch:figure:polygonbasis}}
 \end{figure}
-Wendet man das Resultate~\ref{buch:satz:lineareinterpolation} auf
-jedes Teilintervall an, entsteht eine Interpolationsfunktion, deren
+\eqref{buch:eqn:linl0l1}
+Wendet man das Resultate von Satz~\ref{buch:satz:lineareinterpolation}
+auf jedes Teilintervall an, entsteht eine Interpolationsfunktion, deren
 Graph ein Polygonzug ist.
 Eine solche Funktion lässt sich einfacher beschreiben mit Hilfe
-der Interpolationsfunktionen mit den speziellen werten
+der Interpolationsfunktionen mit den speziellen Werten
 \begin{equation}
 l_i(x_j) = \delta_{ij} =\begin{cases}
 1&\qquad i=j\\
-0&\qquad\text{sonst}
+0&\qquad\text{sonst.}
 \end{cases}
 \label{buch:eqn:interpolation:basis}
 \end{equation}

@@ -7,7 +7,7 @@
 \label{buch:section:hermite}}
 \rhead{Hermite-Interpolation}
 Das Lagrange-Interpolationspolynom nimmt zwar in umittelbarer Nähe der 
-Stützstellen zuverlässig Funktsionswerte nahe den gegeben Werten an,
+Stützstellen zuverlässig Funktionswerte nahe den gegeben Werten an,
 doch insbesondere gegen den Rand des Intervals können die oft beobachteten
 Oszillationen eine schlechte Approximation bewirken.
 Im Gegensatz zur Taylor-Reihe, deren Ableitung mindestens in der Nähe des
@@ -42,7 +42,7 @@ h(x_i) = f_i,\quad h^{(k)}(x_i)=s_i^{(k)},\quad 0\le i \le n, 1\le k\le m.
 \end{equation}
 \end{aufgabe}
 Die Aufgabenstellung formuliert $N=(n+1)(k+1)$ Bedingungen für das Polynom $h$,
-es braucht also im Allgemeinen Polynom mindestens vom Grade $N=(n+1)(k+1)$,
+es braucht also im Allgemeinen ein Polynom mindestens vom Grade $N=(n+1)(k+1)$,
 um alle diese Bedingungen erfüllen zu können.
 Ein elementarer Ansatz könnte sein, eine Polynom in der Form
 $a_Nx^N+a_{N-1}x^{N-1}+\dots+a_1x+a_0$ anzusetzen, die Bedingungen
@@ -50,7 +50,7 @@ $a_Nx^N+a_{N-1}x^{N-1}+\dots+a_1x+a_0$ anzusetzen, die Bedingungen
 die Koeffizienten auszuschreiben und das Gleichungssystem zu lössen.
 Dieses Vorgehen ist allerdings sehr aufwendig und numerisch nicht besonders
 stabil.
-Ein weg analog zur Bestimmung des Lagrange-Interpolationspolynomes in
+Ein Weg analog zur Bestimmung des Lagrange-Interpolationspolynomes in
 Abschnitt~\ref{buch:section:interpolation:bestimmung}
 ist daher angezeigt.
 
@@ -63,7 +63,8 @@ Wir führen die Konstruktion nur für den Fall $m=1$ durch, also für
 Interpolationspolynome, die den Funktionswerten und ersten Ableitungen
 übereinstimmen.
 Wie in Abschnitt~\ref{buch:section:interpolation:bestimmung} suchen
-wir zunächst wieder eine Lösung des speziellen Interpolationsproblems.
+wir zunächst wieder eine Lösung des folgenden
+{\em speziellen Interpolationsproblems}.
 
 \begin{aufgabe}[Spezielles Hermite-Interpolationsproblem]
 Gegeben Stützstellen
@@ -92,7 +93,7 @@ doppelte Nullstelle hat, ist das Produkt
 \[
 (x-x_0)^2 (x-x_1)^2 (x-x_2)^2 \dots (x-x_{n-1})^2 (x-x_n)^2.
 \]
-Die Polynome $h^1_j$ haben in jeder Stützstelle ausser in $x_j$
+Die gesuchten Polynome $h^1_j$ haben in jeder Stützstelle ausser in $x_j$
 ein doppelte Nullstelle, die Nullstelle in $x_j$ muss einfach sein.
 Ein solches Polynom kann man erhalten, indem man einen der
 Faktoren $(x-x_j)$ weglässt, oder zu
@@ -133,10 +134,12 @@ Nullstelle.
 Das Produkt $p_j(x)$ teilt diese Eigenschaft.
 Da es vom Grad $2n$ ist, haben wir nur die Freiheit, einen Linearfaktor
 der Form $(u_j(x-x_j)+v_j)$ hinzuzufügen, um $h_j$ zu erhalten.
-Es müssen also $u_j$ und $v_j$ so gewählt werden, dass
+Es müssen also $u_j$ und $v_j$ so gewählt werden, dass für
 \begin{equation}
 h_j(x)=(u_j(x-x_j)+v_j) p_j(x)
-\qquad\Rightarrow\qquad
+\qquad
+\text{die Gleichungen}
+\qquad
 \left\{
 \quad
 \begin{aligned}
@@ -146,7 +149,7 @@ h'_j(x_j) &= u_j p_j(x_j) + v_j p'_j(x_j)=0
 \right.
 \label{buch:equation:hermite:4711}
 \end{equation}
-gilt.
+gelten.
 Aus der ersten Gleichung folgt $ v_j = 1/p_j(x_j) = c_j^2$, aus der zweiten
 \[
 u_j
@@ -224,7 +227,7 @@ p_0'(x) = 2(x-x_1)
 \qquad\text{und}\qquad
 p_1'(x) = 2(x-x_0)
 \]
-uund damit ist
+und damit ist
 \[
 u_0
 =
@@ -238,7 +241,7 @@ u_1
 =
 -\frac{p_1'(x_1) }{(x_0-x_1)^4}
 =
-\frac{2}{(x_0-x_1)^3}
+\frac{2}{(x_0-x_1)^3}.
 \]
 Aus \eqref{buch:equation:hermite:4711} folgt jetzt
 \begin{align*}
@@ -252,7 +255,7 @@ h_1(x)
 &=
 (u_1(x-x_1)+v_1)(x-x_0)^2
 =
-\frac{2}{(x_0-x_1)^3}(x-x_1)(x-x_0)^2 +\frac{(x-x_0)^2}{(x_0-x_1)^2}
+\frac{2}{(x_0-x_1)^3}(x-x_1)(x-x_0)^2 +\frac{(x-x_0)^2}{(x_0-x_1)^2}.
 \end{align*}
 
 \subsubsection{Der Spezialfall $x_0=0$}
@@ -266,7 +269,7 @@ h_1^1(x) &= \frac{x^2(x-m)}{m^2}
 \\
 h_0(x)   &= \frac{2x(x-m)^2}{m^3} +\frac{(x-m)^2}{m^4}
 &&&
-h_1(x)   &= -\frac{2x^2(x-m)}{m^3} +\frac{x^2}{m^4}
+h_1(x)   &= -\frac{2x^2(x-m)}{m^3} +\frac{x^2}{m^4}.
 \end{aligned}
 \end{equation}
 
@@ -368,19 +371,21 @@ wir auch noch die zweiten Ableitung des Hermite-Interpolationspolynoms
 im Fall zweier Stützstellen am Rande des Intervals.
 Wir tun dies für die Polynome~\eqref{buch:equation:hermite:h}
 und kümmern uns später darum, was auf anderen Intervallen passiert.
+Wir erhalten die Werte
 \[
 \begin{aligned}
-H_0''(0)                &= -6 &&&  H_0''(1)                &=  6
+H_0''(0)                &= -6 &&&  H_0''(1)                &=  \phantom{-}6
 \\
-H_1''(0)                &=  6 &&&  H_1''(1)                &= -6
+H_1''(0)                &=\phantom{-}6 &&&  H_1''(1)       &= -6
 \\
-H_0^{1\prime\prime}(0)  &= -4 &&&  H_0^{1\prime\prime}(1)  &=  2
+H_0^{1\prime\prime}(0)  &= -4 &&&  H_0^{1\prime\prime}(1)  &=  \phantom{-}2
 \\
-H_1^{1\prime\prime}(0)  &= -2 &&&  H_1^{1\prime\prime}(1)  &=  4
+H_1^{1\prime\prime}(0)  &= -2 &&&  H_1^{1\prime\prime}(1)  &=  \phantom{-}4.
 \end{aligned}
 \]
 Unter Verwendung der Substition $x\to (x-x_0)/m$ können wir jetzt auch
-die Werte für die zweiten Ableitungen an den Intervallenden für bestimmen.
+die Werte für die zweiten Ableitungen an den Intervallenden für $h_j$ und
+$h^1_j$ bestimmen.
 Dazu berechnen wir erst die zweite Ableitung einer Funktion $f((x-x_0)/m)$:
 \[
 \frac{d^2}{dx^2} f((x-x_0)/m)
@@ -403,7 +408,7 @@ h_0^{1\prime\prime}(x_0) &=           -4/m
 h_0^{1\prime\prime}(x_1) &= \phantom{-}2/m \\
 h_1^{1\prime\prime}(x_0) &=          - 2/m
 &&\text{und}&
-h_1^{1\prime\prime}(x_1) &= \phantom{-}4/m 
+h_1^{1\prime\prime}(x_1) &= \phantom{-}4/m.
 \end{aligned}
 \]
 

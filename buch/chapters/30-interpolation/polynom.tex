@@ -6,13 +6,13 @@
 \section{Interpolationspolynom
 \label{buch:section:interpolationspolynom}}
 \rhead{Lagrange-Interpolationspolynome}
-In diesem Abschnitt wird das folgende Problem gelöst.
+In diesem Abschnitt wird die folgende Aufgabe gelöst.
 \begin{aufgabe}[Interplations-Polynom]
 Gegeben Stützstellen
 \[
 a=x_0<x_1<x_2<\dots < x_{n-1}<x_n=b
 \]
-und Funktionswerte $f_i, 0\le i\le n$, finde ein Polynome $l(x)$
+und Funktionswerte $f_i, 0\le i\le n$, finde ein Polynom $l(x)$
 mit der Eigenschaft $l(x_i)=f_i$ für alle $i=0,1,\dots n$.
 \end{aufgabe}
 Gegeben sind also $n+1$ Bedingungen, die das Polynom erfüllen muss.
@@ -29,12 +29,13 @@ ansetzen und die Stützstellen einsetzen.
 Lösung des Gleichungssystem
 \begin{equation}
 \begin{linsys}{5}
-a_Nx_0^N &+& a_{N-1}x_0^{N-1} &+& \dots &+& a_1x_0 &+& a_0x_0 &=& f_0 \\[5pt]
-a_Nx_1^N &+& a_{N-1}x_1^{N-1} &+& \dots &+& a_1x_1 &+& a_0x_1 &=& f_1 \\[5pt]
+{\color{red}a_N}x_0^N &+& {\color{red}a_{N-1}}x_0^{N-1} &+& \dots &+& {\color{red}a_1}x_0 &+& {\color{red}a_0}x_0 &=& f_0 \\[5pt]
+{\color{red}a_N}x_1^N &+& {\color{red}a_{N-1}}x_1^{N-1} &+& \dots &+& {\color{red}a_1}x_1 &+& {\color{red}a_0}x_1 &=& f_1 \\[5pt]
 \vdots   & &    \vdots        & & \ddots& & \vdots & & \vdots & & \vdots\\[5pt]
-a_Nx_n^N &+& a_{N-1}x_n^{N-1} &+& \dots &+& a_1x_n &+& a_0x_n &=& f_n 
+{\color{red}a_N}x_n^N &+& {\color{red}a_{N-1}}x_n^{N-1} &+& \dots &+& {\color{red}a_1}x_n &+& {\color{red}a_0}x_n &=& f_n 
 \end{linsys}
 \end{equation}
+für die Koeffizienten $\color{red}a_k$
 liefert dann die gesuchten Koeffizienten.
 Dieser Weg ist allerdings sehr aufwendig, die Lösung eines linearen
 Gleichungssystems mit dem Gauss-Algorithmus benötigt $O(n^3)$ Operationen.
@@ -101,7 +102,7 @@ l_0(x) = \frac{x_1-x}{x_1-x_0}
 \qquad\text{und}\qquad
 l_1(x) = \frac{x-x_0}{x_1-x_0}
 \]
-haben die die geforderten Eigenschaften.
+haben die geforderten Eigenschaften.
 Die gesuchte Interplationsfunktion ist daher
 \[
 p(x)
@@ -117,13 +118,15 @@ die Punkte $(x_0,f_0)$ und $(x_1,f_1)$.
 Ein Polynom vom Grad $n+1$, welches in {\em allen} Stützstellen verschwindet,
 ist leicht zu finden, es ist 
 \[
+l(x)
+=
 (x-x_0)(x-x_1)(x-x_2)\cdots (x-x_{n-1})(x-x_n).
 \]
 Ein Polynom, welches nur an der Stützstelle $x_j$ {\em nicht} verschwindet,
 ensteht, indem man den Faktor $(x-x_j)$ weglässt, es hat den Grad $n$.
 Wir führen dafür die Notation
 \[
-(x-x_0)(x-x_1)(x-x_2)\cdots \widehat{(x-x_j)}\cdots (x-x_{n-1}(x-x_n),
+(x-x_0)(x-x_1)(x-x_2)\cdots \widehat{(x-x_j)}\cdots (x-x_{n-1})(x-x_n),
 \]
 der Hut bedeutet, dass dieser Faktor weggelassen werden soll.
 Allerdings hat dieses Polynom nicht den geforderten Wert $1$, man muss es
@@ -134,7 +137,7 @@ l_j(x)
 =
 c_j(x-x_0)(x-x_1)(x-x_2)\cdots \widehat{(x-x_j)}\cdots (x-x_{n-1}(x-x_n).
 \]
-Einesetzen von $x_j$ ergibt
+Einsetzen von $x_j$ ergibt
 \[
 l_j(x_j) = 1 = 
 c_j(x_j-x_0)(x_j-x_1)(x_j-x_2)\cdots \widehat{(x_j-x_j)}\cdots(x_j-x_{n-1})(x_j-x_n),
@@ -147,7 +150,7 @@ c_j = \prod_{i=0\atop i\ne j}^n \frac{1}{x_j-x_i}.
 \begin{beispiel}
 Man finde ein Polynome, welches $l(0)=l(1)=0$ und $l(\frac12)=1$
 erfüllt.
-Wegen $f_0=f_2=0$ ist nur das Polynome $l_1$ zu ermitteln, es ist
+Wegen $f_0=f_2=0$ ist nur das Polynom $l_1$ zu ermitteln, es ist
 \[
 l(x) = l_1(x)
 =
@@ -219,7 +222,7 @@ mit $f(a)=f(b)$, dann gibt es einen Punkt $\xi\in(a,b)]$ im Inneren
 des derart, dass $f'(\xi)=0$.
 \end{satz}
 
-Der Satz von Rolle ist eine selbstverständlichkeit, wenn die Ableitung
+Der Satz von Rolle ist eine Selbstverständlichkeit, wenn die Ableitung
 $f'(x)$ stetig ist, doch dies wird nicht vorausgesetzt, es wird nur
 verlangt, dass die Ableitung existiert.
 Ausserdem macht der Satz eine Aussage darüber, dass die Zwischenstelle
@@ -233,7 +236,7 @@ von $f(a)$ verschieden.
 Wir nehmen an $\xi\in[a,b]$ sei ein Maximum mit dieser Eigenschaft,
 das Argument für das Minimum ist völlig analog.
 Wegen $f(\xi)>f(a)$ ist $\xi$ ein Punkt im Inneren des Intervals,
-also $\xi\in(a,b)$.
+also kann $\xi$ nicht $=a$ sein, folglich ist $\xi\in(a,b)$.
 
 Wegen $f(\xi) \ge f(x)\forall x\in[a,b]$
 folgt dann
@@ -257,6 +260,11 @@ Nullstellen von $f$ immer eine Nullstelle von $f'$ befindet, und
 ebenso zwischen zwei Nullstellen von $f'$ eine von $f''$.
 \label{buch:figure:nullstellen}}
 \end{figure}
+Ist $p(x)$ ein Interpolationspolynom für die Funktion $f(x)$, dann ist
+$f(x_i)-p(x_i)=0$ für alle Stützstellen.
+Insbesondere macht der Satz von Rolle Aussagen über 
+die Differenz $f(x)-p(x)$ zwischen den Stützstellen.
+Diese Frage wird im folgenden Satz genauer untersucht.
 
 \begin{satz}
 \label{buch:satz:nullstellen}
@@ -286,15 +294,15 @@ Die höheren Ableitungen $f^{(k)}$ haben ihre Nullstellen
 natürlich auch wieder zwischen den Nullstellen der Ableitung $f^{(k-1)}$.
 Die $n$-te Ableitung ist konstant und hat keine Nullstellen.
 
-\begin{figure}
-\centering
-\includegraphics{chapters/30-interpolation/figures/norm.pdf}
-\caption{Fehler des Lagrange-Interpolationspolynoms für die Funktion
-$f(x)=e^{-x^2/2}/\sqrt{2\pi}$.
-Der Fehler nimmt mit der Anzahl der Stützstellen bis $n=30$ ab, danach
-wird die Berechnung instabil und der Fehler nimmt wieder zu.
-\label{buch:figure:lagrangefehler}}
-\end{figure}
+%\begin{figure}
+%\centering
+%\includegraphics{chapters/30-interpolation/figures/norm.pdf}
+%\caption{Fehler des Lagrange-Interpolationspolynoms für die Funktion
+%$f(x)=e^{-x^2/2}/\sqrt{2\pi}$.
+%Der Fehler nimmt mit der Anzahl der Stützstellen bis $n=30$ ab, danach
+%wird die Berechnung instabil und der Fehler nimmt wieder zu.
+%\label{buch:figure:lagrangefehler}}
+%\end{figure}
 
 \subsubsection{Der Mittelwertsatz der Differentialrechnung}
 Der Satz von Rolle sagt etwas über die Nullstellen von der Ableitung
@@ -302,7 +310,7 @@ einer differenzierbaren Funktion.
 Zwischen zwei Argumentwerten mit gleichem Funktionswert gibt es immer
 eine Nullstelle der Ableitung.
 Der Mittelwertsatz der Differentialrechnung verallgemeinert diese
-Aussage auf beliebige Werte.
+Aussage auf verschiedene Funktionswerte.
 
 \begin{figure}
 \centering
@@ -323,7 +331,7 @@ es immer ein $\xi\in[a,b]$ mit
 \[
 f'(\xi) = \frac{f(b)-f(a)}{b-a}
 \]
-(Abbildung~\ref{buch:polynome:figure:mittelwertsatz}).
+(Abbildung~\ref{buch:polynome:figure:mittelwertsatz} links).
 \end{satz}
 
 \begin{proof}[Beweis]
@@ -350,6 +358,7 @@ f'(\xi) = \frac{f(b)-f(a)}{b-a}.
 \]
 \end{proof}
 
+\subsubsection{Mittelwertsatz und ebene Kurven}
 Die von Abbildung~\ref{buch:polynome:figure:mittelwertsatz} vermittelte
 Intuition lässt sich auch für beliebige parametrisierte Kurven
 $\gamma\colon[a,b]\to\mathbb R:\to\mapsto (x(t),y(t))$ in der Ebene
@@ -361,7 +370,7 @@ wir einen Zwischenstelle $\xi$ mit einer Tangente mit derselben Richtung.
 \begin{satz}
 \label{buch:satz:mittelwertsatz2d}
 Sei $\gamma\colon[a,b]\to\mathbb R:t\mapsto (x(t),y(t))$ eine
-stetig differenzierbare ebene Kurve mit $|\dot{gamma}(t)|\ne 0$ für
+stetig differenzierbare ebene Kurve mit $|\dot{\gamma}(t)|\ne 0$ für
 alle $t\in[a,b]$ und $A=\gamma(a)\ne\gamma(b)=B$.
 Dann gibt es ein $\xi\in[a,b]$ derart, dass $\dot{\gamma}(\xi)$ die gleiche
 Richtung hat wie $\overrightarrow{AB}$.
@@ -385,8 +394,8 @@ y(t) - y_M & y(b)-y(a)
 \end{matrix}
 \biggr|
 \]
-Da die Strecken $AB$ und $MA$ bzw.~$MB$ gleich sind, ist an den
-Stellen $t=a$ und $t=b$ 
+Da die Strecken $AB$ und $MA$ bzw.~$MB$ die gleiche Richtung haben,
+gilt an den Stellen $t=a$ und $t=b$ 
 \[
 h(a)
 =
@@ -456,9 +465,10 @@ x'(\xi) \cdot (y(b)-y(a))
 \]
 \end{proof}
 
+\subsubsection{Mittelwertsatz in $\mathbb R^n$}
 Der Mittelwertsatz verspricht die Existenz eines Arguments $\xi\in[a,b]$,
 gibt aber keinerlei Hinweise darauf, wie $\xi$ berechnet werden könnte. 
-Ausserdem ist lässt sich der Satz in dieser Form nicht auf höherdimensionale
+Ausserdem lässt sich der Satz in dieser Form nicht auf höherdimensionale
 Situationen verallgemeinern.
 In vielen Anwendungen des Mittelwertsatzes ist der genaue Wert von $\xi$
 gar nicht nötig.
@@ -642,7 +652,7 @@ Durch Multiplikation mit $(x-a)^{n+1}$ erhalten wir
 \[
 g(x) = g^{(n+1)}(\xi)\frac{(x-a)^{n+1}}{(n+1)!}.
 \]
-Damit ist der Induktionsschritt vollzogen und die Restwertformel bewiesen.
+Damit ist der Induktionsschritt vollzogen und die Restformel bewiesen.
 \end{proof}
 
 \begin{beispiel}
@@ -650,7 +660,7 @@ Die Funktion $f(x)=x^N$ hat an der Stelle $a=0$ verschwindende
 Ableitungen bis zur Ordnung $N-1$.
 Das Taylor-Polynom $T_{0,n}f(x)$ der Ordnung $n$ dieser Funktion
 verschwindet daher für $n<N$.
-Nach der Restformel des Taylor gibt es Zahlen $\xi_n$ derart
+Nach der Restformel für das Taylor-Polynom gibt es Zahlen $\xi_n$ derart
 \begin{align*}
 R_{n,0}f(x)
 =
@@ -678,6 +688,7 @@ N\cdot(N-1)\cdot(N-2)\cdot\dots\cdot(N-n)
 \end{align*}
 \end{beispiel}
 
+\subsubsection{Fehlerabschätzungen}
 Im Hinblick auf die nachfolgende Diskussion des Fehlers des
 Interpolationspolynoms formulieren wir dies noch als eine
 Fehlerabschätzung.
@@ -743,7 +754,7 @@ Die Funktion $g(x)=f(x)-p(x)-cl(x)$ verschwindet in allen Stützstellen $x_i$
 und zusätzlich auch noch im Punkt $x$, sie hat also $n+1$ Nullstellen.
 
 Nach dem Nullstellen-Schachtelungssatz~\ref{buch:satz:nullstellen}
-hat die $n+1$ Ableitung von $g$ eine Nullstelle im Intervall.
+hat die $n+1$-te Ableitung von $g$ eine Nullstelle im Intervall.
 Es gibt also eine Zahl $\xi_x\in[a,b]$ mit $g^{(n+1)}(\xi_x)=0$.
 
 Da $p$ Grad $n$ hat, ist die $n+1$-te Ableitung $0$.
@@ -759,7 +770,7 @@ Die Folgerung $g^{(n+1)}(\xi_x)=0$ wird damit zu
 \qquad\Rightarrow\quad
 c=\frac{f^{(n+1)}(\xi_x)}{(n+1)!}.
 \]
-Einsetzen in \eqref{buch:equation:polyfehler1} ergibt
+Einsetzen diese Wertes für $c$ in \eqref{buch:equation:polyfehler1} ergibt
 \[
 f(x)-p(x) = cl(x)=\frac{f^{(n+1)}(\xi_x)}{(n+1)!} l(x),
 \]
@@ -807,7 +818,7 @@ Man kann sich davon überzeugen, dass das Polynom
 \[
 p(x) = \frac{4}{\pi^2} x(\pi -x )
 \]
-diese Eigenschaft hat.
+diese Eigenschaft hat (Abbildung~\ref{buch:figure:sin}).
 Wie gross ist der Fehler dieses Interpolationspolynoms?
 
 Die dritten Ableitungen der Funktion $f(x)=\sin x$ sind, bekannt, es ist
@@ -832,13 +843,13 @@ vom Funktionswert abweichen kann.
 \end{beispiel}
 
 %
-% Tschebyscheff Interpolation
+% Runges Phänomen
 %
-\subsection{Wahl der Stützstellen und Tschebyscheff-Interpolationspolynom
-\label{buch:section:interpolation:tschebyscheff}}
+\subsection{Runges Phänomen
+\label{buch:section:interpolation:runge}}
 Das Korollar~\ref{buch:korollar:interpolationsfehler} besagt, dass der
-Fehler des Interplationspolynom durch den Betrag von $l(x)$ begrenzt
-ist.
+Fehler des Interplationspolynom unter anderem durch den Betrag von $l(x)$
+begrenzt ist.
 Für äquidistante Stützstellen mit Abstand $h$ kann man beobachten,
 dass die Oszillationen des Polynoms $l(x)$ gegen den Rand des Intervalls
 immer grösser werden.
@@ -849,10 +860,20 @@ er ist $b-a-h$.
 Ausserdem treten mehrere ähnlich grosse Faktoren auf.
 Für $x$ in einem Intervall nahe $(a+b)/2$ sind die Faktoren
 dagegen nur halb so gross.
+Diese Phänomen, dass das die Amplitude der Oszillationen des
+Interpolationspolynoms $l(x)$ gegen den Rand des Intervalls immer
+grösser wird, ist auch als {\em Runges Phänomen} bekannt.
+\index{Runges Phänomen}
 
-Die Oszillationen können verkleinert werden, wenn man dafür sorgt, dass
+%
+% Tschebyscheff Interpolation
+%
+\subsection{Wahl der Stützstellen und Tschebyscheff-Interpolationspolynom
+\label{buch:section:interpolation:tschebyscheff}}
+Die als Runges Phänomen beschriebenen Oszillationen am Rande des Intervalls
+können verkleinert werden, wenn man dafür sorgt, dass
 mit grösserem Abstand von der Mitte des Intervalls der Abstand der
-Stützstellen ebenfalls verkleinert.
+Stützstellen untereinander ebenfalls verkleinert.
 Dies garantiert, dass neben den grossen Faktoren in der Nähe von $b-a$ 
 auch wesentlich kleinere Faktoren auftreten, so dass die extremen Werte
 nahe den Intervallenden vergleichbar mit den Werten im Inneren des
@@ -893,18 +914,20 @@ Abbildung~\ref{buch:figure:lissajous} suggeriert, dass eine geeignete
 Lissajous-Figur als Graph für ein Interpolationspolynom mit sehr
 geringem Fehler dienen könnte, wenn man sie als Polynom darstellen kann.
 Eine solche Lissajous-Figur entsteht als Kurve
-$t\mapsto (\cos t, \cos nt)$ oder eine anderes trigonometrisches
+$\gamma_n\colon t\mapsto (\cos t, \cos nt)$ oder eine anderes trigonometrisches
 Polynom als zweite Komponente.
-Die Abbildung~\ref{buch:figure:lissajous-chebyshef} zeigt die Kurve
-für den Fall $n=13$ der Lissajous-Figure von
+Die Abbildung~\ref{buch:figure:lissajous-chebyshef} zeigt diese Kurve
+$\gamma_n(t)$
+für den Fall $n=13$ der Lissajous-Figur von
 Abbildung~\ref{buch:figure:lissajous} überlagert.
 Die gute Übereinstimmung bestätigt die obige Beobachtung.
 
+\subsubsection{Die Tschebyscheff-Polynome}
 Es stellt sich also die Frage, ob $\cos nt$ als Polynom in $z=\cos t$
 ausgedrückt werden kann.
 Sei also
 \[
-T_n(z)
+T_n(x)
 =
 T_n(\cos t)
 = 
@@ -914,19 +937,19 @@ Für kleine $n$ kann man unmittelbar verifizieren, dass $T_n(z)$ ein
 Polynom ist:
 \begin{equation}
 \begin{aligned}
-T_0(z) &= 1,\\
-T_1(z) &= z,\\
-T_2(z) &= \cos 2t = 2\cos^2 t-1 = 2z^2 -1
+T_0(x) &= 1,\\
+T_1(x) &= x,\\
+T_2(x) &= \cos 2t = 2\cos^2 t-1 = 2x^2 -1
 \quad\text{und}
 \\
-T_3(z) &= \cos 3t = 4\cos^3 t - 3\cos t = 4z^3-3z.
+T_3(x) &= \cos 3t = 4\cos^3 t - 3\cos t = 4x^3-3x.
 \end{aligned}
 \label{buch:tschebyscheff:erste}
 \end{equation}
-Für kleine Werte von $n$ ist also direkt nachprüfbar, dass $T_n(z)$
+Für kleine Werte von $n$ ist also direkt nachprüfbar, dass $T_n(x)$
 ein Polynom ist.
 
-Wir benötigen eine Formel, mit der sich Werte der Polynome $T_n(z)$
+Wir benötigen eine Formel, mit der sich Werte der Polynome $T_n(x)$
 effizient berechnen lassen, ohne dass das Polynom in expliziter
 Form ermittelt werden muss.
 Im Folgenden soll dazu eine Rekursionsformel hergeleitet werden.
@@ -941,39 +964,40 @@ Summe von zwei Konsinus-Funktionen
 2\cos nt \cos t
 \notag
 \\
-T_{n+1}(z)+T_{n-1}(z)&=2zT_n(z)
+T_{n+1}(x)+T_{n-1}(x)&=2T_n(x)x
 \notag
 \\
-T_{n+1}(z) &= 2zT_n(z) - T_{n-1}(z).
+T_{n+1}(x) &= 2xT_n(x) - T_{n-1}(x).
 \label{buch:tschebyscheff:rekursion}
 \end{align}
-Wenn $T_n(z)$ und $T_{n-1}(z)$ Polynome sind, dann ist auch $T_{n+1}(z)$
+Wenn $T_n(x)$ und $T_{n-1}(x)$ Polynome sind, dann ist auch $T_{n+1}(x)$
 ein Polynom.
-Aus den bereits gekannten Polynomen~\eqref{buch:tschebyscheff:erste} und
+Aus den bereits bekannten Polynomen~\eqref{buch:tschebyscheff:erste} und
 der Rekursionsformel~\eqref{buch:tschebyscheff:rekursion} folgt jetzt mit
-vollständiger Induktion, dass alle $T_n(z)$ Polynome sind.
+vollständiger Induktion, dass alle $T_n(x)$ Polynome sind.
 Sie heissen {\em Tschebyscheff-Polynome}.
 \index{Tschebyscheff-Polynome}
 Die Rekursionsformel kann dazu verwendet werden, die Polynome explizit
 zu berechnen.
-Zum Beispiel folgt für die nächsten paar Polynome
+Zum Beispiel folgt für die nächsten drei Polynome
 \begin{align*}
-T_4(z) &= 8z^4-8z^2 + 1,
+T_4(x) &= 8x^4-8x^2 + 1,
 \\
-T_5(z) &= 16z^5-20z^3+5z \quad\text{und}
+T_5(x) &= 16x^5-20x^3+5x \quad\text{und}
 \\
-T_6(z) &= 32z^6-48z^4+18z^2-1.
+T_6(x) &= 32x^6-48x^4+18x^2-1.
 \end{align*}
-Da das Interpolationspolynom den führenden Koeffizienten $1$ hat,
-muss $l(z) = 2^{1-n}T_n(z)$ gewählt werden.
+Da das Interpolationspolynom den führenden Koeffizienten $1$ haben muss,
+muss $l(x) = 2^{1-n}T_n(x)$ gewählt werden.
 
-Die Polynome $T_n(z)$ sind eigentlich nicht nötig, da für die Konstruktion
+\subsubsection{Tschebyscheff-Stützstellen}
+Die Polynome $T_n(x)$ sind eigentlich nicht nötig, da für die Konstruktion
 des Interpolationspolynoms nur die Nullstellen nötig sind.
-Wegen $T_n(z)=\cos nt$ liegt eine Nullstelle genau dann vor, wenn
+Wegen $T_n(x)=\cos nt$ liegt eine Nullstelle genau dann vor, wenn
 $nt = \frac{\pi}2 + k\pi$, $k\in\mathbb Z$.
 Die zugehörigen Werte von $z$ sind
 \[
-z_k
+x_k
 =
 \cos t = \cos\frac{\pi(2k+1)}{2n}.
 \]
@@ -988,7 +1012,7 @@ grösser als $1$.
 \centering
 \includegraphics{chapters/30-interpolation/figures/vergleich.pdf}
 \caption{Vergleich der Oszillationen bei äquidistanten Stützstellen (oben)
-und bei Tschebyscheffstützstellen.
+und bei Tschebyscheff-Stützstellen.
 Damit die Abweichungen sichtbar werden, sind die Polynome $l(x)$ vom Grad
 $n$ mit dem Faktor $2^{n-1}$ skaliert.
 Bei Verwendung von Tscheby\-scheff-Stützstellen wächst $2^{n-1}l(x)$
@@ -1012,16 +1036,8 @@ keine ausgeprägten Oszillationen an den Intervallenden aufweisen,
 sind auch die Basispolynome $l_j(x)$ vor allem in der Nähe der
 jeweiligen Stützstelle $x_j$ wesentlich von $0$ verschieden.
 
-\begin{figure}
-\centering
-\includegraphics{chapters/30-interpolation/figures/tscheb.pdf}
-\caption{Fehler des Interpolationspolynomes für die Funktion
-$f(x)=e^{-x^2/2}/\sqrt{2\pi}$ mit Stützstellen nach Tschebyscheff.
-Der Fehler bleibt über das ganze Intervall gleichmässig.
-Für eine grosse Zahl von Stützstellen erreicht die Interpolation die
-Maschienengenauigkeit.
-\label{buch:figure:tschebyschefffehler}}
-\end{figure}
+
+\input{chapters/30-interpolation/normal.tex}
 
 
 

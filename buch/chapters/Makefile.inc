@@ -31,6 +31,7 @@ CHAPTERFILES =								\
 	chapters/30-interpolation/chapter.tex				\
 	chapters/30-interpolation/polygon.tex				\
 	chapters/30-interpolation/polynom.tex				\
+	chapters/30-interpolation/normal.tex				\
 	chapters/30-interpolation/hermite.tex				\
 	chapters/30-interpolation/bary.tex				\
 	chapters/30-interpolation/splines.tex				\
