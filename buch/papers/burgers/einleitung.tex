@@ -18,13 +18,12 @@
 	\end{equation}
 	besteht aus der Dimension $x$ und der Zeit $t$.
 	Die Lösung der Gleichung von Burgers $u(t,x)$ ist in $\Omega$ definiert, wobei die Anfangswerte $u(0,x)$ bekannt sein müssen.
-	In diesem Paper wird die reibungsfreie Burgersgleichung,
+	In diesem Paper wird die reibungsfreie Burgersgleichung
 	\begin{equation}
-		\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}}=0,
+		\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}}=0
 		\label{burgers:eq_invisid_burgers}
 	\end{equation}
-	betrachtet, wobei der Diffusionsterm $\nu$ auf 0 gesetzt wird.
-
+	betrachtet, wobei der Diffusionsterm $\nu$ von \eqref{burgers:eq_burgers} auf 0 gesetzt ist.
 
 	Das Aussergewöhnliche an der Gleichung ist die Nichtlinearität. Diese Eigenschaft erschwert die numerische L\"osung erheblich.
 
@@ -40,23 +39,23 @@
 		\end{figure}
 
 
-	\subsection{Beziehung zu den Navier Stokes Gleichungen}
+	\subsection{Beziehung zu den Navier-Stokes-Gleichungen}
 		Die Gleichung wird häufig für die Modelierung von Fluiden verwendet.
-		Sie wird gebraucht um die Navier Stokes Gleichungen zu vereinfachen.
-		Die Navier Stokes Gleichungen beschreiben die Str\"omung von Fluiden.
-		Die Gleichung von Burgers kann aus der Navier Stokes Gleichung f\"ur newtonsche inkompressible Fluide
+		Sie wird gebraucht um die Navier-Stokes-Gleichungen zu vereinfachen.
+		Die Navier-Stokes-Gleichungen beschreiben die Str\"omung von Fluiden.
+		Die Gleichung von Burgers kann aus der Navier-Stokes-Gleichung
 
 		\begin{equation}
 			\rho \left(\frac{\partial u}{\partial t} + u \, \nabla u \right) = -\nabla p + \mu \nabla^2 u + F
 			\label{burgers:eq_navier}
 		\end{equation}
-		hergeleitet werden \cite{burgers:navier}.
+		 f\"ur newtonsche inkompressible Fluide hergeleitet werden \cite{burgers:navier}.
 		Wenn der Druck $p$ und die externe Kraft $F$ vernachl\"asigt wird, ergibt sich
 		\begin{equation}
 			\rho \left(\frac{\partial u}{\partial t} + u \, \nabla u \right) = \mu \nabla^2 u
 			 \label{burgers:eq_navier2}
 		\end{equation}
-		Die Dichte $\rho$ kann mit der Geschwindigkeit des Vektorfeldes $\mu$ zur Konstante $\nu = \frac{\mu}{\rho}$
+		Da die Dichte $\rho$ für inkompressible Fluide konstant ist, kann sie mit der Viskosität $\mu$ zur Konstante der kinematischen Viskosität $\nu = \frac{\mu}{\rho}$
 		\begin{equation}
 			 \frac{\partial u}{\partial t} + u \,\nabla u = \nu \nabla^2 u
 			 \label{burgers:eq_navier3}
@@ -64,7 +63,7 @@
 		umgeschrieben werden.
 		Wie bereits erw\"ahnt, wird die reibungsfreie Gleichung betrachtet ($\nu = 0$).
 		Weiter werden die kommenden Berechnungen im eindimensionalen Raum durchgef\"uhrt.
-		Somit kann der Ableitungsoperator $\nabla$ als die Ableitung im Raum $x$ umgeschrieben werden.
+		Somit kann der Ableitungsoperator $\nabla$ als die Ableitung nach $x$ umgeschrieben werden.
 		Mit diesen Vereinfachungen der Navier Stokes Gleichung f\"ur newtonsche inkompressible Fluide ist man bei der urspr\"unglichen Gleichung \eqref{burgers:eq_invisid_burgers} angelangt.
 
 	%\subsection{Numerische Wetter Vorhersage}
