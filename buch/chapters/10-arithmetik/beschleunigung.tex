@@ -11,8 +11,8 @@ bekannt, kann die Gesetzmässigkeit der Fehler ausgenutzt werden,
 sie weitgehend zu eliminieren, und so die Konvergenz des Verfahrens
 zu beschleunigen.
 In diesem Abschnitt wollen wir das Prinzip veranschaulichen, es
-soll später bei der Berechnung von Integralen systematisch
-angewendet werden.
+soll später im Abschnitt~\ref{buch:section:romberg}
+bei der Berechnung von Integralen systematisch angewendet werden.
 
 %
 % Lineare und quadratische Konvergenz
@@ -46,13 +46,13 @@ Anzahl Iterationen.
 
 Für eine konvergente Iterationsfolge einer Funktion $f$ liegt also
 normalerweise lineare Konvergenz vor, es werden $\log_2 f'(x^*)$
-Binärstellen oder $\log_10 f'(x^3)$ Dezimalstellen Genauigkeit in
+Binärstellen oder $\log_{10}f'(x^3)$ Dezimalstellen Genauigkeit in
 jeder Iteration gewonnen.
 Falls die Ableitung $f'(x^*)$ verschwindet liegt offenbar ein
 Spezialfall vor, er wird im übernächsten Abschnitt genauer untersucht.
 
 \subsubsection{Quadratische Konvergenz}
-Ist $x=\sqrt{a}$, dann muss gelten $x = a/x$, also auch
+Ist $x=\sqrt{a}$, dann muss $x = a/x$ gelten, also auch
 \[
 x = \frac12\biggl(x+\frac{a}x\biggr) = f_a(x).
 \]
@@ -80,10 +80,14 @@ Die Ableitungen von $f_a$ sind
 f'_a(x)
 &=
 \frac12 -\frac{a}{2x^2}
+&&\Rightarrow&
+f'_a(x^*)&=0
 \\
 f''_a(x^*)
 &=
-\frac{a}{x^3}.
+\frac{a}{x^3}
+&&\Rightarrow&
+f''_a(x^*)&=\frac{1}{\!\sqrt{a}}
 \end{align*}
 Mit $x=x^* =\sqrt{a}$ folgt für den Fehler
 \[
@@ -99,7 +103,8 @@ Der Fehler wird also im Wesentlichen quadriert.
 Sind $k$ Nachkommabits korrekt, liegt ein Fehler von der Grössenordnung
 $2^{-k}$ vor. 
 Daraus wird in der nächsten Iteration ein Fehler von der Grössenordnung
-$2^{-2k}$, die Anzahl korrekter Nachkommabits ist $2k$, hat sich also
+$2^{-2k}$.
+Die Anzahl korrekter Nachkommabits ist $2k$, sie hat sich also
 verdoppelt.
 
 Man sagt, eine Folge konvergiert {\em quadratisch} gegen $x^*$,
@@ -111,6 +116,7 @@ Quadratische Konvergenz ist also im Vergleich zu linearer Konvergenz
 exponentiell schneller und wird daher in Anwendungen angestrebt.
 
 \subsubsection{Konvergenzgeschwindigkeit von Iterationsfolgen}
+\input{chapters/10-arithmetik/graphisch2.tex}
 Früher wurde gezeigt, dass die Iterationsfolge $x_{n+1}=f(x_n)$ einer
 Funktion $f$ für genügend Nahe bei einem Fixpunkt $x^*$ liegende
 Startwerte $x_0$ gegen $x^*$ konvergiert, wenn $|f'(x^*)| < 1$.
@@ -127,19 +133,24 @@ f(x^*) + f'(x^*) \cdot \delta + \frac12f''(x^*)\cdot \delta^2
 Sofern $f'(x^*)\ne 0$ ist, ist der zweite Term dominant, der Fehler
 wird in jeder Iteration mit $f'(x^*)$ multipliziert, es werden in
 jeder Iteration $\log_2 f'(x^*)$ Genauigkeit gewonnen.
-Es liegt also {\em lineare} Konvergenz vor.
+Es liegt also {\em lineare Konvergenz} vor.
+\index{lineare Konvergenz}%
+\index{Konvergenz!linear}%
 
 Verschwindet die Ableitung $f'(x^*)=0$, dann fällt der zweite Term
 auf der rechten Seite von~\eqref{buch:equation:iterkonv} weg, der
-Fehler ist im wesentlich quadratisch kleiner, es liegt {\em quadratische}
-Konvergenz vor.
+Fehler ist im wesentlich quadratisch kleiner, es liegt {\em quadratische
+Konvergenz} vor.
+\index{quadratische Konvergenz}%
+\index{Konvergenz!quadratisch}%
+Diese Situation ist in Abbildung~\ref{buch:figure:fixpunkt:quadratisch}
 Wenden wir das Kriterium auf das Beispiel 
 \[
 f(x) = \frac12\biggl( x + \frac{a}{x}\biggr)
 \qquad\text{mit der Ableitung}\qquad
-f'(x) = \frac12\biggl( 1 -\frac{a}{x^2}\biggr),
+f'(x) = \frac12\biggl( 1 -\frac{a}{x^2}\biggr)
 \]
-finden wir für $f'(x^*)=f'(\sqrt{a}) = 0$.
+an, finden wir für $f'(x^*)=f'(\sqrt{a}) = 0$.
 Die Iterationsfolge muss also quadratisch konvergieren, wie wir
 im vorangegangenen Abschnitt auch direkt nachgerechnet haben.
 
@@ -185,7 +196,7 @@ f'(x^*) = \frac1{2\sqrt{x^*+a}}=\frac1{2x^*}
 \]
 kleiner.
 Wir wissen somit, dass der Fehler in jeder Iteration um den gleichen Faktor
-kleiner wird, aber da wir $x^*$ noch nicht kennen, kennen wir den Wert
+kleiner wird, aber da wir $x^*$ noch nicht kennen, kennen wir den Wert $q$
 des Faktors noch nicht.
 
 Drei aufeinanderfolgende Folgenglieder sind
@@ -270,7 +281,7 @@ f(x^*+\delta)
 =
 f(x^*) + f'(x^*)\cdot \delta + \frac12f''(x^*)\cdot \delta^2+ \dots,
 =
-x^* + q\delta + s\delta^2
+x^* + q\delta + b\delta^2
 \]
 verwendet dies für die Analyse des neuen Iterationsverfahrens.
 Wir schreiben also
@@ -282,18 +293,18 @@ x^* + \delta
 \\
 x_1
 &=
-x^* + q\delta + s\delta^2
+x^* + q\delta + b\delta^2
 \notag
 \\
 x_2
 &=
-x^* + q(q\delta+s\delta^2) + s(q\delta+s\delta^2)^2
-     = x^* + q^2 \delta + qs\delta^2 + sq^2\delta^2
-	+ 2qs^2\delta^3 + s^3\delta^4
+x^* + q(q\delta+b\delta^2) + b(q\delta+b\delta^2)^2
+     = x^* + q^2 \delta + qb\delta^2 + bq^2\delta^2
+	+ 2qb^2\delta^3 + b^3\delta^4
 \notag
 \\
 &=
-x^* + q^2\delta + qs(1+q)\delta^2
+x^* + q^2\delta + qb(1+q)\delta^2
 \notag
 \end{align}
 und wenden den neuen Algorithmus darauf an.
@@ -301,51 +312,52 @@ Der Quotient ist
 \begin{align*}
 \frac{x_2-x_1}{x_1-x_0}
 &=
-\frac{x^* + q^2\delta + qs(1+q)\delta^2 - 
-(x^* + q\delta + s\delta^2)}{
-x^* + q\delta + s\delta^2
+\frac{x^* + q^2\delta + qb(1+q)\delta^2 - 
+(x^* + q\delta + b\delta^2)}{
+x^* + q\delta + b\delta^2
 -
 (x^* + \delta)
 }
 =
 \frac{
-q(q-1)\delta + s(q^2+q -1) \delta^2
+q(q-1)\delta + b(q^2+q -1) \delta^2
 }{
-(q-1)\delta + s\delta^2
+(q-1)\delta + b\delta^2
 }
 \\
 &\simeq
 \frac{q(q-1)\delta}{(q-1)\delta}
 =
-q
+q.
 \end{align*}
 In der zweiten Zeile gehen wir davon aus, dass $\delta^2 \ll \delta$ und
 dass daher die Terme mit $\delta^2$ im Bruch vernachlässigt werden dürfen.
-Nache dem zweiten Schritt des Algorithmus Algorithmus ist der neue
-Wert von $x^*$
+Nache dem zweiten Schritt des Algorithmus ist der neue Näherungswert
+von $x^*$ gegeben durch
 \begin{align}
 \frac{x_2-qx_1}{1-q}
 &=
 \frac{
-x^* + q^2\delta + qs(1+q)\delta^2
+x^* + q^2\delta + qb(1+q)\delta^2
 -q(
-x^* + q\delta + s\delta^2
+x^* + q\delta + b\delta^2
 )
 }{
 1-q
 }
 =
-\frac{ (1-q)x^* + qs(1+q)\delta^2 - qs\delta^2 }{1-q}
+\frac{ (1-q)x^* + qb(1+q)\delta^2 - qb\delta^2 }{1-q}
 \label{buch:equation:sqrtnext}
 \\
 &=
-x^* + \frac{q^2s}{1-q}\delta^2
+x^* + \frac{q^2b}{1-q}\delta^2.
 \label{buch:equation:sqrtbeschlquadrat}
 \end{align}
-Im Vergleich zum ursprünglichen Fehler in 
+Der ursprüngliche Fehler $\delta$ in 
 \eqref{buch:equation:sqrtbeschllin}
+wurde
 durch die Iteration
-in
+nach
 \eqref{buch:equation:sqrtbeschlquadrat}
 im wesentlichen quadriert worden.
 Damit ist die quadratische Konvergenz bestätigt.
@@ -354,7 +366,7 @@ Ein fairer Vergleich der Konvergenzgeschwindigkeit der usprünglichen
 Iterationsfolge mit dem neuen Algorithmus sollte die Anzahl der
 Auswertungen der Funktion $f$ mit zählen. 
 In der ursprünglichen Iterationsfolge wird in jeder Iteration die 
-Funktions einmal ausgewertet, der neue Algorithmus braucht zwei
+Funktion einmal ausgewertet, der neue Algorithmus braucht zwei
 Funktionsauswertungen pro Iteration.
 In der ursprünglichen Iterationsfolge wurden 52 bit Genauigkeit nach
 26 Schritten und damit nach 26 Funktionsauswertungen erreicht.
