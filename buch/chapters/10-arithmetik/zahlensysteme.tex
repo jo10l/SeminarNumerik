@@ -791,7 +791,7 @@ void    experiment(int bits) {
 \end{lstlisting}
 
 Der Code in Listing~\ref{numerik:listing:gmp} zeigt die Berechnung der
-Taylorreihe mit Hilfe von GNU GMP.
+Taylor-Reihe mit Hilfe von GNU GMP.
 In Zeile 44 in der Funktion \texttt{void experiment(int bits)} wird die
 minimale Genauigkeit, mit der die Bibliothek rechnen soll.
 Die Aufrufe von \verb+mpf_init(mpf_t op)+ in der Funktion
@@ -800,7 +800,7 @@ mit mindstens dieser Genauigkeit.
 Welche Genauigkeit genau gewählt wird hängt von der Wortlänge der
 verwendeten Maschine ab.
 
-In den Zeilen 21--29 wird die Taylorreihe summiert.
+In den Zeilen 21--29 wird die Taylor-Reihe summiert.
 In der Variable \texttt{P} ist der Wert des aktuellen Summanden
 gespeichert.
 Der nächste Summand kann daraus gemäss \eqref{buch:eulerreihe:faktor}
@@ -845,7 +845,7 @@ mit Maschinenpräzision umgewandelt.
 \hline
 \end{tabular}
 \caption{Tabelle der Resultate der Berechnung von $e^{-100}$ mit Hilfe
-der Taylorreihe der Exponentialfunktion unter Verwendung des Programms
+der Taylor-Reihe der Exponentialfunktion unter Verwendung des Programms
 von Listing~\ref{numerik:listing:gmp} mit verschiedenen Bitlängen.
 \label{numerik:expresultate:gmp}}
 \end{table}
@@ -1006,7 +1006,7 @@ void    experiment(int bits) {
 \hline
 \end{tabular}
 \caption{Tabelle der Resultate der Berechnung von $e^{-100}$ mit Hilfe
-der Taylorreihe der Exponentialfunktion unter Verwendung des Programms
+der Taylor-Reihe der Exponentialfunktion unter Verwendung des Programms
 von Listing~\ref{numerik:listing:mpfr} mit verschiedenen Bitlängen.
 \label{numerik:expresultate:mpfr}}
 \end{table}

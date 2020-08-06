@@ -10,7 +10,7 @@ dass die zu Beginn des Schrittes berechnete Ableitung $f(x_k,y_k)$
 nur für das linke Ende des Intervalls $[x_k, x_k+h]$ zutrifft,
 weiter rechts im Intervall wird die Abweichung immer grösser.
 Eine mögliche Lösung des Problems könnte darin bestehen, statt
-nur einer linearen Näherung zusätzliche Glieder der Taylorreihe
+nur einer linearen Näherung zusätzliche Glieder der Taylor-Reihe
 \begin{equation}
 y(x+\Delta x)
 =
@@ -178,7 +178,7 @@ af(x,y) + bf(x+\alpha h, y + \beta h f(x,y))
 \label{buch:ode:inkrementF}
 \end{align}
 Damit dies bis zur zweiten Ordnung mit dem Inkrement zwischen $x$ und $x+h$
-übereinstimmt, muss~\eqref{buch:ode:inkrementF} mit der Taylorreihe
+übereinstimmt, muss~\eqref{buch:ode:inkrementF} mit der Taylor-Reihe
 von $y(x)$ übereinstimmen, also mit
 \begin{equation}
 \frac{y(x+h)-y(x)}{h}=y'(x) + \frac12y''(x)h + O(h^2)
@@ -252,7 +252,7 @@ Formel~\eqref{buch:ode:runge-kutta-rekursion} berechnet.
 \label{buch:ode:rk-step}}
 \end{figure}
 Das {\em Runge-Kutta-Verfahren} erweitert die Inkrement-Funktion derart,
-dass der Einzelschritt bis zur fünften Ordnung mit der Taylorreihe von
+dass der Einzelschritt bis zur fünften Ordnung mit der Taylor-Reihe von
 $y(x)$ übereinstimmt.
 So entsteht ein Verfahren vierter Ordnung, es stellt einen guten Kompromiss
 zwischen Genauigkeit und Rechenaufwand dar.
