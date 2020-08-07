@@ -1,3 +1,4 @@
+  
 %
 % rationalezahlen.tex -- 
 %
@@ -12,14 +13,12 @@ Zahlen, $z$ und $n \ne 0$ schreiben kann. $z$ heisst der Zähler,
 $n$ der Nenner. Dieser Bruch stellt jene Zahl dar, die mit $n$
 multipliziert $z$ ergibt, also $\frac{z}{n} \cdot n = z$.
 Die Menge aller rationalen Zahlen wird mit $\mathbb{Q}$ bezeichnet.
-
 Ein endlicher Kettenbruch ist ein Bruch der Form
 \begin{equation}
 a_0 + \cfrac{b_1}{a_1\cfrac{b_2}{\cfrac{a_2}{\cdots}\frac{b_n-1}{a_n-1 + \frac{b_n}{a_n}}}}
 \end{equation}
 in welchem $a_0, a_1,\dots,a_n$ und $b_1,b_2,\dots,b_n$ reelle Zahlen
 darstellen, die mit Ausnahme möglicherweise von $a_0$ alle positiv sind.
-
 Die Kettenbruchentwicklung von $x \in \mathbb{R}$ bricht genau dann
 nach endlich vielen Schritten ab, wenn $x$ rational ist. So bilden
 Rationale Zahlen endliche Kettenbrüche.
@@ -27,7 +26,6 @@ Rationale Zahlen endliche Kettenbrüche.
 \subsection{Euklidischer Algorithmus}
 Die Umwandlung einer rationalen Zahl in einen Kettenbruch erfolgt
 mit Hilfe des euklidischen Algorithmus.
-
 Als Beispiel rechnen wir für $\frac{17}{10} = [1;1,2,3]$.
 
 \begin{equation}
@@ -55,7 +53,6 @@ auflöst, sehr umständlich. Durch eine rekursive Bildungsgesetz für
 Zähler und Nenner kann man die Berechnung erheblich vereinfachen.
 Ausserdem kann man mit Hilfe dieser Rekursionsformel die Grenzwerte
 unenlicher Kettenbrüche untersuchen.
-
 Betrachten wir die Zahl $\frac{3141}{2718}$
 \begin{align*}
 3141 &= 1\cdot 2718 + 423 \\
@@ -65,11 +62,10 @@ Betrachten wir die Zahl $\frac{3141}{2718}$
 63 &= 1\cdot 54 + 9 \\
 54 &= 6\cdot 9 + 0
 \end{align*}
-Also:
+Also
 \begin{equation}
 \frac{3141}{2718} = [1,6,2,2,1,9]
 \end{equation}
 Jede rationale Zahl $x$ lässt sich auf eindeutige Weise in einen
 endlichen Kettenbruch entwicklen, dessen letzer Teilnenner grösser
 oder gleich 2 ist.
-

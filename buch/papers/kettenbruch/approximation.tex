@@ -35,7 +35,6 @@ lässt.
 \subsubsection{Beispiel Nr.1}
 Näherung von $\pi$ mit dem (unendliche Dezimalbruch):
 $\pi = [3;7,15,1,292,1,1,1,2,1,3,1,14,2,\cdots]$
-
 Die Näherung $3.14 = \frac{314}{100}$ ist eine Näherung. Aber
 $\frac{22}{7} = 3.14285714\dots$ hat einen viel kleineren Nenner und
 ist eine deutlich bessere Näherung von $\pi$.
@@ -63,7 +62,7 @@ Die Kettenbruch von $\tan^{-1}(x)$ sieht folgendermassen aus
 $(|x|< 1)$
 Das Gleichungssystem kann umgeschrieben werden als Funktion $f_n$
 \begin{equation}
-f_n(x) = \frac{x}{1+}\frac{x^2}{3+}\frac{4x^2}{5+}\cdots\frac{(n-1)^2 \times x^2}{2n-1}
+f_n(x) = \frac{x}{1+}\frac{x^2}{3+}\frac{4x^2}{5+}\cdots\frac{(n-1)^2 x^2}{2n-1}
 \end{equation}
 $(|n|\ge 2)$
 Hiermit kann nach $n$te Bildung der Kettenbruchreaktion eine Limite darstellen.
@@ -73,20 +72,22 @@ Hiermit kann nach $n$te Bildung der Kettenbruchreaktion eine Limite darstellen.
 $(|x| < 1)$
 Die Konvergenz der Funktion kann infolge einem Beispiel beurteilt werden. 
 \begin{equation}
-\tan^{-1}(1/\sqrt{3}) = \pi/6 \approx 0.5235987756
+\tan^{-1}(1) = \pi/4 \approx 0.785398
 \end{equation}
 
 \begin{table}
 \centering
 \begin{tabular}{>{$}c<{$}>{$}l<{$}}
-n	& f_n(1/\sqrt{3}) 	\\
+n	& f_n(1) 	\\
 \hline
-2	& 0.519615 	\\
-3	& 0.523892 	\\
-4	& 0.523577 	\\
-5	& 0.523600 	\\
-6	& 0.523599 	\\
-7	& 0.523599	\\
+2	& 0.750000 	\\
+3	& 0.791667 	\\
+4	& 0.784314 	\\
+5	& 0.785586 	\\
+6	& 0.785366 	\\
+7	& 0.785404	\\
+8	& 0.785397	\\
+9	& 0.785398	\\
 \hline
 \end{tabular}
 \caption{XXX Beschreibung der Tabelle einfügen
@@ -96,4 +97,3 @@ n	& f_n(1/\sqrt{3}) 	\\
 In wenigen und einfachen Schritten haben wir mit Hilfe einer
 Kettenbruchentwicklung ein System gebildet das die Konvergenz der
 Funktion $\tan^{-1}(x)$ vorantreibt und präzise Resultate liefert.
-
