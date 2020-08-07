@@ -20,20 +20,20 @@ Microcontroller sind im Vergleich zu Allzweckprozessoren oft stark
 eingeschränkt.
 Meist sind nur Ganzahltypen mit oft sehr beschränkter Länge implementiert.
 Manchmal kann die Arithmetik-Einheit des Prozessors nicht einmal eine
-Multiplikation in Hardware ausführen, sie muss in Software nachgebildet
-werden.
-Für Floatingpoint Operationen muss oft Bibliotheken zurückgegriffen
+Multiplikation in Hardware ausführen, sie muss in Software zeitaufwendig
+nachgebildet werden.
+Für Floatingpoint-Operationen muss oft Bibliotheken zurückgegriffen
 werden, die den Speicherbedarf erhöhen und langsam sind.
 Die Implementation von numerischen Berechnungen in eingebetteten Anwendungen
 ist daher mit besonderen Herausforderungen konfrontiert.
 
-Dieselbe Schwierigkeit haben auch Allzweck-Prozessoren wenn die
+Dieselbe Schwierigkeit haben auch Allzweck-Prozessoren, wenn die
 Genauigkeitsanforderungen die Möglichkeiten der von der Prozessor-Hardware
 implementierten Typen übersteigt.
 Dieser Fall tritt beispielsweise bei Berechnungen in der Kryptographie auf,
 wo oft mit Ganzzahlen mit Tausenden von Stellen gerechnet werden muss.
 Im Abschnitt~\ref{buch:subsection:mp} mit der GNU Multiprecision-Library
-ein Beispiel einer Bibliothek vorgestlelt.
+ein Beispiel einer solchen Bibliothek vorgestellt.
 
 %
 % Zahlendarstellung bezüglich verschiedener Basen
@@ -42,7 +42,8 @@ ein Beispiel einer Bibliothek vorgestlelt.
 \label{buch:subsection:basen}}
 Allen Zahlensystemen gemeinsam ist die Positionsdarstellung.
 \index{Positionsdarstellung}
-Eine Zahl wird als Zeichenkette $x=x_nx_{n-1}\dots x_3x_2x_1x_0$ mit
+Eine Zahl wird als Zeichenkette $x=x_nx_{n-1}\dots x_3x_2x_1x_0$
+geschreiben,
 wobei die Zeichen $x_i$ Ziffern mit $0 \le x_i < b$ sind.
 $b$ ist die Basis des Zahlensystems.
 Der Wert der Zahl $x$ ist dann 
@@ -51,8 +52,8 @@ x
 =
 \sum_{k=1}^n x_kb^k.
 \]
-Wir hängen die Basis also Index an eine Zahlendarstellung an, um die
-Basis deutlich zu machen.
+Um die Basis deutlich zu machen, 
+hängen wir die Basis also Index an eine Zahlendarstellung an.
 Es ist also zum Beispiel
 \[
 1291_{10}
@@ -101,7 +102,7 @@ Man beachte, dass endliche Dezimalbrüche in anderen Basen durchaus
 nicht mehr endlich zu sein brauchen.
 So ist zum Beispiel
 \begin{align*}
-\frac12& 0.5_{10} = 0.1_{2},
+\frac12&= 0.5_{10} = 0.1_{2},
 \\
 \frac15&= 0.2_{10} = 0.001100110011\dots = 0.\overline{0011}_{2},
 \\
@@ -114,7 +115,7 @@ Zum Beispiel\footnote{Dieses Beispiel wurde mit dem Programm
 \texttt{format.cpp} aus dem Verzeichnis
 \texttt{buch/chapters/experiments/limits} von \cite{buch:repo}
 gerechnet.}
-bewirkt der Code
+bewirkt der C++-Code
 \begin{verbatim}
 double	x = 0.2;
 std::cout << x;
@@ -123,13 +124,14 @@ dass der Compiler zunächst die Dezimalzahl $0.2$ in eine Binärzahl
 verwandelt, diese Form wird im ausführbaren Code gespeichert.
 Zur Laufzeit des Programms muss die I/O-Bibliothek dann die gespeicherte
 Zahl wieder in eine Dezimalzahl verwandeln.
-Für $x=0.5$ ist das unproblematisch, da diese Zahl sowohl dezimal wie
+Für $x=0.5$ wäre das unproblematisch, da diese Zahl sowohl dezimal wie
 auch binär ein endlicher Dezimalbruch ist.
 Für $x=0.2$ tritt jedoch eine Abweichung auf, weil die im Code gespeichert
 Binärzahl nicht exakt in $0.2$ zurückgewandelt werden kann.
-Stattdessen erhält man abhängig vom Datentyp die folgenden abweichenden
-Werte:
-\begin{center}
+Stattdessen erhält man abhängig vom Datentyp die abweichenden
+Werte von Tabelle~\ref{buch:zahlensysteme:rundung}.
+\begin{table}
+\centering
 \begin{tabular}{|>{\tt}r|>{$}r<{$}|>{$}r<{$}|}
 \hline
 \textrm{Typ}& 0.5\phantom{0000000000000000000}
@@ -140,9 +142,15 @@ double      & 0.50000000000000000000& 0.20000000000000001110\\
 long double & 0.50000000000000000000& 0.20000000000000001110\\
 \hline
 \end{tabular}
-\end{center}
+\caption{Nicht alle exakt darstellbaren Dezimalzahlen sind auch im
+Binärsystem exakt darstellbar.
+Die Zahl $0.2_{10}$ führt auf einee periodischee Binärzahl, die
+beim abspeichern gerundet werden muss.
+Je nach Datentyp weicht der gerundete Wert mehr oder weniger stark ab.
+\label{buch:zahlensysteme:rundung}}
+\end{table}
 Dass kein Unterschied zwischen \texttt{double} und \texttt{long double}
-ist nur scheinbar. 
+besteht, ist nur scheinbar. 
 Multipliziert man $x$ mit $5$ vor dem Output, wird plötzlich ein
 Unterschied sichtbar.
 
@@ -165,7 +173,7 @@ nicht einmal die minimal notwendigen Adressberechnungen durchführen.
 \subsubsection{Addition}
 Das Verfahren der ``schriftlichen Addition'', welches man in der Primarschule
 lernt, funktioniert auch für die Berechnung einer Summe in jeder beliebigen
-anderen Basis
+anderen Basis.
 
 \subsubsection{Vorzeichen}
 Ganzzahlen mit Vorzeichen können auf verschiedene Arten binär dargestellt
@@ -192,10 +200,10 @@ In ihr werden 8-bit Zeichenketten wie folgt als Zahlen interpretiert:
 \end{align*}
 Diese Codierung ist in Hardware besonders leicht implementiertbar.
 Ein Zähler für eine Vorzeichenlose Ganzzahl von 8 bit Länge, initialisiert
-mit \texttt{10000000} wird beim Hochzählen genau die Zahle von $-128$
+mit \texttt{10000000} wird beim Hochzählen genau die Zahlen von $-128$
 bis $127$ aufzählen.
 
-Die entgegengesetzte einer Zahl kann nach der folgenden Regel gefunden werden:
+Die Entgegengesetzte einer Zahl kann nach der folgenden Regel gefunden werden:
 \begin{enumerate}
 \item Man nehme das Komplement jedes einzelnen Bits einer Zahl
 \item Addiere 1.
@@ -234,7 +242,7 @@ Tatsächlich ist $23_{10}=10111_2$.
 Der grosse Vorteil dieser Vorzeichenkonvention ist also, dass
 für die Addition vorzeichenbehafteter Ganzzahlen in
 Zweierkomplement-Darstellung die gleiche vorhandene Hardware verwendet
-werden kann wie für die Addition von vorzeichenloser Ganzzahlen.
+werden kann wie für die Addition vorzeichenloser Ganzzahlen.
 
 \subsubsection{Multiplikation und Division}
 Man kann allerdings nicht davon ausgehen, dass ein Prozessor auch
@@ -292,14 +300,18 @@ so formattiert werden, dass das Komma an der ``richtigen'' Stelle
 landet.
 
 Mit den Ganzzahl-Operationen einer CPU lassen sich also auch sehr
-schnelle Festkomma-Operationen realisieren.
+schnelle Festkomma-Ope\-ra\-tio\-nen realisieren.
 
-\subsubsection{Vor- und Nachteile}
+\subsubsection{Vor- und Nachteile von Festkommazahlen}
 \begin{itemize}
-\item[$\oplus$]  Der absoluter Fehler ist konstant.
-\item[$\oplus$]  Operationen sind typischerweise deutlich schneller als
+\item[$\oplus$]
+Eine beliebige relle Zahl muss bei der Darstellung als Festkommazahl
+um Maximal die Hälfte der Wertigkeit der letzten Stelle gerundet werden.
+Dieser absolute Fehler ist konstant.
+\item[$\oplus$]
+Operationen sind typischerweise deutlich schneller als
 mit Gleitkommazahlen vergleichbarer Grösse.
-Dies gilt selbst dann, wenn die Operationen zum Teil in Software 
+Dies gilt insbesondere dann, wenn die Operationen zum Teil in Software 
 realisiert werden müssen.
 \item[$\oplus$] Die Addition und Subtraktion sind von derart elementarer
 Bedeutung für einen CPU-Kern, dass jeder Kern mindestens eine Einheit
@@ -353,7 +365,7 @@ Von den verbleibenden 9 bit wird eines als Vorzeichen verwendet und
 8 als Exponent.
 Mit einer 8 bit Ganzzahl lassen sich die Zahlen von 0 bis 255 darstellen.
 Um negative Exponenten zu ermöglichen, muss 127 subtrahiert werden.
-Die 8 Exponenten-bits codieren also die Exponenten $-128$ bis $127$.
+Die 8 Exponenten-bits codieren also die Exponenten $-127$ bis $128$.
 
 Die Zahl
 \[
@@ -437,8 +449,8 @@ kann daher als \texttt{float}-Gleitkommazahl wie folgt gespeichert werden:
 Die Ganzzahl $\texttt{10000000}_2=128_{10}$ im Exponentenfeld
 muss um $127$ verringert werden um den Exponenten $1$ zu ergeben.
 
-Die grösste und kleinste mit einem \texttt{float} darstellbare Zahl ist
-somit
+Die grösste und kleinste mit einem \texttt{float} darstellbare positive
+Zahl ist somit
 \begin{align*}
 \texttt{1.11111111111111111111111}_2 \cdot 2^{\phantom{-}128}
 &=
@@ -449,6 +461,16 @@ somit
 5.8774717_{10}\cdot 10^{-39}
 \end{align*}
 Den 24 binären Mantissenbits entsprechen gut 7 Dezimalstellen.
+
+Genau genommen können noch etwas kleinere Zahlen dargestellt werden, wenn
+man auf die Konvention verzichtet, dass vor dem Komma eine \texttt{1}
+stehen muss.
+Man nennt solche noch kleineren Zahlen {\em denomormalisiert}.
+Da das Floatingpoint-Format immer auch eine implizite führende \texttt{1}
+beinhaltet, braucht es zusätzliche Konventionen für denomarmalisierte Zahlen,
+die die Abwesenheit der \texttt{1} signalisieren (Siehe auch den
+Abschnitt Denormalisierung auf
+Seite~\pageref{buch:zahlensysteme:denormalisierung}).
 
 \begin{table}
 \centering
@@ -517,7 +539,7 @@ Prozessoren reproduzierbare Resultate geben.
 
 Die C++-Standardbibliothek bietet im \texttt{<limits>} Header die Möglichkeit, 
 Informationen über die Datentypen zu erhalten.
-In Tabelle~\ref{buch:table:limits} sind die Resultate für die
+In Tabelle~\ref{buch:table:limits} sind die Eigenschaften der
 gebräuchlichsten Typen zusammengestellt.
 Allerdings offenbart sich hier auch ein Problem dieser Implementation
 von \texttt{<limits>}.
@@ -549,10 +571,10 @@ dass die Funktionen wie Wurzeln, Exponentialfunktionen,
 trigonometrische Funktionen und viele weitere so implementiert werden 
 müssen, dass das Resultat korrekt gerundet ist.
 Damit ist gemeint, dass das Resultat entsteht, in dem auf das
-mathematisch exakte Resultat die gewählt Rundungs-Regel angewendet
+mathematisch exakte Resultat die gewählte Rundungs-Regel angewendet
 wird.
 
-Der Standard bezweckt mit diesen, dass man sich im Rahmen der
+Der Standard bezweckt mit diesen Regeln, dass man sich im Rahmen der
 Rundungsgenauigkeit auch auf die letzte Stelle eines Gleitkommawertes
 verlassen kann.
 Dies ist keinen Selbstverständlichkeit.
@@ -567,30 +589,33 @@ führends \texttt{1}-bit hat.
 In diesem Format lässt sich die Null aber nicht darstellen, es ist
 also eine separate Definition nötig:
 \begin{itemize}
-\item Vorzeichen $\texttt{0}$ oder $\texttt{1}$ erlaubt die Unterscheidung
-zwischen $+0$ und $-0$.
 \item Alle Exponentenbits $=\texttt{0}$.
 \item Alle Mantissenbits $=\texttt{0}$.
+\item Vorzeichen $\texttt{0}$ oder $\texttt{1}$ erlaubt die Unterscheidung
+zwischen $+0$ und $-0$.
 \end{itemize}
-Dies ist ein Spezialfall einer denormalisierten Zahl (siehe weiter unten)
+Dies ist ein Spezialfall einer denormalisierten Zahl (siehe auch
+Abschnitt Denormalisierung weiter unten auf
+Seite~\pageref{buch:zahlensysteme:denormalisierung}).
 
 \subsubsection{Unendlich grosse Werte}
 Im Laufe einer numerischen Berechnung kann es vorkommen, dass die Resultate
-so gross werden, dass nicht mehr im gegebenen Gleitkommatyp gespeichert
-werden könne.
-Der Standard verlangt, dass diese Situation durch einen spezielle Wert
+so gross werden, dass sie nicht mehr im gegebenen Gleitkommatyp gespeichert
+werden können.
+Der Standard verlangt, dass diese Situation durch einen speziellen Wert
 für unendlich grosse Zahlen wiedergegeben werden kann, der wie
 folgt definiert ist:
 \begin{itemize}
-\item Vorzeichenbit \texttt{0} oder \texttt{1} um zwischen
-$+\infty$ und $-\infty$ unterscheiden zu können.
 \item Alle Exponenten-Bits $= \texttt{1}$
 \item Alle Mantissenbits $=\texttt{0}$
+\item Vorzeichenbit \texttt{0} oder \texttt{1} um zwischen
+$+\infty$ und $-\infty$ unterscheiden zu können.
 \end{itemize}
 Dies bedeutet, dass der grösste nutzbare Exponent des $\texttt{float}$-Typs
 nur noch $127$ ist.
 
-\subsubsection{Denormalizierung}
+\subsubsection{Denormalisierung
+\label{buch:zahlensysteme:denormalisierung}}
 \index{denormalisierte Zahl}%
 Die Mantisse einer Gleitkommazahl beginnt immer mit einer 1, die aber
 nicht gespeichert wird.
@@ -606,12 +631,19 @@ signifikante Stellen aufweisen.
 
 \subsubsection{Vor- und Nachteile}
 \begin{itemize}
-\item[$\oplus$] Konstanter relativer Fehler
+\item[$\oplus$]
+Wir eine beliebige reelle Zahl als Gleitkommazahl abgespeichert, muss
+sie um maximal um den halben Wert des letzten Mantissebits gerundet werden.
+Der absolute Wert desselben hängt jedoch vom Exponenten ab.
+Bei $l$ Mantissenbits ist er aber immer um den Faktor $2^l$ kleiner
+als die Zahl selbst.
+Es tritt ein konstanter {\em relativer} Fehler auf.
 \item[$\oplus$] Dank des grossen Wertebereiches sind Über- und Unterlauf
 unwahrscheinlich.
-\item[$\ominus$] Der kleinste Gleitkommatyp ist bereits so gross wie
-der gebräuchlichste Ganzzahltyp,
-Gleitkommazahlen brauchen mehr Platz.
+\item[$\ominus$]
+Gleitkommazahlen brauchen mehr Speicherplatz.
+Der kleinste Gleitkommatyp \texttt{float} ist mit 32 bit bereits so gross wie
+der gebräuchlichste Ganzzahltyp \texttt{long}.
 \item[$\ominus$] Geschwindigkeit: sofern keine Hardware-Beschleunigung
 zur Verfügung steht sind Gleitkomma-Operationen deutlich langsamer
 als Operationen mit Festkomma-Zahlen.
@@ -626,7 +658,8 @@ behindern.
 %
 \subsection{Hochpräzisionsbibliotheken
 \label{buch:subsection:mp}}
-Die Diskussion der numerischen Effekte hat gezeigt, dass es nötig sein
+Die Diskussion numerischer Effekte in
+Abschnitt~\label{buch:section:numerische-effekte} zeigen, dass es nötig sein
 kann, Berechnungen mit sehr viel höherer Präzision durchzuführen, um die
 Genauigkeit des Schlussresultats garantieren zu können.
 Weder die Gleitkomma-Datentypen noch die Arithmetik-Prozessoren der
@@ -644,12 +677,36 @@ e^x
 \sum_{k=0}^\infty \frac{x^k}{k!}
 \]
 berechnet werden.
+Die Berechnung der einzelnen Terme kann dank der Formel
+\begin{equation}
+\frac{x^k}{k!}
+=
+\frac{x^k}{1\cdot 2\cdot 3 \cdot \ldots \cdot (k-1)\cdot k}
+=
+\frac{x}{1}
+\cdot
+\frac{x}{2}
+\cdot
+\frac{x}{3}
+\cdot\dots\cdot
+\frac{x}{k-1}
+\cdot
+\frac{x}{k}
+\label{buch:eulerreihe:faktor}
+\end{equation}
+iterativ mit einer einfachen Multiplikation mit dem ``nächsten'' 
+Faktor $x/k$ erfolgen.
+
 In Abschnitt~\ref{buch:subsection:verschiebung} wird gezeigt, dass
 für negative Argument $x$ die Berechnung wegen Verschmierung mit sehr
 viel grösserer Genauigkeit durchgeführt werden muss, wenn das Resultat
 exakt sein soll.
-In diesem Beispiel wird das illustriert, indem die gleiche Berechnung
-mit verschiedener Genauigkeit mit einer Hochpräzisionsbibliothek
+Das Problem kann behoben werden, wenn man für negatives $x$
+die Formel $e^x = 1/e^{-x}$ ausnutzt und die die Taylor-Reihe
+auf das Argument $-x$ anwendet, wo die Schwierigkeit nicht auftritt.
+
+In diesem Beispiel wird dieses Problem illustriert, indem die gleiche
+Berechnung mit verschiedener Genauigkeit mit einer Hochpräzisionsbibliothek
 durchgeführt wird.
 Dazu wird das Treiberprogramm von Listing~\ref{numerik:listing:main}
 verwendet.
@@ -666,6 +723,8 @@ int     main(int argc, char *argv[]) {
 \end{lstlisting}
 Die Implementation der Funktion \texttt{experiment(double x)} mit 
 verschiedenen Hochpräzisionsbibliotheken wird weiter unten beschrieben.
+Man erwartet, dass bei ausreichend grosser Präzision ein ausreichend
+genaues Resultat erhalten werden kann.
 
 \subsubsection{GNU GMP}
 Die freie GNU GMP Bibliothek erschien 1991 und kann auf \url{http://gmplib.org}
@@ -731,7 +790,9 @@ void    experiment(int bits) {
 }
 \end{lstlisting}
 
-In Zeile 40 in der Funktion \texttt{void experiment(int bits)} wird die
+Der Code in Listing~\ref{numerik:listing:gmp} zeigt die Berechnung der
+Taylor-Reihe mit Hilfe von GNU GMP.
+In Zeile 44 in der Funktion \texttt{void experiment(int bits)} wird die
 minimale Genauigkeit, mit der die Bibliothek rechnen soll.
 Die Aufrufe von \verb+mpf_init(mpf_t op)+ in der Funktion
 \texttt{double gmpexp(double x)} initialisieren die Variablen
@@ -739,20 +800,22 @@ mit mindstens dieser Genauigkeit.
 Welche Genauigkeit genau gewählt wird hängt von der Wortlänge der
 verwendeten Maschine ab.
 
-In den Zeilen 20--26 wird die Taylorreihe summiert.
+In den Zeilen 21--29 wird die Taylor-Reihe summiert.
 In der Variable \texttt{P} ist der Wert des aktuellen Summanden
 gespeichert.
-Der nächste Summand kann daraus mittels $\texttt{P}\cdot x/i$
+Der nächste Summand kann daraus gemäss \eqref{buch:eulerreihe:faktor}
+mittels $\texttt{P}\cdot x/i$
 berechnet werden, wobei $i$ der Wert der Zählervariablen ist,
 mit der die Summanden indiziert werden.
-In Zeile~24 wird die Summe wieder in einen \texttt{double}-Wert
+In Zeile~31 wird die Summe wieder in einen \texttt{double}-Wert
 mit Maschinenpräzision umgewandelt.
+
 
 \begin{table}
 \centering
 \begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|}
 \hline
-\text{Bits} & \text{GMP} & \texttt{double} &\text{Fehler} \\
+\text{Bits} & \text{GNU GMP} & \texttt{double} &\text{Fehler} \\
 \hline
  32 &
 -2.378447678\cdot 10^{\phantom{-}19} &
@@ -782,18 +845,20 @@ mit Maschinenpräzision umgewandelt.
 \hline
 \end{tabular}
 \caption{Tabelle der Resultate der Berechnung von $e^{-100}$ mit Hilfe
-der Taylorreihe der Exponentialfunktion unter Verwendung des Programms
+der Taylor-Reihe der Exponentialfunktion unter Verwendung des Programms
 von Listing~\ref{numerik:listing:gmp} mit verschiedenen Bitlängen.
 \label{numerik:expresultate:gmp}}
 \end{table}
 
 Die Resultate der Berechnung sind in Tabelle~\ref{numerik:expresultate:gmp}
 zusammengestellt.
+Die Spalte \texttt{double} enthält die mit der Formel $e^x = 1/e^{-x}$ mit
+Maschinengenauigkeit erhaltenen Werte mit Maschinengenauigkeit.
 Zunächst fällt auf, dass der Fehler der Berechnung mit 32 bit und mit 64 bit
 gleich gross ist.
 Dies rührt daher, dass die Bibliothek für die 32 bit Rechnung die gleiche
 Genauigkeit verwendet wie bei 64 bit.
-Selbst die Präzision von 256 bit reicht nicht aus, um $e^{-100}$ 
+Selbst die Präzision von 256 bit reicht nicht aus, um $e^{-100}$ zu
 berechnen.
 Erst im letzten Resultat stimmt das Resultat mit 16 signifikanten Stellen.
 Eine genauere Untersuchung zeigt, dass die volle Genauigkeit bei
@@ -802,11 +867,15 @@ Eine genauere Untersuchung zeigt, dass die volle Genauigkeit bei
 \subsubsection{GNU Multiple Precision Floating-Point Reliable Library}
 Die GNU Multiple Precision Floating-Point Reliable Library versucht,
 die Defizite der GMP zu kompensieren.
-Mit der Funktion \verb+mpfr_set_default_prec(int bits)+ wird nicht die
-minimale sondern die exakte Anzahl Bits festgelegt, mit der gerechnet
-werden soll.
+Das nur wenig abweichende Listing~\ref{numerik:listing:mpfr} zeigt
+die Implementation.
+
+Mit der Funktion \verb+mpfr_set_default_prec(int bits)+ in Zeile~44
+wird nicht die minimale sondern die exakte Anzahl Bits festgelegt,
+mit der gerechnet werden soll.
 Bei jeder Operation, bei der gerundet werden muss, kann spezifiziert
-werden, in welche Richtung die Rundung vorgenommen werden soll.
+werden, in welche Richtung die Rundung vorgenommen werden soll, dies
+ist die Bedeutung der Konstaten \verb+MPFR_RNDN+.
 Schliesslich ist die Implementation konform mit dem IEEE 754 Standard,
 so dass bei Verwendung dieser Bibliothek garantiert ist, dass die
 Resultate nicht von der Plattform abhängen.
@@ -872,7 +941,7 @@ void    experiment(int bits) {
 \centering
 \begin{tabular}{|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|}
 \hline
-\text{Bits} & \text{GMP} & \texttt{double} &\text{Fehler} \\
+\text{Bits} & \text{GNU MPFR} & \texttt{double} &\text{Fehler} \\
 \hline
 32 &
  4.040280437\cdot 10^{\phantom{-}32} &
@@ -937,7 +1006,7 @@ void    experiment(int bits) {
 \hline
 \end{tabular}
 \caption{Tabelle der Resultate der Berechnung von $e^{-100}$ mit Hilfe
-der Taylorreihe der Exponentialfunktion unter Verwendung des Programms
+der Taylor-Reihe der Exponentialfunktion unter Verwendung des Programms
 von Listing~\ref{numerik:listing:mpfr} mit verschiedenen Bitlängen.
 \label{numerik:expresultate:mpfr}}
 \end{table}
@@ -946,7 +1015,12 @@ In Tabelle~\ref{numerik:expresultate:mpfr} sind die Resultate
 zusammengestellt.
 Es fällt sofort auf, dass 32 bit und 64 bit verschiedene Resultate
 geben.
-In der MPFR-Implementation macht jedes einzelne Bit einen Unterschied.
+Ab Bitlänge 328 ist in den gezeigten Stellen kein Unterschied mehr zwischen 
+der Maschinenimplementation und der MPFR-Implementation erkennbar,
+trotzdem verbleibt eine Abweichung, der in der letzten Spalte dargestellt
+wird.
+Sie zeigt auch, dass in der MPFR-Implementation jedes einzelne Bit
+einen Unterschied macht.
 Die MPFR-Bibliothek kann daher auch als Labor für Experimente über
 die Abhängigkeit der Fehler von der Genauigkeit der Arithmetik dienen.
 

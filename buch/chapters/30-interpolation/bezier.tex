@@ -6,7 +6,7 @@
 
 \subsection{Bézier-Kurven und Splines in der Ebene
 \label{buch:subsection:bezier}}
-Spline-Interpolation kann auch verwendet werden um Kurven in der Ebene
+Spline-Interpolation kann auch verwendet werden, um Kurven in der Ebene
 oder im Raum zu approximieren.
 In der Computergraphik ist dabei besonders wichtig, dass sich Kurvenpunkte
 mit einfachen Operationen aus einer kleinen Zahl von Parametern berechnen
@@ -111,7 +111,7 @@ x(t_i) = x_i
 y(t_i) = y_i.
 \]
 Das Problem, eine ebene Kurve durch die Punkte $P_i$ zu parametrisieren
-ist jetzt also zerlegt worden in zwei unabhängige Interolationsprobleme
+ist damit zerlegt worden in zwei unabhängige Interolationsprobleme
 für die Funktionen $x(t)$ und $y(t)$.
 
 Jedes in diesem Kapitel besprochene Interpolationsverfahren kann dafür
@@ -167,7 +167,7 @@ Geschwindigkeit $p_2-p_1$.
 Man muss also zwischen $t=0$ und $t=1$ ``vom ersten Segment auf das zweite
 wechseln''.
 Dazu verbindet man die Punkte $q_0(t)$ und $q_1(t)$ mit einer Strecke und
-wähle den Streckenparameter wieder als $t$.
+wählt den Streckenparameter wieder als $t$.
 Man erhält so eine Kurve
 \begin{align*}
 r(t)
@@ -207,6 +207,7 @@ eine quadratische {\em Bézier-Kurve} mit
 \index{Kontrollpunkte}
 Der Punkt $P_1$ kontrolliert die Start- und Ankunftsrichtung.
 
+\subsubsection{Kubische Bézier-Kurven}
 Die beiden Richtungen in Anfangs- und Endpunkten müssen unabhängig
 voneinander vorgegeben werden können, wir versuchen daher, die
 gleiche Konstruktion mit vier Kontrollpunkten durchzuführen.
@@ -370,7 +371,7 @@ die in \eqref{buch:equation:hermite:h} gefunden worden sind.
 %
 \subsubsection{Bézier-Kurven höherer Ordnung}
 Der Prozess, der die kubischen Bézier-Kurven produziert hat, kann natürlich
-iteriert werden um Kurven beliebiger Ordnung zu erzeugen.
+iteriert werden, um Kurven beliebiger Ordnung zu erzeugen.
 Ausgehend von $n+1$ Kontrollpunkten $P_0,\dots,P_n$, konstruiert man eine
 rekursiv eine Folge von Punkten wie folgt.
 Zunächst setzt man $P_{0k}(t) = P_k$ mit zugehörigen Ortsvektoren $p_{0k}(t)$.
@@ -406,7 +407,7 @@ dargestellt.
 Jeder schräge Pfeil steht für zwei Multiplikationen,
 für jeden Summenknoten sind also vier Multiplikationen und zwei Additionen
 auszuführen.
-Daraus kann man ablesen, dass die Berechnung von $s(t)$ 
+Daraus kann man ablesen, dass die Berechnung von $s(t)$ genau
 \begin{align}
 4\cdot (1 + 2 + \dots + n) &= 4\sum_{k=1}^n k = 2n(n+1)
 \label{buch:bezier:eqn:multiplikationen}
@@ -434,9 +435,9 @@ die sogenannten {\em Bernsteinpolynome} sind.
 \end{satz}
 
 Man braucht immer die Werte aller Bernsteinpolynome.
-Dazu berechnet main in $2(n-1)$ Multiplikationen zuerst alle
+Dazu berechnet man in $2(n-1)$ Multiplikationen zuerst alle
 Potenzen von $t$ und $(1-t)$.
-Mit $2(n-1)$ weitern Multiplikationen bekommt man dann die Werte
+Mit $2(n-1)$ weiteren Multiplikationen bekommt man dann die Werte
 der Bernsteinpolynome.
 Insgesamt sind also $4(n-1)$ Multiplikationen für die Bernstein-Polynome
 nötig.
@@ -447,7 +448,7 @@ Die Berechnung nach dem Schema von
 Abbildung~\ref{buch:bezier:figure:bezierberechnung} wächst dagegen 
 quadratisch mit $n$ an.
 Für $n\ge 2$ folgt aus \eqref{buch:bezier:eqn:multiplikationen}
-dass das Rekursive Verfahren mindestens $2n\cdot 3=6n$ und damit
+dass das rekursive Verfahren mindestens $2n\cdot 3=6n$ und damit
 bereits mehr Multiplikationen benötigen.
 
 \begin{proof}[Beweis]
@@ -465,7 +466,7 @@ am Anfang und am Ende der Kurve beweisen.
 
 Die Eigenschaften des Tagentialvektors bei $t=0$ und $t=1$
 der Kurve $p_{0n}(t)$ lässt sich aber mit Hilfe der Rekursionsformel
-nachweisen.
+auch direkt nachweisen.
 
 \begin{lemma}
 Sind $p(t)$ und $q(t)$ zwei beliebige Kurven derart, dass
@@ -524,7 +525,7 @@ Dies bedeutet, dass die Kurven $p_{kl}(t)$ den Tangentialvektor
 \end{align*}
 haben.
 Ausserdem ist $p_{kl}(0) = p_k$ und $p_{kl}(1) = p_{k+l}$, so dass auch
-die Bedinung über die Endpunkte im Lemma erfüllt ist.
+die Bedingung über die Endpunkte im Lemma erfüllt ist.
 Es folgt daher mit Hilfe des Lemmas für die konvexe Kombination $p_{k,l+1}(t)$
 von $p_{kl}(t)$ und $p_{k+1,l}(t)$
 \begin{align*}

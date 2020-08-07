@@ -19,7 +19,7 @@ In diesem Abschnitt ist also
 \[
 f\colon \mathbb{R}\to\mathbb{R} : x\mapsto f(x)
 \]
-eine differenzierbar Funktion.
+eine differenzierbare Funktion.
 Mit einem gegebenen Startwert $x_0\in\mathbb R$ lässt sich durch
 wiederholte Anwendung von $f$ die Folge
 \[
@@ -27,7 +27,9 @@ x_0,\; x_1 = f(x_0),\; x_2 = f(x_1),\; x_3 = f(x_2),\; x_4 = f(x_3),\dots
 \]
 konstruieren.
 
-Ist der Punkt $x^*$ ein Fixpunkt der Funktio $f(x)$, ist also $f(x^*)=x^*$,
+Ist der Punkt $x^*$ ein {\em Fixpunkt} der Funktion $f(x)$, ist also
+$f(x^*)=x^*$,
+\index{Fixpunkt}%
 dann ist die mit $x_0=x^*$ gebildete Iterationsfolge konstant.
 Es stellt sich damit automatisch die Frage, was mit einem von $x^*$
 abweichenden Startwert passiert. Entfernen sich die Werte $x_k$ von $x^*$
@@ -67,19 +69,21 @@ berechnet ist.
 
 Dieses Verhalten des Fehlers kann man auch analytisch verstehen.
 Nehmen wir an, dass $x_n = 2 + \delta_n$ und versuchen wir 
-$x_{n+}$ zu berechnen.
+$x_{n+1}$ zu berechnen.
 Indem wir die Funktion $f(x)$ im Punkt $x=2$ mit Hilfe der Ableitung
 linear approximieren, erhalten wir wegen
 \[
 f'(x) = \frac{1}{2\sqrt{x+2}}
 \]
+den Wert
 \[
 x_{n+1} = f(x_n) = f(2 + \delta_n)
 \simeq
 f(2) + f'(2)\cdot \delta_n
-2 + \underbrace{\frac14\cdot \delta_n}_{\displaystyle\simeq\delta_{n+1}},
+2 + \underbrace{\frac14\cdot \delta_n}_{\displaystyle\simeq\delta_{n+1}}
 \]
-der Fehler von $x_{n+1}$ ist also $\delta_{n+1}\simeq\frac14\delta_n$.
+für $x_{n+1}$.
+Der Fehler von $x_{n+1}$ ist also $\delta_{n+1}\simeq\frac14\delta_n$.
 In jedem Iterationsschritt gewinnen wir daher etwa 2 bit Genauigkeit.
 Für die 52 bit Mantisse des \texttt{double} Typs brauchen wir also
 etwa 26 Iterationen.
@@ -91,7 +95,7 @@ Wir betrachten die Funktion
 \[
 f(x) = 3x(1-x).
 \]
-Sie hat zwei Fixpunkte, die man durch lösen der quadratischen
+Sie hat zwei Fixpunkte, die man durch Lösen der quadratischen
 Gleichung
 \[
 f(x^*)=x^*
@@ -116,11 +120,11 @@ f(\delta)
 =
 3\delta - 3\delta^2.
 \]
-Für kleine Werte von $\delta$ kann man den quadratischen Wert vernachlässigen
+Für kleine Werte von $\delta$ kann man den quadratischen Term vernachlässigen
 und sieht, dass der Fehler durch die Iteration verdreifacht wird.
 Konvergenz zu diesem Fixpunkt ist also nicht möglich.
 
-Für den Fixpunkt $x=^* = \frac23$ finden wir
+Für den Fixpunkt $x^* = \frac23$ finden wir
 \begin{equation}
 f({\textstyle\frac23}+\delta)
 =
@@ -151,7 +155,7 @@ Nach dem ersten ist der Fehler $\delta(1-9\delta)$, nach dem zweiten
 Für kleines $\delta$ können die Terme höhrer als erster Ordnung
 vernachlässigt werden und man kann schliessen, dass der Fehler nach
 zwei Iterationen tatsächlich um den Faktor $(1-18\delta)$ kleiner
-geworden ist?
+geworden ist.
 
 \begin{figure}
 \centering
@@ -164,8 +168,10 @@ sichtbar.
 \label{buch:figure:iterationprinzip}}
 \end{figure}
 
-Wie viele Iterationsschritte sind mindestens nötig, um den Fehler von
-$\delta_0$ auf $\delta_{2n}$ zu verbessern?
+Wir möchten wissen, wieviele Iterationsschritte nötig sind, um eine
+bestimmte Genauigkeit zu erreichen.
+Wir möchten also den Fehler $\delta_{2n}$ vorgeben und das zugehörige
+$n$ bestimmen.
 Wie wir soeben berechnet haben, nimmt der Betrag des Fehlers zwischen
 den Schritten $k$ und $k+2$ gemäss
 \[
@@ -182,7 +188,7 @@ Dieser verändert sich gemäss
 \log\delta_k - 18\delta_k,
 \]
 wobei wir für den zweiten Term die lineare Approximation aus der
-Taylorreihe
+Taylor-Reihe
 \[
 \log (1+x) = x - \frac{x^2}2 + \frac{x^3}3 -\dots
 \]
@@ -203,7 +209,7 @@ Zwischen $\delta_0$ und $\delta_{2n}$ bedeutet dies
 \]
 Da der Fehler immer kleiner wir, kann man für eine erste grobe Abschätzung
 der Summe auf der rechten Seite die grössten und kleinsten Terme
-Damit lässt sich die Summe nach oben Abschätzen
+verwenden, um die Summe nach und unten und oben durch
 \[
 n\delta_{2n-2}
 \le
@@ -211,28 +217,29 @@ n\delta_{2n-2}
 \le
 n\delta_0.
 \]
+abzuschätzen
 Einsetzen ergibt
 \[
 n\delta_{2n-2}
 \le
 \frac{1}{18}
-\log\frac{q_{0}}{q_{2n}}
+\log\frac{\delta_{0}}{\delta_{2n}}
 \le
 n\delta_0
 \quad\Rightarrow\quad
-\frac{1}{18q_0}
-\log\frac{q_{0}}{q_{2n}}
+\frac{1}{18\delta_0}
+\log\frac{\delta_{0}}{\delta_{2n}}
 \le
 n
 \le
-\frac{1}{18q_{2n-2}}
-\log\frac{q_{0}}{q_{2n}}
+\frac{1}{18\delta_{2n-2}}
+\log\frac{\delta_{0}}{\delta_{2n}}
 <
-\frac{1}{18q_{2n}}
-\log\frac{q_{0}}{q_{2n}}
+\frac{1}{18\delta_{2n}}
+\log\frac{\delta_{0}}{\delta_{2n}}.
 \]
-Eine Verbesserung um zwei Stellen von $q_0=0.01$ auf $q_{2n}=0.0001$ braucht
-also zwischen $25$ und $2558$ Iterationen.
+Eine Verbesserung um zwei Stellen von $\delta_0=0.01$ auf $\delta_{2n}=0.0001$
+braucht also zwischen $25$ und $2558$ Iterationen.
 \end{beispiel}
 
 %
@@ -240,18 +247,17 @@ also zwischen $25$ und $2558$ Iterationen.
 %
 \subsection{Graphische Analyse
 \label{buch:section:graphischeanalyse}}
-\input{chapters/10-arithmetik/graphisch.tex}
 Ein Fixpunkt der Funktion $f(x)$ manifestiert sich in einem 
 Schnittpunkte des Graphen von $f$ mit der $45^\circ$-Geraden
 $y=x$ wie in Abbildung~\ref{buch:figure:iterationprinzip}.
-Die Iterationsfolge $x_n$ kann graphisch wie folgt korrigiert
+Die Iterationsfolge $x_n$ kann graphisch wie folgt dargestellt
 werden.
-Ausgehend vom Wert $x_n$ auf der $x$-Achse folgt man der vertikalen,
+Ausgehend vom Wert $x_n$ auf der $x$-Achse folgt man der Vertikalen,
 bis man auf den Graphen der Funktion $f$ trifft, dies liefert den
 Wert $y_n=f(x_n)$.
 Dieser soll jetzt als neuer $x$-Wert verwendet werden.
 Dazu folgt man der Horizontalen bis zur $45^\circ$-Geraden,
-die $x$-Koordinate des Schnittpunktes ist der $x_{n+1}$.
+die $x$-Koordinate des Schnittpunktes ist $x_{n+1}$.
 So entsteht Treppenlinie in Abbildung~\ref{buch:figure:iterationprinzip}.
 
 %
@@ -259,11 +265,15 @@ So entsteht Treppenlinie in Abbildung~\ref{buch:figure:iterationprinzip}.
 %
 \subsection{Konvergenzbedingung
 \label{buch:subsection:konvergenzbedingung}}
+\input{chapters/10-arithmetik/graphisch0.tex}
+\input{chapters/10-arithmetik/graphisch1.tex}
 Aus der graphischen Analyse von Abschnitt~\ref{buch:section:graphischeanalyse}
 kann man jetzt leicht Kriterien ableiten, wann die Iterationsfolge
 konvergent ist.
 Die Situation in Abbildung~\ref{buch:figure:iterationprinzip}
-tritt zum Beispiel immer ein, wenn es in einer Umgebung von $x^*$ 
+tritt zum Beispiel immer ein, wenn in einer Umgebung von $x^*$ 
+der Graph der Funktion $f$ zwischen der horizontalen und der 
+$45^\circ$-Geraden verläuft, oder anders ausgedrückt, wenn
 \[
 \begin{aligned}
 x^* &< f(x) < x &&& &\text{für $x>x^*$ und} \\
@@ -273,28 +283,32 @@ x^* &> f(x) < x &&& &\text{für $x<x^*$}
 gilt.
 
 Ist dagegen der Graph von $f$ in einer Umgebung von $x^*$ steiler als
-die $45^\circ$-Gerade, gilt also
+die $45^\circ$-Gerade, dann gilt 
 \begin{equation}
 f(x) \;\begin{cases}
-> x&\qquad x>x^*\\
-< x&\qquad x<x^*
+> x&\qquad\text{für $ x>x^*$}\\
+< x&\qquad\text{für $ x<x^*$.}
 \end{cases}
 \label{buch:equation:konvergenzbedingung}
 \end{equation}
-dann folgt
+Es folgt dann
 \[
 x_{n+1} = f(x_n)
 \;
 \begin{cases}
-> x_n&\qquad x_n>x^*\\
-< x_n&\qquad x_n<x^*.\\
+> x_n&\qquad \text{für $x_n>x^*$}\\
+< x_n&\qquad \text{für $x_n<x^*$.}\\
 \end{cases}
 \]
 In beiden Fällen ist $x_{n+1}$ weiter vom Fixpunkt $x^*$ entfernt
 als $x_n$, die Folge kann also nicht konvergieren.
+Die beiden Situationen sind in den Abbildungen
+\label{buch:figure:fixpunkt:normal} und
+\label{buch:figure:fixpunkt:divergent}
+dargestellt.
 
-Andererseits ist die Bedignung \ref{buch:equation:konvergenzbedingung}
-zu speziell.
+Allerdings ist die Bedignung \ref{buch:equation:konvergenzbedingung}
+noch etwas zu speziell.
 Der Funktionswert $f(x_n)$ darf durchaus auch kleiner als $x^*$ werden,
 wenn nur der Betrag der Differenz zu $x^*$ abnimmt, wenn also gilt
 \begin{equation}
@@ -308,7 +322,7 @@ Andererseits liegt Divergenz vor, wenn
 |x^* - f(x_n)| > |x^*-x_n|,
 \]
 was nahe bei $x^*$ erfüllt ist, wenn $|f'(x^*)|>1$ gilt.
-Wir fassen diese Resultate zusammen im folgenden Satz
+Wir fassen diese Resultate im folgenden Satz zusammen.
 
 \begin{satz}
 \label{buch:satz:konvergenzkriterium}
@@ -331,6 +345,9 @@ mit dem positiven Parameter $\lambda$.
 Im Beispiel auf Seite~\pageref{buch:beispiel:logistisch3} haben wir
 diese Funktion bereits einmal angetroffen mit dem Parameterwert
 $\lambda=3$.
+Eine detailliertere Untersuchung des Konvergenzverhaltes der Iterationen
+dieser Funktionen ist im Kapitel~\ref{chapter:logistic} zu finden.
+
 Der Graph von $f_\lambda(x)$ ist eine Parabel, die die $x$-Achse
 in den Punkten $(0,0)$ und $(1,0)$ schneidet.
 Das Maximum wird bei $x=\frac12$ angenommen und ist
@@ -385,9 +402,9 @@ wir den Grenzfall $\lambda=3$ untersucht und festgestellt, dass die
 Iterationsfolge gerade noch konvergiert, allerdings sehr langsam.
 Man beachte, dass das Kriterium \eqref{buch:equation:konvergenzbereich}
 in diesem Fall nicht erfüllt ist.
-
 Für $\lambda<1$ konvergiert die Iterationsfolge zum Nullpunkt.
-Wie verhält sich die Folge im Grenzfall $\lambda=1$.
+
+Wie verhält sich die Folge im Grenzfall $\lambda=1$?
 Auch in diesem Grenzfall ist das Kriterium nicht erfüllt, wir müssen
 das Problem als wieder gesondert analysieren.
 Es gilt
@@ -464,7 +481,7 @@ x^* - \delta_n + \frac12f''(x^*)\delta_n^2 +\dots
 &=
 -\delta + \frac12f''(x^*)\delta^2 \dots
 \end{align*}
-Daraus kann man zunächst erkennen, dass der Fehler bei jedem 
+Daraus kann man zunächst ableiten, dass der Fehler bei jedem 
 Iterationsschritt das Vorzeichen wechselt.
 Wir berechnen den Fehler nach zwei solchen Schritten.
 \begin{align*}
