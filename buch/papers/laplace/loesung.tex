@@ -14,8 +14,18 @@ Diese fordert, dass die Singularitäten von $F(s)$ bekannt sind, sowie folgendes
 \item
 $|F(s)|\rightarrow$ 0 mit $|s|\rightarrow$ $\infty$ in $Re(s)<\gamma_{0}$
 \item
-Für alle Singularitäten $s_{j},~~|Im(s_{j})|<K$, wobei der Wert von K bekannt ist.
+Für alle Singularitäten $s_{j},~~|Im(s_{j})|<K$, wobei der Wert von $K$ bekannt ist.
 \end{enumerate}
+
+Die erste Bedingung besagt, dass $F(s)$ für grosse $|s|$ schnell gegen $0$ geht, solange man links von $\gamma_{0}$ ist. Dies hat zur Folge, dass Integrale über Konturen vernachlässigt werden können, wenn Sie sich in diesem Gebiet bewegen. Das ist die entscheidende Idee von Talbot: man verschiebt die Bromwich-Kontur, wo man nicht vermeiden kann, über die ganze imaginäre Achse zu integrieren, derart, dass man nur noch über einen kleinen Teil integrieren muss. Die untenstehende Abbildung veranschaulicht dies Kontur von Talbot.
+
+\begin{figure}
+\centering
+\includegraphics[width=6.9cm]{papers/laplace/Talbot_Contour.png}
+\caption{$Talbot Kontur$}
+\label{laplace:talbotkontur}
+\end{figure}
+
 Die Talbots Kontur ist gegeben durch
 \[
 s(z) = \sigma+\lambda s_{\nu}(z),~~ z\in (-2\pi i,~~2\pi i)
