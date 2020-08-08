@@ -9,6 +9,8 @@ dependencies-kettenbruch =						\
 	papers/kettenbruch/references.bib				\
 	papers/kettenbruch/einleitung.tex				\
 	papers/kettenbruch/problemstellung.tex				\
-	papers/kettenbruch/loesung.tex					\
+	papers/kettenbruch/rationalezahlen.tex				\
+	papers/kettenbruch/irrationalezahlen.tex			\
+	papers/kettenbruch/approximation.tex				\
 	papers/kettenbruch/folgerungen.tex
 

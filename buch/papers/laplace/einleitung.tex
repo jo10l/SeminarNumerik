@@ -1,22 +1,29 @@
 %
 % einleitung.tex -- Beispiel-File für die Einleitung
 %
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+% (c) 2020 Severin Weiss
 %
-Die Laplacetransformation ist eine Funktion $f(t)$, definiert auf dem Intervall von $[0, \infty)$ und absolut integrierbar auf jedem endlichen Intervall $[0, a)$. 
-Die Laplacetransformation ist wie folgt definiert
+Die Laplacetransformation einer auf $[0, \infty)$ definierten und in jedem endlichen Intrevall  $[0, a)$ absolut integrierbaren Funktion ist die Funktion
 \[
-F(s) = \int_0^\infty e^{-st}f(t)\,dt,~~Re(s)>\gamma_{0}
+F(s) = \int_0^\infty e^{-st}f(t)\,dt,~~Re(s)>\gamma_{0}.
 \]
-wobei $\gamma_{0}$ die Abzisse der Konvergenz der Laplacetransformation ist. 
-Das inverse Laplaceproblem ist es Funktionen $f(t)$ im Zeitbereich aus jenen bekannten Funktionen $F(s)$ im Frequenzbereich zu rekonstruieren.
+Das Argument s kann eine komplexe Zahl sein, im Folgenden wird vorausgesetzt, dass das Integral für $Re(s)>\gamma_{0}$ konvergieren muss.
+Das inverse Laplaceproblem ist, die Funktionen $f(t)$ im Zeitbereich aus jenen bekannten Funktionen $F(s)$ im Frequenzbereich zu rekonstruieren.
 
-Mit der Riemmann inversions Formel ergibt sich $f(t)$ aus $F(s)$
+Mit der Riemanninversionsformel ergibt sich $f(t)$ aus $F(s)$
 \[
 f(t) = \frac{1}{2\pi i} \oint_{B} e^{st}F(s)\,ds,~~t>0,~~i=\sqrt{-1}
 \]
-wobei $B$ die Bromwich Kontur von $\gamma-i\infty$ bis $\gamma+i\infty$, mit $\gamma>\gamma_{0}$, parallel zur imaginären Achse.
-Diese Kontur befindet sich zur rechten aller Singularitäten von $F(s)$, falls $f(t)$ durch numerische quadratur berechnet wird.
+wobei $B$ die Bromwich Kontur von $\gamma-i\infty$ bis $\gamma+i\infty$, mit $\gamma>\gamma_{0}$, parallel zur imaginären Achse ist. Die Bromwich Kontur ist eine geschlossen Kurve. Die Kurve ist in untestehender Abbildung ersichtlich. Sie besteht aus zwei Teilen. C1 ist ein Teilkreis mit Radius R vom Mittelpunkt. C2 ist die vertikale Linie AB, welche sich zur rechten aller Singularitäten von $F(s)$ befindet.  Bei Vergrösserung des Radius R wird die Bromwich Kontur alle Singularitäten umschliessen. Unter diesen Bedingung konvergiert das Integral über C1 gegen Null, wenn der Radius R gegen unendlich strebt. Desweiteren wird in diesem Fall das Integral über C2 gleich der Summe der Residuen, der in der Bromwich Kontur enthaltenen Singularitäten.
+
+\begin{figure}
+\centering
+\includegraphics[width=6.9cm]{papers/laplace/Bromwich_Contour}
+\caption{Fehler von $Bromwich Kontur$
+\label{laplace:bromwichkontur}
+}
+\end{figure}
+
 Im Allgemeinen möchte man die Kontur zur linken Seite platzieren, sodass der Betrag des Faktors $e^{st}$ im Integrand kleiner wird.
-Die Kontur sollte jedoch nicht zu nahe an Singularitäten von $F(s)$ angenähert werden, dies würde Spitzen der Integeralfunktion zur Folge haben.
+Die Kontur sollte jedoch nicht zu nahe an Singularitäten von $F(s)$ angenähert werden, dies würde Spitzen des Integranden zur Folge haben.
 

@@ -1,12 +1,12 @@
 %
 % problemstellung.tex -- Beispiel-File für die Beschreibung des Problems
 %
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+% (c) 2020 Severin Weiss
 %
-
 
 \section{Folgerungen
 \label{laplace:section:folgerungen}}
+\rhead{Folgerungen}
 Damit die Approximation von $\tilde{f}(t)$ möglichst genau $f(t)$ repräsentiert,
 müssen die passenden Werte für $\lambda, \sigma $ und $\nu $ gefunden werden. 
 Dies geschah in diesem Falle rein iterativ durch probieren.
@@ -30,38 +30,42 @@ Die Abbildungen \ref{laplace:fehlerf1} -- \ref{laplace:fehler2-5} zeigen die Ver
 
 \begin{figure}
 \centering
-%\includegraphics[width=8cm]{papers/laplace/Error_1divide_sminus1}
+\includegraphics[width=6.9cm]{papers/laplace/Error_1divide_sminus1}
+\includegraphics[width=6.9cm]{papers/laplace/Error_1divide_sminus1_bis_tgleich5}
 \caption{Fehler von $F_{1}(s)$
 \label{laplace:fehlerf1}
 }
 \end{figure}
 
-\begin{figure}
-\centering
-%\includegraphics[width=8cm]{papers/laplace/Error_1divide_sminus1_bis_tgleich5}
-\caption{Fehler von $F_{1}(s)$
-\label{laplace:fehlerf1-5}
-}
-\end{figure}
+%\begin{figure}
+%\centering
+%\caption{Fehler von $F_{1}(s)$
+%\label{laplace:fehlerf1-5}
+%}
+%\end{figure}
 
 \begin{figure}
 \centering
-%\includegraphics[width=8cm]{papers/laplace/Error_2divide_s_pow3}
+\includegraphics[width=6.9cm]{papers/laplace/Error_2divide_s_pow3}
+\includegraphics[width=6.9cm]{papers/laplace/Error_2divide_s_pow3_bis_tgleich5}
 \caption{Fehler von $F_{2}(s)$
 \label{laplace:fehlerf2}
 }
 \end{figure}
 
-\begin{figure}
-\centering
+%\begin{figure}
+%\centering
 %\includegraphics[width=8cm]{papers/laplace/Error_2divide_s_pow3_bis_tgleich5}
-\caption{Fehler von $F_{2}(s)$
-\label{laplace:fehlerf2-5}
-}
-\end{figure}
+%\caption{Fehler von $F_{2}(s)$
+%\label{laplace:fehlerf2-5}
+%}
+%\end{figure}
 
 
-Es ist deutlich ersichtlich, dass der Fehler nur für ein gewisses Zeitintervall akzeptabel ist. Im Bereich wo der Fehler sich in einem tolerierbaren Bereich befindet, wurden die Parameter $\lambda, \sigma $ und $\nu $ für ein bestimmtes $t_{0}$ ermittelt. 
+Es ist deutlich ersichtlich, dass der Fehler nur für ein gewisses
+Zeitintervall akzeptabel ist. Im Bereich wo der Fehler sich in einem
+tolerierbaren Bereich befindet, wurden die Parameter $\lambda$,
+$\sigma$ und $\nu$ für ein bestimmtes $t_{0}$ ermittelt.
 Diese Parameter sind für andere Zeitpunkt $t_{x}$ nicht mehr sinnvoll. 
 Für den Zeitpunkt $t_{0}=1$ wurden die Fehler in der Grössenordnung $10^{-8}$ respektive $10^{-6}$ erreicht. 
 Dies geschah mittels Erhöhung der Iterationszahl N.
@@ -76,7 +80,7 @@ Parameter & $\lambda=1.288$ & $\lambda=0.101$ \\
 \hline
 $t_{0}$ & $1$ & $1$ \\
 \hline
-Fehler & $1.7076~*~10^{-08}$ & $1.8447~*~10^{-06}$ \\
+Fehler & $1.7076~\cdot~10^{-08}$ & $1.8447~\cdot~10^{-06}$ \\
 \end{tabular}
 \end{center}
 

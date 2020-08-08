@@ -7,17 +7,17 @@
 \label{quadratur:section:folgerungen}}
 \rhead{Folgerungen}
 
-\subsection{Vergleich Gaussquadratur mit Trapezregel}
-In diesem Abschnitt werden die Resultate der Gaussquadratur mit Resultaten der Trapezregel
-verglichen, um zu zeigen wie effizient die Integration mit der Gausssintegration ist.
+\subsection{Vergleich Gauss-Quadratur mit Trapezregel}
+In diesem Abschnitt werden die Resultate der Gauss-Quadratur mit Resultaten der Trapezregel
+verglichen, um zu zeigen wie effizient die Integration mit der Gausss-Integration ist.
 Dazu wird nochmals die Funktion $\sqrt{1-x^{2}}$ Integriert. 
 Die Resultate sind in der Tabelle~\ref{buch:table:gaussvergleich} dargestellt.
-Als Referenz: Das analytische Resultat des Integrals ist $\frac{\pi}{2} \approx 1.5707963268$
+Als Referenz: Das analytische Resultat des Integrals ist $\frac{\pi}{2} \approx 1.5707963268$.
 \begin{table}
     \centering
     \begin{tabular}{|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|>{$}c<{$}|}
         \hline
-        n & \text{Gaussquadratur} &  \text{Gaussquadratur} & \text{Trapezregel} & \text{Trapezregel} \\
+        n & \text{Gauss-Quadratur} &  \text{Gauss-Quadratur} & \text{Trapezregel} & \text{Trapezregel} \\
          & \text{Resultat} &  \text{Fehler} & \text{Resultat} & \text{Fehler} \\
         \hline  
         2 & 1.6329931619 & 0.3670068381 & 0.0000000000 & 1.5707963268 \\
@@ -29,24 +29,24 @@ Als Referenz: Das analytische Resultat des Integrals ist $\frac{\pi}{2} \approx 
         20 & 1.5708921460 & 1.55366 \cdot e^{-05} & 1.5507798233 & 0.020016503 \\
         30 & 1.5708253858 & 3.05870 \cdot e^{-06} & 1.5601695280 & 0.010626799 \\
         40 & 1.5708087326 & 9.66660 \cdot e^{-07} & 1.5639786384 & 0.006817688 \\
-        50 & 1.5708027245 & 3.9573. \cdot e^{-07} & 1.5659537235 & 0.004842603 \\
+        50 & 1.5708027245 & 3.95730 \cdot e^{-07} & 1.5659537235 & 0.004842603 \\
         100 & 1.5707971383 & 2.47153 \cdot e^{-08} & 1.5691090196 & 0.001687307 \\
         \hline
     \end{tabular}
-    \caption{Resultatvergleich zwischen der Gaussquadratur und der Trapezregel
+    \caption{Resultatvergleich zwischen der Gauss-Quadratur und der Trapezregel
     \label{buch:table:gaussvergleich}}   
 \end{table}
-Man kann sehr schön sehen, dass die Resultate der Gaussquadratur mit nur wenigen Funktionsauswertungen
+Man kann sehr schön sehen, dass die Resultate der Gauss-Quadratur mit nur wenigen Funktionsauswertungen
 schon sehr geringe Abweichungen vom analytischen Resultat haben, während bei der Trapezregel
 viel mehr Funktionsauswertungen benötigt werden, um die selbe Genauigkeit zu erreichen.
-Man sieht, dass die Genauigkeit der Trapezregel mit $n = 100$ bei der Gaussquadratur bereits mit $n = 7$
+Man sieht, dass die Genauigkeit der Trapezregel mit $n = 100$ bei der Gauss-Quadratur bereits mit $n = 7$
 erreicht wird.
 
-\subsection{Programm für Gaussquadratur in Pyhton}
-In Python lässt sich die Gaussquadratur in gerade mal $25$ Zeilen Code umsetzen.
-Dafür wird aus dem Modul "'scipy"' die Klasse "'integrate"' importiert. 
-Ausserdem wird für die mathematischen Funktionen das Modul "'numpy"' verwendet
-\begin{lstlisting}[float, language=Python]
+\subsection{Programm für Gauss-Quadratur in Python}
+In Python lässt sich die Gauss-Quadratur in gerade mal $25$ Zeilen Code umsetzen.
+Dafür wird aus dem Modul \texttt{scipy} die Klasse \texttt{integrate} importiert. 
+Ausserdem wird für die mathematischen Funktionen das Modul \texttt{numpy} verwendet
+\begin{lstlisting}[float,language=Python,style=Python]
     import numpy as np
     from scipy import integrate
 
@@ -76,7 +76,7 @@ Ausserdem wird für die mathematischen Funktionen das Modul "'numpy"' verwendet
 
 
 \subsection{Fazit}
-Die Gaussquadratur ist ein numerisches Integrationsverfahren, welches
+Die Gauss-Quadratur ist ein numerisches Integrationsverfahren, welches
 mit wenigen Funktionsauswertungen das bestimmte Integral von beliebigen
 Funktionen sehr genau berechnen kann. 
 Polynome oder Annäherungen von Funktionen mittels Polynomen lassen sich 
@@ -88,22 +88,10 @@ Vorgerechnete Werte für $x_{i}$ und $A_{i}$ sind für grosse $n$ in Tabellen
 vorhanden und erlauben schnelle Lookups. Für grössere $n$ existieren
 Formeln, die die Berechnung der Stützstellen und Gewichte erlauben und
 in Computerprogrammen einfach umgesetzt werden können.
-Für verschiedene Integralgrenzen gibt es eigene Formen der Gaussquadratur
+Für verschiedene Integralgrenzen gibt es eigene Formen der Gauss-Quadratur
 die auf orthogonalen Polynomen aufbauen, deren Nullstellen die Stützstellen
 bestimmen.
-\textcolor{red}{
-    TODO
-    \begin{itemize}
-        \item Gauss Legendre Formel zeigen (Done)
-        \item Beispiel berechnen mit Formel (Done)
-        \item Berechnung der Position der Stützstellen (Done)
-        \item Berechnung der Gewichtung (Done)
-        \item Erklären der verschiedenen Formen der Gauss-Quadratur und ihrer Anwendungen (Done)
-        \item Fehler der Gauss-Quadratur (Done)
-        \item Vergleich mit Trapezregel. Resultatvergleich als Tabelle. (Done)
-        \item Abschluss des Kapitels formulieren. (Python-Code Einfügen)
-    \end{itemize}
-}
+
 
 
 

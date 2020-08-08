@@ -4,127 +4,77 @@
 Da ein formaler Beweis zu komplex wäre, verweise ich an dieser Stelle gerne auf \cite{francis:watkins_book}.
 Stattdessen wollen wir aber anhand einer einfachen Implementierung zeigen, dass der Algorithmus funktioniert.
 
-Folgender Matlab-Code von \cite{francis:watkins_book} ist eine Schritt-für-Schritt Implementation einer Francis Iteration für eine symmetrische $n x n$ Matrix 
+\subsection{Implementation\label{francis:section:nachweis:implementation}}
+Folgender Matlab-Code von \cite{francis:watkins_book} ist eine Schritt-für-Schritt Implementation einer Francis Iteration für eine symmetrische $n \times n$ Matrix 
 
 Zu Beginn muss eine Matrix generiert und auf Hessenberg Form gebracht werden.
-	
-\begin{lstlisting}
-n=6;
-a=randn(n);
-a=a+a';
-a=hess(a);
-[Evec,Eval]=eig(a);
-Eval
-\end{lstlisting}
-
+\lstinputlisting[language=Matlab, style=Python, firstline=1, lastline=6,float,caption={},label={francis:codes:code_p1}]{papers/francis/codes/code.m}
 Anschliessend soll der Wilkinson-Shift berechnet werden.
 Dies geschieht im folgenden Code-Abschnitt.
-
-\begin{lstlisting}
-htr= .5*(a(n-1,n-1) + a(n,n));                          
-dscr= sqrt((.5*(a(n-1,n-1)-a(n,n)))^2 + a(n,n-1)^2);    
-if htr < 0, dscr= -dscr; end                            
-root1 = htr + dscr;                                     
-if root1 == 0                                         
-	root2 = 0;
-else                                                    
-	det= a(n-1,n-1)*a(n,n) -a(n,n-1)^2;                 
-	root2= det/root1;
-end
-if abs(a(n,n)-root1) < abs(a(n,n)-root2)
-	shift= root1;
-else
-	shift= root2;
-end
-\end{lstlisting}
-
-Nun muss ein Rotator $q0$ gebildet werden.
+\lstinputlisting[language=Matlab, style=Python, firstline=7, lastline=21,float,caption={},label={francis:codes:code_p2}]{papers/francis/codes/code.m}
+Nun muss ein Rotator $Q_0$ gebildet werden.
 Die anschliessende Transformation (Multiplikation von Rechts und Links) erzeugt eine Ausbuchtung in der Matrix.
-
-\begin{lstlisting}
-cs= a(1,1) -shift; sn=a(2,1);
-r= norm([cs sn]);
-cs= cs/r; sn=sn/r;              
-q0= [ cs -sn; sn cs];           
-a(:,1:2) = a(:,1:2) * q0;
-a(1:2,:) = q0'*a(1:2,:);
-\end{lstlisting}
-
+\lstinputlisting[language=Matlab, style=Python, firstline=22, lastline=27,float,caption={},label={francis:codes:code_p3}]{papers/francis/codes/code.m}
 Um die Francis Iteration zu beenden, muss nun die Ausbuchtung aus der Matrix hinausgeschoben werden.
 Dies wird mit dem folgenden Loop erledigt.
+\lstinputlisting[language=Matlab, style=Python, firstline=28, lastline=40,float,caption={},label={francis:codes:code_p4}]{papers/francis/codes/code.m}
+Zum Schluss kann man die wichtigsten Matrixelemente ausgeben.
+\lstinputlisting[language=Matlab, style=Python, firstline=41, lastline=44,float,caption={},label={francis:codes:code_p5}]{papers/francis/codes/code.m}
 
-\begin{lstlisting}
-for ii = 1:n-2
-	%Chase the bulge from position (ii+2, ii)
-	cs=a(ii+1,ii);sn=a(ii+2,ii);
-	r=norm([cs sn]);
-	cs= cs/r; sn= sn/r;
-	a(ii+1,ii) = r;
-	a(ii+2,ii)=0;
-	qi= [cs -sn; sn cs];
-	
-	%Gives the rotator to chase the bulge
-	a(ii+1:ii+2,ii+1:n) =qi'*a(ii+1:ii+2,ii+1:n);
-	a(:,ii+1:ii+2) = a(:,ii+1:ii+2)*qi;
-end
-\end{lstlisting}
-
-Zum Schluss kann man die wichtigesten Matrixelemente ausgeben.
-
-\begin{lstlisting}
-format short e
-subdiag = diag(a,-1);
-format long
-bottom_entry = a(n,n);
-\end{lstlisting}
-
-Mit Seed 1 des Random Generators (Einfügen von rng(1) am Anfang) ergibt sich folgende zufällige Matrix $a$:
+\subsection{Resultate\label{francis:section:nachweis:resultate}}
+Nun wollen wir den in \ref{francis:section:nachweis:implementation} beschriebenen Code testen.
+Zuerst eine Konvention zur Darstellung der Matrizen. 
+Kleine Zahlen, welche nicht 0 sind, werden im folgenden als 0.0000 oder -0.0000 geschrieben.
+Handelt es sich bei einer Zahl um eine exakte 0, so wird sie nicht geschrieben.
+Mit Samen \footnote{Wird ein Samen für einen Zufallsgenerator definiert, produziert dieser Zufallsgenerator immer die gleiche Sequenz von Zahlen, welche von der definierten Verteilungsfunktion gesampelt wurden.
+So kann mit zufälligen Zahlen gerechnet werden und das Resultat ist dennoch reproduzierbar.
+In Matlab kann das durch Einfügen von \texttt{rng(1)} vor dem Zufallsgenerator gemacht werden.}
+1 ergibt sich folgende zufällige Matrix $a$:
 
 \begin{equation}
-\begin{bmatrix}
--3.228 &	1.689 &	0 &	0 &	0\\
-1.689 &	-1.618 & 1.127 & 0 &	0\\
-0 &	1.127&	0.994 &	-2.643 &	0\\
-0 &	0 &	-2.643 &	0.769 &	-4.415\\
-0 &	0 &	0	& -4.415 & -3.730\\
-\end{bmatrix}
+\begin{bmatrix*}[r]
+-3.2289 &	1.6892 &	 &	 &	\\
+1.6892 &	-1.6190 & 1.1276 &  &	\\
+ &	1.1276&	0.9950 &	-2.6434 &	\\
+ &	 &	-2.6434 &	0.7690 &	-4.4160\\
+ &	 &		& -4.4160 & -3.7302\\
+\end{bmatrix*}
 \end{equation}
 
 Führt man nun mehrere Francis Iterationen gemäss obiger Implementation durch, ergibt sich nach 5 Iterationen die Matrix:
 
 \begin{equation}
-\begin{bmatrix}
-1.974 & 2.417	& 3.078e-16 & 1.731e-16 & 4.339e-17\\
-2.417 & 2.623 & 1.248 & 4.996e-16 & 6.150e-17\\
-0 & 1.248 & -0.374 & 0.371 & -1.170e-16\\
-0 & 0 & 0.371 & -4.325 & -2.015e-16\\
-0 & 0 & 0 &-1.313e-46 & -6.712\\
-\end{bmatrix}
+\begin{bmatrix*}[r]
+1.9741 & 2.4170	& 0.0000 & 0.0000 & 0.0000\\
+2.4170 & 2.6240 & 1.2488 & 0.0000 & 0.0000\\
+ & 1.2488 & -0.3743 & 0.3716 & -0.0000\\
+ &  & 0.3716 & -4.3253 & -0.0000\\
+ &  &  &-0.0000 & -6.7126\\
+\end{bmatrix*}
 \end{equation}
 
 Nach 10 Iterationen ergibt sich:
 
 \begin{equation}
-\begin{bmatrix}
-4.865 & 0.444 & 2.715e-16 & 5.243e-16 & 5.754e-17\\
-0.444 & 0.472 & 0.341 & 4.783e-16 & -5.158e-17\\
-0 & 0.341 &-1.076 & 0.003 & -1.364e-16\\
-0 & 0 & 0.003 & -4.362 & -1.881e-16\\
-0 & 0 & 0 & 0 & -6.712\\
-\end{bmatrix}
+\begin{bmatrix*}[r]
+4.8651 & 0.4449 & 0.0000 & 0.0000 & 0.0000\\
+0.4449 & 0.4722 & 0.3417 & 0.0000 & -0.0000\\
+ & 0.3417 &-1.0764 & 0.0040 & -0.0000\\
+ &  & 0.0040 & -4.3623 & -0.0000\\
+ &  &  & 0.0000 & -6.7126\\
+\end{bmatrix*}
 \end{equation}
 
 Nach 50 Iterationen ergibt sich:
 
 \begin{equation}
-\begin{bmatrix}
-4.909 & 2.272e-09	& 2.146e-16 & 5.722e-16 & 5.130e-17\\
-2.272e-09 & 0.500 & 1.088e-05 & 5.238e-16 & -8.465e-17\\
-0 & 1.088e-05 & -1.149 & 4.264e-16 & -1.218e-16\\
-0 & 0 & 4.2091e-18 & -4.362 & -1.879e-16\\
-0 & 0 & 0 & 0 &-6.712\\
-\end{bmatrix}
+\begin{bmatrix*}[r]
+\textcolor{green}{4.9099} & 0.0000	& 0.0000 & 0.0000 & 0.0000\\
+0.0000 & \textcolor{green}{0.5008} & 0.0000 & 0.0000 & -0.0000\\
+ & 0.0000 & \textcolor{green}{-1.1499} & 0.0000 & -0.0000\\
+ &  & 0.0000 & \textcolor{green}{-4.3623} & -0.0000\\
+ &  &  & 0.0000 &\textcolor{green}{-6.7126}\\
+\end{bmatrix*}
 \end{equation}
-
 Es ist ersichtlich, dass die Subdiagonalelemente von Iteration zu Iteration kleiner werden, bis sie schliesslich annähernd 0 sind und eine Dreiecksmatrix entstanden ist.
-Da wir zur Manipulation unserer Matrix lediglich Ähnlichkeitstransformationen verwendet haben, entsprechen die Diagonalelemente dieser Dreiecksmatix den Eigenwerten unserer ursprünglichen Matrix.
+Da wir zur Manipulation unserer Matrix lediglich Ähnlichkeitstransformationen verwendet haben, entsprechen die Diagonalelemente dieser Dreiecksmatrix den Eigenwerten unserer ursprünglichen Matrix.

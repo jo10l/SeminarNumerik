@@ -17,12 +17,11 @@ Als Beispiel sei hier ein Komet erwähnt, welcher mit grosser Geschwindigkeit am
 Gegen dieses Phänomen lässt sich bei den meisten Applikationen eine maximale Schrittweite festlegen,
 doch dadurch steigt zwangsläufig auch der Rechenaufwand.
 
-Auch zu wilde Funktionen können einer Schrittweitensteuerung Schwierigkeiten bereiten,
+Weiter können auch überlagerte harmonische Schwingungen einer Schrittweitensteuerung Schwierigkeiten bereiten,
 da bei einigen Schrittweitensteuerungen der Schritt wiederholt werden muss,
 falls die Fehlerschätzung grösser ausfällt als erlaubt. Je nach Funktion kann es nun vorkommen,
-dass die Schrittweite osziliert, also laufend verkleinert und vergrössert wird.
+dass die Schrittweite oszilliert, also die Schrittweite wiederholt beim einen Schritt vergrössert wird und beim darauffolenden direkt wieder verkleinert wird.
 Um die Wahrscheinlichkeit solcher Schwingungen zu minimieren werden beispielsweise Schwellen in den Algorithmus eingebaut,
 wie in Abbildung ~\ref{buch:steps:flowchartfehlberg} ersichtlich, indem die Schrittweite zwar verkleinert wird,
-falls der Fehler $T > \varepsilon$ ist, aber erst vergrössert wird, falls $T < \varepsilon / 20$.
+falls der Fehler $T > \varepsilon$ ist, aber erst vergrössert wird, sobald $T < \varepsilon / 20$.
 
-%Text

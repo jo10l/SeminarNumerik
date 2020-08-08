@@ -1,5 +1,5 @@
 #
-# Makefile.inc -- dependencies for this article
+# Makefile.inc -- dependencies for this article
 #
 # (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
