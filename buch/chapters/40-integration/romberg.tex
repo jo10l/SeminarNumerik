@@ -10,7 +10,7 @@ Die bisher betrachteten Methoden zur Berechnung von Integralen zeichnen
 sich dadurch aus, dass die Fehler bei einer gegebenen Schrittweite 
 sehr genau bekannt sind.
 Es sollte daher möglich sein, die Ideen von
-Abschnitt~\ref{buch:section:beschleunigung}
+Abschnitt~\ref{buch:subsection:konvergenzbeschleunigung}
 anzuwenden und die Konvergenz des Verfahrens zu beschleunigen, ohne
 dass weitere Funktionswerte berechnet werden müssen.
 
@@ -44,7 +44,7 @@ Wir erhalten
 I= \frac{4T(h/2) - T(h)}{3}.
 \]
 Natürlich ist dies auch noch nicht der exakte Wert des Integrals,
-wir haben die die Terme vierter Ordnung vernachlässigt.
+wir haben ja die Terme vierter Ordnung vernachlässigt.
 Wir können aber daraus schliessen, dass 
 \[
 T^*(h/2) = \frac{4T(h/2)-T(h)}{3}
@@ -55,7 +55,7 @@ von vierter Ordnung $O(h^4)$ sein wird.
 Da wir für die Approximationen $T^*(h)$ auch wieder eine Approximation
 für die Fehler haben, können wir das gleiche Prinzip nochmals anwenden
 und auch den Fehler vierter Ordnung eliminieren.
-Wir multiplizieren die zweite Gleichung in
+Multiplizieren wir die zweite Gleichung in
 \begin{align*}
 I&=T^*(h) + Ch^4 \\
  &=T^*(h/2) + C\frac{h^4}{16}
@@ -64,7 +64,7 @@ mit $16$ und subtrahieren die erste, so erhalten wir
 \[
 15I = 16T^*(h/2)-T(h)
 \qquad\Rightarrow\qquad
-I = \frac{16T^*(h/2)-T^*(h)}{15}.
+T^{**}(h/2) = I = \frac{16T^*(h/2)-T^*(h)}{15}.
 \]
 Dieses Verfahren der fortlaufenden Verbesserung der Konvergenz durch
 Elimination des Fehlers ist bekannt als {\em Romberg-Algorithmus}.
@@ -133,7 +133,7 @@ Die Beschleunigungen sind
 \begin{align*}
 T_{k,1} &= \frac{4T_{k,0}-T_{k-1,0}}{4-1} \\
 T_{k,2} &= \frac{4^2T_{k,1}-T_{k-1,1}}{4^2-1}\\
-\vdots\;&\quad \vdots\\
+\vdots\quad&\hspace{1cm} \vdots\\
 T_{k,l} &= \frac{4^lT_{k,l-1}-T_{k-1,l-1}}{4^l-1}
 \end{align*}
 Dieses Verfahren funktioniert und beschleunigt die Konvergenz,
@@ -142,11 +142,11 @@ und beschränkt sind.
 
 \subsubsection{Wieviele Stellen Genauigkeit lassen sich erreichen?}
 Das Romberg-Verfahren basiert darauf, dass man die Trapezsummen 
-für sukzessive halbiert Schrittlänge berechnet.
+für sukzessiv halbiert Schrittlänge berechnet.
 In jeder Iteration wird die Schrittweite also halbiert.
 Die Fehler von $T_{k,l}$ sind von der Ordnung $h^{2l}$, also
 \[
-T_{k,l} = I + O(2^{-2(l+1)})
+T_{k,l} = I + O(2^{-2(l+1)}).
 \]
 Auf jeder Zeile wird der Fehler also um den Faktor
 $2^{-2l}=\frac1{4^l}$ kleiner,
