@@ -22,6 +22,8 @@ in verschiedenen Programmierumgebungen lösen.
 Als erstes bringen wir die Differentialgleichung wieder in die Standardform
 einer Vektordifferentialgleichung erste Ordnung:
 \begin{equation}
+Y=\begin{pmatrix} y_1\\y_2\end{pmatrix}
+\qquad\Rightarrow\qquad
 \frac{d}{dt}Y
 =
 \frac{d}{dx}\begin{pmatrix}y_1\\y_2\end{pmatrix}
@@ -38,7 +40,7 @@ Ein numerisches Verfahren braucht also als Input eine Anfangsbedingung
 sowie die Funktion $f$.
 Ausserdem muss es Möglichkeiten bereitstellen, wie man den Gang der
 Rechnung beeinflussen kann, z.~B.~um die $x$-Werte anzugeben, für die
-die $Y(x)$ bestimmt werden sollen, oder um Genauigkeitsziele zu erreichen.
+die $Y(x)$ ausgegeben werden sollen, oder um Genauigkeitsziele vorzugeben.
 
 \subsection{Octave}
 \index{Octave}%
@@ -58,15 +60,15 @@ für die man die Lösung ausgegeben haben möchte, als Argumente
 übergeben.
 Der erste Wert im $x$-Vektor muss der $x$-Wert für die Anfangsbedingung
 sein, in unserem Fall also $0$.
-Um die Werte von $y(x)$ für ganzzahlige Werte von $x$ zu erhalten,
-muss man also die Befehle
+Um die Werte von $y(x)$ für $x$-Werte zu erhalten, die ganzzahlige Vielfache
+$x_k=k\Delta x$ von $\Delta x$ sind, $1\le k \le 10$, muss man also die Befehle
 \lstinputlisting[style=Octave]{chapters/50-ode/examples/octave-dgl-sol.m}
 ausführen.
 Als Rückgabewert erhält man eine Matrix, die in jeder Zeile die
 Werte von $y(x)$ und $y'(x)$ zum entsprechenden Wert von $x$
 aus dem \texttt{x}-Argument enthält.
 Die Resultate sind zusammen mit den Werten der exakten
-Lösung~\eqref{buch:ode:beispiel-loesung} in der dritten Spalte 
+Lösung~\eqref{buch:ode:beispiel-loesung} 
 in der Tabelle~\ref{buch:ode:octave-resultate} zusammengestellt.
 Es ist gut erkennbar, wie der Fehler anfänglich langsam ansteigt,
 dann aber unter Kontrolle bleibt.
@@ -108,6 +110,14 @@ berechnet mit der Funktion \texttt{lsode} von Octave.
 \label{buch:ode:octave-resultate}}
 \end{table}
 
+Die Schrittlänge muss in einem numerischen Verfahren nicht immer gleich
+gross gewählt werden.
+Falls die Ableitungen der gesuchte Funktion nur langsam ändern, können
+bei gleicher Genauigkeit grössere Schritte verwendet werden, um
+Rechnzeit einzusparen.
+Die Funktion $\texttt{lsode}$ verwendet eine solche Schrittlängensteuerung.
+Mehr Information dazu findet man im Kapitel~\ref{chapter:steps}.
+
 \subsection{GNU Scientific Library}
 \index{GNU scientific library}%
 \index{GSL}%
@@ -148,7 +158,7 @@ Diese sorgt im wesentlichen für die Wahl der Schrittweite, verwaltet
 Datenstrukturen, und ruft die Funktionen auf, die die einzelnen Schritte
 durchführen.
 Die Treiber-Funktion führt die einzelnen Schritte (im Sinne der
-in Abschnitt~\ref{section:buch:ode:einschritt} besprochenen
+in Abschnitt~\ref{buch:section:ode:einschritt} besprochenen
 Einschritt-Verfahren) mit
 Hilfe der Schritt-Funktionen durch, von denen die Bibliothek eine
 ganze Reihe bereitstellt.

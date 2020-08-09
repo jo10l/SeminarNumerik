@@ -3,9 +3,9 @@
 %
 % (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 %
-\section{Einschritt-Verfahren\label{buch:ode:einschritt}}
+\section{Einschritt-Verfahren\label{buch:section:ode:einschritt}}
 \rhead{Einschritt-Verfahren}
-Die relativ geringe Genauigkeit des Eulerschrittes beruht darauf,
+Die relativ geringe Genauigkeit des Euler-Schrittes beruht darauf,
 dass die zu Beginn des Schrittes berechnete Ableitung $f(x_k,y_k)$
 nur für das linke Ende des Intervalls $[x_k, x_k+h]$ zutrifft,
 weiter rechts im Intervall wird die Abweichung immer grösser.
@@ -103,7 +103,7 @@ gerundet fünf korrekte Stellen gibt.
 
 Es wurde bereits darauf hingewiesen, dass die Terme für die Ableitungen
 sehr kompliziert werden.
-noch viel gravierender ist allerdings, dass auch die partiellen Ableitungen
+Noch viel gravierender ist allerdings, dass auch die partiellen Ableitungen
 von $f$ nach $x$ und $y$ bekannt sein müssen.
 Es ist zwar im Prinzip möglich, diese zu berechnen, der Rechenaufwand 
 dafür kann aber so erheblich sein, dass er den Genauigkeitsgewinn
@@ -132,7 +132,7 @@ welche
 y(x+h)=y(x)+hF(x,y,h)+O(h^3)
 \]
 erfüllt.
-Aus den einleitenden Bemerkungen von~\ref{section:buch:ode:einschritt}
+Aus den einleitenden Bemerkungen von~\ref{buch:section:ode:einschritt}
 folgt, dass dieses Ziel möglicherweise dadurch erreicht werden kann,
 dass man Werte von $f$ für verschiedene $x$ geeignet miteinander
 kombiniert.
@@ -140,8 +140,8 @@ Ein denkbarer Ansatz dafür ist
 \[
 F(x,y,h)=af(x,y) + bf(x+\alpha h, y +\beta hf(x,y)),
 \]
-oder anders ausgedrückt: Man führt zuerst etwas ähnliches wie einen
-Eulerschritt durch, um zum Punkt $(x+\alpha h,y+\beta hf(x,y))$ zu
+oder anders ausgedrückt: Man führt zuerst etwas Ähnliches wie einen
+Euler-Schritt durch, um zum Punkt $(x+\alpha h,y+\beta hf(x,y))$ zu
 gelangen.
 Dort berechnet man den Wert von $f$, und bildet dann einen geeigneten
 Mittelwert davon  mit $f(x,y)$.
@@ -151,7 +151,7 @@ hat, womit wir dann ein Integrationsverfahren zweiter Ordnung gewonnen
 hätten.
 
 Wir müssen jetzt die Parameter $a$, $b$, $\alpha$ und $\beta$ bestimmen.
-Da wir mit dem übereinstimmen der ersten zwei Ableitungen
+Da wir mit dem Übereinstimmen der ersten zwei Ableitungen
 nur zwei Bedingungen haben, können wir nicht erwarten, dass wir
 eine eindeutige Lösung finden werden.
 Vielmehr werden einzelne Parameter frei wählbar sein, es wird eine
@@ -159,7 +159,7 @@ ganze Familie von quadratischen Lösungsverfahren entstehen, parametrisiert
 durch eine der Variablen $a$, $b$, $\alpha$ und $\beta$.
 
 Wir berechnen nun $F(x,y,h)$ bis zur zweiten Ordnung, damit wird 
-$y(x+h)$ bis zur dritten Ordnung ausdrücken können.
+$y(x+h)$ bis zur dritten Ordnung ausdrücken können:
 \begin{align}
 f(x+\alpha h, y + \beta h f(x,y))
 &=
@@ -205,16 +205,34 @@ a&=1-b,&\alpha&= \beta=\frac{1}{2b}.
 Jeder Wert von $b$ zwischen $0$ und $1$ liefert ein Verfahren mit quadratischer
 Genauigkeit.
 
+\begin{figure}
+\centering
+\includegraphics{chapters/50-ode/figures/ordnung2.pdf}
+\caption{Einschritt-Verfahren zweiter Ordnung.
+Das verbesserte Euler-Verfahren (links) führt zunächst einen Euler-Schritt
+halber Länge mit der Steigung $f(x_0,y_0)$ (grau) aus und verwendet
+die bei $(x_1,y_1)$ gefundene Steigung 
+$f(x_1,y_1)$ (grün) für einen ganzen Euler-Schritt (orange),
+der zu $(x_2,y_2)$ führt.
+Das vereinfachte Runge-Kutta-Verfahren (rechts) führt einen ganzen
+Euler-Schritt (grau) aus, der zu $(x_1,y_1)$ führt.
+Dann wird der Mittelwert der Steigungen $f(x_0,y_0)$ und $f(x_1,y_1)$
+(grün) für einen ganzen Euler-Schritt verwendet, der zu $(x_2,y_2)$ führt
+(orange).
+\label{buch:einschritt:figure:ordnung2}}
+\end{figure}
+
 Der Parameterwert $b=1$ führt auf $\alpha=\beta=1$ und $a=0$, die
 Rekursionsformel ist in diesem Falle
 \begin{equation}
 y_{k+1}=y_{k}+hf\biggl(x_k+\frac{h}2,y_k+\frac{h}2 f(x_k,y_k)\biggr).
 \label{buch:ode:improved-euler}
 \end{equation}
-Das Verfahren führt also erst einen halben Eulerschritt zum Punkt
+Das Verfahren führt also erst einen halben Euler-Schritt zum Punkt
 $(x_k+\frac12h,y_k+\frac{h}2f(x_k,y_k))$ durch, berechnet dort mit Hilfe
-von $f$ die Steigung, die dann für einen Eulerschritt der Länge $h$
-verwendet wird.
+von $f$ die Steigung, die dann für einen Euler-Schritt der Länge $h$
+verwendet wird
+(Abbildung~\ref{buch:einschritt:figure:ordnung2} links).
 Daher heisst dieses Verfahren auch das {\em verbesserte Euler-Verfahren}.
 \index{Euler-Verfahren!verbessertes}%
 
@@ -226,17 +244,19 @@ f(x_k,y_k) + f(x_k+h, y_k + hf(x_k,y_k))
 \biggr).
 \label{buch:ode:simplified-runge-kutta}
 \end{equation}
-In diesem Verfahren führt man also zuerst einen Eulerschritt der Länge
+In diesem Verfahren
+(Abbildung~\ref{buch:einschritt:figure:ordnung2} rechts)
+führt man also zuerst einen Euler-Schritt der Länge
 $h$ durch, mit dem man zum Punkt $(x_k+h, y_k+hf(x_k,y_k))$ gelangt.
 Dort berechnet mit mit Hilfe von $f$ die Steigung.
 Das arithmetische Mittel dieser Steigung mit der im Euler-Verfahren
 verwendeten Steigung $f(x_k,y_k)$ im Punkt $x_k$ wird dann als
-Steigung für einen Eulerschritt verwendet.
+Steigung für einen Euler-Schritt verwendet.
 Statt eines einzigen Steigungswertes werden hier also zwei Steigungswerte
-von den Enden des Intervalls $[x_k,x_k+1]$ gemittelt.
+von den Enden des Intervalls $[x_k,x_{k+1}]$ gemittelt.
 Wegen der Ähnlichkeit dieses Vorgehens mit dem später zu besprechenden
-Runge-Kutte-Verfahren heisst diese Verfahren auch das {\em
-vereinfachte Runge-Kutta-Verfahren}.
+Runge-Kutte-Verfahren heisst diese Verfahren auch das
+{\em vereinfachte Runge-Kutta-Verfahren}.
 \index{Runge-Kutta-Verfahren!vereinfachtes}
 
 \subsection{Runge-Kutta-Verfahren\label{subsection:buch:ode:runge-kutta}}
@@ -275,15 +295,21 @@ y_{k+1} = y_k + \frac{h}6(k_1 + 2k_2 + 2k_3 + k_4)
 \end{equation}
 (Abbildung~\ref{buch:ode:rk-step}).
 Man kann die Formeln wie folgt interpretieren.
-Zuerst wird ein halber Eulerschritt mit der Steigung $k_1=f(x_k,y_k)$,
+\begin{enumerate}
+\item
+Zuerst wird ein halber Euler-Schritt mit der Steigung $k_1=f(x_k,y_k)$,
 durchgeführt, und am Zielpunkt die Steigung $k_2$ ermittelt.
-Mit dieser Steigung wird dann erneut ein halber Schritt von $(x_k,y_k)$
+\item
+Mit dieser Steigung $k_2$ wird dann erneut ein halber Schritt von $(x_k,y_k)$
 aus durchgeführt, und am Zielpunkt erneut die Steigung $k_3$ ermittelt.
-Damit führt man einen ganzen Schritt aus, an dessen Zielpunkt man die
+\item
+Mit $k_3$ führt man einen ganzen Schritt aus, an dessen Zielpunkt man die
 Steigung $k_4$ findet.
+\item
 Diese vier Steigungen werden jetzt gewichtet gemittelt, wobei
 $k_2$ und $k_3$ doppeltes Gewicht erhalten, und mit dieser
 Steigung wird ein ganzer Schritt vorgenommen.
+\end{enumerate}
 
 Die Formeln für die $k_i$ sowie \eqref{buch:ode:runge-kutta-rekursion}
 können ganz ähnlich wie das verbesserte Euler-Verfahren bzw.~das
@@ -350,7 +376,7 @@ Berechnung der Näherung für $y(1)$ immer gleich viele Auswertungen
 der Funktion $f(x,y)$ nötig sind, ergeben sich die Resultate in
 Tabelle~\ref{buch:ode:vergleich-aufwand}.
 Bei gleichem Rechenaufwand ist das Runge-Kutta-Verfahren um viele
-Grössenordungen präziser.
+Grössenordnungen präziser.
 Es gibt daher eigentlich keinen praktischen Grund, überhaupt je etwas
 anderes als das Runge-Kutta-Verfahren zu verwenden.
 

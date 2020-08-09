@@ -9,7 +9,7 @@ In den Einschritt-Verfahren wurde wiederholt die Funktion $f$ ausgewertet,
 um die Inkrement-Funk\-tion für einen einzigen Schritt zu bestimmen.
 Das Ziel dabei war, $y(x+h)$ in Übereinstimmung mit der Taylor-Reihe
 bis zu möglichst hoher Ordnung zu bestimmen.
-Im Runge-Kutta-Verfahren wurden dabei halbe Eulerschritte durchgeführt,
+Im Runge-Kutta-Verfahren wurden dabei halbe Euler-Schritte durchgeführt,
 man hat also eigentlich die Auflösung nochmals halbiert, um die
 Inkrement-Funktion zu ermitteln.
 Diese Zwischenwerte geben dem Verfahren die Information über die
@@ -25,6 +25,27 @@ Der Vorteil eines solchen Vorgehens ist, dass für jeden Schritt nur
 eine einzige Auswertung der Funktion $f$ nötig ist,
 nicht mehrere wie bei den besprochenen Einschritt-Verfahren.
 
+Mehrschrittverfahren sind immer dann die einzige Möglichkeit, wenn Daten
+nur zu festen Zeitpunkten entlang der Zeitachse zur Verfügung stehen,
+so dass es die Option, einen ``halben Schritt'' durchzuführen also gar
+nicht gibt.
+Diese Situation tritt zum Beispiel dann ein, wenn man für die
+Differentialgleichung wesentliche Daten messen muss und der
+Sensor dies nur in diskreten Zeitabständen tun kann.
+Oder wenn Messungen nur zu vorgegebenen Zeitpunkten zur Verfügung
+stehen, wie zum Beispiel die Positionsmessungen der Planeten Saturn
+\index{Saturn}%
+und Uranus, aus deren Abweichungen Urbain Le Verrier und
+\index{Uranus}%
+\index{Le Verrier, Urbain}%
+John Crouch Adams die Position des noch unbekannten Planeten Neptun
+\index{Adams, John Crouch}%
+\index{Neptun}%
+bestimmt und damit dessen Entdeckung ermöglicht haben.
+Das unten vorgestellte Verfahren stammt unter anderen von Adams.
+
+\subsection{Ein Verfahren zweiter Ordnung
+\label{buch:ode:subsection:zweiteordnung}}
 Als Beispiel versuchen wir daher ein Verfahren aufzubauen, welches
 $y_{n+2}$ aus den bereits berechneten Werten $y_{n\mathstrut}$ und
 $y_{n+1}$ berechnet.
@@ -32,7 +53,9 @@ Wir nehmen dabei an, dass $y_{n\mathstrut}$ und $y_{n+1}$ exakt
 sind.
 Der neue Datenpunkt soll mit Hilfe eines Ausdrucks der Form
 \begin{equation}
-y_{n+2}=y_{n+1} + h(af(x_{n+1},y_{n+1}) + b f(x_{n\mathstrut},y_{n\mathstrut}))
+y_{n+2}
+=
+y_{n+1} + h(af(x_{n+1},y_{n+1}) + b f(x_{n\mathstrut},y_{n\mathstrut}))
 \label{buch:ode:zweischrittansatz}
 \end{equation}
 gefunden werden.
@@ -102,6 +125,8 @@ Diese Rekursionsformel definiert ein quadratisches Verfahren, das
 {\em Adams-Bashforth-Verfahren} mit $s=2$.
 \index{Adams-Bashforth-Verfahren}
 
+\subsection{Höhere Ordnung
+\label{buch:ode:subsection:hoehereordnung}}
 Das Verfahren kann ähnlich wie das Runge-Kutta-Verfahren auf höhere
 Ordnung erweitert werden.
 Man findet nach einiger Rechnung
@@ -109,17 +134,17 @@ Man findet nach einiger Rechnung
 s&=1\colon&
 y_{n+1}
 &=
-y_n+hf(x_n,y_n)
+y_n+hf(x_n,y_n),
 \\
 s&=2\colon&
 y_{n+2}
 &=
-y_{n+1}+h\biggl(\frac32f(x_{n+1},y_{n+1})-\frac12f(x_n,y_n)\biggr)
+y_{n+1}+h\biggl(\frac32f(x_{n+1},y_{n+1})-\frac12f(x_n,y_n)\biggr),
 \\
 s&=3\colon&
 y_{n+3}
 &=
-y_{n+2}+h\biggl(\frac{23}{12}f(x_{n+2},y_{n+2})-\frac43f(x_{n+1},y_{n+1})+\frac{5}{12}f(x_n,y_n)\biggr)
+y_{n+2}+h\biggl(\frac{23}{12}f(x_{n+2},y_{n+2})-\frac43f(x_{n+1},y_{n+1})+\frac{5}{12}f(x_n,y_n)\biggr),
 \\
 s&=4\colon&
 y_{n+4}
@@ -128,9 +153,10 @@ y_{n+3}+h\biggl(\frac{55}{24}f(x_{n+3},y_{n+3})
 	-\frac{59}{24}f(x_{n+2},y_{n+2})
 	+\frac{37}{24}f(x_{n+1},y_{n+1})
 	-\frac{3}{8}f(x_n,y_n)
-\biggr)
+\biggr).
 \end{align*}
-Es ist also möglich, ausgehend von dieser Idee Verfahren beliebig hoher
+Ordnung 1 ist natürlich das Euler-Verfahren.
+Es ist somit möglich, ausgehend von dieser Idee Verfahren beliebig hoher
 Ordnung zu produzieren.
 
 \begin{table}
@@ -178,22 +204,25 @@ Bei einem Einschritt-Verfahren kann in jedem Schritt die Schrittweite $h$
 verändert werden, zum Beispiel für Bereiche von $x$-Werten, in denen
 die Steigung von $y(x)$ sehr rasch ändert.
 
+\subsection{Fehleranalyse für das Adams-Bashford-Verfahren zweiter Ordnung
+\label{buch:ode:subsection:fehleranalyse}}
 Für die Beispiel-Differentialgleichung \eqref{buch:ode:expdgl} können
 wir das Adams-Bashforth-Verfahren zweiter Ordnung ($s=2$) vollständig
 analysieren.
 Die Rekursionsformel wird zu
-\[
+\begin{equation}
 y_{n+2}=y_{n+1}+h\biggl(\frac32 (-\alpha y_{n+1})-\frac12(-\alpha y_n)\biggr)
 =
 \biggl(1-\frac32\alpha h\biggr)
 y_{n+1}
 +\frac{\alpha h}{2}
 y_{n\mathstrut}.
-\]
+\label{buch:einschritt:verfahren}
+\end{equation}
 Dies ist eine Differenzengleichung mit konstanten Koeffizienten, man kann
 sie mit Hilfe eines Potenzansatzes lösen. 
 Wir nehmen also an, dass $y_n=\lambda^n$, und setzen dies in die
-Rekursionsformel ein.
+Rekursionsformel~\eqref{buch:einschritt:verfahren} ein.
 Ausserdem kürzen wir $\alpha h/2=\delta$  ab.
 Wir erhalten
 \[

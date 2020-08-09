@@ -13,7 +13,7 @@
 die am Punkt $x$ verfügbar ist.
 \label{buch:ode:lineareapproximation}}
 \end{figure}
-Wir versuchen die Differentialgleichung
+Wir versuchen als einführendes Beispiel, die Differentialgleichung
 \begin{equation}
 y'=-\alpha y,\qquad y(0)=y_0
 \label{buch:ode:expdgl}
@@ -30,15 +30,16 @@ genannt die {\em Schrittweite},
 und bezeichnen die Teilpunkte mit $x_k=kh$.
 Das Ziel ist jetzt, $y(x_k)$ näherungsweise zu berechnen.
 Wir schreiben $y_k$ für die Näherungswerte von $y(x_k)$.
+
 Die Ableitung liefert eine lineare Approximation für $y(x)$,
 nämlich
 \[
-y(x+\Delta x)\simeq y(x) + y'(x)\cdot\Delta x
+y(x+\Delta x)\approx y(x) + y'(x)\cdot\Delta x
 \]
 (Abbildung~\ref{buch:ode:lineareapproximation}).
 Für die Punkte $x_k$ bedeutet das
 \[
-y(x_{k+1})\simeq y(x_{k})+y'(x_k)\cdot h.
+y(x_{k+1})\approx y(x_{k})+y'(x_k)\cdot h.
 \]
 Die Differentialgleichung liefert Werte für $y'(x_k)$ aus $x_k$ und $y(x_k)$,
 damit können wir aus dieser Approximation ein allgemeines
@@ -156,13 +157,15 @@ des Verfahrens immer gegen 1 streben, der Fehler wird also von der
 gleichen Grössenordnung wie die berechneten Resultate.
 
 Die Abbildung~\ref{buch:ode:relfehler} zeigt, dass zu Beginn des Verfahrens
-der relative Fehler ungefähr linear mit der Anzahl der Schritt zunimmt.
+der relative Fehler ungefähr linear mit der Anzahl der Schritte zunimmt.
 Um eine angemessene Genauigkeit über einen grösseren Bereich
 zu erreichen, muss das Euler-Verfahren also sehr viel kleinere Schritte
 und eine entsprechend grössere Anzahl von Schritten ausführen,
-die entsprechend viel Rechenzeit benötigen.
+die viel Rechenzeit benötigen.
 
 Ein praktisch nützliches Verfahren muss also anstreben, mit einer
-sehr viel kleineren Anzahl von Schritten eine viel grössere Genaugikeit
+sehr viel kleineren Anzahl von Schritten eine deutlich grössere Genauigkeit
 der Approximation zu erreichen.
+
+
 
