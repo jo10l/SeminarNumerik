@@ -118,12 +118,40 @@ a+b&=1&-b&=\frac12&&\Rightarrow&a=\frac32.
 Aus der Formel \eqref{buch:ode:zweischrittansatz} wird somit die
 Iterationsformel
 \begin{equation}
-y_{n+2}=y_{n+1}+h\biggl(\frac32f(x_{n+1},y_{n+1})
+y_{n+2}
+=
+y_{n+1}+h\biggl(\frac32f(x_{n+1},y_{n+1})
 - \frac12 f(x_{n\mathstrut},y_{n\mathstrut})\biggr).
+\label{buch:ode:mehrschritt:2}
 \end{equation}
 Diese Rekursionsformel definiert ein quadratisches Verfahren, das
 {\em Adams-Bashforth-Verfahren} mit $s=2$.
 \index{Adams-Bashforth-Verfahren}
+
+\subsection{Vergleich mit der Taylor-Reihe}
+Man kann das Mehrschritt-Verfahren~\eqref{buch:ode:mehrschritt:2}
+auch als eine Verbesserung des Euler-Verfahrens sehen.
+Dazu schreiben wir \eqref{buch:ode:mehrschritt:2} als
+\begin{align*}
+y_{n+2}
+&=
+y_{n+1}+hf(x_{n+1},y_{n+1})+\frac{h}2 \left(f(x_{n+1},y_{n+1})
+- f(x_{n\mathstrut},y_{n\mathstrut})\right).
+\intertext{
+Die ersten zwei Terme sind vom Euler-Verfahren her bekannt,
+der dritte Term ist eine Approximation für die zweite Ableitung}
+&\approx
+y(x_{n+1})+hy'(x_{n+1})
++
+\frac{h^2}{2!} \cdot \frac{y'(x_{n+1}) - y'(x_{n\mathstrut})}{h}
+\\
+&\approx
+y(x_{n+1})+hy'(x_{n+1})
++
+\frac{h^2}{2!} y''(x_{n+1}).
+\end{align*}
+Der dritte Term ist also eine Näherung für den Term der Ordnung~2
+der Taylor-Reihe.
 
 \subsection{Höhere Ordnung
 \label{buch:ode:subsection:hoehereordnung}}

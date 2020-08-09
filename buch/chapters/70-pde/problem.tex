@@ -33,7 +33,7 @@ berücksichtigen, so dass eine explizite Form der Differentialgleichung
 wie in~\eqref{pde:eqn:ode} grundsätzlich nicht mehr möglich ist.
 Das Definitionsgebiet ist eine fast beliebige Teilmenge
 $\Omega\subset\mathbb R^n$ eines $n$-dimensionalen Raumes.
-Insbesonderen kann das Definitionsgebiet sehr viel komplizierter sein
+Insbesondere kann das Definitionsgebiet sehr viel komplizierter sein
 als im Falle einer gewöhnlichen Differentialgleichungen.
 Die Form des Gebietes hat einen wesentlichen Einfluss auf die Lösungen
 der Differentialgleichung.
@@ -54,7 +54,7 @@ Definitionsgebiet für die Differentialgleichung.
 In Abschnitt~\ref{subsection:pde:klassifikation} klassifizieren wir
 mögliche Differentialgleichungen bevor wir in
 Abschnitt~\ref{subsection:pde:randbedingungen} Randbedingungen und
-in Abschnitt~\ref{subsection:pde:loesung} Lösungen beschreiben.
+in Abschnitt~\ref{subsection:pde:loesungen} Lösungen beschreiben.
 
 \subsection{Gebiet und Rand
 \label{subsection:pde:gebiet}}
@@ -67,6 +67,8 @@ Ableitungen nach den unabhängigen Variablen gelten.
 Für alle Punkte einer Menge $\Omega\subset\mathbb R^n$ muss
 als eine Gleichung ähnlich wie zum Beispiel
 \[
+\Delta u
+=
 \frac{\partial^2 u}{\partial x_1^2}
 +
 \dots
@@ -78,7 +80,8 @@ als eine Gleichung ähnlich wie zum Beispiel
 \forall \;
 (x_1,\dots,x_n)\in \Omega
 \]
-gelten.
+gelten, $\Delta$ ist der {\em Laplace-Operator}.
+\index{Laplace-Operator}
 Diese Beobachtung schränkt die Art der Menge $\Omega$ bereits ein,
 wie im Folgenden diskutiert werden soll.
 
@@ -157,7 +160,7 @@ Alternativ kann man den Abschluss auch charakterisieren als die Menge
 aller Punkte $x\in\mathbb R^n$, für die jede beliebige Umgebung
 $U_\delta(x)$ auch Punkte von $\Omega$ enthält, also
 $U_\delta(x)\cap \Omega\ne \emptyset$.
-Für ein Gebiet ist natürlich $\mathring\Omega=\Omega$.
+Ein Gebiet ist offen, daher ist $\mathring\Omega=\Omega$.
 
 Die Lösung einer partiellen Differentialgleichung wird im Allgemeinen erst
 festgelegt sein, wenn zusätzlich Werte auf Teilen des ``Randes'' des
@@ -280,21 +283,25 @@ Diese Funktion ist linear in $t_{11}$ und $t_{22}$.
 \begin{beispiel}
 Die partielle Differentialgleichung erster Ordnung von Burgers
 (Siehe auch Kapitel~\ref{chapter:burgers})
-\[
+\begin{equation}
 \frac{\partial u}{\partial x_1}
 +
 u
 \frac{\partial u}{\partial x_2}
 =
 0
-\]
+\label{buch:eqn:burgers}
+\end{equation}
 wird beschrieben durch die Funktion
 \[
 F(x_1,x_2,u,p_1,p_2)
 =
 p_1+up_2.
 \]
-Diese Funktion ist nicht linear in $u$ und $p_2$.
+Diese Funktion ist nicht linear in $u$ und $p_2$, aber linear in
+$p_1$ und $p_2$.
+\eqref{buch:eqn:burgers} ist also eine quasilineare partielle
+Differentialgleichung.
 \end{beispiel}
 
 \subsubsection{Lineare Differentialgleichungen zweiter Ordnung}
@@ -323,7 +330,8 @@ f
 \end{equation}
 Da es in den zweiten Ableitungen nicht auf die Reihenfolge ankommt,
 kann die Matrix $a_{ij}$ immer symmetrisch gewählt werden.
-Die Matrix $A=(a_{ij})$ heisst die Symbolmatrix der Differentialgleichung.
+Die Matrix $A=(a_{ij})$ heisst die {\em Symbolmatrix} der Differentialgleichung.
+\index{Symbolmatrix}
 
 Es stellt sich heraus, dass die Terme zweiter Ordnung, also die 
 Matrix $A$, das Verhalten der Lösung wesentlich beeinflussen.
@@ -447,7 +455,7 @@ Differentialgleichungen der Ordnung $n\ge 2$ nötig sein wird,
 Ableitungen auf dem Rand vorzugeben.
 
 Im Allgemeinen wird es nicht genügen, nur Ableitungen vorzugeben,
-da sie Funktionen nur bis auf eine Konstanten festlegen können.
+da sie Funktionen nur bis auf eine Konstante festlegen können.
 Es wird also nötig sind, mindestens in einem Punkt zusätzlich einen
 Funktionswert vorzugeben.
 
@@ -476,7 +484,7 @@ Dirichlet-Randbedingungen $u(0,y) = f(y)$ vorgeben können.
 Es ist also nur sinnvoll, die Ableitung $\partial u/\partial x$ 
 auf dem Rand vorzugeben.
 
-Im vorangegangenen Abschnitt hat ein spezielles Beispiel bezeigt,
+Weiter oben hat ein spezielles Beispiel bezeigt,
 dass Ableitungen entlang des Randes gegenüber Dirichlet-Randbedingungen
 keine neue Information liefern können.
 Nur die Ableitung in die Richtung senkrecht auf den Rand kann zusätzliche
@@ -497,6 +505,7 @@ Die {\em Normalableitung}
 in $x$ ist die Richtungsableitung 
 der Funktion $u$ in Richtung $n$.
 \end{definition}
+\index{Normalableitung}
 
 Im Falle der Wellengleichung
 \[
@@ -543,7 +552,7 @@ Ein vollständig gestelltes Problem mit partiellen Differentialgleichungen
 beginnt also immer mit einer Definition des Gebietes $\Omega$, also
 einer offenen Menge in $\mathbb R^n$.
 Die Differentialgleichung wird gegeben durch eine Funktion $F$ wie in
-Abschnitt~\ref{subection:pde:klassifikation} dargestellt.
+Abschnitt~\ref{subsection:pde:klassifikation} dargestellt.
 Ausserdem müssen Randbedingungen vorgegeben werden, wie in
 Abschnitt~\ref{subsection:pde:randbedingungen} dargestellt.
 Gesucht ist dann eine Funktion $u$, welche alle diese Bedingungen

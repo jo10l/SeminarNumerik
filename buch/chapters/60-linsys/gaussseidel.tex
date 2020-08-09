@@ -17,7 +17,8 @@ a_{21}x_1 &+& a_{n2}x_2 &+& \dots  \hspace*{7pt}&+& a_{nn}x_n &=& b_n
 \end{linsys}
 \label{buch:eqn:linalg:system}
 \end{equation}
-Abgekürzt wird das Gleichungssystem auch $Ax=b$ geschrieben, wobei $A=(a_{ij})$
+schreiben.
+Abgekürzt wird das Gleichungssystem auch $Ax=b$ notiert, wobei $A=(a_{ij})$
 die Koeffizientenmatrix ist, $x=(x_k)$ der Vektor der Unbekannten
 und $b=(b_k)$ der Vektor der rechten Seiten.
 
@@ -26,9 +27,9 @@ und $b=(b_k)$ der Vektor der rechten Seiten.
 %
 \subsection{Iterative Lösung nach Gauss-Seidel
 \label{buch:subsection:gauss-seidel}}
-Jede der Gleichungen \eqref{buch:eqn:linalg:system} kann nach Variablen
-aufgelöst werden, sofern der zugehörige Koeffizient von $0$ verschieden ist.
-Gleichung $k$ in \eqref{buch:eqn:linalg:system} ist
+Jede der Gleichungen \eqref{buch:eqn:linalg:system} kann nach jeder Variablen
+aufgelöst werden, deren zugehöriger Koeffizient von $0$ verschieden ist.
+Die Gleichung $k$ in \eqref{buch:eqn:linalg:system} ist
 \[
 a_{k1}x_1 + a_{k2}x_2 + \dots + a_{kk}x_k + \dots a_{kn}x_n = b_k
 \]
@@ -59,7 +60,7 @@ b_k  - a_{k1}x_1^{(m)} - \dots - a_{k,k-1}x_{k-1}^{(m)}
 \label{buch:eqn:gs:iteration}
 \end{equation}
 mit Startwert $x^{(0)}=0$
-konvergiert gegen die Lösung $x$ des Gleichungssystems $Ax=b$.
+gegen die Lösung $x$ des Gleichungssystems $Ax=b$.
 \end{satz}
 
 In Abschnitt~\ref{buch:subsection:konvergenzbedingung} werden die
@@ -125,9 +126,9 @@ Die Iterationsformel~\eqref{buch:eqn:gs:iteration} verknüpft bei der
 Berechnung von $\color{red}x^{(m)}$ Komponenten von $x^{(m-1)}$ und
 $\color{red}x^{(m)}$,
 was es etwas schwieriger macht, die Iteration als Fixpunktiteration
-der Form ${\color{red}x^{(m)}} = Fx^{(m-1)}$ zu schreiben mit einer
-$n\times n$-Matrix $F$.
-Um dies zu erreichen zerlegen wir die Matrix $A$ in drei Summanden
+der Form ${\color{red}x^{(m)}} = Fx^{(m-1)}$ mit einer
+$n\times n$-Matrix $F$ zu schreiben.
+Um dies zu erreichen, zerlegen wir die Matrix $A$ in drei Summanden
 $A=L+D+U$, wobei $L$ eine untere Dreiecksmatrix mit Nullen auf der 
 Diagonalen sein soll, $D$ eine Diagonalmatrix und $U$ eine obere
 Dreiecksmatrix mit  Nullen auf der Diagonalen, also
@@ -267,8 +268,8 @@ Der {\em Spektralradius} der Matrix $M$ ist der Betrag des betragsgrössten
 Eigenwertes.
 \end{definition}
 
-Wir werden später zeigen, dass $\pi(M) = \varrho(M)$, dies ist auch
-bekannt als der Satz von Gelfand.
+Wir werden später in Satz~\ref{buch:satz:gelfand} zeigen, dass
+$\pi(M) = \varrho(M)$, dies ist bekannt als der Satz von Gelfand.
 Um die beiden Begriffe bis dann auseinander halten zu können,
 nennen wir den Grenzwert~\ref{buch:eqn:gelfand-grenzwert}
 den {\em Gelfand-Radius} $\pi(M)$ der Matrix $M$.
@@ -296,10 +297,6 @@ aufgeteilt in $Bx+Cx=b$.
 Ein iteratives Verfahren ergibt sich jetzt dadurch, dass für die beiden $x$
 in der Aufteilung verschiedene Iterationen der Lösung verwendet werden,
 also $Bx^{(m+1)} + Cx^{(m)} = b$.
-Dies ist natürlich nur sinnvoll, wenn sich die Matrix $B$ wesentlich
-leichter invertieren lässt als $A$, da andernfalls die Bestimmung von
-$x^{(m+1)}$ nicht einfacher ist als die Lösung des ursprünglichen
-Gleichungssystems.
 Wir erhalten somit das Iterationsverfahren
 \begin{equation}
 {\color{red}x^{(m+1)}}
@@ -308,6 +305,10 @@ B^{-1}(b-Cx^{(m)})
 =
 b_0 - B^{-1}Cx^{(m)}
 \end{equation}
+Dies ist natürlich nur sinnvoll, wenn sich die Matrix $B$ wesentlich
+leichter invertieren lässt als $A$, da andernfalls die Bestimmung von
+$x^{(m+1)}$ nicht einfacher ist als die Lösung des ursprünglichen
+Gleichungssystems.
 
 Iteriert wird also die Anwendung der Matrix $B^{-1}C$.
 Aus der oben entwickelten Theorie lesen wir ab, dass das Zerlgungsverfahren
@@ -410,14 +411,15 @@ x
 +
 \frac{1}{\tau}(b-Ax).
 \]
-Dies ist wider die Iterationsformel~\eqref{buch:richardson-iteration}
+Dies ist wieder die Iterationsformel~\eqref{buch:richardson-iteration}
 für das Richardson-Verfahren.
 
-Im Kapitel~\ref{chapter:cg} wird gezeigt, wie sich für symmetrische,
+Im Kapitel~\ref{chapter:cg} wird die Methode der konjugierten Gradienten
+vorgeführt.
+Mit ihr lässt sich für symmetrische,
 positiv definite Matrizen $A$ ein auf einem Minimalproblem basierendes
 iteratives Verfahren konstruieren lässt, welches ebenfalls genau
 die Residuen als Verbesserungsrichtungen für die Lösung verwendet.
-
 
 \subsubsection{Successive Overrelaxation (SOR)}
 Das Gauss-Seidel-Verfahren versucht jede einzelne Variable
@@ -425,7 +427,7 @@ ohne Rücksicht auf alle anderen zu korrigieren.
 Die einzelne Korrektur soll also den ganzen verbleibenden Fehler
 ausbügeln.
 Es ist klar, dass diese Korrektur zwar ungefähr in die richtige
-Richtung erfolgt, aber nicht vom richigen Betrag sein wird.
+Richtung erfolgt, aber nicht vom richtigen Betrag sein wird.
 Das Richardson-Verfahren enthält einen Parameter, mit dem man die Konvergenz
 beeinflussen kann.
 Man muss also versuchen, das Ausmass der Korrektur im Gauss-Seidel-Verfahren
@@ -467,9 +469,9 @@ x_k
 \omega\biggl(
 \frac1{a_{kk}}\biggl(b_k - \sum_{i=1}^{k-1} a_{ki}{\color{red}x_i}
 - \sum_{i=k+1}^n a_{ki}x_i\biggr)-x_k\biggr)
-\biggr),
+\biggr).
 \]
-oder in Matrixform
+In Matrixform geschrieben wird dis zu
 \[
 {\color{red}x}
 =
@@ -518,7 +520,8 @@ x
 b
 \end{align*}
 umordnen.
-Wir haben damit ein Zerlegungsverfahren $A=B_\omega+C_\omega$
+Wir haben damit ein Zerlegungsverfahren basierend auf der Zerlegung
+$A=B_\omega+C_\omega$
 gefunden.
 
 Die Korrektur der Variablen $x_k$ nach Gauss-Seidel wird oft

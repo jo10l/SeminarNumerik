@@ -24,8 +24,8 @@ ist der Gelfand-Radius mit Hilfe eines Grenzwertes definiert worden.
 Nur dieser Grenzwert ist in der Lage, über die Konvergenz eines 
 Iterationsverfahrens Auskunft zu geben.
 Der Grenzwert ist aber sehr mühsam zu berechnen.
-Es wurde angedeutet, dass er mit dem Gelfand-Radius übereinstimmt
-mit dem Spektralradius, dem Betrag des des betragsgrössten Eigenwertes.
+Es wurde angedeutet, dass der Gelfand-Radius mit dem Spektralradius
+übereinstimmt, dem Betrag des des betragsgrössten Eigenwertes.
 Dies hat uns ein vergleichsweise einfach auszuwertendes Konvergenzkriterium
 geliefert.
 In diesem Abschnitt soll diese Identität zunächst an Spezialfällen
@@ -49,7 +49,7 @@ komplex sein können.
 Die Bezeichnungen sollen so gewählt sein, dass $\lambda_1$ der
 betragsgrösste Eigenwert ist, dass also
 \[
-|\lambda_1| \ge |\lambda_2| \ge \dots \ge |\lambda_n.
+|\lambda_1| \ge |\lambda_2| \ge \dots \ge |\lambda_n|.
 \]
 Wir nehmen für die folgende, einführende Diskussion ausserdem an, dass
 sogar $|\lambda_1|>|\lambda_2|$ gilt.
@@ -203,8 +203,7 @@ $\lambda$ hat und dass der erste Standardbasisvektor ein
 Eigenvektor zu diesem Eigenwert ist.
 
 In der linearen Algebra lernt man, dass jede Matrix durch Wahl
-einer geeigneten Basis als
-Blockmatrix der Form
+einer geeigneten Basis als Blockmatrix der Form
 \[
 A
 =
@@ -215,7 +214,8 @@ J_{n_1}(\lambda_1) &        0         & \dots & 0 \\
        0         &        0         & \dots &J_{n_l}(\lambda_l)
 \end{pmatrix}
 \]
-geschrieben werden kann.
+geschrieben werden kann\footnote{Sofern die Matrix komplexe Eigenwerte
+hat muss man auch komplexe Basisvektoren zulassen.}.
 Die früheren Beobachtungen über den Spektralradius und den
 Gelfand-Radius von Blockmatrizen zeigen uns daher, dass
 nur gezeigt werden muss, dass nur die Gleichheit des Gelfand-Radius
@@ -242,6 +242,7 @@ Die $k$-te Potenz von $J_n(\lambda)$ ist
 \[
 J_n(\lambda)^k
 =
+\renewcommand\arraystretch{1.25}
 \begin{pmatrix}
 \lambda^k    & \binom{k}{1} \lambda^{k-1} & \binom{k}{2}\lambda^{k-2}&\dots&
 \binom{k}{n-1}\lambda^{k-n+1}\\
@@ -272,6 +273,7 @@ Der Satz von Gelfand ergibt sich jetzt als direkte Folge aus dem
 Satz~\ref{buch:spektralradius:satz:grenzwert}.
 
 \begin{satz}[Gelfand]
+\label{buch:satz:gelfand}
 Für jede komplexe $n\times n$-Matrix $A$ gilt
 \[
 \pi(A)
@@ -283,11 +285,11 @@ Für jede komplexe $n\times n$-Matrix $A$ gilt
 \end{satz}
 
 \begin{proof}[Beweis]
-Der Satz~\ref{buch:spektralradius:grenzwert} zeigt, dass der
+Der Satz~\ref{buch:spektralradius:satz:grenzwert} zeigt, dass der
 Spektralradius ein scharfes Kriterium dafür ist, ob $\|A^k\|$ 
 gegen 0 oder $\infty$ konvergiert.
-Andererseits ändert ein Faktor $tA$ den Spektralradius ebenfalls um
-den gleichen Faktor, also $\varrho(tA)=t\varrho(A)$.
+Andererseits ändert ein Faktor $t$ in der Matrix $A$ den Spektralradius
+ebenfalls um den gleichen Faktor, also $\varrho(tA)=t\varrho(A)$.
 Natürlich gilt auch
 \[
 \pi(tA)
@@ -311,17 +313,17 @@ Der Spektralradius von $A(\varepsilon)$ ist
 \]
 er ist also $>1$ für negatives $\varepsilon$ und $<1$ für positives
 $\varepsilon$.
-Aus dem Satz~\ref{buch:spektralradius:grenzwert} liest man daher ab,
+Aus dem Satz~\ref{buch:spektralradius:satz:grenzwert} liest man daher ab,
 dass $\|A(\varepsilon)^k\|$ genau dann gegen $0$ konvergiert, wenn
 $\varepsilon > 0$ ist und divergiert genau dann, wenn $\varepsilon< 0$ ist.
 
 Aus der Bemerkung nach dem Beweis von
-Satz~\ref{buch:spektralradius:grenzwert} schliesst man daher, dass 
+Satz~\ref{buch:spektralradius:satz:grenzwert} schliesst man daher, dass 
 es im Fall $\varepsilon > 0$ eine Konstante $M$ gibt mit
 \begin{align*}
-\|A(\varepsilon) ^k\|\le M\varrho(\varepsilon)^k
+\|A(\varepsilon) ^k\|\le M\varrho(A(\varepsilon))^k
 \quad&\Rightarrow\quad
-\|A(\varepsilon) ^k\|^\frac1k\le M^\frac1k\varrho(\varepsilon)
+\|A(\varepsilon) ^k\|^\frac1k\le M^\frac1k\varrho(A(\varepsilon))
 \\
 &\Rightarrow\quad
 \pi(A) \le  \varrho(A(\varepsilon))
@@ -336,9 +338,9 @@ $\pi(A) \le \varrho(A)$.
 
 Andererseits gibt es für $\varepsilon <0$ eine Konstante $m$ mit
 \begin{align*}
-\|A(\varepsilon) ^k\|\ge m\varrho(\varepsilon)^k
+\|A(\varepsilon) ^k\|\ge m\varrho(A(\varepsilon))^k
 \quad&\Rightarrow\quad
-\|A(\varepsilon) ^k\|^\frac1k\ge m^\frac1k\varrho(\varepsilon)
+\|A(\varepsilon) ^k\|^\frac1k\ge m^\frac1k\varrho(A(\varepsilon))
 \\
 &\Rightarrow\quad
 \pi(A) \ge  \varrho(A(\varepsilon))
@@ -389,8 +391,8 @@ wenn $\lambda_1$ der betragsgrösste und $\lambda_n$ der betragskleinste
 Eigenwert von $A$ ist.
 \end{definition}
 
-Die Konditionszahl ist also immer $\ge 1$, dieser Wert wird zum Beispiel
-für die Einheitsmatrix erreicht.
+Die Konditionszahl ist also immer $\ge 1$, dieser minimale Wert $1$
+wird zum Beispiel für die Einheitsmatrix erreicht.
 Schlechte Kondition tritt auf, wenn die Eigenwerte sehr grosse
 Betragsunterschiede aufweisen.
 
