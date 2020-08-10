@@ -6,7 +6,7 @@
 
 kettenbruch.pdf:	kettenbruch.tex					\
 	einleitung.tex rationalezahlen.tex irrationalezahlen.tex	\
-	approximation.tex folgerungen.tex
+	approximation.tex folgerungen.tex references.bib
 	pdflatex kettenbruch.tex
 
 images:
