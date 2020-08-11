@@ -363,9 +363,9 @@ realisiert werden müssen.
 \item[$\oplus$] Die Addition und Subtraktion sind von derart elementarer
 Bedeutung für einen CPU-Kern, dass jeder Kern mindestens eine Einheit
 für Ganzzahl-Operationen hat.
-In einer Multicore-CPU kann man daher davon ausgehen, dass Festkomma-Operationen
+In einer Multicore CPU kann man daher davon ausgehen, dass Festkomma-Operationen
 sich auf verschiedenen Cores nicht gegenseitig behindern.
-\index{Multicore-CPU}%
+\index{Multicore CPU}%
 \item[$\ominus$] Kleine Zahlen können nur mit wenigen signifikanten
 Stellen dargestellt werden.
 \index{signifikant}%
@@ -738,13 +738,13 @@ Gleitkommazahlen brauchen mehr Speicherplatz.
 \index{Speicherplatz}%
 Der kleinste Gleitkommatyp \texttt{float} ist mit 32 bit bereits so gross wie
 der gebräuchlichste Ganzzahltyp \texttt{long}.
-\item[$\ominus$] Geschwindigkeit: sofern keine Hardware-Beschleunigung
-zur Verfügung steht sind Gleitkomma-Operationen deutlich langsamer
-als Operationen mit Festkomma-Zahlen.
+\item[$\ominus$] Geschwindigkeit: sofern keine Hardwarebeschleunigung
+zur Verfügung steht sind Gleitkommaoperationen deutlich langsamer
+als Operationen mit Festkommazahlen.
 \index{Hardware-Beschleunigung}%
 \item[$\ominus$]
-In einer Multi-Core CPU hat nicht unbedingt jeder Kern eine Gleitkomma-Einheit.
-\index{Multi-Core CPU}%
+In einer Multicore CPU hat nicht unbedingt jeder Kern eine Gleitkomma-Einheit.
+\index{Multicore CPU}%
 Gleitkommaoperationen in verschiedenen Threads können sich also gegenseitig
 behindern.
 \index{Thread}%
@@ -759,7 +759,7 @@ Die Diskussion numerischer Effekte in
 Abschnitt~\label{buch:section:numerische-effekte} zeigen, dass es nötig sein
 kann, Berechnungen mit sehr viel höherer Präzision durchzuführen, um die
 Genauigkeit des Schlussresultats garantieren zu können.
-Weder die Gleitkomma-Datentypen noch die Arithmetik-Prozessoren der
+Weder die Gleitkommadatentypen noch die Arithmetikprozessoren der
 CPUs unterstützen aber beliebig grosse Gleitkommazahlen.
 Es müssen daher Bibliotheken verwendet werden, die solche Datentypen
 und die arithmetischen Operationen nachbilden.
@@ -812,7 +812,7 @@ durchgeführt wird.
 Dazu wird das Treiberprogramm von Listing~\ref{numerik:listing:main}
 verwendet.
 \index{Treiberprogramm}%
-\begin{lstlisting}[float,style=C,caption={Treiber-Programm zur Berechnung von $e^x$ mit verschiedenen Hochpräzisionsbibliotheken.},label={numerik:listing:main}]
+\begin{lstlisting}[float,style=C,caption={Treiberprogramm zur Berechnung von $e^x$ mit verschiedenen Hochpräzisionsbibliotheken.},label={numerik:listing:main}]
 int     main(int argc, char *argv[]) {
         int     bits = 32;
         while (bits <= 512) {
@@ -972,10 +972,10 @@ Erst im letzten Resultat stimmt das Resultat mit 16 signifikanten Stellen.
 Eine genauere Untersuchung zeigt, dass die volle Genauigkeit bei
 384 bits erreicht wird.
 
-\subsubsection{GNU Multiple Precision Floating-Point Reliable Library}
+\subsubsection{GNU Multiple Precision Floatingpoint Reliable Library}
 \index{GNU MPFR}%
-\index{Multiple Precision Floating-Point Reliable Library}%
-Die GNU Multiple Precision Floating-Point Reliable Library versucht,
+\index{Multiple Precision Floatingpoint Reliable Library}%
+Die GNU Multiple Precision Floatingpoint Reliable Library versucht,
 die Defizite der GMP zu kompensieren.
 Das nur wenig abweichende Listing~\ref{numerik:listing:mpfr} zeigt
 die Implementation.
@@ -1138,7 +1138,7 @@ die Abhängigkeit der Fehler von der Genauigkeit der Arithmetik dienen.
 
 Die Programmierung mit diesen Bibliotheken ist wegen der
 vielen Funktionsaufrufe eher etwas mühsam.
-Moderne C++-Wrapper ermöglichen dank Operator-Überladung eine intuitivere
+Moderne C++-Wrapper ermöglichen dank Operatorüberladung eine intuitivere
 Notation.
 \index{C++}%
 
