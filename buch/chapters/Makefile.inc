@@ -40,6 +40,7 @@ CHAPTERFILES =								\
 	chapters/40-integration/chapter.tex				\
 	chapters/40-integration/riemann.tex				\
 	chapters/40-integration/romberg.tex				\
+	chapters/40-integration/andere.tex				\
 	chapters/50-ode/chapter.tex					\
 	chapters/50-ode/problemstellung.tex				\
 	chapters/50-ode/prinzip.tex					\

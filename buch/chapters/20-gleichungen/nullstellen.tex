@@ -157,7 +157,7 @@ Als Beispiel berechnen wir $\sqrt[100]{10}$.
 Die Potenzfunktion $p(x)=x^{100}$, die wir dazu invertieren müssen, hat
 extrem grosse Steigung in der Näher der Lösung.
 Es muss eine Nullstelle der Funktion $f(x)=x^{100}-10$ gefunden werden.
-Wegen $f(0)=-10$ und $f(2)\simeq 1.2677\cdot 10^{30}$ muss das Intervall
+Wegen $f(0)=-10$ und $f(2)\approx 1.2677\cdot 10^{30}$ muss das Intervall
 $[0,2]$ eine Nullstelle enthalten.
 Weil die Funktion monoton wachsend ist, ist es auch die einzige.
 Der Wert $f(2)$ ist klein genug für den \texttt{float} Typ,
@@ -314,8 +314,13 @@ Indem die Intervallhalbierung durch eine Teilung des
 Intervalls im Punkt $x_0$ ersetzt wird, kann ein neuer Algorithmus
 gewonnen werden, der möglicherweise schneller konvergiert, weil
 Intervalle schneller kleiner werden können.
+Allerdings deutet die Formel~\eqref{buch:equation:sekante} auf
+ein weiteres Problem hin.
+Ist der Nenner sehr klein, kann die neue Approximation $x_0$ weit
+entfernt sein von $a$ und $b$.
 
-Leider ist dem nicht so.
+Es ist leider auch nicht so, dass das neue Verfahren unbedingt schneller 
+konvergiert.
 Im Intervallhalbierungsverfahren ist sichergestellt, dass das neue
 Intervall höchstens halb so gross ist.
 Eine solche Garantie gibt es bei Verwendung der
@@ -359,9 +364,24 @@ beim Intervallhalbierungsverfahren.
 \end{table}
 \end{beispiel}
 
+Ein gut konvergentes Verfahren kann man also nur erwarten, wenn man
+sicherstellen kann, dass sich die Funktion im Intervall merklich
+ändert, dass als $f(x)-f(y)$ nicht zu klein wird.
+Dies wird erreicht, wenn $f$ eine {\em untere Lipschitz-Bedingung}
+erfüllt.
+Dies bedeutet, dass es eine Zahl $l>0$ gibt derart, dass
+\[
+|f(x)-f(y)| \ge l\cdot |x-y|^\alpha.
+\]
+\index{Lipschitz-Bedingung!untere}%
+\index{untere Lipschitz-Bedingung}%
+Solche Lipschitz-Bedingungen sind automatisch erfüllt, wenn eine 
+Funktion stetig differenzierbar ist, dies ist auch für die Praxis der
+übliche Fall.
+
 \begin{satz}[Sekanten-Verfahren]
-Sei $f\colon[a,b]\to\mathbb R$ eine stetig Funktion mit $f(a)<0$ und $f(b)>0$,
-die eine Lipschitz-Bedingung mit $\alpha=1$ erfüllt.
+Sei $f\colon[a,b]\to\mathbb R$ eine stetig differenzierbare Funktion mit
+$f(a)<0$ und $f(b)>0$.
 Man setzt $x_{-1}=a$ und $x_0=b$ und konstruiert die Folge
 \begin{equation}
 x_{n+1} = \frac{x_{n-1}f(x_n) - x_nf(x_{n-1})}{f(x_{n})-f(x_{n-1})}.
@@ -372,6 +392,20 @@ dann konvergiert die Folge $x_{n+1}$ gegen die Nullstelle.
 \end{satz}
 
 \begin{proof}[Beweis]
+Sie $\bar{x}$ die gesuchte Nullstelle im Intervall $[a,b]$.
+Da wir andernfalls $f(x)$ durch $-f(x)$ ersetzen können, können wir
+ohne Beschränkung der Allgemeinheit annehmen, dass $f(a)<0$
+und $f(b)>0$ gilt.
+Es gibt dann Zahlen $l$ und $L$ derart, dass
+\[
+l\cdot |x-y|
+<
+|f(x)-f(y)|
+<
+L\cdot |x-y|
+\]
+für Argumente $x$ und $y$ in einer Umgebung von $\bar{x}$.
+
 XXX TODO
 \end{proof}
 

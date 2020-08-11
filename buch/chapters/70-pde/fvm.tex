@@ -119,7 +119,7 @@ $[t,t+\Delta t]$ die Masse
 \qquad\text{bzw.}\qquad
 \int_t^{t+\Delta t} j(x+\Delta x,\tau)\,d\tau.
 \]
-Änderiung der Masse zwischen den Zeitpunkten $t$ und $t+\Delta t$
+Die Änderung der Masse zwischen den Zeitpunkten $t$ und $t+\Delta t$
 ist die Differenz, also
 \begin{align}
 m(t+\Delta t)-m(t)
@@ -147,7 +147,7 @@ Die Differenzenquotienten ergaben erst im Grenzwert eine exakte
 Gleichung.
 Wir nennen 
 \eqref{pde:eqn:integralform}
-die Integralform der Kontinuitätsgleichung.
+die {\em Integralform der Kontinuitätsgleichung}.
 
 Die Herleitung der Integralform lässt sich auch in der mehrdimensionalen
 Situation durchführen.
@@ -176,6 +176,9 @@ Die Integralform der Kontinuitätsgleichung wird damit
 \oint_{\partial V} \vec{\jmath}(x,y,z,t)\,d\vec{n}.
 \]
 
+Die Integralsätze von Green, Gauss und Stokes ermöglichen ganz allgemein,
+viele der Differentialgleichungen, die Naturphänomene beschreiben, in
+eine Integralform zu bringen.
 
 \subsection{Diskretisation}
 \begin{figure}
@@ -193,8 +196,10 @@ der Kontinuitätsgleichung suggeriert, dass die Integrale
 in dieser Gleichung bessere Variablen für eine Diskretisation
 sein könnten.
 
+
+\subsubsection{Eine Raumdimension}
 Wir verwenden wieder ein Gitter in der $x$-$t$-Ebene, aber 
-als gesuchte Variablen verwenden wir Integrale
+als gesuchte Variablen verwenden wir die Integrale
 \begin{align*}
 m_{ik}
 &=
@@ -216,6 +221,7 @@ j_{i+1,k}-j_{ik}.
 Man beachte auch hier wieder, dass dies keine Approximation ist, sondern
 dass diese Gleichungen exakt gelten.
 
+\subsubsection{Höhere Dimension}
 Um diese Idee auf höhere Dimensionen zu verallgemeinern zerlegt man
 das Gebiet in kleine Volumina $V_i$.
 Die Variablen
@@ -252,10 +258,11 @@ Masse verliergt gewinnt das Volumn $V_{i_2}$ durch die Seite
 $\sigma_{i_2l_2}$.
 
 Die Gleichungen \eqref{pde:fvm:1dim} und \eqref{pde:fvm:ndim} für
-sich alleine können reichen nicht, weitere Gleichungen wie die
+sich alleine reichen nicht, weitere Gleichungen wie die
 Navier-Stokes-Gleichung werden zusätzlich benötigt, um ein Strömungsfeld
 vollständig zu beschreiben.
-Es ist allerdings nicht das Ziel dieses Abschnitts, die Methode
+Es ist allerdings nicht das Ziel dieses Abschnitts, die so
+begründete Methode
 der {\em finiten Volumina} in voller Allgemeinheit zu entwickeln.
 
 

@@ -1,0 +1,64 @@
+%
+% bromwich.tex -- Bromwich Contour
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\draw[->] (-7.1,0) -- (5.5,0) coordinate[label={$\text{Re}$}];
+\draw[->] (0,-5.1) -- (0,5.4) coordinate[label={right:${\text{Im}}$}];
+
+\coordinate (A) at (3,-4);
+\coordinate (B) at (3,4);
+
+\def\bromwich#1#2#3{
+	\pgfmathparse{sqrt(#1*#1-9)}
+	\xdef\yyy{\pgfmathresult}
+	\pgfmathparse{atan(\yyy/3)}
+	\xdef\winkel{\pgfmathresult}
+	\draw[color=#2,line width=#3] (3,-\yyy) -- (3,\yyy) arc (\winkel:{360-\winkel}:#1) --cycle;
+}
+
+\begin{scope}
+\clip (-7.1,-5.1) rectangle (5,5.1);
+
+\bromwich{3.00001}{red!30}{1pt}
+\bromwich{3.5}{red!30}{1pt}
+\bromwich{4.0}{red!30}{1pt}
+\bromwich{4.5}{red!30}{1pt}
+\bromwich{5.5}{red!30}{1pt}
+\bromwich{6.0}{red!30}{1pt}
+\bromwich{6.5}{red!30}{1pt}
+\bromwich{7.0}{red!30}{1pt}
+\bromwich{7.5}{red!30}{1pt}
+\bromwich{8.0}{red!30}{1pt}
+\bromwich{8.5}{red!30}{1pt}
+\bromwich{9.0}{red!30}{1pt}
+\bromwich{9.5}{red!30}{1pt}
+\bromwich{5.0}{red}{1.8pt}
+
+\end{scope}
+
+\draw[->,line width=1.4pt,color=red] (3,-4) -- (3,0);
+
+\draw[->] (0,0) -- ({5*cos(110)},{5*sin(110)});
+\node at ({2.0*cos(110)},{2.0*sin(110)}) [left] {$R$};
+
+\node at ({5*cos(140)},{5*sin(140)}) [above left] {$B_{R}$};
+
+\node at (5,5) {$\mathbb C$};
+
+\node at (3,0) [above right] {$\gamma$};
+
+\end{tikzpicture}
+\end{document}
+

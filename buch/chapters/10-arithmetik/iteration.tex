@@ -78,12 +78,12 @@ f'(x) = \frac{1}{2\sqrt{x+2}}
 den Wert
 \[
 x_{n+1} = f(x_n) = f(2 + \delta_n)
-\simeq
+\approx
 f(2) + f'(2)\cdot \delta_n
-2 + \underbrace{\frac14\cdot \delta_n}_{\displaystyle\simeq\delta_{n+1}}
+2 + \underbrace{\frac14\cdot \delta_n}_{\displaystyle\approx\delta_{n+1}}
 \]
 für $x_{n+1}$.
-Der Fehler von $x_{n+1}$ ist also $\delta_{n+1}\simeq\frac14\delta_n$.
+Der Fehler von $x_{n+1}$ ist also $\delta_{n+1}\approx\frac14\delta_n$.
 In jedem Iterationsschritt gewinnen wir daher etwa 2 bit Genauigkeit.
 Für die 52 bit Mantisse des \texttt{double} Typs brauchen wir also
 etwa 26 Iterationen.
@@ -184,7 +184,7 @@ Dieser verändert sich gemäss
 \log \delta_{k+2}
 =
 \log \delta_{k} + \log(1-18\delta_k)
-\simeq
+\approx
 \log\delta_k - 18\delta_k,
 \]
 wobei wir für den zweiten Term die lineare Approximation aus der
@@ -443,7 +443,7 @@ x^* + \delta + \frac12f''(x^*)\delta^2
 Die Entfernung zu Fixpunkt ist
 \[
 |f(x^*+\delta)-x^*|
-\simeq
+\approx
 |\delta  + \frac12f''(x^*)\delta^2|
 =
 |\delta|\cdot |1 + \frac12f''(x^*)\delta|.
@@ -557,7 +557,7 @@ Wir gehen also davon aus, dass sich $f$ in einer Umgebung von $x^*$
 in der Form
 \[
 f(x^*+\delta)
-\simeq
+\approx
 \tilde{f}(x^*+\delta)
 =
 x^* + f'(x^*)\delta + \frac1{6}f'''(x^*) \delta^3

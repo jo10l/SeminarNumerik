@@ -29,7 +29,7 @@ Zur Diskretisation verwenden wir die Gitterpunkte $x_i=ih$, $i\in\mathbb Z$
 und versuchen die Werte $y_i = y(x_i)$ zu berechnen.
 Diskretisation mit Vorwärts-Differenzen führt auf 
 \[
-y'(x_i) \simeq \frac{y_{i+1}-y_i}{h} = -y(x_i) = -y_i
+y'(x_i) \approx \frac{y_{i+1}-y_i}{h} = -y(x_i) = -y_i
 \quad\Rightarrow\qquad
 y_{i+1} = y_u-hy_i = (1-h)y_i.
 \]
@@ -81,7 +81,7 @@ mit den Lösungen
 Die Quadratwurzel kann in die Taylor-Reihe
 \[
 \sqrt{1+h^2}
-\simeq
+\approx
 1 + \frac{h^2}2 + O(h^4)
 \]
 entwickelt werden.
@@ -90,7 +90,7 @@ Es folgt, dass $\lambda$-Wert für das positive Vorzeichen
 \lambda_+
 =
 -h+\sqrt{h^2+1}
-\simeq
+\approx
 1-h+\frac{h^2}{2}+\dots
 <
 1
@@ -151,7 +151,7 @@ Wir müssen also die exakte Lösung für die Startwerte $y_0$ und
 $\lambda_+y_0+\delta$ bestimmen.
 Es sind also Koeffizienten $a_\pm$ zu finden mit
 \begin{align*}
-a_+ + a_- &= y_0
+a_+ + a_- &= y_0 \\
 a_+\lambda_+ + a_-\lambda_-&=y_0\lambda_++\delta
 \end{align*}
 Subtrahiert man das $\lambda_+$-fache der ersten Gleichung von der
@@ -186,7 +186,7 @@ Für kleine Werte von $h$ ist
 \log |\lambda_\pm|
 =
 \log(1\mp h+o(h)) 
-\simeq
+\approx
 \mp h.
 \]
 Die Bedingung an $i$ kann man damit mit
@@ -194,8 +194,7 @@ Die Bedingung an $i$ kann man damit mit
 i \gtrsim \frac{\log |y_0/\delta|}{2h}
 \]
 approximieren.
-Der $x$-Wert, bei dem der Computational Mode überhand nimmt ist
-daher
+Der $x$-Wert, bei dem der Computational Mode überhand nimmt, ist daher
 \[
 x \gtrsim h \frac{\log|y_0/\delta|}{2h} = \frac12(\log|y_0|-\log|\delta|)
 \]
@@ -214,9 +213,9 @@ Die Annahme, der einzige Fehler trete bei der Rundung von $y_1$ auf,
 ist natürlich viel zu optimistisch.
 In Wahrheit tritt in jedem Schritt ein Fehler auf, so dass der 
 Computational Mode schon viel früher angeregt wird.
-In Abbildung~\ref{buch:pde:cm:fig} ist der Betrag der Lösung gezeigt
-für verschiedene Schrittweiten $h$.
-Ganz zu Beginn für $x<1$ scheint die Lösung einigermassen genau dem
+In Abbildung~\ref{buch:pde:cm:fig} ist der Betrag der Lösung
+für verschiedene Schrittweiten $h$ gezeigt.
+Ganz zu Beginn, für $x<1$, scheint die Lösung einigermassen genau dem
 theoretisch zu erwartenden Verlauf zu entsprechen.
 Dann beginnt jedoch der Computational Mode überhand zu nehmen,
 die Lösung wächst exponentiell schnell an und wird unbrauchbar.

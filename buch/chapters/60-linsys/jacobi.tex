@@ -7,6 +7,7 @@
 \label{buch:section:jacobi}}
 \rhead{Diagonalisierung mit dem Jacobi-Verfahren}
 Die Diskretisierung linearer partieller Differentialgleichungen wie
+zum Beispiel
 der Wellengleichung führen immer auf symmetrische Eigenwertprobleme,
 also auf Gleichungen der From $Av=\lambda v$ mit $A=A^t$. Aus der
 linearen Algebra ist bekannt, dass es in diesem Fall eine orthogonale
@@ -18,7 +19,7 @@ Matrix $O$ gibt mit
 0&\dots&\lambda_n
 \end{pmatrix}=O^tAO
 \]
-Die Matrix $O^tAO$ hat also die Basisvektoren $e_i=(0,\dots,1,\dots,0)$
+Die Matrix $O^tAO$ hat also die Basisvektoren $e_i=(0,\dots,1,\dots,0)^t$
 als Eigenvektoren. $O$ bildet $e_i$ auf den $i$-ten Eigenvektor von $A$
 ab, in der $i$-ten Spalten von $O$ steht der $i$-te Eigenvektor von $A$.
 Findet man $O$, kann man daraus die Eigenvektoren ablesen.
@@ -41,6 +42,8 @@ A=\begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}
 soll damit auf Diagonalform gebracht werden.
 In
 \[
+O^tAO
+=
 \begin{pmatrix}
 \cos\alpha&-\sin\alpha\\
 \sin\alpha& \cos\alpha
@@ -98,7 +101,9 @@ Schritt durchführen. Der folgende Algorithmus führt jedoch zum Erfolg.
 die folgenden zwei Schritte aus.
 \item Finde eine Matrix
 \[
-O_{pq}\begin{pmatrix}
+O_{pq}
+=
+\begin{pmatrix}
  \cos\alpha&\sin\alpha\\
 -\sin\alpha&\cos\alpha
 \end{pmatrix}
@@ -128,4 +133,13 @@ Am Ende dieses Verfahrens steht in $A$ die Diagonalmatrix mit den
 Eigenwerten, in $O$ steht die orthogonale Matrix, die $A$ auf
 Diagonalform gebracht, sie enthält die Eigenvektoren in den
 Spalten.
+
+Dieses Verfahren ist nur auf symmetrische Matrizen anwendbar.
+In Kapitel~\ref{chapter:francis} wird gezeigt, wie der
+Francis-Algorithmus die Ideen der Abschnitte~\ref{buch:section:qr}
+und \ref{buch:section:jacobi} zu einem funktionierenden
+Eigenwert-Algorithmus kombiniert, der für beliebige Matrizen funktioniert.
+
+
+
 

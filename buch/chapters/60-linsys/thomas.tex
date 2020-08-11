@@ -329,7 +329,8 @@ Tatsächlich erfordert das Invertieren einer Matrix nur $O(n^2)$
 zusätzliche Operationen, wenn die Inverse einer Matrix bereits
 bekannt ist, die sich in nur einer Stelle unterscheidet.
 
-\subsubsection{Sherman-Morrison-Woodbury-Formel}
+\subsection{Sherman-Morrison-Woodbury-Formel
+\label{buch:subsection:sherman-morrison-woodbury-formel}}
 Eine zyklisch tridiagonale Matrix unterscheidet sich nur in zwei 
 Positionen von einer tridiagonalen Matrix.
 Diese kleine Änderung verdoppelt den Rechenaufwand für die Lösung
@@ -423,7 +424,7 @@ B
  1&-2& 1& 0& 0\\
  0& 1&-2& 1& 0\\
  0& 0& 1&-2& 1\\
- 1& 0& 0& 1&-2
+{\color{red} 1}& 0& 0& 1&-2
 \end{pmatrix}
 \]
 unterscheiden sich nur durch ein einziges Element in der linken unteren
@@ -470,6 +471,7 @@ B^{-1}
 =
 A^{-1} + \frac65 A^{-1}uv^tA^{-1}
 =
+\renewcommand\arraystretch{1.15}
 \begin{pmatrix}
 -1& -\frac45 & -\frac35 & -\frac25 & -\frac15 \\
 -1& -\frac85 & -\frac65 & -\frac45 & -\frac25 \\
@@ -500,7 +502,7 @@ C = uv^t.
 \]
 Satz~\ref{buch:satz:shermann} besagt daher, dass die Inverse einer
 Matrix $B$, die sich nur um eine Matrix vom Rang $1$ von $A$ unterschiedet,
-aus der Inversen $A^{-1}$ ermittelt werden kann.
+mit Rechenaufwand $O(n^2)$ aus der Inversen $A^{-1}$ ermittelt werden kann.
 Dies bringt allerdings nur einen Nutzen, wenn der Aufwand zur Berechung
 von \eqref{buch:equation:shermann-morrison-woodburry} geringer ist als
 eine volle Durchführung des Gauss-Algorithmus.
@@ -509,11 +511,54 @@ mit $O(n^2)$ Operationen möglich ist.
 Sowohl $A^{-1}u$ und $v^tA^{-1}$ lassen sich daher mit $O(n^2)$
 Operationen bestimmen.
 Das Produkt des Spaltenvektors $A^{-1}u$ mit dem Zeilenvektor $v^tA^{-1}$
-ist ebenfalls mit $O(n^2)$ Operationen möglich.
+ist sogar in $O(n)$ Operationen möglich.
 Auf diese Weise lässt sich
 die Formel~\ref{buch:equation:shermann-morrison-woodburry} mit
 $O(n^2)$ Operationen durchführen und ist daher weniger aufwändig als
 der Gauss-Algorithmus.
  
+\subsection{Bandmatrizen}
+Tridiagonale Matrizen waren einfach zu invertieren, weil es nur wenige
+von $0$ verschiedene Einträge nahe der Diagonalen gab.
+Diese Bedingung erfüllen auch sogenannte {\em Bandmatrizen}.
+Eine $n\times n$-Matrix $A$ mit Einträgen $a_{ij}$ ist eine Bandmatrix
+der Breite $k$, wenn $a_{ij} = 0$ für $|i-j|>k$.
+\begin{figure}
+\centering
+\includegraphics{chapters/60-linsys/images/bandmatrix.pdf}
+\caption{Eine Bandmatrix ist eine $n\times n$-Matrix, deren Einträge
+ausserhalb eines Bandes um die Diagonale verschwinden.
+\label{buch:figure:bandmatrix}}
+\end{figure}
+Schematisch kann man eine solche Matrix wie in
+Abbildung~\ref{buch:figure:bandmatrix} darstellen.
+
+Der Gauss-Algorithmus braucht auch in einer Bandmatrix nicht die
+volle Zahl von Operationen.
+Bei der Pivotdivision müssen höchstens $2k+1$ Divisionen ausgeführt
+werden.
+Danach sind genau $k$ Zeilenoperationen notwendig, um die Spalte
+unter dem Pivotelement zu $0$ zu machen.
+Dabei werden nur die Elemente in $2k+1$ Spalten modifiziert,
+der Aufwand für jeden Schritt der Vorwärtsreduktion ist daher $(k^2)$.
+Nach $n$ Schritten wurde daher Rechenzeit $O(nk^2)$ aufgewendet.
+Beim Rückwärtseinsetzen werden in $n$ Iteration jeweils $k$ Zeilenoperationen
+in genau zwei Spalten durchgeführt, es fallen also nur $O(nk)$
+Operationen an.
+Insgesamt sind also nur $O(nk^2)$ Operationen nötig, um ein Gleichungssystem
+zu lösen, oder $O(n^2k^2)$ für eine Matrixinvertierung.
+
+Die Diskretisation einer partiellen Differentialgleichung in der Ebene
+mit finiten Differenzen
+(siehe auch Abschnitt~\ref{section:finite-differenzen})
+führt auf natürlich Weise zu einem linearen
+Gleichungssystem mit einer Bandmatrix mit $k\approx \sqrt{n}$.
+Ein solches Gleichungssystem lässt sich mit Aufwand $O(n^2)$ statt 
+$O(n^3)$ lösen.
+
+
+
+
+
 
 

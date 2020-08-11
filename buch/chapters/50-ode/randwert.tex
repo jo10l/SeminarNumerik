@@ -130,7 +130,7 @@ v_0 \sin \alpha &=\frac{gp}{2v_0\cos\alpha}
 \\
 \alpha&= \frac12 \arcsin\frac{gp}{v_0^2}.
 \end{align*}
-Im Nenner rechts steht im wesentlichen die kinetische Energie,
+Im Nenner rechts steht im Wesentlichen die kinetische Energie,
 je mehr kinetische Energie der Ball zu Beginn hat, desto kleiner
 ist der Winkel, man trifft das Ziel mit einer sehr flachen Bahn.
 Kleine Winkel reichen auch für geringe Schwerkraft ($g$ klein)
@@ -142,6 +142,14 @@ Die Maximaldistanz ist daher
 \[
 p_{\text{max}} = \frac{v_0^2}{g}.
 \]
+
+Das Beispiel hat gezeigt, dass sich das Randwertproblem lösen lässt,
+indem man unter den Lösungen des zugehörigen Anfangswertproblems
+diejenigen Anfangswerte auswählt, die alle Randbedingungen erfüllen.
+Zusätzlich zum Anfangswertproblem muss man also in der Lage sein,
+eine Gleichung für die Anfangswerte zu lösen.
+Im vorangegangenen Beispiel ging dies algebraisch, das folgende Beispiel
+zeigt, wie dies numerisch möglich ist.
 
 \begin{aufgabe}
 \label{numerik:aufgabe-seil}
@@ -156,7 +164,7 @@ Form möglich.
 Wir behelfen uns mit einer numerischen Lösung.
 
 \begin{loesung}
-\def\asinh{\operatorname{asinh}}
+\def\asinh{\operatorname{arsinh}}
 \begin{figure}
 \centering
 %\includegraphics{chapters/images/numerik-5.pdf}
@@ -164,7 +172,7 @@ Wir behelfen uns mit einer numerischen Lösung.
 \caption{Herleitung der Differentialgleichung der Kettenlinie
 \label{numerik:kettenlinie}}
 \end{figure}
-Zunächst brauchen wir für eine Differentialgleichung, deren Lösung die
+Zunächst brauchen wir eine Differentialgleichung, deren Lösung die
 gesuchte Kurve beschreibt.
 Zur Herleitung dient die Abbildung~\ref{numerik:kettenlinie}.
 Die Masse des Seils zwischen den beiden Punkten $x$ und $x+\Delta x$
@@ -238,7 +246,8 @@ umformen lässt, diese Gleichung ist für hyperbolische Funktionen
 immer erfüllt.
 
 Die Differntialgleichung~\eqref{numerik:kettenloesung}
-ist autonom, also sind auch verschobene Funktionen Lösungen.
+hängt nicht von $x$ ab,
+also sind auch verschobene Funktionen Lösungen.
 Die allgemeine Lösung des Problems ist daher die Funktion
 \begin{equation}
 y(x)=\frac1a\cosh a(x-x_0) + C.
@@ -305,7 +314,7 @@ Das ist leider nicht so einfach, weil $m$ in der transzendenten Funktion
 $\asinh$ auftritt.
 
 Wir können die Gleichung jedoch iterativ mit dem Newton-Verfahren
-nach Satz~\ref{newton:satz} lösen.
+nach Satz~\ref{buch:satz:newton-verfahren} lösen.
 Dazu brauchen wir die Ableitung von $f$, sie ist
 \[
 f'(m)
@@ -414,8 +423,10 @@ Ziel genügend nahe kommen.}.
 Der Nachteil dieses Verfahrens ist, dass mit jedem Schritt die Genauigkeit
 nur um in Bit ansteigt, es sind also sehr viele Iterationen notwendig.
 
-Schnellere Konvergenz kann mit dem Newton-Verfahren erreicht werden,
-welches in Anhang~\ref{chapter:newton} beschrieben wird.
+Schnellere Konvergenz kann mit dem Newton-Verfahren für Vektorgleichungen
+erreicht werden,
+welches in Satz~\ref{buch:satz:newtonVektorgleichungen}
+beschrieben wird.
 \index{Newton-Verfahren}%
 Für die Anwendung des Newton-Verfahrens auf das Randwert-Problem
 ist die Bestimmung der Steigung der Funktion nötig, die die Abweichung
@@ -441,8 +452,8 @@ als anfängliche Vertikalgeschwindigkeit.
 Berechnet dabei auch die Jacobi-Matrix
 \item Lese die $h(v_y)$ aus der Lösung zur Zeit $p/v_x$ ab, und $h'(v_y)$
 aus der Jacobi-Matrix und verwendet den Newton-Algorithmus
-(Satz~\ref{newton:satz}), um eine verbesserte Schätzung von $v_y$ 
-zu bekommen.
+(Satz~\ref{buch:satz:newtonVektorgleichungen}), um eine verbesserte
+Schätzung von $v_y$ zu bekommen.
 \item Wiederhole Schritte 2 und 3 bis die Randbedingung für $t=p/v_x$
 genügend genau erfüllt ist.
 \item Die Lösung des Anfangswertproblems mit diesem $v_y$ ist die
@@ -522,14 +533,49 @@ gefunden.
 \end{table}%
 Daraus kann man ablesen, dass die Elemente $J_{3j}$ und $J_{4j}$ sich
 nicht ändern, sie bleiben also konstant.
-Aber auch in den ersten zwei Zeilen können sich nur die Elemente $J_{13}$
-und $J_{24}$ ändern, die Differentialgleichungen für diese Elemente
-sind
-\begin{align*}
-J'_{13}&=1\\
-J'_{24}&=1
-\end{align*}
-oder in Matrixform:
+Die Werte sind 
+\[
+J_{3j}(x) = \delta_{3j}
+\qquad\text{und}\qquad
+J_{4j}(x) = \delta_{4j}.
+\]
+Damit wird die Differentialgleichung reduziert auf
+\begin{equation}
+\begin{pmatrix}
+J'_{11}&J'_{12}&J'_{13}&J'_{14}\\
+J'_{21}&J'_{22}&J'_{23}&J'_{24}\\
+J'_{31}&J'_{32}&J'_{33}&J'_{34}\\
+J'_{41}&J'_{42}&J'_{43}&J'_{44}
+\end{pmatrix}
+=
+\begin{pmatrix}
+     0&     0&     1&     0\\
+     0&     0&     0&     1\\
+     0&     0&     0&     0\\
+     0&     0&     0&     0
+\end{pmatrix}.
+\end{equation}
+Auch die Funktionen $J_{1j}(x)$ und $J_{2j}(x)$ sind also konstant,
+einzig die Elemente $J_{13}(x)$ und $J_{24}(x)$ können sich ändern,
+sie erfüllen die Differentialgleichungen
+\[
+\left.
+\begin{aligned}
+J_{13}'(x) &= 1 \\
+J_{24}'(x) &= 1
+\end{aligned}
+\qquad
+\right\}
+\qquad\text{mit den Lösungen}
+\qquad
+\left\{
+\begin{aligned}
+J_{13}(x) &= x \\
+J_{24}(x) &= x.
+\end{aligned}
+\right.
+\]
+In Matrixform ist die Lösung
 \begin{equation}
 J(x) = \begin{pmatrix}
 1&0&x&0\\
@@ -538,7 +584,6 @@ J(x) = \begin{pmatrix}
 0&0&0&1
 \end{pmatrix}.
 \end{equation}
-Die Lösung $J_{13}(x)=x$ und $J_{24}=x$.
 Damit haben wir die nötige Information, um den Newton-Algorithmus
 durchzuführen.
 In Tabelle~\ref{numerik:newton-resultate}

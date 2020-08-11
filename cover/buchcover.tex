@@ -26,7 +26,7 @@
 \begin{tikzpicture}[>=latex, scale=1]
 \tikzmath{
 	real \ruecken, \einschlag, \gelenk, \breite, \hoehe;
-	\ruecken = 2.5;
+	\ruecken = 2.7;
 	\einschlag = 1.6;
 	\gelenk = 0.7;
 	\breite = 16.7;
@@ -42,8 +42,9 @@
 \hsize=13.6cm
 
 \begin{scope}
-\clip (0,0) rectangle({\bogenbreite},{\bogenhoehe});
-\node at (20.7,9.0) [scale=4.5]{\includegraphics{nozzle.jpg}};
+%\clip (0,0) rectangle({\bogenbreite},{\bogenhoehe});
+\clip (0,3) rectangle ({\bogenbreite},14.2);
+\node at (18.7,8.9) [scale=5.0]{\includegraphics{nozzle.jpg}};
 \end{scope}
 
 \node at ({\einschlag+2*\gelenk+\ruecken+1.5*\breite},24.3)

@@ -4,7 +4,7 @@
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Konvergenzgeschwindigkeit
-\label{buch:section:geschwidnigkeit}}
+\label{buch:section:geschwindigkeit}}
 \rhead{Konvergenzgeschwindigkeit}
 Sind die Fehler einer iterativen numerischen Berechnungsmethoden
 bekannt, kann die Gesetzmässigkeit der Fehler ausgenutzt werden,
@@ -30,7 +30,7 @@ von Seite~\pageref{section:beispiel:sqrtiteration}
 wurde berechnet, wie sich der Fehler von einer Iteration zur nächsten
 entwickelt.
 Dabei wurde gefunden, dass der Fehler $\delta_n$ in der $n$-ten Iteration
-zu $\delta_{n+1}\simeq f'(x^*)\cdot\delta_n$ in der $(n+1)$-ten Iteration
+zu $\delta_{n+1}\approx f'(x^*)\cdot\delta_n$ in der $(n+1)$-ten Iteration
 wird.
 Sind in der $n$-ten Iteration $k$ Nachkommabits korrekt, ist der Fehler
 also von der Grössenordnung $2^{-k}$, wird der Fehler in der $(n+1)$-ten
@@ -72,7 +72,7 @@ Wir untersuchen die Konvergenzgeschwindigkeit, indem wir $f_a(x)$
 mit Hilfe der Taylor-Reihe approximieren:
 \[
 f_a(x^*+\delta)
-\simeq
+\approx
 f_a(x^*) + f_a'(x^*)\cdot\delta + \frac12f''_a(x^*)\cdot\delta^2
 \]
 Die Ableitungen von $f_a$ sind
@@ -92,7 +92,7 @@ f''_a(x^*)&=\frac{1}{\!\sqrt{a}}
 Mit $x=x^* =\sqrt{a}$ folgt für den Fehler
 \[
 f_a(x^*+\delta)
-\simeq
+\approx
 x^* + \underbrace{\biggl(\frac12-\frac{a}{2x^{*2}}\biggr)}_{\displaystyle=0}\delta
 +
 \frac{a}{2x^{*3}}\delta^2
@@ -126,7 +126,7 @@ Dazu entwickeln wird $f(x)$ um $x^*$ bis zur zweiten Ordnung und
 erhalten für den Fehler
 \begin{equation}
 f(x^*+\delta)
-\simeq
+\approx
 f(x^*) + f'(x^*) \cdot \delta + \frac12f''(x^*)\cdot \delta^2
 \label{buch:equation:iterkonv}
 \end{equation}
@@ -188,7 +188,7 @@ x_n = x^* + \delta_n
 \qquad\Rightarrow\qquad
 x_{n+1} = f(x_n) = f(x^* + \delta_n) = f(x^*) + f'(x^*)\cdot \delta_n
 =
-x^* + \underbrace{f'(x^*)\cdot \delta_n}_{\displaystyle\simeq\delta_{n+1}}.
+x^* + \underbrace{f'(x^*)\cdot \delta_n}_{\displaystyle\approx\delta_{n+1}}.
 \]
 Der Fehler wird also in jeder Iteration um den Faktor
 \[
@@ -325,7 +325,7 @@ q(q-1)\delta + b(q^2+q -1) \delta^2
 (q-1)\delta + b\delta^2
 }
 \\
-&\simeq
+&\approx
 \frac{q(q-1)\delta}{(q-1)\delta}
 =
 q.

@@ -7,7 +7,7 @@
 \label{buch:subsection:waermeleitung}}
 Als etwas ausführlicheres Beispiel soll in den folgenden Abschnitten
 das Wärmeleitungsproblem auf einem Stab mit verschiedenen Randbedingungen
-und Methoden zu lösen.
+und Methoden gelöst werden.
 Dieser Abschnitt beginnt damit, das Problem und seine Diskretisierung
 zu formulieren.
 In den folgenden Abschnitten werden die Gleichungen dann für verschiedene
@@ -41,8 +41,6 @@ Dirichletrandbedingungen
 \[
 \begin{aligned}
 u(x,0)&=f(x)&&x\in[0,1]
-\\
-u(x,t)=\frac{\partial u}{\partial x}(x,t)&=g(x)&&x\in \{0,1\}.
 \end{aligned}
 \]
 am Rand des Intervals bedeuten, dass die Enden des Stabes mit Wärmereservoirs
@@ -51,8 +49,6 @@ verbunden sind, welche ihn auf einer vorgegebenen Temperatur halten.
 Neumann-Randbedingungen
 \[
 \begin{aligned}
-u(x,0)&=f(x)&&x\in[0,1]
-\\
 \frac{\partial u}{\partial n}(x,t)=\frac{\partial u}{\partial x}(x,t)&=g(x)&&x\in \{0,1\}.
 \end{aligned}
 \]
@@ -63,7 +59,7 @@ Dies entspricht einem thermisch isolierten Stab.
 
 \subsubsection{Energie}
 Die physikalische Interpretation der
-Gleichung~\ref{buch:pde:waerme:gleichung}
+Gleichung~\eqref{buch:pde:waerme:gleichung}
 erlaubt, das Verhalten der Lösung abzuschätzen.
 Dazu berechnen wir die Gesamtenergie
 \[
@@ -87,20 +83,21 @@ Es gilt
 Daraus lässt sich zum Beispiel ablesen, dass sich die Energie in
 einem isolierten Stab, wo die Ableitungen an den Intervallenden
 verschwinden, nicht ändert.
-Oder dass Energie genau dann konstant bleibt, wenn die Steigung
+Anders ausgedrückt:
+die Energie bleibt dann konstant, wenn die Steigung
 in beiden Enden gleich gross ist, was gleichbedeutend ist damit,
 dass der Wärmefluss durch beide Intervallenden gleich gross ist.
 
 In allen Fällen kann man das Verhalten der Lösung für $t\to\infty$
 bestimmen.
-Dirichlet-Randbedingungen 
+Dirichlet-Rand\-be\-dingun\-gen 
 \[
 u(0,t) = u_0 \qquad\text{und}\qquad u(1,t) = u_1
 \]
 sagen zum Beispiel, dass die beiden Enden des Stabes auf Temperatur
 $u_0$ und $u_1$ gehalten werden.
-Mit der Zeit wird sich eine stationäre Temperaturverteilung, also eine
-Temperaturverteilung, die sich mit der Zeit nicht mehr ändert.
+Mit der Zeit wird sich eine stationäre Temperaturverteilung einstellen,
+also eine Temperaturverteilung, die sich mit der Zeit nicht mehr ändert.
 Eine solche hat zweite Ableitung
 \[
 \frac{\partial^2u}{\partial x^2}
@@ -110,7 +107,7 @@ Eine solche hat zweite Ableitung
 Die Funktion $x\mapsto u(x,t)$ muss also linear sein, was auf die
 stationäre Temperaturverteilung
 \[
-u_\infty(x) = tu_1 + (1-t)u_0
+u_\infty(x) = xu_1 + (1-x)u_0
 \]
 führt.
 
@@ -131,7 +128,7 @@ Eine lineare Funktion von $x$ kann nicht funktionieren, weil diese
 auf gleichen Wärmefluss durch die beiden Intervallenden führen würde.
 Wir versuchen daher den quadratischen Ausdruck.
 \[
-u_s(x,t) = ax^2 + bx + c + dt.
+u_s(x,t) = ax^2 + bx + c + d\cdot t.
 \]
 Tatsächlich sind die Ableitungen
 \begin{align*}
@@ -146,6 +143,8 @@ d
 Eingesetzt in die Differentialgleichung finden wir den Wert von $a$
 \begin{equation*}
 d=2a\kappa
+\qquad\Leftrightarrow\qquad
+a=\frac{d}{2\kappa}.
 \end{equation*}
 Um die Werte von $a$ und $b$ zu bestimmen, müssen wir die Randbedingungen
 bemühen:
@@ -178,13 +177,13 @@ Die Neumann-Randbedingungen am linken und rechten Rand können mit Hilfe
 der Vorwärts- bzw.~Rückwärts-Differenzen approximiert werden:
 \begin{align*}
 \frac{\partial u}{\partial n}(x_{0k})
-&\simeq
+&\approx
 \frac{u_{1k}-u_{0k}}{h_x}
 =
 0
 &&\text{und}&
 \frac{\partial u}{\partial n}(x_{0k})
-&\simeq
+&\approx
 \frac{u_{Nk}-u_{N-1,k}}{h_x}
 =
 0
@@ -224,7 +223,7 @@ und $u_{k+1}$ eine lineare Funktion, es muss also eine Matrix geben,
 welche $u_{k+1}=Au_k$.
 
 Sind die Randbedingungen nicht homogen, kann man nicht mehr unbeding
-eine Zeitunabhängige Matrix $A$ finden, vielmehr kann die Matrix
+eine zeitunabhängige Matrix $A$ finden, vielmehr kann die Matrix
 in jedem Zeitschritt verschieden sein.
 Ausserdem kann in jedem Zeitschritt ein konstanter Wert hinzukommen.
 Insgesamt gibt es also eine Matrix $A_k$ und ein Vektor $b_k$ derart,
@@ -232,7 +231,7 @@ dass $u_{k+1} = A_ku_k + b_k$.
 
 
 Für die erste Ableitung nach der Zeit könnten Vorwärts- oder
-Rückwärts-Differenzen verwendet werden, in beiden Fällen entsteht
+Rückwärtsdifferenzen verwendet werden, in beiden Fällen entsteht
 ein unvermeidbarer Fehler und ein jeweils anderes numerisches
 Lösungsverfahren.
 
@@ -243,19 +242,19 @@ Lösungsverfahren.
 \caption{Euler-Verfahren für das Wärmeleitungsproblem.
 \label{buch:pde:figure:euler}}
 \end{figure}
-Wir müssen jetzt die Differentialgleichung des Wärmelitungsproblems
+Wir müssen jetzt die Differentialgleichung des Wärmeleitungsproblems
 diskretisieren.
-Für die zweite Ableitung verwenden wir zweite Differenzen
+Für die zweite Ableitung verwenden wir zweite Differenzen.
 Für die ersten Ableitungen haben wir verschiedene Optionen, wir
 verwenden Vorwärtsdifferenzen, also
 \begin{align}
 \frac{\partial u}{\partial x}(x_{ik})
-\simeq
+\approx
 \frac{u_{i,k+1}-u_{ik}}{h_t}
 &=
 \kappa
 \frac{\partial^2u}{\partial x^2}(x_{ik})
-\simeq
+\approx
 \kappa
 \frac{u_{i,k-1}-2u_{ik}+u_{i,k+1}}{h_x^2}
 \notag
@@ -314,7 +313,7 @@ Wir erwarten also, ein Konvergenz-Kriterium basierend auf $c$.
 Die Gleichung~\eqref{buch:pde:waerme:euler} gilt nur für innere Punkte.
 Für die Variablen $u_{0k}$, $u_{1k}$, $u_{N-1,k}$ und $u_{Nk}$ müssen
 wir aus den Randbedingungen zusätzliche Gleichungen für die Randwerte
-ableiten müssen.
+ableiten.
 
 \subsubsection{Rückwärts-Verfahren}
 \begin{figure}
@@ -328,11 +327,11 @@ die erste Ableitung nach der Zeit verwenden.
 Die diskretisierte Gleichung wird dann
 \begin{align*}
 \frac{u_{ik}-u_{i,k-1}}{h_t}
-\simeq
+\approx
 \frac{\partial u}{\partial x}(x_{ik})
 &=
 \kappa\frac{\partial^2 u}{\partial x^2}(x_{ik})
-\simeq
+\approx
 \frac{u_{i-1,k}-2u_{ik} + u_{i+1,k}}{h_x}.
 \\
 -cu_{i-1,k}
@@ -356,7 +355,7 @@ u_{k-1}
 \]
 schreiben.
 Wieder gelten diese Gleichungen nur für innere Punkte.
-Abbildung~\ref{buch:pde:figure:rueckwarts} zeigt, wie die Gleichungen
+Abbildung~\ref{buch:pde:figure:rueckwaerts} zeigt, wie die Gleichungen
 die Knotenwerte untereinander verknüpfen.
 
 \subsubsection{Crank-Nicholson-Verfahren}
@@ -377,18 +376,19 @@ Zwischenzeitpunkt zu verwenden.
 Damit wird die Wärmeleitungsgleichung approximiert durch
 \begin{align*}
 \frac{u_{i,k+1}-u_{ik}}{h_t}
-\simeq
+\approx
 \frac{\partial u}{\partial x}(x_{ik})
 &=
 \kappa
 \frac{\partial^2 u}{\partial x^2}(x_{ik})
-\simeq
+\approx
 \frac{\kappa}2\biggl(
 \frac{u_{i-1,k+1}-2u_{i,k+1}+u_{i+1,k+1}}{h_x^2}
 +
 \frac{u_{i-1,k}-2u_{i,k}+u_{i+1,k}}{h_x^2}
 \biggr)
 \\
+\Rightarrow\hspace{1cm}
 2u_{i,k+1}-2u_{ik}
 &=
 c(
@@ -472,7 +472,7 @@ analysieren, denn dann ist $b_k=0$.
 Wir erwarten, dass die Lösung exponentiell gegen $0$ konvergiert,
 das System ``kühlt aus''.
 Da die Randbedingungen $u_{0k}=u_{Nk}=0$ erzwingen, kann man diese 
-Variablen weglassen die Vektoren $u$ und die Matrix $A$ verkürzen auf
+Variablen weglassen, die Vektoren $u$ und die Matrix $A$ verkürzen sich auf
 \begin{equation}
 \tilde{u}_{k+1}
 =
@@ -507,7 +507,7 @@ u_{Nk}
 \end{pmatrix}
 =
 A
-\tilde{u}_k
+\tilde{u}_k.
 \end{equation}
 Die Lösung $u$ entsteht also durch Iteration mit der Matrix $\tilde{A}$.
 Der Spektralradius der Matrix gibt Auskunft darüber, ob das Verfahren
@@ -549,7 +549,7 @@ u_{k+1}
 =
 Bu_{k+1}
 =
-u_k + b_k
+u_k + b_k.
 \end{equation}
 Für den Fall homogener Randbedingungen werden auch hier wieder
 nur die ``inneren'' Koeffizienten
@@ -569,7 +569,7 @@ nur die ``inneren'' Koeffizienten
 der Matrix $B$ nötig.
 Die Lösung findet man dann aus $\tilde{B}\tilde{u}_{k+1}=\tilde{u}_k$
 durch Iteration $\tilde{u}_{k+1}=\tilde{B}^{-1} \tilde{u}_k$.
-Konvergenz wird wieder bestimmt durch den Spektralradius $\varrho{\tilde{B}}$,
+Konvergenz wird wieder bestimmt durch den Spektralradius $\varrho(\tilde{B})$,
 der, wie Abbildung~\ref{buch:pde:waerme:implizitspektrum} zeigt, immer
 $<1$ ist.
 Das Rückwärtsverfahren ist also immer konvergent, ganz unabhängig von
