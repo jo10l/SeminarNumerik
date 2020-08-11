@@ -25,7 +25,7 @@ Um möglichst einfach darzustellen, wie das Verfahren der Finiten Elemente vonst
 \subsection{Vorbereitung
 \label{fem:section:loesungTrans}}
 
-Damit die Integration über das gewählte Teilgebiet bzw. Flächenelement einfacher fällt, wird als Vorbereitung im entsprechenden Fall das gewählte Flächenelement in ein Einheitsdreieck oder in ein Eineheitsparallelogramm transformiert. Ein Dreieck oder Parallelogramm stellt eine Formfunktion dar, über die die gewählte Fläche bzw. Teilgebiet berechnet werden kann. Die gewählte Formfunktion eines Teilgebietes z.B. integrieren des Gebietes über ein Dreieck oder Pallelogramm,  bringt auch den Vorteil, dass die gewählten Formfunktionen gleich behandelt werden können. \\
+Damit die Integration über das gewählte Teilgebiet einfacher fällt, wird als Vorbereitung im entsprechenden Fall das gewählte Gebiet in ein Einheitsdreieck oder in ein Einheitsparallelogramm transformiert. So können alle Gebiete gleich behandelt und berechnet werden. \\
 Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $ P_2(x_2, y_2)$ und $P_3(x_3,y_3)$ kann mit Hilfe der linearen Transformation
 \begin{equation}
 	\begin{split}
@@ -36,15 +36,18 @@ Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $
 \end{equation}
 in das einfachere Gebiet nämlich das gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 überführt werden wie in der Abbildung \ref{fig:TransformationEinheitsdreieckBild} dargestellt ist.
 
-
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.8]{papers/fem/Images/Dreiecke.jpeg}
 	\caption{Transformation in ein Einheitsdreieck}
 	\label{fig:TransformationEinheitsdreieckBild}
 \end{figure}
-Nun ist das Flächenelement $dx \, dy$ mit Hilfe der Jacobi Determinante \eqref{fem:JocobiDeterminante} der Transformation zu ersetzen durch \eqref{fem:newTransformation}.
-
+Die Variablen \xi und \eta werden die neuen Integrationsvariablen.
+\begin{equation}
+			dy \, dy = \det(J) \, d\xi \, d\eta
+			\label{fem:newTransformation}
+\end{equation}
+Damit die Berechnung korekt ist, muss noch die Determinante der Jacobi Matrix dazu noch multipliziert werden.
 \begin{equation}
 J % 
 =
@@ -57,18 +60,14 @@ J %
     x_2 - x_1  &  x_3 -x_1      \\
     y_2 - y_1  &  y_3 - y_1      
 \end{bmatrix} 
-	\label{fem:JocobiDeterminante}
+	\label{fem:Jocobi}
 \end{equation}
-Die Determinante dieser Jacobi- Matrix ergibt
+Die Jacobi Matrix \ref{fem:Jocobi} besteht aus den partiellen Ableitungen aus \ref{fem:linTransformation}.  
 \begin{equation}
 	\det(J) = x_1 \cdot y_2 - 2 \cdot x_1 \cdot y_1 + x_2 \cdot y_1 + x_1\cdot y_3 + x_3 \cdot y_1 - x_2 \cdot y_3 - x_3 \cdot y_2
 	\label{fem:JocobiDetBerechnet}
 \end{equation}
-\begin{equation}
-			dy \, dy = \det(J) \, d\xi \, d\eta
-			\label{fem:newTransformation}
-\end{equation}
-Die Jacobi- Determinante entspricht der doppelten Fläche des Dreiecks. Die partiellen Ableitungen werden gemäss der Kettenregel zu 
+Determinante von \ref{fem:Jocobi} ist \eqref{fem:JocobiDetBerechnet}. Die Jacobi- Determinante entspricht der doppelten Fläche des Dreiecks. Die partiellen Ableitungen werden gemäss der Kettenregel zu 
 %\begin{equation}
 %			\begin{aligned}
 %			u_x = u_{\xi} \xi_x + u_{\eta} \eta_x \\
@@ -86,23 +85,22 @@ Auf Grund der linearen Transformation \eqref{fem:linTransformation} ergeben sich
 
 \begin{equation}
 			\begin{aligned}
-			1  = (x_2 -x_1) \, \eta_x + (x_3 -x_1) \, \eta_x \\
-			0 = (y_2 -y_1) \, \eta_x + (y_3 -y_1) \, \eta_x \\
+			1  = (x_2 -x_1) \, \frac{\partial \xi}{\partial x} + (x_3 -x_1) \, \frac{\partial \eta}{\partial x} \\
+			0 = (y_2 -y_1) \, \frac{\partial \xi}{\partial x} + (y_3 -y_1) \, frac{\partial \eta}{\partial x} \\
 			 \end{aligned}
 \end{equation}
-Nach Auflösung  der beiden Gleichungen nach $\xi_x$ und $\eta_x$ ergibt sich
-
+Nach Auflösung  der beiden Gleichungen nach $\frac{\partial \xi}{\partial x}$ und $\frac{\partial \eta}{\partial x}$ ergibt sich
 \begin{equation}
-			\xi_x = \frac{y_3 - y_1}{J} \quad \eta_x = -\frac{y_2 - y_1}{J}
+			\frac{\partial \xi}{\partial x} = \frac{y_3 - y_1}{J} \quad \frac{\partial \eta}{\partial x} = -\frac{y_2 - y_1}{J}
 \end{equation}
 Analog nach der partiellen Ableitung nach $y$ erhält man
 
 \begin{equation}
-			\xi_y = \frac{x_3 - x_1}{J} \quad \eta_y = -\frac{x_2 - x_1}{J}
+			\frac{\partial \xi}{\partial y} = \frac{x_3 - x_1}{J} \quad \frac{\partial \eta}{\partial y} = -\frac{x_2 - x_1}{J}
 \end{equation}
 Somit vereinfacht sich die Integration über das Einheitsdreieck 
 \begin{equation}
-			\int_{\triangle} u \quad dy \, dx = \int_0^1 \int_0^{1 - \xi} \, ... \, d \eta \, d \xi
+			\int_{\triangle} u \quad dy \, dx = \int_0^1 \int_0^{1 - \xi} \, u \det (J) \, d \eta \, d \xi
 \end{equation}
 
 \subsection{Schritt 1 Minimalproblem bilden}
@@ -113,23 +111,23 @@ Analog zum Kapitel 7.4.1 muss auch die DGL in der Ebene zuerst in ein äquivalen
 			\int_0^1 u \textcolor{red}{'} (x)^2 - \lambda \, u(x)^2 dx \,dy
 			\label{fem:Minimal1D}
 \end{equation}
-Im Unterschied zu den mehrdimensionale Form wird anstatt der einfachen Ableitungt der Laplace Operator verwendet der zugleich zweifache Differenziebarkeit von der Ansatzfunktion $u(x)$ fordert. Zudem wird nicht mehr über eine Strecke integriert sondern nun über ein Gebiet $\Omega$ was gleichbedeutend für eine Integration über eine Teilgebiet steht.
+Im Unterschied zu den mehrdimensionale Form wird anstatt der einfachen Ableitung der Laplace Operator verwendet, der zugleich zweifache Differenziebarkeit von der Ansatzfunktion $u(x)$ fordert. Zudem wird nicht mehr über eine Strecke integriert sondern über ein Teilgebiet $\Omega_i$
 
 \begin{equation}
-			\int_{\Omega} (\textcolor{red}{\nabla} u)^2 - \lambda u^2 dx \, dy
+			\int_{\Omega_i} (\textcolor{red}{\nabla} u)^2 - \lambda u^2 dx \, dy
 			\label{fem:Minimal2D}
 \end{equation}
 Der Integrationsterm \ref{fem:Minimal2D} wird gemäss der Summenregel in 2 Terme zerlegt nämlich 
 
 \begin{equation}
-			\int_{\Omega} (\nabla u)^2 \, dx \, dy - \lambda \int_{\Omega} u^2 dx \, dy
+			\int_{\Omega_i} (\nabla u)^2 \, dx \, dy - \lambda \int_{\Omega_i} u^2 dx \, dy \, .
 			\label{fem:Minimal2D2Term}
 \end{equation}
-Nun ist die Bildung des Minimalproblems abgeschlossen. In einem nächsten Schritt wird das Minimalproblem auf das Element formuliert. Dies wird in dem folgenden Abschnitt erläutert.
+In einem nächsten Schritt wird das Minimalproblem auf das Element formuliert. Dies wird in dem folgenden Abschnitt erläutert.
 
 \subsection{Schritt 2 Ansatzfunktionen auf Lösung approximieren}
 
-Die lineare Ansatzfunktion hat wie schon erwähnt die folgende Form
+Die lineare Ansatzfunktion hat wie schon erwähnt die Form
 
 \begin{equation}
 u(x,y) = c_1 + c_2x + c_3y
