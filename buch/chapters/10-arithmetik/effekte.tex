@@ -419,7 +419,7 @@ und erhalten die Summe $s_{n+1} = s_n + \bar{a}_{n+1}$.
 Natürlich können wir auch hier wieder den Fehler als
 $c_{n+1} = (s_{n+1} - s_{n}) - \bar{a}_{n+1}$ berechnen.
 Damit erhalten wir den Algorithmus in
-Listing~\ref{buch:list:kahan-algorithmus}.
+Listing~\ref{buch:listing:kahan-algorithmus}.
 \lstinputlisting[style=C,float,caption={Kahan-Summations-Algorithmus zur
 Vermeidung sich akkumulierender Runungsfehler.},label={buch:listing:kahan-algorithmus}]{chapters/10-arithmetik/kahan.c}
 Er verwendet die Funktion \texttt{a(i)}, welche den Term mit Index $i$
