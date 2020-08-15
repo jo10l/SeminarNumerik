@@ -1,0 +1,21 @@
+\begin{tikzpicture}[->, >=stealth', auto, node distance=2cm]
+
+    \draw[] (0,-0.5) -- (0,2.5) node[above right]{$y$} ;
+    \draw[]  (-2.5,0) -- (2.5, 0) node[above right]{$x$} ;
+
+    \begin{scope}[rotate=17]
+        \draw[thick] (0,0) -- (2,0) node[above right]{$\bm v_{00}$} ;
+        \draw[thick] (0,0) -- (0,2) node[above left]{$\bm v_{01}$} ;
+
+        \draw[thick, gray] (0,0) -- (1.6,1.2) node[above right]{$\bm v_{10}$} ;
+        \draw[thick, gray] (0,0) -- (-1.2,1.6) node[above right]{$\bm v_{11}$} ;
+
+        \draw[blue, dashed, -] (1.6,0) -- (1.6,1.2) ;
+        \draw[red, dashed, -] (0,1.2) -- (1.6,1.2) ;
+
+        \draw[thick, blue] (0,0) -- (1.6,0) ;
+        \draw[thick, red] (0,0) -- (0,1.2) ;
+
+    \end{scope}
+
+\end{tikzpicture}

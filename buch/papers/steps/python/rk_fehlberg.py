@@ -118,7 +118,7 @@ plt.plot([i[0][0] for i in pMo], [i[0][1] for i in pMo], '--', c='#8F8F8F',label
 
 print('run1:')
 t, pMo=rk.rk_system_nd_ssc_fehlberg(0, [pMo0_0, vMo0_0], 4.5, a_p, 0.1, 0.1)
-plt.plot([i[0][0] for i in pMo], [i[0][1] for i in pMo], 'x-', label=f'h=0.1s => {len(t)-1} steps')
+plt.plot([i[0][0] for i in pMo], [i[0][1] for i in pMo], '-.', label=f'h=0.1s => {len(t)-1} steps', c='#FF0080')
 
 
 print('run2:')
@@ -127,7 +127,7 @@ plt.plot([i[0][0] for i in pMo], [i[0][1] for i in pMo], 'x-', label=f'h=0.15s =
 
 print('run3:')
 t, pMo=rk_system_nd_ssc_fehlberg(0, [pMo0_0, vMo0_0], 4.5, a_p, hmin=0.01, hmax=5, epsilon=0.001, hstart=1)
-plt.plot([i[0][0] for i in pMo], [i[0][1] for i in pMo], '.-', label=f'h=var => {len(t)+len(repeat)-1}={len(t)-1}+{len(repeat)} steps')
+plt.plot([i[0][0] for i in pMo], [i[0][1] for i in pMo], linestyle=':', marker='.', label=f'h=variabel => {len(t)+len(repeat)-1}={len(t)-1}+{len(repeat)} steps')
 
 
 plt.legend()

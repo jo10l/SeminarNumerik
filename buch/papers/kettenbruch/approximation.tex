@@ -1,0 +1,115 @@
+%
+% loesung.tex -- Beispiel-File für die Beschreibung der Loesung
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Approximation
+\label{kettenbruch:section:Approximation}}
+\rhead{Approximation}
+
+In der Einleitung wurde erwähnt, dass die Bestimmung von guten
+Näherungsbrüchen eine wichtige Anwendung von Kettenbrüchen ist. Es
+gilt nämlich, dass jeder Näherungsbruch der Kettenbruchentwicklung
+einer reellen Zahl eine besonders gute rationale Näherung dieser
+Zahl ist.
+
+\subsection{Definition}
+
+Eine rationale Zahl $\frac{a}{b}$ mit $b>0$ heisst beste Näherung
+erster Art an eine reelle Zahl $x$, wenn es keine von $\frac{a}{b}$
+verschiedene rationale Zahl mit gleichem oder kleinerem Nenner gibt,
+die bezüglich des Absolutbetrages näher bei $x$ liegt.
+Das heisst, dann gilt für alle rationalen Zahlen $\frac{c}{d} \ne
+\frac{a}{b}$ mit $0<d\le b$:
+\begin{equation}
+\biggl|x-\frac{a}{b}\biggr| < \biggl| x-\frac{c}{d}\biggr|.
+\end{equation}
+
+\subsection{Näherungsgesetz}
+Ziel dieses Abschnitt ist es, eine genügend gute Approximation der
+Näherungsbrüche nachzuweisen. Gibt man sich eine beliebige Zahl $x$
+vor, so kann man sich die Frage stellen, welche "unkürzbaren" Brüche
+$\frac{p}{q}$ mit vorgegebenem Höchstnenner sich gut approximieren
+lässt.
+
+\begin{beispiel}
+Näherung von $\pi$ mit dem unendliche Dezimalbruch:
+$\pi = [3;7,15,1,292,1,1,1,2,1,3,1,14,2,\cdots]$
+Die Näherung $3.14 = \frac{314}{100}$ ist eine Näherung. Aber
+$\frac{22}{7} = 3.14285714\dots$ hat einen viel kleineren Nenner und
+ist eine deutlich bessere Näherung von $\pi$.
+Eine noch bessere Näherung ist der Kettenbruch
+\begin{equation}
+\frac{355}{113} = 3 + \cfrac{1}{7+\cfrac{1}{15+\cfrac{1}{1}}} = 3.1415\overline{92}
+\end{equation}
+Folgende Näherungswerte von $\pi$ können schnell und einfach gerechnet werden:
+\begin{equation}
+3,\frac{22}{7} \approx 3.143 ; \frac{333}{106} \approx 3.14151 ; \frac{355}{113} 
+\approx 3.1415929 ; \frac{103993}{33102} \approx 3.1415926530 ; \cdots.
+\end{equation}
+\end{beispiel}
+Die Bestapproximation ist einfach formuliert durch die Bestimmung
+derjenigen rationalen Brüchen, welche von einer gegebenen rationalen
+oder irrationalen Zahl einen festgelegten minimalen Abstand haben
+und dabei einen möglichst kleinen positiven Nenner besitzen.
+
+\subsubsection{Beispiel}
+\begin{beispiel}
+Die Funktion $\tan^{-1}(x)$ spielt bei der Berechnung von $\pi$ an vielen Stellen eine Rolle. 
+Es gilt die Leibnizsche Reihe
+\begin{equation}
+\frac{\pi}{4} = \tan^{-1}(1)
+=
+1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \frac{1}{9} - \frac{1}{11} +\dots
+\end{equation}
+Dank der Euler-Transformation gilt folgender Kettenbruch
+\begin{equation}
+\tan^{-1}(x) = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \frac{x^9}{9} - 
+\frac{x^{11}}{11}\dots,		\qquad x \leq 1
+\end{equation}
+Somit kann der Kettenbruch von $\tan^{-1}(x)$ folgendermassen dargestellt werden.
+\begin{equation}
+\tan^{-1}(x)
+=
+\cfrac{x}{1+\cfrac{x^2}{3+\cfrac{4x^2}{5+\cfrac{9x^2}{7+\cfrac{16x^2}{9+\cdots}}}}}
+\qquad	(|x|< 1)
+\end{equation}
+Das Gleichungssystem kann umgeschrieben werden als Funktion $f_n$
+\begin{equation}
+f_n(x) = \frac{x}{1+}\frac{x^2}{3+}\frac{4x^2}{5+}\cdots\frac{(n-1)^2 x^2}{2n-1}
+\qquad	(|n|\ge 2)
+\end{equation}
+\end{beispiel}
+Hiermit kann nach $n$-te Bildung der Kettenbruchreaktion einen Grenzwert
+erreichen:
+\begin{equation}
+\tan^{-1}(x) = \lim_{n\to\infty} f_n(x), \qquad (|x| < 1)
+\end{equation}
+Die Konvergenz der Funktion kann an einem Beispiel beurteilt werden. 
+\begin{equation}
+\tan^{-1}(1) = \pi/4 \approx 0.785398
+\end{equation}
+
+\begin{table}
+\centering
+\begin{tabular}{>{$}c<{$}>{$}l<{$}}
+n	& f_n(1) 	\\
+\hline
+2	& 0.750000 	\\
+3	& 0.791667 	\\
+4	& 0.784314 	\\
+5	& 0.785586 	\\
+6	& 0.785366 	\\
+7	& 0.785404	\\
+8	& 0.785397	\\
+9	& 0.785398	\\
+\hline
+\end{tabular}
+\caption{Näherungsstufen mit Kettenbruchentwicklung von der Funktion $\tan^{-1}(1)$
+\label{kettenbruch:tabelle}}
+\end{table}
+
+In wenigen und einfachen Schritten haben wir mit Hilfe einer
+Kettenbruchentwicklung ein System gebildet das die Konvergenz der
+Funktion $\tan^{-1}(x)$ vorantreibt und präzise Resultate liefert.
+

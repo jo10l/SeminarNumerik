@@ -8,7 +8,8 @@ images = derivatives.pdf diffex.pdf diff2.pdf laplace.pdf poisson.pdf \
 	rueckwaerts.pdf cngrid.pdf explizitd.pdf explizitspektrum.pdf \
 	implizitspektrum.pdf cnspektrum.pdf \
 	explizitneumann.pdf implizitneumann.pdf cnneumann.pdf \
-	explizit.jpg implizit.jpg
+	explizit.jpg implizit.jpg \
+	ringgebiet.pdf
 
 all:	$(images)
 
@@ -124,3 +125,5 @@ cnneumann.inc:	cranknicholsonn.m
 cnneumann.pdf:	cnneumann.tex cnneumann.inc
 	pdflatex cnneumann.tex
 
+ringgebiet.pdf:	ringgebiet.tex
+	pdflatex ringgebiet.tex

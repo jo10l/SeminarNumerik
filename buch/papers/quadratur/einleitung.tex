@@ -6,37 +6,31 @@
 \section{Einleitung\label{quadratur:section:einleitung}}
 \rhead{Einleitung}
 
-Im Kapitel~\ref{chapter:integration}, Integration wurden die 
-Trapezregel und die Mittelpunktsregel für die numerische Integration 
-von Integralen erklärt. 
-In diesem Kapitel wird eine weitere Methode für die numerische Integration,
-in der mathematik auch Quadratur genannt, erarbeitet.
-
-Die Gauss-Quadratatur ist ein Verfahren, welches ein bestimmtes Integral der Form
-
+Im Kapitel~\ref{chapter:integration}, Integration, wurden die 
+Trapezregel und die Mittelpunktsregel für die numerische Integration, 
+auch Quadratur genannt, erklärt. 
+In diesem Kapitel wird eine weitere Methode, die Gauss-Quadratur, erarbeitet.
+Die Gauss-Quadratur ist ein Verfahren, welches ein bestimmtes Integral der Form
 \begin{equation}
     \int_{a}^{b} f(x) \,dx
 \end{equation}
-
-mit der approximierten Summenformel 
-
-\begin{equation}
+mit der approximierten Summenformel
+\begin{equation} \label{quadratur:equation:quadraturapproxsumme}
     I = \sum_{i=0}^{n} A_i f(x_i)
 \end{equation}
-
 annähert, wobei die Stützstellen $x_i$ und die Gewichtung $A_i$ von der gewählten 
 Methode abhängen. 
 Es werden dabei im Vergleich mit ähnlichen Verfahren viel weniger Funktionsauswertungen benötigt.
 
 Methoden für die Quadratur lassen sich in zwei Gruppen unterteilen: 
-Newton-Cotes Formeln und Gauss Quadratur.
-Die im Kapitel \ref{buch:subsection:trapez} und \ref{buch:subsection:mittelpunkt} beschriebene
+Newton-Cotes-Formeln und Gauss Quadratur.
+Die im Kapitel \ref{buch:subsection:mittelpunkt} und \ref{buch:subsection:trapez} beschriebenen
 Trapezregel und Mittelpunktsregel gehören zu der ersten Kategorie.
-Newton-Cotes Formeln lassen sich dadurch erkennen, dass die Stützstellen auf der x-Achse 
+Newton-Cotes-Formeln lassen sich dadurch erkennen, dass die Stützstellen auf der $x$-Achse 
 gleichmässig verteilt sind und eignen sich besonders für die Integration, wenn sich $f(x)$ 
-effizient in kleinen Intervallen berechnen lässt oder bereits von Computern berechnet wurden.
+effizient in kleinen Intervallen berechnen lässt oder bereits von Computern berechnet worden ist.
 
-\newpage
+
 
 
 

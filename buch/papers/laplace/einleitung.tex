@@ -1,22 +1,31 @@
 %
 % einleitung.tex -- Beispiel-File für die Einleitung
 %
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+% (c) 2020 Severin Weiss
 %
-\section{Einleitung\label{laplace:section:einleitung}}
-\rhead{Einleitung}
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua \cite{laplace:bibtex}.
-At vero eos et accusam et justo duo dolores et ea rebum.
-Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-dolor sit amet.
+Die Laplacetransformation einer auf $[0, \infty)$ definierten und in jedem endlichen Intrevall  $[0, a)$ absolut integrierbaren Funktion ist die Funktion
+\[
+F(s) = \int_0^\infty e^{-st}f(t)\,dt,~~Re(s)>\gamma_{0}.
+\]
+Das Argument $s$ kann eine komplexe Zahl sein, im Folgenden wird vorausgesetzt, dass das Integral für $Re(s)>\gamma_{0}$ konvergieren muss.
+Das inverse Laplaceproblem ist, die Funktionen $f(t)$ im Zeitbereich aus jener bekannten Funktionen $F(s)$ im Frequenzbereich zu rekonstruieren.
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-erat, sed diam voluptua.
-At vero eos et accusam et justo duo dolores et ea rebum.  Stet clita
-kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
-amet.
+Mit der Riemanninversionsformel ergibt sich $f(t)$ aus $F(s)$
+\[
+f(t) = \frac{1}{2\pi i} \oint_{B} e^{st}F(s)\,ds,~~t>0
+\]
+wobei $B$ die Bromwichkontur von $\gamma-i\infty$ bis $\gamma+i\infty$, mit $\gamma>\gamma_{0}$, parallel zur imaginären Achse ist. Die Bromwichkontur ist eine geschlossen Kurve. Die Kurve ist in Abbildung \ref{laplace:bromwichkontur} ersichtlich. Sie besteht aus zwei Teilen. Zum einen der Teilkreis mit Radius $R$ vom Mittelpunkt und zum anderen der vertikale Linie $\gamma$, welche sich zur rechten aller Singularitäten von $F(s)$ befindet.  Bei Vergrösserung des Radius $R$ wird die Bromwich Kontur alle Singularitäten umschliessen. Unter diesen Bedingung konvergiert das Integral gegen Null, wenn der Radius $R$ gegen unendlich strebt.
+Damit man das Integral mit der Bromwichkontur numerisch berechnen kann, braucht man $F(s)$, sodass für alle $s\rightarrow$ $\infty$ mit $Re(s)> \gamma_{0}$ genügend schnell gegen 0 gehen, weil der Umfang des Kreises anwächst.
 
+
+\begin{figure}
+\centering
+\includegraphics[width=6.9cm]{papers/laplace/Bromwich_Contour}
+\caption{Fehler von $Bromwich Kontur$
+\label{laplace:bromwichkontur}
+}
+\end{figure}
+
+Im Allgemeinen möchte man die Kontur zur linken Seite bewegen, sodass der Betrag des Faktors $e^{st}$ im Integrand kleiner wird.
+Die Kontur sollte jedoch nicht zu nahe an Singularitäten von $F(s)$ angenähert werden, dies würde Spitzen des Integranden zur Folge haben.
 

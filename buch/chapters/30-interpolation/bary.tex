@@ -5,6 +5,7 @@
 %
 \section{Baryzentrische Formeln für Interpolationspolynome
 \label{buch:section:baryzentrisch}}
+\index{baryzentrische Formel}%
 Die Interpolationspolynome von Lagrange und Hermite haben 
 in der bis jetzt gezeigten Form das folgende grundlegende Problem.
 Sie sind definiert über das Produkt
@@ -13,16 +14,18 @@ l(x)
 =
 (x-x_0)(x-x_1)\dots (x-x_{n-1})(x-x_n).
 \]
-Ist die Zahl der Stützstellen gross und liegen erstrecken sich die 
+Ist die Zahl der Stützstellen gross und erstrecken sich die 
 Stützstellen über einen grossen Bereich, dann sind einzelne Faktoren
-$(x-x_i)$ immer gross.
+$(x-x_i)$ immer gross, wie wir bei der Diskussion von Runges Phänomen
+bereits diskutiert haben.
+\index{Runges Phänomen}%
 Zudem tritt bei der Berechnung eines Wertes in inmittelbarer 
 Nähe der Stützstelle $x_j$ in dem Faktor $(x-x_j)$ Auslöschung auf.
 Der grosse relative Fehler dieses Faktors wird durch die anderen Faktoren
 zu einem grossen absoluten Fehler aufgeblasen.
 
 Andererseits ist klar, dass sich das Interpolationspolynom vor allem
-in der Nähe einer Stützstelle ändern sollte, wenn man den an der
+in der Nähe einer Stützstelle ändern sollte, wenn man den Wert an der
 Stützstelle ändert.
 Die anderen Stützstellen sollten also nur einen geringen Einfluss auf
 den Wert des Interpolationspolynoms haben.
@@ -48,8 +51,9 @@ l_j(x)
 (x-x_0)(x-x_1)\cdots(\widehat{x-x_j}) \cdots (x-x_n)
 }{
 (x_j-x_0)(x_j-x_1)\cdots (\widehat{x_j-x_j})\cdots (x_j-x_n)
-}.
+}
 \]
+gefunden.
 Schreibt man
 \[
 w_j
@@ -74,7 +78,7 @@ l(x) \sum_{j=0}^n \frac{w_jf_j}{x-x_j}.
 \end{equation}
 Die Zahlen $w_j$ hängen nur von den Stützstellen ab, nicht von den
 Funktionswerten $f_j$. 
-Sie können also nach Festlegung der Stützstelle einmalig berechnet
+Sie können also nach Festlegung der Stützstellen einmalig berechnet
 werden und verursachen danach keinen weiteren Berechnungsaufwand.
 
 Das Interpolationspolynom wird besonders einfach, wenn alle Funktionswerte
@@ -94,8 +98,10 @@ l(x)
 In dieser Form wird vermieden, dass zur Berechnung von $l(x)$ eine
 grosse Anzahl Produkte mit potentiell grossen Faktoren gebildet werden
 muss.
-Sorgen bereiten vor allem die Faktoren $x-x_j$ für $x$ weit entfernt von $x_j$.
-Stattdessen wird ein Summe von Summanden gebildet, die klein sind,
+Sorgen bereiten in der Produktdarstellung vor allem die Faktoren
+$x-x_j$ für $x$ weit entfernt von $x_j$.
+Stattdessen wird in \eqref{buch:bary:lx} eine Summe von Summanden gebildet,
+die klein sind,
 wenn $x$ weit von $x_j$ entfernt ist.
 
 Die vorteilhafte Formulierung~\eqref{buch:bary:lx} kann nun dazu
@@ -103,18 +109,23 @@ verwendet werden, auch eine verbesserte Formulierung für das
 Interpolationspolynom aufzustellen.
 Dazu ersetzen wir den Faktor $l(x)$ in \eqref{buch:bary:px}
 durch \eqref{buch:bary:lx} und erhalten
-\[
+\begin{equation}
 p(x)
 =
 \frac{\displaystyle \sum_{j=0}^n \frac{w_jf_j}{x-x_j}
 }{
 \displaystyle\sum_{j=0}^n \frac{w_j}{x-x_j}}.
-\]
+\label{buch:bary:pfinal}
+\end{equation}
 Diese Form des Interpolationspolynoms ist ein gewichtetes Mittel 
 der Werte $f_j$, gewichtet mit den Gewichten $w_j/(x-x_j)$.
+\index{Mittel!gewichtet}%
 Diese Gewichte sind klein für $x$ weit weg von $x_j$, die grössten
 Gewichte haben die Funktionswerte $f_j$ nahe bei $x$.
-
+\index{Gewicht}%
+\index{$w_j$}%
+Die Formel~\eqref{buch:bary:pfinal} ist daher eine numerisch besonders
+vorteilhafte Form der Auswertung eines Interpolationspolynoms.
 
 
 

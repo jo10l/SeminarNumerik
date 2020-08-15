@@ -8,12 +8,17 @@
 \rhead{Homotopie-Verfahren}
 Der Erfolg des Newton-Verfahrens hängt entscheidend von der Qualität der
 Anfangsschätzung $x_0$ ab.
+\index{Newton-Verfahren}%
+\index{Anfangsschätzung}%
 Allerdings ist es oft nicht einfach, eine solche Schätzung zu produzieren.
 Die folgende Idee kann dabei helfen.
 
 Oft ist ein schwieriges Problem ein ``deformierte'' Variante eines
 weniger schwierigen Problems.
-Der Begriff der Homotopie 
+\index{Deformation}%
+\index{deformiert}%
+Der Begriff der {\em Homotopie} gibt dieser Idee eine klare Bedeutung.
+\index{Homotopie}
 
 \begin{definition}
 Zwei Funktionen $f_0(x)$ und $f_1(x)$ heissen homotop, wenn es
@@ -21,14 +26,20 @@ eine stetige Funktion
 \[
 F\colon \mathbb R\times I : (x,t)\mapsto F(x,t)
 \]
-mit $I=[0.1]$
+mit $I=[0,1]$
 gibt derart, dass $f_0(x)=F(x,0)$ und $f_1(x)=F(x,1)$.
 Die partielle Funktion $x\mapsto F(x,t)$ für $t\in I$ wird auch mit
 $f_t$ bezeichnet: $f_t(x)=F(x,t)$.
 \end{definition}
 
+Die Funktionen $f_t(x) = F(x,t)$ sind Funktionen ``zwischen'' 
+$f_0(x)$ und $f_1(x)$.
+Lässt man den Parameter $t$ von $0$ nach $1$ laufen, wird der Graph
+von $f_0(x)$ deformiert in den Graphen von $f_1(x)$.
+
 \begin{beispiel}
 Die Kepler-Gleichung ist 
+\index{Kepler-Gleichung}%
 \[
 M=E-e\sin E,
 \]
@@ -49,7 +60,7 @@ F(x,t) = M-E+et\sin E.
 \]
 \end{beispiel}
 
-Eine Homotopie kann dazu verwendet werden, Startwerte für das Newtonverfahren
+Eine Homotopie kann dazu verwendet werden, Startwerte für das Newton-Verfahren
 zu liefern.
 Ist $x_0(t)$ eine Nullstelle der partiellen Funktion $x\mapsto F(x,t)$,
 dann kann $x_0(t)$ als Startwert zur Bestimmung einer Nullstelle von
@@ -67,12 +78,16 @@ Inkrementiere $t$ um $\Delta t$
 \item
 verbessere $x_0$ durch einige Iterationen des Newton-Verfahrens
 zu einer Nullstelle von $f_t(x)$.
+\index{Newton-Verfahren}%
 \item 
 Wiederhole Schritte 2 und 3 bis $t=1$.
 \end{enumerate}
+\index{Homotopie-Verfahren}%
 Auf diese Weise kann sichergestellt werden, dass jede Iteration
 des Newton-Verfahrens mit einem guten Schätzwert startet, wenn auch
 nur für eine immer bessere Approximation des eigentlichen Problems.
+\index{Schätzwert}%
+\index{Approximation}%
 
 
 

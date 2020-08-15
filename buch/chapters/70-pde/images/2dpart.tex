@@ -21,7 +21,7 @@
 
 \fill[color=gray!20] (\a,\c) rectangle (\b,\d);
 \node at ({0.5*(\a+\b)},{0.5*(\c+\d)+0.3}) {$\Omega$};
-\node at ({0.5*(\a+\b)},{0.5*(\c+\d)-0.3}) {$\displaystyle\int_{\Omega}(\nabla u(x))^2 + u(x)^2\,dx$};
+\node at ({0.5*(\a+\b)},{0.5*(\c+\d)-0.3}) {$\displaystyle\int_{\Omega}(\nabla u(x))^2 + \lambda u(x)^2\,dx$};
 
 \draw[->] (-0.1,0)--(13.7,0) coordinate[label={$x$}];
 \draw[->] (0,-0.1)--(0,8.3) coordinate[label={left:$y$}];

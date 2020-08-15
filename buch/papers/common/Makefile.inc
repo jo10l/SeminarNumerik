@@ -8,7 +8,6 @@
 PAPERFILES = \
 	papers/part2.tex \
 	papers/uebersicht.tex \
-	papers/000template/main.tex \
 	papers/vanderpol/main.tex \
 	papers/logistic/main.tex \
 	papers/kettenbruch/main.tex \
@@ -81,9 +80,6 @@ buch17-blx.bbl:	buch17-blx.aux
 buch18-blx.bbl:	buch18-blx.aux
 	bibtex buch18-blx
 
-buch19-blx.bbl:	buch19-blx.aux
-	bibtex buch19-blx
-
 BLXFILES = buch.bbl \
 	buch1-blx.bbl \
 	buch2-blx.bbl \
@@ -103,10 +99,8 @@ BLXFILES = buch.bbl \
 	buch16-blx.bbl \
 	buch17-blx.bbl \
 	buch18-blx.bbl \
-	buch19-blx.bbl \
 
 PAPER_DIRECTORIES = \
-	000template \
 	vanderpol \
 	logistic \
 	kettenbruch \
@@ -126,7 +120,6 @@ PAPER_DIRECTORIES = \
 	ableitung \
 	
 PAPER_MAKEFILEINC = \
-	papers/000template/Makefile.inc \
 	papers/vanderpol/Makefile.inc \
 	papers/logistic/Makefile.inc \
 	papers/kettenbruch/Makefile.inc \

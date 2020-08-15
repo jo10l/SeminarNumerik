@@ -1,0 +1,51 @@
+%
+% bandmatrix.tex -- Bandmatrizen
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\fill[color=gray!70] (-3,-3) rectangle (3,3);
+\fill[color=gray!25] (-3,1.5) -- (1.5,-3) -- (-3,-3) -- cycle;
+\draw (-3,1.5) -- (1.5,-3);
+\fill[color=gray!25] (3,-1.5) -- (-1.5,3) -- (3,3) -- cycle;
+\draw (3,-1.5) -- (-1.5,3);
+\draw (-3,-3) rectangle (3,3);
+
+\draw[<->] (-3,-3.3) -- (3,-3.3);
+\draw[line width=0.3pt] (-3,-3) -- (-3,-3.4);
+\draw[line width=0.3pt] (3,-3) -- (3,-3.4);
+
+\node at (3.3,0) [right] {$n$};
+
+\draw[<->] (3.3,-3) -- (3.3,3);
+\draw[line width=0.3pt] (3,-3) -- (3.4,-3);
+\draw[line width=0.3pt] (3,3) -- (3.4,3);
+
+\node at (0,-3.3) [below] {$n$};
+
+\draw[<->] (-3,3.3) -- (-1.5,3.3);
+\draw[line width=0.3pt] (-3,3) -- (-3,3.4);
+\draw[line width=0.3pt] (-1.5,3) -- (-1.5,3.4);
+\node at (-2.25,3.3) [above] {$k$};
+
+\draw[<->] (-3.3,3) -- (-3.3,1.5);
+\draw[line width=0.3pt] (-3,3) -- (-3.4,3);
+\draw[line width=0.3pt] (-3,1.5) -- (-3.4,1.5);
+\node at (-3.3,2.25) [left] {$k$};
+
+\node at (1.7,1.7) {\Huge $0$};
+\node at (-1.7,-1.7) {\Huge $0$};
+
+\end{tikzpicture}
+\end{document}
+

@@ -4,7 +4,9 @@
 # (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
 all:	h.pdf rolle.pdf nullstellen.pdf sin.pdf l.pdf norm.pdf tscheb.pdf \
-	basis.pdf tschebasis.pdf polygon.pdf vergleich.pdf integral.pdf
+	basis.pdf tschebasis.pdf polygon.pdf vergleich.pdf integral.pdf \
+	bezier.pdf bezierberechnung.pdf beziern.pdf bezierhermite.pdf \
+	mittelwertsatz.pdf lissajous.pdf lissajous-chebyshef.pdf
 
 %.pdf:	%.tex
 	pdflatex $<
@@ -40,3 +42,23 @@ vergleich.pdf:	vergleich.tex
 integral.pdf:	integral.tex
 	pdflatex integral.tex
 
+bezier.pdf:	bezier.tex
+	pdflatex bezier.tex
+
+bezierberechnung.pdf:	bezierberechnung.tex
+	pdflatex bezierberechnung.tex
+
+beziern.pdf:	beziern.tex
+	pdflatex beziern.tex
+
+bezierhermite.pdf:	bezierhermite.tex
+	pdflatex bezierhermite.tex
+
+mittelwertsatz.pdf:	mittelwertsatz.tex
+	pdflatex mittelwertsatz.tex
+
+lissajous.pdf:	lissajous.tex lissajous.jpg
+	pdflatex lissajous.tex
+
+lissajous-chebyshef.pdf:	lissajous-chebyshef.tex lissajous.jpg
+	pdflatex lissajous-chebyshef.tex

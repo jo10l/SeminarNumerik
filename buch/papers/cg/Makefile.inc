@@ -7,8 +7,8 @@ dependencies-cg =						\
 	papers/cg/packages.tex					\
 	papers/cg/main.tex					\
 	papers/cg/references.bib				\
-	papers/cg/einleitung.tex				\
-	papers/cg/problemstellung.tex				\
-	papers/cg/loesung.tex					\
-	papers/cg/folgerungen.tex
+	papers/cg/steepest_descent.tex				\
+	papers/cg/herleitung_algorithmus.tex			\
+	papers/cg/ergebnisse.tex				\
+
 

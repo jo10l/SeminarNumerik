@@ -6,9 +6,5 @@
 dependencies-francis =						\
 	papers/francis/packages.tex					\
 	papers/francis/main.tex					\
-	papers/francis/references.bib				\
-	papers/francis/einleitung.tex				\
-	papers/francis/problemstellung.tex				\
-	papers/francis/loesung.tex					\
-	papers/francis/folgerungen.tex
+	papers/francis/references.bib
 
