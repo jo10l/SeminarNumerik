@@ -9,15 +9,15 @@
 \label{laplace:section:Methode nach Talbot}
 \rhead{Lösung}
 Eine Bedingung um eine passende Kontur zu finden, wurde von Talbot gefunden.
-Diese fordert, dass die Singularitäten von $F(s)$ bekannt sind, sowie folgendes gilt für $F(s)$
+Diese fordert, dass die Singularitäten $s_{j}$ von $F(s)$ bekannt sind, sowie gilt für $F(s)$
 \begin{enumerate}
 \item
-$|F(s)|\rightarrow$ 0 mit $|s|\rightarrow$ $\infty$ in $Re(s)<\gamma_{0}$
+$|F(s)|\rightarrow$ $0$ mit $|s|\rightarrow$ $\infty$ in $Re(s)<\gamma_{0}$
 \item
-Für alle Singularitäten $s_{j},~~|Im(s_{j})|<K$, wobei der Wert von $K$ bekannt ist.
+Alle Singularitäten $s_{j} liegen,~~|Im(s_{j})|<K$, wobei der Wert von $K$ bekannt ist.
 \end{enumerate}
 
-Die erste Bedingung besagt, dass $F(s)$ für grosse $|s|$ schnell gegen $0$ geht, solange man links von $\gamma_{0}$ ist. Dies hat zur Folge, dass Integrale über Konturen vernachlässigt werden können, wenn Sie sich in diesem Gebiet bewegen. Das ist die entscheidende Idee von Talbot: man verschiebt die Bromwich-Kontur, wo man nicht vermeiden kann, über die ganze imaginäre Achse zu integrieren, derart, dass man nur noch über einen kleinen Teil integrieren muss. Die untenstehende Abbildung veranschaulicht dies Kontur von Talbot.
+Die erste Bedingung besagt, dass $F(s)$ für grosse $|s|$ schnell gegen $0$ geht, solange man links von $\gamma_{0}$ ist. Dies hat zur Folge, dass Integrale über Konturen vernachlässigt werden können, wenn sie sich in diesem Gebiet bewegen. Das ist die entscheidende Idee von Talbot und ein entscheidender Vorteil gegenüber der Bromwichkontur, da diese $F(s)$ für grosse $|s|$ nicht genügend schnell gegen $0$ geht. In der Konsequenz verschiebt man die Bromwich-Kontur, wo man nicht vermeiden kann über die ganze imaginäre Achse zu integrieren, sodass man nur noch über einen kleinen Teil integrieren muss. Die Abbildung \ref{laplace:talbotkontur} veranschaulicht dies Kontur von Talbot und darin ist zu erkennen, das  $|s|$ im Verlaufe der Kontur grösser werden muss.
 
 \begin{figure}
 \centering
@@ -26,7 +26,13 @@ Die erste Bedingung besagt, dass $F(s)$ für grosse $|s|$ schnell gegen $0$ geht
 \label{laplace:talbotkontur}
 \end{figure}
 
-Die Talbots Kontur ist gegeben durch
+Die Parameter $\lambda$, $\sigma$ und $\nu$ dienen dazu die
+Talbotkontur zu charaktersieren. Eine Erhöhung von $\sigma$ verschiebt
+die Kontur nach rechts, während eine Erhöhung von $\nu$ Ausdehnung
+in vertikaler Richtung zur Folge hat. Dabei entsteht ein Band der Breite $2i\lambda\mu\pi$, welches symmetrisch zur reellen Achse ist. Die Paramter sollten so gewählt werden, dass die Singularität der Laplacetransformation innerhalb der Talbotkontur, respektive innerhalb des Bandes liegen. 
+
+
+Die Parametriesierung der Kontur ist gegeben durch
 \[
 s(z) = \sigma+\lambda s_{\nu}(z),~~ z\in (-2\pi i,~~2\pi i)
 \]
@@ -58,7 +64,7 @@ wobei
 \[
 s'_{\nu}(\theta) = i \Biggl\{\nu + \frac{\theta-\cos(\theta)\sin(\theta)}{\sin^{2}(\theta)}  \Biggr\}.
 \]
-Unter berücksichtigung der Symmetrie, sowie der Trapez Approximationsregel erhält man
+Unter Berücksichtigung der Symmetrie, sowie der Trapezsregel (für detailierte Informationen siehe Kapitel 4) erhält man die Auswertung des Integrals
 \[
 \tilde{f}(t) = \frac{\lambda e^{\sigma t}}{n}~T_{n}(t)
 \]
@@ -70,6 +76,7 @@ T_{n}(t)
 F[\sigma + \lambda s_{\nu}(\theta_{j})]
 \frac{1}{i} s'_{\nu}(\theta_{j})
 \]
+\cite{laplace:talbot}
 
 \[
 \theta_{j} = j \frac{\pi}{n}.
@@ -81,12 +88,6 @@ In diesem Falle wird der Term $j=n$ gleich 0 und der $j=0$ Term wird zu
 \frac{\nu}{2}e^{\lambda t}F(\sigma + \lambda).
 \]
 
-Die Parameter $\lambda$, $\sigma$ und $\nu$ dienen dazu die
-Talbotkontur zu charaktersieren. Eine Erhöhung von $\sigma$ verschiebt
-die Kontur nach rechts, während eine Erhöhung von $\nu$ Ausdehnung
-in vertikaler Richtung zur Folge hat. Die Paramter sollten so gewählt
-werden, dass die Singularität der Laplacetransformation innerhalb
-der Talbotkontur liegen.
 
 Die obige beschriebene Methode wurde in Python implementiert.
 
