@@ -23,16 +23,16 @@ Parameter & $\lambda=1.288$ & $\lambda=0.101$ \\
 & $\sigma=1.000001$ & $\sigma=0.965$ \\
 & $\nu=0.81$ & $\nu=0.098953$ \\
 \end{tabular}
-\caption{XXX Beschreibung der Tabelle XXX
-\label{laplace:parametertabelle}}
+\caption{Funktionen im Zeitbereich und iterativ bestimmte Parameter $\lambda, \sigma$ und $\mu$ für die Methode von Talbot
+\label{laplace:parametertabelle1}}
 \end{table}
-Die Abbildungen \ref{laplace:fehlerf1} -- \ref{laplace:fehler2} zeigen die Verläufe der absoluten Fehler.
+Die Abbildungen \ref{laplace:fehlerf1} -- \ref{laplace:fehlerf2} zeigen die Verläufe der absoluten Fehler.
 
 \begin{figure}
 \centering
 \includegraphics[width=6.9cm]{papers/laplace/Error_1divide_sminus1}
 \includegraphics[width=6.9cm]{papers/laplace/Error_1divide_sminus1_bis_tgleich5}
-\caption{Fehler von $F_{1}(s)$
+\caption{Fehlerentwicklung von $F_{1}(s)$
 \label{laplace:fehlerf1}
 }
 \end{figure}
@@ -48,7 +48,7 @@ Die Abbildungen \ref{laplace:fehlerf1} -- \ref{laplace:fehler2} zeigen die Verl�
 \centering
 \includegraphics[width=6.9cm]{papers/laplace/Error_2divide_s_pow3}
 \includegraphics[width=6.9cm]{papers/laplace/Error_2divide_s_pow3_bis_tgleich5}
-\caption{Fehler von $F_{2}(s)$
+\caption{Fehlerentwicklung von $F_{2}(s)$
 \label{laplace:fehlerf2}
 }
 \end{figure}
@@ -70,7 +70,8 @@ Diese Parameter sind für andere Zeitpunkte $t_{x}$ nicht mehr sinnvoll.
 Für den Zeitpunkt $t_{0}=1$ wurden die Fehler in der Grössenordnung $10^{-8}$ respektive $10^{-6}$ erreicht. 
 Dies geschah mittels Erhöhung der Iterationszahl N.
 
-\begin{center}
+\begin{table}
+\centering
 \begin{tabular}[c]{c|c|c}
 & $F_{1}(s)$ & $F_{2}(s)$ \\
 \hline
@@ -82,6 +83,8 @@ $t_{0}$ & $1$ & $1$ \\
 \hline
 Fehler & $1.7076~\cdot~10^{-08}$ & $1.8447~\cdot~10^{-06}$ \\
 \end{tabular}
-\end{center}
+\caption{Fehler zum Zeitpunkt $t_{0}$ mit iterativ optimierten Talbotparametern $\lambda, \sigma$ und $\mu$
+\label{laplace:parametertabelle2}}
+\end{table}
 
 

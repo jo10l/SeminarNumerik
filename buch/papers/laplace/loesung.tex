@@ -17,19 +17,26 @@ $|F(s)|\rightarrow$ $0$ mit $|s|\rightarrow$ $\infty$ in $Re(s)<\gamma_{0}$
 Alle Singularitäten $s_{j} liegen,~~|Im(s_{j})|<K$, wobei der Wert von $K$ bekannt ist.
 \end{enumerate}
 
-Die erste Bedingung besagt, dass $F(s)$ für grosse $|s|$ schnell gegen $0$ geht, solange man links von $\gamma_{0}$ ist. Dies hat zur Folge, dass Integrale über Konturen vernachlässigt werden können, wenn sie sich in diesem Gebiet bewegen. Das ist die entscheidende Idee von Talbot und ein entscheidender Vorteil gegenüber der Bromwichkontur, da diese $F(s)$ für grosse $|s|$ nicht genügend schnell gegen $0$ geht. In der Konsequenz verschiebt man die Bromwich-Kontur, wo man nicht vermeiden kann über die ganze imaginäre Achse zu integrieren, sodass man nur noch über einen kleinen Teil integrieren muss. Die Abbildung \ref{laplace:talbotkontur} veranschaulicht dies Kontur von Talbot und darin ist zu erkennen, das  $|s|$ im Verlaufe der Kontur grösser werden muss.
+Die erste Bedingung besagt, dass $F(s)$ für grosse $|s|$ schnell gegen $0$ geht, solange man links von $\gamma_{0}$ ist. Dies hat zur Folge, dass Integrale über Konturen vernachlässigt werden können, wenn sie sich in diesem Gebiet bewegen. Das ist die entscheidende Idee von Talbot und ein entscheidender Vorteil gegenüber der Bromwichkontur, da diese $F(s)$ für grosse $|s|$ nicht genügend schnell gegen $0$ geht. In der Konsequenz verschiebt man die Bromwich-Kontur, wo man nicht vermeiden kann über die ganze imaginäre Achse zu integrieren, sodass man nur noch über einen kleinen Teil integrieren muss. Die beiden Abbildung \ref{laplace:talbot1} und \ref{laplace:talbot2} veranschaulichen die Kontur von Talbot. Darin ist zu erkennen, dass  $|s|$ im Verlaufe der Kontur grösser werden muss. 
 
 \begin{figure}
 \centering
-\includegraphics[width=6.9cm]{papers/laplace/Talbot_Contour.png}
-\caption{$Talbot Kontur$}
-\label{laplace:talbotkontur}
+\includegraphics{papers/laplace/images/talbot1.pdf}
+\caption{Illustration der Bromwich- und Talbotkontur (breites Band für Singularitäten)
+\label{laplace:talbot1}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{papers/laplace/images/talbot2.pdf}
+\caption{Illustration der Bromwich- und Talbotkontur (schmales Band für Singularitäten)
+\label{laplace:talbot2}}
 \end{figure}
 
 Die Parameter $\lambda$, $\sigma$ und $\nu$ dienen dazu die
 Talbotkontur zu charaktersieren. Eine Erhöhung von $\sigma$ verschiebt
 die Kontur nach rechts, während eine Erhöhung von $\nu$ Ausdehnung
-in vertikaler Richtung zur Folge hat. Dabei entsteht ein Band der Breite $2i\lambda\mu\pi$, welches symmetrisch zur reellen Achse ist. Die Paramter sollten so gewählt werden, dass die Singularität der Laplacetransformation innerhalb der Talbotkontur, respektive innerhalb des Bandes liegen. 
+in vertikaler Richtung zur Folge hat. Dabei entsteht ein Band der Breite $2i\lambda\mu\pi$, welches symmetrisch zur reellen Achse ist. Das beschriebende Band und dessen Abhängigkeit von den Parametern ist zu erkennen auf den Abbildungen \ref{laplace:talbot1} und \ref{laplace:talbot2}. Die Paramter sollten so gewählt werden, dass die Singularität der Laplacetransformation innerhalb der Talbotkontur, respektive innerhalb des Bandes liegen. 
 
 
 Die Parametriesierung der Kontur ist gegeben durch
@@ -40,12 +47,6 @@ wobei
 \[
 s_{\nu}(z)=\frac{z}{1-e^{-z}}+\frac{z(\nu-1)}{2}
 \]
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{papers/laplace/Bromwich_Talbot_Contour.PNG}
-\caption{Browich- und Talbot Countour im Vergleich
-\label{laplace:figure:countours}}
-\end{figure}
 
 In der Gleichung oben folgt mit $z=2i\theta$ die Parametrisierung
 \[
