@@ -128,81 +128,114 @@ In einem nächsten Schritt wird das Minimalproblem auf das Element formuliert. D
 \subsection{Schritt 2 Ansatzfunktionen auf Lösung approximieren}
 
 Die lineare Ansatzfunktion hat wie schon erwähnt die Form
-
 \begin{equation}
-u(x,y) = c_1 + c_2x + c_3y
+u(\xi, \eta) = c_1 + c_2 \xi + c_3 \eta \, .
 \label{fem:equationSchwarzLinear}
-\end{equation}.
-Die Ansatzfunktion \eqref{fem:equationSchwarzLinear} kann somit direkt in das Minimalproblem \eqref{fem:Minimal2D} eingesetzt werden. Ziel ist es, dass die unbekannten Koeffizienten $c_1, c_2 \, $und$ \, c_3$ anhand dieses Verfahrens bestimmt werden.
-
-Das Minimalproblem muss noch auf das entsprechende Gebietsintegral angewendet werden. Um diesen Schritt umzusetzen wird ddas Minimalproblem in das Gebietsintegral eingesetzt sprich $\int_{\Omega}$ wird durch das folgende Flächenelement bzw. Flächenintegral des angekündeten Einheitsdreieck ersetzt. 
-
+\end{equation}
+Bei näherer Betrachtung fällt jedoch auf, dass in \eqref{fem:equationSchwarzLinear} die Parameter $c_1, c_2$ und$ c_3$ von einem Dreieck zu einem anderen Dreieck unterscheiden. Die Ursache liegt insbesondere darin, dass $c_2$ und $c_3$ von den Kanten abhängig sind und die Kanten wiederum können von Dreieck zu Dreieck variieren ($\Omega_i$, $\Omega_j$). Daher ist die folgende lineare Ansatzfunktion besser geeignet
 \begin{equation}
-\int_0^1 \int_0^{1 - \xi} f(x,y) \, d \eta \, d \xi
+u(\xi, \eta) = c_1 + (c_2 - c_1)\xi + (c_3 - c_1)\eta
+\label{fem:equationLinearMod}
+\end{equation}
+In \eqref{fem:equationLinearMod} sind die Funktionswerte in den Ecken und eignen sich somit viel besser, da nur die Eckwerte ohne Einfluss der Kanten berücksichtigt werden wie in Abbildung \ref{fem:Stuestellen} dargestellt. Die Ansatzfunktion \eqref{fem:equationLinearMod} kann somit direkt in die Formel \eqref{fem:Minimal2D} für ein Teilgebiet eingesetzt werden. Ziel ist es, dass die unbekannten Koeffizienten $c_1, c_2 \, $und$ \, c_3$ anhand dieses Verfahrens bestimmt werden.
+\begin{equation}
+\int_0^1 \int_0^{1 - \xi} [\nabla \, c_1 + (c_2 - c_1)\xi + (c_3 - c_1)\eta \, ]^2 - \lambda[c_1 + (c_2 - c_1)\xi + (c_3 - c_1)\eta \, ]^2 \, d \eta \, d \xi
 \label{fem:FlaecheDreieck}
 \end{equation}
-Schlussendlich ergibt das Einsatzen der Ansatzfunktion und des Flächenintegrals dann folgenden Ausdruck.
-
-\begin{equation}
-\int_0^1 \int_0^{1 - \xi} c_1 + c_2x + c_3y \, d \eta \, d \xi
-\label{fem:MinimalproblemElement}
-\end{equation}
-@ Hr. Müller\\
-Wäre hier besser gedacht die folgende Formel
-\begin{equation}
-\int_0^1 \int_0^{1 - \xi} u_1 + (u_2 - u_1)\xi + (u_3 - u_1)\eta \, d \eta \, d \xi
-\label{fem:MinimalproblemElement2}
-\end{equation}
-was ich ja dann berechnen sollte und als Lösung das folgende hat
-\begin{equation}
-\frac{1}{6}(u_1 + u_2 + u_3)
-\label{fem:MinimalproblemElement3}
-\end{equation}
-bin hier nicht ganz sicher welche Formel das nun besser wäre
-@ Hr- Müller ende\\
-Wichtig zu verstehen ist, dass dieses Minimalproblem bzw. der Ausdruck \ref{fem:MinimalproblemElement} auf jedes Flächenelement bzw. Teilgebiet angewendet wird. Sprich jedes Element hat eine Ansatzfunktion in Form eines Minimalproblems. Als Beispiel kann vorgestellt werden, dass wenn ein Rechteck mit zwei Dreiecken approximiert wird, das Minimalproblem \ref{fem:MinimalproblemElement} auf jedes der beiden Dreiecke angewendet wird. Je feiner die Auflösung, desto grösser das Gleichungs- System das Schluss endlich gelöst werden muss.
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.8]{papers/fem/Images/FoTeilgebiet.jpeg}
-	\caption{Anwenden des Minimalprinzipes auf jedes Teilgebiet}
-	\label{fig:schemNMR_vorlage}
-\end{figure}
-
-Nun kann der erste Teil der Berechnung beginnen. Die partielle Ableitung nach dergewählten linearen Funktion $f(u)$ erigbt das Resultat
-
-\begin{equation}
-	\nabla u = 	
-	\left[ \begin{array}{r}
-	c_2  \\
-	c_3 \\
-	\end{array}\right]
-	\label{fem:equationSchwarzquadratischP}
-\end{equation} 
-
-Nun ist aber noch die Frage offen wie die Gleichungen zustande kommen für diese Koeffizienten. In folgenden Abschnitt wird dies anhand eines Beispiels beschrieben.
-
-\subsubsection{Gleichungssystem aufstellen 
-\label{fem:section:GL}}
-
-Bekannt ist nun wie die Formeln für die einzelne Elemente aussehen. Allerdings stellt sich dann die Frage, wie die das alles in eine Matrix zusammengefasst werden soll, da sich auch quadratische Koeffizienten aus der Ansatzfunktion ergeben $\int_{\Omega u^2 \, dx \, dy}$. Inn der Abbildung \ref{fem:Stuestellen} sind von 2 Dreiecken die Eckpunkt bzw. Stützstellen aufgezeichnet. Es lässt sich erkennen das in 2 Eckpunkten die Stützstellen gleich sind.
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.8]{papers/fem/Images/Stuezstellen.jpeg}
 	\caption{Stuezstellen der Elemente $\int_{\Omega_1}$ und $\int_{\Omega_2}$ }
 	\label{fem:Stuestellen}
 \end{figure}
+Das zu Lösende Integral für Teilgebiet hat die Form wie in \eqref{fem:FlaecheDreieck}. 
 
-Nach der Formel \eqref{fem:equationSummGebiete} werden die beiden Gebiete aufsummiert zu
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.6]{papers/fem/Images/FoTeilgebiet.jpeg}
+	\caption{Anwenden der Formel \eqref{fem:FlaecheDreieck} auf jedes Teilgebiet}
+	\label{fig:schemNMR_vorlage}
+\end{figure}
+Allerdings sollte gemäss \eqref{fem:Minimal2D2Term} die Formel \eqref{fem:FlaecheDreieck} aufgeteilt werden in
 \begin{equation}
-	\int u = \int_{\Omega_1} u + \int_{\Omega_2} u 
+\int_0^1 \int_0^{1 - \xi} [\nabla \, c_1 + (c_2 - c_1)\xi + (c_3 - c_1)\eta \, ]^2 \, d \eta \, d \xi \; - \; \lambda \int_0^1 \int_0^{1 - \xi} [c_1 + (c_2 - c_1)\xi + (c_3 - c_1)\eta \, ]^2 \, d \eta  \, d \xi \, .
+\label{fem:IntInt}
 \end{equation}
-Der Koeffizienten des Dreiecks $\Omega_i$ kann wie in \eqref{fem:DreiVektor} notiert werden.
+Im ersten Integralterm von \eqref{fem:IntInt} will den den Gradienten von $u(\xi, \eta)$ und diesen dann noch quadrieren. Der Gradient von $u(\xi, \eta)$ ist 
 \begin{equation}
-	\left( \begin{array}{c} c_0^i \\\ c_1^i \\\ c_2^i \\\ \end{array}\right)
-	\label{fem:DreiVektor}
+	\nabla u = 	
+	\left[ \begin{array}{r}
+	c_2 - c_1 \\
+	c_3 - c_1 \\
+	\end{array}\right] \, .
+	\label{fem:equationSchwarzquadratischP}
+\end{equation} 
+Der Koeffizient $c_1$ im ersten Integralterm von \eqref{fem:IntInt} verschwindet in \eqref{fem:equationSchwarzquadratischP}. Der Gradient \ref{fem:equationSchwarzquadratischP} quadriert ergibt
+
+\begin{equation}
+	(\nabla u)^2 = 	
+	\left[ \begin{array}{r}
+	c_2^2 - 2 c_1 c_2 + c_1^2 \\
+	c_3^2 -2 c_1 c_2 + c_1^2 \\
+	\end{array}\right] \, .
+	\label{fem:equationSchwarzquadratischQ2}
 \end{equation}
-Um nun quadratische Koeffizienten in der Matrixschreibweise zu erhalten wird diese wie folgt Notiert.
+Im zweite Integralterm wird $u(\xi, \eta)^2$ gefordert. 
+\begin{multline}
+	u^2 = c_1^2 x^2  - 2 c_1 c_2 x^2 + c_2^2 x^2 + 2 c_1^2 \xi \eta - 2 c_1 c_2 \xi \eta - 2 c_1 c_3 \xi \eta + 2 c_2 c_3 \xi \eta - 2 c_1^2 \xi + \\\ 2 c_1 c_2 \xi + c_1^2 \eta^2 - 2 c_1 c_3 \eta^2 + c_3^2 \eta^2 - 2 c_1^2 \eta + 2 c_1 c_3 \eta + c_1^2
+	\label{fem:vielzuviel}
+\end{multline}
+Wie in \eqref{fem:vielzuviel} zusehen ist, ist die Berechnung nicht anspruchsvoll, aber aufwändig. Nun ist aber noch die Frage offen wie die Gleichungen zustande kommen für diese Koeffizienten. In folgenden Abschnitt wird dies anhand eines Beispiels beschrieben.
+
+\subsubsection{Gleichungssystem aufstellen 
+\label{fem:section:GL}}
+
+Da die Ansatzfunktion \eqref{fem:equationLinearMod} zwar unabhängig von den Kanten ist, aber die Berechnung des Quadrates von $u$ \eqref{fem:vielzuviel} unübersichtlich, wird in diesem Beispiel in diesem Abschnitt die lineare Ansatzfunktion \eqref{fem:equationSchwarzLinear} verwendet. Somit ist
+\begin{equation}
+	\nabla u = 	
+	\left[ \begin{array}{r}
+	c_2 \\
+	c_3 \\
+	\end{array}\right] \, .
+	\label{fem:equationSchwarzquadratischPP}
+\end{equation}  
+und 
+\begin{equation}
+ 	u^2 = \textcolor{cyan}{c_0^2} + \textcolor{blue}{c_1^2 x^2} + \textcolor{red}{c_2^2 y^2} + \textcolor{green}{2 c_0 c_1 x} + \textcolor{orange}{2 c_0 c_2 y} +\textcolor{purple}{ 2 c_1 c_2 xy} \, .
+	\label{fem:equationSchwarzquadratischQQQ}
+\end{equation}  
+Bekannt ist nun wie die Integrale für die einzelne Teilgebiete aussehen. Um eine Matrixnotation der Koeffizienten $c_i$ zu erhalten, um dann ein Gleichungssystem für deren Berechnung aufzubauen, werden die Koeffizienten in Vektorform aufgeschrieben
+\begin{equation}
+	\begin{bmatrix}
+	c_0^i  \\
+	c_1^i \\
+	c_2^i
+	\end{bmatrix}
+	\label{fem:VektorAlg}
+\end{equation}
+In \eqref{fem:VektorAlg} ist die Vektornotation der Koeffizienten von \eqref{fem:equationSchwarzLinear}.
+ %Allerdings stellt sich dann die Frage, wie die das alles in eine Matrix zusammengefasst werden soll, da sich auch quadratische Koeffizienten aus der Ansatzfunktion ergeben $\int_{\Omega u^2 \, dx \, dy}$. Inn der Abbildung \ref{fem:Stuestellen} sind von 2 Dreiecken die Eckpunkt bzw. Stützstellen aufgezeichnet. Es lässt sich erkennen das in 2 Eckpunkten die Stützstellen gleich sind.
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[scale=0.8]{papers/fem/Images/Stuezstellen.jpeg}
+%	\caption{Stuezstellen der Elemente $\int_{\Omega_1}$ und $\int_{\Omega_2}$ }
+%	\label{fem:Stuestellen}
+%\end{figure}
+
+%Nach der Formel \eqref{fem:equationSummGebiete} werden die beiden Gebiete aufsummiert zu
+%\begin{equation}
+%	\int u = \int_{\Omega_1} u + \int_{\Omega_2} u 
+%\end{equation}
+\begin{equation}
+			\underbrace{ \int_{\Omega_i} (\nabla u)^2 dx \, dy} \, -  \, \underbrace{\lambda \int_{\Omega_i} u^2 dx \,dy}
+			\label{fem:Minimal2TermLinAlg}
+\end{equation}
+
+\begin{equation}
+			c^t Ac \, - \, \lambda c^t Bc
+			\label{fem:Minimal2LinAlg}
+\end{equation}
+Gemäss \eqref{fem:Minimal2TermLinAlg} sind quadrate der Koeffizienten $c_i$ gefordert. 
 \begin{equation}
 \begin{bmatrix}
 c_0^1 &  c_1^1 &  c_2^i1  
@@ -218,6 +251,7 @@ c_1^1 \\
 c_2^1
 \end{bmatrix}
 +
+\lambda
 \begin{bmatrix}
 c_0^2 &  c_1^2 &  c_2^2    \\   
 \end{bmatrix}
@@ -233,20 +267,9 @@ c_2^2
 \end{bmatrix}
 	\label{fem:MatrixKoeffizient}
 \end{equation}
-Die ist auch die Begründung für die später verwendete Formel \eqref{fem:Minimal2LinAlg}.
+Um nun quadratische Koeffizienten in der Matrixschreibweise zu erhalten wird diese wie in \eqref{fem:MatrixKoeffizient} Notiert. Die ist auch die Begründung warum Formel \eqref{fem:Minimal2LinAlg} verwendet wird.
 %Für jedes Flächenelement gilt die Gleichung \ref{fem:MinimalproblemElement}. Nun müssen alle diese Elemente in eine Matrix umgeschrieben werden die sich wie folgt zusammensetzen lässt.
-
-\begin{equation}
-			\underbrace{ \int_{\Omega} (\nabla u)^2 dx \, dy} \, -  \, \underbrace{\lambda \int_{\Omega} u^2 dx \,dy}
-			\label{fem:Minimal2TermLinAlg}
-\end{equation}
-
-
-\begin{equation}
-			c^t Ac \, - \, \lambda c^t Bc
-			\label{fem:Minimal2LinAlg}
-\end{equation}
-Die Matrix $A$ wird gebildet durch die Teilmatrizen eines jeden Flächenelements. Die Teilmatrix eines Flächenelements besteht  aus dem Integral des 1. Terms von \ref{fem:Minimal2TermLinAlg} 
+Die Matrix $A$ wird gebildet durch die Teilmatrizen eines jeden Teilgebietes. Die Teilmatrix eines Teilgebiet besteht  aus dem Integral des 1. Terms von \eqref{fem:Minimal2TermLinAlg} 
 
 \begin{equation}
 			\int_0^1 \int_0^{1 - \xi} \left( \begin{array}{c} c_2 \\ c_3\\	
@@ -256,13 +279,13 @@ Die Matrix $A$ wird gebildet durch die Teilmatrizen eines jeden Flächenelements
 was dann zu der entsrechenden Teilmatrix eines Dreiecks führt
 
 \begin{equation}
-	A_{\triangle} = \left( \begin{array}{cc}
+	A_{\triangle_i} = \left( \begin{array}{cc}
 	c_2^2 \int_{\Omega} 1 dx \, dy & 0  \\ 
 	0 & c_3^2 \int_{\Omega} 1 dx \, dy  \\
 	\end{array}\right)
 	\label{fem:TeilmatrixA}
 \end{equation}
-und wird dann in die Matrix $A $eingefügt bzw. zusammengefasst, dass  somti sämtliche Teilmatrizen aller Flächenelemente in der Matrix $A$ vorhanden sind. Eine jede Farbe soll veranschaulichen, dass dies ein Dreieck- Flächenelement darstellt.
+und wird dann in die Matrix $A$ eingefügt, dass  somti sämtliche Teilmatrizen $A_{\triangle_i}$ aller Teilgebiete in der Matrix $A$ vorhanden sind. Eine jede Farbe soll veranschaulichen, dass dies ein Dreieck- Flächenelement darstellt.
 
 \begin{equation}
  A = \begin{pmatrix} 0 & 0 & \hdotsfor{4} & 0 \\
