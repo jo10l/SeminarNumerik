@@ -19,15 +19,17 @@ ist der Gewinn im Vergleich zu einer fixen, kleineren Schrittlänge zunichte.
 \centering
 \includegraphics[width=0.85\textwidth]{papers/steps/img/gravity_different_fixed_stepsize.pdf}
 \caption{Bahn eines Teilchens, von unten links kommend,
-um ein Gravitationszentrum, berechnet mit unterschiedlichen Schrittweiten (Runge-Kutta 4. Ordnung):
-$a(t)=P''(t)=\frac{(Pfix-P(t))\cdot m\cdot g}{|Pfix-P(t)|^{3}}$
-mit $P(0)=(0, 0)$, $Pfix(2, 1)$, $P'(0)=v(0)=(0.669, 0)$, $g=1$, $m=1$
+um ein Gravitationszentrum ($P_\text{fix}$), berechnet mit unterschiedlichen Schrittweiten (Runge-Kutta 4. Ordnung):
+$a(t)=P''(t)=\frac{(P_\text{fix}-P(t))\cdot m\cdot g}{|P_\text{fix}-P(t)|^{3}}$
+mit $P(0)=(0, 0)$, $P_\text{fix}=(2, 1)$, $P'(0)=v(0)=(0.669, 0)$, $g=1$, $m=1$.
 \label{buch:steps:fixed_comparison}}
 \end{figure}
 
 Welche Wirkung verschiedene Schrittgrössen
 auf das Resultat haben können, wird in Grafik~\ref{buch:steps:fixed_comparison} gezeigt.
-In dieser Grafik ist auch ersichtlich, dass fernab dem Gravitationszentrum auch grössere Schritte
+In Dieser Grafik wird die Bahn eines Teilchens um eine Punktmasse (Gravitationszentrum)
+mit unteschiedlichen Schrittweiten berechnet.
+Dabei ist ersichtlich, dass fernab dem Gravitationszentrum auch grössere Schritte
 ausreichende Genauigkeit liefern und die kleinen Schritte somit nur in der Nähe des Gravitationszentrums
 nötig sind, wo die Geschwindigkeit und die Beschleunigung gross sind.
 

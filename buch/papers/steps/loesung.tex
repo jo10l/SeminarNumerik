@@ -23,7 +23,7 @@ Eine Möglichkeit zur Realisierung einer simplen Schrittweitensteuerung ist mitt
 dargestellt in Abbildung~\ref{buch:steps:flowchartSimple}.
 Die Funktionsweise dieser Methode wird nun anhand der Wahrscheinlichkeitsfunktion der Standardnormalverteilung vorgeführt.
 Für die Wahrscheinlichkeitsfunktion existiert zwar keine analytische Lösung,
-doch sie lässt sich aus der Wahrscheinlichkeitdichtefunktion
+doch sie lässt sich aus der Wahrscheinlichkeistdichtefunktion
 \[
   \varphi(x)=\frac{1}{\sqrt{2\pi}\sigma}\mathrm{e}^{-\frac{(x-\mu)^2}{2 \sigma}}\quad \text{mit} \quad \mu=0,\sigma=1
 \]
@@ -32,16 +32,18 @@ berechnen:
   F(x)=\int_{-\infty}^{x} \varphi (\tilde{x}) \cdot \mathrm{d} \tilde{x}.
 \]
 Damit die Funktion mittels gängiger Methoden der Differenzialrechnung analysiert werden kann,
-wird die Integralfunktion in eine Differenzialgleichung umgewandelt:
+wird die Integralfunktion in die Differenzialgleichung
 \[
-  F(x)'=\varphi(x), \quad F(-\infty)=0.
+  F'(x)=\varphi(x), \quad F(-\infty)=0
 \]
+umgewandelt.
 Im folgenden Beispiel zur Abbildung~\ref{buch:steps:examplessc}
 wurde für die numerische Annäherung $\tilde{F}(x)$ an $F(x)$ bei $x_0=-7$ mit Startwert $\tilde{F}(-7)=0$ begonnen.
-Dabei wird für den Schritt $n$ die Steigung ($\varphi$) am Punkt $x_{n}, \tilde{F}_{n}$ (in Abbildung~\ref{buch:steps:examplessc} oranger Punkt mit rotem Kreuz) berechnet.
-Damit wird ein Eulerschritt mit der Testschrittweite $h_\text{test}=2$ (In Abbildung~\ref{buch:steps:examplessc} als schwarzer Balken oberhalb der $x$-Achse) gemacht
-$\implies P_\text{test}=(x_n+h_\text{test}, \tilde{F}_n+\varphi(x_n, \tilde{F}_n)$.
-Nun wird auch an diesem Punkt (In Abbildung~\ref{buch:steps:examplessc} als einsames rotes Kreuz am oberen Ende der Grafik) die Steigung ermittelt.
+Dabei wird für den Schritt $n$ die Steigung $F'(x_n)=\varphi(x_n)$ am Punkt $x_{n}, \tilde{F}_{n}$ (in Abbildung~\ref{buch:steps:examplessc} oranger Punkt mit rotem Kreuz) berechnet.
+Damit wird ein Eulerschritt mit der Testschrittweite $h_\text{test}=2$ (In Abbildung~\ref{buch:steps:examplessc} als schwarzer Balken oberhalb der $x$-Achse) gemacht.
+Somit erhält man den Testpunkt 
+$P_\text{test}=(x_n+h_\text{test}, \tilde{F}_n+\varphi(x_n, \tilde{F}_n) \cdot h_\text{test})$(In Abbildung~\ref{buch:steps:examplessc} als einsames rotes Kreuz am oberen Ende der Grafik).
+Nun wird auch an diesem Punkt die Steigung ermittelt.
 Sind die beiden Steigungen am Start und am Endpunkt des Testschrittes ziemlich ähnlich, wird davon ausgegangen,
 dass die Kurve in diesem Bereich nur wenig ihre Richtung ändert und deshalb eine grosse Schrittweite gewählt werden darf.
 Ist der Unterschied (Abbildung~\ref{buch:steps:examplessc},
