@@ -6,7 +6,7 @@
 \section{Lösung
 \label{fem:section:loesung}}
 \rhead{Lösung}
-Wie im vorherigen Kapitel erwähnt sind Herausforderungen bzw. Ansprüche an die Ansatzfunktionen zu beachten. Nun stellt sich die Frage, wie die Ansatzfunktion gewählt werden müssen, so das entlang eines Randes nur \frqq Knicke \flqq entstehen und keine Sprünge. Und wie ist gewährleistet das in der gleichen Stützstelle alle Elemente den gleichen Wert haben?  Als Lösungs bietet sich ein lineare Funktion an. Für das Dreieck  ist es der Term $u(x) = c_1 + c_2x + c_3y$ an. Diese Zusammensetzung ergibt sich, da der lineare Ansatz durch die Funktionswerte in den Ecken des Dreiecks bestimmt wird. In anderen Worten ausgedrückt sind die Funktionswerte in den Ecken des Teilgebiets, hier im Dreieck, die Unbekannten, die bestimmt werden müssen. Wie diese Koeffizienten in einer Matrix bestimmt werden ist in \ref{fem:section:GL} aufgezeigt.
+Wie im vorherigen Kapitel erwähnt sind Herausforderungen bzw. Ansprüche an die Ansatzfunktionen zu beachten. Nun stellt sich die Frage, wie die Ansatzfunktion gewählt werden müssen, so das entlang eines Randes nur \frqq Knicke \flqq entstehen und keine Sprünge. Und wie ist gewährleistet das in jeder Stützstelle alle Elemente den gleichen Wert haben?  Als Lösungs bietet sich ein lineare Funktion an. Für ein Dreieck  ist es der Term $u(x) = c_1 + c_2x + c_3y$ an. Diese Zusammensetzung ergibt sich, da der lineare Ansatz durch die Funktionswerte in den Ecken des Dreiecks bestimmt wird. In anderen Worten ausgedrückt sind die Funktionswerte in den Ecken des Teilgebiets, hier im Dreieck, die Unbekannten, die bestimmt werden müssen. Wie diese Koeffizienten in einer Matrix bestimmt werden ist in \ref{fem:section:GL} aufgezeigt.
 
 %\begin{figure}[h!]
 %	\centering
@@ -20,7 +20,7 @@ Nochmals zur Verdeutlichung warum ein linearer Ansatzfunktion verwendet wird:
 	\item in dem Teilgebiet ist die Integral- Formel sehr einfach zu berechnen wie z.B. eine lineare Funktion die durch Koeffizienten bestimmt wird.
 \end{itemize}
 %ls Standardverfahren in der Ebene haben sich Flächenelement wie Dreiecken oder Parallelogramme bewährt. Die Wahl der  der Flächen- bzw. Gebiet- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
-Um möglichst einfach darzustellen, wie das Verfahren der Finiten Elemente vonstatten geht, wurde auf eine einfache Approximation mit Einheitsdreiecken und einem linearen Ansatz gewählt. 
+Um möglichst einfach darzustellen, wie das Verfahren der finiten Elemente vonstatten geht, wurde auf eine einfache Approximation mit Einheitsdreiecken und einem linearen Ansatz gewählt. 
 
 \subsection{Vorbereitung
 \label{fem:section:loesungTrans}}
@@ -34,7 +34,7 @@ Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $
 		\label{fem:linTransformation}
 	\end{split}
 \end{equation}
-in das einfachere Gebiet nämlich das gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 überführt werden wie in der Abbildung \ref{fig:TransformationEinheitsdreieckBild} dargestellt ist.
+in das einfachere Gebiet nämlich das gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 überführt werden, wie in der Abbildung \ref{fig:TransformationEinheitsdreieckBild} dargestellt ist.
 
 \begin{figure}[h!]
 	\centering
@@ -47,7 +47,7 @@ Die Variablen $\xi$ und $\eta$ werden die neuen Integrationsvariablen.
 			dy \, dy = \det(J) \, d\xi \, d\eta
 			\label{fem:newTransformation}
 \end{equation}
-Damit die Berechnung korekt ist, muss noch die Determinante der Jacobi Matrix dazu noch multipliziert werden.
+Damit die Berechnung korrekt ist, muss noch die Determinante der Jacobi- Matrix dazu  multipliziert werden wie in \eqref{fem:newTransformation}. Die Jacobi- Matrix \eqref{fem:Jocobi} besteht aus den partiellen Ableitungen aus \eqref{fem:linTransformation}.  
 \begin{equation}
 J % 
 =
@@ -59,15 +59,15 @@ J %
 \begin{bmatrix}
     x_2 - x_1  &  x_3 -x_1      \\
     y_2 - y_1  &  y_3 - y_1      
-\end{bmatrix} 
+\end{bmatrix} \; .
 	\label{fem:Jocobi}
 \end{equation}
-Die Jacobi Matrix \ref{fem:Jocobi} besteht aus den partiellen Ableitungen aus \ref{fem:linTransformation}.  
+Durch den Ausdruck \eqref{fem:linTransformation} erhält man die $\det(J)$
 \begin{equation}
-	\det(J) = x_1 \cdot y_2 - 2 \cdot x_1 \cdot y_1 + x_2 \cdot y_1 + x_1\cdot y_3 + x_3 \cdot y_1 - x_2 \cdot y_3 - x_3 \cdot y_2
+	\det(J) = x_1 \cdot y_2 - 2 \cdot x_1 \cdot y_1 + x_2 \cdot y_1 + x_1\cdot y_3 + x_3 \cdot y_1 - x_2 \cdot y_3 - x_3 \cdot y_2 \; .
 	\label{fem:JocobiDetBerechnet}
 \end{equation}
-Determinante von \ref{fem:Jocobi} ist \eqref{fem:JocobiDetBerechnet}. Die Jacobi- Determinante entspricht der doppelten Fläche des Dreiecks. Die partiellen Ableitungen werden gemäss der Kettenregel zu 
+Die Jacobi- Determinante \eqref{fem:JocobiDetBerechnet} entspricht der doppelten Fläche des Dreiecks. Die partiellen Ableitungen werden gemäss der Kettenregel zu 
 %\begin{equation}
 %			\begin{aligned}
 %			u_x = u_{\xi} \xi_x + u_{\eta} \eta_x \\
@@ -86,12 +86,12 @@ Auf Grund der linearen Transformation \eqref{fem:linTransformation} ergeben sich
 \begin{equation}
 			\begin{aligned}
 			1  = (x_2 -x_1) \, \frac{\partial \xi}{\partial x} + (x_3 -x_1) \, \frac{\partial \eta}{\partial x} \\
-			0 = (y_2 -y_1) \, \frac{\partial \xi}{\partial x} + (y_3 -y_1) \, frac{\partial \eta}{\partial x} \\
+			0 = (y_2 -y_1) \, \frac{\partial \xi}{\partial x} + (y_3 -y_1) \, \frac{\partial \eta}{\partial x} \\
 			 \end{aligned}
 \end{equation}
 Nach Auflösung  der beiden Gleichungen nach $\frac{\partial \xi}{\partial x}$ und $\frac{\partial \eta}{\partial x}$ ergibt sich
 \begin{equation}
-			\frac{\partial \xi}{\partial x} = \frac{y_3 - y_1}{J} \quad \frac{\partial \eta}{\partial x} = -\frac{y_2 - y_1}{J}
+			\frac{\partial \xi}{\partial x} = \frac{y_3 - y_1}{J} \qquad \frac{\partial \eta}{\partial x} = -\frac{y_2 - y_1}{J}
 \end{equation}
 Analog nach der partiellen Ableitung nach $y$ erhält man
 
@@ -103,7 +103,7 @@ Somit vereinfacht sich die Integration über das Einheitsdreieck
 			\int_{\triangle} u \quad dy \, dx = \int_0^1 \int_0^{1 - \xi} \, u \det (J) \, d \eta \, d \xi
 \end{equation}
 
-\subsection{Schritt 1 Minimalproblem bilden}
+\subsection{Schritt 1: Minimalproblem bilden}
 
 Analog zum Kapitel 7.4.1 muss auch die DGL in der Ebene zuerst in ein äquivalentes Minimalproblem übersetzt werden. Das Minimalproblem für FEM in einer Dimension hatte die Form
 
@@ -111,33 +111,33 @@ Analog zum Kapitel 7.4.1 muss auch die DGL in der Ebene zuerst in ein äquivalen
 			\int_0^1 u \textcolor{red}{'} (x)^2 - \lambda \, u(x)^2 dx \,dy
 			\label{fem:Minimal1D}
 \end{equation}
-Im Unterschied zu den mehrdimensionale Form wird anstatt der einfachen Ableitung der Laplace Operator verwendet, der zugleich zweifache Differenziebarkeit von der Ansatzfunktion $u(x)$ fordert. Zudem wird nicht mehr über eine Strecke integriert sondern über ein Teilgebiet $\Omega_i$
+Im Unterschied zu den mehrdimensionale Form wird anstatt der einfachen Ableitung der Laplace Operator verwendet, der zugleich zweifache Differenziebarkeit von der Ansatzfunktion $u(x)$ fordert. Zudem wird nicht mehr über eine Strecke integriert sondern über ein Teilgebiet $\Omega_i$:
 
 \begin{equation}
-			\int_{\Omega_i} (\textcolor{red}{\nabla} u)^2 - \lambda u^2 dx \, dy
+			\int_{\Omega_i} (\textcolor{red}{\nabla} u)^2 - \lambda u^2 dx \, dy \, .
 			\label{fem:Minimal2D}
 \end{equation}
-Der Integrationsterm \ref{fem:Minimal2D} wird gemäss der Summenregel in 2 Terme zerlegt nämlich 
+Der Integrationsterm \eqref{fem:Minimal2D} wird gemäss der Summenregel in zwei Terme zerlegt nämlich 
 
 \begin{equation}
 			\int_{\Omega_i} (\nabla u)^2 \, dx \, dy - \lambda \int_{\Omega_i} u^2 dx \, dy \, .
 			\label{fem:Minimal2D2Term}
 \end{equation}
-In einem nächsten Schritt wird das Minimalproblem auf das Element formuliert. Dies wird in dem folgenden Abschnitt erläutert.
+In einem nächsten Schritt wird das Minimalproblem auf das Element formuliert. Dies wird im folgenden Abschnitt erläutert.
 
-\subsection{Schritt 2 Ansatzfunktionen auf Lösung approximieren}
+\subsection{Schritt 2: Ansatzfunktionen auf Lösung approximieren}
 
 Die lineare Ansatzfunktion hat wie schon erwähnt die Form
 \begin{equation}
 u(\xi, \eta) = c_1 + c_2 \xi + c_3 \eta \, .
 \label{fem:equationSchwarzLinear}
 \end{equation}
-Bei näherer Betrachtung fällt jedoch auf, dass in \eqref{fem:equationSchwarzLinear} die Parameter $c_1, c_2$ und$ c_3$ von einem Dreieck zu einem anderen Dreieck unterscheiden. Die Ursache liegt insbesondere darin, dass $c_2$ und $c_3$ von den Kanten abhängig sind und die Kanten wiederum können von Dreieck zu Dreieck variieren ($\Omega_i$, $\Omega_j$). Daher ist die folgende lineare Ansatzfunktion besser geeignet
+Bei näherer Betrachtung fällt jedoch auf, dass in \eqref{fem:equationSchwarzLinear} die Parameter $c_1, c_2$ und $c_3$ von einem Dreieck zu einem anderen Dreieck unterscheiden. Die Ursache liegt insbesondere darin, dass $c_2$ und $c_3$ von den Kanten abhängig sind und die Kanten wiederum können von Dreieck zu Dreieck variieren ($\Omega_i$, $\Omega_j$). Daher ist die lineare Ansatzfunktion besser geeignet
 \begin{equation}
 u(\xi, \eta) = c_1 + (c_2 - c_1)\xi + (c_3 - c_1)\eta
 \label{fem:equationLinearMod}
 \end{equation}
-In \eqref{fem:equationLinearMod} sind die Funktionswerte in den Ecken und eignen sich somit viel besser, da nur die Eckwerte ohne Einfluss der Kanten berücksichtigt werden wie in Abbildung \ref{fem:Stuestellen} dargestellt. Die Ansatzfunktion \eqref{fem:equationLinearMod} kann somit direkt in die Formel \eqref{fem:Minimal2D} für ein Teilgebiet eingesetzt werden. Ziel ist es, dass die unbekannten Koeffizienten $c_1, c_2 \, $und$ \, c_3$ anhand dieses Verfahrens bestimmt werden.
+Daher ist die lineare Ansatzfunktion in \eqref{fem:equationLinearMod} sind die Funktionswerte in den Ecken und eignen sich somit viel besser, da nur die Eckwerte ohne Einfluss der Kanten berücksichtigt werden wie in Abbildung \ref{fem:Stuestellen} dargestellt. Die Ansatzfunktion \eqref{fem:equationLinearMod} kann somit direkt in die Formel \eqref{fem:Minimal2D} für ein Teilgebiet eingesetzt werden. Ziel ist es, dass die unbekannten Koeffizienten $c_1, c_2 \, $und$ \, c_3$ anhand dieses Verfahrens bestimmt werden.
 \begin{equation}
 \int_0^1 \int_0^{1 - \xi} [\nabla \, c_1 + (c_2 - c_1)\xi + (c_3 - c_1)\eta \, ]^2 - \lambda[c_1 + (c_2 - c_1)\xi + (c_3 - c_1)\eta \, ]^2 \, d \eta \, d \xi
 \label{fem:FlaecheDreieck}
@@ -149,7 +149,6 @@ In \eqref{fem:equationLinearMod} sind die Funktionswerte in den Ecken und eignen
 	\label{fem:Stuestellen}
 \end{figure}
 Das zu Lösende Integral für Teilgebiet hat die Form wie in \eqref{fem:FlaecheDreieck}. 
-
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.6]{papers/fem/Images/FoTeilgebiet.jpeg}
