@@ -21,13 +21,13 @@ Das Eigenwertproblem für $H_0$ wird also durch eine im Betrag kleine Matrix $ \
 Die Störungstheorie erlaubt es, die Eigenwerte $\lambda_i(\varepsilon)$ und Eigenvektoren  $\bm v_i(\varepsilon)$ von $\bm H(\varepsilon)$ zu approximieren.
 Das Verfahren hat jedoch die Limitierung, dass die Eigenvektoren von $\bm H_0$ zueinander othogonal sein müssen, was für alle symmetrischen $\bm H_0$ zutrifft.
 Somit fassen wir zusammen:
-\begin{ewproblem}
+\begin{ewproblem*}
 Finde für eine symmetrische, selbstadjungierte Matrix $\bm H_0$ mit bekannten Eigenwerten $\lambda_{0}$ und bekannten orthonormierten Eigenvektoren $\bm v_{0i}$ eine Approximation erster Ordnung für die Eigenwerte und Eigenvektoren für
 \begin{equation*}
     \bm H(\varepsilon) = \bm H_0 + \varepsilon \bm H_1,
 \end{equation*}
 wobei $\varepsilon \in \mathbb{R^+} \ll 1$.
-\end{ewproblem}
+\end{ewproblem*}
 
 \section{Anwendungen}
 
@@ -42,12 +42,12 @@ Aus diesem Anwendungsgebiet hat die Theorie auch ihren Ursprung.
 
 \section{Idee}
 
-Die Schreibweise als Funktion von $\varepsilon$ deutet auf eine Taylorreihe hin.
-$\bm H(\varepsilon)$ könnte also als Teil einer Taylorreihe interpretiert werden:
+Die Schreibweise als Funktion von $\varepsilon$ deutet auf eine Potenzreihe hin.
+$\bm H(\varepsilon)$ könnte also als Teil einer Potenzreihe interpretiert werden:
 \begin{equation*}
     \bm H(\varepsilon) = \bm H_0 + \varepsilon \bm H_1 \GR{ + \varepsilon^2 \bm H_2  + \varepsilon^3 \bm H_3 + \dots}
 \end{equation*}
-Ebenso können die Eigenwerte und Eigenvektoren von $\bm H(\varepsilon)$ als Taylorreihen geschrieben werden:
+Ebenso können die Eigenwerte und Eigenvektoren von $\bm H(\varepsilon)$ als Potenzreihen geschrieben werden:
 \begin{align}
     \bm v_i(\varepsilon) = \bm v_{0i} + \varepsilon \bm v_{1i} \GR{ + \varepsilon^2 \bm v_{2i}  + \varepsilon^3 \bm v_{3i} + \dots} \label{ew:eq:eigvec} \\
     \lambda_i(\varepsilon) = \lambda_{0i} + \varepsilon \lambda_{1i} \GR{ + \varepsilon^2 \lambda_{2i}  + \varepsilon^3 \lambda_{3i} + \dots}  \label{ew:eq:eigval}
@@ -57,16 +57,16 @@ Somit können alle Terme mit $\varepsilon^2$ und höher weggelassen werden.
 Falls eine höhere Genauigkeit gewünscht wird, kann auch eine Methode mit einer Approximation zweiter Ordnung gewählt werden.
 Diese ist jedoch aufwendiger herzuleiten und wird in diesem Kapitel nicht angeschaut.
 
-Nach Einsetzen der Taylorreihen in das Eigenwertproblem (\eqref{ew:eq:eig}) erhalten wir den Ansatz
+Nach Einsetzen der Potenzreihen in das Eigenwertproblem (\eqref{ew:eq:eig}) erhalten wir den Ansatz
 \begin{align}
     \bm H(\varepsilon) \bm v_i(\varepsilon)
     &=
     \lambda_i(\varepsilon) \bm v_i(\varepsilon) \\
-    (\bm H_0 + \varepsilon \bm H_1 + ...)
-    (\bm v_{0i} + \varepsilon \bm v_{1i} + ...)
+    (\bm H_0 + \varepsilon \bm H_1 + \dots)
+    (\bm v_{0i} + \varepsilon \bm v_{1i} + \dots)
     &=
-    (\lambda_{0i} + \varepsilon \lambda_{1i} + ...)
-    (\bm v_{0i} + \varepsilon \bm v_{1i} + ...),
+    (\lambda_{0i} + \varepsilon \lambda_{1i} + \dots)
+    (\bm v_{0i} + \varepsilon \bm v_{1i} + \dots),
 \end{align}
 wobei alle Variablen bekannt sind, ausser $\lambda_{1i}$ und $\bm v_{1i}$.
 Dieser Ansatz soll nun umgeformt werden, um diese Variablen zu bestimmen.
@@ -81,12 +81,12 @@ Als erstes wird die Gleichung ausmultipliziert und alle Terme mit $\varepsilon$ 
     \GN{\bm H_0 \bm v_{0i}} +
     \varepsilon \bm H_0 \bm v_{1i} +
     \varepsilon \bm H_1 \bm v_{0i} +
-    \RD{\varepsilon^2 \bm H_1 \bm v_{1i} + ...}
+    \RD{\varepsilon^2 \bm H_1 \bm v_{1i} + \dots}
     =
     \GN{\lambda_{0i} \bm v_{0i}} +
     \varepsilon \lambda_{0i} \bm v_{1i} +
     \varepsilon \lambda_{1i} \bm v_{0i} +
-    \RD{\varepsilon^2 \lambda_{1i} \bm v_{1i} + ...}
+    \RD{\varepsilon^2 \lambda_{1i} \bm v_{1i} + \dots}
 \end{equation}
 Die grün markierten Terme entsprechen genau dem Eigenwertproblem (\eqref{ew:eq:eig}) und können daher subtrahiert werden. Daraus erhalten wir
 \begin{align}
