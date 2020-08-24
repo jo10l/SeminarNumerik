@@ -42,12 +42,12 @@ in das einfachere Gebiet nämlich das gleichschenklig rechtwinklige Einheitsdrei
 	\caption{Transformation in ein Einheitsdreieck}
 	\label{fig:TransformationEinheitsdreieckBild}
 \end{figure}
-Die Variablen $\xi$ und $\eta$ werden die neuen Integrationsvariablen.
+Die Variablen $\xi$ und $\eta$ werden die neuen Integrationsvariablen. Damit die Berechnung korrekt ist, muss noch die Determinante der Jacobi- Matrix auf der rechten Seite, wie in 
 \begin{equation}
 			dy \, dy = \det(J) \, d\xi \, d\eta
 			\label{fem:newTransformation}
 \end{equation}
-Damit die Berechnung korrekt ist, muss noch die Determinante der Jacobi- Matrix dazu  multipliziert werden wie in \eqref{fem:newTransformation}. Die Jacobi- Matrix \eqref{fem:Jocobi} besteht aus den partiellen Ableitungen aus \eqref{fem:linTransformation}.  
+dargestellt, dazu multipliziert werden wie in \eqref{fem:newTransformation}. Die Jacobi- Matrix \eqref{fem:Jocobi} besteht aus den partiellen Ableitungen aus \eqref{fem:linTransformation}.  
 \begin{equation}
 J % 
 =
@@ -62,7 +62,7 @@ J %
 \end{bmatrix} \; .
 	\label{fem:Jocobi}
 \end{equation}
-Durch den Ausdruck \eqref{fem:linTransformation} erhält man die $\det(J)$
+Durch den Ausdruck \eqref{fem:linTransformation} erhält man die 
 \begin{equation}
 	\det(J) = x_1 \cdot y_2 - 2 \cdot x_1 \cdot y_1 + x_2 \cdot y_1 + x_1\cdot y_3 + x_3 \cdot y_1 - x_2 \cdot y_3 - x_3 \cdot y_2 \; .
 	\label{fem:JocobiDetBerechnet}
@@ -79,7 +79,7 @@ Die Jacobi- Determinante \eqref{fem:JocobiDetBerechnet} entspricht der doppelten
 \begin{split}
 	\frac{\partial u}{\partial x} = \frac{\partial u}{\partial \xi} \, \frac{\partial \xi}{\partial x} + \frac{\partial u}{\partial \eta} \, \frac{\partial \eta}{\partial x} \\
 	\frac{\partial u}{\partial y} = \frac{\partial u}{\partial \xi} \, \frac{\partial \xi}{\partial y} + \frac{\partial u}{\partial \eta} \, \frac{\partial \eta}{\partial y}
-	\end{split}
+	\end{split} \; .
 \end{equation}
 Auf Grund der linearen Transformation \eqref{fem:linTransformation} ergeben sich nach der partieller Differentiation der beiden Beziehungen nach $x$ zunächst
 
@@ -87,16 +87,16 @@ Auf Grund der linearen Transformation \eqref{fem:linTransformation} ergeben sich
 			\begin{aligned}
 			1  = (x_2 -x_1) \, \frac{\partial \xi}{\partial x} + (x_3 -x_1) \, \frac{\partial \eta}{\partial x} \\
 			0 = (y_2 -y_1) \, \frac{\partial \xi}{\partial x} + (y_3 -y_1) \, \frac{\partial \eta}{\partial x} \\
-			 \end{aligned}
+			 \end{aligned} \; .
 \end{equation}
 Nach Auflösung  der beiden Gleichungen nach $\frac{\partial \xi}{\partial x}$ und $\frac{\partial \eta}{\partial x}$ ergibt sich
 \begin{equation}
-			\frac{\partial \xi}{\partial x} = \frac{y_3 - y_1}{J} \qquad \frac{\partial \eta}{\partial x} = -\frac{y_2 - y_1}{J}
+			\frac{\partial \xi}{\partial x} = \frac{y_3 - y_1}{J} \qquad \frac{\partial \eta}{\partial x} = -\frac{y_2 - y_1}{J} \; .
 \end{equation}
 Analog nach der partiellen Ableitung nach $y$ erhält man
 
 \begin{equation}
-			\frac{\partial \xi}{\partial y} = \frac{x_3 - x_1}{J} \quad \frac{\partial \eta}{\partial y} = -\frac{x_2 - x_1}{J}
+			\frac{\partial \xi}{\partial y} = \frac{x_3 - x_1}{J} \quad \frac{\partial \eta}{\partial y} = -\frac{x_2 - x_1}{J} \; .
 \end{equation}
 Somit vereinfacht sich die Integration über das Einheitsdreieck 
 \begin{equation}
@@ -105,10 +105,10 @@ Somit vereinfacht sich die Integration über das Einheitsdreieck
 
 \subsection{Schritt 1: Minimalproblem bilden}
 
-Analog zum Kapitel 7.4.1 muss auch die DGL in der Ebene zuerst in ein äquivalentes Minimalproblem übersetzt werden. Das Minimalproblem für FEM in einer Dimension hatte die Form
+Analog zum Kapitel 7.4.1 muss auch die DGL in der Ebene zuerst in ein äquivalentes Minimalproblem übersetzt werden. Das Minimalproblem für FEM in einer Dimension hatte die Form:
 
 \begin{equation}
-			\int_0^1 u \textcolor{red}{'} (x)^2 - \lambda \, u(x)^2 dx \,dy
+			\int_0^1 u \textcolor{red}{'} (x)^2 - \lambda \, u(x)^2 dx \,dy \; .
 			\label{fem:Minimal1D}
 \end{equation}
 Im Unterschied zu den mehrdimensionale Form wird anstatt der einfachen Ableitung der Laplace Operator verwendet, der zugleich zweifache Differenziebarkeit von der Ansatzfunktion $u(x)$ fordert. Zudem wird nicht mehr über eine Strecke integriert sondern über ein Teilgebiet $\Omega_i$:
@@ -132,7 +132,7 @@ Die lineare Ansatzfunktion hat wie schon erwähnt die Form
 u(\xi, \eta) = c_1 + c_2 \xi + c_3 \eta \, .
 \label{fem:equationSchwarzLinear}
 \end{equation}
-Bei näherer Betrachtung fällt jedoch auf, dass in \eqref{fem:equationSchwarzLinear} die Parameter $c_1, c_2$ und $c_3$ von einem Dreieck zu einem anderen Dreieck unterscheiden. Die Ursache liegt insbesondere darin, dass $c_2$ und $c_3$ von den Kanten abhängig sind und die Kanten wiederum können von Dreieck zu Dreieck variieren ($\Omega_i$, $\Omega_j$). Daher ist die lineare Ansatzfunktion besser geeignet
+Bei näherer Betrachtung fällt jedoch auf, dass in \eqref{fem:equationSchwarzLinear} die Parameter $c_1, c_2$ und $c_3$ von einem Dreieck zu einem anderen Dreieck unterscheiden. Die Ursache liegt insbesondere darin, dass $c_2$ und $c_3$ von den Kanten abhängig sind und die Kanten wiederum können von Dreieck zu Dreieck variieren ($\Omega_i$, $\Omega_j$). Daher ist die lineare Ansatzfunktion 
 \begin{equation}
 u(\xi, \eta) = \tilde{c_1} + (\tilde{c_2} -\tilde{c_1})\xi + (\tilde{c_3} - \tilde{c_1})\eta
 \label{fem:equationLinearMod}
@@ -277,7 +277,7 @@ A_{\triangle_i} = \left( \begin{array}{cc}
 	0 & c_3^2 (1- \xi) \\
 \end{array}\right)
 \end{equation}
-und wird dann in die Matrix $A$ eingefügt. Somti sind sämtliche Teilmatrizen $A_{\triangle_i}$ aller Teilgebiete in der Matrix $A$ enthalten. Eine jede Farbe soll veranschaulichen, dass dies ein Dreieck- Gebiet darstellt. 
+und wird dann in die Matrix $A$ eingefügt. Somti sind sämtliche Teilmatrizen $A_{\triangle_i}$ aller Teilgebiete in der Matrix $A$ enthalten. Eine jede Farbe soll veranschaulichen, dass dies ein anderes Dreieck- Gebiet darstellt. 
 
 %\begin{equation}
 % A = \begin{pmatrix} 0 & 0 & \hdotsfor{4} & 0 \\
@@ -299,22 +299,32 @@ und wird dann in die Matrix $A$ eingefügt. Somti sind sämtliche Teilmatrizen $
 	\end{pmatrix}
 \end{equation}
 
-Die Matrix $A$ ist nun bekannt. Es fehlt jedoch noch die Matrix $B$, um das Gleichungs-System zu komplettieren. Die Matrix $B$ wird nun wie folgt definiert. Um die folgende Form zu erhalten muss lediglich der rechte Term von \ref{fem:Minimal2D2Term} für die einzelne Koeffizienten berechnet werden was dann den folgenden Ausdruck ergibt
+Die Matrix $A$ ist nun bekannt. Es fehlt jedoch noch die Matrix $B$, um das Gleichungs-System zu komplettieren. Die Matrix $B$ wird nun wie folgt definiert. Um die folgende Form zu erhalten muss lediglich der zwite Term von \eqref{fem:Minimal2TermLinAlg} für die einzelne Koeffizienten berechnet werden was dann den folgenden Ausdruck
 
 \begin{equation}
 			\int_0^1 \int_0^{1 - \xi}  \textcolor{cyan}{c_0^2} + \textcolor{blue}{c_1^2 x^2} + \textcolor{red}{c_2^2 y^2} + \textcolor{green}{2 c_0 c_1 x} + \textcolor{orange}{2 c_0 c_2 y} +\textcolor{purple}{ 2 c_1 c_2 xy} \,  d\eta \, d \xi
 			\label{fem:Minimal2LinAlgB}
 \end{equation}
-Nun soll dies wieder in die Matrix- Schreibweise übertragen werden was dann eine Teilmatrix $B$ eines Dreickes entspricht
+ergibt. Nun soll dies wieder in die Matrix- Schreibweise übertragen werden was dann eine Teilmatrix $B_{\triangle_i}$ eines Dreickes entspricht
 
 \begin{equation}
- B_{\triangle} = \left( \begin{array}{ccc}
-	\textcolor{cyan}{- \lambda \int_{\Omega} 1} &  \textcolor{green}{- \lambda \int_{\Omega} x} & \textcolor{orange}{- \lambda \int_{\Omega} y}  \\
-	\textcolor{green}{- \lambda \int_{\Omega}x} & \textcolor{blue}{- \lambda \int_{\Omega} x^2} &  \textcolor{purple}{- \lambda \int_{\Omega} xy} \\
-	\textcolor{orange}{- \lambda \int_{\Omega} y} & \textcolor{purple}{- \lambda \int_{\Omega} xy} & \textcolor{red}{ - \lambda \int_{\Omega} y^2} \\
+ B_{\triangle_i} = \left( \begin{array}{ccc}
+	\textcolor{cyan}{- \lambda \int_{\Omega_i} 1} &  \textcolor{green}{- \lambda \int_{\Omega_i} x} & \textcolor{orange}{- \lambda \int_{\Omega_i} y}  \\
+	\textcolor{green}{- \lambda \int_{\Omega_i}x} & \textcolor{blue}{- \lambda \int_{\Omega_i} x^2} &  \textcolor{purple}{- \lambda \int_{\Omega_i} xy} \\
+	\textcolor{orange}{- \lambda \int_{\Omega_i} y} & \textcolor{purple}{- \lambda \int_{\Omega_i} xy} & \textcolor{red}{ - \lambda \int_{\Omega_i} y^2} \\
 	\end{array}\right)
 	\label{fem:MatrixB}
 \end{equation}
+und ergibt ausgerechnet
+\begin{equation}
+ B_{\triangle_i} = \left( \begin{array}{ccc}
+	\textcolor{cyan}{- \lambda c_0^2 (1 - \xi)} &  \textcolor{green}{- \lambda 2 c_0 c_1 \frac{(\xi -1)^2}{2}} & \textcolor{orange}{- \lambda c_0 c_2 \frac{1 - \xi}{2}}  \\
+	\textcolor{green}{- \lambda 2 c_0 c_1 \frac{(\xi -1)^2}{2}} & \textcolor{blue}{- \lambda c_1^2 \frac{-(\xi -1)^3}{3}} &  \textcolor{purple}{- \lambda c_1 c_2 \frac{(\xi - 1)^2}{4}} \\
+	\textcolor{orange}{- \lambda c_0 c_2 \frac{1 - \xi}{2}} & \textcolor{purple}{- \lambda c_1 c_2 \frac{(\xi - 1)^2}{4}} & \textcolor{red}{ - \lambda c_2^2 \frac{1 - \xi}{3}} \\
+	\end{array}\right) \; .
+	\label{fem:MatrixB}
+\end{equation}
+
 Diese Teilmatrix $B$ eines jeden Flächenelements wird dann wieder analog der Matrix $A$ in eine Matrix $B$ eingesetzt, so dass diese dann alle Teilmatrizen aller Dreieck-  Flächenstücke enthält.
 
 \begin{equation}
@@ -341,7 +351,7 @@ Was so viel bedeutet wie nach den Koeffizienten $c_k$ ableiten was für den  fü
 ergibt und für den 2. Term den Ausdruck
 
 \begin{equation}
-	\nabla c^t \lambda Bc = 2\lambda Bc
+	\nabla c^t \lambda Bc = 2\lambda Bc \; .
 \end{equation}
 Diese Ableitungen erscheinen nicht gerade ersichtlich insbesondere der Faktor 2. 
 
@@ -350,34 +360,33 @@ Das ableiten im 1- Dimensionalen Raum ergibt nach der klassichen Analysis
 \begin{equation}
 	\frac{d}{dx} ax^2 = 2ax
 \end{equation}
-Um die Ableitung in einem n-Dimensionalen, quadratischen Matrix vorzunehmen muss diese erst in einen Summennotation umgeschrieben werden wie folgt
-
+%Um die Ableitung in einem n-Dimensionalen, quadratischen Matrix vorzunehmen muss diese erst in einen Summennotation umgeschrieben werden wie folgt
+Die Ableitung von
 \begin{equation}
-			x^tAx, x \in \mathbb{R}^n
+			x^tAx, x \in \mathbb{R}^n \; .
 \end{equation}
-Zu erkennen ist, dass nach der Ableitung von $x$ die Produkt- Regel zum tragen kommt. 
-
+nach $x_n$ nach der Produktregel ergibt
 \begin{equation}
-	\sum_{i,j} \frac{\partial x_i}{\partial x_n} a_{ij} x_j + \sum_{i,j} x_i a_{ij} \frac{\partial x_j}{\partial x_n}
+	\sum_{i,j} \frac{\partial x_i}{\partial x_n} a_{ij} x_j + \sum_{i,j} x_i a_{ij} \frac{\partial x_j}{\partial x_n} \; .
 \end{equation}
 Dies kann vereinfacht werden anhand der folgenden Kürzungs- Berechnung:
 
 \begin{equation}
-	\sum_{j} a_{nj} x_j + \sum_{i,j} x_i a_{in} = \sum_{j} a_{nj} x_j + \sum_{\textcolor{red}{\not{j}} i} a_{n \textcolor{red}{\not{j}} i} x_{\textcolor{red}{\not{j}} i} = 2(Ax)_n
+	\sum_{j} a_{nj} x_j + \sum_{i,j} x_i a_{in} = \sum_{j} a_{nj} x_j + \sum_{\textcolor{red}{\not{j}} i} a_{n \textcolor{red}{\not{j}} i} x_{\textcolor{red}{\not{j}} i} = 2(Ax)_n \; .
 \end{equation}
 
 \subsection{Schritt 4 Gleichungssystem aufstellen}
-Nun kann das Gleichungssystem aufgestellt werden.
+Nun kann das Gleichungssystem aufgestellt werden:
 \begin{equation}
-	2Ac - 2\lambda Bc = 0 \Rightarrow (A-\lambda B)c = 0
+	2Ac - 2\lambda Bc = 0 \Rightarrow (A-\lambda B)c = 0 \; .
 	\label{fem:GLLang}
 \end{equation}
-Durch das umschreiben der Gleichung \ref{fem:GLLang} ist ersichtlich, dass es sich um ein Eigenwertproblem für die Matrix $B^{-1}A$ handelt.
+Durch das umschreiben der Gleichung \ref{fem:GLLang} in 
 
 \begin{equation}
 		B^{-1}Ac = \lambda c
  \end{equation}
- Dieses kann z.B. durch das Jacobi Verfahren, beschrieben im Kapitel 6.4 gelöst werden.
+ ist ersichtlich, dass es sich um ein Eigenwertproblem für die Matrix $B^{-1}A$ handelt. Dieses kann z.B. durch das Jacobi Verfahren, beschrieben im Kapitel 6.4 gelöst werden.
  
 \subsection{Andere lineare Ansatzfunktionen
 \label{fem:subsection:Ansatzfunktionen}}
