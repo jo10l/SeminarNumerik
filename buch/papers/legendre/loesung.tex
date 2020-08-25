@@ -11,8 +11,8 @@
 Jede Rekursionsbeziehung braucht ihre Anfangswerte.
 Sowohl für die $l$-Rekursion \eqref{legendre:recurrence-l} als auch für die $m$-Rekursion \eqref{legendre:recurrence-m} werden je zwei Anfangswerte benötigt.
 Für die $l$-Rekursion \eqref{legendre:recurrence-l} werden die Anfangswerte $P^{l}_{l}(x)$ und $P^{l}_{l+1}(x)$ benötigt.
-Für die $m$-Rekursion \eqref{legendre:recurrence-m} wird mittels Anfangswert $P^{l}_{l}(x)$ die beiden weiteren Anfangswerte $P^{l}_{l+1}(x)$ und $P^{l+1}_{l+1}(x)$ berechnet.
-Diese Anfangswerte lassen sich mittels den Formeln
+Für die $m$-Rekursion \eqref{legendre:recurrence-m} werden aus dem Anfangswert $P^{l}_{l}(x)$ die beiden weiteren Anfangswerte $P^{l}_{l+1}(x)$ und $P^{l+1}_{l+1}(x)$ berechnet.
+Diese Anfangswerte lassen sich mittels der Formeln
 % Anfangswerte
 \begin{equation}
 \begin{aligned}
@@ -28,14 +28,15 @@ P^{l+1}_{l+1}(x)
 \end{aligned}
 \end{equation}
 berechnen, die sich aus der geschlossenen Form \eqref{legendre:geschlosseneform} herleiten lassen.
-Bei der Berechnung des Anfangswertes $P^{l}_{l}(x)$ gilt es zu beachten, dass $!!$ für die Doppelfakultät steht und nicht für die Fakultät der Fakultät.
+Bei der Berechnung des Anfangswertes $P^{l}_{l}(x)$ gilt zu beachten, dass $!!$ für die Doppelfakultät steht und nicht für die Fakultät der Fakultät.
+\index{Doppelfakultät}%
 Im Gegensatz zur einfachen Fakultät werden bei der Doppelfakultät nur die geraden, respektive ungeraden Faktoren zwischen $1$ und der Zahl selber berücksichtigt.
 Berechnen lässt sich die Doppelfakultät wie folgt:
 \begin{equation}
 k!! = 
 \begin{cases}
 1 \cdot 3 \cdot \ldots \cdot k & \text{falls $k$ ungerade}\\
-2 \cdot 4 \cdot \ldots \cdot k & \text{falls $k$ gerade}
+2 \cdot 4 \cdot \ldots \cdot k & \text{falls $k$ gerade.}
 \end{cases}
 \label{legendre:doppelfakultaet}
 \end{equation}
@@ -58,6 +59,7 @@ P^{m-1}_{l}(x)
 \end{equation}
 Wird die umgeformte Rekursionsgleichung \eqref{legendre:recurrence-m-neu} auf numerische Instabilität untersucht, fällt sofort der Term $\sqrt{1-x^2}$ auf.
 Dieser Term deutet darauf hin, dass nahe an den Intervallsgrenzen ($x \rightarrow \pm 1$) Auslöschung auftreten kann.
+\index{Auslöschung}%
 Dies alleine ist noch nicht allzu schlimm.
 Jedoch ist es so, dass die zugeordneten Legendrepolynome für $m>0$ an den Intervallsgrenzen Null ergeben.
 Das heisst, dass die Differenz in der eckigen Klammer nahe den Intervallsgrenzen in etwa Null ergibt.
@@ -106,6 +108,7 @@ Es ist deutlich zu sehen, dass sich die beiden Rekursionsformeln nahe den Interv
 Die Analyse der $m$-Rekursion aus Abschnitt \ref{legendre:subsection:mrichtung} lässt vermuten, dass diese Rekursionsbeziehung dafür verantwortlich ist.
 Dies spricht dafür, die $l$-Rekursion zu verwenden.
 Ein weiterer Punkt, der für die $l$-Rekursion spricht, ist, dass die GNU Scientific Library \cite{legendre:gsl} diese Implementation, mit den gleichen Anfangswerten wie in Abschnitt \ref{legendre:subsection:anfangswerte} beschrieben, verwendet.
+\index{GNU Scientific Library}%
 Die Implementation der GNU Scientific Library wird allgemein als numerisch stabil angesehen.
 % Plot in l-Richtung
 \begin{figure}[!ht]
