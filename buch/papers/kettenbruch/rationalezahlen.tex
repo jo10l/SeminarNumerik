@@ -1,0 +1,158 @@
+
+%
+% rationalezahlen.tex -- 
+%
+% (c) 2020 Benjamin Bouhars-Keller
+%
+\section{Rationale Zahlen
+\label{kettenbruch:section:Zahlen}}
+\rhead{Rationale Zahlen}
+\subsection{Definition}
+Die Kettenbruch entwicklung von $x \in \mathbb{R}$ bricht genau dann nach endlich
+vielen Schritten ab, wenn $x$ rational ist.
+Die Menge aller rationalen Zahlen wird mit $\mathbb{Q}$ bezeichnet.
+Ein endlicher Kettenbruch ist ein Bruch der Form
+\begin{equation}
+a_0 + \cfrac{1}{a_1+\cfrac{1}{a_2+\cfrac{\cdots}{\cdots+\cfrac{1}{a_{n-1} + \cfrac{1}{a_n}}}}}
+\end{equation}
+in welchem $a_0, a_1,\dots,a_n$ und $b_1,b_2,\dots,b_n$ ganze Zahlen
+darstellen, die mit Ausnahme möglicherweise von $a_0$ alle positiv sind.
+Die Kettenbruchentwicklung von $x \in \mathbb{R}$ bricht genau dann
+nach endlich vielen Schritten ab, wenn $x$ rational ist. So bilden
+rationale Zahlen endliche Kettenbrüche.
+
+\subsection{Euklidischer Algorithmus}
+Die Umwandlung einer rationalen Zahl in einen Kettenbruch erfolgt
+mit Hilfe des euklidischen Algorithmus.
+Als Beispiel rechnen wir für $\frac{17}{10} = [1;1,2,3]$.
+\begin{beispiel}
+\begin{equation}
+\frac{17}{10}
+=
+1 + \frac{7}{10}
+=
+1 + \cfrac{1}{\frac{10}{7}}
+=
+1 + \cfrac{1}{1+\frac{3}{7}}
+=
+1 + \cfrac{1}{1+\cfrac{1}{1+\cfrac{1}{\frac{7}{3}}}}
+=
+1 + \cfrac{1}{1+\cfrac{1}{2+\frac{1}{3}}}
+\end{equation}
+\begin{align*}
+17 &= 1\cdot + 7 \\
+10 &= 1\cdot 7 + 3 \\
+7 &= 2\cdot 3 + 1 \\
+3 &= 3\cdot 1 + 0
+\end{align*}
+Diese Methode kann auch umgekehrt angewendet werden.
+Berechnen wir nun den Kettenbruch in einem Bruch zurück.
+\begin{equation}
+[1;1,2,3] \rightarrow	2 + \frac{1}{3} = \frac{7}{3}
+						1 + \frac{3}{7} = \frac{10}{7}
+						1 + \frac{7}{10} = \frac{17}{0}
+\end{equation}
+\end{beispiel}
+Wie man im Beispiel sieht, ist die intuitive Berechnung der
+Näherungsbrüche eines Kettenbruchs, indem man ihn von unten her
+auflöst, sehr umständlich. Durch ein rekursives Bildungsgesetz für
+Zähler und Nenner kann man die Berechnung erheblich vereinfachen.
+Ausserdem kann man mit Hilfe dieser Rekursionsformel die Grenzwerte
+unendlicher Kettenbrüche untersuchen.
+
+Jede rationale Zahl $x$ lässt sich auf eindeutige Weise in einen
+endlichen Kettenbruch entwicklen, dessen letzer Teilnenner grösser
+oder gleich 2 ist.
+
+\subsection{Rekursionsformel}
+Die Berechnung der Konvergenten (siehe Abschnitt 10.3.3) eines Kettenbruches 
+kann erheblich vereinfacht werden, indem eine Rekursionsformeln für den Zähler 
+und den Nenner einführt wird.
+\begin{beispiel}
+\begin{align*}
+A_0 &= b_0                     &   B_0 &= 1                                  \\
+A_1 &= a_1a_0 + 1              &   B_1 &= a_1                                \\
+A_k &= a_kA_{k-1} + A_{k-2}    &   B_k &= a_kB_{k-1} + B_{k-2} &(i &\ge 1),   \\
+A_2 &= b_2b_1b_0 + b_2 + b_0   &   B_2 &= b_2b_1 + 1		             \\
+A_3 &= b_3b_2b_1b_0 + b_3b_2 + b_3b_0 + b_1b_0 + 1 & B_3 &= b_3b_2b_1 + b_3 + b_1
+\end{align*}
+Dies lässt sich auch durch die folgende Matrizenschreibweise ausdrücken:
+\begin{equation}
+P_0 = 	\begin{pmatrix}
+			A_{_1}&	A_{_2}\\
+			B_{_1}&	A_{_2}
+		\end{pmatrix}
+		=\begin{pmatrix}
+			1&	0\\
+			0&	1
+		\end{pmatrix}
+\end{equation}
+\begin{equation}
+P_i = 	\begin{pmatrix}
+			A_i&	A_{i-1}\\
+			B_i&	B_{i-1}
+		\end{pmatrix}
+		=\begin{pmatrix}
+			A_{i-1}&	A_{i-2}\\
+			B_{i-1}&	B_{i-2}
+		\end{pmatrix} 
+		\begin{pmatrix}
+			b_i	&	1\\
+			1	&	0
+		\end{pmatrix} 
+\end{equation}
+Rekursives Einsetzen ergibt:
+\begin{equation}
+		\begin{pmatrix}
+			A_i&	A_{i-1}\\
+			B_i&	B_{i-1}
+		\end{pmatrix}
+		=\begin{pmatrix}
+			b_0	&	1\\
+			1	&	0
+		\end{pmatrix}
+		\begin{pmatrix}
+			b_1	&	1\\
+			1	&	0
+		\end{pmatrix}
+		\cdots
+		\begin{pmatrix}
+			b_i	&	1\\
+			1	&	0
+		\end{pmatrix} 
+		=\displaystyle\prod_{j=0}^{i}\begin{pmatrix}
+			b_j	&	1\\
+			1	&	0
+		\end{pmatrix}
+\end{equation}
+Aus diesen Überlegungen resultiert eine Aussage, von deren letztem 
+Teil wir noch sehr oft Gebrauch machen werden:
+Somit gilt 
+\begin{equation}
+\det(P_i) = (-1)^i
+\end{equation}
+und für alle $i$:
+\begin{equation}
+A_iB_{i-1} - B_iA_{i-1} = (-1)^i
+\end{equation}
+\subsubsection{Beispiel}
+Für $x = [b_0;b,\cdots,b_{i-1},\beta_1]$ gilt
+\begin{equation}
+x = \frac{A_{i-1}\beta_i + A_{i-2}}{B_{i-1}\beta_i + B_{i-2}}
+\qquad \text{für alle $i \ge 0$.}
+\end{equation}
+Aus der Rekursionsformeln ergeben sich folgende Gleichung
+\begin{equation}
+[b_0;b_1,\cdots,b_n]
+=
+\frac{A_n}{B_n} = \frac{b_nA_{n-1} + A_{n-2}}{b_nB_{n-1} + B_{n-2}}
+\end{equation}
+und analog
+\begin{equation}
+[b_0;b,\cdots,b_{i-1},\beta_1] = [b_0;b_1,\cdots,b_{i-1},\beta_i]
+=
+\frac{A_{i-1}\beta_i + A_{i-2}}{B_{i-1}\beta_i + B_{i-2}}
+\end{equation}
+\end{beispiel}
+Hiermit haben wir die wichtigsten Zusammenhänge in Bezug auf die Näherungszahlen herausgearbeitet.
+

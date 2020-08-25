@@ -1,32 +1,34 @@
 %
 % problemstellung.tex -- Beispiel-File für die Beschreibung des Problems
 %
-% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+% (c) 2020 Severin Weiss
 %
 
 
 
-\section{Problemstellung
+\section{Motivation: Lösung einer linearen Differentialgleichung
 \label{laplace:section:problemstellung}}
-\subsection{Beispiel: Lösung einer linearen DGL mittels Laplacetransformation}
+\rhead{Problemstellung}
 Wir wollen eine Lösung $f(t)$ aus $F(s)$ der linearen Differentialgleichung 
-\[
-\frac{df}{dt} + \lambda f(t) = 0
-\]
+\begin{equation}
+\frac{df}{dt} + \lambda f(t) = 0, ~~mit f_{0} = f(t=0)
+\end{equation}
 Mit der Laplactransformation folgt
-\[
-(sF(s) - f_{0}) + \lambda F(s) = 0
-\]
-Die obige Gleichung im Frequenzbereich kann nach F(s) aufgelöst werden.
+\begin{equation}
+(sF(s) - f_{0}) + \lambda F(s) = 0.
+\label{laplace:dgl}
+\end{equation}
+Die Gleichung \eqref{laplace:dgl} im Frequenzbereich kann nach $F(s)$ aufgelöst werden.
 Es folgt somit
-\[
+\begin{equation}
 F(s) = \frac{f_{0}}{s + \lambda}
-\]
-Um die Inverse von $F(s)$ zu finden existieren für gewisse Funktionstypen tabellierte zugehörige Rücktransformationen.
-Für die obige Funktion $F(s)$ ergibt sich nämlich
-\[
+\label{laplace:F(s)}
+\end{equation}
+Um die Laplaceinverse von $F(s)$ zu finden existieren für gewisse Funktionstypen tabellierte zugehörige Rücktransformationen.
+Für die Funktion in Gleichung \eqref{laplace:F(s)} $F(s)$ ergibt sich zum Beispiel
+\begin{equation}
 \mathcal{L}^{-1}\{F(s)\}=\mathcal{L}^{-1}\{\frac{f_{0}}{s+\lambda}\} = f_{0}e^{-\lambda t}
-\]
-Eine solche Tabelle ist jeweils in Literatur zu finden, welche sich mit der Laplacetransformation beschäftigt.
-Wenn für die gesuchte Funktion $F(s)$ keine zugehörige Funktion tabelliert ist, muss das Integral wie in der Einleitung beschrieben gelöst werden.
+\end{equation}
+Solche Tabellen sind jeweils in der Literatur zu finden, welche sich mit der Laplacetransformation beschäftigt.
+Wenn für die gegebene Funktion $F(s)$ keine zugehörige Funktion tabelliert ist, muss das Integral \eqref{laplace:riemanninversionsformel} wie in der Einleitung beschrieben numerisch berechnet werden.
 

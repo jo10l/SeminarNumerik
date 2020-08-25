@@ -6,7 +6,7 @@
 
 \section{Spline-Interpolation
 \label{buch:section:spline}}
-Die Hermite-Interpolation ermöglicht Aporoximationspolynome zu finden,
+Die Hermite-Interpolation ermöglicht Approximationspolynome zu finden,
 die sowohl Funktionswerte als auch Ableitungen an den Stützstellen mit
 der zu approximierenden Funktion gemeinsam haben.
 Dadurch wird der Fehler der Approximationspolynome zwar kleiner, aber
@@ -15,12 +15,18 @@ Funktion bestimmt werden müssen.
 
 Die Spline-Interpolation umgeht dieses Problem, indem sie an den
 Stützstellen nicht die gleichen Steigungen verlangt, sondern Steigungen,
-die zu einem möglichst ``wenig gekrümmten'' Graphen des Approximationspolynoms,
+die zu einem möglichst ``wenig gekrümmten'' Graphen des Approximationspolynoms
+führen,
 welches natürlich immer noch in den Stützstellen die vorgegebenen Werte
 annehmen soll.
+\index{Spline-Interpolation}%
 Die Steigungen in den Stützstellen sind also Lösungen eines
-Optimierungsproblems, welches nicht die am besten passende, sonder
+Optimierungsproblems, welches nicht die ``am besten passende'', sondern
 die ``schönste'' Kurve durch die Stützstellen sucht.
+\index{Optimierungsproblem}%
+Die so gefundene Interpolationsfunktion heisst {\em Spline-Funktion}
+und wird in diesem Abschnitt bestimmt.
+\index{Spline-Funktion}%
 
 %
 % Anforderungen an die Interplierende Funktion
@@ -42,11 +48,11 @@ die die folgenden natürliche Eigenschaften haben soll:
 Die Funktion $g$ nimmt in allen Stützstellen die Werte der Funktion
 $f$ an, es ist also $g(x_i)=f_i\;\forall 0\le i\le n$.
 \item
-Die Funktion $g$ ist stetig differenzierbar im ganze Interval.
+Die Funktion $g$ ist stetig differenzierbar im ganze Intervall.
 Insbesondere existiert die Ableitung $g'(x)$ in jedem Punkt $x$ des
-Intervals $[a,b]$, der Graph von $g$ kann also keine ``Knicke'' haben.
+Intervalls $[a,b]$, der Graph von $g$ kann also keine ``Knicke'' haben.
 \item
-Im inneren jedes Teilintervalles $[x_i,x_{i+1}]$ ist die Funktion $g$
+Im Inneren jedes Teilintervalles $[x_i,x_{i+1}]$ ist die Funktion $g$
 beliebig oft stetig differenzierbar und die einseitigen Grenzwerte 
 an den Enden der Teilintervalle existieren:
 \[
@@ -55,9 +61,9 @@ an den Enden der Teilintervalle existieren:
 \exists\; \lim_{x\to x_i-} g^{(k)}(x) \quad\forall 0< i \le n.
 \]
 Es wird nicht verlangt, dass die rechts- und linksseitigen Grenzwerte
-an den inneren Stützstellen $x1,\dots,x_{n-1}$ übereinstimmen müssen.
+an den inneren Stützstellen $x_1,\dots,x_{n-1}$ übereinstimmen müssen.
 \item
-Der Graph von $g$ soll möglichst wenige gekrümmt sein.
+Der Graph von $g$ soll möglichst wenig gekrümmt sein.
 Da die zweite Ableitung einer Funktion ein Mass für die Krümmung des 
 Graphen ist, kann dieses Kriterium dadurch realisiert werdenn, dass
 die Funktion $g$ unter allen Funktionen, die die Bedingungen 1--3 erfüllen,
@@ -67,24 +73,26 @@ J(g)
 =
 \int_a^b (g''(x) )^2\,dx
 \]
-minimiert.
+minimieren soll.
 \end{enumerate}
 
 Man beachte, dass nirgends verlangt wird, dass die Ableitungen von $g$
-an den Stützstellen irgendwie mit der Funktion $f$ in Verbingung steht.
+an den Stützstellen irgendwie mit Werten der Funktion $f$ oder ihrer
+Ableitung $f'$ in Verbingung steht.
 
 %
 % Das Optimierungsproblem
 %
 \subsection{Das Optimierungsproblem
 \label{buch:subsection:variation}}
-Zunächst ist nicht klar, ob das eben gestellt Optimierungsproblem überhaupt
+\index{Optimierungsproblem}%
+Zunächst ist nicht klar, ob das eben gestellte Optimierungsproblem überhaupt
 eine Lösung hat. 
-In jedem Teilinterval $[x_i,x_{i+1}]$ geht es um ein Problem der
+In jedem Teilintervall $[x_i,x_{i+1}]$ geht es um ein Problem der
 folgenden Art.
 Gesucht ist eine Funktion, die an den Intervallenden die vorgegebene
 Werte $g(x_i)=f_i$ und $g(x_{i+1})=f_{i+1}$ annimmt, im Inneren des
-Intervals beliebig oft stetig differenzierbar ist und zudem einen
+Intervalls beliebig oft stetig differenzierbar ist und zudem einen
 Integralausdruck
 \[
 \int_{x_i}^{x_{i+1}} (g''(x))^2\,dx
@@ -94,16 +102,28 @@ minimiert.
 Diese Art von Problemen hat bereits Leonhard Euler in recht allgemeiner
 Form untersucht und zu diesem Zweck das Gebiet der Variationsrechnung
 geschaffen.
+\index{Euler, Leonhard}%
+\index{Leonhard Euler}%
+\index{Variationsrechnung}%
 Sie tauchen in der Physik zum Beispiel in der folgenden Form auf.
+\index{Physik}%
 
 \begin{beispiel}
 Ein Teilchen der Masse $m$ bewegt sich entlang der $y$-Achse.
+\index{Teilchen}%
+\index{Masse}%
 Zur Zeit $a$ befindet es sich bei $f_0$, zur Zeit $b$ bei $f_n$.
 Auf das Teilchen wirkt ausserdem eine Kraft, die durch ihr Potential $V(y)$
 beschrieben werden kann.
+\index{Kraft}%
+\index{Potential}%
 Die Geschwindigkeit zur Zeit $t$ ist $\dot y(t)$.
+\index{Geschwindigkeit}%
 Die Differenz von kinetischer und potentieller Energie ist
 die sogenannte Lagrange-Funktion
+\index{kinetische Energie}%
+\index{potentielle Energie}%
+\index{Lagrange-Funktion}%
 \begin{equation}
 L(t,y,\dot{y})
 =
@@ -113,14 +133,19 @@ V(y(t)).
 \label{buch:equation:mechlagrange}
 \end{equation}
 In der Physik wird gezeigt, dass die Bewegung des Teilchens durch diejenige
-Funktion $y(t)$ beschrieben wird, welche das Integral
+Funktion $y(t)$ beschrieben wird, welche das sogenannte Wirkungsintegral
+\index{Wirkung}%
+\index{Wirkungsintegral}%
 \[
 \int_a^b L(t,y(t),\dot{y}(t))\,dt
 \]
-minimiert.
+minimiert (Maupertuis-Prinzip, Prinzip der kleinsten Wirkung).
+\index{Maupertuis-Prinzip}%
+\index{Prinzip der kleinsten Wirkung}%
 \end{beispiel}
 
 \subsubsection{Die Euler-Lagrange-Gleichungen}
+\index{Euler-Lagrange-Differentialgleichung}%
 Um zu zeigen, dass die Interpolationsfunktion $g$ existiert, lösen
 wir daher das folgende, wesentlich allgemeinere Problem.
 
@@ -128,7 +153,7 @@ wir daher das folgende, wesentlich allgemeinere Problem.
 \label{buch:satz:eulerlagrange}
 Sei $L(x,y,y_1)$ eine in allen Argumenten beliebig oft stetig differenzierbare
 Funktion auf $[a,b]\times \mathbb R \times \mathbb R$.
-Es gibt eine glatte Funktion $y(x)$, die in den Intervalenden vorgegebene
+Es gibt eine glatte Funktion $y(x)$, die in den Intervallenden vorgegebene
 Werte $y(a)=y_a$ und $y(b)=y_b$ annimmt und ausserdem das Integral
 \[
 J(y)
@@ -149,19 +174,23 @@ sie ist Lösung der {\em Euler-Lagrange-Differentialgleichung}
 \end{satz}
 
 \subsubsection{Richtungsableitung}
+\index{Richtungsableitung}%
 Die Verbindung zwischen den Extrema von $J(y)$ und der
-Euler-Lagrange-Differentialgleichung entsteht durch die Ableitung 
-von $J(y)$ nach $y$.
-Zunächst ist allerdings zu klären, was diese Ableitung überhaupt bedeuten
-soll.
-Diese Ableitung soll in linearer Näherung wiedergeben können, was
+Euler-Lagrange-Differentialgleichung entsteht durch eine Art ``Ableitung''
+von $J(y)$ nach $y$, die in einem Minimum verschwinden soll.
+Zunächst ist allerdings zu klären, was diese Ableitung nach einer Funktion
+überhaupt bedeuten soll.
+Die Ableitung soll in linearer Näherung wiedergeben können, was
 passiert, wenn die Funktion $y(x)$ verändert wird.
 Es gibt natürlich unendlich viele Stellen, in denen die Funktion
 modifiziert werden kann, es handelt sich also um einen Ableitungsbegriff
 in einem unendlichdimensionalen Vektorraum.
+\index{unendlichdimensional}%
+\index{Vektorraum!unendlichdimensional}%
 Die geometrische Intuition, die für den Begriff des Gradienten
-verwendet wird, kann in der unendlichdimensionalen Situation versahgen,
+verwendet wird, kann in der unendlichdimensionalen Situation versagen,
 wir müssen also etwas vorsichtiger sein.
+\index{Gradient}%
 
 Ungefährlich ist, die Veränderng von $J(y)$ nur in einer Richtung 
 zu untersuchen.
@@ -185,8 +214,8 @@ h(a)=h(b)=0
 gelten.
 
 Die Funktion $J(\varepsilon) = J(y+\varepsilon h) = J(y_{\varepsilon})$
-hängt jetzt nur noch von einem Parameter ab, die Ableitung davon ist
-wohldefiniert.
+hängt jetzt nur noch vom Parameter $\varepsilon$ ab, die Ableitung nach
+$\varepsilon$ ist wohldefiniert.
 Ist ausserdem $y$ ein Minimum, dann muss die Ableitung von
 $J(y_{\varepsilon})$ nach $\varepsilon$ für $\varepsilon=0$
 verschwinden, also
@@ -199,8 +228,10 @@ verschwinden, also
 \]
 Dies muss für jede beliebige Funktion gelten, welche die Randbedingung
 \eqref{buch:variation:rand} erfüllt.
+\index{Randbedingung}%
 
 \subsubsection{Integralprinzip}
+\index{Integralprinzip}%
 Die Möglichkeit, die Funktion nur unter der minimalen Bedingung
 \eqref{buch:variation:rand} frei zu wählen, schränkt die Funktion
 $y(x)$ ein.
@@ -219,7 +250,7 @@ Der Widerspruch zeigt, dass $g(\bar{x})=0$ sein muss.
 
 \begin{lemma}[Integralprinzip]
 \label{buch:lemma:integralprinzip}
-Sei $g(x)$ eine stetige Funktion auf dem Interval $[a,b]$.
+Sei $g(x)$ eine stetige Funktion auf dem Intervall $[a,b]$.
 Ausserdem gilt
 \[
 \int_a^b g(x)  h(x)\,dx = 0
@@ -231,6 +262,7 @@ Dann ist $g(x)=0$.
 \begin{proof}[Beweis]
 Wir führen die Annahme, dass es einen Punkt $\bar{x}$ gibt mit
 $g(\bar{x})\ne 0$, zu einem Widerspruch.
+\index{Widerspruch}%
 
 Nehmen wir also an, dass $g(\bar{x})>0$ ist.
 Dann ist $g(x)>0$ wegen der Stetigkeit von $g$ auch noch ein einer
@@ -274,7 +306,7 @@ Sei jetzt also $y(x)$ eine Funktion mit $y(a)=y_a$ und $y(b)=y_b$, die
 das Integral $J(y)$ minimiert.
 Ändern wir die Funktion ein klein wenig, dann muss der Wert von $J$ zunehmen.
 Wir vollziehen die Änderung, indem wir eine Funktion $h(x)$
-wählen mit $h(a)=0$ und $h(b)=0$.
+mit $h(a)=0$ und $h(b)=0$ addieren.
 Die Funktionen $y_\varepsilon= y+\varepsilon h$ erfüllen dann alle die
 Bedingung $y_\varepsilon(a)=y_a$ und $y_\varepsilon(b)=y_b$, insbesondere
 müssen sie alle einen Wert $J(g+\varepsilon h)$ ergeben, der grösser ist
@@ -297,7 +329,7 @@ Wir berechnen die Ableitung von $J(y+\varepsilon h)$ nach $\varepsilon$:
 \int_a^b
 \frac{\partial L}{\partial y}(x, y(x), y'(x)) \, h(x)
 +
-\frac{\partial L}{\partial y_1} L(x, y(x), y'(x) \, h'(x)
+\frac{\partial L}{\partial y_1} L(x, y(x), y'(x)) \, h'(x)
 \,dx
 \notag
 \\
@@ -307,16 +339,18 @@ Wir berechnen die Ableitung von $J(y+\varepsilon h)$ nach $\varepsilon$:
 \,dx
 +
 \int_a^b
-\frac{\partial L}{\partial y_1} L(x, y(x), y'(x) \, h'(x)
+\frac{\partial L}{\partial y_1} L(x, y(x), y'(x)) \, h'(x)
 \,dx
 \label{buch:variation:zweiintegrale}
 \end{align}
 Das zweite Integral enthält die Ableitung $h'(x)$, über die wir nicht viel
 wissen.
 Wir können diese aber durch partielle Integration los werden:
+\index{partielle Integration}%
+\index{Integration!partiell}%
 \begin{align*}
 \int_a^b
-\frac{\partial L}{\partial y_1} L(x, y(x), y'(x) \, h'(x)
+\frac{\partial L}{\partial y_1} L(x, y(x), y'(x)) \, h'(x)
 \,dx
 &=
 \biggl[\frac{\partial L}{\partial y_1}
@@ -325,7 +359,7 @@ L(x,y(x),y'(x))\,h(x)
 -
 \int_a^b \frac{d}{dx} \frac{\partial L}{\partial y_1}
 L(x,y(x),y'(x))\,h(x) \,dx
-\intertext{$h$ war so gewählt, dass die Werte, an den Intervalenden
+\intertext{$h$ war so gewählt, dass die Werte, an den Intervallenden
 verschwinden, also $h(a)=h(b)=0$.
 Der erste Terme verschwindet daher und es bleibt}
 &=
@@ -352,28 +386,23 @@ Gleichung \eqref{buch:variation:eulerintegralform}
 muss für jede beliebige Funktion $h(x)$ gelten.
 Wir möchten zeigen, dass das nur möglich ist, wenn die grosse Klammer
 im Integral verschwindet.
-
-Nehmen wir an, die grosse Klammer sei an einer Stelle im Intervall 
-von $0$ verschieden.
-Dann wird sie wegen der Stetigkeit auch in einer kleinen Umgebung dieser
-Stelle immer noch das gleiche Vorzeichen haben.
-Wir wählen eine Funktion $h$, die in der gleichen kleinen Umgebung
-positiv ist und sonst überall verschwindet.
-Das Integral muss dann nur noch über diese kleine Umgebung erstreckt
-werden und die Funktion, die integriert wird, hat in der ganzen Umgebung
-das gleiche Vorzeichen.
-Insbesondere kann das Integral nicht verschwinden.
-Somit ist gezeigt, dass die grosse Klammer verschwinden muss, oder dass
-die Gleichung
+Dies ist aber genau die Situation des Integralprinzips von
+Lemma~\ref{buch:lemma:integralprinzip}.
+\index{Integralprinzip}%
+Es gestattet uns zu schliessen, dass das Integral
+\eqref{buch:variation:eulerintegralform} nur dann für alle
+möglichen Funktionen $h(x)$ verschwindet, wenn die grosse Klammer
+im Integranden verschwindet.
+Es gilt daher die Gleichung
 \begin{equation}
 \frac{d}{dx} \frac{\partial L}{\partial y_1} (x,y(x),y'(x)) 
 -
 \frac{\partial L}{\partial y}L(x,y(x),y'(x)).
 \end{equation}
-gelten muss.
 Damit ist der Beweis von Satz~\ref{buch:satz:eulerlagrange} vollständig.
 
 \begin{beispiel}
+\index{Euler-Lagrange-Gleichung}%
 Wir wenden die Euler-Lagrange-Gleichung auf die Lagrange-Funktion
 \eqref{buch:equation:mechlagrange} an, dabei erhalten wir
 \[
@@ -397,6 +426,8 @@ m\dot{y} +V'(y)=0
 m\ddot{y} = -V'(y).
 \]
 Dies ist das 2.~Newtonsche Gesetz.
+\index{2. Newtonsches Gesetz}%
+\index{Newtonsches Gesetz, zweites}%
 \end{beispiel}
 
 %
@@ -452,8 +483,10 @@ Wir können die Funktion so wählen, dass
 $h(x_i)=h(x_{i+1})=h'(x_i)=h'(x_{i+1})=0$ ist, dann 
 verschwinden die ersten beiden Terme.
 Das Integral verschwindet nur dann immer, wenn der Integrand verschwindet,
-wenn also $g^{(4)}(x)=0$ im Inneren jedes Teilintervals $[x_i,x_{i+1}]$.
-Es folgt, dass in jedem Teilinterval die Funktion $g$ ein kubisches Polynom 
+wenn also im Inneren jedes Teilintervalls $[x_i,x_{i+1}]$
+gilt, dass
+$g^{(4)}(x)=0$.
+Es folgt, dass in jedem Teilintervall die Funktion $g$ ein kubisches Polynom 
 sein muss.
 
 %
@@ -505,7 +538,7 @@ sein muss.
 %
 \subsubsection{Ein Gleichungssystem für die Steigungen}
 Zur Lösung des eingangs gestellten Interpolationsproblems ist jetzt
-also für jedes Teilinterval $[x_i,x_{i+1}]$ ein kubisches Polynom $g_i(x)$
+also für jedes Teilintervall $[x_i,x_{i+1}]$ ein kubisches Polynom $g_i(x)$
 zu finden, mit folgenden Eigenschaften:
 \begin{align*}
 g_i(x_i)     &=f_i       &g_i(x_{i+1})  &=f_{i+1}   &0&\le i\le n &&\text{$2n+2$ Bedingungen}
@@ -523,23 +556,23 @@ Aus Abschnitt~\ref{buch:section:hermite} ist bekannt, dass die kubischen
 Polynome $g_i(x)$ durch die bereits bekannten Funktionswerte $f_i$
 und die noch zu findenen Steigungen in den Stützstellen bestimmt sind.
 Wir schreiben daher $s_i = g_i'(x_i)$ für die Steigungen und machen es
-uns zum Ziel ein Gleichungssystem für die $s_i$ zu finden.
+uns zum Ziel, ein Gleichungssystem für die $s_i$ zu finden.
 
 In Abschnitt~\ref{buch:subsection:hermite:zweistuetzstellen}
 haben wir Hermite-Interopationspolynome für zwei Stützstellen
 zusammengestellt.
 Wir haben dort die Polynome $H_i$ und $H_i^1$ konstruiert, aus
 denen sich mit der Substition $x\to (x-x_0)/m$ die
-Hermite-Interpolationspolynome für das Interval $[x_0,x_0+m]$ 
+Hermite-Interpolationspolynome für das Intervall $[x_0,x_0+m]$ 
 bilden liess.
 Wir bezeichnen die Länge des Intervalls $[x_i,x_{i+}]$
 mit $m_i=x_{i+}-x_i$.
 
-Die gesuchte Funktion im Interval ist daher
+Die gesuchte Funktion im Intervall ist daher
 \begin{equation}
 g_i(x) = f_i H_0((x-x_i)/m_i) + f_{i+1} H_1((x-x_i)/m_i)
 +
-s_i m_i H_0^1((x-x_i=)/m_i) + s_{i+1} m_i H_1^1((x-x_i)/m_i).
+s_i m_i H_0^1((x-x_i)/m_i) + s_{i+1} m_i H_1^1((x-x_i)/m_i).
 \label{buch:equation:spline:loesung}
 \end{equation}
 Diese Funktion hat die richtigen Funktionswerte und Ableitungen
@@ -548,7 +581,7 @@ an den Intervallenden.
 Die Steigungen $s_i$ in \eqref{buch:equation:spline:loesung}
 ist noch nicht bekannt, aber die Bedingung an die zweiten Ableitungen
 wurde noch nicht ausgenutzt.
-Die zweiten Ableitungen
+Die zweiten Ableitungen erfüllen
 \begin{align*}
 i&=0
 &
@@ -556,7 +589,7 @@ i&=0
 &=
 g_0''(x_0)
 =
--\frac{6f_0}{m_0^2} + \frac{6f_1}{m_0^2} -\frac{4s_0}{m_0} + \frac{2s_1}{m_0}
+-\frac{6f_0}{m_0^2} + \frac{6f_1}{m_0^2} -\frac{4{\color{red}s_0}}{m_0} + \frac{2{\color{red}s_1}}{m_0}
 \\
 i&=1
 &
@@ -564,14 +597,14 @@ i&=1
 g_0''(x_1)
 =
 \phantom{-}
-\frac{6f_0}{m_0^2} -\frac{6f_1}{m_0^2} +\frac{2s_0}{m_0} -\frac{4s_1}{m_0}
+\frac{6f_0}{m_0^2} -\frac{6f_1}{m_0^2} +\frac{2{\color{red}s_0}}{m_0} -\frac{4{\color{red}s_1}}{m_0}
 \\
 &
 &
 &=
 g_1''(x_1)
 =
--\frac{6f_1}{m_1^2}+\frac{6f_2}{m_1^2} - \frac{4s_1}{m_1}+\frac{2s_2}{m_1}
+-\frac{6f_1}{m_1^2}+\frac{6f_2}{m_1^2} - \frac{4{\color{red}s_1}}{m_1}+\frac{2{\color{red}s_2}}{m_1}
 \\
 i&=2
 &
@@ -579,14 +612,14 @@ i&=2
 g_1''(x_2)
 =
 \phantom{-}
-\frac{6f_1}{m_1^2} -\frac{6f_2}{m_1^2} +\frac{2s_1}{m_1} -\frac{4s_2}{m_1}
+\frac{6f_1}{m_1^2} -\frac{6f_2}{m_1^2} +\frac{2{\color{red}s_1}}{m_1} -\frac{4{\color{red}s_2}}{m_1}
 \\
 &
 &
 &=
 g_2''(x_2)
 =
--\frac{6f_2}{m_2^2}+\frac{6f_3}{m_2^2} - \frac{4s_2}{m_2}+\frac{2s_3}{m_2}
+-\frac{6f_2}{m_2^2}+\frac{6f_3}{m_2^2} - \frac{4{\color{red}s_2}}{m_2}+\frac{2{\color{red}s_3}}{m_2}
 \\
 &\qquad\vdots
 &&
@@ -597,33 +630,34 @@ i&=n
 g_n''(x_n)
 =
 \phantom{-}
-\frac{6f_{n-1}}{m_n^2}-\frac{6f_n}{m_n^2} +\frac{2s_{n-1}}{m_n}-\frac{4s_n}{m_n}
+\frac{6f_{n-1}}{m_n^2}-\frac{6f_n}{m_n^2} +\frac{2{\color{red}s_{n-1}}}{m_n}-\frac{4{\color{red}s_n}}{m_n}.
 \end{align*}
 In allen Gleichungen kommt der Faktor $2$ vor, den wir herausdividieren 
 können.
 Schaffen wir die Terme in $f_i$ auf die rechte Seite und sammeln die
-Terme mit $s_i$ auf der linken Seite, erhalten wir das Gleichungssystem
+Terme mit ${\color{red}s_i}$ auf der linken Seite, erhalten wir das
+Gleichungssystem
 \begin{equation}
 \begin{linsys}{6}
-\displaystyle\frac{2}{m_0} s_0
-	&+&\displaystyle \frac{1}{m_0}s_1
+\displaystyle\frac{2}{m_0} {\color{red}s_0}
+	&+&\displaystyle \frac{1}{m_0}{\color{red}s_1}
 		& &
 			& &
 				& &
 				& &
 					&=&\displaystyle3\frac{f_1-f_0}{m_0^2}
 \\
-\displaystyle \frac{1}{m_0} s_0
-	&+&\displaystyle \biggl(\frac{2}{m_0}+\frac{2}{m_1}\biggr)s_1
-		&+& \displaystyle \frac{1}{m_1}s_2
+\displaystyle \frac{1}{m_0} {\color{red}s_0}
+	&+&\displaystyle \biggl(\frac{2}{m_0}+\frac{2}{m_1}\biggr){\color{red}s_1}
+		&+& \displaystyle \frac{1}{m_1}{\color{red}s_2}
 			& &
 				& &
 				& &
 					&=&\displaystyle3\frac{f_2-f_1}{m_1^2}
 \\
-	& &\displaystyle\frac{1}{m_1} s_1
-		&+&\displaystyle\biggl(\frac{2}{m_1}+\frac{2}{m_2}\biggr) s_2
-			&+& \displaystyle\frac{1}{m_2} s_3
+	& &\displaystyle\frac{1}{m_1} {\color{red}s_1}
+		&+&\displaystyle\biggl(\frac{2}{m_1}+\frac{2}{m_2}\biggr) {\color{red}s_2}
+			&+& \displaystyle\frac{1}{m_2} {\color{red}s_3}
 				& &
 				& &
 					&=&\displaystyle3\frac{f_3-f_2}{m_2^2}
@@ -638,12 +672,12 @@ Terme mit $s_i$ auf der linken Seite, erhalten wir das Gleichungssystem
 	& &
 		& &
 			& &
-			& &\displaystyle \frac{1}{m_{n-2}}s_{n-1}
-				&+&\displaystyle \frac{2}{m_{n-1}}s_n
+			& &\displaystyle \frac{1}{m_{n-2}}{\color{red}s_{n-1}}
+				&+&\displaystyle \frac{2}{m_{n-1}}{\color{red}s_n}
 					&=&\displaystyle3\frac{f_n-f_{n-1}}{m_{n-1}^2}
 \end{linsys}
 \end{equation}
-Die Koeffizientenmatrix und die rechte Seite dieses Gleichungsssytems sind
+Die Koeffizientenmatrix und die rechte Seite dieses Gleichungssytems sind
 \[
 A
 =
@@ -699,7 +733,7 @@ b
 \end{pmatrix}.
 \]
 Die Gleichungen werden besonders einfach, wenn alle Abstände gleich sind,
-zum Beispiel $m=m_0=\dots m_{n-1}$.
+zum Beispiel $m=m_0=\dots =m_{n-1}$.
 Dann kann man die Gleichungen mit $m$ multiplizieren und bekommt für die
 Koeffizientenmatrix und die rechte Seite
 \[
@@ -724,8 +758,12 @@ f_3-f_2\\
 \vdots\\
 f_{n-1}-f_{n-2}\\
 f_n-f_{n-1}
-
 \end{pmatrix}
 \]
+Nach Lösung dieses Gleichungssystems kann man in jedem Teilintervall
+$[x_i,x_{i+1}]$ mit Hilfe des kubischen Hermite-Interpolationspolynoms
+eine Spline-Interpolationsfunktion konstruieren.
+\index{Hermite-Interpolationspolynom}%
+\index{Spline-Interpolationsfunktion}%
 
 \input{chapters/30-interpolation/bezier.tex}

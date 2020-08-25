@@ -8,34 +8,37 @@
 
 Im Kapitel~\ref{chapter:integration}, Integration, wurden die 
 Trapezregel und die Mittelpunktsregel für die numerische Integration, 
-in der Mathematik auch Quadratur genannt, erklärt. 
+\index{numerische Integration}%
+\index{Integration, numerische}%
+auch Quadratur genannt, erklärt. 
+\index{Quadratur}%
 In diesem Kapitel wird eine weitere Methode, die Gauss-Quadratur, erarbeitet.
-\noindent
-Die Gauss-Quadratatur ist ein Verfahren, welches ein bestimmtes Integral der Form
-
+Die Gauss-Quadratur ist ein Verfahren, welches ein bestimmtes Integral der Form
+\index{Gauss-Quadratur}%
 \begin{equation}
     \int_{a}^{b} f(x) \,dx
 \end{equation}
-\noindent
-mit der approximierten Summenformel 
-
-\begin{equation}
+mit der approximierten Summenformel
+\index{Summenformel}
+\begin{equation} \label{quadratur:equation:quadraturapproxsumme}
     I = \sum_{i=0}^{n} A_i f(x_i)
 \end{equation}
-\noindent
 annähert, wobei die Stützstellen $x_i$ und die Gewichtung $A_i$ von der gewählten 
 Methode abhängen. 
 Es werden dabei im Vergleich mit ähnlichen Verfahren viel weniger Funktionsauswertungen benötigt.
-\noindent
+
 Methoden für die Quadratur lassen sich in zwei Gruppen unterteilen: 
-Newton-Cotes Formeln und Gauss Quadratur.
+Newton-Cotes-Formeln und Gauss-Quadratur.
+\index{Newton-Cotes-Formel}
 Die im Kapitel \ref{buch:subsection:mittelpunkt} und \ref{buch:subsection:trapez} beschriebenen
 Trapezregel und Mittelpunktsregel gehören zu der ersten Kategorie.
-Newton-Cotes Formeln lassen sich dadurch erkennen, dass die Stützstellen auf der x-Achse 
+\index{Trapezregel}%
+\index{Mittelpunktsregel}%
+Newton-Cotes-Formeln lassen sich dadurch erkennen, dass die Stützstellen auf der $x$-Achse 
 gleichmässig verteilt sind und eignen sich besonders für die Integration, wenn sich $f(x)$ 
-effizient in kleinen Intervallen berechnen lässt oder bereits von Computern berechnet wurden.
+effizient in kleinen Intervallen berechnen lässt oder bereits von Computern berechnet worden ist.
 
-\newpage
+
 
 
 

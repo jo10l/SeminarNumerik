@@ -6,7 +6,10 @@
 \section{Riemann-Integral und Trapezregel
 \label{buch:section:integraldefinition}}
 \rhead{Riemann-Integral und Trapezregel}
+\index{Riemann-Integral}%
+\index{Trapezregel}%
 Die Stammfunktion 
+\index{Stammfunktion}%
 \[
 F(x) =  \int_a^x f(t)\,dt
 \]
@@ -14,7 +17,8 @@ einer Funktion $f(x)$ ist die Lösung der besonders einfachen
 Differentialgleichung $y'=f(x)$, man könnte also dieses Kapitel
 einfach überspringen und für die Berechnung von Integralen auf
 die Methoden zur Lösung gewöhnlicher Differentialgleichungen
-verweisen.
+verweisen, die in Kapitel~\ref{chapter:ode} besprochen werden.
+\index{Differentialgleichung!gewöhnliche}%
 Dies ist aber nicht unbedingt sinnvoll.
 Das bestimmte Integral einer Funktion zwischen zwei
 Grenzen ist ein wesentlich einfacheres Konzept als die Lösung einer
@@ -33,7 +37,8 @@ Differentialgleichung.
 von Integranden anwendbar sein, auch für solche, für die Lösungsverfahren
 für gewöhnliche Differentialgleichungen schwierig zu konstruieren sind.
 Zum Beispiel verlangen die Eindeutigkeitssätze für gewöhnliche
-Differentialgleichungen typischerweise eine Lifshitz-Eigenschaft.
+Differentialgleichungen typischerweise eine Lipschitz-Eigenschaft.
+\index{Lipschitz-Eigenschaft}%
 Integrale sollten aber auch von Funktionen berechnet werden können, die
 eine solche Eigenschaft nicht haben.
 \item Schnelle Konvergenz für ``gute'' Integranden.
@@ -44,9 +49,11 @@ Der besser geeignete Ausgangspunkt für die Konstruktion eines
 Integrationsverfahrens ist daer die usrprüngliche Definition des
 Riemann-Integrals, welche wir in Abschnitt~\ref{buch:subsection:riemann}
 rekapitulieren.
+\index{Riemann-Integral}%
 Daraus ergibt sich dann die Mittelpunktsformel in
 Abschnitt~\ref{buch:subsection:mittelpunkt}, deren Fehlerverhalten in
 Abschnitt~\ref{buch:subsection:mittelfehler} untersucht wird.
+\index{Mittelpunktformel}%
 
 \subsection{Das Riemann-Integral
 \label{buch:subsection:riemann}}
@@ -55,28 +62,36 @@ Abschnitt~\ref{buch:subsection:mittelfehler} untersucht wird.
 \includegraphics{chapters/40-integration/figures/riemann.pdf}
 \caption{Definition der oberen und unteren Riemann-Summe und des
 Riemann-Integrals
+\index{Riemann-Summe}%
 \label{buch:figure:riemann}}
 \end{figure}
 Im Analysisunterricht wird das Riemann-Integral
+\index{Riemann-Integral}%
 \begin{equation}
 I = \int_a^b f(x)\,dx
 \label{buch:integral}
 \end{equation}
 einer Funktion $f(x)$ zwischen den Grenzen $a$ und $b$ üblicherweise
 wie folgt definiert.
-Zunächst wird das Interval $[a,b]$ mit Hilfe einer Menge
+Zunächst wird das Intervall $[a,b]$ mit Hilfe einer Menge
 $D=\{x_0,x_1,x_2,\dots,x_{n-1}, x_n\}$
 von Zwischenpunkten mit der Eigenschaft
 \[
 a=x_0 < x_1 < x_2 < \dots < x_{n-1} < x_n = b
 \]
-unterteilt.
-Das {\em Korn} der Unterteilung ist die Länge des längsten Teilintervals
+unterteilt (siehe Abbildung~\ref{buch:figure:riemann}).
+\index{Unterteilung}%
+Das {\em Korn} der Unterteilung ist die Länge des längsten Teilintervalls
+\index{Korn}%
 \[
 \delta(D) = \max_{0\le i< n} |x_{i+1}-x_i|.
 \]
 Als Approximationen des Integrals~\eqref{buch:integral} werden dann die
+\index{Approximation}%
 obere und untere Riemann-Summe
+\index{Riemann-Summe}%
+\index{obere Riemann-Summe}%
+\index{untere Riemann-Summe}%
 \begin{align*}
 \overline{I}(D)
 &=
@@ -95,13 +110,21 @@ obere und untere Riemann-Summe
 \min_{\xi\in [x_{i-1},x_i]} f(\xi)
 \end{align*}
 gebildet.
-Aufgrund der Konstruktion ist klar, dass $\underline{I} \le I \le \overline{I}$
+Die untere Riemann-Summe $\underline{I}(D)$ ist in
+Abbildung~\ref{buch:figure:riemann} rot dargestellt, die obere Riemann-Summe
+$\overline{I}(D)$ blau.
+Aufgrund der Konstruktion ist klar, dass
+$\underline{I}(D) \le I \le \overline{I}(D)$
 sein muss.
+
 Für einigermassen ``glatte'' Funtionen wird der Unterschied zwischen
 $\overline{I}(D)$ und $\underline{I}(D)$ kleiner werden, wenn man die 
 Unterteilung verfeinert.
+\index{$\overline{I}(D)$}%
+\index{$\underline{I}(D)$}%
 Falls die obere und die untere Riemann-Summe bei Verfeinerung gegen
 den gleichen Grenzwert streben, sagt man, das {\em Riemann-Integral}
+\index{Verfeinerung}%
 \index{Riemann-Integral}%
 existiere und habe den Wert
 \[
@@ -113,6 +136,7 @@ I
 =
 \lim_{\delta(D)\to 0} \overline{I}(D).
 \]
+
 Wenn das Integral existert, kann man offenbar auch jeden beliebigen
 anderen anderen Wert der Funktion in den Teilintervallen $[x_{i-1},x_i]$
 verwenden.
@@ -122,27 +146,29 @@ Eine Summe der Form
 \qquad\text{mit}\qquad \xi_i \in [x_{i-1},x_i],
 \]
 auch {\em Riemann-Summe} genannt,
-ist für jede beliebige Wahl der Unterteilung $D$ und der Zwischenpunkte
+ist für jede beliebige Wahl der Unterteilung $D$ und der Auswertepunkte
 $\xi_i$ ein Approximation des Integrals $I$ von \eqref{buch:integral}.
+\index{Auswertepunkte}%
 
 Die Riemann-Summe liefert also bereits eine direkte Berechnungsmöglichkeit
-für ein beliebiges Integral, und sie liefert uns auch bereits ein Möglichkeit,
+für ein beliebiges Integral, und sie liefert uns auch ein Möglichkeit,
 die Grössenordnung des zu erwartenden Fehlers abzuschätzen:
 Die Differenz $\overline{I}(D)-\underline{I}(D)$ ist der grösste mögliche
 Fehler.
+\index{Fehler}%
 Der Berechnungsaufwand lässt sich ebenfalls sehr gut abschätzen.
 Es muss eine Summe von $n$ Termen gebildet werden, in jeder Summe
 wird eine Differenz aufeinanderfolgender Teilpunkte gebildet und
 ein Produkt mit dem Funktionswert.
 Es wird offensichtlich, dass ausser für sehr einfache Funktionen, für die
-man das Integral auch analytisch ausrechnen könnte, der Hauptteil der
+man das Integral wohl auch analytisch ausrechnen könnte, der Hauptteil der
 Arbeit in der Berechnung der Funktionswert $f(\xi_i)$ steckt.
 
 Die Riemann-Summe beinhaltet einige Wahlmöglichkeiten, mit der die
 Berechnung optimiert werden kann.
 Wir können die Teilpunkte $D$ wählen und zum Beispiel die Unterteilung
 dort feiner wählen, wo die Funktion sich schnell verändert.
-Wir können auch die Zwischenpunkte wählen.
+Wir können auch die Auswertepunkte $\xi_i$ wählen.
 Für beides ist jedoch eine detaillierte Kenntnis der Funktion notwendig,
 welche nur durch die Berechnung zusätzlicher Funktionswerte gewonnen
 werden kann.
@@ -155,7 +181,8 @@ werden kann.
 \caption{Approximation eines Integrals mit Hilfe der Mittelpunktsregel
 \label{buch:figure:mittelpunkt}}
 \end{figure}
-Die einfachste Art der Unterteilung des Intervalls ist Teilinterval
+\index{Mittelpunktregel}%
+Die einfachste Art der Unterteilung des Intervalls ist Teilintervall
 konstanter Länge zu verwenden. 
 Wir schreiben
 \[
@@ -164,10 +191,11 @@ h = \frac{b-a}n
 x_i = a + ih
 \]
 für die Intervalllänge und die Teilpunkte.
-Werten wir die Funktion im Mittelpunkt eines Teilintervals aus, also
+Werten wir die Funktion im Mittelpunkt eines Teilintervalls aus, also
 in $\xi = (x_{i-1}+x_i)/2 = x_{i-1}+\frac12h = x_i -\frac12h$,
 erhalten wir als Approximation für das Integral~\eqref{buch:integral}
 die {\em Mittelpunktsregel}
+\index{Mittelpunktregel}%
 \begin{equation}
 M(h)
 =
@@ -216,37 +244,52 @@ M(2)
 \]
 In diesem Beispiel liefert die Mittelpunktformel also den exakten Wert
 des Integrals.
-Grund dafür ist natürlich, dass der Graph eine Gerade ist, und die 
+\begin{figure}
+\centering
+\includegraphics{chapters/40-integration/figures/dreiecke.pdf}
+\caption{Auswertung des Integrals $\int_0^1 x\,dx$ mit Hilfe der
+Mittelpunktformel.
+In diesem speziellen Fall liefert die Mittelpunktformel den exakten
+Wert des Integrals, wie die hervorgehobenen Dreiecke illustrieren.
+\label{buch:figure:dreiecke}}
+\end{figure}
+In Abbildung~\ref{buch:figure:dreiecke} kann man den Grund dafür
+erkennen.
+Der Graph ist eine Gerade und die 
 ``fehlenden'' Dreieck in der Summe $M(h)$ links und rechts vom
-Funktionswert genau gleich gross sind, sich diese Fehler also wegheben.
+Funktionswert sind gleich gross, so dass sich diese Fehler wegheben.
 \end{beispiel}
 Das Beispiel illustriert, dass die Approximation gar nicht so schlecht ist,
 wie sich auf Grund der deutlich hervortretenden Stufen in
 Abbildung~\ref{buch:figure:mittelpunkt} vielleicht vermuten lässt.
-
+\index{Approximation}%
+\index{Stufen}%
 
 \subsection{Trapezregel
 \label{buch:subsection:trapez}}
+\index{Trapezregel}%
 \begin{figure}
 \centering
 \includegraphics{chapters/40-integration/figures/trapez.pdf}
 \caption{Approximation eines Integrals mit Hilfe der Trapezregel
 \label{buch:figure:trapez}}
 \end{figure}
-Statt die Fläche unter dem Graphen von $f(x)$ in jedem Teilinterval
+Statt die Fläche unter dem Graphen von $f(x)$ in jedem Teilintervall
 durch den Wert im Mittelpunkt des Intervalls zu berechnen wie bei der
 Mittelpunktsregel, könnte sie auch approximiert werden durch ein
 Trapez mit Eckpunkten $(x_{i-1},0)$, $(x_i,0)$,
 $(x_{i-1},f(x_{i-1}))$ und
-$(x_i,f(x_i))$.
+$(x_i,f(x_i))$ (siehe Abbildung~\ref{buch:figure:trapez}).
 Die Mittellinie eines solchen Trapezes hat die Länge
-$\frac12(f(x_{i-1}) +f(x_i))$, die Höhe ist $x_i-x_{i-1}=h$.
+$m=\frac12(f(x_{i-1}) +f(x_i))$, die Höhe ist $x_i-x_{i-1}=h$.
+\index{Mittellinie}%
+\index{Trapez}%
 Der Flächeninhalt eines einzelnen Trapezes ist daher
 $\frac{h}2(f_(x_{i-1}+f(x_i))$ und es ergibt sich die Approximation
 \begin{align}
 \int_a^b
 f(x)\,dx
-&\simeq
+&\approx
 T(h)
 =
 \frac{h}2
@@ -270,6 +313,7 @@ Die Approximation $T(h)$ in \eqref{buch:equation:trapez} heisst
 Die Trapezregel erfordert genau $n+1$ Funktionsauswertungen.
 
 \subsubsection{Verfeinerung}
+\index{Verfeinerung}%
 Die Trapezregel $T(h)$ benötigt die Funktionswerte an den Stellen $x_i=a+hi$.
 Halbiert man die Schrittweite, müssen zusätzlich die Funktionswerte
 an den Zwischenpunkten
@@ -281,6 +325,7 @@ a+h(i-{\textstyle\frac12})
 für $i=1,\dots,n$ bestimmt werden.
 Das sind genau die Funktionswerte, die in der Mittelpunktformel
 summiert wurden.
+\index{Trapezsumme}%
 Somit kann man die Trapezsumme $T(\frac{h}2)$ durch Umordnen der Terme
 in der Summe durch die Trapezsummen $T(h)$ und die Mittelpunktformel
 $M(h)$ ausdrücken:
@@ -379,6 +424,7 @@ f(a+(n-{\textstyle\frac12})h)
 \end{align}
 Halbierung der Schrittweite bedeutet daher nur, dass man die
 Mittelpunktregel $M(h)$ zusätzlich auswerten muss.
+\index{Schrittweite}%
 
 Für die Berechnung von $T(\frac{h}2)$ sind $2n+1$ Funktionsauswertungen
 notwendig, davon entfallen $n+1$ auf die Berechnung von $T(h)$ und
@@ -393,10 +439,13 @@ I
 \label{buch:equation:kreis}
 \end{equation}
 Es berechnet die Fläche des im ersten Quadranten liegenden Teils des
-Einheitskreises, hat also den Wert $I=\frac{\pi}4\simeq 0.78539816$.
+Einheitskreises, hat also den Wert $I=\frac{\pi}4\approx 0.78539816$.
+\index{Quadrant}%
+\index{Einheitskreis}%
 
 Das Octave-Programm von Listing~\ref{buch:listing:integration} kann zur
 Berechnung verwendet werden.
+\index{Octave}%
 \lstinputlisting[style=Octave,float,caption={Programm zur
 Berechnung der Trapez- und Mittelpunktsummen für das Integral
 \eqref{buch:equation:kreis}},label={buch:listing:integration}]{chapters/40-integration/trapez.m}
@@ -407,7 +456,7 @@ Es ist nicht nötig, eine Funktion für $T(h)$ zu definieren, da
 sich der Wert $T({\textstyle\frac{h}2})$ aus $T(h)$ und $M(h)$ ergibt.
 In Zeile~19 wird der erste Wert $T(1)$ berechnet,
 In der nachfolgenden Schleife zwischen Zeilen 21 und 24 wird die
-Rekursion \eqref{buch:equation:TMrekursion} angewendet.
+Rekursionsformel~\eqref{buch:equation:TMrekursion} angewendet.
 Die sich ergebenden Zahlenwerte sind in Tabelle~\ref{buch:table:kreis}
 zusammengestellt.
 
@@ -439,11 +488,13 @@ zusammengestellt.
   19&  0.\underline{78539816}12070116&  0.0000038146972656\\
   20&  0.\underline{78539816}26230124&  0.0000019073486328\\
 \hline
+\text{exakt}
     &  0.7853981633974483            &                    \\
 \hline
 \end{tabular}
 \caption{Approximation des Integrals~\eqref{buch:equation:kreis}
 mit Hilfe der Trapezregel.
+\index{Trapezregel}%
 Unterstrichen sind die Stellen des Wertes von $T(h)$, die bereits korrekt sind.
 \label{buch:table:kreis}}
 \end{table}
@@ -454,19 +505,24 @@ Es fällt auf, dass die Konvergenz ziemlich langsam ist.
 Der Fehler von $T(h)$ nimmt ungefähr so schnell ab, wie $h$ kleiner wird.
 Sollte sich diese Systematik bestätigen lassen, könnte man daraus ein
 Verfahren zur Beschleunigung der Konvergenz ableiten.
+\index{Konvergenz}%
+\index{Konvergenzbeschleunigung}%
 \end{beispiel}
 
 \subsection{Fehler von Trapez- und Mittelpunktsregel
 \label{buch:subsection:mittelfehler}}
 Im Beispiel im vorangenangenen Abschnitt hat sich in
-Tabelle~\ref{buch:table:kreis} eine Gesetzmässigkeit in Entwicklung der
+Tabelle~\ref{buch:table:kreis} eine Gesetzmässigkeit in der Entwicklung der
 Fehler von $T(h)$ gezeigt.
 Es schien, als wäre $I-T(h)\sim h$.
 Ziel dieses Abschnittes ist, dies nachzuweisen.
 Als Werkzeug dafür benötigen wir die Euler-Maclaurinsche Summenformel.
-
+\index{Euler-Maclaurinsche Summenformel}%
+\index{Summenformel}%
 
 \subsubsection{Partielle Integration}
+\index{partielle Integration}%
+\index{Integration!partiell}
 Der Fehler der Trapezregel dürfte umso grösser werden, je stärker der
 Graph der Funktion $f(x)$ gekrümmt ist.
 Wir vermuten daher einen Zusammenhang zwischen dem Fehler und der
@@ -490,6 +546,7 @@ I
 \notag
 \intertext{wobei wir für $p_1(t)$ ein beleibiges Polynom wählen können,
 dessen Ableitung $p_1'(t)=1$ ist.
+\index{Polynom}%
 Das zweite Integral können wir nochmals partiell integrieren und
 erhalten
 }
@@ -528,9 +585,11 @@ Schritten
 \end{align}
 Die Polynome $p_k(t)$ sind bis jetzt noch nicht eindeutig festgelegt, es ist
 nur die Rekursionsformel
+\index{Rekursionsformel}%
 \[
 p'_k(t) = p_{k-1}(t)
-\qquad\text{für alle $k>0$ und}\qquad
+\qquad\text{für alle $k>0$}
+\qquad\text{und}\qquad
 p_0(t) = 1
 \]
 gegeben.
@@ -538,7 +597,7 @@ Durch eine geschickte Wahl der Polynome soll jetzt aus der Entwicklung
 möglichst viel Information über das Integral extrahiert werden.
 
 Wir betrachten zunächst den Fall, dass $g(t)$ selbst ein Polynom ist.
-Genügend hohe Ableitungen eines Polynoms verschwinden, ist die Ordnung $k$
+Genügend hohe Ableitungen eines Polynoms verschwinden: Ist die Ordnung $k$
 der Ableitung grösser als der Grad des Polynoms, dann ist $g^{(k)}(t)=0$.
 Dies bedeutet, dass in der Summe~\eqref{buch:equation:partintsumme}
 der Integralterm verschwindet, sobald $k$ grösser als der Grad von $g$ ist.
@@ -549,6 +608,7 @@ also genau dann, wenn das Integral von $p_k(t)$ verschwindet.
 Wir legen daher die Polynome $p_k(t)$ durch die Forderung fest, dass
 \begin{equation}
 \int_0^1 p_k(t)\,dt = 0\qquad\forall k
+\label{buch:integral:equation:integralbedingung}
 \end{equation}
 sein soll.
 
@@ -569,7 +629,8 @@ verschwindet.
 Es folgt $C=-\frac12$ und $p_1(t)=t-\frac12$.
 
 Für $p_2(t)$ folgt zunächst durch Integration $p_2(t)=\frac12t^2-\frac12t+C$
-und dann aus der Integralbedingung
+und dann aus der
+Integralbedingung~\eqref{buch:integral:equation:integralbedingung}
 \[
 \int_0^1 p_2(t) \,dt
 =
@@ -616,34 +677,35 @@ p_4(t) &= \frac1{4!}\cdot B_4(t) & B_4(t) &= t^4-2t^3+t^2-\frac1{30}          \\
 p_5(t) &= \frac1{5!}\cdot B_5(t) & B_5(t) &= t^5-\frac52t^4-\frac53t^3-\frac16t
 \end{align*}
 Die Polynome $B_k(t)$ heissen {\em Bernoulli-Polynome}.
-\index{Bernoulli-Polynome}
+\index{Bernoulli-Polynome}%
 
 \subsubsection{Eigenschaften der Polynome $p_k(t)$}
 Auch ohne die expliziten Formeln des vorangenangen Abschnittes lassen sich
 nützliche Symmetrieeigenschaften der Polynome $p_k(t)$ bezüglich des
 Punktes $t=\frac12$ ableiten.
+\index{Symmetrie}%
 
-Die Symmetrieeigenschaften sind etwas verschleiert durch die Wahl
-des Intervals $[0,1]$ als Definitionsbereich.
 Wir untersuchen die Symmetrie der Polynome bezüglich des Punktes
 $t_0=\frac12$.
 Wir schreiben $\tilde{p}_k(t)$ für die Stammfunktion von $p_{k-1}(t)$ 
 mit Integrationskonstante $C_k=0$, es ist also
+\index{Stammfunktion}%
+\index{Integrationskonstante}%
 \[
 p_k(t) = \tilde{p}_k(t) + C_k
 \qquad\text{und}\qquad
 \tilde{p}_k(0)=0.
 \]
 Die Integrationskonstante $C_k$ wurde im vorangegangenen Abschnitt
-jeweils bestimmt.
+bereits bestimmt.
 
 Zunächst halten wir fest, dass die Polynome $p_k(t)$ alle
 entweder gerade oder ungerade sind bezüglich $t_0$.
 
 \begin{lemma}
 \label{buch:lemma:pk}
-Die Polynome $p_{2k}(t)$ sind gerade bezüglich $t_0$, die Polynome
-$p_{2k+1}(t)$ sind ungerade bezüglich $t_0$.
+Die Polynome $p_{2k}(t)$ sind gerade bezüglich $\frac12$, die Polynome
+$p_{2k+1}(t)$ sind ungerade bezüglich $\frac12$.
 Insbesondere ist $p_{2k}(0)=p_{2k}(1)$ und
 $p_{2k+1}(1)=-p_{2k+1}(0)$.
 \end{lemma}
@@ -653,64 +715,46 @@ Die ersten zwei Polynome $p_0(t)=1$ und $p_1(t)=t-\frac12$ haben
 tatsächlich die genannten Symmetrieeigenschaften.
 Um die Aussage zu beweisen muss jetzt also nur untersucht werden,
 dass $p_k(t)$ die verlangten Eigenschaften hat, wenn alle vorangegangenen
-Polynome die ``richtigen'' Symmetrien hat.
+Polynome die ``richtigen'' Symmetrien haben.
 
-Nehmen wir an, dass $p_{k-1}(t)$ gerade ist bezüglich $t_0$,
-wir müssen zeigen, dass $p_k(t)$ ungerade bezüglich $t_0$ ist.
-Zunächst ist klar, dass $p_k(t)-p_k(t_0)$ ungerade ist bezüglich
-$t_0$.
-Folglich verschwindet das Integral von $p_k(t)-p_k(t_0)$ oder
+Zunächst lernt man in der Analysis, dass die Ableitung einer geraden
+Funktion ungerade ist und die Ableitung einer ungeraden Funktion gerade.
+Dies impliziert auch, dass die Ableitung einer bezüglich $t_0$ geraden
+Funktion ungerade ist bezüglich $t_0$ und umgekehrt.
+
+Die Funktion $p_k(t)$ ist jedoch eine Stammfunktion, nicht eine
+Ableitung.
+Die Stammfunktion einer bezüglich $t_0$ ungeraden Funktion $p_{k-1}(t)$ ist
+gerade bezüglich $t_0$, unabhängig von der gewählten Integrationskonstante,
+da eine Konstante auch gerade ist bezüglich $t_0$.
+Die Stammfunktion einer bezüglich $t_0$ geraden Funktion $p_{k-1}(t)$ ist jedoch
+nicht automatisch ungerade bezüglich $t_0$, sondern nur dann, wenn
+sie den Wert $0$ hat in $t_0$.
+Es folgt, dass $p_{k}(t)-p_{k}(t_0)$ eine bezüglich $t_0$ ungerade Funktion
+ist.
+
+Im vorliegenden Fall ist $t_0=\frac12$ und wir haben die zusätzliche
+Bedingung~\eqref{buch:integral:equation:integralbedingung}, die wir
+in dem Fall, wo $p_{k-1}(t)$ gerade ist,
+ausnutzen können.
+Da $p_k(t)-p_k(\frac12)$ ungerade ist, gilt
 \[
 0
 =
-\int_0^1p_{k}(t)-p_{k}(t_0)\,dt
+\int_0^1 p_k(t)-p_k(\frac12)\,dt
 =
-\int_0^1p_k(t)\,dt - p_k(t_0)
-=
--p_k(t_0),
+\int_0^1 p_k(t)\,dt - p_k(\frac12).
 \]
-d.~h.~auch $p_k(t_0)$ verschwindet und $p_k(t)$ ist bereits ungerade
-bezüglicch $t_0$.
-
-Nehmen wir jetzt an, dass $p_{k-1}(t)$ ungerade ist bezüglich $t_0$,
-wir müssen zeigen, dass $p_k(t)$ gerade ist.
-Es ist
-\begin{align*}
-p_k(t_0 +\tau)
--
-p_k(t_0)
-&=
-\int_{t_0}^{t_0+\tau} p_{k-1}(t)\,dt
-=
-\int_0^\tau p_{k-1}(t_0+s)\,ds
-\\
-&=
--
-\int_0^\tau p_{k-1}(t_0-s)\,ds
-=
-\int_0^{-\tau} p_{k-1}(t_0+\tilde{s})\,d\tilde{s}
-&&\text{mit}
-&\tilde{s}&=-s
-\\
-&=
-\int_{t_0}^{t_0-\tau} p_{k-1}(\tilde{t})\,d\tilde{t}
-&&\text{mit}
-&\tilde{t}&=t_0+\tilde{s}
-\\
-&=
-p_k(t_0-\tau)-p_k(t_0)
-\\
-\Rightarrow\qquad
-p_k(t_0+\tau)
-&=
-p_k(t_0-\tau),
-\end{align*}
-das Polynom $p_k(t)$ ist also gerade bezüglich $t_0$.
+Darin verschwindet der erste Summand wegen
+\eqref{buch:integral:equation:integralbedingung}, also
+gilt auch $p_k(\frac12)=0$.
+Folglich ist $p_k(t)$ ungerade bezüglich $\frac12$.
 \end{proof}
 
 Die spezielle Wahl der Polynome $p_k(t)$ führt jetzt dazu, dass die
-Formel für das Integral \eqref{buch:equation:basispartint}
-von $g(t)$ über das Interval $[0,1]$ weiter vereinfacht werden kann.
+Formel~\eqref{buch:equation:partintsumme}
+für das Integral~\eqref{buch:equation:basispartint}
+von $g(t)$ über das Intervall $[0,1]$ weiter vereinfacht werden kann.
 Die Werte von $p_k(t)$ an den Intervallgrenzen haben gemäss
 Lemma~\ref{buch:lemma:pk} gleiche Werte für gerade $k$ und entgegengesetzte
 Werte für ungerade $k$.
@@ -745,17 +789,22 @@ p_2(1) \bigl(g'(0)-g'(1)\bigr)
 \end{equation}
 welche einen Zusammenhang zwischen dem Integral und der einfachsten Form
 der Trapezsumme herstellt.
+\index{Trapezsumme}%
 
-\subsubsection{Euler-Maclaurin Summenformel}
+\subsubsection{Euler-Maclaurin-Summenformel}
+\index{Euler-Maclaurin-Summenformel}%
+\index{Summenformel}%
 Unser Interesse gilt den Summen $T(h)$ und $M(h)$, wir möchten gerne den
-Fehler solche Summen abschätzen.
+Fehler solcher Summen abschätzen.
 Die Formel~\eqref{buch:equation:trapez0} vergleicht ein einzelnes Trapez
-(den Wert $T(1)$ auf der rechten Seite) mit dem gesuchten Integral.
-und beschreibt eine Formel für den Unterschied.
-Um den Fehler der Trapezformel zu bestimmen, müssen wir Sumen von vielen
+(den Wert $T(1)$ auf der rechten Seite) mit dem gesuchten Integral
+und gibt eine Formel für den Unterschied.
+Um den Fehler der Trapezformel zu bestimmen, müssen wir Summen von vielen
 Trapezen berechnen.
+\index{Trapezformel}%
 
-Wir bestimmen jetzt das Integral
+Wir beginnen mit Schrittlänge $h=1$ bestimmen jetzt das Integral
+\index{Schrittlänge}%
 \begin{align*}
 I_n
 &=
@@ -791,6 +840,9 @@ p_4(1) \sum_{i=1}^n \bigl(g'''(i)-g'''(i-1)\bigr)
 +
 \int_0^1 p_k(t) \sum_{i=1}^n g^{(4)}(k+t)\,dt.
 \end{align*}
+Man beachte, dass Ableitungen gerader Ordnung als Summen in die
+Summen eingehen, die Ableitungen ungerader Ordnung jedoch als Differenzen.
+
 In den Summen über Differenzen heben sich die inneren Terme jeweils
 weg:
 \begin{align*}
@@ -831,17 +883,22 @@ p_4(1) \bigl(g'''(n)-g'''(0)\bigr)
 \label{buch:equation:eulermaclaurin4}
 \end{equation}
 Dies ist ein Spezialfall der {\em Euler-Maclaurinschen Summenformel}.
-\index{Euler-Maclaurinsche Summenformel}
-\index{Summenformel, Euler-Maclaurin}
+\index{Euler-Maclaurinsche Summenformel}%
+\index{Euler-Maclaurin-Summenformel}%
+\index{Summenformel, Euler-Maclaurin}%
 
 \subsubsection{Fehler der Trapezformel}
+\index{Trapezformel!Fehler}%
+\index{Fehler!Trapezformel}%
 Die Euler-Maclaurinsche Summenformel~\eqref{buch:equation:eulermaclaurin4}
 kann noch etwas vereinfacht werden.
 Wir wissen, dass $p_3(t)$ eine bezüglich $t_0=\frac12$ ungerade Funktion ist,
 also ist $p_3(1)=-p_3(0)=0$, wie man aus der früher hergeleiteten
 expliziten Formel für $p_3(t)$ berechnen kann.
-Damit vereinfacht sich die Formel zu
-\begin{align*}
+Damit vereinfacht sich die Formel~\eqref{buch:equation:eulermaclaurin4}
+zu
+\begin{equation}
+\begin{aligned}
 \int_0^n g(t)\,dt
 &=
 \sum_{i=1}^n \frac12\bigl(g(i-1)+g(i)\bigr)
@@ -852,13 +909,16 @@ p_4(1)\bigl(g'''(n)-g'''(0)\bigr)
 \\
 &\qquad
 +
-\int_0^1 p_4(t) \sum_{i=1}^n g^{(4)}(i+t)\,dt
-\end{align*}
+\int_0^1 p_4(t) \sum_{i=1}^n g^{(4)}(i+t)\,dt.
+\end{aligned}
+\label{buch:equation:eulermaclaurin5}
+\end{equation}
 Der erste Term auf der rechten Seite sieht aus wie eine Trapezsumme,
 nur ist es die falsche Funktion und es sind die falschen Teilpunkte.
 
 Durch eine geeignete Variablentransformation können wir das Intervall
 $[a,b]$ auf das Intervall $[0,n]$ transformieren.
+\index{Variablentransformation}%
 Dazu schreiben wir
 \[
 x = a+ \frac{b-a}n\cdot t = a+ht 
@@ -885,7 +945,7 @@ Zunächst folgt aus der Variablentransformation
 h\int_0^n g(t)\,dt.
 \end{align*}
 In der Euler-Maclaurinschen Summenformel brauchen wir die Ableitungen
-von $g(t)$ die wir natürlich wieder durch Ableitungen von $f(x)$ 
+von $g(t)$, die wir natürlich wieder durch Ableitungen von $f(x)$ 
 ausdrücken möchten:
 \begin{align*}
 g'(t)&=hf'(a+ht)=hf'(x)\\
@@ -893,7 +953,8 @@ g''(t)&=h^2f''(x)\\
 \vdots\;&\quad\vdots\\
 g^{(k)}(t)&=h^kf^{(k)}(x)
 \end{align*}
-Setzen wir dies alles in die Summenformel ein, erhalten wir
+Setzen wir dies alles in die Summenformel~\eqref{buch:equation:eulermaclaurin5}
+ein, erhalten wir
 \begin{align*}
 \int_a^b f(x)\,dx
 &=
@@ -942,13 +1003,13 @@ p_4\bigl({\textstyle\frac{1}{h}}(x-x_{i-1})\bigr)
 f^{(4)}(x)\,dx
 \intertext{%
 Die Funktion $p_4$ im Integranden kann mit Hilfe der früher abgeleiteten
-expliziten Formel für $p_4(t)$ abgeschätze werden, sei 
-$K$ eine Konstante so dass $|p_4(t)|\le K$ für $0\le t\le 1$.
+expliziten Formel für $p_4(t)$ abgeschätzt werden.
+Sei $K$ eine Konstante so, dass $|p_4(t)|\le K$ für $0\le t\le 1$.
 Dann ist können wir das Integral auf der rechten Seite abschätzen durch
 }
 \biggl|\int_0^1 p_4(t) g^{(4)}(i+t)\,dt\biggr|
 &\le
-h^3 \int_{x_{i-1}}^{x_i} K |f^{(4)}(x)|\,dx
+h^3 \int_{x_{i-1}}^{x_i} K |f^{(4)}(x)|\,dx.
 \intertext{Summieren wir über $i$ erhalten wir}
 \biggl|
 \sum_{i=1}^n
@@ -981,7 +1042,8 @@ im allgemeinen viel kleiner.
 
 Man beachte, dass diese Abschätzungen nur funktionieren, wenn die
 dritten Ableitungen von $f(x)$ an den Grenzen und die vierten Ableitungen
-von $f(x)$ im inneren des Intervals $[a,b]$ nicht übermässig gross werden.
+von $f(x)$ im Inneren des Intervalls $[a,b]$ nicht übermässig gross werden.
+\index{Abschätzung}%
 
 \subsubsection{Wie muss $h$ gewählt werden?}
 Wie gross $h$ genau gewählt werden muss hängt natürlich von der Konstanten
@@ -998,15 +1060,16 @@ höchstens $C=1/6$ ist.
 Einen Fehler der Grösse $\varepsilon$ erhält man also, wenn man $h$ so wählt,
 dass $h^2/6 < \varepsilon$ ist, oder $h<\sqrt{6\varepsilon}$.
 Für 10 Nachkommastellen bedeutet dies $h < \sqrt{6\cdot10^{-10}}$.
-Um das Integral über das Interval $[0,\pi]$ mit dieser Schrittweite
+Um das Integral über das Intervall $[0,\pi]$ mit dieser Schrittweite
 zu berechnen, sind über 128000 Funktionsauswertungen notwendig.
 
 Man kann die Frage auch umgekehrt stellen: Welche Genauigkeit kann man
 sinnvollerweise von der Trapezregel erwarten?
 Dabei kann man ein in vernünftiger Zeit durchführebare Rechnung von
 etwa $10^3$ bis $10^4$ Funktionsauswertungen zu Grunde legen.
-Dies führt im genannte Beispield es Integrals der Sinusfunktion auf
+Dies führt im genannte Beispiel des Integrals der Sinusfunktion auf
 eine Schrittweite zwischen $h=0.003$ und $h=0.0003$.
+\index{Sinusfunktion}%
 Für diese $h$ wird der Fehler zwischen $0.00001$ und $0.0000001$ gross.
 Viel mehr als etwa sechs Nachkommastellen lassen sich mit der Trapezregel
 alleine also nicht gewinnen.
@@ -1015,6 +1078,7 @@ bestätigt.
 
 Das Beispiel auf Seite~\pageref{buch:beispiel:kreis} zeigt auch, dass
 die Konvergenz noch schlechter sein kann.
+\index{Konvergenz}%
 Da die Ableitung des Integranden in diesem Bespiel an der Stelle $x=1$
-divergiert, wird der Koeffiziente $C$ in der Fehlerformel sehr gross.
+divergiert, wird der Koeffizient $C$ in der Fehlerformel sehr gross.
 

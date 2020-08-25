@@ -31,6 +31,9 @@ i,k\in\mathbb Z,
 \]
 sie bilden ein Gitter $\Gamma$ mit Gitterkonstante oder Schrittweite
 $h_x$ in $x$-Richtung und $h_y$ in $y$-Richtung.
+\index{Gitter}%
+\index{Gitterkonstante}%
+\index{Schrittweite}%
 
 Die Funktion $u(x,y)$ nimmt in den Punkten $x_{ik}$ die Werte
 $u_{ik} = u(x_{ik})$ an.
@@ -38,10 +41,11 @@ Eine approximative Lösung der Differentialgleichung ist also
 die Bestimmung der Werte $u_{ik}$ für die Punkte $x_{ik}$, die in
 $\Omega$ liegen, für die also $x_{ik}\in\Omega$ gilt.
 Dazu müssen jetzt die Randbedingungen und die Differentialgleichung
-übersetzt werden in Gleichungen für die Unbekannten $u_{ik}$.
+in Gleichungen für die Unbekannten $u_{ik}$ übersetzt werden.
 
 \subsubsection{Dirichlet-Randbedingungen}
 Dirichlet-Randbedingungen geben die Werte auf dem Rand vor.
+\index{Dirichlet-Randbedingung}%
 Liegt ein Punkt $x_{ik}$ des Gitters $\Gamma$ auf dem Rand $\partial\Omega$
 von $\Omega$, dann geben die Dirichlet-Randbedingungen den Wert
 dieser Variablen vor.
@@ -66,13 +70,13 @@ die sogenannten {\em Vorwärtsdifferenzen}
 \index{Vorwärtsdifferenz}%
 \begin{align}
 \frac{\partial u}{\partial x} (x_{ik}) 
-&\simeq
+&\approx
 \frac{u(x_{i+1,k}) - u(x_{ik})}{h_x}
 &
 &\text{und}
 &
 \frac{\partial u}{\partial y} (x_{ik}) 
-&\simeq
+&\approx
 \frac{u(x_{i,k+1}) - u(x_{ik})}{h_y}
 \label{chapter:pde:approx1st}
 \end{align}
@@ -82,6 +86,7 @@ indem $h_x$ und $h_y$ verkleinert werden.
 
 Der Fehler der Approximation~\eqref{chapter:pde:approx1st} ergibt sich
 aus dem Mittelwertsatz der Differentialrechnung.
+\index{Mittelwertsatz}%
 Es gibt Zahlen $\xi$ und $\eta$ zwischen $ih_x$ und $(i+1)h_x$
 bzw.~$kh_y$ und $(k+1)h_y$ derart, dass
 \begin{align*}
@@ -99,16 +104,16 @@ Dies zeigt, dass die Approximation~\eqref{chapter:pde:approx1st}
 nicht für die Werte der Ableitungen im Punkt $x_{ik}$ repräsentativ 
 sein kann.
 Alternativ könnten statt der Vorwärtsdifferenzen die {\em Rückwärtsdifferenzen}
-\index{Rückwärtsdifferenze}
+\index{Rückwärtsdifferenz}%
 \begin{align}
 \frac{\partial u}{\partial x} (x_{ik}) 
-&\simeq
+&\approx
 \frac{u(x_{ik}) - u(x_{i-1,k})}{h_x}
 &
 &\text{und}
 &
 \frac{\partial u}{\partial y} (x_{ik}) 
-&\simeq
+&\approx
 \frac{u(x_{ik}) - u(x_{i,k-1})}{h_y}
 \label{chapter:pde:approxrueckwaerts}
 \end{align}
@@ -118,7 +123,7 @@ $(\xi,kh_y)$ und $(ih_x,\eta)$, an dem diese Ableitungswerte angenommen
 werden, liegen jetzt einfach links bzw.~unterhalb von von $x_{ik}$.
 
 Die Vorwärtsdifferenzen~\eqref{chapter:pde:approx1st} sind also
-fehlerhaft genauso wie
+genauso fehlerhaft wie
 die Rückwärtsdifferenzen~\eqref{chapter:pde:approxrueckwaerts},
 wenngleich in eine andere Richtung.
 Ein Mittelweg könnte ein Differenzenquotient
@@ -159,7 +164,7 @@ annimmt.
 Die Vorwärts-, Rückwärts- und symmetrischen Differenzen sind
 \begin{align*}
 f'(x_0)
-&\simeq
+&\approx
 \frac{f(x_0+h)-f(x_0)}{h}
 =
 \frac{(x_0+h)^2-x_0^2}{h}
@@ -168,7 +173,7 @@ f'(x_0)
 &&=
 f'(x_0 + {\textstyle\frac12}h)
 \\
-&\simeq
+&\approx
 \frac{f(x_0)-f(x_0-h)}{h}
 =
 \frac{x_0+^2-(x_0-h)^2}{h}
@@ -177,7 +182,7 @@ f'(x_0 + {\textstyle\frac12}h)
 &&=
 f'(x_0 - {\textstyle\frac12}h)
 \\
-&\simeq
+&\approx
 \frac{f(x_0+h)-f(x_0-h)}{2h}
 =
 \frac{(x_0+h)^2-(x_0-h)^2}{2h}
@@ -188,9 +193,10 @@ f'(x_0).
 \end{align*}
 Für eine quadratische Funktion liefert also die symmetrische Differenz
 den exakten Wert der Ableitung im Punkt $x_0$, während die Vorwärts-
-und Rückwertsdifferenzen die Ableitungen in Punkten zwischen
-den Gitterpunkten rechts bzw.~links von $x_0$
+und Rückwertsdifferenzen die Ableitungen in Punkten genau in der Mitte
+zwischen den Gitterpunkten rechts bzw.~links von $x_0$
 (Abbildung~\ref{buch:pde:diffex}).
+\index{quadratische!Funktion}%
 \end{beispiel}
 
 \subsubsection{Zweite Ableitungen}
@@ -203,11 +209,12 @@ In den roten Kreisen das Gewicht des zugehörigen Wertes der Funktion
 im Differenzenquotienten.
 \label{buch:pde:diff2}}
 \end{figure}
-Eine Approximation für die zweite Ableitung können wir erhalten als
-Differenzenquotient aus der Vorwärts- und der Rückwärtsdifferenz:
+Eine Approximation für die zweite Ableitung können wir als
+Differenzenquotient aus der Vorwärts- und der Rückwärtsdifferenz
+erhalten:
 \begin{align*}
 \frac{\partial^2 u}{\partial x^2}(x_{ik})
-&\simeq
+&\approx
 \frac{1}{h_x}\biggl(
 \frac{\partial u}{\partial x}(x_{i-\frac12,k})
 -
@@ -227,12 +234,12 @@ Differenzenquotient aus der Vorwärts- und der Rückwärtsdifferenz:
 \end{align*}
 Das Problem wird aber schwieriger, wenn eine gemischte Ableitung
 approximiert werden soll.
-Hier kann jede beliebige Kombination von Vorwärts- und Rückwärts-Differenzen
+Hier kann jede beliebige Kombination von Vorwärts- und Rückwärtsdifferenzen
 verwendet werden.
 Mit Vorwärtsdifferenzen erhält man zum Beispiel
 \begin{align*}
 \frac{\partial^2u}{\partial x\,\partial y}(x_{ik})
-&\simeq
+&\approx
 \frac{1}{h_x}\biggl(
 \frac{\partial u}{\partial y}(x_{i+1,k})
 -
@@ -251,12 +258,14 @@ Mit Vorwärtsdifferenzen erhält man zum Beispiel
 u_{i+1,k+1}-u_{i+1,k}
 -
 u_{i,k+1}+u_{ik}
-)
+).
 \end{align*}
 Die in Abbildung~\ref{buch:pde:diff2} dargestellten ``Schablonen''
 zeigen schematisch, wie die Ableitungen berechnet werden.
+\index{Schablone}%
 In den roten Kreisen um die beteiligten Knotenvariablen stehen die
 Gewichte, mit denen die Knotenvariablen multipliziert werden müssen.
+\index{Knotenvariable}%
 
 \subsubsection{Neumann-Randbedingungen}
 Neumann-Randbedingungen geben die Ableitungen in Richtung der Normalen
@@ -291,25 +300,25 @@ können wir Vorwärts- bzw.~Rückwärtsdifferenzen verwenden:
 \frac{\partial u}{\partial n}(x_{0k})
 =
 \frac{\partial u}{\partial x}(x_{0k})
-&\simeq
+&\approx
 \frac{u_{1k}-u_{0k}}{h_x}
 &&\text{und}&
 \frac{\partial u}{\partial n}(x_{Nk})
 =
 \frac{\partial u}{\partial x}(x_{Nk})
-&\simeq
+&\approx
 \frac{u_{Nk}-u_{N-1,k}}{h_x},
 \\
 \frac{\partial u}{\partial n}(x_{i0})
 =
 \frac{\partial u}{\partial y}(x_{i0})
-&\simeq
+&\approx
 \frac{u_{i1}-u_{i0}}{h_y}
 &&\text{und}&
 \frac{\partial u}{\partial n}(x_{iM})
 =
 \frac{\partial u}{\partial y}(x_{iM})
-&\simeq
+&\approx
 \frac{u_{iM}-u_{i,M-1}}{h_y}.
 \end{align*}
 Natürlich gelten die oben formulierten Vorbehalte bezüglich der
@@ -320,11 +329,13 @@ des Gebietes bekannt sind.
 
 
 \subsubsection{Das Poisson-Problem}
+\index{Poisson-Problem}%
 \begin{figure}
 \centering
 \includegraphics{chapters/70-pde/images/laplace.pdf}
 \caption{Approximation des Laplace-Operators mit Summen von symmetrischen
 Differenzen.
+\index{Laplace-Operator}%
 In den roten Kreisen die Gewichte, mit denen die Knotenvariablen 
 multipliziert werden müssen, um den Ausdruck
 \eqref{pde:eqn:poissongl} zu ergeben.
@@ -332,6 +343,8 @@ multipliziert werden müssen, um den Ausdruck
 \end{figure}
 Das Poisson-Problem ist die Differentialgleichung
 \begin{equation}
+\Delta u
+=
 \frac{\partial^2 u}{\partial x^2}
 +
 \frac{\partial^2 u}{\partial y^2}
@@ -354,7 +367,7 @@ gegeben, nur die Werte in den roten Punkten müssen bestimmt werden.
 \eqref{buch:pde:poissondgl}.
 \label{buch:pde:poissongebiet}}
 \end{figure}
-Wir diskretisieren das Gebiet (Abbildung~\ref{buch:pde::poissongebiet})
+Wir diskretisieren das Gebiet (Abbildung~\ref{buch:pde:poissongebiet})
 mit Hilfe des Gitters mit Gitterkonstanten
 $h=h_x=h_y=1/N$.
 Wir erhalten die $(N+1)^2$ Unbekannten $u_{ik}$ mit $0\le i\le N$ und 
@@ -380,6 +393,8 @@ Die Differentialgleichung kann für jeden Punkt im Inneren des Gebietes
 $\Omega$ aufgestellt werden (die roten Punkte in
 Abbildung~\ref{buch:pde:poissongebiet}), es gilt
 \begin{align}
+\Delta u
+=
 \frac{\partial^2 u}{\partial x^2}(u_{ik})
 +
 \frac{\partial^2 u}{\partial y^2}(u_{ik})

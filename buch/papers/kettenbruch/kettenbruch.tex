@@ -1,0 +1,100 @@
+%
+% kettenbruch.tex -- Paper zum Thema <kettenbruch>
+%
+% (c) 2020 Hochschule Rapperswil
+%
+\documentclass{book}
+\usepackage{etex}
+\usepackage{geometry}
+\geometry{papersize={170mm,240mm},total={140mm,200mm},top=21mm,bindingoffset=10mm}
+\usepackage[english,ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{cancel}
+\usepackage{times}
+\usepackage{amsmath,amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{textcomp}
+\usepackage{txfonts}
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+\usepackage{bm}
+\usepackage{epic}
+\usepackage{verbatim}
+%\usepackage{suffix}
+\usepackage{paralist}
+\usepackage{makeidx}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{pdftexcmds}
+\usepackage{pgfmath}
+\usepackage[autostyle=false,english=american]{csquotes}
+\usepackage{wasysym}
+\usepackage{environ}
+\usepackage{appendix}
+\usepackage[all]{xy}
+\usetikzlibrary{calc,intersections,through,backgrounds,graphs,positioning,shapes,arrows,fit,math}
+\usetikzlibrary{patterns,decorations.pathreplacing}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{external}
+\usetikzlibrary{datavisualization}
+\usepackage[europeanvoltages,
+            europeancurrents,
+            europeanresistors,   % rectangular shape
+            americaninductors,   % "4-bumbs" shape
+            europeanports,       % rectangular logic ports
+            siunitx,             % #1<#2>
+            emptydiodes,
+            noarrowmos,
+            smartlabels]         % lables are rotated in a smart way
+           {circuitikz}          %
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usetikzlibrary{arrows}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{gensymb}
+\usepackage{mathtools}
+
+% import the listing styles
+
+\usepackage{caption}
+\usepackage[mode=buildnew]{standalone}
+\usepackage[backend=bibtex]{biblatex}
+\begin{document}
+\def\chapterauthor#1{{\large #1}\bigskip\bigskip}
+
+\newenvironment{beispiel}{%
+\begin{proof}[Beispiel]%
+\renewcommand{\qedsymbol}{$\bigcirc$}
+}{\end{proof}}
+\setcounter{page}{352}
+\setcounter{chapter}{16}
+\allowdisplaybreaks
+\renewcommand{\floatpagefraction}{0.7}
+\pagestyle{fancy}
+\lhead{}
+\rhead{}
+
+\chapter{Kettenbrüche\label{chapter:kettenbruch}}
+\lhead{Kettenbrüche}
+\begin{refsection}
+\chapterauthor{Benjamin Bouhafs-Keller}
+
+\input{einleitung.tex}
+\input{rationalezahlen.tex}
+\input{irrationalezahlen.tex}
+\input{approximation.tex}
+\input{folgerungen.tex}
+
+\printbibliography[heading=subbibliography]
+\end{refsection}
+\end{document}

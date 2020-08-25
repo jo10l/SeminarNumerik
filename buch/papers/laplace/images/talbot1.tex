@@ -1,0 +1,73 @@
+%
+% talbot.tex -- Talbot Contour
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\params{1.000001}
+\def\paraml{1.288}
+\def\paramv{0.81}
+
+\pgfmathparse{3.1415*\paraml*\paramv}
+\xdef\y{\pgfmathresult}
+
+\fill[color=gray!10] (-3.1,-\y) rectangle (3.1,\y);
+
+\draw[->] (-3.1,0) -- (3.3,0) coordinate[label={\text{Re}}];
+\draw[->] (0,-4.1) -- (0,4.3) coordinate[label={right:\text{Im}}];
+
+\node at (3,4) {$\mathbb{C}$};
+
+\draw[line width=0.3pt] (-3.1,\y)--(3.1,\y);
+\draw[line width=0.3pt] (-3.1,-\y)--(3.1,-\y);
+\draw[line width=0.1pt] (-3.1,{0.5*\y})--(3.1,{0.5*\y});
+\draw[line width=0.1pt] (-3.1,{-0.5*\y})--(3.1,{-0.5*\y});
+\draw[line width=0.1pt] ({\params},{-0.5*\y}) -- ({\params},{0.5*\y});
+
+\draw ({\params+\paraml},{-0.1}) -- ({\params+\paraml},{0.1});
+
+\node at (0,\y) [above left] {$i\lambda\nu\pi$};
+\node at (0,-\y) [below left] {$-i\lambda\nu\pi$};
+
+\draw (\params,-0.1) -- (\params,0.1);
+\node at ({0.5*\params},-0.1) [below] {$\sigma\mathstrut$};
+
+\draw ({\params+\paraml},-0.1) -- ({\params+\paraml},0.1);
+\node at  ({\params+0.5*\paraml},-0.1) [below] {$\lambda\mathstrut$};
+
+\xdef\x{2.5}
+\xdef\y{3.7}
+\pgfmathparse{atan(\y/\x)}
+\xdef\winkel{\pgfmathresult}
+
+\begin{scope}
+\clip (-3.1,-4.1) rectangle (3.1,4.1);
+\draw[color=red,line width=2pt]
+	(\x,0) -- (\x,\y) arc (\winkel:{360-\winkel}:{sqrt(\x*\x+\y*\y)})
+	-- (\x,0) -- cycle;
+\end{scope}
+
+\node[color=red] at (\x,0) [above right] {$\gamma$};
+
+\begin{scope}
+\clip (-3.1,-4.1) rectangle (3.1,4.1);
+\draw[color=blue,line width=2pt] plot[domain=-160:160,samples=100]
+	({\params+\paraml*\x*cot(\x)*3.1415/180},{\paraml*\paramv*\x*3.1415/180});
+\end{scope}
+
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\fill[color=darkgreen] (1,0) circle[radius=0.1];
+
+\end{tikzpicture}
+\end{document}
+

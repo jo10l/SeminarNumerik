@@ -12,7 +12,11 @@ CHAPTERFILES =								\
 	chapters/10-arithmetik/zahlensysteme.tex			\
 	chapters/10-arithmetik/effekte.tex				\
 	chapters/10-arithmetik/iteration.tex				\
-	chapters/10-arithmetik/graphisch.tex				\
+	chapters/10-arithmetik/graphisch0.tex				\
+	chapters/10-arithmetik/graphisch1.tex				\
+	chapters/10-arithmetik/graphisch2.tex				\
+	chapters/10-arithmetik/graphisch3.tex				\
+	chapters/10-arithmetik/graphisch4.tex				\
 	chapters/10-arithmetik/kubisch.tex				\
 	chapters/10-arithmetik/instabilitaet.tex			\
 	chapters/10-arithmetik/kondition.tex				\
@@ -27,6 +31,7 @@ CHAPTERFILES =								\
 	chapters/30-interpolation/chapter.tex				\
 	chapters/30-interpolation/polygon.tex				\
 	chapters/30-interpolation/polynom.tex				\
+	chapters/30-interpolation/normal.tex				\
 	chapters/30-interpolation/hermite.tex				\
 	chapters/30-interpolation/bary.tex				\
 	chapters/30-interpolation/splines.tex				\
@@ -35,6 +40,7 @@ CHAPTERFILES =								\
 	chapters/40-integration/chapter.tex				\
 	chapters/40-integration/riemann.tex				\
 	chapters/40-integration/romberg.tex				\
+	chapters/40-integration/andere.tex				\
 	chapters/50-ode/chapter.tex					\
 	chapters/50-ode/problemstellung.tex				\
 	chapters/50-ode/prinzip.tex					\

@@ -4,7 +4,9 @@ x^5 - \frac54x^4 +\frac14 = 0
 \label{2001:polynom}
 \end{equation}
 mit Hilfe des Newton-Verfahrens.
+\index{Newton-Verfahren}%
 Welche Konvergenzgeschwindigkeit stellen Sie fest?
+\index{Konvergenzgeschwindigkeit}%
 
 \begin{loesung}
 \begin{figure}
@@ -45,6 +47,8 @@ f'(x)= 5x^4-5x^3 = 5(x-1)x^3,
 \]
 insbesondere hat $f'(x)$ eine Nullstelle bei $x=1$, was in der Newton-Iteration
 zu Schwierigkeiten führen könnte.
+\index{Nullstelle}%
+\index{Ableitung}%
 Ebenso ist $0$ eine Nullstelle der Ableitung, so dass $0$ und $1$ ganz
 bestimmt keine guten Startwerte für die Newton-Iteration sind.
 
@@ -114,13 +118,13 @@ Die Konvergenz ist wie erwartet nur linear.
 
 Die Ableitung $f'(x)=4x^3(x-1)$ der Funktion $f(x)$ hat an der Stelle 
 $x=0$ eine dreifache Nullstelle, was auch daran erkennbar ist, dass 
-$f(x)$ abgesehen von der Konstante von vierter Ordnung ist.
+$f(x)$ abgesehen von der Konstante von vierter Ordnung in $x$ ist.
 Der Graph von $f(x)$ ist daher in einer Umgebung von $0$ sehr flach.
 Startwerte $x_0$ in der Umgebung von $0$ führen daher automatisch
 zu einem Wert $x_1$ sehr weit weg vom Nullpunkt.
 Zum Beispiel führt $x_0=-10^{-4}$ auf $x_1=-49995000499.9501$.
 Es braucht dann 114 Iterationen, bis $x_n$ nahe genug bei der negativen
-Nullstelle liegt, dass man quadratische Konvergenz beobachten kann.
+Nullstelle liegt, dass man wieder quadratische Konvergenz beobachten kann.
 \end{loesung}
 
 

@@ -1,0 +1,220 @@
+%
+% irrationalezahlen.tex 
+%
+% (c) 2020 Benjamin Bouhafs-Keller
+%
+\section{Irrationale Zahlen
+\label{kettenbruch:section:Irrationale Zahlen}}
+\rhead{Irrationale Zahlen}
+\subsection{Definition}
+Die Menge aller reellen Zahlen bezeichnet man mit $\mathbb{R}$.
+Irrationale Zahlen bilden unendliche Kettenbrüche, d.~h.~sind durch
+eine periodische oder nicht periodische Kettenbruchentwicklung
+ausgezeichnet.
+Ein unendlicher regelmässiger Kettenbruch wird in folgender Form dargestellt
+\begin{equation}
+a_0 + \cfrac{1}{a_1+\cfrac{1}{a_1+\cfrac{1}{a_3+\cfrac{1}{\dots}}}}
+\end{equation}
+wobei $a_0,a_1,a_2,\dots$ eine unendliche Folge von positiven
+ganzen Zahlen bilden. Sie sind auch wie beim endlichen Kettenbruch
+alle bis auf möglicherweise $a_0$ positiv.
+
+
+Zunächst sollen einige Beispiele für die Kettenbruchenentwicklung
+irrationaler Zahlen betrachtet werden.
+
+\subsection{Periodische Kettenbrüche}
+In diesem Abschnitt wollen wir nun auf eine spezielle Form eingehen
+und zwar auf unendliche regelmässige Kettebrüche, die ein bemerkenswertes
+Bildungsgesetz befolgen. Das besondere an diesen Kettenbrüchen ist,
+dass gleiche Teilnenner wiederholt auftreten.
+Für den Kettenbruch $[3;1,2,1,6,1,2,1,6,\dots]$ heisst das: den
+Kettenbruch die Periode 1,2,1,6 mit der Periodenlänge $n=4$ beträgt
+und wird in der Form $[3;\overline{1,2,1,6}]$ geschrieben.
+
+\begin{beispiel}
+Betrachten wir den periodischen einfachen Kettenbruch $[3;\bar{6}] = (3,6,6,6,\dots)$.
+\begin{equation}
+[3;\bar{6}]
+=
+3 + \cfrac{1}{6+\cfrac{1}{6+\cfrac{1}{6+\cfrac{1}{6+\dots}}}}
+=
+x
+\end{equation}
+Die Euklidische Methode mit der rekursive Bildungsgesetz für Zähler
+und Nenner würde hier unendlich sein und deshalb schwierig zu
+berechnen.
+Um diesen Kettenbruch vollständig darzustellen müssen wir ein Muster
+erzeugen. Daher werden nur die ersten Brüche (Zahlen) betrachtet.
+
+\begin{equation}
+[3;6,6,6]
+=
+3 + \cfrac{1}{6+\cfrac{1}{6+\cfrac{1}{6}}}
+=
+3 + \cfrac{1}{6+\cfrac{1}{\frac{37}{6}}}
+=
+3 + \cfrac{1}{6+\frac{6}{37}}
+=
+3 + \cfrac{1}{\frac{228}{37}}
+=
+3 + \frac{37}{228}
+=
+\frac{684+37}{228}
+=
+\frac{721}{228}
+\approx
+3.162280702
+\end{equation}
+Wenn wir den periodischen Kettenbruch so verändern das die Kettenbruchentwicklung 
+immer mit 6 vortläuft dann können wir unser Kettenbruch als $x$ bezeichnen 
+und darauf 3 addieren. Anders formuliert ist wie in einem periodischen Kettenbruch 
+ein {\color{red}Teil oder inneren kettenbruch} der similär ist wie der ganze Kettenbruch. Dies ergibt 
+folgendes Muster das wir infolge quadratische
+Gleichungen lösen können:
+\begin{align*}
+y = x+3 &= 6 + \cfrac{1}{\color{red}6+\cfrac{1}{6+\dots}} = [6;\bar{6}]
+\\
+\Rightarrow y &= 6 + \frac{1}{y}	&&\vert\;\cdot y
+\\
+\Rightarrow y^2 &= 6y + 1
+\\
+\Rightarrow y &= 3\pm \sqrt{9+1} = 3 \pm \sqrt{10}\qquad\Rightarrow\qquad x = \sqrt{10}
+\approx
+3.16227766
+\end{align*}
+\end{beispiel}
+Mit dieser Gleichung haben wir die Menge der Zahlen mit periodischer 
+Kettenbruchentwicklung bestimmt. 
+
+\begin{beispiel}
+Betrachten wir einen neuen Kettenbruch, $[\overline{2,3}] =  [2;3,2,3,\dots]$.
+Sein Wert ist als unendlicher Kettenbruch irrational und lässt sich
+wie folgt berechnen. Setzen wir $x:=(\overline{2,3})$, dann gilt
+\begin{equation}
+x
+=
+2 + \cfrac{1}{3+\cfrac{1}{\color{red}2+\cfrac{1}{3+\dots}}}
+=
+2 + \cfrac{1}{3+\frac{1}{\color{red}x}}.
+\end{equation}
+Dies führt auf die quadratische Gleichung 
+\begin{align*}
+x &= 2 + \cfrac{1}{3+\frac{1}{x}}
+\\
+x - 2 &= \cfrac{1}{3+\frac{1}{x}}
+\\
+(x - 2)\biggl(3 + \frac{1}{x}\biggr) &= 1
+\\
+3x - 6 - \frac{2}{x} &= 0 &&\vert \times\frac{x}{3}
+\\
+x^2 - 2x - \frac{2}{3} &= 0
+\end{align*}
+was die positive Lösung $x = \frac{3+\sqrt{15}}{3}$ liefert.
+Der oben aufgeführte Kettenbruch $x$ ist ein Beispiel für periodische
+einfache Kettenbrüche, die Nullstelle eines quadratischen Polynoms
+mit rationalen Koeffizienten ist. Anders gesagt ist die reelle
+Irrationalzahl $x$ Wurzel einer quadratischen Gleichung:
+\begin{equation}
+ax^2 + bx + c = 0
+\end{equation}
+dann ist die Kettenbruchentwicklung von $x$ periodisch, das bedeutet
+die Existenz einer Schranke $n_0$ und einer Periode $k \in \mathbb{N}$
+mit $x_n+k = x_n$ für alle $n\ge n_0$.
+\end{beispiel}
+\subsubsection{Satz von Euler-Lagrange}
+Jeder periodische regulärer Kettenbruch ist eine quadratische
+Irrationalzahl und umgekehrt. $x \in \mathbb{R}$ hat genau dann eine 
+Darstellung als unendlicher, periodischer Kettenbruch, wenn $x$ eine
+reell-quadratische Irrationalzahl ist (d.h. $x \notin \mathbb{Q}$ ist Lösung
+einer quadratischen Gleichung $aX^2 + bX + c = 0, a \neq 0$ mit rationalen 
+Koeffizienten $a,b,c$).
+
+\subsection{Nicht periodische Kettenbrüche}
+Es stellen sich dieselben Fragen wie im vorangegangenen Abschnitt.
+Neu hinzu kommt das Problem, ob bzw. wann die Kettenbruchentwicklung
+überhaupt konvergiert.
+Für eine unendliche Folge $x_0,x_1,\dots$ ist der Kettenbruch
+$[x_0;x_1,\dots]$ nur dann definiert wenn die Folge der Näherungsbrüche
+$(\frac{p_n}{q_n})$ konvergiert. In diesem Fall hat der unendliche
+Kettenbruch $[x_0;x_1,\dots]$ den Wert
+\begin{equation}
+\lim_{n\to\infty} [x_0;x_1,\dots,x_n]
+\end{equation}
+oder anders dargestellt
+\begin{equation}
+\omega
+=
+x_0 + \cfrac{1}{x_1+\cfrac{1}{x_2+\frac{1}{x_n+\dots}}}
+\end{equation}
+Folgt $\omega > 0$ durch einen unendliche Kettenbruch darstellbar
+ist, wenn die endlichen Kettenbrüche $n$-ter Ordnung
+$[x_0;x_1,x_2,\dots,x_n]$ gegen $\omega$ konvergieren.
+
+\subsubsection{Beispiel}
+\begin{beispiel}
+Betrachten wir folgenden Kettenbruch
+\begin{align*}
+\frac{19}{51} &= [0;2,1,2,6]
+\\
+	K_0 &= [0] = 0
+\\
+	K_1 &= [0;2] = 0 + \frac{1}{2} = \frac{1}{2}
+\\
+	K_2 &= [0;2,1] = 0 + \cfrac{1}{2+\frac{1}{1}} = \frac{1}{3}
+\\
+	K_3 &= [0;2,1,2] = 0 + \cfrac{1}{2+\cfrac{1}{1+\frac{1}{2}}} = \frac{3}{8}
+\\
+	K_4 &= [0;2,1,2,6] = \frac{19}{51}
+\end{align*}
+Mit diesem Beispiel werden die Teilkettenbrüche und Näherung zum Endresultat ersichtlich.
+Folge der Näherungsbrüche mit geradem (bzw. ungeradem) Index
+ist streng monoton steigend (bzw. fallend) und jeder Näherungsbruch
+mit geradem Index ist kleiner als jeder Näherungsbruch mit ungeradem Index.
+\begin{enumerate}
+\item
+$K_0 < K_2 < K_4 < \cdots$
+\item
+$K_1 > K_3 > K_5 > \cdots$
+\item
+$K_{2s} < K_{2r+1}, r,s \in \mathbb{N}$
+\end{enumerate}
+
+Es gilt offensichtlich
+$K_0 < K_2 < K_4 < \cdots < K_{2n} < \cdots < K_{2n+1} < \cdots < K_5
+< K_3 < K_1$
+und $\frac{19}{51}$ wird von jeweils zwei aufeinanderfolgenden
+Näherungsbrüchen eingeschlossen.
+\end{beispiel}
+
+Die Folge der Näherungsbrüche des unendlichen Kettenbruchs
+$[a_0;a_1,a_2,\dots]$ mit $a_0 \in \mathbb{Z}$ konvergiert 
+von unten gegen einen Grenzwert, den wir als $\alpha$
+bezeichnen. Anderseits sind die Näherungsbrüche mit ungeradem
+Index nach unten begrenzt. Somit sind beide Folgen monoton und beschränkt 
+und konvergieren in $\alpha$. Den erwähnten Ansatz gilt nur für reguläre Kettenbrüche, es 
+wäre zum Beispiel nicht der Fall, wenn als Teilnenner beliebige positive reelle Zahlen 
+zugelassen wären. Der Kettenbruch $[b_0;b_1,\dots]$ konvergiert genau dann, wenn die Summe
+$\sum\limits_{i=0}^\infty b_i $ divergiert.
+
+Es gibt auch Zahlen, deren Kettenbruchdarstellung gewisse
+Regelmässigkeiten aufweisen, ohne periodisch zu sein. Zum Beispiel
+die Identität $e = [2;1,2,1,1,4,1,1,6,1,\dots]$. Dieser
+Kettenbruch ist nicht periodisch, die Teilnenner können aber durch
+eine rekursive Folge bestimmt werden.
+
+\subsubsection{Zusammenfassung}
+\begin{itemize}
+\item
+Jede positive rationale Zahl lässt sich durch einen endlichen
+Kettenbruch darstellen, und jeder endliche Kettenbruch stellt eine
+positve rationale Zahl dar.
+\item
+Jeder unendliche Kettenbruch stellt eine positive irrationale Zahl
+dar, und jede irrationale Zahl lässt sich durch einen unendliche
+Kettenbruch darstellen.
+\item
+Jeder periodische Kettenbruch stellt eine quadratische Irrationalität
+dar und jede quadratische Irrationalität lässt sich durch einen
+periodischen Kettenbruch darstellen.
+\end{itemize}

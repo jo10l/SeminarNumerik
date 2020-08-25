@@ -1,0 +1,45 @@
+%
+% dreiecke.tex -- Beispiel
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\fill[color=blue!10] (0,0) -- (5,0)
+	-- (5,4.5) -- (4,4.5)
+	-- (4,3.5) -- (3,3.5)
+	-- (3,2.5) -- (2,2.5)
+	-- (2,1.5) -- (1,1.5)
+	-- (1,0.5) -- (0,0.5) -- cycle;
+
+\fill[color=blue!40] (2,2) -- (3,3) -- (3,2.5) -- (2,2.5) -- cycle;
+
+\draw[color=blue] (0.5,0) -- (0.5,0.5);
+\draw[color=blue] (1.5,0) -- (1.5,1.5);
+\draw[color=blue] (2.5,0) -- (2.5,2.5);
+\draw[color=blue] (3.5,0) -- (3.5,3.5);
+\draw[color=blue] (4.5,0) -- (4.5,4.5);
+
+\node at (0.5,0) [below] {$\xi_0$};
+\node at (1.5,0) [below] {$\xi_1$};
+\node at (2.5,0) [below] {$\xi_2$};
+\node at (3.5,0) [below] {$\xi_3$};
+\node at (4.5,0) [below] {$\xi_4$};
+
+\draw[line width=1.4pt] (0,0) -- (5,5);
+
+\draw[->] (-0.1,0) -- (5.5,0) coordinate[label={$x$}];
+\draw[->] (0,-0.1) -- (0,5.5) coordinate[label={right:$y$}];
+
+\end{tikzpicture}
+\end{document}
+
