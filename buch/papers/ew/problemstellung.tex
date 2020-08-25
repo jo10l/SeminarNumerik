@@ -71,7 +71,7 @@ Nach Einsetzen der Potenzreihen in das Eigenwertproblem (\eqref{ew:eq:eig}) erha
 wobei alle Variablen bekannt sind, ausser $\lambda_{1i}$ und $\bm v_{1i}$.
 Dieser Ansatz soll nun umgeformt werden, um diese Variablen zu bestimmen.
 
-\subsection{Herleitung}
+\section{Herleitung}
 
 Die hier verwendete Herleitung basiert auf \cite{ew:seminar_quantenmechanik}.
 Es wurde jedoch auf die in der Quantenmechanik übliche Bra-Ket-Notation verzichtet.
@@ -110,7 +110,7 @@ Durch das Linksmultiplizieren mit $\bm v_{0j}^T$ können anschliessend weitere V
     \lambda_{0i} \bm v_{0j}^T \bm v_{1i} +
     \lambda_{1i} \bm v_{0j}^T \bm v_{0i}. \label{ew:eq:misc1}
 \end{equation}
-Da in den Voraussetzungen orthogonale Eigenvektoren $\bm v_{0i}$ gefordert sind, sind auf der rechten Seite im zweiten Term alle inneren Produkte unterschiedlicher Vektoren null:
+Da in den Voraussetzungen orthogonale Eigenvektoren $\bm v_{0i}$ gefordert sind, sind auf der rechten Seite im zweiten Term alle inneren Produkte unterschiedlicher Vektoren $0$:
 \begin{equation}
     \bm v_{0j}^T \bm v_{0i}
     =
@@ -199,7 +199,7 @@ Leider gilt Formel \eqref{ew:eq:f2} nur für $i \neq j$. Damit sie eingesetzt we
     &=
     \bm v_{0i} + \varepsilon \left( \bm v_{0i}^T \bm v_{1i} \right) \bm v_{0i} + \varepsilon \sum_{j \neq i} \left(\bm v_{0j}^T \bm v_{1i} \right) \, \bm v_{0j} \\
     &=
-    \bm v_{0i} \left( 1 + (\bm v_{0i}^T \bm v_{1i}) \right) + \varepsilon \sum_{j \neq i}
+    \bm v_{0i} \left( 1 + \varepsilon(\bm v_{0i}^T \bm v_{1i}) \right) + \varepsilon \sum_{j \neq i}
     \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
     \, \bm v_{0j} \label{ew:ew:calc_eigv}
 \end{align}
@@ -213,11 +213,11 @@ Der offensichtliche Fall ist das Multiplizieren mit $-1$, aber auch jede komplex
 Der unbekannte Term $\bm v_{1i}$ ist derjenige Freiheitsgrad, welcher die Eigenwerte skaliert.
 Aus diesem Grund können wir definieren:
 \begin{equation}
-    1 + (\bm v_{0i}^T \bm v_{1i}) = e^{i\gamma}
+    1 + \varepsilon (\bm v_{0i}^T \bm v_{1i}) = e^{i \varepsilon \gamma}
 \end{equation}
 und für kleine $\varepsilon$ kann dies noch weiter vereinfacht werden, indem wir die Approximation erster Ordnung
 \begin{equation}
-    e^{i\gamma} \approx 1 + i \varepsilon \gamma
+    e^{i \varepsilon \gamma} \approx 1 + i \varepsilon \gamma
 \end{equation}
 akzeptieren, auf welcher die ganze Herleitung bereits beruht.
 Eingesetzt in Gleichung \eqref{ew:ew:calc_eigv} erhalten wir das Endresultat
@@ -232,10 +232,28 @@ Eingesetzt in Gleichung \eqref{ew:ew:calc_eigv} erhalten wir das Endresultat
     \label{ew:eq:explicit_eigvecs}
 \end{equation}
 
-\section{Entartung}
+Somit können wir für den nicht entarteten Fall zusammenfassen:
+\begin{ewaufloesung}
+    Berechne als erstes die Eigenwerte
+    \begin{equation*}
+        \lambda_i(\varepsilon)
+        =
+        \lambda_{0i} + \varepsilon \bm v_{0i}^T \bm H_1 \bm v_{0i}.
+    \end{equation*}
+    Berechne dann mit den erhaltenen Eigenwerten die dazugehörigen Eigenvektoren
+    \begin{equation*}
+        \bm v_i(\varepsilon)
+        =
+        \bm v_{0i} ( 1 + i \varepsilon \gamma ) + \varepsilon \sum_{j \neq i}
+        \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
+        \, \bm v_{0j}.
+    \end{equation*}
+\end{ewaufloesung}
+
+\subsection{Entartung}
 
 Die hergeleitete Formel \eqref{ew:eq:explicit_eigvecs} für die Eigenvektoren ist nicht definiert für den folgenden Spezialfall:
-wenn zwei Eigenwerte von $\bm H_0$ gleich sind, entsteht eine Division durch null, wie rot hervorgehoben:
+wenn zwei Eigenwerte von $\bm H_0$ gleich sind, entsteht eine Division durch $0$, wie rot hervorgehoben:
 \begin{equation*} %TODO maybe ref to equation
     \bm v_i(\varepsilon)
     =
@@ -250,7 +268,7 @@ Mehrfache Eigenwerte werden auch entartet genannt.
 
 Durch die Störung einer Matrix $\bm H_0$, also durch Addition einer geeigneten Matrix $\varepsilon \bm H_1$, können Eigenwerte gespalten werden.
 Als Beispiel, wenn $\varepsilon = 0.01$,
-\begin{alignat}{3}
+\begin{alignat}{5}
     \bm H_0 &=
     \begin{pmatrix}
         1 & 0 & 0\\
@@ -258,9 +276,9 @@ Als Beispiel, wenn $\varepsilon = 0.01$,
         0 & 0 & 2
     \end{pmatrix},
     \quad
-    && \lambda_0 = \{1, 1, 2\},
+    && \lambda_0 &&= \{1, 1, 2\},
     \quad
-    && \bm v_0 = \left\{
+    && \bm v_0 &&= \left\{
     \begin{pmatrix}
         1\\
         0\\
@@ -285,9 +303,9 @@ Als Beispiel, wenn $\varepsilon = 0.01$,
         0 & 0 & 2
     \end{pmatrix},
     \quad
-    && \lambda_1 = \{1, 1, 2\},
+    && \lambda_1 &&= \{1, 1, 2\},
     \quad
-    && \bm v_1 = \left\{
+    && \bm v_1 &&= \left\{
     \begin{pmatrix}
         ?\\
         ?\\
@@ -312,9 +330,9 @@ Als Beispiel, wenn $\varepsilon = 0.01$,
         0 & 0 & 2.02
     \end{pmatrix},
     \quad
-    && \lambda_0 = \{1.01, 1.02, 2.02\},
+    && \lambda(\varepsilon) &&= \{1.01, 1.02, 2.02\},
     \quad
-    && \bm v_0 = \left\{
+    && \bm v(\varepsilon) &&= \left\{
     \begin{pmatrix}
         1\\
         0\\
@@ -376,7 +394,7 @@ Wir können also Formel \eqref{ew:eq:explicit_eigvecs} auch für entartete Eigen
 \end{equation}
 Damit dies stimmt, müssen die entarteten Eigenvektoren $\bm v_{0i}$ so gewählt werden, dass sie in der Eigenbasis von $\bm H_1$ stehen. %TODO elaborate section
 Das hat zur Folge, dass die  $\bm v_{0i}$ die Richtung nicht ändern wenn $\bm H_1$ auf sie angewendet wird.
-Somit sind $\bm v_{0j}$ und $\bm H_1 \bm v_{0i}$ orthogonal und dadurch das Skalarprodukt null.
+Somit sind $\bm v_{0j}$ und $\bm H_1 \bm v_{0i}$ orthogonal und dadurch das Skalarprodukt $0$.
 Dazu bilden wir $\bm H_1$ auf die Basis von entarteten, zufällig gewählten Eigenvektoren ab:
 \begin{equation}
     \bm H^\prime = \bm v_{0i}^T \bm H_1 \bm v_{0i} \quad \forall \quad i \quad \text{entartet}
