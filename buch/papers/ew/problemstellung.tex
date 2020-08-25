@@ -31,7 +31,7 @@ wobei $\varepsilon \in \mathbb{R^+} \ll 1$.
 
 \section{Anwendungen}
 
-Die Störungstheorie im allgemeinen kann überall angewendet werden, wo ein lösbares Problem mit einer kleinen Wechselwirkung gestört wird.
+Die Störungstheorie im Allgemeinen kann überall angewendet werden, wo ein lösbares Problem mit einer kleinen Wechselwirkung gestört wird.
 Wie zum Beispiel das Berechnen einer Umlaufbahn eines Planeten unter Einfluss der Anziehungskraft anderer Himmelskörper.
 Das ungestörte Zweikörpermodell kann mit der Kepler-Gleichung gut gelöst werden, aber für viele Körper gibt es keine praktikable Formel.
 Ein weiteres Beispiel ist das Berechnen einer Trajektorie unter Berücksichtigung des Luftwiderstands, wie es in Kapitel \ref{chapter:perturbation} behandelt wird.
@@ -57,7 +57,7 @@ Somit können alle Terme mit $\varepsilon^2$ und höher weggelassen werden.
 Falls eine höhere Genauigkeit gewünscht wird, kann auch eine Methode mit einer Approximation zweiter Ordnung gewählt werden.
 Diese ist jedoch aufwendiger herzuleiten und wird in diesem Kapitel nicht angeschaut.
 
-Nach Einsetzen der Potenzreihen in das Eigenwertproblem (\eqref{ew:eq:eig}) erhalten wir den Ansatz
+Nach Einsetzen der Potenzreihen in das Eigenwertproblem \eqref{ew:eq:eig} erhalten wir den Ansatz
 \begin{align}
     \bm H(\varepsilon) \bm v_i(\varepsilon)
     &=
@@ -88,7 +88,7 @@ Als erstes wird die Gleichung ausmultipliziert und alle Terme mit $\varepsilon$ 
     \varepsilon \lambda_{1i} \bm v_{0i} +
     \RD{\varepsilon^2 \lambda_{1i} \bm v_{1i} + \dots}
 \end{equation}
-Die grün markierten Terme entsprechen genau dem Eigenwertproblem (\eqref{ew:eq:eig}) und können daher subtrahiert werden. Daraus erhalten wir
+Die grün markierten Terme entsprechen genau dem Eigenwertproblem \eqref{ew:eq:eig} und können daher subtrahiert werden. Daraus erhalten wir
 \begin{align}
     \varepsilon \bm H_0 \bm v_{1i} +
     \varepsilon \bm H_1 \bm v_{0i}
@@ -122,7 +122,7 @@ Da in den Voraussetzungen orthogonale Eigenvektoren $\bm v_{0i}$ gefordert sind,
     \end{cases}
 \end{equation}
 Zusätzlich ist vorausgesetzt, dass $\bm H_0$ symmetrisch ist.
-Dies macht die Matrix auch selbstadjungiert, also $H_0 = H_0^T$. Dementsprechend ist der erste Term auf der linken seite
+Dies macht die Matrix auch selbstadjungiert, also $\bm H_0 = \bm H_0^T$. Dementsprechend ist der erste Term auf der linken Seite
 \begin{equation}
     \bm v_{0j}^T \bm H_0 \bm v_{1i}
     =
@@ -263,7 +263,7 @@ wenn zwei Eigenwerte von $\bm H_0$ gleich sind, entsteht eine Division durch $0$
 \end{equation*}
 Die gleichen Eigenwerte haben zur Folge, dass die dazugehörigen Eigenvektoren nicht mehr eindeutig definiert sind.
 Sie können irgendwo orthogonal auf einer Hyperebene liegen.
-Es liegt also kein Eigenvektor mehr vor sondern ein mehrdimensionaler Eigenraum.
+Es liegt also kein Eigenvektor mehr vor, sondern ein mehrdimensionaler Eigenraum.
 Mehrfache Eigenwerte werden auch entartet genannt.
 
 Durch die Störung einer Matrix $\bm H_0$, also durch Addition einer geeigneten Matrix $\varepsilon \bm H_1$, können Eigenwerte gespalten werden.
@@ -392,7 +392,7 @@ Wir können also Formel \eqref{ew:eq:explicit_eigvecs} auch für entartete Eigen
 \begin{equation}
     \bm v_{0j}^T \bm H_1 \bm v_{0i} = 0 \quad \forall \quad i,j \quad \text{entartet}. \label{ew:eq:condition-degenerated}
 \end{equation}
-Damit dies stimmt, müssen die entarteten Eigenvektoren $\bm v_{0i}$ so gewählt werden, dass sie in der Eigenbasis von $\bm H_1$ stehen. %TODO elaborate section
+Damit dies stimmt, müssen die entarteten Eigenvektoren $\bm v_{0i}$ so gewählt werden, dass sie in der Eigenbasis von $\bm H_1$ stehen.
 Das hat zur Folge, dass die  $\bm v_{0i}$ die Richtung nicht ändern wenn $\bm H_1$ auf sie angewendet wird.
 Somit sind $\bm v_{0j}$ und $\bm H_1 \bm v_{0i}$ orthogonal und dadurch das Skalarprodukt $0$.
 Dazu bilden wir $\bm H_1$ auf die Basis von entarteten, zufällig gewählten Eigenvektoren ab:
