@@ -15,12 +15,12 @@ verwendet, wobei der Laplace Operator die zweite Ableitungen nach den beiden Var
 \begin{equation}
 	\Delta = \frac{\partial ^2}{\partial x^2} + \frac{\partial ^2}{\partial y^2}.
 \end{equation} 
-Diese PDE muss nach dem Abschnitt 7.1.1 auf einem definierten Gebiet z.B. ein Dreieck mit Werte am Rand $= 0$. Andere mögliche Randbedingungen sind in Abschnitt 7.1.3 zusammengestellt. Wie im Unterkapitel 7.4 behandelt, gibt es zu gewissen partiellen DGLen für ein Rechteck ein äquivalentes Minimalproblem.
+Diese PDE muss nach dem Abschnitt 7.1.1 auf einem definierten Gebiet $\Omega$  z.B. ein Rechteck mit Randwerte $= 0$ angewendet werden. Andere mögliche Randbedingungen sind in Abschnitt 7.1.3 zusammengestellt. Wie im Unterkapitel 7.4 behandelt, gibt es zu gewissen partiellen DGLen der Form \eqref{fem:equationPDE} für ein Rechteck ein äquivalentes
 \begin{equation}
 	I(u) = \int_a^b \int_c^d \nabla u(x)^2 + \lambda u(x)^2 dy \, dx
 	\label{fem:equationMinimalKapt7}
 \end{equation}
-Die Lösungsfunktion $u$ muss so gewählt werden, dass \eqref{fem:equationMinimalKapt7} minimal wird. Das Gebiet muss nicht zwinged ein Rechteck sein. Für ein beliebiges Gebiet $\Omega \subset \mathbb{R}^2$ wird das zu minimirende Integral  %Als vereinfachte Notation für ein Minimalproblem auf ein beliebiges Gebiet $\Omega$ für die PDA \eqref{fem:equationPDE} wird folgendes Integral aufgeschrieben:
+Minimalproblem. Die Lösungsfunktion $u$ muss so gewählt werden, dass \eqref{fem:equationMinimalKapt7} minimal wird. Das Gebiet $\Omega$ muss nicht zwinged ein Rechteck sein. Für ein beliebiges Gebiet $\Omega \subset \mathbb{R}^2$ wird das zu minimirende Integral  %Als vereinfachte Notation für ein Minimalproblem auf ein beliebiges Gebiet $\Omega$ für die PDA \eqref{fem:equationPDE} wird folgendes Integral aufgeschrieben:
 \begin{equation}
 	I(u) = \int_{\Omega} \nabla u(x)^2 + \lambda u(x)^2 dy \, dx
 	\label{fem:equationMinimalKapt7Alg}
@@ -39,7 +39,7 @@ Die einzelne lineare Ansatzfunktion kann nicht die globale Lösung sein. Ansonst
 \int_{\Omega} \nabla u(x)^2 + \lambda u(x)^2 \, dx \, dy = \sum \limits_{i=1}^n \int_{\Omega_i} \nabla u(x)^2 + \lambda u(x)^2 \, dx \, dy \, .
 \label{fem:equationSummGebiete}
 \end{equation}
-Die Lösung verwendet das äquivalente Minimalproblem, also Integrale anstatt Ableitungen der Unbekannten. Entsprechend dem Kapitel 7 sind die Integrale von quadratischen oder linearen Ausdrücken. Das Prinzip der FEM in zwei Dimensionen wird hier anhand von linearen Ausdrücken erläutert. Das Prinzip ist für quadratische Ausdrücke genau gleich, lediglich die Berechnung ist mit mehr Aufwand verbunden. Die Integrale werden dann auf jedes Teilgebiet angewendet. \\
+Die Lösung verwendet das äquivalente Minimalproblem, also Integrale statt Ableitungen der unbekannten. Entsprechend dem Kapitel 7 sind die Integrale von quadratischen oder linearen Ausdrücken. Das Prinzip der FEM in zwei Dimensionen wird hier anhand von linearen Ausdrücken erläutert. Das Prinzip ist für quadratische Ausdrücke genau gleich, lediglich die Berechnung ist mit mehr Aufwand verbunden. Die Integrale werden dann auf jedes Teilgebiet angewendet. \\
 Damit eine Lösung gefunden werden kann, das Minimum über alle Teilgebiete zusammen zu finden, müssen die Teilgebiete einfach sein. Eine Approximation eines Gebietes kann beispielsweise mit Dreiecken, Rechtecken oder Parallelogrammen vorgenommen werden. Die Teilgebiete sind einfache geometrische Formen wie z.B. in Abbildung \ref{fig:Figuren}. Unterschiedliche geometrische Formen approximieren unterschiedlich gut das gewünschte Gebiet. Die Approximation mit Parallelogrammen z.B. deckt im Unterschied zu den anderen Approximationen das Gebiet weniger genau ab. Die Vierecke haben im Gegensatz zu den Dreiecken eine Unbekannte mehr bzw. einen Koeffzienten mehr der bestimmt werden  muss.
 %Wie auch in der Dimension 1 wird das gesamte Gebiet $\Omega$ in Teilgebiete $\Omega_i$ unterteilt, damit einfache Formel entstehen können. Die einzelne Ansatzfunktion ist jedoch keine globale Lösung sondern alle Ansatzfunktionen zusammen stellen eine Lösung der Approximation dar. Die Teilgebiete sind einfache geometrische Formen wie z.B. in Abbildung \ref{fig:Figuren}. Unterschiedliche geometrische Formen approximieren unterschiedlich gut die gewünschte Fläche. Die Approximation mit Parallelogrammen z.B.  deckt im Unterschied zu den anderen Approximationen die Fläche weniger genau ab. Die Vierecke haben im Gegensatz zu den Dreiecken eine Unbekannte mehr bzw. einen Koeffzienten mehr der bestimmt werden  muss.
 %Als Lösung dienen äquivalente Minimalprobleme sprich anstatt Ableitungen werden Integrale verwendet gemäss Kapitel 7.
@@ -55,14 +55,14 @@ In einem nächsten Schritt muss die die approximierende Funktion betrachtet werd
 	\item Ansatzfunktion muss stetig differenzierbar in den Stützstellen (Steigung) sein wie z.B: im Dreieck in den Ecken.
 	\item stetig differenzierbar an den Übergängen entlang den Rändern eines Elements zum anliegenden Rand eines benachbarten Elements. (Krümmung)
 \end{enumerate}
-Um diese beiden Herausforderungen etwas besser verständlich zu machen wurde  eine Funktion- Approximation dargestellt  $u(x,y) = 1-x^2-y^2$, welche eine Lösung der PDE $\Delta u = -4$ ist mit Randbedingungen $u=0$ auf dem Einheitskreis (violett).
+Um diese beiden Herausforderungen etwas besser verständlich zu machen, wurde in der Abbildung \ref{fig:Figuren} und \ref{fig:Ansatz} eine Approximation der Funktion   $u(x,y) = 1-x^2-y^2$ dargestellt, die eine Lösung der PDE $\Delta u = -4$ ist mit Randbedingungen $u=0$ auf dem Einheitskreis (violett).
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.8]{papers/fem/Images/ansatz.jpg}
 	\caption{Approximation mit Dreiecken auf einem quadratischen Gitter }
 	\label{fig:Ansatz}
 \end{figure}
-Wie in der Abbildung \ref{fig:Ansatz} zu erkennen ist, passt die Approximation mit Dreiecken auf einem quadratischen Gitter nicht gut, da sich die Randbedingungen nicht ausnutzen lassen. Es benötigt also eine Unterteilung der Kreisscheibe die bis an den Rand kommt. Eine bessere Approximation ist in \ref{fig:besser Approx} zu sehen, die eine bessere Triangulation zeigt.
+Wie in der Abbildung \ref{fig:Ansatz} zu erkennen ist, passt die Approximation mit Dreiecken auf einem quadratischen Gitter nicht gut, da sich die Randbedingungen nicht ausnutzen lassen. Es benötigt also eine Unterteilung der Kreisscheibe die bis an den Rand kommt. Eine bessere Approximation ist in der Abbildung \ref{fig:besser Approx} zu sehen, die eine bessere Triangulation zeigt.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.8]{papers/fem/Images/polar.jpg}
@@ -75,7 +75,7 @@ Wie in der Abbildung \ref{fig:Ansatz} zu erkennen ist, passt die Approximation m
 	\caption{differenzierbar entlang eines Randes}
 	\label{fig:Randbedingung}
 \end{figure}
-Aus der Abbildung \ref{fig:besser Approx} lässt sich erkennen, dass die Ansatzfunktion für jedes Dreieck unterschiedlich ist. Auch müssen die Ansatzfunktionen flexibel auf die Grösse des Flächenelements anwendbar sein. Die Knicke von 2 benachbarten Elementen wird ignoriert, um das Lösungsvorgehen verständlicher aufzuzeigen. Bessere Ansatzfunktionen ergeben bessere Lösungen, aber die Vorgehensweise zu den linearen Gleichungen ist analog.
+Aus der Abbildung \ref{fig:besser Approx} lässt sich erkennen, dass die Ansatzfunktion für jedes Dreieck unterschiedlich ist. Auch müssen die Ansatzfunktionen flexibel auf die Grösse des Flächenelements anwendbar sein. Die Knicke von zwei benachbarten Elementen wird ignoriert, um das Lösungsvorgehen verständlicher aufzuzeigen. Bessere Ansatzfunktionen ergeben bessere Lösungen, aber die Vorgehensweise zu den linearen Gleichungen ist analog.
 %Unteschiedlich zeigt sich im Vergleich der Differential Gleichung mit 1 Dimension und 2 Dimensionen. Die DGL wird folgender massen geändert 
 %\begin{equation}
 %	u'' = \lambda u \rightarrow \Delta u = \lambda u 
@@ -87,7 +87,7 @@ Nochmals kurz zusammengefasst was bis hier hin aufgezeigt wurde.
 \begin{itemize}
 	\item Ebene wird in Teilgebiete unterteilt
 	\item Teilgebiete können Dreiecke, Rechtecke oder Parallelogramme sein
-	\item Ansatzfunktion soll ein Polynom nierigen Gerades sein
+	\item Ansatzfunktion soll ein Polynom niedrigen Gerades sein
 	\item auf jedes Teilgebiet wird eine Ansatzfunktion angewendet
 \end{itemize} 
 Was bis jetzt noch nicht klar ist, wie die Ansatzfunktion sich zusammenstellt. Dies wird under anderem im folgenden Abschnitt beschrieben.
