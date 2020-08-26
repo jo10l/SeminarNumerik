@@ -18,7 +18,7 @@ Dies lässt sich mit der Summe
 schreiben, wobei $\varepsilon \ll 1 $ ausdrücken soll, dass der zweite Term der Summe viel kleiner ist als $\bm H_0$.
 Das Eigenwertproblem für $H_0$ wird also durch eine im Betrag kleine Matrix $ \varepsilon \bm H_1$ gestört.
 
-Die Störungstheorie erlaubt es, die Eigenwerte $\lambda_i(\varepsilon)$ und Eigenvektoren  $\bm v_i(\varepsilon)$ von $\bm H(\varepsilon)$ zu approximieren.
+Die Störungstheorie erlaubt, die Eigenwerte $\lambda_i(\varepsilon)$ und Eigenvektoren  $\bm v_i(\varepsilon)$ von $\bm H(\varepsilon)$ zu approximieren.
 Das Verfahren hat jedoch die Limitierung, dass die Eigenvektoren von $\bm H_0$ zueinander othogonal sein müssen, was für alle symmetrischen $\bm H_0$ zutrifft.
 Somit fassen wir zusammen:
 \begin{ewproblem*}
@@ -26,7 +26,7 @@ Finde für eine symmetrische, selbstadjungierte Matrix $\bm H_0$ mit bekannten E
 \begin{equation*}
     \bm H(\varepsilon) = \bm H_0 + \varepsilon \bm H_1,
 \end{equation*}
-wobei $\varepsilon \in \mathbb{R^+} \ll 1$.
+wobei $ 0 < \varepsilon \ll 1$.
 \end{ewproblem*}
 
 \section{Anwendungen}
@@ -130,7 +130,7 @@ Dies macht die Matrix auch selbstadjungiert, also $\bm H_0 = \bm H_0^T$. Dements
     =
     \left( \bm H_0 \bm v_{0j} \right)^T \bm v_{1i}.
 \end{equation}
-Da $\bm H_0$ jetzt mit einem Eigenvektor multipliziert wird, können wir diesen mit dem entsprechenden Eigenwert ersetzen:
+Da $\bm H_0$ jetzt mit einem Eigenvektor multipliziert wird, können wir diesen durch dem entsprechenden Eigenwert ersetzen:
 \begin{equation}
     \left( \bm H_0 \bm v_{0j} \right)^T \bm v_{1i}
     =
@@ -226,7 +226,7 @@ Eingesetzt in Gleichung \eqref{ew:ew:calc_eigv} erhalten wir das Endresultat
     =
     \bm v_{0i} \left( 1 + i \varepsilon \gamma \right) + \varepsilon \sum_{j \neq i}
     \frac{\bm v_{0j}^T \bm H_1 \bm v_{0i}}{\lambda_{0i} - \lambda_{0j}}
-    \, \bm v_{0j}
+    \, \bm v_{0j}.
     \quad
     \qed
     \label{ew:eq:explicit_eigvecs}
@@ -266,7 +266,7 @@ Sie können irgendwo orthogonal auf einer Hyperebene liegen.
 Es liegt also kein Eigenvektor mehr vor, sondern ein mehrdimensionaler Eigenraum.
 Mehrfache Eigenwerte werden auch entartet genannt.
 
-Durch die Störung einer Matrix $\bm H_0$, also durch Addition einer geeigneten Matrix $\varepsilon \bm H_1$, können Eigenwerte gespalten werden.
+Durch die Störung einer Matrix $\bm H_0$, also durch Addition einer geeigneten Matrix $\varepsilon \bm H_1$, können Eigenwerte aufgespalten werden.
 Als Beispiel, wenn $\varepsilon = 0.01$,
 \begin{alignat}{5}
     \bm H_0 &=
@@ -397,7 +397,7 @@ Das hat zur Folge, dass die  $\bm v_{0i}$ die Richtung nicht ändern wenn $\bm H
 Somit sind $\bm v_{0j}$ und $\bm H_1 \bm v_{0i}$ orthogonal und dadurch das Skalarprodukt $0$.
 Dazu bilden wir $\bm H_1$ auf die Basis von entarteten, zufällig gewählten Eigenvektoren ab:
 \begin{equation}
-    \bm H^\prime = \bm v_{0i}^T \bm H_1 \bm v_{0i} \quad \forall \quad i \quad \text{entartet}
+    \bm H^\prime = \bm v_{0i}^T \bm H_1 \bm v_{0i} \quad \forall \quad i \quad \text{entartet}.
 \end{equation}
 Dadurch erhalten wir eine kleinere Matrix $\bm H^\prime$, welche nur die entarteten Dimensionen enthält.
 Von dieser müssen wir nun die Eigenvektoren finden, die das Eigenwertproblem
@@ -408,7 +408,7 @@ bilden.
 Allerdings ist dieses Problem einiges einfacher als das ursprüngliche Eigenwertproblem, da die Matrix in der Regel viel kleiner ist und die Eigenwerte $\lambda_i$ schon bekannt sind.
 Die gefundenen Eigenvektoren müssen nun zurücktransformiert werden und anstelle der ursprünglichen, zufälligen Vektoren verwendet werden.
 \begin{equation}
-    \bm v_{0i} \gets \bm v_{0i} \bm v_{i}^\prime \quad \forall \quad i \quad \text{entartet}
+    \bm v_{0i} \gets \bm v_{0i} \bm v_{i}^\prime \quad \forall \quad i \quad \text{entartet}.
 \end{equation}
 
 Nun sind auch die entarteten Eigenvektoren so ausgerichtet, dass sie bei einer Störung keine Sprünge machen und für die Berechnung geeignet sind.
