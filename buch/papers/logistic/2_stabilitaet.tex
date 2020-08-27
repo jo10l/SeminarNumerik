@@ -25,7 +25,7 @@ man ja schon reingibt.
 Grafisch sind diese Punkte die Schnittpunkte
 vom Funktionsplot mit der 45°-Geraden durch den Ursprung.  
 Zusätzlich gibt es die Stabilitätsbedingung 
-$|f(x^*)| = 1$. 
+$|f'(x^*)| < 1$. 
 Wenn diese erfüllt ist, handelt es sich um einen
 stabilen Fixpunkt. 
 Er hat eine ``anziehende'' Wirkung. 
@@ -56,9 +56,9 @@ was dazu führt, dass die Funktion bei Iterieren gegen
 diesen Wert konvergiert.  
 Auf der rechten Grafik mit $\lambda = 2.8$ ist wieder der  
 zweite Fixpunkt stabil, hier ``umkreist'' die Linie aber
-den Fixpunkt und langsam konvergiert gegen ihn. 
+den Fixpunkt und konvergiert langsam gegen ihn. 
 Auf Abbildung \ref{fig:pop_logistic} hat sich dieses Verhalten
-als ``Überschwingen'' geäussert.
+als ``Einschwingen'' geäussert.
 \begin{figure}
     \includegraphics[width=\linewidth]{papers/logistic/figures/web_1.pdf}
     \caption{Spinnwebplot ohne Oszillation}
@@ -69,7 +69,7 @@ Nun haben wir eine gute Erklärung für das Iterationsverhalten
 der logistischen Gleichung für $0 < \lambda < 3$. 
 Aber was passiert nun, wenn $\lambda > 3$ wird,
 wo es beginnt zwischen mehreren Punkten zu oszillieren?
-Wenn wir die Stabilitätsbedingung $|f'(x*)| < 1$
+Wenn wir die Stabilitätsbedingung $|f'(x^*)| < 1$
 für Fixpunkte von $f(x)$ mit $\lambda > 3$ anwenden sehen wir,
 dass für eine einzelne Iteration der logistischen 
 Gleichung kein stabiler Fixpunkte mehr existiert. 
@@ -85,7 +85,7 @@ dann bekommen wir ein Polynom vierten Grades:
     \lambda^2 x (1-x) (\lambda x^2 - \lambda x + 1)
 \end{equation}
 Diese neue Funktion bringt mit der 45°-Geraden 
-neue Schnittpunkte mit und damit auch neue Fixpunkte mit sich.
+neue Schnittpunkte und damit auch neue Fixpunkte mit sich.
 Tatsächlich finden wir unter diesen neuen Fixpunkten 
 auch solche, welche die Stabilitätsbedingung erfüllen für
 Werte von $\lambda > 3$.
@@ -96,14 +96,15 @@ Auf der linken Grafik ist das Spinnwebdiagramm der
 logistischen Gleichung mit $\lambda = 3.35$ und
 $f(x)$ abgebildet. 
 Offenbar gibt es eine Oszillation zwischen zwei Punkten.
-Jedoch ist nicht sichtbar, warum das so sein sollte.
+Jedoch ist nicht sichtbar, warum das so sein sollte,
+es gibt da keinen stabilen Fixpunkt zu sehen.
 Auf der rechten Grafik ist nun nochmal das gleiche
 Spinnwebdiagramm, jetzt ist aber zusätzlich noch
 die verschachtelte Funktion $f(f(x))$ sichtbar.
 Darauf wird deutlich, warum die Oszillation eben genau 
 zwischen diesen beiden Punkten entsteht. 
-Es handelt sich dabei um zwei Fixpunkte, welche auch
-stabil sind für diesen Wert von $\lambda$.
+Es handelt sich dabei um zwei Fixpunkte, welche erst 
+mit der Verschachtelung von $f(x)$ sichtbar werden. 
 \begin{figure}
     \includegraphics[width=\linewidth]{papers/logistic/figures/web_2.pdf}
     \caption{Spinnwebplot mit Oszillation}
