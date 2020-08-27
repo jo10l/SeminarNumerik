@@ -36,14 +36,14 @@ Dies kann mit einer Multiplikation mit einer geeigneten Matrix
 Q_{1}=
 \begin{bmatrix}
 	1 & *\\
-	0 & \hat{Q_1}
+	0 & \hat{Q}_1
 \end{bmatrix}
 \end{equation}
 gemacht werden.
-$\hat{Q_1}$ muss so gewählt werden, dass bei einer Multiplikation mit $b$ alle Werte bis auf den Ersten verschwinden.
-Zusätzlich soll die Länge des neuen Vektors $\hat{Q_1}b$, bzw. dieser einzelne Eintrag, der Länge des Vektors $b$ entsprechen:
+$\hat{Q}_1$ muss so gewählt werden, dass bei einer Multiplikation mit $b$ alle Werte bis auf den Ersten verschwinden.
+Zusätzlich soll die Länge des neuen Vektors $\hat{Q}_1b$, bzw. dieser einzelne Eintrag, der Länge des Vektors $b$ entsprechen:
 \begin{equation}
-\hat{Q_1}b=
+\hat{Q}_1b=
 \begin{bmatrix}
 -y\\
 0\\
@@ -52,19 +52,19 @@ Zusätzlich soll die Länge des neuen Vektors $\hat{Q_1}b$, bzw. dieser einzelne
 0
 \end{bmatrix}.
 \end{equation}
-Wird $\hat{Q_1}$ so gewählt, entsteht bei einer Multiplikation von links mit der Matrix $Q_1$ der gewünschte Vektor in der ersten Spalte.
+Wird $\hat{Q}_1$ so gewählt, entsteht bei einer Multiplikation von links mit der Matrix $Q_1$ der gewünschte Vektor in der ersten Spalte.
 \begin{equation}
 A_{\text{Half}}=Q_{1}A=
 \begin{bmatrix}
 a_{11} & * & \dots & *\\
 -y & \\
 0 & & & &\\
-\vdots & &\hat{Q_1}\hat{A} & &\\
+\vdots & &\hat{Q}_1\hat{A} & &\\
  & & & &\\
 0 & & & &
 \end{bmatrix}
 \end{equation}
-$\hat{Q_1}$ kann dabei zum Beispiel mit Givens Rotationsmatrizen \ref{francis:section:grundlagen:givens} oder einer Householder-Transformationsmatrix \ref{francis:section:grundlagen:householder} gebildet werden.
+$\hat{Q}_1$ kann dabei zum Beispiel mit Givens Rotationsmatrizen \ref{francis:section:grundlagen:givens} oder einer Householder-Trans\-for\-ma\-tions\-ma\-trix \ref{francis:section:grundlagen:householder} gebildet werden.
 
 Damit wir die Eigenwerte unserer Matrix nicht verändern, müssen wir die Matrix $Q_1$ nun auch von der rechten Seite hinzu multiplizieren.
 Da die erste Spalte von $Q_1$ nur eine Eins und sonst Nullen hat, wird dabei die vorher erzeugte Spalte nicht beeinflusst.
@@ -75,7 +75,7 @@ Das Resultat ist also eine ähnliche Matrix
 	a_{11} & * & \dots & *\\
 	-y & \\
 	0 & & & &\\
-	\vdots & &\hat{Q_1}\hat{A}\hat{Q_1}^{-1} &\\
+	\vdots & &\hat{Q}_1\hat{A}\hat{Q}_1^{-1} &\\
 	 & & & &\\
 	0 & & & &
 	\end{bmatrix}
@@ -94,28 +94,27 @@ welche an den gewünschten Stellen in der ersten Spalte Nullen hat.
 Das gleiche Prinzip wird jetzt auf die Submatrix angewendet.
 Durch den zweiten Reflektor entstehen Nullen in der zweiten Spalte:
 
-\begin{equation}
-	Q_{2}=
+\begin{align*}
+	Q_{2}&=
 	\begin{bmatrix}
 	1 & 0 & 0 & ... & 0\\
 	0 & 1 & 0 & ... & 0\\
 	0 & 0 &\\
-	\vdots & \vdots & &\hat{Q_2} &\\
+	\vdots & \vdots & &\hat{Q}_2 &\\
 	 &  &\\
 	0 & 0 &
 	\end{bmatrix},
-\end{equation}	
-\begin{equation}
-	A_{2}=
+&&&
+	A_{2}&=
 	\begin{bmatrix}
 	a_{11} & * &  & \dots & *\\
 	-y_{1} & * &  & \dots & *\\
 	0 & -y_{2} &\\
-	\vdots & \vdots  & &\hat{Q_2}\hat{A_{2}}\hat{Q_2}^{-1} &\\
+	\vdots & \vdots  & &\hat{Q}_2\hat{A}_{2}\hat{Q}_2^{-1} &\\
 	 &  &\\
 	0 & 0 &
 	\end{bmatrix}.
-\end{equation}
+\end{align*}
 Mit einem weiteren Schritt ebenfalls in der dritten Spalte usw.
 Das Resultat ist eine Matrix in der Hessenberg-Form, welche ähnlich zu $A$ ist.
 Das heisst für uns, sie besitzt dieselben Eigenwerte wie die Matrix $A$.
@@ -137,5 +136,5 @@ und schlussendlich
 H=Q^{-1}AQ.
 \end{equation}
 
-Im Falle einer symmetrischen Matrix $A$, werden durch die Multiplikation von rechts dieselben Elemente im oberen Teil der Matrix eliminiert und das Ergebnis der Transformation ist tridiagonal.
+Im Falle einer symmetrischen Matrix $A$ werden durch die Multiplikation von rechts dieselben Elemente im oberen Teil der Matrix eliminiert und das Ergebnis der Transformation ist tridiagonal.
 Durch die Reduzierung der ursprünglichen Matrix auf Hessenberg-Form, werden die Kosten des anschliessenden Algorithmus stark reduziert.

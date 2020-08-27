@@ -5,7 +5,7 @@ Da ein formaler Beweis zu komplex wäre, verweise ich an dieser Stelle auf \cite
 Stattdessen wollen wir aber anhand einer einfachen Implementierung zeigen, dass der Algorithmus funktioniert.
 
 \subsection{Implementation\label{francis:section:nachweis:implementation}}
-Folgender Matlab-Code von \cite{francis:watkins_book} ist eine Schritt-für-Schritt Implementation einer Francis-Iteration für eine symmetrische $n \times n$ Matrix.
+Folgender MATLAB-Code von \cite{francis:watkins_book} ist eine Schritt-für-Schritt Implementation einer Francis-Iteration für eine symmetrische $n \times n$ Matrix.
 Zu Beginn muss eine Matrix generiert und auf Hessenberg-Form gebracht werden.
 \lstinputlisting[language=Matlab, style=Python, firstline=1, lastline=6,caption={},label={francis:codes:code1}]{papers/francis/codes/code.m}
 Anschliessend soll der Wilkinson-Shift berechnet werden.
@@ -26,6 +26,8 @@ Zuerst eine Bemerkung zur Darstellung der Matrizen.
 Kleine Zahlen, welche nicht null sind, werden im folgenden als 0.0000 oder -0.0000 geschrieben.
 Handelt es sich bei einer Zahl um eine exakte Null, so wird sie nicht geschrieben.
 Mit Samen \footnote{Wird ein Samen für einen Zufallsgenerator definiert, produziert dieser Zufallsgenerator immer die gleiche Sequenz von Zahlen, welche von der definierten Verteilungsfunktion gesampelt wurden.
+\index{Zufallszahlgenerator}%
+\index{Samen}%
 So kann mit zufälligen Zahlen gerechnet werden und das Resultat ist dennoch reproduzierbar.
 In Matlab kann das durch Einfügen von \texttt{rng(1)} vor dem Zufallsgenerator gemacht werden.}
 1 für den Zufallszahlgenerator ergibt sich folgende zufällige Matrix $a$:

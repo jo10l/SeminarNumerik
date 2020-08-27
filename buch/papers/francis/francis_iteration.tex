@@ -1,11 +1,13 @@
 \section{Francis-Iteration erster Ordnung\label{francis:section:francis_iteration}}
-\rhead{Francis Iteration erster Ordnung}
+\rhead{Francis-Iteration erster Ordnung}
+\index{Francis-Iteration}
 
 Nun wollen wir uns mit dem eigentlichen Francis-Algorithmus \cite{francis:watkins_book} befassen.
 Es handelt sich dabei um ein iteratives Verfahren und lässt sich daher am besten durch die Analyse einer Iteration beschreiben.
 Die Ausgangssituation für den Algorithmus ist eine Matrix, welche sich in oberer Hessenberg-Form oder sogar tridiagonaler Form befindet.
 
 Der Algorithmus beginnt mit der Wahl eines Shifts $\rho_{1}$ und der Berechnung der ersten Spalte von $A-\rho_{1} I$. 
+\index{Shift}%
 Diese Spalte hat die Form
 \begin{equation}
 	p=\begin{bmatrix}
@@ -34,7 +36,8 @@ Anschliessend muss eine Matrix $Q_{0}$ gefunden werden, welche auf den Achsen 1 
 Danach muss $A$ mit $Q_{0}$ zu  $Q_{0}^{-1}AQ_{0}$ transformiert werden.
 Die Transformation von $A$ nach $Q_{0}^{-1}A$ kombiniert lediglich die Zeilen 1 und 2, die Matrix behält aber ihre Hessenberg-Form.
 Die anschliessende Transformation von $Q_{0}^{-1}A$ nach $Q_{0}^{-1}AQ_{0}$ kombiniert die Spalten 1 und 2, wodurch die Hessenberg-Form zerstört wird.
-Es entsteht an der Stelle (3,1) eine "`Ausbuchtung"'.
+Es entsteht an der Stelle (3,1) eine ``Ausbuchtung''.
+\index{Ausbuchtung}%
 Der Rest der Iteration beschäftigt sich damit, die Matrix wieder in ihre Hessenberg-Form zu bringen.
 Dafür wählen wir eine Matrix welche auf den Achsen 2 und 3 arbeitet und den Wert von $a_{31}$ eliminiert.
 So wird die Ausbuchtung nach unten verschoben.
@@ -91,8 +94,14 @@ Die Diagonalelemente werden daher eine immer bessere Approximationen der Eigenwe
 Daher wird oft ein Eigenwert auf der Diagonalen als Shift für die nächste Iteration verwendet.
 Zu Beginn mag dies noch eine schlechte Approximation sein, sie verbessert sich aber sehr schnell.
 
-Wird das unterste Diagonalelement verwendet spricht man von einem Rayleigh-Quotienten Shift.
+Wird das unterste Diagonalelement verwendet spricht man von einem Rayleigh-Quotienten-Shift.
+\index{Rayleigh-Quotienten-Shift}%
+\index{Shift!Rayleigh-Quotienten-}%
 Eine andere, ähnliche Shift-Strategie ist der nach James Hardy Wilkinson benannte Wilkinson-Shift.
+\index{Wilkinson, James Hardy}%
+\index{Wilkinson-Shift}%
+\index{Shift!Wilkinson-}%
+\index{Shift-Strategie}%
 Für diesen wird der näher am letzten Matrixelement liegende Eigenwert der untersten "`$2\times2$ Matrix"' als Shift benutzt.
 
 
