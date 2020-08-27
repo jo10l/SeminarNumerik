@@ -1,12 +1,12 @@
 \section{Grundlagen\label{francis:section:grundlagen}}
 \rhead{Grundlagen}
-Um ein besseres Verständnis für den Algorithmus zu bekommen, wollen wir zuerst einige wichtige Resultate aus der linearen Algebra in Erinnerung rufen.
+Um ein besseres Verständnis für den Algorithmus zu bekommen, wollen wir uns zuerst einige wichtige Resultate aus der linearen Algebra in Erinnerung rufen.
 
 \subsection{Ähnlichkeitstransformation\label{francis:section:grundlagen:aehnlichkeitstransform}}
 Wird eine Matrix von rechts mit einer Matrix $C$ multipliziert und von links mit der Inversen $C^{-1}$, handelt es sich um eine Ähnlichkeitstransformation. Die Transformation ist auch bekannt als Basiswechsel bzw. Similarity Transformation
 \begin{equation}
-	\hat{A}=C^{-1}AC
-\end{equation}.
+	\hat{A}=C^{-1}AC.
+\end{equation}
 Oft wird die Transformation auch in der Form $C\hat{A}=AC$ dargestellt, welche sich durch einfaches Umformen erreichen lässt.
 Es handelt sich bei einer solchen Transformation lediglich um einen Wechsel des Koordinatensystems.
 Daher sind einige Eigenschaften einer Matrix gegenüber einer solchen Transformation invariant.
@@ -21,11 +21,11 @@ Zueinander ähnliche Matrizen haben:
 \end{enumerate}
 
 Eigenwerte und Eigenvektoren können gefunden werden, indem man eine Matrix durch Ähnlichkeitstransformation auf Diagonalform bringt.
-Der Francis Algorithmus tut dies Schrittweise unter Verwendung sehr spezieller Matrizen $C$.
+Der Francis-Algorithmus tut dies Schrittweise unter Verwendung sehr spezieller Matrizen $C$.
 
 \subsection{Spezielle Matrizen\label{francis:section:grundlagen:spezielle_matrizen}}
-Im folgenden werden wir immer wieder über einige spezielle Matrixformen sprechen.
-Reden wir von einer Matrix in der oberen Hessenberg Form, meinen wir eine Matrix der Form:
+Im Folgenden werden wir immer wieder über einige spezielle Matrixformen sprechen.
+Reden wir von einer Matrix in der oberen Hessenberg-Form, meinen wir eine Matrix der Form:
 \begin{equation}
 	\begin{bmatrix}
 	* & * & * & * & * \\
@@ -33,11 +33,11 @@ Reden wir von einer Matrix in der oberen Hessenberg Form, meinen wir eine Matrix
 	& * & * & * & * \\
 	&   & * & * & * \\
 	&   &   & * & *
-	\end{bmatrix}
+	\end{bmatrix},
 \end{equation}
-wobei, die Sterne bedeuten, dass an dieser Stelle ein Wert in der Matrix steht, welcher nicht null ist.
-Die Form entspricht also fast einer oberen Dreiecksmatrix, zusätzlich sind aber alle Elemente unmittelbar unter der Diagonalen von null verschieden.
-Mit dem weiter unten im Abschnitt \ref{francis:section:vorbereitung} vorgestellten Verfahren kann eine allgemeine Matrix in obere Hessenberg Form gebracht werden. Wendet man das gleiche Verfahren aber auf eine symmetrische Matrix an, entsteht eine Spezialform, eine Tridiagonalmatrix:
+wobei die Sterne bedeuten, dass an dieser Stelle ein Wert in der Matrix steht, welcher nicht Null ist.
+Die Form entspricht also fast einer oberen Dreiecksmatrix, zusätzlich sind aber alle Elemente unmittelbar unter der Diagonalen von Null verschieden.
+Mit dem weiter unten im Abschnitt \ref{francis:section:vorbereitung} vorgestellten Verfahren kann eine allgemeine Matrix in obere Hessenberg-Form gebracht werden. Wendet man das gleiche Verfahren aber auf eine symmetrische Matrix an, entsteht eine Spezialform, eine Tridiagonalmatrix:
 
 \begin{equation}
 	\begin{bmatrix}
@@ -58,15 +58,13 @@ Bei den Eigenvektoren einer Matrix handelt es sich um Vektoren, welche bei einer
 
 Es gilt also:
 \begin{equation}
-	Av=\lambda v
+	Av=\lambda v.
 \end{equation}
-
 Gesucht sind die Nullstellen des charakteristischen Polynoms
 
 \begin{equation}
 	\chi_A(\lambda)=\det(A-\lambda I) = 0.
 \end{equation}
-
  Da ein Polynom vom Grad $n$ höchstens $n$ Nullstellen hat, gibt es auch höchstens $n$ Eigenwerte.
 
 \begin{beispiel}
@@ -91,8 +89,7 @@ können wie folgt berechnet werden.
 	\end{bmatrix}
 	\end{pmatrix}
 	= 0
-	\end{equation}
-	
+	\end{equation}	
 daraus folgt:
 	
 	\begin{equation} 
@@ -104,7 +101,7 @@ und die Eigenwerte sind mit $\lambda_{1}=1$, $\lambda_{2}=2$ und $\lambda_{3}=3$
 Wie im Beispiel ersichtlich, sind die Eigenwerte einer Matrix in Dreiecks- oder Diagonalform durch die Diagonalelemente gegeben.
 Da bei Bestimmung der Determinante (bei 3. Ordnung z. B. mit der Regel von Sarrus) alles andere verschwindet.
 
-\subsection{Givens Rotationen\label{francis:section:grundlagen:givens}}
+\subsection{Givens-Rotationen\label{francis:section:grundlagen:givens}}
 Rotationsmatrizen sind attraktiv, da sie einfach konstruiert werden können und mit ihnen durch eine geeignete Wahl des Rotationswinkels an einer gewünschten Stelle in einem Vektor eine Null erzeugt werden kann.
 Dazu wird eine Rotations- bzw. Drehmatrix verwendet.
 Sie hat in zwei Dimensionen die folgende Form:
@@ -115,7 +112,7 @@ Sie hat in zwei Dimensionen die folgende Form:
 	\end{bmatrix}.
 \end{equation}
 Zur Drehung eines Punktes $P=(x,y)$ um den Winkel $\phi$ kann man einfach den dazugehörigen Ortsvektor mit der Rotationsmatrix multiplizieren und erhält so den Ortsvektor des gedrehten Punktes.
-Es handelt sich dabei um eine Givens Rotationsmatrix, wenn $R^{-1}(\phi)=R_{T}(\phi)=R(-\phi)$.
+Es handelt sich dabei um eine Givens-Rotationsmatrix, wenn $R^{-1}(\phi)=R_{T}(\phi)=R(-\phi)$.
 Durch Erweiterung der Rotationsmatrix können Drehungen natürlich auch in einem höherdimensionalem Raum verwendet werden.
 
 \begin{beispiel}
@@ -153,9 +150,9 @@ Durch eine geeignete Wahl des Rotationswinkels und ein systematisches Anwenden d
 Weiteres dazu ist in den Kapiteln \ref{buch:section:qr} und \ref{chapter:qr} zu finden.
 \end{beispiel}
 
-\subsection{Householder Transformation\label{francis:section:grundlagen:householder}}
-Reflektoren (siehe Abschnitt \ref{buch:subsection:spiegelungn}) sind attraktiv, da sie einfach konstruiert werden können und mit ihnen alle Elemente eines Vektors bis auf ein Element auf null gesetzt werden können.
-So kann jede beliebige Matrix relativ einfach in Hessenberg Form gebracht werden.
+\subsection{Householder-Transformation\label{francis:section:grundlagen:householder}}
+Reflektoren (siehe Abschnitt \ref{buch:subsection:spiegelungn}) sind attraktiv, da sie einfach konstruiert werden können und mit ihnen alle Elemente eines Vektors bis auf ein Element auf Null gesetzt werden können.
+So kann jede beliebige Matrix relativ einfach in Hessenberg-Form gebracht werden.
 Ein beliebiger Vektor $x$ und ein spezieller Vektor $y$ sind gegeben.
 \begin{equation}
 	x=
@@ -180,10 +177,10 @@ Mit dem Reflektor
 \end{equation}
 können also alle Elemente eines Vektors bis auf ein Element auf null gesetzt werden.
 Das Ganze ist in Abbildung \ref{francis:abb:householder_transform} in zwei Dimensionen dargestellt.
-\begin{figure}
+\begin{figure}[h]
 	\begin{center}
 		\includegraphics[scale=0.1]{papers/francis/images/Householdertransformation.png}
-		\caption{Illustration der Householdertransformation in zwei Dimensionen, Abbildung von \cite{francis:householder}}
+		\caption{Illustration der Householder-Transformation in zwei Dimensionen, Abbildung von \cite{francis:householder}}
 		\label{francis:abb:householder_transform}
 	\end{center}
 \end{figure}
