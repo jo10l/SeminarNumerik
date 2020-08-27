@@ -7,18 +7,18 @@ Stattdessen wollen wir aber anhand einer einfachen Implementierung zeigen, dass 
 \subsection{Implementation\label{francis:section:nachweis:implementation}}
 Folgender MATLAB-Code von \cite{francis:watkins_book} ist eine Schritt-für-Schritt Implementation einer Francis-Iteration für eine symmetrische $n \times n$ Matrix.
 Zu Beginn muss eine Matrix generiert und auf Hessenberg-Form gebracht werden.
-\lstinputlisting[language=Matlab, style=Python, firstline=1, lastline=6,caption={},label={francis:codes:code1}]{papers/francis/codes/code.m}
+\lstinputlisting[language=Matlab, style=Matlab, firstline=1, lastline=6,caption={},label={francis:codes:code1}]{papers/francis/codes/code.m}
 Anschliessend soll der Wilkinson-Shift berechnet werden.
 Dies geschieht im folgenden Code-Abschnitt.
-\lstinputlisting[language=Matlab, style=Python, firstline=7, lastline=23,caption={},label={francis:codes:code2}]{papers/francis/codes/code.m}
+\lstinputlisting[language=Matlab, style=Matlab, firstline=7, lastline=23,caption={},label={francis:codes:code2}]{papers/francis/codes/code.m}
 Nun muss ein Rotator $Q_0$ gebildet werden.
 Die anschliessende Transformation (Multiplikation von rechts und links) erzeugt eine Ausbuchtung in der Matrix.
-\lstinputlisting[language=Matlab, style=Python, firstline=24, lastline=29,caption={},label={francis:codes:code3}]{papers/francis/codes/code.m}
+\lstinputlisting[language=Matlab, style=Matlab, firstline=24, lastline=29,caption={},label={francis:codes:code3}]{papers/francis/codes/code.m}
 Um die Francis-Iteration zu beenden, muss nun die Ausbuchtung aus der Matrix hinausgeschoben werden.
 Dies wird mit dem folgenden Loop erledigt.
-\lstinputlisting[language=Matlab, style=Python, firstline=30, lastline=42,caption={},label={francis:codes:code4}]{papers/francis/codes/code.m}
+\lstinputlisting[language=Matlab, style=Matlab, firstline=30, lastline=42,caption={},label={francis:codes:code4}]{papers/francis/codes/code.m}
 Zum Schluss kann man die wichtigsten Matrixelemente ausgeben.
-\lstinputlisting[language=Matlab, style=Python, firstline=43, lastline=46,caption={},label={francis:codes:code5}]{papers/francis/codes/code.m}
+\lstinputlisting[language=Matlab, style=Matlab, firstline=43, lastline=46,caption={},label={francis:codes:code5}]{papers/francis/codes/code.m}
 
 \subsection{Resultate\label{francis:section:nachweis:resultate}}
 Nun wollen wir den in \ref{francis:section:nachweis:implementation} beschriebenen Code testen.
