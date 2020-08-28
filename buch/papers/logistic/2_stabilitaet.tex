@@ -3,9 +3,111 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Stabilität
-\label{logistic:section:loesung}}
-\rhead{Stabilität}
+\section{Stabilität der logistischen Gleichung
+\label{logistic:section:problemstellung}}
+\rhead{Stabilität der logistischen Gleichung}
 
+In den bisherigen Grafiken ist leider nicht ersichtlich, 
+warum die logistische Gleichung dieses Iterationsverhalten aufweist. 
+Glücklicherweise kennen wir aber aus dem Kapitel \ref{buch:section:instabilitaet}
+bereits Werkzeuge zur Stabilitätsbetrachtung für
+das Iterieren von Funktionen. 
+Diese können wir jetzt einsetzen, damit wir dieses
+Verhalten besser verstehen können. 
 
+Kurze Auffrischung: Beim Iterieren einer Funktion
+gibt es Fixpunkte. 
+Jeder Fixpunkt muss die Bedingung
+$f(x^*)=x^*$ erfüllen, das heisst wenn man die Funktion
+mit diesem Wert iteriert passiert gar nichts, weil
+immer wieder der Gleiche Wert herauskommt, den
+man ja schon reingibt. 
+Grafisch sind diese Punkte die Schnittpunkte
+vom Funktionsplot mit der 45°-Geraden durch den Ursprung.  
+Zusätzlich gibt es die Stabilitätsbedingung 
+$|f'(x^*)| < 1$. 
+Wenn diese erfüllt ist, handelt es sich um einen
+stabilen Fixpunkt. 
+Er hat eine ``anziehende'' Wirkung. 
+Grafisch sieht man das am Winkel der Tangente in den
+Fixpunkten von $f(x)$, welcher zwischen +45° und -45° sein muss.
+
+Wir können nun auf das uns bereits bekannte Spinnwebdiagramm
+zurückgreifen, um grafisch diese Fixpunkte zu finden.
+Beim Betrachten der logistischen Gleichung 
+$f(x) = \lambda x (1-x)$ sehen wir, 
+dass es sich dabei eigentlich nur um eine Parabel mit 
+den Nullstellen $0$ und $1$ handelt. 
+Der Faktor $\lambda$ bestimmt dabei die Öffnung der Parabel.  
+
+Abbildung \ref{fig:web_1} zeigt nun das Spinnwebdiagramm,
+welches wir beim Iterieren der logistischen Gleichung erhalten.  
+Auf der linken Grafik mit $\lambda = 0.75$ sehen wir,
+dass $x_n$ gegen den ersten Fixpunkt bei $0$ konvergiert. 
+Dies war bereits in Abbildung \ref{fig:pop_logistic} ersichtlich,
+hier sehen wir aber zusätzlich noch, dass es eben gegen
+diesen Punkt konvergiert, weil es sich dabei um einen
+stabilen Fixpunkt handelt.  
+Auf der mittleren Grafik mit $\lambda = 1.8$ ist nun für den
+Fixpunkt im Ursprung die Stabilitätsbedingung nicht
+mehr erfüllt. 
+Dafür ist sie jetzt für den zweiten Fixpunkt erfüllt, 
+was dazu führt, dass die Funktion bei Iterieren gegen 
+diesen Wert konvergiert.  
+Auf der rechten Grafik mit $\lambda = 2.8$ ist wieder der  
+zweite Fixpunkt stabil, hier ``umkreist'' die Linie aber
+den Fixpunkt und konvergiert langsam gegen ihn. 
+Auf Abbildung \ref{fig:pop_logistic} hat sich dieses Verhalten
+als ``Einschwingen'' geäussert.
+\begin{figure}
+    \includegraphics[width=\linewidth]{papers/logistic/figures/web_1.pdf}
+    \caption{Spinnwebplot ohne Oszillation}
+    \label{fig:web_1}
+\end{figure}
+
+Nun haben wir eine gute Erklärung für das Iterationsverhalten
+der logistischen Gleichung für $0 < \lambda < 3$. 
+Aber was passiert nun, wenn $\lambda > 3$ wird,
+wo es beginnt zwischen mehreren Punkten zu oszillieren?
+Wenn wir die Stabilitätsbedingung $|f'(x^*)| < 1$
+für Fixpunkte von $f(x)$ mit $\lambda > 3$ anwenden sehen wir,
+dass für eine einzelne Iteration der logistischen 
+Gleichung kein stabiler Fixpunkte mehr existiert. 
+Wenn wir jetzt aber zwei Iterationen der logistischen
+Gleichung machen, also 
+$f(f(x))$ wobei $f(x)=\lambda x (1-x)$,
+dann bekommen wir ein Polynom vierten Grades:
+\begin{equation}
+    f(f(x))
+    =
+    \lambda [\lambda x (1-x)] (1-[\lambda x (1-x)])
+    =
+    \lambda^2 x (1-x) (\lambda x^2 - \lambda x + 1)
+\end{equation}
+Diese neue Funktion bringt mit der 45°-Geraden 
+neue Schnittpunkte und damit auch neue Fixpunkte mit sich.
+Tatsächlich finden wir unter diesen neuen Fixpunkten 
+auch solche, welche die Stabilitätsbedingung erfüllen für
+Werte von $\lambda > 3$.
+
+Auch das wollen wir uns nochmal grafisch mit
+Abbildung \ref{fig:web_2} veranschaulichen.  
+Auf der linken Grafik ist das Spinnwebdiagramm der 
+logistischen Gleichung mit $\lambda = 3.35$ und
+$f(x)$ abgebildet. 
+Offenbar gibt es eine Oszillation zwischen zwei Punkten.
+Jedoch ist nicht sichtbar, warum das so sein sollte,
+es gibt da keinen stabilen Fixpunkt zu sehen.
+Auf der rechten Grafik ist nun nochmal das gleiche
+Spinnwebdiagramm, jetzt ist aber zusätzlich noch
+die verschachtelte Funktion $f(f(x))$ sichtbar.
+Darauf wird deutlich, warum die Oszillation eben genau 
+zwischen diesen beiden Punkten entsteht. 
+Es handelt sich dabei um zwei Fixpunkte, welche erst 
+mit der Verschachtelung von $f(x)$ sichtbar werden. 
+\begin{figure}
+    \includegraphics[width=\linewidth]{papers/logistic/figures/web_2.pdf}
+    \caption{Spinnwebplot mit Oszillation}
+    \label{fig:web_2}
+\end{figure}
 
