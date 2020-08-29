@@ -88,7 +88,7 @@ hat den Wert
 x = \sum_{k=-m}^n x_kb^k.
 \]
 Die Zahl $\pi$ hat daher die Darstellungen
-\index{$\pi$}%
+\index{pi@$\pi$}%
 \begin{align*}
 \pi
 &=
@@ -160,9 +160,9 @@ double      & 0.50000000000000000000& 0.20000000000000001110\\
 long double & 0.50000000000000000000& 0.20000000000000001110\\
 \hline
 \end{tabular}
-\index{\texttt{float}}%
-\index{\texttt{double}}%
-\index{\texttt{long double}}%
+\index{float@\texttt{float}}%
+\index{double@\texttt{double}}%
+\index{long double@\texttt{long double}}%
 \caption{Nicht alle exakt darstellbaren Dezimalzahlen sind auch im
 Binärsystem exakt darstellbar.
 Die Zahl $0.2_{10}$ führt auf einee periodischee Binärzahl, die
@@ -418,7 +418,7 @@ Das Vorzeichen der Zahl wird separat gespeichert.
 
 Der 32 bit umfassende Gleitkommatyp \texttt{float} hat eine Mantisse
 von 24 bit, wovon aber nur 23 Bit gespeichert werden müssen.
-\index{\texttt{float}}%
+\index{float@\texttt{float}}%
 Von den verbleibenden 9 bit wird eines als Vorzeichen verwendet und
 8 als Exponent.
 Mit einer 8 bit Ganzzahl lassen sich die Zahlen von 0 bis 255 darstellen.
@@ -552,7 +552,7 @@ kleinste denormalisiert Zahl: &
 	1.4013\cdot 10^{-45}&4.94066\cdot 10^{-324}&3.6452\cdot 10^{-4951}\\
 \hline
 \end{tabular}
-\index{$\varepsilon$}%
+\index{epsilon@$\varepsilon$}%
 \caption{Eigenschaften der Gleitkommatypen \texttt{float}, \texttt{double}
 und \texttt{long double}.
 Die Zeile $\varepsilon$ ist die Differenz zwischen 1 und der kleinsten
@@ -605,7 +605,7 @@ Prozessoren reproduzierbare Resultate geben.
 Die C++-Standardbibliothek bietet im \texttt{<limits>} Header die Möglichkeit, 
 Informationen über die Datentypen zu erhalten.
 \index{C++}%
-\index{\texttt{<limits>}}%
+\index{limits@\texttt{<limits>}}%
 In Tabelle~\ref{buch:table:limits} sind die Eigenschaften der
 gebräuchlichsten Typen zusammengestellt.
 Allerdings offenbart sich hier auch ein Problem dieser Implementation
@@ -617,9 +617,9 @@ maximalen Werte.
 Aktuelle Compiler unterstützen typischerweise die Gleitkomma-Typen
 \texttt{float}, \texttt{double} und \texttt{long double}.
 \index{Compiler}%
-\index{\texttt{float}}%
-\index{\texttt{double}}%
-\index{\texttt{long double}}%
+\index{float@\texttt{float}}%
+\index{double@\texttt{double}}%
+\index{long double@\texttt{long double}}%
 Bei Microkontrollern, wo Berechnungen mit der hohen Präzision
 eines \texttt{double} nur schon wegen des Platzedarfs der Werte
 und des Zeitbedarfs für die Operationen kaum sinnvoll sind, ist oft
@@ -633,13 +633,13 @@ Graphikkarten unterstützen oft noch einen halben Gleitkommatyp
 \texttt{binary16}, dessen Genauigkeit für die Darstellung von 3D-Objekten
 ausreichend ist.
 \index{Graphikkarte}%
-\index{\texttt{binary16}}%
+\index{binary16@\texttt{binary16}}%
 \index{3D}%
 
 \subsubsection{Rundung}
 Der IEEE 754 Standard schreibt auch vor, wie Resultate gerundet werden
 müssen.
-\index{Rundungs-Regel}
+\index{Rundungsregel}
 Bei vielen Operationen entstehen Resultate, die einen längeren 
 Nachkommateil haben als in das gegebene Gleitkommaformat passt,
 das Resultat muss gerundet werden.
@@ -669,7 +669,7 @@ nur korrekte Resultate mit Ausnahme der letzten 1-2 bits.
 Die Gleitkomma-Darstellung definiert, dass die Mantisse ein implizites
 führends \texttt{1}-bit hat. 
 \index{Null}%
-\index{$0$}%
+\index{0@$0$}%
 \index{Mantisse}%
 In diesem Format lässt sich die Null aber nicht darstellen, es ist
 also eine separate Definition nötig:
@@ -741,7 +741,7 @@ der gebräuchlichste Ganzzahltyp \texttt{long}.
 \item[$\ominus$] Geschwindigkeit: sofern keine Hardwarebeschleunigung
 zur Verfügung steht sind Gleitkommaoperationen deutlich langsamer
 als Operationen mit Festkommazahlen.
-\index{Hardware-Beschleunigung}%
+\index{Hardwarebeschleunigung}%
 \item[$\ominus$]
 In einer Multicore CPU hat nicht unbedingt jeder Kern eine Gleitkomma-Einheit.
 \index{Multicore CPU}%
