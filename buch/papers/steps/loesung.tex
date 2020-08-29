@@ -23,7 +23,7 @@ Eine Möglichkeit zur Realisierung einer simplen Schrittweitensteuerung ist mitt
 dargestellt in Abbildung~\ref{buch:steps:flowchartSimple}.
 Die Funktionsweise dieser Methode wird nun anhand der Wahrscheinlichkeitsfunktion der Standardnormalverteilung vorgeführt.
 Für die Wahrscheinlichkeitsfunktion existiert zwar keine analytische Lösung,
-doch sie lässt sich aus der Wahrscheinlichkeistdichtefunktion
+doch sie lässt sich aus der Wahrscheinlichkeitsdichtefunktion
 \[
   \varphi(x)=\frac{1}{\sqrt{2\pi}\sigma}\mathrm{e}^{-\frac{(x-\mu)^2}{2 \sigma}}\quad \text{mit} \quad \mu=0,\sigma=1
 \]
@@ -54,7 +54,7 @@ Konkret berechnet sich in diesem Beispiel die zu wählende Schrittweite wie folg
   h=\frac{h_{\text{test}}}{|\varphi(x_n, \tilde{F}_n)-\varphi(P_{\text{test}})|\cdot q_{\text{factor}}}\quad \text{mit} \quad q_{\text{factor}}=20.
   \label{buch:steps:equationSimpleStepSize}
 \end{equation}
-Der $q_\text{factor}$ wurde hierfür emirisch ermittelt.
+Der $q_\text{factor}$ wurde hierfür empirisch ermittelt.
 Zusätzlich wird die Schrittweite nach oben durch die Testschrittweite begrenzt,
 da über den Verlauf der Kurve jenseits des Testpunktes noch nichts bekannt ist.
 Auch eine Division durch Null muss abgefangen werden, falls die Steigung in beiden Punkten identisch ist.
@@ -65,7 +65,7 @@ wobei einer der Koeffizienten ($k_1$) bereits beim Testschritt ermittelt worden 
 Dieses Verfahren ist zwar in der Lage, die Schrittweite zu verkleinern, falls mit der Testschrittweite ein zu grosser Fehler resultieren würde,
 doch über den Fehler des gemachten Schrittes ist dann am Ende nichts bekannt.
 Eine weitere Schwäche dieses konstanten Testschrittes ist, dass bereits sehr kleine Schritte gewählt werden,
-sobald der Testschritt eine andere Steigung ertastet, obwohl der "Knick" der Kurve noch genügend weit entfernt wäre.
+sobald der Testschritt eine andere Steigung ertastet, obwohl der ``Knick" der Kurve noch genügend weit entfernt wäre.
 
 \begin{figure}
   \centering
@@ -132,7 +132,7 @@ im Vergleich zu einer ähnlich genauen, fixen Schrittweite etwa halbieren.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.75\textwidth]{papers/steps/img/comparison_fehlberg_ssc.pdf}
+  \includegraphics[width=\textwidth]{papers/steps/img/comparison_fehlberg_ssc.pdf}
   \caption{Bahn eines Teilchens um ein Gravitationszentrum: Vergleich von unterschiedlichen fixen Schrittweiten
   mit der variablen Schrittweite mittels Fehlerschätzung nach Fehlberg und Steueralgorithmus nach Abbildung~\ref{buch:steps:flowchartfehlberg},
   wiederholte Schritte beim Verkleinern der Schrittweite mitberücksichtigt}
