@@ -68,12 +68,12 @@ def plot(r, ax, x0, fun, fun2, tangets, name):
     ax.plot([0, 1], [0, 1], "-k")
     
     ax.set_aspect(1)
-    ax.set_xlim(0.0, 1.0)
+    ax.set_xlim(-0.1, 1.1)
     ax.set_ylim(0.0, 1.0)
     ax.legend(loc="upper left")
     ax.grid()
 
-fig, axs = plt.subplots(1,2,sharey=True,figsize=(8,4))
+fig, axs = plt.subplots(1,2,sharey=True,figsize=(8,3.5))
 
 
 # plot f(x)
