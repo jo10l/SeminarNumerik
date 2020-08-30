@@ -41,7 +41,7 @@ def plot(r, ax, x0):
                     period = i
                     break
     points = x_n[-1-period:-1]
-    ax.plot(points, points, "ob", markersize=4)
+    ax.plot(points, points, "ob", markersize=3)
     for i in range(0, len(points)):
         px = points[i]
         xa = px-0.000001
