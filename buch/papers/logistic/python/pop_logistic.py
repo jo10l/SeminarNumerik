@@ -4,12 +4,17 @@ import matplotlib.pyplot as plt
 def logistic(r, x):
     return r * x * (1-x)
 
+
+
 def plot(r, ax, x0):
     x = np.arange(0, 13, 1)
     y = np.ones_like(x) * x0
+    yexp = np.ones_like(x) * x0
     for i in range(1, len(x)):
         y[i] = logistic(r, y[i-1])
-    ax.plot(x, y, ".-k", label=str("λ = "+str(r)))
+        yexp[i] = r*yexp[i-1]
+    ax.plot(x, y, ".-", label=str("λ = "+str(r)), color="red")
+    ax.plot(x, yexp, "--", color="blue", alpha=0.5)
     ax.set_xlim(0, len(x)-1)
     ax.set_ylim(0, 1.0)
     ax.set_xticks(x[::2])

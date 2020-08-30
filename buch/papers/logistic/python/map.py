@@ -2,28 +2,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def logistic(r, x):
-    return r * x
+    return r * x * (1 - x)
 
-def plot(r, ax, x0):
-    x = np.arange(0, 13, 1)
-    y = np.ones_like(x) * x0
-    for i in range(1, len(x)):
-        y[i] = logistic(r, y[i-1])
-    ax.plot(x, y, ".-k", label=str("λ = "+str(r)))
-    ax.set_xlim(0, len(x)-1)
-    ax.set_ylim(0, 1.0)
-    ax.set_xticks(x[::2])
-    ax.legend(loc="upper left")
-    ax.set_xlabel("Jahr n")
-    ax.grid()
+n = 50000
+r = np.linspace(0, 4.0, n)
+x = np.ones(n) * 0.5
 
-fig, axs = plt.subplots(1,3,sharey=True,figsize=(9,3))
-axs[0].set_ylabel("Population x")
+for i in range(0, 1000):
+    x = logistic(r, x)
 
-plot(0.75, axs[0], 0.5)
-plot(1.0, axs[1], 0.2)
-plot(1.25, axs[2], 0.05)
+for i in range(0, 250):
+    x = logistic(r, x)
+    plt.plot(r, x, ',k', alpha=0.05)
 
+plt.xlim(0.0, 4.1)
+plt.ylim(-0.025, 1.025)
+plt.xlabel("λ")
+plt.ylabel("x_n wenn n gegen unendlich")
 plt.tight_layout()
-plt.savefig("../figures/pop_exp.pdf")
-plt.show()
+plt.savefig("../figures/map.png", dpi=300)

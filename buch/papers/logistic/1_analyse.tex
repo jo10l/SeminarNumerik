@@ -11,12 +11,12 @@ Im Kapitel \ref{buch:section:iteration} haben wir uns
 bereits mit dem Iterieren von Funktionen befasst. 
 Genau dieses Prinzip der Iteration finden wir auch bei
 der logistischen Gleichung wieder. 
-Jede Berechnung der Population im Folgejahr ist nämlich
+Jede Berechnung der Population im Folgejahr ist 
 eine Iteration der logistische Gleichung.
-Die logistische Gleichung \ref{eq:logistic} könnte man 
+Die logistische Gleichung \eqref{eq:logistic} könnte man 
 auch als Funktion $f(x) = \lambda x(1-x)$ schreiben.
 Jede Iteration ist nun eine Verschachtelung von $f(x)$,
-somit lässt sich jeder beliebige Wert $x_n$ auch wiefolgt berechnen:
+somit lässt sich jeder beliebige Wert $x_n$ auch wie folgt berechnen:  
 \begin{itemize}
     \item $x_1 = f(x_0)$
     \item $x_2 = f(x_1) = f(f(x_0))$
@@ -25,7 +25,9 @@ somit lässt sich jeder beliebige Wert $x_n$ auch wiefolgt berechnen:
     \item $x_5 = ...$
 \end{itemize}
 
-Wir haben im vorherigen Kapitel bereits beobachtet, 
+Wir haben im Kapitel 
+\ref{logistic:section:einleitung} 
+bereits beobachtet, 
 dass die logistische Gleichung beim Iterieren für 
 verschiedene Werte von $\lambda$ gegen verschiedene 
 Endwerte konvergiert. 
@@ -33,15 +35,15 @@ Der Anfangswert $x_0$ scheint dabei keine Rolle zu spielen
 solange er sich im Bereich $0 < x < 1$ befindet, 
 er beinflusst lediglich die Form der Kurve, 
 bevor sie den Konvergenzwert erreicht. 
-Das heisst, wir können $x_0$ auf einen bestimmten Wert, 
+Das heisst, wir können $x_0$ einfach auf einen bestimmten Wert, 
 zum Beispiel 0.1, setzen. 
-Nun können wir $\lambda$ auf einen bestimmten Wert setzen
+Nun können wir $\lambda$ ebenfalls auf einen bestimmten Wert setzen
 und die logistische Gleichung endlos iterieren, 
 um zu sehen, gegen welchen Wert $x_n$ schliesslich konvergiert.
 Mit dem Computer können natürlich nicht unendlich viele Iterationen
 durchgeführt werden, aber wenn $n$ gross genug ist, 
 kommt man doch sehr nahe an den tatsächlichen Konvergenzwert. 
-Genau dieser Prozess ist nun auf Abbildung \ref{fig:pop_logistic} 
+Genau dieser Prozess ist nun auf Abbildung \ref{fig:map_1} 
 ersichtlich. 
 Sie zeigt einen Plot, 
 auf dem die horizontale Achse die verschiedenen Werte
@@ -57,31 +59,78 @@ von der Iteration der logistischen Gleichung ersichtlich:
 \end{figure}
 \begin{itemize}
     \item 
-    für $0 \le \lambda \le 1$ konvergiert $x$ gegen 0
+    für $0 \le \lambda \le 1$ konvergiert $x_n$ gegen 0
     \item 
-    für $1 \le \lambda \le 3$ konvergiert $x$ gegen einen fixen Wert
+    für $1 \le \lambda \le 3$ konvergiert $x_n$ gegen einen fixen Wert
     \item 
-    für $\lambda > 3$ scheint $x$ nicht mehr gegen einen fixen Wert zu konvergieren.
+    für $3 \le \lambda \le 4$ scheint $x_n$ nicht mehr gegen einen fixen Wert zu konvergieren.
     Stattdessen gibt es diese Verzweigungen, 
     die darauf hindeuten, 
-    dass $x$ zuerst bis $\lambda \approx 3.4$ zwischen zwei Werten hin und her oszilliert, 
+    dass $x_n$ zuerst bis $\lambda \approx 3.4$ zwischen zwei Werten hin und her oszilliert, 
     dann bis $\lambda \approx 3.6$ zwischen vier Werten, dann 8, 16, usw. 
+    Dieses Phänomen wird auch ``Periodenverdoppelung'' genannt.
+    \item
+    für $\lambda > 4$ gibt es scheinbar nichts mehr.
+    Das kommt daher, dass $x_n$ ab da nur noch divergiert.  
 \end{itemize}
 \begin{figure}
     \includegraphics[width=\linewidth]{papers/logistic/figures/pop_logistic_2.pdf}
     \caption{Iteration der logistischen Gleichung}
     \label{fig:pop_logistic_2}
 \end{figure}
-Das doch eher spezielle Verhalten von $\lambda > 3$ wird 
+Das doch eher spezielle Verhalten von $3 < \lambda < 4$ wird 
 auch in Abbildung \ref{fig:pop_logistic_2} ersichtlich,
 wenn man die Werte der einzelnen Iteration plottet.
-Im ersten Plot mit $\lambda = 2.9$ sieht man, dass $x$ zuerst oszilliert,
+Im ersten Plot mit $\lambda = 2.9$ sieht man, dass $x_n$ zuerst oszilliert,
 aber schliesslich auf einen fixen Wert konvergiert.
-Auf dem zweiten Plot mit $\lambda = 3.35$ scheint $x$ 
-für immer zwischen zwei Werten zu oszillieren und beim
+Auf dem zweiten Plot mit $\lambda = 3.35$ scheint $x_n$ 
+nach einigen Iterationen nur noch
+zwischen zwei Werten zu oszillieren und beim
 dritten Plot mit $\lambda = 3.55$ sogar zwischen vier Werten. 
 Dieses Oszillieren zeigt sich in Abbildung \ref{fig:map_1}
 durch die Verzweigungen oder auch ``Bifurkationen''. 
 Darum wird es auch ``Bifurkationsdiagramm'' genannt. 
 
+Auf dem Bifurkationsdiagramm sind noch mehr 
+interessante Eigenschaften der logistischen Gleichung erkennbar.
+Wenn wir, wie auf Abbildung \ref{fig:map_zoom}, in die Bereiche hineinzoomen
+wo die Bifurkationen immer dichter werden finden wir Gebilde, 
+welche wieder fast genau gleich aussehen.
+Tatsächlich könnte man endlos immer weiter in diese
+Bereiche hineinzoomen und würde immer wieder auf solche änhlichen Muster stossen. 
+Diese Selbstähnlichkeit ist eine typische Eigenschaft von Fraktalen.
+Das Bifurkationsdiagramm der logistischen Gleichung ist also ein Fraktal.
+Es gibt sogar einen Zusammenhang zwischen der logistischen Gleichung und 
+einem anderen berühmten Fraktal, der Mandelbrotmenge.
+Mehr dazu später in Kapitel \ref{logistic:section:folgerungen}.
+\begin{figure}
+    \includegraphics[width=\linewidth]{papers/logistic/figures/map_zoom.png}
+    \caption{Bifurkationsdiagramm mit Zoom bei $\lambda = 3.525$ und $\lambda = 3.84$}
+    \label{fig:map_zoom}
+\end{figure}
 
+Desweiteren ist auf dem Bifurkationsdiagramm zu sehen,
+dass für jede weitere Periodenverdoppelung eine geringere
+Erhöhung von $\lambda$ notwendig ist.
+Genauer kann nummerisch bestimmt werden, 
+dass $\lambda$ für jede weitere Verdoppelung um
+den Faktor $\delta \approx 4.6692$ weniger erhöht werden muss.
+Dieser Wert hat den Namen Feigenbaum-Konstante.
+Diese rapide zunehmende Dichte der Periodenverdoppelungen führt dazu, 
+dass wenn $\lambda$ den Wert $\approx 3.57$ überschreitet, 
+die Verdoppelungen aufhören und $x_n$ nicht mehr oszilliert. 
+Stattdessen nimmt $x_n$ nur noch scheinbar 
+willkürliche Werte in bestimmten Bereichen an, 
+man spricht vom Chaos.
+Interessanterweise gibt es aber auch für Werte von 
+$\lambda \gtrapprox 3.57$ wieder gewissen Bereiche,
+wo wieder periodisches Verhalten auftritt. 
+Ein Biespiel für einen solchen Bereich sieht man
+gut auf Abbildung \ref{fig:map_zoom} bei 
+$\lambda \approx 3.83$. 
+Dort gibt es zuerst eine Dreier-Periode, 
+dann wieder die Periodenverdoppelungen, 
+wobei die Dichte der Verdoppelungen
+wieder mit der Feigenbaum-Konstante $\delta$ zunimmt.
+Schliesslich bricht wieder das Chaos aus bei 
+$\lambda \approx 3.85$.
