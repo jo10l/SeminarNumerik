@@ -22,7 +22,7 @@ zwei Varianten davon werden nun näher vorgestellt.
 Eine Möglichkeit zur Realisierung einer simplen Schrittweitensteuerung ist mittels einem konstanten Testschritt,
 dargestellt in Abbildung~\ref{buch:steps:flowchartSimple}.
 Die Funktionsweise dieser Methode wird nun anhand der Wahrscheinlichkeitsfunktion der Standardnormalverteilung vorgeführt.
-Für die Wahrscheinlichkeitsfunktion existiert zwar keine analytische Lösung,
+Für die Verteilungsfunktion der Normalverteilung existiert zwar keine analytische Lösung,
 doch sie lässt sich aus der Wahrscheinlichkeitsdichtefunktion
 \[
   \varphi(x)=\frac{1}{\sqrt{2\pi}\sigma}\mathrm{e}^{-\frac{(x-\mu)^2}{2 \sigma}}\quad \text{mit} \quad \mu=0,\sigma=1
@@ -82,9 +82,14 @@ Dabei wird der Fehler des aktuellen Schrittes anhand der Differenz zweier unters
 Runge-Kutta Schritte geschätzt. Durch geschickte Kombination dieser beiden Schritte
 lässt sich der Mehrrechenaufwand dazu aber merklich reduzieren, was in der Literatur als \textit{einbetten} bezeichnet wird.
 Damit diese Einbettung möglich wird, sind die einzelnen Stufen etwas anders verteilt und gewichtet als wie im Kapitel
-\ref{subsection:buch:ode:runge-kutta}. Weitere Details zum folgenden Beispiel sind im Kapitel \textit{Eingebette Verfahren und Schritteitensteuerung}
-des Buchs \textit{Numerische Mathematik} zu finden
-\cite{steps:Numerische-Mathematik}.
+\ref{subsection:buch:ode:runge-kutta}.
+Wie solche Parameter für die einzelnen Stufen bestimmt werden können, wird zudem im Kapitel
+\ref{buch:subsection:quadratischeverfahren}
+erläutert.
+Weitere Details zum folgenden Beispiel sind im Kapitel \textit{Eingebette Verfahren und Schritteitensteuerung}
+des Buchs
+\cite{steps:Numerische-Mathematik}
+zu finden.
 In diesem Beispiel wird gezeigt, wie ein Runge-Kutta Schritt 4. Ordnung (5 Stufen) in ein Schritt 5. Ordnung (6 Stufen) eingebettet wird.
 Dabei werden zuerst alle Koeffizienten berechnet, welche für den Schritt 4. Ordnung nötig sind:
 \begin{align*}
