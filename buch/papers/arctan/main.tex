@@ -135,78 +135,81 @@ Nach dem Prinzip der Padé-Approximation suchen wir einen Bruch $p_n/q_n$,
 der mit der Taylor-Reihe bis zu einem gewissen Grad $k$ übereinstimmt.
 Wir verlangen daher, dass $p_n$ und $q_n$ Polynome sind, für die gilt
 \[
-\frac{p_n}{q_n} = \arctan x + O(x^{k+1}).
+\frac{p_n(x)}{q_n(x)} = \arctan x + O(x^{k+1}).
 \]
 Wir werden später sehen, dass wir $k=2n+1$ verlangen können, was zum
-Beispiel bedeutet, dass $p_2/q_2$ mit der Reihe~\ref{arctan:arctan}
+Beispiel bedeutet, dass $p_2(x)/q_2(x)$ mit der Reihe~\ref{arctan:arctan}
 bis und mit Termen fünfter Ordnung übereinstimmt.
 Wie bei der Herleitung der Padé-Approximation in Kapitel~\ref{chapter:pade}
 multiplizieren wir mit dem Nenner und erhalten die Bedingung
 \begin{equation}
-p_n - q_n\arctan x = O(x^{k+1}).
+p_n(x) - q_n(x)\arctan x = O(x^{k+1}).
 \label{arctan:bedingung}
 \end{equation}
 Auch diese Bedingung lässt sich in Vektorform fassen:
-\begin{equation}
+\begin{align}
 \begin{pmatrix}
 1&-\arctan x
 \end{pmatrix}
 \begin{pmatrix} 
-p_n\\q_n
+p_n(x)\\q_n(x)
 \end{pmatrix}
-=
+&=
 O(x^{k+1})
-\qquad\text{oder}\qquad
+\notag
+\\
+\text{oder}\qquad
 \begin{pmatrix}
 1&-\arctan x
 \end{pmatrix}
 \begin{pmatrix}
-p_{n-1}&p_n\\
-q_{n-1}&q_n
+p_{n-1}(x)&p_n(x)\\
+q_{n-1}(x)&q_n(x)
 \end{pmatrix}
-=
+&=
 \begin{pmatrix}
 O(x^{k})&O(x^{k+1}).
 \end{pmatrix}
 \label{arctan:bedingungmatrix}
-\end{equation}
+\end{align}
 Die Rekursionsfolge startet mit der Matrix
-\[
+\begin{align*}
 \begin{pmatrix}
 1&-\arctan x
 \end{pmatrix}
 \begin{pmatrix}
-p_0&p_1\\
-q_0&q_1
+p_0(x)&p_1(x)\\
+q_0(x)&q_1(x)
 \end{pmatrix}
-=
+&=
 \begin{pmatrix}
 1&-\arctan x
 \end{pmatrix}
 \begin{pmatrix}
-0&p_1\\
-1&q_1
+0&p_1(x)\\
+1&q_1(x)
 \end{pmatrix}
-=
+\\
+&=
 \begin{pmatrix}
 0
 &
-p_1 - q_1
+p_1(x) - q_1(x)
 \biggl(\displaystyle x-\frac{x^3}{3}+\frac{x^5}{5}-\frac{x^7}{7}+\dots\biggr)
 \end{pmatrix}.
-\]
+\end{align*}
 Damit auf der rechten Seite in der zweiten Komponente die Terme erster Ordnung
 wegfallen, müssen $p_1$ und $q_1$ als Polynome möglichst niedrigen Grades
 so gewählt werden, dass
 \[
-p_1-xq_1 = O(x^2),
+p_1(x)-xq_1(x) = O(x^2),
 \]
-dies kann zum Beispiel $q_1=1$ und $p_1=x$ geschehen.
+dies kann zum Beispiel $q_1(x)=1$ und $p_1(x)=x$ geschehen.
 Damit ist
 \[
 \begin{pmatrix}
-p_0&p_1\\
-q_0&q_1
+p_0(x)&p_1(x)\\
+q_0(x)&q_1(x)
 \end{pmatrix}
 =
 \begin{pmatrix}
@@ -222,8 +225,8 @@ auch die weiteren $a_k$ und $b_k$ zu bestimmen.
 Für $a_1$ und $b_1$ rechnen wir dazu zunächst das Produkt
 \[
 \begin{pmatrix}
-p_0&p_1\\
-q_0&q_1
+p_0(x)&p_1(x)\\
+q_0(x)&q_1(x)
 \end{pmatrix}
 \begin{pmatrix}
 0&b_1\\
@@ -276,8 +279,8 @@ Dies lässt sich zum Beispiel mit $a_1=3$ und $c=1$ erreichen.
 Der Näherungsbruch ist dann
 \[
 \begin{pmatrix}
-p_1&p_2\\
-q_1&q_2
+p_1(x)&p_2(x)\\
+q_1(x)&q_2(x)
 \end{pmatrix}
 =
 \begin{pmatrix}
@@ -285,7 +288,7 @@ x&3x\\
 1&x^2+3
 \end{pmatrix}
 \qquad\Rightarrow\qquad
-\frac{p_2}{q_2} = \frac{3x}{3+x^2}.
+\frac{p_2(x)}{q_2(x)} = \frac{3x}{3+x^2}.
 \]
 
 \subsection{Approximation bis zur Ordnung 5}
@@ -308,15 +311,16 @@ x^2+3 & b_2 + a_2(x^2+3)
 \end{pmatrix}.
 \]
 Nach Linksmultiplikation mit dem Zeilenvektor ergibt sich wieder
-\[
-b_2p_1 + a_2p_2 - (b_2q_1+a_2q_2)
+\begin{align*}
+b_2p_1(x) &+ a_2p_2(x) - (b_2q_1(x)+a_2q_2(x))
 \arctan x
+\\
+&=
+b_2(p_1(x)-q_1(x) \arctan x)
++ a_2(p_2(x) - q_2(x)\arctan x)
 =
-b_2(p_1-q_1 \arctan x)
-+ a_2(p_2 - q_2\arctan x)
-=
-O(x^7)
-\]
+O(x^7).
+\end{align*}
 Im ersten Term wissen wir, dass wir, dass bereits die Terme der
 Ordnung $\le 1$ wegfallen.
 In der zweiten Klammer fallen die Terme bis zur dritten Ordnung weg.
@@ -346,7 +350,7 @@ Der zugehörige Näherungsbruch ist
 \[
 \arctan x
 \approx
-\frac{p_3}{q_3}
+\frac{p_3(x)}{q_3(x)}
 =
 \frac{xb_2+3xa_2}{b_2+a_2(x^2+3)}
 =
@@ -387,15 +391,15 @@ den wir bereits in Kapitel~\ref{chapter:kettenbruch} gefunden haben.
 
 Mit Computerhilfe kann man jetzt die folgenden Näherungsbrüche ausrechnen:
 \begin{align*}
-\frac{p_1}{q_1} &= \frac{x}{1}
+\frac{p_1(x)}{q_1(x)} &= \frac{x}{1},
 \\
-\frac{p_2}{q_2} &= \frac{3x}{x^2+3}
+\frac{p_2(x)}{q_2(x)} &= \frac{3x}{x^2+3},
 \\
-\frac{p_3}{q_3} &= \frac{4x^3+15x}{9x^2+15}
+\frac{p_3(x)}{q_3(x)} &= \frac{4x^3+15x}{9x^2+15},
 \\
-\frac{p_4}{q_4} &= \frac{55x^3+105x}{9x^4+90x^2+105}
+\frac{p_4(x)}{q_4(x)} &= \frac{55x^3+105x}{9x^4+90x^2+105},
 \\
-\frac{p_5}{q_5} &= \frac{6x^5+735x^3+945x}{225x^4+1050x^2+945}.
+\frac{p_5(x)}{q_5(x)} &= \frac{6x^5+735x^3+945x}{225x^4+1050x^2+945}.
 \end{align*}
 Ihre Graphen sind in Abbildung~\ref{arctan:figure:approx} dargestellt.
 \begin{figure}
@@ -412,13 +416,13 @@ Die Näherungsbrüche approximieren $\arctan x$ abwechselnd von oben und unten.
 Wir ermitteln noch die Grade der Polynome $p_n$ und $q_n$.
 Für den Grad $\deg p(x)$ eines Polynoms gelten die Rechenregeln
 \begin{align*}
-\deg 0&= -\infty
+\deg 0&= -\infty,
 \\
-\det x^k&= k
+\det x^k&= k,
 \\
-\deg p(x) q(x) & = \deg p(x) + \deg q(x)
+\deg p(x) q(x) & = \deg p(x) + \deg q(x),
 \\
-\deg (p(x)+q(x)) &\le \max (\deg p(x),\deg q(x))
+\deg (p(x)+q(x)) &\le \max (\deg p(x),\deg q(x)).
 \end{align*}
 Damit lässt sich die Veränderung der Grade der Matrixeinträge bei
 Matrizenprodukten nachvollziehen, wir nenne dies die {\em Grad-Multiplikation}.
@@ -460,14 +464,14 @@ Zu Beginn gilt
 \begin{align*}
 \deg
 \begin{pmatrix}
-p_1&p_2\\
-q_1&q_2
+p_1(x)&p_2(x)\\
+q_1(x)&q_2(x)
 \end{pmatrix}
 &=
 \begin{bmatrix}
 1&1\\
 0&2
-\end{bmatrix}
+\end{bmatrix}.
 \end{align*}
 Für die späteren Näherungsbrüche berechnen wir gleich allgemeiner
 \begin{align*}
@@ -504,15 +508,15 @@ Daraus lesen wir ab, dass sich die Grade von Zähler und Nenner wie in Tabelle
 \begin{table}
 \centering
 \begin{tabular}{>{$}l<{$}| >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$} >{$}c<{$}}
-n       & 1& 2& 3& 4& 5& 6& 7\\
+n          & 1& 2& 3& 4& 5& 6& 7\\
 \hline
-\deg p_n& 1& 3& 3& 5& 5& 7& 7\\
-\deg q_n& 2& 2& 4& 4& 6& 6& 8\\
+\deg p_n(x)& 1& 3& 3& 5& 5& 7& 7\\
+\deg q_n(x)& 2& 2& 4& 4& 6& 6& 8\\
 \hline
 \text{Ordnung}& 3& 5& 7& 9&11&13&15\\
 \end{tabular}
 \caption{Grade von Zähler und Nenner-Polynomen des Kettenbruchs für $\arctan x$.
-Die letzte Zeile enthält die Ordnung, bis zu der $p_{n}-q_n\arctan x$
+Die letzte Zeile enthält die Ordnung, bis zu der $p_{n}(x)-q_n(x)\arctan x$
 verschwindet.
 \label{arctan:ordnungen}}
 \end{table}
@@ -521,7 +525,7 @@ die Padé-Approximanten charakterisieren.
 Der Näherungsbruch $p_n/q_n$ ist also ein Padé-Approximant von $\arctan x$,
 und zwar ist
 \[
-\frac{p_n}{q_n}
+\frac{p_n(x)}{q_n(x)}
 =
 \begin{cases}
 \;[n+1/n]&\qquad \text{$n$ gerade}\\
