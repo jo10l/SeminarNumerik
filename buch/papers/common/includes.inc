@@ -16,6 +16,7 @@ include papers/legendre/Makefile.inc
 include papers/cg/Makefile.inc
 include papers/ew/Makefile.inc
 include papers/ableitung/Makefile.inc
+include papers/arctan/Makefile.inc
 
 TEXFILES = \
 	$(dependencies-000template) \
@@ -35,5 +36,5 @@ TEXFILES = \
 	$(dependencies-legendre) \
 	$(dependencies-cg) \
 	$(dependencies-ew) \
-	$(dependencies-ableitung) \
+	$(dependencies-arctan) \
 

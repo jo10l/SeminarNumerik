@@ -16,8 +16,8 @@ Mit der Riemann-Inversionsformel ergibt sich $f(t)$ aus $F(s)$
 f(t) = \frac{1}{2\pi i} \oint_{B} e^{st}F(s)\,ds,~~\qquad t>0,
 \label{laplace:riemanninversionsformel}
 \end{equation}
-wobei $B$ die Bromwich-Kontur von $\gamma-i\infty$ bis $\gamma+i\infty$, mit $\gamma>\gamma_{0}$, parallel zur imaginären Achse ist. Die Bromwich-Kontur ist die geschlossene Kurve in Abbildung \ref{laplace:bromwichkontur}. Sie besteht aus zwei Teilen. Zum einen der Teilkreis mit Radius $R$ vom Mittelpunkt und zum anderen der vertikalen Linie $\gamma$, welche sich zur Rechten aller Singularitäten von $F(s)$ befindet.  Bei Vergrösserung des Radius $R$ wird die Bromwich-Kontur alle Singularitäten umschliessen. Unter diesen Bedingung konvergiert das Integral über dem Kreisbogen-Teil der Kontur gegen Null, wenn der Radius $R$ gegen unendlich strebt.
-Damit man das Integral mit der Bromwich-Kontur numerisch berechnen kann, braucht man $F(s)$, sodass für alle $s\rightarrow$ $\infty$ mit $Re(s)< \gamma_{0}$ genügend schnell gegen 0 gehen, weil der Umfang des Kreises anwächst.
+wobei $B$ die Bromwich-Kontur von $\gamma-i\infty$ bis $\gamma+i\infty$, mit $\gamma>\gamma_{0}$, parallel zur imaginären Achse ist. Die Bromwich-Kontur ist die geschlossene Kurve in Abbildung \ref{laplace:bromwichkontur}. Sie besteht aus zwei Teilen,  aus dem zum einen der Teilkreis mit Radius $R$ vom Mittelpunkt und zum anderen aus der vertikalen Linie $\gamma$, welche sich zur Rechten aller Singularitäten von $F(s)$ befindet.  Bei Vergrösserung des Radius $R$ wird die Bromwich-Kontur alle Singularitäten umschliessen. Unter diesen Bedingung konvergiert das Integral über dem Kreisbogen-Teil der Kontur gegen Null, wenn der Radius $R$ gegen unendlich strebt.
+Damit man das Integral mit der Bromwich-Kontur numerisch berechnen kann, braucht man, dass $F(s)$, für alle $s\rightarrow$ $\infty$ mit $Re(s)< \gamma_{0}$ genügend schnell gegen 0 gehen, weil der Umfang des Kreises anwächst.
 
 
 \begin{figure}

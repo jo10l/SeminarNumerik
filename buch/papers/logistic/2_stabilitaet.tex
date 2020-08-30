@@ -19,9 +19,8 @@ Kurze Auffrischung: Beim Iterieren einer Funktion
 gibt es Fixpunkte. 
 Jeder Fixpunkt muss die Bedingung
 $f(x^*)=x^*$ erfüllen, das heisst wenn man die Funktion
-mit diesem Wert iteriert passiert gar nichts, weil
-immer wieder der Gleiche Wert herauskommt, den
-man ja schon reingibt. 
+mit diesem Wert iteriert. passiert gar nichts, weil
+immer wieder der gleiche Wert herauskommt. 
 Grafisch sind diese Punkte die Schnittpunkte
 vom Funktionsplot mit der 45°-Geraden durch den Ursprung.  
 Zusätzlich gibt es die Stabilitätsbedingung 
@@ -104,7 +103,23 @@ die verschachtelte Funktion $f(f(x))$ sichtbar.
 Darauf wird deutlich, warum die Oszillation eben genau 
 zwischen diesen beiden Punkten entsteht. 
 Es handelt sich dabei um zwei Fixpunkte, welche erst 
-mit der Verschachtelung von $f(x)$ sichtbar werden. 
+mit der Verschachtelung von $f(x)$ sichtbar werden.
+Würde man $\lambda$ nun weiter erhöhen, würden auch
+diese beiden Fixpunkte wieder instabil werden,
+dafür vier neue stabile Fixpunkte bei einer erneuten
+Verschachtelung erscheinen, 
+also bei $f(f(f(f(x))))$. 
+Das geht so weiter bis zum Anfang des Chaos, wo
+es keine stabilen Fixpunkte mehr gibt. 
+Wenn wir aber weiter durch das Chaos gehen gibt es, 
+wie in \ref{logistic:section:problemstellung}
+zu sehen war, immer wieder diese kleinen Fenster,
+wo $x_n$ wieder periodisch wird. 
+Da gibt es zum Beispiel bei
+$\lambda \approx 3.83$ 
+durch die Verschachtelung von $f(x)$
+wieder drei stabile Fixpunkte. 
+
 \begin{figure}
     \includegraphics[width=\linewidth]{papers/logistic/figures/web_2.pdf}
     \caption{Spinnwebplot mit Oszillation}
