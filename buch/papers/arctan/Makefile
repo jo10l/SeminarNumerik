@@ -4,6 +4,8 @@
 # (c) 2020 Prof Dr Andreas Mueller
 #
 
-images:
-	@echo "no images to be created in 000template"
+images:	approx.pdf
+
+approx.pdf:	approx.tex
+	pdflatex approx.tex
 
