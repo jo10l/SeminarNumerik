@@ -9,11 +9,12 @@
 \section{Motivation: Lösung einer linearen Differentialgleichung
 \label{laplace:section:problemstellung}}
 \rhead{Problemstellung}
-Wir wollen eine Lösung $f(t)$ aus $F(s)$ der linearen Differentialgleichung 
+Wir wollen eine Lösung $f(t)$ der linearen Differentialgleichung 
 \begin{equation}
-\frac{df}{dt} + \lambda f(t) = 0, \qquad ~~mit \qquad f_{0} = f(t=0)
+\frac{df}{dt} + \lambda f(t) = 0, \qquad ~~ \text{mit} \qquad f_{0} = f(t=0).
+\label{laplace:lindgl}
 \end{equation}
-Mit der Laplace-Transformation folgt
+Wir wenden die Laplace-Transformation auf die Gleichung \eqref{laplace:lindgl} an. Mit der Laplace-Transformation folgt
 \begin{equation}
 (sF(s) - f_{0}) + \lambda F(s) = 0.
 \label{laplace:dgl}

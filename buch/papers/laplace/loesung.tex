@@ -39,7 +39,7 @@ die Kontur nach rechts, während eine Erhöhung von $\nu$ Ausdehnung
 in vertikaler Richtung zur Folge hat. Dabei entsteht ein Band der Breite $2i\lambda\mu\pi$, welches symmetrisch zur reellen Achse ist. Das beschriebene Band und dessen Abhängigkeit von den Parametern ist zu erkennen in den Abbildungen \ref{laplace:talbot1} und \ref{laplace:talbot2}. Die Parameter sollten so gewählt werden, dass die Singularitäten der Laplace-Transformation innerhalb der Talbot-Kontur, respektive innerhalb des Bandes liegen. 
 
 
-Die Parametriesierung der Kontur ist gegeben durch
+Die Parametrisierung der Kontur ist gegeben durch
 \begin{equation}
 s(z) = \sigma+\lambda s_{\nu}(z),~~ z\in (-2\pi i,~~2\pi i)
 \label{laplace:s(z)}
@@ -60,20 +60,19 @@ wobei
 s_{\nu}(\theta)=\theta \cot\theta+i\nu\theta.
 \end{equation}
 
-Die Parametrisierung $z=2i\theta$ wird verwendet, weil sowohl Gleichung $\eqref{laplace:s(z)}$ als auch $\eqref{laplace:snu}$ rein komplex sind. Daher verwendet $\theta$ um die Formeln in Real- und Imaginärteil aufteilen zu können.
+Die Parametrisierung $z=2i\theta$ wird verwendet, weil sowohl Gleichung $\eqref{laplace:s(z)}$ als auch $\eqref{laplace:snu}$ rein komplex sind. Daher verwendet man $\theta$ um die Formeln in Real- und Imaginärteil aufteilen zu können.
 
 Das Riemannsche Inversionsintegral nimmt die Form 
 \begin{equation}
 f(t)=\frac{\lambda e^{\sigma}}{2\pi i}\int_{-\pi}^{\pi} e^{-\lambda ts_{\nu}(\theta)}F[\sigma + \lambda s_{\nu}(\theta)]s'_{\nu}(\theta)\,d\theta
 \end{equation}
-an.
-Wobei
+an, wobei
 \begin{equation}
 s'_{\nu}(\theta) = i \Biggl\{\nu + \frac{\theta-\cos(\theta)\sin(\theta)}{\sin^{2}(\theta)}  \Biggr\}.
 \end{equation}
 
 
-Nun folgt die eigentliche numerische Berechung des Integrals $\eqref{laplace:riemanninversionsformel}$. Die folgende Berechnung stammt aus \cite{laplace:talbot}. Unter Berücksichtigung der Symmetrie, sowie der Trapezsregel (für detailierte Informationen siehe Kapitel 4) erhält man die Auswertung des Integrals
+Nun folgt die eigentliche numerische Berechung des Integrals $\eqref{laplace:riemanninversionsformel}$. Die folgende Berechnung stammt aus \cite{laplace:talbot}. Unter Berücksichtigung der Symmetrie, sowie der Trapezregel (für detailierte Informationen siehe Kapitel 4) erhält man die Auswertung des Integrals
 
 \begin{equation}
 \tilde{f}(t) = \frac{\lambda e^{\sigma t}}{n}~T_{n}(t)
@@ -98,6 +97,6 @@ In diesem Falle wird der Term $j=n$ gleich 0 und der $j=0$ Term wird zu
 \end{equation}
 
 
-Die beschriebene Methode wurde in Python implementiert und diente dazu numerische Expermiente duchzuführen.
+Die beschriebene Methode wurde in Python implementiert und diente dazu, numerische Expermiente duchzuführen.
 Der Code ist am Ende in Abschnitt~\ref{laplace:section:programmcode} ersichtlich. 
 

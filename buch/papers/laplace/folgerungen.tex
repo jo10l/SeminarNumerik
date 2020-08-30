@@ -11,7 +11,7 @@ müssen die passenden Werte für $\lambda, \sigma $ und $\nu $ gefunden werden.
 Dies geschah in diesem Falle rein iterativ durch Probieren.
 
 Insbesondere wurden folgende Funktionen ausgewertet $ F_{1}(s)=\frac{1}{1-s} $ und $F_{2}(s) = \frac{2}{s^{3}}$. 
-Die Werte welche für die Auswertung verwendet wurden sind in der Tabelle~\ref{laplace:parametertabelle2} abgebildet.
+Die Werte, welche für die Auswertung verwendet wurden, sind in der Tabelle~\ref{laplace:parametertabelle2} abgebildet.
 
 %\begin{table}
 %\centering
@@ -65,9 +65,9 @@ Es ist deutlich ersichtlich, dass der Fehler nur für ein gewisses
 Zeitintervall akzeptabel ist. Im Bereich wo der Fehler sich in einem
 tolerierbaren Bereich befindet, wurden die Parameter $\lambda$,
 $\sigma$ und $\nu$ für ein bestimmtes $t_{0}$ ermittelt.
-Diese Parameter sind für fortlaufende Zeitpunkte nicht mehr sinnvoll (der Fehler wird sehr gross). Zu fortlaufenden Zeitpunkten müssten die Parameter auf ein neues iterativ ermittelt werden. Der Versuch die optimierten Parameter durch einen Algorithmus zu finden ist in \cite{laplace:talbot} für Interssierte nachzuschlagen. 
+Diese Parameter sind für spätere Zeitpunkte nicht mehr sinnvoll (der Fehler wird sehr gross). Zu fortlaufenden Zeitpunkten müssten die Parameter auf ein neues iterativ ermittelt werden. Der Versuch die optimierten Parameter durch einen Algorithmus zu finden, ist in \cite{laplace:talbot} für Interssierte nachzuschlagen. 
 Für den Zeitpunkt $t_{0}=1$ wurden die Fehler in der Grössenordnung $10^{-8}$ respektive $10^{-6}$ erreicht. 
-Dies geschah mittels Erhöhung der Iterationszahl $N$.
+Dies geschah mittels Erhöhung der Iterationszahl $n$. Um noch bessere Resultate zu erhalten, könnte die Romberg-Beschleunigung verwendet werden (für detaillierte Information siehe Kapitel 4.2). 
 
 \begin{table}
 \centering
@@ -79,6 +79,8 @@ Parameter & $\lambda=1.288$ & $\lambda=0.101$ \\
  & $\nu=0.81$ & $\nu=0.098953$ \\
 \hline
 $t_{0}$ & $1$ & $1$ \\
+\hline
+Iterationszahl n & $63000$ & $100000$ \\
 \hline
 Fehler & $1.7076~\cdot~10^{-08}$ & $1.8447~\cdot~10^{-06}$ \\
 \end{tabular}

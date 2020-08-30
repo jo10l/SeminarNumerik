@@ -1,0 +1,380 @@
+%
+% main.tex -- Paper zum Thema arctan
+%
+% (c) 2020 Hochschule Rapperswil
+%
+\chapter{Kettenbrüche und Padé-Approximation\label{chapter:arctan}}
+\lhead{Kettenbrüche und Padé-Approximation}
+\begin{refsection}
+\chapterauthor{Andreas Müller}
+
+{\parindent0pt
+Kettenbrüche} versprechen eine bestmögliche Approximation einer Zahl durch
+rationale Zahlen, die Padé-Approximation verspricht eine bestmögliche
+Approximation einer Potenzreihe durch eine gebrochen rationale Funktion.
+Besteht ein Zusammenhang?
+
+In Kapitel~\ref{chapter:kettenbruch} wurde ohne Beweis eine Approximation der 
+Taylor-Reihe der Arkustangens-Funktion
+\begin{equation}
+\arctan x
+=
+x-\frac{x^3}{3}+\frac{x^5}{5}-\frac{x^7}{7}+\frac{x^9}{9}-\frac{x^{11}}{11}
++\dots
+\label{arctan:arctan}
+\end{equation}
+als Kettenbruch dargestellt.
+Doch genau genommen ist das gar kein Kettenbruch in dem Sinne, wie er
+im Rest von Kapitel~\ref{chapter:kettenbruch} betrachtet wurde, denn
+bestimmt man die Approximationsbrüche, entsteht eine gebrochen rationale
+Funktion.
+In diesem Kapitel soll gezeigt werden, dass der Kettenbruch eigentlich
+nur eine Schreibweise ist, mit der verschiedene Padé-Approximationen von
+$\arctan x$ effizient berechnet werden können.
+
+\section{Kettenbrüche und Matrizen
+\label{arctan:section:matrizen}}
+Wir verwenden wieder die schon in Kapitel \ref{chapter:kettenbruch}
+eingeführte Notation
+\[
+\frac{p_n}{q_n}
+=
+a_0 +
+\cfrac{b_1}{
+a_1+\cfrac{b_2}{
+a_2+\cfrac{b_3}{
+\dots+\cfrac{\dots}{\dots+\cfrac{b_{n-1}}{a_{n-1}+\cfrac{b_n}{a_n}}}}}}.
+\]
+Für einen Kettenbruch wird verlangt, dass alle Zahlen $a_k$ und $b_k$ 
+wie auch die Zähler $p_n$ und Nenner $q_n$ der Approximationsbrüche
+ganze Zahlen sind.
+Für die Approximation der Funktion $\arctan x$ müssen wir
+diese Voraussetzung etwas aufweichen.
+Wir verlangen nur noch, dass alle diese Ausdrücke Polynome in $x$ sind.
+
+Wir brauchen eine Methode zur Berechnung der Approximationszähler und -nenner.
+Dazu berechnen wir, wie sich ein Bruch ändert, wenn ein zusätzlicher
+Bruchterm $\frac{p}{q}$ im Nenner hinzugefügt wird:
+\begin{equation}
+\frac{\tilde{p}}{\tilde{q}}
+=
+\cfrac{b}{a+\cfrac{p}{q}}
+=
+\frac{bq}{ab+p}.
+\label{arctan:neuerbruch}
+\end{equation}
+Schreibt man die Brüche als Spaltenvektoren mit Zähler und Nenner als
+Komponenten, dann kann man die Operation~\eqref{arctan:neuerbruch}
+in Matrixform als
+\[
+\begin{pmatrix}
+\tilde{p}\\\tilde{q}
+\end{pmatrix}
+=
+\begin{pmatrix}
+bq\\
+aq+p
+\end{pmatrix}
+=
+\begin{pmatrix}
+0&b\\
+1&a
+\end{pmatrix}
+\begin{pmatrix}
+p\\
+q
+\end{pmatrix}
+\]
+schreiben.
+Man kann daher den Näherungsbruch $p_n/q_n$ ebenfalls in Matrixform
+schreiben als
+\[
+\begin{pmatrix}
+p_n\\q_n
+\end{pmatrix}
+=
+\begin{pmatrix} 0&b_1\\1&a_1\end{pmatrix}
+\begin{pmatrix} 0&b_2\\1&a_2\end{pmatrix}
+\begin{pmatrix} 0&b_3\\1&a_3\end{pmatrix}
+\dots
+\begin{pmatrix} 0&b_{n-1}\\1&a_{n-1}\end{pmatrix}
+\begin{pmatrix} b_n\\a_n\end{pmatrix}.
+\]
+Will man den letzten Bruch $b_n/a_n$ in der Kettenbruchentwicklung
+weglassen, also den Kettenbruch verkürzen, dann ist das gleichbedeutend
+damit, $b_n=0$ und $a_n=1$ zu setzen.
+Damit erhält man aber die Approximation $p_{n-1}/q_{n-1}$.
+Kombiniert man beide Approximationen in eine Matrix, erhält man
+\begin{equation}
+\begin{pmatrix}
+p_{n-1}&p_n\\
+q_{n-1}&q_n
+\end{pmatrix}
+=
+\begin{pmatrix} 0&b_1\\1&a_1\end{pmatrix}
+\begin{pmatrix} 0&b_2\\1&a_2\end{pmatrix}
+\begin{pmatrix} 0&b_3\\1&a_3\end{pmatrix}
+\dots
+\begin{pmatrix} 0&b_{n-1}\\1&a_{n-1}\end{pmatrix}
+\begin{pmatrix} 0&b_n\\1&a_n\end{pmatrix}.
+\label{arctan:produkt}
+\end{equation}
+
+Das Produkt~\eqref{arctan:produkt} wurde oben zunächst von rechts nach links
+abgeleitet, es wurde der ``letzte'' Ausdruck in Matrixform gebracht und
+dann nach links fortschreitend der ganze Kettenbruch aufgebaut.
+Die Matrixmultiplikation ist jedoch assoziativ, so dass man ausgerüstet
+mit Formel~\eqref{arctan:produkt} die Quotienten $p_n/q_n$ jetzt auch von
+links nach rechts berechnen kann.
+
+\section{Padé-Approximation von $\arctan x$
+\label{arctan:section:kettenbruch}}
+Wir versuchen jetzt zu verstehen, wie man die Taylor-Reihe~\ref{arctan:arctan}
+als Kettenbruch verstehen kann.
+Nach dem Prinzip der Padé-Approximation suchen wir einen Bruch $p_n/q_n$,
+der mit der Taylor-Reihe bis zu einem gewissen Grad übereinstimmt.
+Wir verlangen daher, dass $p_n$ und $q_n$ Polynome sind, für die gilt
+\[
+\frac{p_n}{q_n} = \arctan x + O(x^k),
+\]
+über die passende Ordnung $k$ machen wir uns später Gedanken.
+Wie bei der Herleitung der Padé-Approximation in Kapitel~\ref{chapter:pade}
+multiplizieren wir mit dem Nenner und erhalten die Bedingung
+\begin{equation}
+p_n - q_n\arctan x = O(x^k).
+\label{arctan:bedingung}
+\end{equation}
+Auch diese Bedingung lässt sich in Vektorform fassen:
+\begin{equation}
+\begin{pmatrix}
+1&-\arctan x
+\end{pmatrix}
+\begin{pmatrix} 
+p_n\\q_n
+\end{pmatrix}
+=
+O(x^k)
+\qquad\text{oder}\qquad
+\begin{pmatrix}
+1&-\arctan x
+\end{pmatrix}
+\begin{pmatrix}
+p_{n-1}&p_n\\
+q_{n-1}&q_n
+\end{pmatrix}
+=
+\begin{pmatrix}
+O(x^{k-1})&O(x^k).
+\end{pmatrix}
+\label{arctan:bedingungmatrix}
+\end{equation}
+
+Die Rekursionsfolge startet mit der Matrix
+\[
+\begin{pmatrix}
+1&-\arctan x
+\end{pmatrix}
+\begin{pmatrix}
+p_0&p_1\\
+q_0&q_1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1&-\arctan x
+\end{pmatrix}
+\begin{pmatrix}
+0&p_1\\
+1&q_1
+\end{pmatrix}
+=
+\begin{pmatrix}
+0
+&
+p_1 - q_1\biggl(x-\frac{x^3}{3}+\frac{x^5}{5}-\frac{x^7}{7}+\dots
+\end{pmatrix}.
+\]
+Damit auf der rechten Seite im zweiten Term die Terme erster Ordnung
+wegfallen, müssen $p_1$ und $q_1$ als Polynome möglichst niedrigen Grades
+so gewählt werden, dass
+\[
+p_1-xq_1 = O(x^2),
+\]
+dies kann zum Beispiel $q_1=1$ und $p_1=x$ geschehen.
+Damit ist
+\[
+\begin{pmatrix}
+p_0&p_1\\
+q_0&q_1
+\end{pmatrix}
+=
+\begin{pmatrix}
+0&x\\
+1&1
+\end{pmatrix}
+\]
+der Start der Rekursion.
+
+Die Bedingung \eqref{arctan:bedingungmatrix} kann jetzt dazu verwendet werden,
+auch die weiteren $a_k$ und $b_k$ zu bestimmen.
+Für $a_1$ und $b_1$ rechnen wir dazu zunächst das Produkt
+\[
+\begin{pmatrix}
+p_0&p_1\\
+q_0&q_1
+\end{pmatrix}
+\begin{pmatrix}
+0&b_1\\
+1&a_1
+\end{pmatrix}
+=
+\begin{pmatrix}
+0&x\\
+1&1
+\end{pmatrix}
+\begin{pmatrix}
+0&b_1\\
+1&a_1
+\end{pmatrix}
+=
+\begin{pmatrix}
+x&a_1x\\
+1&a_1+b_1
+\end{pmatrix}
+\]
+aus. 
+Multiplikation von links mit dem Zeilenvektor ergibt
+\[
+\begin{pmatrix}
+1&-\arctan x
+\end{pmatrix}
+\begin{pmatrix}
+x&a_1x\\
+1&a_1+b_1
+\end{pmatrix}
+=
+\begin{pmatrix}
+O(x^2) & a_1x - (a_1+b_1)\biggl(\displaystyle x-\frac{x^3}3+\dots\biggr)
+\end{pmatrix}.
+\]
+Die Polynome $a_1$ und $b_1$ müssen so gewählt werden, dass keine Terme
+dritter Ordnung mehr stehen bleiben.
+Dies ist natürlich nicht eindeutig möglich sondern nur bis auf ein
+Vielfaches.
+Den Term erster Ordnung kann man mit konstantem $a_1$ zum verschwinden
+bringen, dann muss aber $b_1$ mindestens den Grad $2$ haben.
+Es muss also
+\[
+a_1x-(a_1+cx^2)\biggl(x-\frac{x^3}3+O(x^5)\biggr)
+=
+a_1\frac{x^3}{3}-cx^3 + O(x^5)
+\]
+sein.
+Dies lässt sich zum Beispiel mit $a_1=3$ und $c=1$ erreichen.
+Der Näherungsbruch ist dann
+\[
+\begin{pmatrix}
+x&3x\\
+1&x^2+3
+\end{pmatrix}
+\qquad\Rightarrow\qquad
+\frac{p_2}{q_2} = \frac{3x}{3+x^2}.
+\]
+
+Wir führen auch noch den Schritt $k=2$ durch, bei dem die Terme fünfter
+Ordnung wegfallen sollten.
+Das Matrizenprodukt ist
+\[
+\begin{pmatrix}
+x&3x\\
+1&x^2+3
+\end{pmatrix}
+\begin{pmatrix}
+0&b_2\\
+1&a_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+3x    & b_2x + 3xa_2 \\
+x^2+3 & b_2 + a_2(x^2+3)
+\end{pmatrix}.
+\]
+Nach Linksmultiplikation mit dem Zeilenvektor ergibt sich wieder
+\[
+b_2p_1 + a_2p_2 - (b_2q_1+a_2q_2)
+\biggl(x-\frac{x^3}{3} +\frac{x^5}5-\dots\biggr)
+=
+b_2(p_1-q_1 \arctan x)
++ a_2(p_2 - q_2\arctan x)
+=
+O(x^6)
+\]
+Im ersten Term wissen wir, dass wir, dass bereits die Terme der
+Ordnung $\le 1$ wegfallen.
+In der zweiten Klammer fallen die Terme bis zur dritten Ordnung weg.
+Es folgt daher wieder, dass man für $b_2$ einen Term zweiten Grades
+der Form $cx^2$ wählen muss und folglich für $a_2$ eine Konstante.
+Setzt man alles ein, erhält man
+\begin{align*}
+cx^2\biggl(x- x+\frac{x^3}3-\frac{x^5}5+O(x^7)\biggr)
+&+
+a_2\biggl(3x -(x^2+3)\biggl(x-\frac{x^3}3+\frac{x^5}5-O(x^7)\biggr)\biggr)
+\\
+&=
+c\frac{x^5}{3}
++O(x^6)
++a_2
+\biggl(\frac{x^5}{3}-\frac{3}{5}x^5+O(x^6)\biggr)
+\\
+&=x^5\biggl(\frac{c}3-a_2\frac{4}{15}\biggr) + O(x^6),
+\end{align*}
+woraus als mögliche Lösung
+\[
+b_2=4x^2,\qquad
+a_2=5
+\]
+folgt.
+Der zugehörige Näherungsbruch ist
+\[
+\arctan x
+\approx
+\frac{p_3}{q_3}
+=
+\frac{xb_2+3xa_2}{b_2+a_2(x^2+3)}
+=
+\frac{4x^3+15}{9x^2+15}.
+\]
+
+Es lässt sich zum Beispiel mit einem Computer-Algebra-Programm wie
+Maxima verifizieren, dass die Matrizen
+\[
+\begin{pmatrix}
+0&n^2x^2\\
+1&2n+1
+\end{pmatrix}
+\qquad\text{also}\qquad
+b_n=n^2x^2\qquad\text{und}\qquad a_n=2n+1
+\]
+tatsächlich dafür sorgen, dass die Kettenbruchentwicklung tatsächlich
+immer eine Approximation bis zur Ordnung $2n+1$ ist.
+
+Wir ermitteln noch die Grade der Polynome $p_n$ und $q_n$.
+Schreiben wir nur die Grade der Polynome in die Matrizen, erhalten wir
+\begin{align*}
+\begin{pmatrix}
+n-1&n+1\\
+n  &n
+\end{pmatrix}
+\begin{pmatrix}
+-\infty & 0 \\
+    0   & 2
+\end{pmatrix}
+&=
+\begin{pmatrix}
+n+1 & n+3 \\
+n   & n+2
+\end{pmatrix}
+\end{align*}
+
+
+\printbibliography[heading=subbibliography]
+\end{refsection}
