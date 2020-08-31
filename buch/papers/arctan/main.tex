@@ -5,6 +5,7 @@
 %
 \chapter{Kettenbrüche und Padé-Approximation\label{chapter:arctan}}
 \lhead{Kettenbrüche und Padé-Approximation}
+\rhead{}
 \begin{refsection}
 \chapterauthor{Andreas Müller}
 
@@ -34,6 +35,7 @@ $\arctan x$ effizient berechnet werden können.
 
 \section{Kettenbrüche und Matrizen
 \label{arctan:section:matrizen}}
+\rhead{Kettenbrüche und Matrizen}
 Wir verwenden wieder die schon in Kapitel \ref{chapter:kettenbruch}
 eingeführte Notation
 \[
@@ -45,7 +47,7 @@ a_1+\cfrac{b_2}{
 a_2+\cfrac{b_3}{
 \dots+\cfrac{\dots}{\dots+\cfrac{b_{n-1}}{a_{n-1}+\cfrac{b_n}{a_n}}}}}}.
 \]
-Für einen Kettenbruch wird verlangt, dass alle Zahlen $a_k$ und $b_k$ 
+Für einen Kettenbruch hatten verlangt, dass alle Zahlen $a_k$ und $b_k$ 
 wie auch die Zähler $p_n$ und Nenner $q_n$ der Näherungsbrüche
 ganze Zahlen sind.
 Für die Approximation der Funktion $\arctan x$ müssen wir
@@ -87,7 +89,7 @@ q
 \]
 schreiben.
 Durch Iteration dieser Idee kann man daher den Näherungsbruch $p_n/q_n$
-ebenfalls in Matrixform als schreiben 
+ebenfalls in Matrixform als
 \[
 \begin{pmatrix}
 p_n\\q_n
@@ -98,8 +100,9 @@ p_n\\q_n
 \begin{pmatrix} 0&b_3\\1&a_3\end{pmatrix}
 \dots
 \begin{pmatrix} 0&b_{n-1}\\1&a_{n-1}\end{pmatrix}
-\begin{pmatrix} b_n\\a_n\end{pmatrix}.
+\begin{pmatrix} b_n\\a_n\end{pmatrix}
 \]
+schreiben.
 Will man den letzten Bruch $b_n/a_n$ in der Kettenbruchentwicklung
 weglassen, also den Kettenbruch verkürzen, dann ist das gleichbedeutend
 damit, $b_n=0$ und $a_n=1$ zu setzen.
@@ -129,6 +132,7 @@ links nach rechts berechnen kann.
 
 \section{Padé-Approximation von $\arctan x$
 \label{arctan:section:kettenbruch}}
+\rhead{Padé-Approximation von $\arctan x$}Padé-Approximation von $\arctan x$}
 Wir versuchen jetzt zu verstehen, wie man die Taylor-Reihe~\ref{arctan:arctan}
 als Kettenbruch deuten kann.
 Nach dem Prinzip der Padé-Approximation suchen wir einen Bruch $p_n/q_n$,
