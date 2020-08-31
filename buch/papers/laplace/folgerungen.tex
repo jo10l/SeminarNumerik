@@ -6,11 +6,12 @@
 \section{Folgerungen
 \label{laplace:section:folgerungen}}
 \rhead{Folgerungen}
-Damit die Approximation von $\tilde{f}(t)$ möglichst genau $f(t)$ repräsentiert,
+Damit die Approximation von $\tilde{f}(t)$ möglichst genau $f(t)$
+repräsentiert,
 müssen die passenden Werte für $\lambda, \sigma $ und $\nu $ gefunden werden. 
 Dies geschah in diesem Falle rein iterativ durch Probieren.
-
-Insbesondere wurden folgende Funktionen ausgewertet $ F_{1}(s)=\frac{1}{1-s} $ und $F_{2}(s) = \frac{2}{s^{3}}$. 
+Insbesondere wurden folgende Funktionen ausgewertet $
+F_{1}(s)=\frac{1}{1-s} $ und $F_{2}(s) = \frac{2}{s^{3}}$.
 Die Werte, welche für die Auswertung verwendet wurden, sind in der Tabelle~\ref{laplace:parametertabelle2} abgebildet.
 
 %\begin{table}
@@ -62,27 +63,36 @@ Die Werte, welche für die Auswertung verwendet wurden, sind in der Tabelle~\ref
 
 
 Es ist deutlich ersichtlich, dass der Fehler nur für ein gewisses
-Zeitintervall akzeptabel ist. Im Bereich wo der Fehler sich in einem
+Zeitintervall akzeptabel ist.
+Im Bereich, wo der Fehler sich in einem
 tolerierbaren Bereich befindet, wurden die Parameter $\lambda$,
 $\sigma$ und $\nu$ für ein bestimmtes $t_{0}$ ermittelt.
-Diese Parameter sind für spätere Zeitpunkte nicht mehr sinnvoll (der Fehler wird sehr gross). Zu fortlaufenden Zeitpunkten müssten die Parameter auf ein neues iterativ ermittelt werden. Der Versuch die optimierten Parameter durch einen Algorithmus zu finden, ist in \cite{laplace:talbot} für Interssierte nachzuschlagen. 
-Für den Zeitpunkt $t_{0}=1$ wurden die Fehler in der Grössenordnung $10^{-8}$ respektive $10^{-6}$ erreicht. 
-Dies geschah mittels Erhöhung der Iterationszahl $n$. Um noch bessere Resultate zu erhalten, könnte die Romberg-Beschleunigung verwendet werden (für detaillierte Information siehe Kapitel 4.2). 
+Diese Parameter sind für spätere Zeitpunkte nicht mehr sinnvoll (der Fehler wird sehr gross).
+Zu späteren Zeitpunkten müssten die Parameter auf ein Neues iterativ
+ermittelt werden.
+Der Versuch die optimierten Parameter durch einen Algorithmus zu
+finden, ist in \cite{laplace:talbot} für Interssierte nachzuschlagen.
+Für den Zeitpunkt $t_{0}=1$ wurden die Fehler in der Grössenordnung
+$10^{-8}$ respektive $10^{-6}$ erreicht.
+Dies geschah mittels Erhöhung der Iterationszahl $n$. Um noch bessere
+Resultate zu erhalten, könnte die Romberg-Beschleunigung verwendet
+\index{Romberg-Beschleunigung}%
+werden (für detaillierte Information siehe Kapitel 4.2).
 
 \begin{table}
 \centering
-\begin{tabular}[c]{c|c|c}
-& $F_{1}(s)$ & $F_{2}(s)$ \\
+\begin{tabular}{l|r@{\hskip2pt}l|r@{\hskip2pt}l}
+& \multicolumn{2}{c|}{$F_{1}(s)$} & \multicolumn{2}{c}{$F_{2}(s)$}\\
 \hline
-Parameter & $\lambda=1.288$ & $\lambda=0.101$ \\
- & $\sigma=1.000001$ & $\sigma=0.965$ \\
- & $\nu=0.81$ & $\nu=0.098953$ \\
+Parameter & $\lambda$&$=1.288$ & $\lambda$&$=0.101$ \\
+ & $\sigma$ &$=1.000001$ & $\sigma$&$=0.965$ \\
+ & $\nu$ & $=0.81$ & $\nu$ & $=0.098953$ \\
 \hline
-$t_{0}$ & $1$ & $1$ \\
+$t_{0}$ & \multicolumn{2}{c|}{$1$} & \multicolumn{2}{c}{$1$} \\
 \hline
-Iterationszahl n & $63000$ & $100000$ \\
+Iterationszahl n & \multicolumn{2}{c|}{$63000$} & \multicolumn{2}{c}{$100000$} \\
 \hline
-Fehler & $1.7076~\cdot~10^{-08}$ & $1.8447~\cdot~10^{-06}$ \\
+Fehler & \multicolumn{2}{c|}{$1.7076~\cdot~10^{-08}$} & \multicolumn{2}{c}{$1.8447~\cdot~10^{-06}$} \\
 \end{tabular}
 \caption{Fehler zum Zeitpunkt $t_{0}$ mit iterativ optimierten Talbot-Parametern $\lambda, \sigma$ und $\mu$
 \label{laplace:parametertabelle2}}

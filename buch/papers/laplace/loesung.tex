@@ -9,15 +9,24 @@
 \label{laplace:section:Methode nach Talbot}
 \rhead{Lösung}
 Eine Bedingung, um eine passende Kontur zu finden, wurde von Talbot gefunden.
+\index{Talbot}%
 Diese fordert, dass die Singularitäten $s_{j}$ von $F(s)$ bekannt sind, sowie für $F(s)$ gelten muss, dass
 \begin{enumerate}
 \item
-$|F(s)|\rightarrow$ $0$ mit $|s|\rightarrow$ $\infty$ in $Re(s)<\gamma_{0}$
+$|F(s)|\rightarrow$ $0$ mit $|s|\rightarrow$ $\infty$ in
+$\operatorname{Re}(s)<\gamma_{0}$
 \item
-Alle Singularitäten $s_{j}$ liegen links von $K$,~~$|Im(s_{j})|<K$, wobei der Wert von $K$ bekannt ist.
+Alle Singularitäten $s_{j}$ liegen links von
+$K$,~~$|\operatorname{Im}(s_{j})|<K$, wobei der Wert von $K$ bekannt ist.
 \end{enumerate}
 
-Die erste Bedingung besagt, dass $F(s)$ für grosse $|s|$ schnell gegen $0$ geht, solange man links von $\gamma_{0}$ ist. Dies hat zur Folge, dass Integrale über Konturen vernachlässigt werden können, wenn sie sich in diesem Gebiet bewegen. Das ist die entscheidende Idee von Talbot und ein Vorteil gegenüber der Bromwich-Kontur, da diese $F(s)$ für grosse $|s|$ nicht genügend schnell gegen $0$ gehen. In der Konsequenz deformiert man die Bromwich-Kontur zur Talbot-Kontur hin. Solange keine Singularitäten durchfahren werden bei der Deformation, ist dies zulässig. Die beiden Abbildungen \ref{laplace:talbot1} und \ref{laplace:talbot2} veranschaulichen die Kontur von Talbot. Darin ist zu erkennen, dass $|s|$ im Verlaufe der Kontur grösser werden muss. 
+Die erste Bedingung besagt, dass $F(s)$ für grosse $|s|$ schnell gegen $0$ geht, solange man links von $\gamma_{0}$ ist. Dies hat zur Folge, dass Integrale über Konturen vernachlässigt werden können, wenn sie sich in diesem Gebiet bewegen. Das ist die entscheidende Idee von Talbot und ein Vorteil gegenüber der Bromwich-Kontur, da diese $F(s)$ für grosse $|s|$ nicht genügend schnell gegen $0$ gehen. In der Konsequenz deformiert man die Bromwich-Kontur zur Talbot-Kontur hin.
+Solange bei der Deformation keine Singularitäten durchfahren werden,
+ist dies zulässig.
+Die beiden Abbildungen \ref{laplace:talbot1} und \ref{laplace:talbot2} veranschaulichen die Kontur von Talbot.
+\index{Talbot-Kontur}%
+\index{Kontur von Talbot}%
+Darin ist zu erkennen, dass $|s|$ im Verlaufe der Kontur grösser werden muss. 
 
 \begin{figure}
 \centering
@@ -34,11 +43,13 @@ Die erste Bedingung besagt, dass $F(s)$ für grosse $|s|$ schnell gegen $0$ geht
 \end{figure}
 
 Die Parameter $\lambda$, $\sigma$ und $\nu$ dienen dazu die
-Talbot-Kontur zu charaktersieren. Eine Erhöhung von $\sigma$ verschiebt
+Talbot-Kontur zu charakterisieren. Eine Erhöhung von $\sigma$ verschiebt
 die Kontur nach rechts, während eine Erhöhung von $\nu$ Ausdehnung
-in vertikaler Richtung zur Folge hat. Dabei entsteht ein Band der Breite $2i\lambda\mu\pi$, welches symmetrisch zur reellen Achse ist. Das beschriebene Band und dessen Abhängigkeit von den Parametern ist zu erkennen in den Abbildungen \ref{laplace:talbot1} und \ref{laplace:talbot2}. Die Parameter sollten so gewählt werden, dass die Singularitäten der Laplace-Transformation innerhalb der Talbot-Kontur, respektive innerhalb des Bandes liegen. 
-
-
+der Kontur
+in vertikaler Richtung zur Folge hat. Dabei entsteht ein Band der Breite $2i\lambda\mu\pi$, welches symmetrisch zur reellen Achse ist. Das beschriebene Band und dessen Abhängigkeit von den Parametern ist zu erkennen in den Abbildungen \ref{laplace:talbot1} und \ref{laplace:talbot2}.
+Die Parameter sollten so gewählt werden, dass die Singularitäten
+der Laplace-Transformation innerhalb der Talbot-Kontur, respektive
+innerhalb des Bandes liegen.
 Die Parametrisierung der Kontur ist gegeben durch
 \begin{equation}
 s(z) = \sigma+\lambda s_{\nu}(z),~~ z\in (-2\pi i,~~2\pi i)
@@ -51,7 +62,6 @@ s_{\nu}(z)=\frac{z}{1-e^{-z}}+\frac{z(\nu-1)}{2}.
 \end{equation}
 
 Wir nutzen die Parametrisierung $z=2i\theta$ und setzen diese in die Gleichungen $\eqref{laplace:s(z)}$ und $\eqref{laplace:snu}$ ein. Es folgt
-
 \begin{equation}
 s(\theta) = \sigma+\lambda s_{\nu}(\theta),~~ \theta\in (-\pi ,~~\pi)
 \end{equation}
@@ -59,8 +69,10 @@ wobei
 \begin{equation}
 s_{\nu}(\theta)=\theta \cot\theta+i\nu\theta.
 \end{equation}
-
-Die Parametrisierung $z=2i\theta$ wird verwendet, weil sowohl Gleichung $\eqref{laplace:s(z)}$ als auch $\eqref{laplace:snu}$ rein komplex sind. Daher verwendet man $\theta$ um die Formeln in Real- und Imaginärteil aufteilen zu können.
+Die Parametrisierung $z=2i\theta$ wird verwendet, weil sowohl
+Gleichung $\eqref{laplace:s(z)}$ als auch $\eqref{laplace:snu}$
+rein komplex sind. Daher verwendet man $\theta$ um die Formeln in
+Real- und Imaginärteil aufteilen zu können.
 
 Das Riemannsche Inversionsintegral nimmt die Form 
 \begin{equation}
@@ -72,7 +84,12 @@ s'_{\nu}(\theta) = i \Biggl\{\nu + \frac{\theta-\cos(\theta)\sin(\theta)}{\sin^{
 \end{equation}
 
 
-Nun folgt die eigentliche numerische Berechung des Integrals $\eqref{laplace:riemanninversionsformel}$. Die folgende Berechnung stammt aus \cite{laplace:talbot}. Unter Berücksichtigung der Symmetrie, sowie der Trapezregel (für detailierte Informationen siehe Kapitel 4) erhält man die Auswertung des Integrals
+Nun folgt die eigentliche numerische Berechung des Integrals
+$\eqref{laplace:riemanninversionsformel}$. Die folgende Berechnung
+stammt aus \cite{laplace:talbot}.
+Unter Berücksichtigung der
+Symmetrie, sowie der Trapezregel (für detailierte Informationen
+siehe Kapitel 4) erhält man die Auswertung des Integrals
 
 \begin{equation}
 \tilde{f}(t) = \frac{\lambda e^{\sigma t}}{n}~T_{n}(t)
@@ -97,6 +114,9 @@ In diesem Falle wird der Term $j=n$ gleich 0 und der $j=0$ Term wird zu
 \end{equation}
 
 
-Die beschriebene Methode wurde in Python implementiert und diente dazu, numerische Expermiente duchzuführen.
-Der Code ist am Ende in Abschnitt~\ref{laplace:section:programmcode} ersichtlich. 
+Die beschriebene Methode wurde in Python implementiert und diente
+dazu, numerische Expermiente duchzuführen.
+\index{Python}
+Der Code ist am Ende in Abschnitt~\ref{laplace:section:programmcode}
+ersichtlich.
 
