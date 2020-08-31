@@ -73,7 +73,7 @@ interpretieren kann.
 \index{Ortsvektor}%
 \index{Beschleunigung}%
 \index{Geschwindigkeit}%
-Auch die Funktion $f(t,x,\dots,x^{(n-1)})$ muss dann vektorwertig sein, und
+Auch die Funktion $f(t,x,\dots,x^{(n-1)})$ muss dann vektorwertig sein und
 ebenso alle Argumente von $f$ ausser dem Ersten.
 
 \subsection{Reduktion der Ordnung}
@@ -117,7 +117,7 @@ kann \eqref{grundlagen:vektordgl} daher als
 \end{equation}
 schreiben.
 Im Folgenden werden wir fast ausschliesslich Differentialgleichungen
-erster Ordnung der Form $y'=f(x,y)$ betrachten, und dabei stillschweigend
+erster Ordnung der Form $y'=f(x,y)$ betrachten und dabei stillschweigend
 zulassen, dass $y$ ein Vektor ist.
 
 \subsection{Anfangswertprobleme\label{section:anfangswertprobleme}}
@@ -585,7 +585,7 @@ Abhängigkeiten deutlicher zu machen.
 
 Wir schreiben dies noch aus für den Fall $n=2$.
 In diesem Fall sind insgesamt sechs Funktionen zu bestimmen, die
-zwei Komponenten von $y$, $y_1(x)$ und $y_2(x)$, und die vier
+zwei Komponenten von $y$, $y_1(x)$ und $y_2(x)$ und die vier
 Komponenten von $J(x)$.
 Um daraus eine einzige Differentialgleichung zu machen, packen wir
 die sechs Funktionen in einen Vektor $Y(x)$
@@ -651,7 +651,7 @@ Im Allgemeinen wird eine Differentialgleichung von Parametern abhängen,
 so dass die Lösung nicht nur von der Anfangsbedingung, sondern auch von den
 Werten dieser Parameter abhängen wird.
 Um dies explizit zu machen, fassen wir die Parameter in einen Vektor $c$
-zusammen, und machen die Abhängigkeit der Differentialgleichung
+zusammen und machen die Abhängigkeit der Differentialgleichung
 von $c$ durch ein zusätzliches Argument der Funktion $f$ explizit:
 \[
 \frac{d}{dx}y = f(x,y,c).
@@ -685,7 +685,7 @@ ist das Newton-Verfahren, welches aber die Ableitungen
 von $y(x,c)$ nach $c$ benötigt.
 
 Um die Abhängigkeit von $c$ zu berechnen, leiten wir die
-Differentialgleichung nach $c$ ab, und erhalten 
+Differentialgleichung nach $c$ ab und erhalten 
 \[
 \frac{\partial}{\partial c} \frac{d}{dx} y(x,c)
 =
