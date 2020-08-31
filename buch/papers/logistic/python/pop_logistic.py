@@ -14,7 +14,7 @@ def plot(r, ax, x0):
         y[i] = logistic(r, y[i-1])
         yexp[i] = r*yexp[i-1]
     ax.plot(x, y, ".-", label=str("λ = "+str(r)), color="red")
-    ax.plot(x, yexp, "--", color="blue", alpha=0.5)
+    ax.plot(x, yexp, "--", color="blue", alpha=0.6)
     ax.set_xlim(0, len(x)-1)
     ax.set_ylim(0, 1.0)
     ax.set_xticks(x[::2])
