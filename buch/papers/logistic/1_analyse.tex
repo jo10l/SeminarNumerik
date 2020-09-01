@@ -7,7 +7,7 @@
 \label{logistic:section:analyse}}
 \rhead{Iteration der logistischen Gleichung}
 
-Im Kapitel \ref{buch:section:iteration} haben wir uns
+Im Abschnitt \ref{buch:section:iteration} haben wir uns
 bereits mit dem Iterieren von Funktionen befasst. 
 Genau dieses Prinzip der Iteration finden wir auch bei
 der logistischen Gleichung wieder. 
@@ -54,7 +54,11 @@ unendlich läuft. Dabei werden einige Eigenschafen
 von der Iteration der logistischen Gleichung ersichtlich:
 \begin{figure}
     \includegraphics[width=\linewidth]{papers/logistic/figures/map.png}
-    \caption{Bifurkationsdiagramm der logistischen Gleichung}
+    \caption{
+        Bifurkationsdiagramm der logistischen Gleichung \eqref{eq:logistic}.
+        Das Diagramm zeigt für jeden Wert von $\lambda$
+        welche Werte $x_n$ annimmt wenn $n \rightarrow \infty$.
+    }
     \label{fig:map_1}
 \end{figure}
 \begin{itemize}
@@ -75,7 +79,15 @@ von der Iteration der logistischen Gleichung ersichtlich:
 \end{itemize}
 \begin{figure}
     \includegraphics[width=\linewidth]{papers/logistic/figures/pop_logistic_2.pdf}
-    \caption{Iteration der logistischen Gleichung}
+    \caption{
+        Iteration der logistischen Gleichung. 
+        Für $\lambda = 2.9$ konvergiert $x_n$ gegen
+        $\approx 0.62$.
+        Im Kontrast dazu oszilliert $x_n$ für
+        $\lambda = 3.35$ und zwischen zwei 
+        und für
+        $\lambda = 3.55$ sogar zwischen vier Werten. 
+    }
     \label{fig:pop_logistic_2}
 \end{figure}
 Das doch eher spezielle Verhalten von $3 < \lambda < 4$ wird 
@@ -89,12 +101,12 @@ zwischen zwei Werten zu oszillieren und beim
 dritten Plot mit $\lambda = 3.55$ sogar zwischen vier Werten. 
 Dieses Oszillieren zeigt sich in Abbildung \ref{fig:map_1}
 durch die Verzweigungen oder auch ``Bifurkationen''. 
-Darum wird es auch ``Bifurkationsdiagramm'' genannt. 
+Darum wird sie auch ``Bifurkationsdiagramm'' genannt. 
 
 Auf dem Bifurkationsdiagramm sind noch mehr 
 interessante Eigenschaften der logistischen Gleichung erkennbar.
 Wenn wir, wie auf Abbildung \ref{fig:map_zoom}, in die Bereiche hineinzoomen
-wo die Bifurkationen immer dichter werden finden wir Gebilde, 
+wo die Bifurkationen immer dichter werden, finden wir Gebilde, 
 welche wieder fast genau gleich aussehen.
 Tatsächlich könnte man endlos immer weiter in diese
 Bereiche hineinzoomen und würde immer wieder auf solche änhlichen Muster stossen. 
@@ -102,20 +114,24 @@ Diese Selbstähnlichkeit ist eine typische Eigenschaft von Fraktalen.
 Das Bifurkationsdiagramm der logistischen Gleichung ist also ein Fraktal.
 Es gibt sogar einen Zusammenhang zwischen der logistischen Gleichung und 
 einem anderen berühmten Fraktal, der Mandelbrotmenge.
-Mehr dazu später in Kapitel \ref{logistic:section:beispiele}.
+Mehr dazu später in Abschnitt 
+\ref{logistic:section:beispiele}.
 \begin{figure}
     \includegraphics[width=\linewidth]{papers/logistic/figures/map_zoom.png}
-    \caption{Bifurkationsdiagramm mit Zoom bei $\lambda = 3.525$ und $\lambda = 3.84$}
+    \caption{
+        Das Bifurkationsdiagramm ist ein Fraktal.
+        Die mittlere Grafik verdeutlicht mit einem Zoom 
+        bei $\lambda = 3.525$ die Selbstänhlichkeit. 
+        Auf der rechten Grafik sieht man mit einem
+        Zoom bei $\lambda = 3.84$, dass sich immer
+        wieder das selbe Muster finden lässt.
+    }
     \label{fig:map_zoom}
 \end{figure}
 
-Desweiteren ist auf dem Bifurkationsdiagramm zu sehen,
+Des weiteren ist auf dem Bifurkationsdiagramm zu sehen,
 dass für jede weitere Periodenverdoppelung eine geringere
 Erhöhung von $\lambda$ notwendig ist.
-Genauer kann nummerisch bestimmt werden, 
-dass $\lambda$ für jede weitere Verdoppelung um
-den Faktor $\delta \approx 4.6692$ weniger erhöht werden muss.
-Dieser Wert hat den Namen Feigenbaum-Konstante.
 Diese rapide zunehmende Dichte der Periodenverdoppelungen führt dazu, 
 dass wenn $\lambda$ den Wert $\approx 3.57$ überschreitet, 
 die Verdoppelungen aufhören und $x_n$ nicht mehr oszilliert. 
@@ -125,12 +141,12 @@ man spricht vom Chaos.
 Interessanterweise gibt es aber auch für Werte von 
 $\lambda \gtrapprox 3.57$ wieder gewissen Bereiche,
 wo wieder periodisches Verhalten auftritt. 
-Ein Biespiel für einen solchen Bereich sieht man
+Ein Beispiel für einen solchen Bereich sieht man
 gut auf Abbildung \ref{fig:map_zoom} bei 
 $\lambda \approx 3.83$. 
 Dort gibt es zuerst eine Dreier-Periode, 
 dann wieder die Periodenverdoppelungen, 
 wobei die Dichte der Verdoppelungen
-wieder mit der Feigenbaum-Konstante $\delta$ zunimmt.
+wieder rapide zunimmt.
 Schliesslich bricht wieder das Chaos aus bei 
 $\lambda \approx 3.85$.

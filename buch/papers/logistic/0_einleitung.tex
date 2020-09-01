@@ -13,22 +13,22 @@ ein sehr komplexes und chaotisches Verhalten entstehen kann.
 Ihren Urpsrung hat die logistische Gleichung beim Modellieren
 vom zeitlichen Verlauf von Populationen. 
 Wie man dabei ganz organisch auf die logistische Gleichung 
-kommt, wird in diesem Kapitel kurz demonstriert. 
+kommt, wird in diesem Abschnitt kurz demonstriert. 
 
 Als Erstes nehmen wir eine Population an, 
 die ungehindert wachsen kann. 
 Anfänglich hat diese die Tendenz, exponentiell zu wachsen. 
-Ein einfaches mathematisches Modell für dieses Verhalten
-könnte wiefolgt aussehen.
-\begin{equation}
-    \label{eq:lambda_xn}
-    x_{n+1} = \lambda x_{n}
-\end{equation}
 In Gleichung \eqref{eq:lambda_xn} ist $x_{n}$ die Population zu einem bestimmten Zeitpunkt, 
 beispielsweise am Anfang vom Jahr $n$. 
 Nun ist $x_{n+1}$ die Population im darauf folgenden Jahr, 
 welche damit eine direkte Funktion der Population im vorherigen
 Jahr ist. 
+Ein einfaches mathematisches Modell für dieses Verhalten
+könnte wie folgt aussehen:
+\begin{equation}
+    \label{eq:lambda_xn}
+    x_{n+1} = \lambda x_{n}\text{.}
+\end{equation}
 Der Faktor $\lambda$ gibt in diesem Modell an, 
 wie schnell die Population von Jahr zu Jahr ansteigt. 
 Es ist schnell erkennbar, 
@@ -44,7 +44,11 @@ der rechten Grafik mit $\lambda = 1.25$
 ein exponentielles Wachstum ersichtlich.
 \begin{figure}
     \includegraphics[width=\linewidth]{papers/logistic/figures/pop_exp.pdf}
-    \caption{Exponentielle Populationsverläufe}
+    \caption{
+        Exponentielle Populationsverläufe nach
+        Gleichung \eqref{eq:lambda_xn}
+        und verschiedenen Werten von $\lambda$.
+    }
     \label{fig:pop_exp}
 \end{figure}
 
@@ -54,12 +58,11 @@ da früher oder später Platz, Nahrung, usw. ausgehen.
 Um dieses Verhalten in das Modell zu implementieren,
 fügen wir noch einen zusätzlichen Term hinzu, 
 womit wir auch schon bei der logistischen Gleichung 
-\eqref{eq:logistic}
-angekommen sind.
 \begin{equation}
     \label{eq:logistic}
     x_{n+1} = \lambda x_{n} (1 - x_{n})
 \end{equation}
+angekommen sind.
 Dieser neue Term sorgt dafür, 
 dass das Wachstum der Population zurückgeht, 
 wenn sie grösser wird.
@@ -86,6 +89,14 @@ wo die Population zuerst ein wenig ``überschwingt'',
 sich aber schliesslich auf $\approx 0.62$ einpendelt.  
 \begin{figure}
     \includegraphics[width=\linewidth]{papers/logistic/figures/pop_logistic.pdf}
-    \caption{Logistische Populationsverläufe}
+    \caption{
+        In rot:
+        logistische Populationsverläufe nach
+        Gleichung \eqref{eq:logistic} und
+        verschiedenen Werten von $\lambda$.
+        In blau, zum Vergleich:
+        exponentielle Populationsverläufe nach 
+        Gleichung \eqref{eq:lambda_xn} mit gleichem $\lambda$.
+    }
     \label{fig:pop_logistic}
 \end{figure}

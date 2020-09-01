@@ -30,7 +30,7 @@ plot(axs[0], n=15000, loops=(1000,250), box=boxes[0])
 plot(axs[1], n=30000, loops=(1000,250), box=boxes[1])
 plot(axs[2], n=45000, loops=(1000,250), box=boxes[2])
 
-axs[0].set_ylabel("x wenn n gegen unendlich")
+axs[0].set_ylabel("$x_n$ wenn $n \\rightarrow \infty$")
 
 def boxify(box):
     x = [box["left"], box["left"], box["right"], box["right"], box["left"]]
