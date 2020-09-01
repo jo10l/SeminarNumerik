@@ -2,15 +2,15 @@
 \rhead{Chaos im Van der Pol System}
 \index{Chaos}%
 
-Die Änderung der Amplitude $A$ in die Gleichung \eqref{vanderpol:equations:inhomogene_2} verändert das Systemverhalten. Bei der Beobachtung der Frequenz des Oszillators wurden drei verschiedene Fälle erkannt. Wie in der Abbildung \ref{vanderpol:figures:fft} gezeigt, ist die Frequenz des Van der Pol Oszillators dominant, wenn der Wert $A$ kleiner als der kritische Wert ist. Wenn der Wert höher ist, dominiert die Frequenz $\omega$.
+Die Änderung der Amplitude $A$ in die Gleichung \eqref{vanderpol:equations:inhomogene_2} verändert das Systemverhalten. Bei der Beobachtung der Frequenzspektrum des Oszillators wurden drei verschiedene Fälle erkannt. Wie in der Abbildung \ref{vanderpol:figures:fft} gezeigt, ist die Frequenz des Van der Pol Oszillators dominant, wenn der Wert $A$ kleiner als der kritische Wert ist. Wenn der Wert höher ist, dominiert die Frequenz $\omega$.
 Beim kritischen Punkt gibt es eine Summe von Frequenzen im System.
 \index{kritischer Punkt}
-Durch Setzen der Werte $\mu=0.2$ und $\omega=1.15$ beträgt der kritische Wert von $A$ in diesem Fall $A=0.32$. Wie in der Gleichung
+Durch Setzen der Werte $\mu=0.2$ und $\omega=1.15$ beträgt der kritische Wert von $A$ in diesem Fall $A=0.32$. Die Funktion 
 \begin{equation}
 	\ddot{x}-0.2\bigl(1-x^{2}\bigr) \dot{x}+x = 0.32 \cdot \sin(1.15 t).
 	\label{vanderpol:equations:inhomogene_3}
 \end{equation}
-
+zeigt daher ein chaotisches Verhalten.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\textwidth]{papers/vanderpol/figures/fft_plot2.pdf}
@@ -64,11 +64,11 @@ Im Falle des Bildes Abbildung \ref{vanderpol:figures:init_cond_dbl_pend} wurde d
 
 \begin{itemize}
 \item
-Rote Kurve in Abbildung \ref{vanderpol:figures:init_cond_dbl_pend}: $\alpha_1(0) = \frac{\pi}{2}$
+Rote Kurve in Abbildung \ref{vanderpol:figures:init_cond_dbl_pend}: $\alpha_1(0) = \frac{\pi}{2}rad$
 \item
-Blaue Kurve in Abbildung \ref{vanderpol:figures:init_cond_dbl_pend}: $\alpha_2(0) = \alpha_1(0) + \delta, \quad \delta = 10^{-3}$
+Blaue Kurve in Abbildung \ref{vanderpol:figures:init_cond_dbl_pend}: $\alpha_2(0) = \alpha_1(0) + \delta, \quad \delta = 10^{-3}rad$
 \item
-$\dot{\alpha_1}(0) = \dot{\alpha_2}(0)= 1 \frac{m}{s}, \quad \dot{\beta_1}(0) = \dot{\beta_2}(0)= 1 \frac{m}{s}, \quad \beta_1(0)=\beta_2(0)=\displaystyle\frac{\pi}{2}$
+$\dot{\alpha_1}(0) = \dot{\alpha_2}(0)= 1 \frac{m}{s}, \quad \dot{\beta_1}(0) = \dot{\beta_2}(0)= 1 \frac{m}{s}, \quad \beta_1(0)=\beta_2(0)=\displaystyle\frac{\pi}{2}rad$
 \end{itemize}
 
 \begin{figure}
@@ -118,10 +118,8 @@ $\dot{x_1}(0) = \dot{x_2}(0) = 5$
 $x_1(0) = x_2(0) = 0$
 \end{itemize}
 Im Gegensatz zu den in Abbildung \ref{vanderpol:figures:init_cond_VDP} gezeigten Daten werden nun zwei verschiedene Integrationsschritte ausgewählt, während die Anfangsbedingungen gleich bleiben.
-Die Ergebnisse sind jedoch fast die Gleichen.
-Im Falle der Runge-Kutta-Lösung wird deutlich, dass der Divergenzpunkt aufgrund der Änderung der Integrationsschritt noch vor demjenigen liegt,
-der sich durch die Veränderung der Anfangsbedingungen ergibt.
-Auch in diesem Fall verursachte eine Divergenz in der Grössenordnung von $10^{-3}$ eine starke Abweichung.
+Die Ergebnisse sind jedoch fast die Gleichen. Im Falle der Runge-Kutta-Lösung wird deutlich, dass der Divergenzpunkt aufgrund der Änderung der Integrationsschritt noch vor demjenigen liegt, der sich durch die Veränderung der Anfangsbedingungen ergibt.
+Auch in diesem Fall verursachte eine Abweichung von $10^{-3}$ eine starke Änderung.
 Der Runge-Kutta-Algorithmus hat einen Rundungsfehler in der Grössenordnung von $O(h^{5})$, während der Euler-Algorithmus $O(h^{2})$ hat.
 Dies wirkt sich auf die Zeit $t_{0}$ aus.
 Wo also der Fehler grösser ist, d.~h.~im Falle von Euler, haben wir eine Vorwegnahme der Divergenz.

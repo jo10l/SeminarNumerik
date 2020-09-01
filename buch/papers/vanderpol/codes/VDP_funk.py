@@ -1,7 +1,7 @@
 def VDP_funk(z_n, t_n):
     """ 
     z_n: Aktueller Zustandsvektor [y_n, y_n']
-    t_n: Time variable [sec]
+    t_n: Zeitvariable 
     """
     mu           = 8.53
     x_n          = z_n[0]

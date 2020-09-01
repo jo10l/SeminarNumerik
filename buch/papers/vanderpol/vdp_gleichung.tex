@@ -89,7 +89,7 @@ Wenn versucht wird, die gleiche Gleichung zu lösen, aber mit einem konstanten $
 \end{equation}
 Sie kann umgeschrieben werden als
 \begin{equation}
-\frac{d^{2}i}{d t^{2}}+ 2\zeta \frac{d i}{d t}+\omega_0i = 0,
+\frac{d^{2}i}{d t^{2}}+ 2\zeta \frac{d i}{d t}+\omega_0^{2}i = 0,
 \end{equation}
 wobei $\omega_0$ die Resonanzfrequenz und $\zeta$ die Dämpfungskonstante sind. Die analytische Lösung ist
 \index{Resonanzfrequenz}%
@@ -125,20 +125,20 @@ Die Lösung der Differentialgleichung neigt unabhängig vom Anfangswert dazu, na
 Die homogene Van der Pol Gleichung ist stabil und zeigt {\em kein} chaotisches Verhalten.
 \subsection{Inhomogene Gleichung}
 \label{vanderpol:subsection:inhomogene}
-Ausgehend von der Formel der inhomogenen Differentialgleichung
+Die inhomogene Form der Van der Pol Gleichung
 \begin{equation*}
 	\ddot{x}-\mu(1-x^{2}) \dot{x}+x = f(t),
 \label{vanderpol:equations:inhomogene_gen}
 \end{equation*}
-die sogenannte {\em angeregte Van der Pol Gleichung} wird daher erhalten, wenn $f(t) = A \cdot \sin(\omega t)$ gesetzt wird:
+wird die sogenannte {\em angeregte Van der Pol Gleichung}. In unserem Fall wird die Störfunktion auf $f(t) = A \cdot \sin(\omega t)$ gesetzt:
 \index{angeregte Van der Pol-Gleichung}%
 \index{Van der Pol-Gleichung!angeregte}%
 \begin{equation}
 	\ddot{x}-\mu(1-x^{2}) \dot{x}+x = A \cdot \sin(\omega t).
 \label{vanderpol:equations:inhomogene_sin}
 \end{equation}
-In der praktischen Anwendung ist es so, wie wenn man einen Wechselstromgenerator an den Oszillator anschliesst. Wie in der Gleichung \eqref{vanderpol:equations:homogene_1}, wird die Differentialgleichung auf die erste Ordnung reduziert:
+Aus praktischer Sicht ist es so, als würde man einen Wechselstromgenerator an den Oszillatoreingang anschliessen. Wie in der Gleichung \eqref{vanderpol:equations:homogene_1}, wird die Differentialgleichung auf die erste Ordnung reduziert:
 \begin{align}
-\frac{d}{dt}\begin{pmatrix}x \\ y\end{pmatrix} = \begin{pmatrix}y \\ \mu (1-x^{2})\dot{x}-x+A \cdot \sin(\omega t)\end{pmatrix}.
+\frac{d}{dt}\begin{pmatrix}x \\ y\end{pmatrix} = \begin{pmatrix}y \\ \mu (1-x^{2})frac{dx}{dt}-x+A \cdot \sin(\omega t)\end{pmatrix}.
 \label{vanderpol:equations:inhomogene_2}
 \end{align}
