@@ -6,13 +6,13 @@ def solve(step_input, initial_condition=(0.0,1.0)):
     y_points    = np.zeros([])
 
     # Setzen von Anfangsbedingungen für die Zustandsvariablen
-    x_0,v_0      = initial_condition
-    temp_z     = np.array([x_0, v_0], float)
+    x_0,v_0     = initial_condition
+    temp_z      = np.array([x_0, v_0], float)
 
     # Lösen für die Zeitentwicklung
     for t_n in t_points:
-        x_points    = np.append(x_points, [temp_z[0]])
-        y_points    = np.append(y_points, [temp_z[1]])
-        temp_z     += RK_4(VDP_funk, temp_z, t_n, h)
+        x_points = np.append(x_points, [temp_z[0]])
+        y_points = np.append(y_points, [temp_z[1]])
+        temp_z  += RK_4(VDP_funk, temp_z, t_n, h)
         
     return (x_points, y_points, t_points)
