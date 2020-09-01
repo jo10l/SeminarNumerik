@@ -8,6 +8,7 @@
 PAPERFILES = \
 	papers/part2.tex \
 	papers/uebersicht.tex \
+	papers/000template/main.tex \
 	papers/vanderpol/main.tex \
 	papers/logistic/main.tex \
 	papers/kettenbruch/main.tex \
@@ -25,7 +26,8 @@ PAPERFILES = \
 	papers/cg/main.tex \
 	papers/ew/main.tex \
 	papers/ableitung/main.tex \
-	papers/arctan/main.tex
+	papers/arctan/main.tex \
+	papers/interdiff/main.tex \
 	
 buch1-blx.bbl:	buch1-blx.aux
 	bibtex buch1-blx
@@ -84,6 +86,12 @@ buch18-blx.bbl:	buch18-blx.aux
 buch19-blx.bbl:	buch19-blx.aux
 	bibtex buch19-blx
 
+buch20-blx.bbl:	buch20-blx.aux
+	bibtex buch20-blx
+
+buch21-blx.bbl:	buch21-blx.aux
+	bibtex buch21-blx
+
 BLXFILES = buch.bbl \
 	buch1-blx.bbl \
 	buch2-blx.bbl \
@@ -104,8 +112,10 @@ BLXFILES = buch.bbl \
 	buch17-blx.bbl \
 	buch18-blx.bbl \
 	buch19-blx.bbl \
+	buch20-blx.bbl \
 
 PAPER_DIRECTORIES = \
+	000template \
 	vanderpol \
 	logistic \
 	kettenbruch \
@@ -124,8 +134,10 @@ PAPER_DIRECTORIES = \
 	ew \
 	ableitung \
 	arctan \
+	interdiff \
 	
 PAPER_MAKEFILEINC = \
+	papers/000template/Makefile.inc \
 	papers/vanderpol/Makefile.inc \
 	papers/logistic/Makefile.inc \
 	papers/kettenbruch/Makefile.inc \
@@ -144,4 +156,5 @@ PAPER_MAKEFILEINC = \
 	papers/ew/Makefile.inc \
 	papers/ableitung/Makefile.inc \
 	papers/arctan/Makefile.inc \
+	papers/interdiff/Makefile.inc \
 	
