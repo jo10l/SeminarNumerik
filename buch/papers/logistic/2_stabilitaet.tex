@@ -17,7 +17,7 @@ Diese können wir jetzt einsetzen, damit wir dieses
 Verhalten besser verstehen können. 
 
 Kurze Auffrischung: Beim Iterieren einer Funktion
-gibt es Fixpunkte. 
+gibt es manchmal Fixpunkte. 
 Jeder Fixpunkt muss die Bedingung
 $f(x^*)=x^*$ erfüllen, das heisst wenn man die Funktion
 mit diesem Wert iteriert. passiert gar nichts, weil
@@ -38,14 +38,14 @@ Beim Betrachten der logistischen Gleichung
 $f(x) = \lambda x (1-x)$ sehen wir, 
 dass es sich dabei eigentlich nur um eine Parabel mit 
 den Nullstellen $0$ und $1$ handelt. 
-Der Faktor $\lambda$ bestimmt dabei die Öffnung der Parabel.  
+Der Faktor $\lambda$ bestimmt die Öffnung der Parabel.  
 
 Abbildung \ref{fig:web_1} zeigt nun das Spinnwebdiagramm,
 welches wir beim Iterieren der logistischen Gleichung erhalten.  
 Auf der linken Grafik mit $\lambda = 0.75$ sehen wir,
 dass $x_n$ gegen den Fixpunkt bei $0$ konvergiert. 
 Dies war bereits in Abbildung \ref{fig:pop_logistic} ersichtlich,
-hier sehen wir aber zusätzlich noch, dass es eben gegen
+hier sehen wir aber zusätzlich noch, dass $x_n$ eben gegen
 diesen Punkt konvergiert, weil es sich dabei um einen
 stabilen Fixpunkt handelt.  
 Auf der mittleren Grafik mit $\lambda = 1.8$ ist nun für den
@@ -61,7 +61,14 @@ Auf Abbildung \ref{fig:pop_logistic} hat sich dieses Verhalten
 als ``Einschwingen'' geäussert.
 \begin{figure}
     \includegraphics[width=\linewidth]{papers/logistic/figures/web_1.pdf}
-    \caption{Spinnwebplot ohne Oszillation}
+    \caption{
+        Spinnwebplot ohne Oszillation.
+        Für alle drei Werte von $\lambda$ gibt es 
+        einen stabilen Fixpunkt. 
+        Auf der rechten Grafik mit $\lambda = 2.8$
+        ist sichtbar wie $x_n$ 
+        zuerst über- und dann langsam einschwingt.
+    }
     \label{fig:web_1}
 \end{figure}
 
@@ -82,7 +89,7 @@ dann bekommen wir ein Polynom vierten Grades:
     =
     \lambda [\lambda x (1-x)] (1-[\lambda x (1-x)])
     =
-    \lambda^2 x (1-x) (\lambda x^2 - \lambda x + 1)
+    \lambda^2 x (1-x) (\lambda x^2 - \lambda x + 1).
 \end{equation}
 Diese neue Funktion bringt mit der 45°-Geraden 
 neue Schnittpunkte und damit auch neue Fixpunkte mit sich.
@@ -119,7 +126,7 @@ wo $x_n$ wieder periodisch wird.
 Da gibt es zum Beispiel bei
 $\lambda \approx 3.835$ eine Dreier-Periode,
 was vermuten lässt, dass für diesen Wert
-von $\lambda$ durch die Verschachtelung
+von $\lambda$ durch die dreifache Verschachtelung
 von $f(x)$ wieder drei stabile Fixpunkte entstehen.
 Tatsächlich gibt es, wie auf der rechten Grafik 
 in Abbildung \ref{fig:web_2} zu sehen ist,
@@ -127,7 +134,22 @@ durch $f(f(f(x)))$ und $\lambda = 3.835$ drei stabile Fixpunkte.
 
 \begin{figure}
     \includegraphics[width=\linewidth]{papers/logistic/figures/web_2.pdf}
-    \caption{Spinnwebplot mit Oszillation}
+    \caption{
+        Spinnwebplot mit oszillierenden $x_n$. 
+        Die mittlere Grafik zeigt, wie 
+        die Verschachtelung $f(f(x))$ mit 
+        $\lambda = 3.35$ zwei
+        stabile Fixpunkte hervorbringt und erklärt
+        damit die Oszillation zwischen
+        den zwei Punkten in der linken Grafik.
+        In der rechten Grafik zeigt eine weitere 
+        Verschachtelung zu $f(f(f(x)))$
+        mit $\lambda = 3.835$ 
+        drei stabile Fixpunkte, was
+        die entsprechende Dreier-Periode aus dem 
+        Bifurkationsdiagramm (Abbildung \ref{fig:map_1})
+        erklärt. 
+    }
     \label{fig:web_2}
 \end{figure}
 
