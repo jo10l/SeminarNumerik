@@ -13,11 +13,13 @@ Glücklicherweise kennen wir aber aus dem Kapitel
 \ref{buch:section:instabilitaet}
 bereits Werkzeuge zur Stabilitätsbetrachtung für
 das Iterieren von Funktionen. 
+\index{Stabilität}%
 Diese können wir jetzt einsetzen, damit wir dieses
 Verhalten besser verstehen können. 
 
 Kurze Auffrischung: Beim Iterieren einer Funktion
 gibt es manchmal Fixpunkte. 
+\index{Fixpunkte}%
 Jeder Fixpunkt muss die Bedingung
 $f(x^*)=x^*$ erfüllen, das heisst wenn man die Funktion
 mit diesem Wert iteriert. passiert gar nichts, weil
@@ -34,6 +36,7 @@ Fixpunkten von $f(x)$, welcher zwischen +45° und -45° sein muss.
 
 Wir können nun auf das uns bereits bekannte Spinnwebdiagramm
 zurückgreifen, um grafisch diese Fixpunkte zu finden.
+\index{Spinnwebdiagramm}%
 Beim Betrachten der logistischen Gleichung 
 $f(x) = \lambda x (1-x)$ sehen wir, 
 dass es sich dabei eigentlich nur um eine Parabel mit 
@@ -52,14 +55,15 @@ Auf der mittleren Grafik mit $\lambda = 1.8$ ist nun für den
 Fixpunkt im Ursprung die Stabilitätsbedingung nicht
 mehr erfüllt. 
 Dafür ist sie jetzt für den zweiten Fixpunkt erfüllt, 
-was dazu führt, dass die Funktion bei Iterieren gegen 
+was dazu führt, dass die Funktion beim Iterieren gegen 
 diesen Wert konvergiert.  
 Auf der rechten Grafik mit $\lambda = 2.8$ ist wieder der  
 zweite Fixpunkt stabil, hier ``umkreist'' die Linie aber
 den Fixpunkt und konvergiert langsam gegen ihn. 
 Auf Abbildung \ref{fig:pop_logistic} hat sich dieses Verhalten
 als ``Einschwingen'' geäussert.
-\begin{figure}
+\index{Einschwingen}%
+\begin{figure}[h!]
     \includegraphics[width=\linewidth]{papers/logistic/figures/web_1.pdf}
     \caption{
         Spinnwebplot ohne Oszillation.
@@ -70,6 +74,26 @@ als ``Einschwingen'' geäussert.
         zuerst über- und dann langsam einschwingt.
     }
     \label{fig:web_1}
+\end{figure}
+\begin{figure}[h!]
+    \includegraphics[width=\linewidth]{papers/logistic/figures/web_2.pdf}
+    \caption{
+        Spinnwebplot mit oszillierenden $x_n$. 
+        Die mittlere Grafik zeigt, wie 
+        die Verschachtelung $f(f(x))$ mit 
+        $\lambda = 3.35$ zwei
+        stabile Fixpunkte hervorbringt und erklärt
+        damit die Oszillation zwischen
+        den zwei Punkten in der linken Grafik.
+        In der rechten Grafik zeigt eine weitere 
+        Verschachtelung zu $f(f(f(x)))$
+        mit $\lambda = 3.835$ 
+        drei stabile Fixpunkte, was
+        die entsprechende Dreier-Periode aus dem 
+        Bifurkationsdiagramm (Abbildung \ref{fig:map_1})
+        erklärt. 
+    }
+    \label{fig:web_2}
 \end{figure}
 
 Nun haben wir eine gute Erklärung für das Iterationsverhalten
@@ -112,6 +136,7 @@ Darauf wird deutlich, warum die Oszillation eben genau
 zwischen diesen beiden Punkten entsteht. 
 Es handelt sich dabei um zwei Fixpunkte, welche erst 
 mit der Verschachtelung von $f(x)$ sichtbar werden.
+\index{Verschachtelung}%
 Würde man $\lambda$ nun weiter erhöhen, würden auch
 diese beiden Fixpunkte wieder instabil werden,
 dafür vier neue stabile Fixpunkte bei einer erneuten
@@ -132,24 +157,5 @@ Tatsächlich gibt es, wie auf der rechten Grafik
 in Abbildung \ref{fig:web_2} zu sehen ist,
 durch $f(f(f(x)))$ und $\lambda = 3.835$ drei stabile Fixpunkte. 
 
-\begin{figure}
-    \includegraphics[width=\linewidth]{papers/logistic/figures/web_2.pdf}
-    \caption{
-        Spinnwebplot mit oszillierenden $x_n$. 
-        Die mittlere Grafik zeigt, wie 
-        die Verschachtelung $f(f(x))$ mit 
-        $\lambda = 3.35$ zwei
-        stabile Fixpunkte hervorbringt und erklärt
-        damit die Oszillation zwischen
-        den zwei Punkten in der linken Grafik.
-        In der rechten Grafik zeigt eine weitere 
-        Verschachtelung zu $f(f(f(x)))$
-        mit $\lambda = 3.835$ 
-        drei stabile Fixpunkte, was
-        die entsprechende Dreier-Periode aus dem 
-        Bifurkationsdiagramm (Abbildung \ref{fig:map_1})
-        erklärt. 
-    }
-    \label{fig:web_2}
-\end{figure}
 
+\FloatBarrier

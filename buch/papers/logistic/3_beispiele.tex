@@ -6,7 +6,35 @@
 \section{Beispiele von verwandten Funktionen
 \label{logistic:section:beispiele}}
 \rhead{Beispiele von verwandten Funktionen}
+\begin{figure}[h!]
+    \includegraphics[width=\linewidth]{papers/logistic/figures/mandel.png}
+    \caption{Mandelbrotmenge}
+    \label{fig:mandel_2d}
+\end{figure}
+%\FloatBarrier
 \subsection{Mandelbrotmenge}
+\index{Mandelbrotmenge}%
+\begin{figure}
+    \includegraphics[width=\linewidth]{papers/logistic/figures/mandel_3d.png}
+    \caption{
+        Dreidimensionales Bifurkationsdiagramm der Mandelbrotmenge.
+        Das Bild wird aus einem flachen Winkel 
+        leicht von oben angeschaut. 
+        Die horizontale Ebene repräsentiert die
+        Werte von $c$, siehe Abbildung \ref{fig:mandel_2d}
+        zum Vergleich.
+        Die vertikale Achse zeigt
+        die Werte, die $\Re(z_n)$ annimmt wenn 
+        $n \rightarrow \infty$.
+        Rote Farbe bedeutet, dass $\Re(z_n)$ eine
+        endliche Periode hat, schwarze Farbe bedeutet
+        chaotisches Verhalten. 
+        Besonders interessant ist das Gebilde auf der 
+        linken Seite, das dem Bifurkationsdiagramm
+        der logistischen Gleichung sehr änhlich sieht.
+    }
+    \label{fig:mandel_3d}
+\end{figure}
 In Kapitel \ref{logistic:section:analyse} 
 haben wir bereits gesehen, 
 dass das Bifurkationsdiagramm der logistischen Gleichung
@@ -37,13 +65,8 @@ komplexen Ebene für jeden Wert von $c$ das Verhalten
 der Gleichung der Mandelbrotmenge darstellen. 
 Dazu färben wir den Bereich, in dem $z_n$ 
 nicht divergiert, rot ein.
-Damit sehen wir auf Abbildung \ref{fig:mandel_2d}
+Damit sehen wir in Abbildung \ref{fig:mandel_2d}
 die Mandelbrotmenge. 
-\begin{figure}
-    \includegraphics[width=\linewidth]{papers/logistic/figures/mandel.png}
-    \caption{Mandelbrotmenge}
-    \label{fig:mandel_2d}
-\end{figure}
 Auf dieser zweidimensionalen Darstellung ist jedoch nicht zu sehen, 
 welche Werte $z_n$ annimmt.
 Darum nehmen wir jetzt die dritte Dimension zur Hilfe um,
@@ -54,7 +77,7 @@ Oder eben auch nicht, wenn es oszilliert oder sogar
 chaotisch wird. 
 Da wir nur drei Dimensionen zur Verfügung haben,
 beschränken uns dabei auf den Realteil von $z_n$. 
-Das Ergebnis davon ist auf Abbildung 
+Das Ergebnis davon ist in Abbildung 
 \ref{fig:mandel_3d}
 zu sehen. 
 Die Farben geben Auskunft über die Periodizität des 
@@ -72,28 +95,21 @@ Gleichung sehr ähnlich sieht.
 Ebenfalls zu sehen ist, dass die kreisförmigen
 ``Platformen'' sich regelmässig verdoppeln, weil
 $\Re(z_n)$ zwischen immer mehr Werten hin und her oszilliert.
-\begin{figure}
-    \includegraphics[width=\linewidth]{papers/logistic/figures/mandel_3d.png}
-    \caption{
-        Dreidimensionales Bifurkationsdiagramm der Mandelbrotmenge.
-        Das Bild wird aus einem flachen Winkel 
-        leicht von oben angeschaut. 
-        Die horizontale Ebene repräsentiert die
-        Werte von $c$, siehe Abbildung \ref{fig:mandel_2d}
-        zum Vergleich.
-        Die vertikale Achse zeigt
-        die Werte, die $\Re(z_n)$ annimmt wenn 
-        $n \rightarrow \infty$.
-        Rote Farbe bedeutet, dass $\Re(z_n)$ eine
-        endliche Periode hat, schwarze Farbe bedeutet
-        chaotisches Verhalten. 
-        Besonders interessant ist das Gebilde auf der 
-        linken Seite, das dem Bifurkationsdiagramm
-        der logistischen Gleichung sehr änhlich sieht.
-    }
-    \label{fig:mandel_3d}
-\end{figure}
+
 \subsection{Universelle Eigenschaft}
+\begin{figure}
+    \includegraphics[width=\linewidth]{papers/logistic/figures/universal.png}
+    \caption{
+        Bifurkationsdiagramme von 
+        $\lambda \cdot \cos(x)$
+        und
+        $\lambda \cdot (2 - \cosh(x))$.
+        Links ist jeweils der Funktionsplot und
+        rechts das dazugehörige Bifurkationsdiagramm. 
+    }
+    \label{fig:universal}
+\end{figure}
+\index{universelle Eigenschaft}%
 Dieses Verhalten mit den Periodenverdoppelungen 
 bis es schliesslich chaotisch wird und dann
 immer wieder kurzen oszillierenden Fenstern im Chaos
@@ -131,15 +147,18 @@ Periodenverdoppelung ist,
 dann kommt man auf die Zahl $\delta \approx 4.6692$.
 Diese Zahl hat den Namen ``Feigenbaum-Konstante''.
 Es ist irrelevant, welche Kaskade von Periodenverdoppelungen
+\index{Kaskade von Periodenverdoppelungen}%
 bei diesen Funktionen
 gewählt wird, im Limit kommt schlussendlich immer diese Zahl heraus. 
 Die Feigenbaum-Konstante findet man auf die genau gleiche Art 
+\index{Feigenbaum-Konstante}%
 auch in der logistischen Gleichung und in vielen anderen
 Funktionen, die einen einzelnen ``Hügel'' haben, wieder.
 Dadurch haben alle diese Funktionen durch die 
 Feigenbaum-Konstante eine universale Eigenschaft.
 Es ist überhaupt nicht offentsichtlich warum das so
 sein sollte und es hat Mitchell Feigenbaum, 
+\index{Feigenbaum, Mitchell}%
 den Entdecker dieser Konstante, und andere Mathematiker 
 viel Arbeit gekostet, diese Eigenschaft zu erforschen. 
 
@@ -153,15 +172,3 @@ Deswegen schadet es sicherlich nicht,
 wenn man sich bewusst ist, dass beim Iterieren von
 scheinbar einfachen Funktionen so ein ``wildes'' 
 Verhalten enstehen kann. 
-\begin{figure}
-    \includegraphics[width=\linewidth]{papers/logistic/figures/universal.png}
-    \caption{
-        Bifurkationsdiagramme von 
-        $\lambda \cdot \cos(x)$
-        und
-        $\lambda \cdot (2 - \cosh(x))$.
-        Links ist jeweils der Funktionsplot und
-        rechts das dazugehörige Bifurkationsdiagramm. 
-    }
-    \label{fig:universal}
-\end{figure}

@@ -43,7 +43,7 @@ um zu sehen, gegen welchen Wert $x_n$ schliesslich konvergiert.
 Mit dem Computer können natürlich nicht unendlich viele Iterationen
 durchgeführt werden, aber wenn $n$ gross genug ist, 
 kommt man doch sehr nahe an den tatsächlichen Konvergenzwert. 
-Genau dieser Prozess ist nun auf Abbildung \ref{fig:map_1} 
+Genau dieser Prozess ist nun in Abbildung \ref{fig:map_1} 
 ersichtlich. 
 Sie zeigt einen Plot, 
 auf dem die horizontale Achse die verschiedenen Werte
@@ -69,10 +69,12 @@ von der Iteration der logistischen Gleichung ersichtlich:
     \item 
     für $3 \le \lambda \le 4$ scheint $x_n$ nicht mehr gegen einen fixen Wert zu konvergieren.
     Stattdessen gibt es diese Verzweigungen, 
+\index{Verzweigung}%
     die darauf hindeuten, 
     dass $x_n$ zuerst bis $\lambda \approx 3.4$ zwischen zwei Werten hin und her oszilliert, 
     dann bis $\lambda \approx 3.6$ zwischen vier Werten, dann 8, 16, usw. 
     Dieses Phänomen wird auch ``Periodenverdoppelung'' genannt.
+\index{Periodenverdoppelung}%
     \item
     für $\lambda > 4$ gibt es scheinbar nichts mehr.
     Das kommt daher, dass $x_n$ ab da nur noch divergiert.  
@@ -101,19 +103,24 @@ zwischen zwei Werten zu oszillieren und beim
 dritten Plot mit $\lambda = 3.55$ sogar zwischen vier Werten. 
 Dieses Oszillieren zeigt sich in Abbildung \ref{fig:map_1}
 durch die Verzweigungen oder auch ``Bifurkationen''. 
+\index{Bifurkation}%
+\index{Bifurkationsdiagramm}%
 Darum wird sie auch ``Bifurkationsdiagramm'' genannt. 
 
 Auf dem Bifurkationsdiagramm sind noch mehr 
 interessante Eigenschaften der logistischen Gleichung erkennbar.
-Wenn wir, wie auf Abbildung \ref{fig:map_zoom}, in die Bereiche hineinzoomen
+Wenn wir, wie in Abbildung \ref{fig:map_zoom}, in die Bereiche hineinzoomen
 wo die Bifurkationen immer dichter werden, finden wir Gebilde, 
 welche wieder fast genau gleich aussehen.
 Tatsächlich könnte man endlos immer weiter in diese
 Bereiche hineinzoomen und würde immer wieder auf solche änhlichen Muster stossen. 
 Diese Selbstähnlichkeit ist eine typische Eigenschaft von Fraktalen.
+\index{Selbstähnlichkeit}%
+\index{Fraktal}%
 Das Bifurkationsdiagramm der logistischen Gleichung ist also ein Fraktal.
 Es gibt sogar einen Zusammenhang zwischen der logistischen Gleichung und 
 einem anderen berühmten Fraktal, der Mandelbrotmenge.
+\index{Mandelbrotmenge}%
 Mehr dazu später in Abschnitt 
 \ref{logistic:section:beispiele}.
 \begin{figure}
@@ -138,11 +145,12 @@ die Verdoppelungen aufhören und $x_n$ nicht mehr oszilliert.
 Stattdessen nimmt $x_n$ nur noch scheinbar 
 willkürliche Werte in bestimmten Bereichen an, 
 man spricht vom Chaos.
+\index{Chaos}
 Interessanterweise gibt es aber auch für Werte von 
 $\lambda \gtrapprox 3.57$ wieder gewissen Bereiche,
 wo wieder periodisches Verhalten auftritt. 
 Ein Beispiel für einen solchen Bereich sieht man
-gut auf Abbildung \ref{fig:map_zoom} bei 
+gut in Abbildung \ref{fig:map_zoom} bei 
 $\lambda \approx 3.83$. 
 Dort gibt es zuerst eine Dreier-Periode, 
 dann wieder die Periodenverdoppelungen, 
