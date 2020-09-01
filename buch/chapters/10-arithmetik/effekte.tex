@@ -20,8 +20,8 @@ Lösungsverfahrens Rechnung getragen werden muss.
 Zahlen gebildet wird.
 \index{Auslöschung}
 Als Beispiel betrachten wir die beiden Zahlen $a=\pi$ und $b=\sqrt{10}$.
-\index{$\pi$}%
-\index{$\sqrt{10}$}%
+\index{pi@$\pi$}%
+\index{sqrt10@$\sqrt{10}$}%
 Berechnen wir deren Differenz in Octave, erhalten wir:
 \verbatiminput{chapters/10-arithmetik/pi10.txt}
 \index{Octave}%
@@ -35,7 +35,7 @@ Genauigkeit zeigt\footnote{Diese Berechnung wurde mit dem
 Linux-Kommandozeilenprogramm \texttt{bc} durchgeführt, welches mit
 einstellbarer Festkommapräzision von tausenden von Stellen rechnen kann.
 \index{Linux}%
-\index{\texttt{bc}}%
+\index{bc@\texttt{bc}}%
 Es ist Teil jeder Linux-Distribution.}
 \verbatiminput{chapters/10-arithmetik/pi20.txt}
 Schreiben wir die Subtraktion in der tabellarischen Form
@@ -118,7 +118,7 @@ P(a\le X \le b)
 Die Funktion $\Phi(x)$ wird in vielen Bibliotheken nicht direkt zur
 Verfügung gestellt, oft ist nur die sogenannte {\em Fehlerfunktion}
 \index{Fehlerfunktion}%
-\index{$\operatorname{erf}(x)$}%
+\index{erfx@$\operatorname{erf}(x)$}%
 \[
 \operatorname{erf}(x)
 =
@@ -147,7 +147,7 @@ gesuchten Wahrscheinlichkeit verwendet werden.
 In der C-Bibliothek stehen Funktionen zur Berechnung von $\sqrt{2}$ und
 $\operatorname{erf}(x)$ für alle zur Verfügung stehenden Datentypen bereit.
 \index{C}%
-\index{$\sqrt{2}$}%
+\index{sqrt2@$\sqrt{2}$}%
 Die Tabelle~\ref{buch:table:erfcancellation}
 zeigt die Resultate\footnote{Diese Resultate wurden
 mit dem Programm \texttt{normal.cpp} Im Verzeichnis
@@ -188,7 +188,7 @@ Um dieses Problem in den Griff zu bekommen, stellt die C-Bibliothek
 zusätzlich die sogenannte {\em komplementäre Fehlerfunktion}
 \index{Fehlerfunktion, komplementäre}%
 \index{komplementäre Fehlerfunktion}%
-\index{$\operatorname{erfc}(x)$}%
+\index{erfcx@$\operatorname{erfc}(x)$}%
 \[
 \operatorname{erfc}(x) = 1-\operatorname{erf}(x)
 \qquad\Rightarrow\qquad
@@ -349,8 +349,8 @@ folgende Beispiel aus \cite{buch:kahan-summation} zeigt.
 \index{Genauigkeitsverlust}%
 
 Es soll die Summe $10^4 + \pi + e$ berechnet werden.
-\index{$\pi$}
-\index{$e$}
+\index{pi@$\pi$}
+\index{e@$e$}
 Die Rundung kann entweder ganz am Schluss oder nach jeder einzelnen
 Addition erfolgen, so wie es der IEEE~754-Standard verlangt.
 \index{IEEE 754}

@@ -25,6 +25,7 @@ PAPERFILES = \
 	papers/cg/main.tex \
 	papers/ew/main.tex \
 	papers/ableitung/main.tex \
+	papers/arctan/main.tex
 	
 buch1-blx.bbl:	buch1-blx.aux
 	bibtex buch1-blx
@@ -80,6 +81,9 @@ buch17-blx.bbl:	buch17-blx.aux
 buch18-blx.bbl:	buch18-blx.aux
 	bibtex buch18-blx
 
+buch19-blx.bbl:	buch19-blx.aux
+	bibtex buch19-blx
+
 BLXFILES = buch.bbl \
 	buch1-blx.bbl \
 	buch2-blx.bbl \
@@ -99,6 +103,7 @@ BLXFILES = buch.bbl \
 	buch16-blx.bbl \
 	buch17-blx.bbl \
 	buch18-blx.bbl \
+	buch19-blx.bbl \
 
 PAPER_DIRECTORIES = \
 	vanderpol \
@@ -118,6 +123,7 @@ PAPER_DIRECTORIES = \
 	cg \
 	ew \
 	ableitung \
+	arctan \
 	
 PAPER_MAKEFILEINC = \
 	papers/vanderpol/Makefile.inc \
@@ -137,4 +143,5 @@ PAPER_MAKEFILEINC = \
 	papers/cg/Makefile.inc \
 	papers/ew/Makefile.inc \
 	papers/ableitung/Makefile.inc \
+	papers/arctan/Makefile.inc \
 	

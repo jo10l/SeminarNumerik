@@ -126,7 +126,7 @@ Es soll also eine Inkrementfunktion gefunden werden, bei der $y(x+\Delta x)$
 durch $y(x) + \Delta x\cdot F(x,y,\Delta x)$ bis auf Terme höherer
 Ordnung approximiert werden kann.
 
-\subsection{Quadratische Verfahren}
+\subsection{Quadratische Verfahren\label{buch:subsection:quadratischeverfahren}}
 \index{quadratische!Verfahren}%
 Ein quadratisches Verfahren verwendet eine Inkrementfunktion $F(x,y,h)$,
 welche
@@ -146,7 +146,7 @@ oder anders ausgedrückt: Man führt zuerst etwas Ähnliches wie einen
 Euler-Schritt durch, um zum Punkt $(x+\alpha h,y+\beta hf(x,y))$ zu
 gelangen.
 \index{Euler-Schritt}%
-Dort berechnet man den Wert von $f$, und bildet dann einen geeigneten
+Dort berechnet man den Wert von $f$ und bildet dann einen geeigneten
 Mittelwert davon  mit $f(x,y)$.
 Durch geeignete Wahl von $a$, $b$, $\alpha$ und $\beta$ sollte es möglich
 sein, dass die Inkrementfunktion einen Fehler höchstens dritter Ordnung
@@ -198,7 +198,7 @@ a+b&=1,&
 \beta b&=\frac12.
 \end{aligned}
 \]
-Einzig $b$ kommt in allen drei Gleichungen vor, und bestimmt den Wert der
+Einzig $b$ kommt in allen drei Gleichungen vor und bestimmt den Wert der
 jeweiligen anderen Variablen:
 \[
 \begin{aligned}
@@ -311,11 +311,11 @@ y_{k+1} = y_k + \frac{h}6(k_1 + 2k_2 + 2k_3 + k_4)
 Man kann die Formeln wie folgt interpretieren.
 \begin{enumerate}
 \item
-Zuerst wird ein halber Euler-Schritt mit der Steigung $k_1=f(x_k,y_k)$,
-durchgeführt, und am Zielpunkt die Steigung $k_2$ ermittelt.
+Zuerst wird ein halber Euler-Schritt mit der Steigung $k_1=f(x_k,y_k)$
+durchgeführt und am Zielpunkt die Steigung $k_2$ ermittelt.
 \item
 Mit dieser Steigung $k_2$ wird dann erneut ein halber Schritt von $(x_k,y_k)$
-aus durchgeführt, und am Zielpunkt erneut die Steigung $k_3$ ermittelt.
+aus durchgeführt und am Zielpunkt erneut die Steigung $k_3$ ermittelt.
 \item
 Mit $k_3$ führt man einen ganzen Schritt aus, an dessen Zielpunkt man die
 Steigung $k_4$ findet.
