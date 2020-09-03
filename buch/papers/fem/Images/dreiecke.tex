@@ -14,7 +14,7 @@
 \def\skala{1}
 \begin{tikzpicture}[>=latex,thick,scale=\skala]
 
-\definecolor{farbe1}{rgb}{1,0,0}
+\definecolor{farbe1}{rgb}{0.8,0,0}
 \definecolor{farbe2}{rgb}{0,0,1}
 
 \coordinate (C1) at (0,0);
@@ -31,8 +31,8 @@
 \draw[color=farbe1] (C1)--(C2)--(C4)--cycle;
 \draw[color=farbe2] (C2)--(C3)--(C4)--cycle;
 
-\node at (S1) {$\Delta_1$};
-\node at (S2) {$\Delta_2$};
+\node[color=farbe1] at (S1) {$\Delta_1$};
+\node[color=farbe2] at (S2) {$\Delta_2$};
 
 \fill (C1) circle[radius=0.08];
 \fill (C2) circle[radius=0.08];

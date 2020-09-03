@@ -88,6 +88,7 @@ den Wert
 x_{n+1} = f(x_n) = f(2 + \delta_n)
 \approx
 f(2) + f'(2)\cdot \delta_n
+=
 2 + \underbrace{\frac14\cdot \delta_n}_{\displaystyle\approx\delta_{n+1}}
 \]
 für $x_{n+1}$.
@@ -144,7 +145,7 @@ f({\textstyle\frac23}+\delta)
 =
 \frac{2-3\delta+9\delta^2}{3}
 =
-\frac23 - \delta  + 9\delta^2
+\frac23 - \delta  - 3\delta^2
 \label{buch:equation:logistic3error}
 \end{equation}
 Der Fehler $\delta$ wird zu $ -\delta(1-9\delta) $, er ändert also sein
