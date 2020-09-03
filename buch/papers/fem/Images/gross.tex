@@ -14,10 +14,13 @@
 \def\skala{1}
 \begin{tikzpicture}[>=latex,thick,scale=\skala]
 
+\definecolor{farbe1}{rgb}{0.8,0,0}
+\definecolor{farbe2}{rgb}{0,0,1}
+
 \foreach \x in {0,...,4}{
 	\foreach \y in {0,...,4}{
-		\fill[color=red!20] (\x,\y) -- ({\x+1},{\y+1}) -- (\x,{\y+1}) --cycle;
-		\fill[color=blue!20] (\x,\y) -- ({\x+1},\y) -- ({\x+1},{\y+1}) --cycle;
+		\fill[color=farbe1!20] (\x,\y) -- ({\x+1},{\y+1}) -- (\x,{\y+1}) --cycle;
+		\fill[color=farbe2!20] (\x,\y) -- ({\x+1},\y) -- ({\x+1},{\y+1}) --cycle;
 	}
 }
 \foreach \x in {0,...,5}{
@@ -68,27 +71,27 @@
 }
 
 \def\oberesdreieck#1{
-	\quadrat{#1}{#1}{red}
-	\quadrat{#1+6}{#1}{red}
-	\quadrat{#1+7}{#1}{red}
-	\quadrat{#1}{#1+6}{red}
-	\quadrat{#1+6}{#1+6}{red}
-	\quadrat{#1+7}{#1+6}{red}
-	\quadrat{#1}{#1+7}{red}
-	\quadrat{#1+6}{#1+7}{red}
-	\quadrat{#1+7}{#1+7}{red}
+	\quadrat{#1}{#1}{farbe1}
+	\quadrat{#1+6}{#1}{farbe1}
+	\quadrat{#1+7}{#1}{farbe1}
+	\quadrat{#1}{#1+6}{farbe1}
+	\quadrat{#1+6}{#1+6}{farbe1}
+	\quadrat{#1+7}{#1+6}{farbe1}
+	\quadrat{#1}{#1+7}{farbe1}
+	\quadrat{#1+6}{#1+7}{farbe1}
+	\quadrat{#1+7}{#1+7}{farbe1}
 }
 
 \def\unteresdreieck#1{
-	\quadrat{#1}{#1}{blue}
-	\quadrat{#1+1}{#1}{blue}
-	\quadrat{#1+7}{#1}{blue}
-	\quadrat{#1}{#1+1}{blue}
-	\quadrat{#1+1}{#1+1}{blue}
-	\quadrat{#1+7}{#1+1}{blue}
-	\quadrat{#1}{#1+7}{blue}
-	\quadrat{#1+1}{#1+7}{blue}
-	\quadrat{#1+7}{#1+7}{blue}
+	\quadrat{#1}{#1}{farbe2}
+	\quadrat{#1+1}{#1}{farbe2}
+	\quadrat{#1+7}{#1}{farbe2}
+	\quadrat{#1}{#1+1}{farbe2}
+	\quadrat{#1+1}{#1+1}{farbe2}
+	\quadrat{#1+7}{#1+1}{farbe2}
+	\quadrat{#1}{#1+7}{farbe2}
+	\quadrat{#1+1}{#1+7}{farbe2}
+	\quadrat{#1+7}{#1+7}{farbe2}
 }
 
 \begin{scope}[xshift=7cm,yshift=5cm]

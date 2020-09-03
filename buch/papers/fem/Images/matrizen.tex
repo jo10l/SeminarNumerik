@@ -14,7 +14,7 @@
 \def\skala{1}
 \begin{tikzpicture}[>=latex,thick,scale=\skala]
 
-\definecolor{farbe1}{rgb}{1,0,0}
+\definecolor{farbe1}{rgb}{0.8,0,0}
 \definecolor{farbe2}{rgb}{0,0,1}
 
 \def\xstep{0.82}
@@ -37,9 +37,10 @@
 \node at (0,0) {$\displaystyle
 \renewcommand\arraystretch{1.4}
 B_1 = \begin{pmatrix}
-\;\;\frac12\;\; & \frac16    & \;\;\frac13  \;\; \\
-\frac16 & \frac1{12} & \frac1{24}\\
-\frac13 & \frac1{24} & \frac1{12}
+\color{farbe1}
+\;\;\frac12\;\; & \color{farbe1}\frac16    & \;\;\color{farbe1}\frac13  \;\; \\
+\color{farbe1}\frac16 & \color{farbe1}\frac1{12} & \color{farbe1}\frac1{24}\\
+\color{farbe1}\frac13 & \color{farbe1}\frac1{24} & \color{farbe1}\frac1{12}
 \end{pmatrix}
 $};
 
@@ -59,9 +60,10 @@ $};
 \node at (0,0) {$\displaystyle
 \renewcommand\arraystretch{1.4}
 B_2 = \begin{pmatrix}
-\;\;\frac12\;\; & \frac16    & \;\;\frac13\;\;   \\
-\frac16 & \frac1{12} & \frac1{24}\\
-\frac13 & \frac1{24} & \frac1{12}
+\color{farbe2}
+\;\;\frac12\;\; & \color{farbe2}\frac16    & \color{farbe2}\;\;\frac13\;\;   \\
+\color{farbe2}\frac16 & \color{farbe2}\frac1{12} & \color{farbe2}\frac1{24}\\
+\color{farbe2}\frac13 & \color{farbe2}\frac1{24} & \color{farbe2}\frac1{12}
 \end{pmatrix}
 $};
 
@@ -106,10 +108,22 @@ $};
 \node at (0,0) {$\displaystyle
 \renewcommand\arraystretch{1.4}
 B = \begin{pmatrix}
-\frac12 & \frac16              &  \phantom{\frac1{24}+\frac1{12}}          & \frac13                \\
-\frac16 & \frac1{12} + \frac12 & \frac16     & \frac1{24}+\frac13     \\
- \phantom{\frac1{24}+\frac1{12}}             & \frac16              & \frac1{12}  & \frac1{24}             \\
-\frac13 & \frac1{24} + \frac13 & \frac1{24}  & \frac1{12} + \frac1{12}
+\color{farbe1}\frac12
+	& \color{farbe1}\frac16
+		& \phantom{\frac1{24}+\frac1{12}} 
+			& \color{farbe1}\frac13 \\
+\color{farbe1}\frac16
+	& {\color{farbe1}\frac1{12}} + {\color{farbe2}\frac12}
+		& \color{farbe2}\frac16
+			& {\color{farbe1}\frac1{24}}+{\color{farbe2}\frac13}\\
+\phantom{\frac1{24}+\frac1{12}}
+	& \color{farbe2}\frac16
+		& \color{farbe2}\frac1{12}
+			& \color{farbe2}\frac1{24}\\
+\color{farbe1}\frac13
+	& {\color{farbe1}\frac1{24}} + {\color{farbe2}\frac13}
+		& \color{farbe2}\frac1{24}
+			& {\color{farbe1}\frac1{12}}+{\color{farbe2}\frac1{12}}
 \end{pmatrix}
 $};
 
