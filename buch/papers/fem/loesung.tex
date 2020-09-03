@@ -404,21 +404,28 @@ Beide Gebiete zusammen entsprechen
 Die Koeffizienten von $\textcolor{red}{\triangle_1}$ sind
 
 \begin{equation}
-\int_{\triangle_1} \underbrace{c_1^2}_{\textcolor{red}{\frac{1}{2}}} + \underbrace{c_2^2 x^2}_{\textcolor{red}{\frac{1}{12}}} + \underbrace{c_4^2 y^2}_{\textcolor{red}{\frac{1}{12}}} + \underbrace{2 c_1 c_2 x}_{\textcolor{red}{\frac{1}{6}}} + \underbrace{2 c_1 c_4 y}_{\textcolor{red}{\frac{1}{3}}} + \underbrace{2 c_2 c_4}_{\textcolor{red}{\frac{1}{24}}} d\eta \; d\xi
+\int_{\triangle_1} \underbrace{c_1^2}_{\textcolor{red}{\frac{1}{2}}} + \underbrace{c_2^2 \; \xi^2}_{\textcolor{red}{\frac{1}{12}}} + \underbrace{c_4^2 \; \eta^2}_{\textcolor{red}{\frac{1}{12}}} + \underbrace{2 c_1 c_2\; \xi}_{\textcolor{red}{\frac{1}{6}}} + \underbrace{2 c_1 c_4 \; \eta}_{\textcolor{red}{\frac{1}{3}}} + \underbrace{2 c_2 c_4}_{\textcolor{red}{\frac{1}{24}}} d\eta \; d\xi
+\label{fem:roteKoeffizienten}
 \end{equation}
 und von $\textcolor{blue}{\triangle_2}$ 
 \begin{equation}
-\int_{\triangle_2} \underbrace{c_2^2}_{\textcolor{blue}{\frac{1}{2}}} + \underbrace{c_3^2 x^2}_{\textcolor{blue}{\frac{1}{12}}} + \underbrace{c_4^2 y^2}_{\textcolor{blue}{\frac{1}{12}}} + \underbrace{2 c_2 c_3 x}_{\textcolor{blue}{\frac{1}{6}}} + \underbrace{2 c_2 c_4 y}_{\textcolor{blue}{\frac{1}{3}}} + \underbrace{2 c_3 c_4}_{\textcolor{blue}{\frac{1}{24}}} d\eta \; d\xi \; .
+\int_{\triangle_2} \underbrace{c_2^2}_{\textcolor{blue}{\frac{1}{2}}} + \underbrace{c_3^2 \; \xi^2}_{\textcolor{blue}{\frac{1}{12}}} + \underbrace{c_4^2 \; \eta^2}_{\textcolor{blue}{\frac{1}{12}}} + \underbrace{2 c_2 c_3 \; \xi}_{\textcolor{blue}{\frac{1}{6}}} + \underbrace{2 c_2 c_4 \; \eta}_{\textcolor{blue}{\frac{1}{3}}} + \underbrace{2 c_3 c_4}_{\textcolor{blue}{\frac{1}{24}}} d\eta \; d\xi \; .
+\label{fem:blaueKoeffizienten}
 \end{equation}
-Die Koeffizienten der jeweiligen Gebiete werden gemäss der Abbildung \ref{fem:MatrixBKomplett} zusammengesetzt.
+
+Bevor die roten und blauen Koeffizienten von \eqref{fem:roteKoeffizienten} und \eqref{fem:blaueKoeffizienten} der jeweiligen Gebiete zusammengesetzt werden können, gemäss der Abbildung \ref{fem:MatrixBKomplett}, müssen zwei Punkte berücksichtigt werden:
+\begin{itemize}
+	\item Jeder Koeffizient muss nach \eqref{fem:newTransformation} mit dem dazugehörigen Jacobi- Determinante \eqref{fem:JocobiDetBerechnet} des eignen Dreiecks multipliziert werden. 
+	\item Es müssen die $\tilde{c}$- Variablen verwendet werden. Die Umrechnung ist in  \ref{fem:section:loesungTrans} beschrieben.
+\end{itemize}
+Sind die beiden Schritte durchgeführt, können die Koeffizienten gemäss der Abbildung \ref{fem:MatrixBKomplett} die Matrix $B$ gebildet werden.
 \begin{figure}[h]
 	\centering
 	\input{papers/fem/Images/matrizen.tex}
 	\caption{Matrix $B$ zusammenstellen }
 	\label{fem:MatrixBKomplett}
 \end{figure}
-Das Vorgehen für die Matrix $A$ ist genau gleich. Zu beachten ist allerdings dass beim Zusammensetzen die $\tilde{c}$- Variablen verwendet werden müssen. Die Umrechnung ist im Abschnitt \ref{fem:section:loesungTrans} beschrieben. 
-Wie sieht die Matrix aus wenn mit mehr Dreiecken approximiert wird? Bei einem 5x5 Gitter mit 36 Variablen hätte die Matrix $B$ die Form wie in Abbildung \ref{fem:MatrixBGross} .
+Das Vorgehen für die Matrix $A$ ist genau gleich. Wie sieht die Matrix aus wenn mit mehr Dreiecken approximiert wird? Bei einem 5x5 Gitter mit 36 Variablen hätte die Matrix $B$ die Form wie in Abbildung \ref{fem:MatrixBGross} .
 
 \begin{figure}[h]
 	\centering
