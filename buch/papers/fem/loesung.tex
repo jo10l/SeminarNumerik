@@ -29,8 +29,8 @@ Damit die Integration über das gewählte Teilgebiet einfacher fällt, wird als 
 Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $ P_2(x_2, y_2)$ und $P_3(x_3,y_3)$ kann mit Hilfe der linearen Transformation
 \begin{equation}
 	\begin{split}
-		x = x_1 + (x_2 - x_1)\xi + (x_3 - x_1)\eta \\
-		y = y_1 + (y_2 - y_1)\xi + (y_3 - y_1)\eta
+		x &= x_1 + (x_2 - x_1)\xi + (x_3 - x_1)\eta \\
+		y &= y_1 + (y_2 - y_1)\xi + (y_3 - y_1)\eta
 		\label{fem:linTransformation}
 	\end{split}
 \end{equation}
@@ -77,16 +77,16 @@ Die Jacobi- Determinante \eqref{fem:JocobiDetBerechnet} entspricht der doppelten
 %\end{equation}
 \begin{equation}
 \begin{split}
-	\frac{\partial u}{\partial x} = \frac{\partial u}{\partial \xi} \, \frac{\partial \xi}{\partial x} + \frac{\partial u}{\partial \eta} \, \frac{\partial \eta}{\partial x} \\
-	\frac{\partial u}{\partial y} = \frac{\partial u}{\partial \xi} \, \frac{\partial \xi}{\partial y} + \frac{\partial u}{\partial \eta} \, \frac{\partial \eta}{\partial y} \; .
+	\frac{\partial u}{\partial x} &= \frac{\partial u}{\partial \xi} \, \frac{\partial \xi}{\partial x} + \frac{\partial u}{\partial \eta} \, \frac{\partial \eta}{\partial x} \\
+	\frac{\partial u}{\partial y} &= \frac{\partial u}{\partial \xi} \, \frac{\partial \xi}{\partial y} + \frac{\partial u}{\partial \eta} \, \frac{\partial \eta}{\partial y} \; .
 	\end{split}
 \end{equation}
 Auf Grund der linearen Transformation \eqref{fem:linTransformation} ergeben sich nach partieller Differentiation der beiden Beziehungen nach $x$ zunächst
 
 \begin{equation}
 			\begin{aligned}
-			1  = (x_2 -x_1) \, \frac{\partial \xi}{\partial x} + (x_3 -x_1) \, \frac{\partial \eta}{\partial x} \\
-			0 = (y_2 -y_1) \, \frac{\partial \xi}{\partial x} + (y_3 -y_1) \, \frac{\partial \eta}{\partial x} \; . \\
+			1  &= (x_2 -x_1) \, \frac{\partial \xi}{\partial x} + (x_3 -x_1) \, \frac{\partial \eta}{\partial x} \\
+			0 &= (y_2 -y_1) \, \frac{\partial \xi}{\partial x} + (y_3 -y_1) \, \frac{\partial \eta}{\partial x} \; . \\
 			 \end{aligned}
 \end{equation}
 Nach Auflösung  der beiden Gleichungen nach $\frac{\partial \xi}{\partial x}$ und $\frac{\partial \eta}{\partial x}$ ergibt sich
@@ -204,9 +204,9 @@ und
 Bekannt ist nun, wie die Integrale für die einzelne Teilgebiete aussehen. Um eine Matrixnotation der Koeffizienten $c_i$ zu erhalten, um dann ein Gleichungssystem für deren Berechnung aufzubauen, werden die Koeffizienten in Vektorform
 \begin{equation}
 	\begin{bmatrix}
-	c_{\triangle_i}^0  \\
-	c_{\triangle_i}^1 \\
-	c_{\triangle_i}^2
+	c_0^{(\triangle_i)}  \\
+	c_1^{(\triangle_i)} \\
+	c_2^{(\triangle_i)}
 	\end{bmatrix}
 	\label{fem:VektorAlg}
 \end{equation}
@@ -223,7 +223,7 @@ eines Teilgebietes in die lineare Notation
 gebracht. Gemäss \eqref{fem:Minimal2TermLinAlg} sind Quadrate der Koeffizienten $c_i$ gefordert. Um nun quadratische Koeffizienten in der Matrixschreibweise zu erhalten wird dies wie folgt notiert:
 \begin{equation}
 \begin{bmatrix}
-c_1^{(0)} &  c_1^{(1)} &  c_1^{(2)}  
+c_0^{(\triangle_i)} &  c_1^{(\triangle_i)} &  c_2^{(\triangle_i)}  
 \end{bmatrix}
 \begin{bmatrix}
 \ddots & \cdots &  \cdots    \\
@@ -231,14 +231,14 @@ c_1^{(0)} &  c_1^{(1)} &  c_1^{(2)}
 \vdots &  & \ddots
 \end{bmatrix}
 \begin{bmatrix}
-c_1^{(0)}  \\
-c_1^{(1)} \\
-c_1^{(2)}
+c_0^{(\triangle_i)}  \\
+c_1^{(\triangle_i)} \\
+c_2^{(\triangle_i)}
 \end{bmatrix}
 +
 \lambda
 \begin{bmatrix}
-c_2^{(0)} &  c_2^{(1)} &  c_2^{(2)}    \\   
+c_0^{(\triangle_i)} &  c_1^{(\triangle_i)} &  c_2^{(\triangle_i)}    \\   
 \end{bmatrix}
 \begin{bmatrix}
 \ddots & \cdots &  \cdots    \\
@@ -246,9 +246,9 @@ c_2^{(0)} &  c_2^{(1)} &  c_2^{(2)}    \\
 \vdots &  & \ddots
 \end{bmatrix}
 \begin{bmatrix}
-c_2^{(0)}  \\
-c_2^{(1)} \\
-c_2^{(2)}
+c_0^{(\triangle_i)}  \\
+c_1^{(\triangle_i)} \\
+c_2^{(\triangle_i)}
 \end{bmatrix} \; .
 	\label{fem:MatrixKoeffizient}
 \end{equation}
@@ -283,7 +283,7 @@ Daher wird die Matrix
 	\end{array}\right)
 	\label{fem:TeilmatrixA}
 \end{equation}
-mit $0$en entsprechend angepasst. Die Teilmatrix ausgerechnet ergibt
+mit Nullen entsprechend angepasst. Die Teilmatrix ausgerechnet ergibt
 \begin{equation}
 	A_{\triangle_i} = \left( \begin{array}{ccc}
 	0 & 0 & 0 \\
@@ -291,7 +291,7 @@ mit $0$en entsprechend angepasst. Die Teilmatrix ausgerechnet ergibt
 	0 & 0 &  \frac{1}{2}\\
 	\end{array}\right)
 \end{equation}
-und wird dann in die Matrix $A$ eingefügt. Wie genau die Teilmatrizen $A_{\triangle_i}$ in eine Gesamte Matrix A zusammengesetzt werden, wird in den nächsten Zeilen am Beispiel der Matrix B erläutert. 
+und wird dann in die Matrix $A$ eingefügt. Wie genau die Teilmatrizen $A_{\triangle_i}$ in eine gesamte Matrix A zusammengesetzt werden, wird weiter unten am Beispiel der Matrix B erläutert. 
 
 %\begin{equation}
 % A = \begin{pmatrix} 0 & 0 & \hdotsfor{4} & 0 \\
@@ -328,7 +328,7 @@ und wird dann in die Matrix $A$ eingefügt. Wie genau die Teilmatrizen $A_{\tria
 %c_1^2
 %\end{bmatrix}
 %\end{equation}
-Die Matrix $A$ ist nun bekannt. Es fehlt jedoch noch die Matrix $B$, um das Gleichungs-System zu komplettieren. Die Matrix $B$ wird nun wie folgt definiert. Um die folgende Form zu erhalten muss lediglich der zwite Term von \eqref{fem:Minimal2TermLinAlg} für die einzelne Koeffizienten berechnet werden was dann den folgenden Ausdruck
+Die Matrix $A$ ist nun bekannt. Es fehlt jedoch noch die Matrix $B$, um das Gleichungs-System zu komplettieren. Die Matrix $B$ wird nun wie folgt definiert. Um die folgende Form in \eqref{fem:Minimal2LinAlgB} zu erhalten muss lediglich der zweite Term von \eqref{fem:Minimal2TermLinAlg} für die einzelne Koeffizienten berechnet werden was dann den folgenden Ausdruck
 
 \begin{equation}
 			\int_0^1 \int_0^{1 - \xi}  \textcolor{cyan}{c_0^2} + \textcolor{blue}{c_1^2 x^2} + \textcolor{red}{c_2^2 y^2} + \textcolor{green}{2 c_0 c_1 x} + \textcolor{orange}{2 c_0 c_2 y} +\textcolor{purple}{ 2 c_1 c_2 xy} \,  d\eta \, d \xi
@@ -425,12 +425,12 @@ Sind die beiden Schritte durchgeführt, können die Koeffizienten gemäss der Ab
 	\caption{Matrix $B$ zusammenstellen }
 	\label{fem:MatrixBKomplett}
 \end{figure}
-Das Vorgehen für die Matrix $A$ ist genau gleich. Wie sieht die Matrix aus wenn mit mehr Dreiecken approximiert wird? Bei einem 5x5 Gitter mit 36 Variablen hätte die Matrix $B$ die Form wie in Abbildung \ref{fem:MatrixBGross} .
+Das Vorgehen für die Matrix $A$ ist genau gleich. Wie sieht die Matrix aus wenn mit mehr Dreiecken approximiert wird? Bei einem $5 \times 5$ Gitter mit 36 Variablen hätte die Matrix $B$ die Form wie in Abbildung \ref{fem:MatrixBGross} .
 
 \begin{figure}[h]
 	\centering
 	\input{papers/fem/Images/gross.tex}
-	\caption{5x5 Gitter}
+	\caption{$5 \times 5$}
 	\label{fem:MatrixBGross}
 \end{figure}
 
@@ -440,19 +440,20 @@ Das Vorgehen für die Matrix $A$ ist genau gleich. Wie sieht die Matrix aus wenn
 Nun folgt der nächste Schritt nämlich das Minimieren des quadratischen Ausdrucks
 \begin{equation}
 	c^t Ac - c^t \lambda Bc \; .
+	\label{fem:cAcbc}
 \end{equation}
-Entsprechend nach den Koeffizienten $c_k$ ableiten was für den  für 1. Term
+Der Ausdruck \eqref{fem:cAcbc} nach den Koeffizienten $c_k$ abgeleitet ergibt für den  für 1. Term
 \begin{equation}
 	\nabla c^t Ac = 2Ac
 \end{equation}
-ergibt und für den 2. Term den Ausdruck
+und für den 2. Term den Ausdruck
 
 \begin{equation}
 	\nabla c^t \lambda Bc = 2\lambda Bc \; .
 \end{equation}
 Diese Ableitungen erscheinen nicht gerade ersichtlich insbesondere der Faktor 2. \\
 
-Das Ableiten im 1- dimensionalen Raum ergibt nach der klassichen Analysis
+Das Ableiten im  eindimensionalen Raum ergibt nach der klassichen Analysis
 
 \begin{equation}
 	\frac{d}{dx} ax^2 = 2ax \; .
@@ -480,7 +481,7 @@ Durch das umschreiben der Gleichung \eqref{fem:GLLang} in
 		B^{-1}Ac = \lambda c
  \end{equation}
  ist ersichtlich, dass es sich um ein Eigenwertproblem für die Matrix $B^{-1}A$ handelt. % Dieses kann z.B. durch das Jacobi Verfahren, beschrieben im Kapitel 6.4 gelöst werden.
- Dieses kann z.B. mit dem Francis- Algorithmus, beschrieben im Kapitel 22, gelöst werden.
+ Dieses kann z.B. mit dem Francisalgorithmus, beschrieben im Kapitel 22, gelöst werden.
 \subsection{Andere lineare Ansatzfunktionen
 \label{fem:subsection:Ansatzfunktionen}}
 
@@ -499,15 +500,10 @@ Zu beachten ist allerdings, dass diese die Matrix enorm aufblasen bzw. vergröss
 
 In der Gleichung \ref{fem:equationSchwarzquadratischD}  ist der Ansatz für das Einheitsdreieck gegeben. Und in der Gleichung \ref{fem:equationSchwarzquadratischP} der quadratische Ansatz für ein Einheitsparallelogramm.
 
-\begin{equation}
-	u(x,y) = c_1 + c_2 x + c_3 y + c_4 x^2 + c_5 xy + c_6 y^2
-	\label{fem:equationSchwarzquadratischD}
-\end{equation}
-
-\begin{equation}
-	u(x,y) = c_1 + c_2 x + c_3 y + c_4 x^2 + c_5 xy + c_6 y^2 + c_7 x^2y + c_8 xy^2
-	\label{fem:equationSchwarzquadratischP}
-\end{equation} 
+\begin{align}
+	u(x,y) &= c_1 + c_2 x + c_3 y + c_4 x^2 + c_5 xy + c_6 y^2 \label{fem:equationSchwarzquadratischD} \\
+	u(x,y) &= c_1 + c_2 x + c_3 y + c_4 x^2 + c_5 xy + c_6 y^2 + c_7 x^2y + c_8 xy^2 \label{fem:equationSchwarzquadratischP}
+\end{align} 
 
 
 
