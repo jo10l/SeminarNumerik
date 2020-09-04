@@ -1,0 +1,85 @@
+\section{Das Problem der numerischen Ableitung}
+\rhead{Das Problem der numerischen Ableitung}
+Wir gehen von einer in einem Intervall $I=[a,b]$ definierten differenzierbaren
+Funktion $f\colon[a,b]\to\mathbb R$ aus. 
+Zu bestimmen ist die Ableitung von $f$ in einem Punkt $x\in[a,b]$.
+Der Differenzenquotient
+\[
+f'(x)
+\approx
+\frac{f(x+h)-f(x)}{h}
+\]
+ist die naheliegende Approximation, doch für kleines $h$ werden $f(x+h)$ und
+$f(x)$ fast gleich gross, die Differenz ist daher stark verschmiert.
+Grosses $h$ wiederum beschränkt die Genauigkeit, denn die Taylor-Entwicklung
+liefert für den Differenzenquotienten
+\[
+f'(x)
+\approx
+\frac{f(x) + hf'(x) + h^2f''(x)/2 + O(h^3) - f(x)}{h}
+=
+f'(x) + h\frac{f''(x)}2 + O(h^2),
+\]
+für nicht allzu kleines $h$ wird der Einfluss des $f''(x)$-Terms
+merklich.
+Es muss also angestrebt werden, genaue Resultate auch bei relativ grossem
+$h$ bekommen zu können.
+
+Eine erste Verbesserung kann mit dem symmetrischen Differenzenquotienten
+\[
+f'(x)
+\approx
+\frac{f(x+\frac{h}2) -f(x-\frac{h}2)}{h}
+\]
+erreicht werden.
+Setzt man wieder die Taylor-Reihe ein, erhält man
+\begin{align*}
+f'(x) &\approx
+\frac{1}{h} \biggl(
+f(x) + \frac{h}2 f'(x) + \frac{h^2}{8} f''(x) + \frac{h^3}{48}f'''(x) + O(h^4)
+\\
+&\qquad\qquad
+-
+\biggl(
+f(x) - \frac{h}2 f'(x) + \frac{h^2}{8} f''(x) - \frac{h^3}{48}f'''(x) + O(h^4)
+\biggr)
+\biggr)
+\\
+&=
+f'(x) + \frac{h^2}{24}f'''(x) + O(h^3).
+\end{align*}
+Danke der Symmetrie ist der $f''(x)$-Term verschwunden, der Fehler ist nur
+noch von Ordnung $h^2$.
+
+Den symmetrischen Differenzenquotienten kann man auch als Wert eines
+Interpolationspolynoms ansehen.
+Die beiden Stützstellen $x_{0,1}=x\pm \frac{h}2$ definieren die lineare
+Interpolationsfunktion
+\begin{align*}
+p(x)
+&=
+f(x_0) l_0(x) + f(x_1) l_1(x)
+=
+f(x_0) \frac{x-x_1}{x_0-x_1}
++
+f(x_1) \frac{x-x_0}{x_1-x_0}
+=
+-f(x_0) \frac{x-x_1}{h}
++
+f(x_1) \frac{x-x_0}{h}
+\\
+&=
+\frac{f(x_1) - f(x_0)}{h}
+x
++
+\text{const}.
+\intertext{%
+Die symmetrische Differenz ist daher auch die Ableitung}
+p'(x)
+&=
+\frac{f(x_1)-f(x_0)}{h}
+\end{align*}
+des Interpolationspolynoms.
+Es liegt daher nahe, die Ableitung $f'(x)$ als Ableitung eines
+Interpolationspolynoms höherer Ordnung von $f(x)$ zu berechnen.
+

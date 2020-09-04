@@ -1,0 +1,84 @@
+\section{Ableitungsverfahren}
+\rhead{Ableitungsverfahren}
+Wir wenden die Formeln
+\eqref{interdiff:ableitung}
+und
+\eqref{interdiff:koeffizienten}
+zunächst auf den Fall zweier Stützstellen $x_0=\xi-\frac{h}2$ und
+$x_1=\xi+\frac{h}2$ an.
+Es folgt
+\begin{align*}
+l_0(x)
+&=
+-\frac{1}{h} (x-x_1)
+&
+l_0'(x)
+&=
+-\frac1h \cdot 1
+\\
+l_1(x)
+&=
+\frac1{h} (x-x_0)
+&
+l_1'(x)
+&=
+\frac1h \cdot 1
+\\
+f'(x)
+&\approx
+\frac1h(- f(x_0)+f(x_1)) = \frac{f(x+\frac{h}2)-f(x-\frac{h}2)}{2},
+\end{align*}
+der bereits bekannte symmetrische Differenzenquotient.
+
+Für $n=2$ und die Stützstellen $x_0=x-h$, $x_1=x$ und $x_2=x+h$ erhalt man
+dagegen
+\begin{align*}
+l_0(x)
+&=
+\frac{1}{h\cdot 2h} (x-x_1)(x-x_2)
+&
+l_0'(x)
+&=
+\frac{1}{2h^2}(2x-x_2-x_1)
+&
+l_0'(\xi)
+&=
+\frac{1}{2h^2}(2\xi -(\xi+h) -\xi)
+=
+-\frac{1}{2h}
+\\
+l_1(x)
+&=
+\frac{1}{h^2} (x-x_0)(x-x_2)
+&
+l'_1(x)
+&=
+\frac{1}{h^2} (2x-x_0-x_2)
+&
+l'_1(\xi)
+&=
+\frac{1}{h^2}(2\xi-(\xi-h)-(\xi+h)) = 0
+\\
+l_2(x)
+&=
+\frac{1}{2h\cdot h} (x-x_0)(x-x_1)
+&
+l'_2(x)
+&=
+\frac{1}{2h^2} (2x-x_0-x_1)
+&
+l'_2(\xi)
+&=
+\frac{1}{2h^2} (2\xi-(\xi-h)-\xi)
+=
+\frac{1}{2h}
+\\
+f'(\xi)
+&\approx
+\frac{1}{2h}(f(x_2) - f(x_0))
+\rlap{$\displaystyle= \frac{f(\xi+h)-f(\xi-h)}{2h},$}
+\end{align*}
+also wieder eine symmetrische Differenz.
+Die zusätzliche Stützstelle in der Mitte bringt keinen Genauigkeitsgewinn.
+
+
