@@ -6,7 +6,7 @@
 \section{Lösung
 \label{fem:section:loesung}}
 \rhead{Lösung}
-Wie im vorherigen Kapitel erwähnt sind Herausforderungen bzw. Ansprüche an die Ansatzfunktionen zu beachten. Nun stellt sich die Frage, wie die Ansatzfunktion gewählt werden müssen, so das entlang eines Randes nur \frqq Knicke \flqq entstehen und keine Sprünge. Und wie ist gewährleistet das in jeder Stützstelle alle Elemente den gleichen Wert haben?  Als Lösungs bietet sich ein lineare Funktion an. Für ein Dreieck  ist es der Term $u(x) = c_1 + c_2x + c_3y$ an. Diese Zusammensetzung ergibt sich, da der lineare Ansatz durch die Funktionswerte in den Ecken des Dreiecks bestimmt wird. In anderen Worten ausgedrückt sind die Funktionswerte in den Ecken des Teilgebiets, hier im Dreieck, die Unbekannten, die bestimmt werden müssen. Wie diese Koeffizienten in einer Matrix bestimmt werden ist in \ref{fem:section:GL} aufgezeigt.
+Wie im vorherigen Kapitel erwähnt, sind Herausforderungen bzw. Ansprüche an die Ansatzfunktionen zu beachten. Nun stellt sich die Frage, wie die Ansatzfunktion gewählt werden müssen, so das entlang eines Randes nur \frqq Knicke \flqq entstehen und keine Sprünge. Und wie ist gewährleistet das in jeder Stützstelle alle Elemente den gleichen Wert haben?  Als Lösungs bietet sich ein lineare Funktion an. Für ein Dreieck kann der Term $u(x) = c_1 + c_2x + c_3y$ verwendet werden. Diese Zusammensetzung ergibt sich, da der lineare Ansatz durch die Funktionswerte in den Ecken des Dreiecks bestimmt wird. In anderen Worten ausgedrückt sind die Funktionswerte in den Ecken des Teilgebiets, hier im Dreieck, die Unbekannten, die bestimmt werden müssen. Wie diese Koeffizienten in einer Matrix bestimmt werden ist in \ref{fem:section:GL} aufgezeigt.
 
 %\begin{figure}[h!]
 %	\centering
@@ -25,7 +25,7 @@ Um möglichst einfach darzustellen, wie das Verfahren der finiten Elemente vonst
 \subsection{Vorbereitung
 \label{fem:section:loesungTrans}}
 
-Damit die Integration über das gewählte Teilgebiet einfacher fällt, wird als Vorbereitung im entsprechenden Fall das gewählte Gebiet in ein Einheitsdreieck oder in ein Einheitsparallelogramm transformiert. So können alle Gebiete gleich behandelt und berechnet werden. \\
+Damit die Integration über das gewählte Teilgebiet einfacher fällt, wird als Vorbereitung im entsprechenden Fall das gewählte Gebiet in ein Einheitsdreieck oder in ein Einheitsparallelogramm transformiert. So können alle Gebiete gleich behandelt und berechnet werden.
 Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $ P_2(x_2, y_2)$ und $P_3(x_3,y_3)$ kann mit Hilfe der linearen Transformation
 \begin{equation}
 	\begin{split}
@@ -47,7 +47,7 @@ Die Variablen $\xi$ und $\eta$ werden die neuen Integrationsvariablen. Damit die
 			dy \, dy = \det(J) \, d\xi \, d\eta
 			\label{fem:newTransformation}
 \end{equation}
-dargestellt, dazu multipliziert werden wie in \eqref{fem:newTransformation}. Die Jacobi- Matrix \eqref{fem:Jocobi} besteht aus den partiellen Ableitungen aus \eqref{fem:linTransformation}.  
+dargestellt, dazu multipliziert werden wie in \eqref{fem:newTransformation}. Die Jacobi- Matrix
 \begin{equation}
 J % 
 =
@@ -62,7 +62,7 @@ J %
 \end{bmatrix} \; .
 	\label{fem:Jocobi}
 \end{equation}
-Aus der Transformation \eqref{fem:linTransformation} erhält man 
+besteht aus den partiellen Ableitungen aus \eqref{fem:linTransformation}. Aus der Transformation \eqref{fem:linTransformation} erhält man 
 \begin{equation}
 	\det(J) = x_1 \cdot y_2 - 2 \cdot x_1 \cdot y_1 + x_2 \cdot y_1 + x_1\cdot y_3 + x_3 \cdot y_1 - x_2 \cdot y_3 - x_3 \cdot y_2 \; .
 	\label{fem:JocobiDetBerechnet}
@@ -123,7 +123,7 @@ Der Integrationsterm \eqref{fem:Minimal2D} wird gemäss der Summenregel in zwei 
 			\int_{\Omega_i} (\nabla u)^2 \, dx \, dy - \lambda \int_{\Omega_i} u^2 dx \, dy \, .
 			\label{fem:Minimal2D2Term}
 \end{equation}
-In einem nächsten Schritt wird das Minimalproblem auf das Element formuliert. Dies wird im folgenden Abschnitt erläutert.
+In einem nächsten Schritt wird das Minimalproblem auf das Element eingeschränkt. Dies wird im folgenden Abschnitt erläutert.
 
 \subsection{Schritt 2: Lösung durch Ansatzfunktionen approximieren}
 
@@ -137,15 +137,15 @@ Bei näherer Betrachtung fällt jedoch auf, dass in \eqref{fem:equationSchwarzLi
 u(\xi, \eta) = \tilde{c_1} + (\tilde{c_2} -\tilde{c_1})\xi + (\tilde{c_3} - \tilde{c_1})\eta
 \label{fem:equationLinearMod}
 \end{equation}
-besser geeignet. In \eqref{fem:equationLinearMod} sind die Funktionswerte in den Ecken und eignen sich somit viel besser, da nur die Eckwerte ohne Einfluss der Kanten berücksichtigt werden wie in Abbildung \ref{fem:Stuestellen} dargestellt. Die Ansatzfunktion \eqref{fem:equationLinearMod} kann somit direkt in die Formel \eqref{fem:Minimal2D} für ein Teilgebiet eingesetzt werden. Ziel ist es, dass die unbekannten Koeffizienten $c_1, c_2 \, $und$ \, c_3$ anhand dieses Verfahrens bestimmt werden. Das zu lösende Integral für Teilgebiet hat die Form
+besser geeignet. In \eqref{fem:equationLinearMod} sind die $c_i^N$ die Funktionswerte in den Ecken und eignen sich somit viel besser, da nur die Eckwerte ohne Einfluss der Kanten berücksichtigt werden wie in Abbildung \ref{fem:Stuestellen} dargestellt. Die Ansatzfunktion \eqref{fem:equationLinearMod} kann somit direkt in die Formel \eqref{fem:Minimal2D} für ein Teilgebiet eingesetzt werden. Ziel ist es, dass die unbekannten Koeffizienten $c_1, c_2 \, $und$ \, c_3$ anhand dieses Verfahrens bestimmt werden. Das zu lösende Integral für ein Teilgebiet hat die Form
 \begin{equation}
 \int_0^1 \int_0^{1 - \xi} \bigl[ \nabla \, \bigl( \tilde{c_1} + (\tilde{c_2} - \tilde{c_1})\xi + (\tilde{c_3} - \tilde{c_1})\eta \bigr) \, \bigr]^2 - \lambda \bigl[\tilde{c_1} + (\tilde{c_2} - \tilde{c_1})\xi + (\tilde{c_3} -\tilde{c_1})\eta \, \bigr]^2 \, d \eta \, d \xi \; .
 \label{fem:FlaecheDreieck}
 \end{equation}
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.8]{papers/fem/Images/Stuezstellen.jpeg}
-	\caption{Stuezstellen der Elemente $\int_{\Omega_1}$ und $\int_{\Omega_2}$ }
+	\input{papers/fem/Images/bild4711.tex}
+	\caption{Stützstellen der Elemente $\int_{\Omega_1}$ und $\int_{\Omega_2}$ }
 	\label{fem:Stuestellen}
 \end{figure} 
 \begin{figure}[h!]
@@ -179,7 +179,7 @@ Der Koeffizient $\tilde{c_1}$ im ersten Integralterm von \eqref{fem:IntInt} vers
 \end{equation}
 Im zweite Integralterm wird 
 \begin{multline}
-	u(\xi, \eta)^2 = \tilde{c_1}^2 x^2  - 2 \tilde{c_1} \tilde{c_2} x^2 + \tilde{c_2}^2 x^2 + 2 \tilde{c_1}^2 \xi \eta - 2 \tilde{c_1} \tilde{c_2} \xi \eta - 2 \tilde{c_1} \tilde{c_3} \xi \eta + 2 \tilde{c_2} \tilde{c_3} \xi \eta - 2 \tilde{c_1}^2 \xi + \\\ 2 \tilde{c_1} \tilde{c_2} \xi + \tilde{c_1}^2 \eta^2 - 2 \tilde{c_1} \tilde{c_3} \eta^2 + \tilde{c_3}^2 \eta^2 - 2 \tilde{c_1}^2 \eta + 2 \tilde{c_1} \tilde{c_3} \eta + \tilde{c_1}^2 \; .
+	u(\xi, \eta)^2 = \tilde{c_1}^2 \xi^2  - 2 \tilde{c_1} \tilde{c_2} \xi^2 + \tilde{c_2}^2 \xi^2 + 2 \tilde{c_1}^2 \xi \eta - 2 \tilde{c_1} \tilde{c_2} \xi \eta - 2 \tilde{c_1} \tilde{c_3} \xi \eta + 2 \tilde{c_2} \tilde{c_3} \xi \eta - 2 \tilde{c_1}^2 \xi + \\\ 2 \tilde{c_1} \tilde{c_2} \xi + \tilde{c_1}^2 \eta^2 - 2 \tilde{c_1} \tilde{c_3} \eta^2 + \tilde{c_3}^2 \eta^2 - 2 \tilde{c_1}^2 \eta + 2 \tilde{c_1} \tilde{c_3} \eta + \tilde{c_1}^2 \; .
 	\label{fem:vielzuviel}
 \end{multline}
 Wie in \eqref{fem:vielzuviel} zusehen ist, ist die Berechnung nicht anspruchsvoll, aber aufwändig. Nun ist aber noch die Frage offen wie die Koeffizienten in Matrixform zustande kommen. In folgenden Abschnitt wird dies anhand eines Beispiels beschrieben.
@@ -291,7 +291,7 @@ mit Nullen entsprechend angepasst. Die Teilmatrix ausgerechnet ergibt
 	0 & 0 &  \frac{1}{2}\\
 	\end{array}\right)
 \end{equation}
-und wird dann in die Matrix $A$ eingefügt. Wie genau die Teilmatrizen $A_{\triangle_i}$ in eine gesamte Matrix A zusammengesetzt werden, wird weiter unten am Beispiel der Matrix B erläutert. 
+und wird dann in die grosse Matrix $A$ eingefügt. Wie genau die Teilmatrizen $A_{\triangle_i}$ in eine gesamte Matrix A zusammengesetzt werden, wird weiter unten am Beispiel der Matrix B erläutert. 
 
 %\begin{equation}
 % A = \begin{pmatrix} 0 & 0 & \hdotsfor{4} & 0 \\
@@ -328,13 +328,13 @@ und wird dann in die Matrix $A$ eingefügt. Wie genau die Teilmatrizen $A_{\tria
 %c_1^2
 %\end{bmatrix}
 %\end{equation}
-Die Matrix $A$ ist nun bekannt. Es fehlt jedoch noch die Matrix $B$, um das Gleichungs-System zu komplettieren. Die Matrix $B$ wird nun wie folgt definiert. Um die folgende Form in \eqref{fem:Minimal2LinAlgB} zu erhalten muss lediglich der zweite Term von \eqref{fem:Minimal2TermLinAlg} für die einzelne Koeffizienten berechnet werden was dann den folgenden Ausdruck
+Die Matrix $A$ ist nun bekannt. Es fehlt jedoch noch die Matrix $B$, um das Gleichungssystem zu komplettieren. Die Matrix $B$ wird nun wie folgt definiert. Um die folgende Form in \eqref{fem:Minimal2LinAlgB} zu erhalten muss lediglich der zweite Term von \eqref{fem:Minimal2TermLinAlg} für die einzelnen Koeffizienten berechnet werden, was dann den folgenden Ausdruck
 
 \begin{equation}
 			\int_0^1 \int_0^{1 - \xi}  \textcolor{cyan}{c_0^2} + \textcolor{blue}{c_1^2 x^2} + \textcolor{red}{c_2^2 y^2} + \textcolor{green}{2 c_0 c_1 x} + \textcolor{orange}{2 c_0 c_2 y} +\textcolor{purple}{ 2 c_1 c_2 xy} \,  d\eta \, d \xi
 			\label{fem:Minimal2LinAlgB}
 \end{equation}
-ergibt. Nun soll dies wieder in die Matrix- Schreibweise übertragen werden was dann eine Teilmatrix $B_{\triangle_i}$ eines Dreickes entspricht
+ergibt. Nun soll dies wieder in die Matrix- Schreibweise übertragen werden was dann einer Teilmatrix
 
 \begin{equation}
  B_{\triangle_i} = \left( \begin{array}{ccc}
@@ -344,16 +344,16 @@ ergibt. Nun soll dies wieder in die Matrix- Schreibweise übertragen werden was 
 	\end{array}\right)
 	\label{fem:MatrixB}
 \end{equation}
-und ergibt ausgerechnet
+eines Dreickes entsprich und ausgerechnet
 \begin{equation}
  B_{\triangle_i} = - \lambda \left( \begin{array}{ccc}
 	\textcolor{cyan}{ \frac{1}{2}} &  \textcolor{green}{ \frac{1}{6}}& \textcolor{orange}{\frac{1}{3}}  \\
 	\textcolor{green}{\frac{1}{6}} & \textcolor{blue}{\frac{1}{12}} &  \textcolor{purple}{ \frac{1}{24}} \\
 	\textcolor{orange}{\frac{1}{3}} & \textcolor{purple}{\frac{1}{24}} & \textcolor{red}{ \frac{1}{12}} \\
-	\end{array}\right) \; .
+	\end{array}\right) 
 	\label{fem:MatrixB}
 \end{equation}
-
+ergibt.
 
 \subsubsection{Zusammensetzten der Teilmatrizen $A$ und $B$}
 Anhand eines Beispieles soll gezeigt werden wie sich die $B$ Matrix aus den Teilmatrizen $B_{\triangle_i}$ zusammenstellt. Als Beispiel dient eine Approximation mit den beiden Dreiecken $\textcolor{red}{\triangle_1}$ und $\textcolor{blue}{\triangle_2}$
@@ -425,7 +425,8 @@ Sind die beiden Schritte durchgeführt, können die Koeffizienten gemäss der Ab
 	\caption{Matrix $B$ zusammenstellen }
 	\label{fem:MatrixBKomplett}
 \end{figure}
-Das Vorgehen für die Matrix $A$ ist genau gleich. Wie sieht die Matrix aus wenn mit mehr Dreiecken approximiert wird? Bei einem $5 \times 5$ Gitter mit 36 Variablen hätte die Matrix $B$ die Form wie in Abbildung \ref{fem:MatrixBGross} .
+Das Vorgehen für die Matrix $A$ ist genau gleich. 
+Wie sieht die Matrix aus wenn mit mehr Dreiecken approximiert wird? Bei einem $5 \times 5$ Gitter mit 36 Variablen hätte die Matrix $B$ die Form wie in Abbildung \ref{fem:MatrixBGross} .
 
 \begin{figure}[h]
 	\centering
@@ -442,7 +443,7 @@ Nun folgt der nächste Schritt nämlich das Minimieren des quadratischen Ausdruc
 	c^t Ac - c^t \lambda Bc \; .
 	\label{fem:cAcbc}
 \end{equation}
-Der Ausdruck \eqref{fem:cAcbc} nach den Koeffizienten $c_k$ abgeleitet ergibt für den  für 1. Term
+Der Ausdruck \eqref{fem:cAcbc} nach den Koeffizienten $c_k$ abgeleitet ergibt den  für 1. Term
 \begin{equation}
 	\nabla c^t Ac = 2Ac
 \end{equation}
@@ -451,8 +452,7 @@ und für den 2. Term den Ausdruck
 \begin{equation}
 	\nabla c^t \lambda Bc = 2\lambda Bc \; .
 \end{equation}
-Diese Ableitungen erscheinen nicht gerade ersichtlich insbesondere der Faktor 2. \\
-
+Diese Ableitungen erscheinen nicht gerade ersichtlich insbesondere der Faktor 2.
 Das Ableiten im  eindimensionalen Raum ergibt nach der klassichen Analysis
 
 \begin{equation}
@@ -461,7 +461,7 @@ Das Ableiten im  eindimensionalen Raum ergibt nach der klassichen Analysis
 %Um die Ableitung in einem n-Dimensionalen, quadratischen Matrix vorzunehmen muss diese erst in einen Summennotation umgeschrieben werden wie folgt
 Die Ableitung von $x^tAx, x \in \mathbb{R}^n $ nach $x_n$ ergibt nach der Produktregel
 \begin{equation}
-	\sum_{i,j} \frac{\partial x_i}{\partial x_n} a_{ij} x_j + \sum_{i,j} x_i a_{ij} \frac{\partial x_j}{\partial x_n} \; .
+	\frac{\partial}{\partial x_u} \; x^tAx = \sum_{i,j} \frac{\partial x_i}{\partial x_n} a_{ij} x_j + \sum_{i,j} x_i a_{ij} \frac{\partial x_j}{\partial x_n} \; .
 \end{equation}
 Dies kann vereinfacht werden anhand der Kürzungs- Berechnung
 
@@ -469,28 +469,28 @@ Dies kann vereinfacht werden anhand der Kürzungs- Berechnung
 	\sum_{j} a_{nj} x_j + \sum_{i,j} x_i a_{in} = \sum_{j} a_{nj} x_j + \sum_{\textcolor{red}{\not{j}} i} a_{n \textcolor{red}{\not{j}} i} x_{\textcolor{red}{\not{j}} i} = 2(Ax)_n \; .
 \end{equation}
 
-\subsection{Schritt 4 Gleichungssystem aufstellen}
+\subsection{Schritt 4: Gleichungssystem aufstellen}
 Nun kann das Gleichungssystem aufgestellt werden:
 \begin{equation}
 	2Ac - 2\lambda Bc = 0 \Rightarrow (A-\lambda B)c = 0 \; .
 	\label{fem:GLLang}
 \end{equation}
-Durch das umschreiben der Gleichung \eqref{fem:GLLang} in 
+Durch das Umschreiben der Gleichung \eqref{fem:GLLang} in 
 
 \begin{equation}
 		B^{-1}Ac = \lambda c
  \end{equation}
  ist ersichtlich, dass es sich um ein Eigenwertproblem für die Matrix $B^{-1}A$ handelt. % Dieses kann z.B. durch das Jacobi Verfahren, beschrieben im Kapitel 6.4 gelöst werden.
- Dieses kann z.B. mit dem Francisalgorithmus, beschrieben im Kapitel 22, gelöst werden.
+ Dieses kann z.B. mit dem Francis- Algorithmus, beschrieben im Kapitel 22, gelöst werden.
 \subsection{Andere lineare Ansatzfunktionen
 \label{fem:subsection:Ansatzfunktionen}}
 
-Neben dem durchgerechneten Beispiel des Einheitsdreiecks kann auch eine andere Formfunktion verwendet werden. Die folgende Formfunktion gilt für den linearen Ansatz eines Parallelogramms.
+Neben dem durchgerechneten Beispiel des Einheitsdreiecks kann auch eine andere Gebietsform verwendet werden. Die Funktion
 
 \begin{equation}
 	u(x,y) = c_1 + c_2 x + c_3 y + c_4 xy
 \end{equation} 
-
+gilt für den linearen Ansatz eines Parallelogramms.
 
 \subsubsection{Quadratischer Ansatz
 \label{fem:subsection:bonorum}}
@@ -498,12 +498,16 @@ Neben dem durchgerechneten Beispiel des Einheitsdreiecks kann auch eine andere F
 Der Vorteil des quadratischen Ansatzes liegt darin, dass die Freiheitsgeraden erhöht werden. Somit kann unter umständen eine bessere Approximation erreicht werden.
 Zu beachten ist allerdings, dass diese die Matrix enorm aufblasen bzw. vergrössern und dann mehr Ressourcen in Anspruch nehmen, um die Matrix bzw. die Eigen werte zu berechnen.
 
-In der Gleichung \ref{fem:equationSchwarzquadratischD}  ist der Ansatz für das Einheitsdreieck gegeben. Und in der Gleichung \ref{fem:equationSchwarzquadratischP} der quadratische Ansatz für ein Einheitsparallelogramm.
-
+In dem Ausdruck
 \begin{align}
-	u(x,y) &= c_1 + c_2 x + c_3 y + c_4 x^2 + c_5 xy + c_6 y^2 \label{fem:equationSchwarzquadratischD} \\
-	u(x,y) &= c_1 + c_2 x + c_3 y + c_4 x^2 + c_5 xy + c_6 y^2 + c_7 x^2y + c_8 xy^2 \label{fem:equationSchwarzquadratischP}
-\end{align} 
+	u(x,y) &= c_1 + c_2 x + c_3 y + c_4 x^2 + c_5 xy + c_6 y^2 \label{fem:equationSchwarzquadratischD} \\ 
+\end{align}	
+ist der Ansatz für das Einheitsdreieck gegeben. Und in der Formel
+\begin{align}
+u(x,y) &= c_1 + c_2 x + c_3 y + c_4 x^2 + c_5 xy + c_6 y^2 + c_7 x^2y + c_8 xy^2 \label{fem:equationSchwarzquadratischP}
+\end{align}
+der quadratische Ansatz für ein Einheitsparallelogramm.
+
 
 
 
