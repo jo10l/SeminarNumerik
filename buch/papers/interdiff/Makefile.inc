@@ -6,5 +6,8 @@
 dependencies-interdiff =						\
 	papers/interdiff/packages.tex					\
 	papers/interdiff/main.tex					\
+	papers/interdiff/problem.tex					\
+	papers/interdiff/interpolation.tex				\
+	papers/interdiff/ableitung.tex					\
 	papers/interdiff/references.bib
 
